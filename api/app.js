@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import { getVercelOidcToken } from '@vercel/oidc';
 
 const BASE='https://raw.githubusercontent.com/liemduongtarot/quiet-clarity-pattern-signal-check/v834-functional-preview/preview/v834';
+const MESSENGER_URL='https://m.me/quietclarityreadings';
 let bundlePromise;
 const handlerCache=new Map();
 
@@ -52,15 +53,23 @@ async function getHandler(op){
 }
 function patchedRenderer(buf){
   let s=buf.toString('utf8');
+  const intakeFn=`function intakePayload(){return {main_area:state.area==='other'?(state.areaOther||'').trim():(state.area||''),current_situation:(state.situation||'').trim(),clarity_need:state.clarity||'',other_clarity_need:state.clarity==='other'?(state.clarityOther||'').trim():''}}\n`;
+  const copyFn=`async function copyText(text){try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);return true}}catch(e){console.warn('clipboard_api_failed',e)}try{const ta=document.createElement('textarea');ta.value=String(text||'');ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();ta.setSelectionRange(0,ta.value.length);const ok=document.execCommand('copy');ta.remove();return ok}catch(e){console.error('clipboard_fallback_failed',e);return false}}\n`;
+  if(!/function\s+intakePayload\s*\(/.test(s))s=s.replace('async function analyse(){',intakeFn+'async function analyse(){');
+  if(!/async function\s+copyText\s*\(/.test(s))s=s.replace('function messengerUrl(message)',copyFn+'function messengerUrl(message)');
   s=s.replace("fetch('/api/analyse'","fetch('/?op=analyse'")
      .replace("fetch('/api/save'","fetch('/?op=save'")
-     .replace("function messengerUrl(message){return '/api/handoff';}","function messengerUrl(message){return '/?op=handoff';}");
+     .replace("function messengerUrl(message){return '/api/handoff';}","function messengerUrl(message){return '/?op=handoff';}")
+     .replace("document.getElementById('copy').onclick=()=>navigator.clipboard?.writeText(state.reference);","document.getElementById('copy').onclick=()=>copyText(state.reference);")
+     .replace("document.getElementById('messenger').onclick=async()=>{try{await navigator.clipboard?.writeText(msg)}catch{}window.open(messengerUrl(msg),'_blank','noopener')}","document.getElementById('messenger').onclick=async()=>{await copyText(msg);window.open(messengerUrl(msg),'_blank','noopener')}")
+     .replace("}catch(e){state.result={error:true};nav('result')}}","}catch(e){console.error('qc_analysis_client_error',e);state.result={error:true};nav('result')}}");
   return Buffer.from(s);
 }
 export default async function handler(req,res){
   try{
     const op=String(req.query?.op||'');
     if(op){
+      if(op==='handoff')return res.redirect(302,MESSENGER_URL);
       const h=await getHandler(op);
       if(!h)return res.status(404).json({error:'not_found'});
       res.setHeader('x-qc-preview-route','root-op');
@@ -73,9 +82,9 @@ export default async function handler(req,res){
     let b=(await getBundle()).get(p); if(!b)return res.status(404).send('not_found');
     if(p==='app-render.js')b=patchedRenderer(b);
     res.setHeader('content-type',ctype(p));
-    res.setHeader('x-qc-version','v8.3.5-preview-auth-route');
+    res.setHeader('x-qc-version','v8.3.6-permanent-fix');
     res.setHeader('cache-control',p.endsWith('.html')||p.endsWith('.js')?'no-store':'public, max-age=300');
     if(req.method==='HEAD')return res.status(200).end();
     return res.status(200).send(b);
-  }catch(e){console.error('v835_app_error',e?.stack||e);return res.status(500).send('preview_unavailable')}
+  }catch(e){console.error('v836_app_error',e?.stack||e);return res.status(500).send('preview_unavailable')}
 }
