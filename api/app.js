@@ -4,7 +4,7 @@ import crypto from 'node:crypto';
 import { getVercelOidcToken } from '@vercel/oidc';
 
 const BASE='https://raw.githubusercontent.com/liemduongtarot/quiet-clarity-pattern-signal-check/v834-functional-preview/preview/v834';
-const MESSENGER_URL='https://m.me/quietclarityreadings';
+const MESSENGER_URL='https://m.me/quietclarity.uklondon';
 let bundlePromise;
 const handlerCache=new Map();
 
