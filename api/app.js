@@ -69,6 +69,18 @@ function patchedRenderer(buf){
      .replace("}catch(e){state.result={error:true};nav('result')}}","}catch(e){console.error('qc_analysis_client_error',e);state.result={error:true};nav('result')}}");
   return Buffer.from(s);
 }
+function patchedQuestions(buf){
+  let s=buf.toString('utf8');
+  s=s.replace("['business','Business / công việc tự doanh']","['business','Kinh doanh / tự làm chủ']")
+     .replace("['wellbeing','Sức lực / trạng thái hằng ngày']","['wellbeing','Thể chất / tinh thần']");
+  return Buffer.from(s);
+}
+function patchedCore(buf){
+  let s=buf.toString('utf8');
+  s=s.replace("business:'chuyện business này'","business:'chuyện kinh doanh / tự làm chủ này'")
+     .replace("wellbeing:'trạng thái hằng ngày này'","wellbeing:'trạng thái thể chất / tinh thần này'");
+  return Buffer.from(s);
+}
 export default async function handler(req,res){
   try{
     const op=String(req.query?.op||'');
@@ -85,10 +97,12 @@ export default async function handler(req,res){
     p=p.replace(/^\/+/, '').replace(/\.\.(?:\/|\\)/g,''); if(!p)p='index.html';
     let b=(await getBundle()).get(p); if(!b)return res.status(404).send('not_found');
     if(p==='app-render.js')b=patchedRenderer(b);
+    if(p==='questions.js')b=patchedQuestions(b);
+    if(p==='app-core.js')b=patchedCore(b);
     res.setHeader('content-type',ctype(p));
-    res.setHeader('x-qc-version','v8.3.8-handoff-copy-clarity');
+    res.setHeader('x-qc-version','v8.3.9-area-copy-cleanup');
     res.setHeader('cache-control',p.endsWith('.html')||p.endsWith('.js')?'no-store':'public, max-age=300');
     if(req.method==='HEAD')return res.status(200).end();
     return res.status(200).send(b);
-  }catch(e){console.error('v838_app_error',e?.stack||e);return res.status(500).send('preview_unavailable')}
+  }catch(e){console.error('v839_app_error',e?.stack||e);return res.status(500).send('preview_unavailable')}
 }
