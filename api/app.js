@@ -54,14 +54,14 @@ async function getHandler(op){
 function patchedRenderer(buf){
   let s=buf.toString('utf8');
   const intakeFn=`function intakePayload(){return {main_area:state.area==='other'?(state.areaOther||'').trim():(state.area||''),current_situation:(state.situation||'').trim(),clarity_need:state.clarity||'',other_clarity_need:state.clarity==='other'?(state.clarityOther||'').trim():''}}\n`;
-  const copyFn=`async function copyText(text){try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);return true}}catch(e){console.warn('clipboard_api_failed',e)}try{const ta=document.createElement('textarea');ta.value=String(text||'');ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();ta.setSelectionRange(0,ta.value.length);const ok=document.execCommand('copy');ta.remove();return ok}catch(e){console.error('clipboard_fallback_failed',e);return false}}\n`;
+  const handoffFns=`async function copyText(text){try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);return true}}catch(e){console.warn('clipboard_api_failed',e)}try{const ta=document.createElement('textarea');ta.value=String(text||'');ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();ta.setSelectionRange(0,ta.value.length);const ok=document.execCommand('copy');ta.remove();return ok}catch(e){console.error('clipboard_fallback_failed',e);return false}}\nfunction showCopyFallback(text){document.getElementById('qcCopyFallback')?.remove();const box=document.createElement('div');box.id='qcCopyFallback';box.style.cssText='position:fixed;left:18px;right:18px;bottom:18px;z-index:99999;background:#1a1009;color:#f2e4d2;border:1px solid #8b6639;border-radius:12px;padding:14px;box-shadow:0 10px 40px rgba(0,0,0,.35)';const p=document.createElement('div');p.textContent=state.lang==='vi'?'Trình duyệt chưa tự sao chép được. Text đã được chọn sẵn — nhấn Ctrl+C rồi dán vào Messenger.':'Your browser could not copy automatically. The text is selected — press Ctrl+C, then paste it into Messenger.';p.style.marginBottom='8px';const ta=document.createElement('textarea');ta.value=String(text||'');ta.readOnly=true;ta.style.cssText='width:100%;min-height:78px;box-sizing:border-box;background:#0f0905;color:#f2e4d2;border:1px solid #6f522e;border-radius:8px;padding:10px';const close=document.createElement('button');close.textContent=state.lang==='vi'?'ĐÓNG':'CLOSE';close.style.cssText='margin-top:8px;padding:8px 12px';close.onclick=()=>box.remove();box.append(p,ta,close);document.body.appendChild(box);ta.focus();ta.select();ta.setSelectionRange(0,ta.value.length)}\nasync function copyTextOrFallback(text){const ok=await copyText(text);if(!ok)showCopyFallback(text);return ok}\nfunction openMessengerWithCopy(text){const popup=window.open('about:blank','_blank');if(popup)popup.opener=null;copyTextOrFallback(text).finally(()=>{if(popup)popup.location=messengerUrl(text);else location.href=messengerUrl(text)})}\n`;
   if(!/function\s+intakePayload\s*\(/.test(s))s=s.replace('async function analyse(){',intakeFn+'async function analyse(){');
-  if(!/async function\s+copyText\s*\(/.test(s))s=s.replace('function messengerUrl(message)',copyFn+'function messengerUrl(message)');
+  if(!/function\s+openMessengerWithCopy\s*\(/.test(s))s=s.replace('function messengerUrl(message)',handoffFns+'function messengerUrl(message)');
   s=s.replace("fetch('/api/analyse'","fetch('/?op=analyse'")
      .replace("fetch('/api/save'","fetch('/?op=save'")
      .replace("function messengerUrl(message){return '/api/handoff';}","function messengerUrl(message){return '/?op=handoff';}")
-     .replace("document.getElementById('copy').onclick=()=>navigator.clipboard?.writeText(state.reference);","document.getElementById('copy').onclick=()=>copyText(state.reference);")
-     .replace("document.getElementById('messenger').onclick=async()=>{try{await navigator.clipboard?.writeText(msg)}catch{}window.open(messengerUrl(msg),'_blank','noopener')}","document.getElementById('messenger').onclick=async()=>{await copyText(msg);window.open(messengerUrl(msg),'_blank','noopener')}")
+     .replace("document.getElementById('copy').onclick=()=>navigator.clipboard?.writeText(state.reference);","document.getElementById('copy').onclick=()=>copyTextOrFallback(state.reference);")
+     .replace("document.getElementById('messenger').onclick=async()=>{try{await navigator.clipboard?.writeText(msg)}catch{}window.open(messengerUrl(msg),'_blank','noopener')}","document.getElementById('messenger').onclick=()=>openMessengerWithCopy(msg)")
      .replace("}catch(e){state.result={error:true};nav('result')}}","}catch(e){console.error('qc_analysis_client_error',e);state.result={error:true};nav('result')}}");
   return Buffer.from(s);
 }
@@ -82,9 +82,9 @@ export default async function handler(req,res){
     let b=(await getBundle()).get(p); if(!b)return res.status(404).send('not_found');
     if(p==='app-render.js')b=patchedRenderer(b);
     res.setHeader('content-type',ctype(p));
-    res.setHeader('x-qc-version','v8.3.6-permanent-fix');
+    res.setHeader('x-qc-version','v8.3.7-handoff-hardening');
     res.setHeader('cache-control',p.endsWith('.html')||p.endsWith('.js')?'no-store':'public, max-age=300');
     if(req.method==='HEAD')return res.status(200).end();
     return res.status(200).send(b);
-  }catch(e){console.error('v836_app_error',e?.stack||e);return res.status(500).send('preview_unavailable')}
+  }catch(e){console.error('v837_app_error',e?.stack||e);return res.status(500).send('preview_unavailable')}
 }
