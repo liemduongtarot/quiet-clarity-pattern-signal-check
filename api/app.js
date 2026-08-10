@@ -72,13 +72,18 @@ function patchedRenderer(buf){
 function patchedQuestions(buf){
   let s=buf.toString('utf8');
   s=s.replace("['business','Business / công việc tự doanh']","['business','Kinh doanh / tự làm chủ']")
-     .replace("['wellbeing','Sức lực / trạng thái hằng ngày']","['wellbeing','Thể chất / tinh thần']");
+     .replace("['relationships','Mối quan hệ'],['home','Nhà ở / gia đình']","['romantic','Tình cảm / hẹn hò'],['family','Gia đình / cha mẹ / con cái'],['friends','Bạn bè / các mối quan hệ khác'],['home','Nhà ở / môi trường sống']")
+     .replace("['wellbeing','Sức lực / trạng thái hằng ngày']","['wellbeing','Thể chất / tinh thần']")
+     .replace("['relationships','Relationships'],['home','Home / family']","['romantic','Romantic relationships / dating'],['family','Family / parents / children'],['friends','Friends / other relationships'],['home','Home / living situation']");
   return Buffer.from(s);
 }
 function patchedCore(buf){
   let s=buf.toString('utf8');
-  s=s.replace("business:'chuyện business này'","business:'chuyện kinh doanh / tự làm chủ này'")
-     .replace("wellbeing:'trạng thái hằng ngày này'","wellbeing:'trạng thái thể chất / tinh thần này'");
+  s=s.replace("const DRAFT_KEY='qc_pattern_signal_draft_v12';","const DRAFT_KEY='qc_pattern_signal_draft_v13';")
+     .replace("business:'chuyện business này'","business:'chuyện kinh doanh / tự làm chủ này'")
+     .replace("relationships:'mối quan hệ này',home:'chuyện nhà ở / gia đình này'","romantic:'chuyện tình cảm này',family:'chuyện gia đình này',friends:'mối quan hệ này',home:'tình hình nhà ở / môi trường sống này'")
+     .replace("wellbeing:'trạng thái hằng ngày này'","wellbeing:'trạng thái thể chất / tinh thần này'")
+     .replace("relationships:'this relationship situation',home:'this home / family situation'","romantic:'this romantic relationship / dating situation',family:'this family situation',friends:'this friendship / other relationship',home:'this home / living situation'");
   return Buffer.from(s);
 }
 export default async function handler(req,res){
@@ -100,9 +105,9 @@ export default async function handler(req,res){
     if(p==='questions.js')b=patchedQuestions(b);
     if(p==='app-core.js')b=patchedCore(b);
     res.setHeader('content-type',ctype(p));
-    res.setHeader('x-qc-version','v8.3.9-area-copy-cleanup');
+    res.setHeader('x-qc-version','v8.3.10-area-taxonomy-split');
     res.setHeader('cache-control',p.endsWith('.html')||p.endsWith('.js')?'no-store':'public, max-age=300');
     if(req.method==='HEAD')return res.status(200).end();
     return res.status(200).send(b);
-  }catch(e){console.error('v839_app_error',e?.stack||e);return res.status(500).send('preview_unavailable')}
+  }catch(e){console.error('v8310_app_error',e?.stack||e);return res.status(500).send('preview_unavailable')}
 }
