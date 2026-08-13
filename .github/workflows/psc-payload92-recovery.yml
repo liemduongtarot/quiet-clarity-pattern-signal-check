@@ -1,0 +1,30 @@
+name: PSC payload92 recovery
+on:
+  push:
+    branches:
+      - psc-v8.3.91-static
+    paths:
+      - '.github/workflows/psc-payload92-recovery.yml'
+      - 'payload92/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify staged payload files
+        run: |
+          set -euo pipefail
+          ls -l payload92
+          sha256sum payload92/*
+      - name: Upload exact staged payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: psc-payload92-staged
+          path: payload92/
+          if-no-files-found: error
+          compression-level: 0
