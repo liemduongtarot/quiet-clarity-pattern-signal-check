@@ -1,0 +1,32 @@
+name: Assemble PSC V8.3.91 transport
+on:
+  push:
+    paths:
+      - 'transport/READY'
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - name: Assemble exact candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          find transport/chunks -type f -name 'part-*.txt' -print0 | sort -z | xargs -0 cat > dist/psc-v8.3.91.html
+          test "$(sha256sum dist/psc-v8.3.91.html | awk '{print $1}')" = "0ea820bb669e3981e689400438112bde86ae08ae0eff7f5d0a698e0a59a5be2a"
+          test "$(wc -c < dist/psc-v8.3.91.html | tr -d ' ')" = "1489508"
+      - name: Commit assembled artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'psc-release-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add dist/psc-v8.3.91.html
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Assemble verified PSC V8.3.91 artifact'
+          git push origin HEAD:${{ github.ref_name }}
