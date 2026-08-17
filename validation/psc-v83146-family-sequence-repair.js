@@ -14,7 +14,8 @@ function repair(raw,base){
  const busyAvoidance=has(/(?:thay vi|instead of|rather than).{0,150}(?:ban minh|kept myself busy|stayed busy|organising old emails|organizing old emails|old emails|viec phu|unrelated work).{0,150}(?:chua phai|khong phai|avoid|not have to|defer|delay|xu ly viec chinh|deal with the main|touch the main)/,doc)
    || has(/(?:ban minh|kept myself busy|stayed busy).{0,120}(?:organising old emails|organizing old emails|old emails|viec phu|unrelated work).{0,120}(?:de chua phai|so i would not have to|so i didn't have to|avoid).{0,90}(?:xu ly|deal with|touch|start)/,doc)
    || has(/(?:kept putting|putting|put).{0,80}(?:aside|to one side).{0,120}(?:then|later|afterward|after that|eventually|finally)/,doc);
- if(busyAvoidance&&!families.includes('ignore'))families.push('ignore');
+ const intentionalNonEngagement=has(/(?:i|toi|minh).{0,40}(?:leave|left|keep|kept|de|bo).{0,55}(?:message|email|notification|tin nhan|thu).{0,45}(?:unopened|unread|chua mo|khong mo).{0,45}(?:on purpose|deliberately|intentionally|co y)/,doc);
+ if((busyAvoidance||intentionalNonEngagement)&&!families.includes('ignore'))families.push('ignore');
  families=uniq(families);
  const ordered=has(/(?:then|later|afterward|after that|eventually|finally|roi|sau do|roi sau do|cuoi cung)/,doc);
  if(families.length>=2&&ordered)sequence=true;
