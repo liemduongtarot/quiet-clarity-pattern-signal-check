@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import { chromium } from 'playwright';
+import { chromium } from '../.e2e/node_modules/playwright/index.mjs';
 
 const base = process.env.PSC_E2E_URL;
 if (!base) throw new Error('PSC_E2E_URL missing');
@@ -21,15 +21,14 @@ try {
       return {route:a.input_route?.id||null,families:[...(a.families||[])].sort(),sequence:!!a.sequence,gate:gate.gate,ui_route:gate.route?.id||null};
     }, tc.input);
     const expFamilies=[...(tc.expected_families||[])].sort();
-    const semanticPass = runtime.route===tc.expected_route && JSON.stringify(runtime.families)===JSON.stringify(expFamilies) && (!!tc.expected_sequence===runtime.sequence || tc.expected_sequence===undefined);
+    const semanticPass = runtime.route===tc.expected_route && JSON.stringify(runtime.families)===JSON.stringify(expFamilies) && (tc.expected_sequence===undefined || !!tc.expected_sequence===runtime.sequence);
 
-    // Browser UI integration: landing -> area -> situation -> submit.
     await page.getByRole('button',{name:'BẮT ĐẦU'}).click();
     await page.locator('input[name=x]').first().check();
     await page.locator('#n').click();
     await page.locator('#t').fill(tc.input);
     await page.locator('#n').click();
-    await page.waitForTimeout(80);
+    await page.waitForTimeout(100);
     const bodyText = await page.locator('body').innerText();
     const continueExpected = tc.expected_route==='input:self-lived';
     const uiPass = continueExpected ? bodyText.includes('TRONG CHUYỆN NÀY, BẠN ĐANG VƯỚNG MẮC NHẤT Ở ĐÂU?') : bodyText.includes('HÃY VIẾT LẠI TÌNH HUỐNG');
