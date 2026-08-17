@@ -1,0 +1,53 @@
+name: V8.3.139 Validation Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - v83139-validation
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+          cache-dependency-path: 'PSC_V8_3_138_DEV/package-lock.json'
+      - name: Extract exact checkpoint
+        run: |
+          python - <<'PY'
+          import zipfile
+          p='PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip'
+          with zipfile.ZipFile(p) as z:
+              z.extractall('.')
+          PY
+      - name: Install locked dependencies
+        working-directory: PSC_V8_3_138_DEV
+        run: npm run install:ci
+      - name: Fresh production build
+        working-directory: PSC_V8_3_138_DEV
+        run: npm run build
+      - name: Validate artifact
+        working-directory: PSC_V8_3_138_DEV
+        run: npm run validate:artifact
+      - name: Assert no source maps
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          test "$(find dist -type f -name '*.map' | wc -l)" -eq 0
+      - name: Record hashes
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          sha256sum public/psc-v83139-semantic-convergence.js public/psc-v83138-semantic-convergence.js public/psc-v83137-ui-gate-authority.js public/psc-v83135-scoped-operator.js public/candidate.html package.json package-lock.json > V8_3_139_CI_AUTHORITY_HASHES.txt
+          find dist -type f -print0 | sort -z | xargs -0 sha256sum > V8_3_139_DIST_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v83139-validation-evidence
+          path: |
+            PSC_V8_3_138_DEV/V8_3_139_CI_AUTHORITY_HASHES.txt
+            PSC_V8_3_138_DEV/V8_3_139_DIST_SHA256.txt
+            PSC_V8_3_138_DEV/dist
+          if-no-files-found: error
