@@ -9,7 +9,7 @@ const uniq=a=>[...new Set(a||[])];
 function converge(raw,base){
  const doc=fold(raw); let route=base.input_route?.id||'input:clarification-required'; let fam=uniq(base.families); let seq=!!base.sequence;
  const self=/\b(i|my|me|toi|cua toi)\b/.test(doc);
- const explicitNoAction=/(?:no|not|none|khong).{0,45}(?:checking|check|avoidance|avoid|rushing|rush|freezing|freeze|action|hanh dong|kiem tra|ne|tranh|voi|dong cung)/.test(doc);
+ const explicitNoAction=/(?:no|none)\s+(?:checking|avoidance|rushing|freezing|action)\b|(?:no|none).{0,55}\baction\s+(?:is|was)\s+(?:stated|described)|(?:khong|chua).{0,35}(?:hanh dong|phan ung).{0,30}(?:duoc neu|duoc mo ta|cu the)/.test(doc);
  const genericIllustration=/^(?:for illustration|for illustrative purposes|for example|for instance|vi du|de minh hoa)\b/.test(doc)&&/(?:a|an|mot)\s+(?:claimant|applicant|person|user|customer|nguoi|ung vien)\b/.test(doc)&&/(?:might|may|could|co the)\b/.test(doc);
  if(genericIllustration){route='input:hypothetical-or-example';fam=[];seq=false;}
  const thirdPartyExplicit=/(?:not my (?:action|behavio(?:u)?r)|none of it is my action|that is (?:her|his|their) action|day la hanh vi cua (?:ban|chi|anh|em) ay|khong phai hanh vi cua toi|day khong phai hanh vi cua toi)/.test(doc);
