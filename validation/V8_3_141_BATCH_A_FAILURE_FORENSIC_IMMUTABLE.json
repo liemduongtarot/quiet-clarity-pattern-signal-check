@@ -1,0 +1,26 @@
+{
+  "candidate": "V8.3.141",
+  "classification": "SEALED BATCH A FIRST-RUN FAILURE — FROZEN FAILED REVIEW CANDIDATE",
+  "batch_a_total": 30,
+  "batch_a_passed": 16,
+  "batch_a_failed": 14,
+  "batch_b_executed": false,
+  "step_111_executed": false,
+  "mismatch_counts": {"route": 7, "family": 8, "sequence": 2},
+  "failures": [
+    {"case_id":"V141-BANK-01-02","surface":"Cổng hoàn tiền không đổi gì, nhưng trong hôm nay tôi vẫn quay lại xem hết lần này tới lần khác.","expected":{"route":"input:self-lived","families":["slow"],"sequence":false}},
+    {"case_id":"V141-BANK-03-05","surface":"I previously kept checking clinic bookings, but that pattern stopped months ago.","expected":{"route":"input:self-lived","families":[],"sequence":false}},
+    {"case_id":"V141-BANK-07-05","surface":"I cleaned the kitchen because I wanted to postpone confirming the clinic booking.","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"case_id":"V141-BANK-09-05","surface":"I confirmed the clinic slot impulsively before checking whether I could attend.","expected":{"route":"input:self-lived","families":["fast"],"sequence":false}},
+    {"case_id":"V141-BANK-11-04","surface":"Tôi trì hoãn bản rà soát dự án trước, rồi cuối cùng phản hồi quá nhanh.","expected":{"route":"input:self-lived","families":["fast","ignore"],"sequence":true}},
+    {"case_id":"V141-BANK-12-02","surface":"Đầu tiên tôi né cổng hoàn tiền, kế đó kiểm tra đi kiểm tra lại, cuối cùng lại bấm gửi quá vội.","expected":{"route":"input:self-lived","families":["fast","ignore","slow"],"sequence":true}},
+    {"case_id":"V141-BANK-13-02","surface":"Bạn tôi là người cứ kiểm tra cổng hoàn tiền của bạn ấy; chuyện đó không phải hành vi của tôi.","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V141-BANK-13-05","surface":"My sister is the person avoiding her clinic booking message; I am not involved in the action.","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V141-BANK-14-02","surface":"Theo bạn tôi kể, bạn ấy cứ quay lại cổng hoàn tiền của chính mình.","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V141-BANK-15-06","surface":"Bạn tôi nói: “Tôi cứ trì hoãn hồ sơ khóa học”; tôi không phải người làm vậy.","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V141-BANK-19-05","surface":"For instance, someone could rush a clinic booking without reading the slot details.","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V141-BANK-35-04","surface":"Tôi thấy áp lực về dự án nhưng không mô tả hành động phản ứng cụ thể.","expected":{"route":"input:self-lived","families":[],"sequence":false}},
+    {"case_id":"V141-BANK-38-01","surface":"Do not treat “suppose” as governing this sentence; the real fact is that I keep reopening the interview email unchanged.","expected":{"route":"input:self-lived","families":["slow"],"sequence":false}},
+    {"case_id":"V141-BANK-39-06","surface":"Tài liệu nêu “giả định nộp hồ sơ vội”; còn hồ sơ thật của tôi được kiểm tra kỹ rồi mới gửi.","expected":{"route":"input:self-lived","families":[],"sequence":false}}
+  ]
+}
