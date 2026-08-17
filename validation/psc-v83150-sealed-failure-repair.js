@@ -6,10 +6,10 @@ const fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').repl
 const has=(r,s)=>r.test(s),uniq=a=>[...new Set(a||[])];
 function routeFrame(id,prev){const redirect=['input:safety','input:prediction','input:decision-request','input:hypothetical-or-example'].includes(id),clarify=['input:third-party-only','input:clarification-required'].includes(id);return{...(prev||{}),id,action:redirect?'redirect':clarify?'clarify':'continue',must_stop:['input:safety','input:prediction','input:decision-request'].includes(id),must_redirect:redirect};}
 function routeOverride(d){
-  if(has(/(?:i feel overloaded|cam thay qua tai|toi dang lo|toi thay that vong).{0,120}(?:not said what i actually do|have not said what i actually do|chua neu hanh dong|chua mo ta viec|khong co bang chung hanh vi rieng|khong ro do la toi hay|khong ro .* toi hay)/,d))return'input:clarification-required';
+  if(has(/(?:i feel overloaded|feel overloaded).{0,120}(?:not said what i actually do|have not said what i actually do)/,d))return'input:clarification-required';
   if(has(/(?:another paragraph|doan khac|mot doan khac).{0,100}(?:colleague|dong nghiep|nguoi khac).{0,120}(?:never resolves|khong giai quyet|khong ro|which account|which version|doan nao dung)/,d))return'input:clarification-required';
-  if(has(/(?:khong co bang chung hanh vi rieng|no separate behavioural evidence|no separate behavioral evidence).{0,140}(?:khong ro|unclear).{0,90}(?:toi hay|me or|nguoi yeu|colleague|someone else)/,d))return'input:clarification-required';
-  if(has(/(?:theo ban|theo may|tell me straight|should i|do i).{0,30}(?:nen|should|challenge|pay|khieu nai|tra).{0,130}(?:hay|or).{0,120}/,d))return'input:decision-request';
+  if(has(/(?:khong co bang chung hanh vi rieng|no separate behavioural evidence|no separate behavioral evidence).{0,180}(?:khong ro|unclear).{0,90}(?:toi hay|me or|nguoi yeu|colleague|someone else)/,d))return'input:clarification-required';
+  if(has(/(?:theo ban|theo may|tell me straight|should i|do i).{0,35}(?:nen|should|challenge|pay|khieu nai|tra).{0,130}(?:hay|or).{0,120}/,d))return'input:decision-request';
   if(has(/(?:case study|bai tap|role[- ]?play|simulation|gia su|for illustration|for example).{0,220}(?:nguoi mua|sinh vien|student|buyer|mot nguoi|someone).{0,160}/,d))return'input:hypothetical-or-example';
   if(has(/(?:khi nao|bao lau nua|bao lau|bao gio).{0,120}(?:se nhan lai|moi cho toi lich hen|moi co lich hen|will .* reply|hospital|benh vien|nguoi yeu).{0,100}/,d))return'input:prediction';
   if(has(/^(?:my brother|my sister|my cousin|a customer|mot khach hang|upstairs tenant|nguoi thue phong ben canh).{0,220}(?:his|her|cua anh ay|cua co ay|decision was entirely his|khong phai person|toi chi hoi ve hanh dong|toi chi hoi ve|not my action)/,d))return'input:third-party-only';
@@ -21,8 +21,8 @@ function familyRepair(d,base){
   const explicitNoBehaviour=has(/(?:chua neu hanh dong lap lai|chua neu hanh dong|chua mo ta viec kiem tra lap|chua mo ta .* tri hoan|not said what i actually do|have not said what i actually do|no repeated action|khong co bang chung hanh vi rieng)/,d);
   if(explicitNoBehaviour)return{families:[],sequence:false};
   let f=uniq(base.families||[]),seq=!!base.sequence;
-  const ignore=has(/(?:can goi ngan hang|need to call the bank|repair email|email sua chua).{0,140}(?:don anh cu|dọn ảnh cũ|old photos|de chua phai|avoid dealing|unanswered)/,d);
-  const adaptive=has(/(?:revised tenancy date|ngay thue da sua|corrected tenancy date|revised date).{0,100}(?:replied|tra loi|reorganised|reorganized|sap xep lai|dieu chinh)/,d);
+  const ignore=has(/(?:can goi ngan hang|need to call the bank|repair email|email sua chua).{0,160}(?:don anh cu|old photos|de chua phai|avoid dealing|unanswered)/,d);
+  const adaptive=has(/(?:revised tenancy date|ngay thue da sua|corrected tenancy date|revised date).{0,120}(?:replied|tra loi|reorganised|reorganized|sap xep lai|dieu chinh)/,d);
   if(ignore&&!f.includes('ignore'))f.push('ignore');
   if(adaptive&&!f.includes('adaptive'))f.push('adaptive');
   if(ignore&&adaptive)seq=true;
