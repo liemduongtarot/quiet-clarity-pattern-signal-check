@@ -1,0 +1,25 @@
+name: V8.3.156 Sealed Run Probe V2
+on:
+  push:
+    branches: [v83156-validation]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'Probe V8.3.156 sealed execution state v2'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Query exact sealed trigger run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p validation/v83156-sealed-run-probe-v2
+          gh api 'repos/${{ github.repository }}/actions/workflows/v83156-sealed-validation.yml/runs?branch=v83156-sealed-validation&event=push&per_page=20' > validation/v83156-sealed-run-probe-v2/all_runs.json
+          python -c "import json,pathlib; x=json.load(open('validation/v83156-sealed-run-probe-v2/all_runs.json')); t='1005aee22546ccb4f6974434b374c1b63d8c494c'; m=[r for r in x.get('workflow_runs',[]) if r.get('head_sha')==t]; pathlib.Path('validation/v83156-sealed-run-probe-v2/V8_3_156_SEALED_RUN_PROBE.json').write_text(json.dumps({'target_head_sha':t,'matched_run_count':len(m),'matched_runs':[{k:r.get(k) for k in ['id','name','head_sha','status','conclusion','run_number','run_attempt','created_at','updated_at']} for r in m]},indent=2))"
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83156-sealed-run-probe-v2
+          git commit -m 'Publish V8.3.156 sealed run probe v2 [skip ci]'
+          git push
