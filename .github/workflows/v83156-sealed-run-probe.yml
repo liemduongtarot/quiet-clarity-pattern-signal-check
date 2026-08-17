@@ -1,0 +1,55 @@
+name: V8.3.156 Sealed Run Probe
+on:
+  push:
+    branches: [v83156-validation]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'Probe V8.3.156 sealed execution state'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Query exact sealed trigger run without executing sealed runtime
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p validation/v83156-sealed-run-probe
+          gh api 'repos/${{ github.repository }}/actions/workflows/v83156-sealed-validation.yml/runs?branch=v83156-sealed-validation&event=push&per_page=20' > /tmp/runs.json
+          python - <<'PY'
+          import json,pathlib
+          runs=json.load(open('/tmp/runs.json'))['workflow_runs']
+          target='1005aee22546ccb4f6974434b374c1b63d8c494c'
+          m=[r for r in runs if r.get('head_sha')==target]
+          out={'target_head_sha':target,'matched_run_count':len(m),'matched_runs':[{k:r.get(k) for k in ['id','name','head_sha','status','conclusion','run_number','run_attempt','created_at','updated_at','jobs_url','artifacts_url']} for r in m]}
+          pathlib.Path('validation/v83156-sealed-run-probe/V8_3_156_SEALED_RUN_PROBE.json').write_text(json.dumps(out,indent=2))
+          if m:pathlib.Path('/tmp/run_id').write_text(str(m[0]['id']))
+          PY
+          if [ -f /tmp/run_id ]; then
+            RID="$(cat /tmp/run_id)"
+            gh api "repos/${{ github.repository }}/actions/runs/$RID/jobs" > validation/v83156-sealed-run-probe/V8_3_156_SEALED_RUN_JOBS.json
+            gh api "repos/${{ github.repository }}/actions/runs/$RID/artifacts" > validation/v83156-sealed-run-probe/V8_3_156_SEALED_RUN_ARTIFACTS.json
+            AID="$(python - <<'PY'
+          import json
+          x=json.load(open('validation/v83156-sealed-run-probe/V8_3_156_SEALED_RUN_ARTIFACTS.json'))
+          a=[a for a in x.get('artifacts',[]) if a.get('name')=='PSC_V8_3_156_SEALED_VALIDATION_CHECKPOINT']
+          print(a[0]['id'] if a else '')
+          PY
+          )"
+            if [ -n "$AID" ]; then
+              gh api -H 'Accept: application/vnd.github+json' "repos/${{ github.repository }}/actions/artifacts/$AID/zip" > /tmp/sealed_artifact.zip
+              mkdir -p /tmp/sealed_artifact
+              unzip -q /tmp/sealed_artifact.zip -d /tmp/sealed_artifact
+              cp /tmp/sealed_artifact/* validation/v83156-sealed-run-probe/ || true
+              if [ -f /tmp/sealed_artifact/PSC_V8_3_156_SEALED_VALIDATION_CHECKPOINT.zip ]; then
+                mkdir -p validation/v83156-sealed-run-probe/extracted
+                unzip -q /tmp/sealed_artifact/PSC_V8_3_156_SEALED_VALIDATION_CHECKPOINT.zip -d validation/v83156-sealed-run-probe/extracted
+              fi
+            fi
+          fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83156-sealed-run-probe
+          git commit -m 'Publish V8.3.156 sealed run probe [skip ci]'
+          git push
