@@ -1,10 +1,10 @@
-name: V8.3.146 Diagnose 600 Case
+name: V8.3.146 Diagnose Edge Authority
 on:
   push:
     branches: [v83146-validation]
 jobs:
   diagnose:
-    if: github.event.head_commit.message == 'Diagnose V8.3.146 exact 600 source'
+    if: github.event.head_commit.message == 'Diagnose V8.3.146 exact edge source'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,9 +14,9 @@ jobs:
           import zipfile
           with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
           PY
-      - name: Print exact inherited 600 test source without executing engine
+      - name: Print exact inherited edge test source without executing engine
         working-directory: PSC_V8_3_138_DEV
         run: |
-          echo '===== BEGIN EXACT 600 TEST SOURCE ====='
-          sed -n '1,180p' tests/v83139-600-real-case-regression.test.cjs
-          echo '===== END EXACT 600 TEST SOURCE ====='
+          echo '===== BEGIN EXACT EDGE TEST SOURCE ====='
+          sed -n '1,220p' tests/v83139-v83117-100-edge-case-gate.test.cjs
+          echo '===== END EXACT EDGE TEST SOURCE ====='
