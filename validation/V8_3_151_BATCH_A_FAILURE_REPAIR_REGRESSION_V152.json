@@ -1,0 +1,17 @@
+{
+  "authority": "V8.3.151 SEALED BATCH A IMMUTABLE FAILURE REGRESSION FOR V8.3.152",
+  "source_run": 32044488040,
+  "source_job": 95429441182,
+  "run_attempt": 1,
+  "failure_count": 8,
+  "failures": [
+    {"case_id":"V151-PB1-017","surface":"The complaint says this keeps recurring, yet it gives no actual episode showing what I personally do.","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V151-PB1-184","surface":"Renew this room hay move to smaller studio? Context là accommodation planning cho tháng tới, với real viewing dates cụ thể.","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V151-PB1-187","surface":"Request formal review hay start fresh submission? Context thuộc formal administrative case đang chờ update trên official portal.","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V151-PB1-141","surface":"Scenario day hoc dung patient tuong tuong doi routine sau huong dan lieu luong da sua. Tinh huong lien quan mot ke hoach cham soc ngoai tru co tai lieu huong dan rieng.","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V151-PB1-153","surface":"Khi nao college moi publish final grade? Boi canh la mot quyet dinh hoc tap trong hoc ky hien tai, khong phai vi du gia dinh.","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V151-PB1-058","surface":"Cả lịch xem nhà thứ Ba lẫn thứ Năm đều phù hợp, nhưng tôi cứ chuyển qua lại mà chưa xác nhận lịch nào.","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"case_id":"V151-PB1-210","surface":"Teammate postponed his own certification application; none of those delays are mine. Context thuộc internal recruitment process, có portfolio deadline và recruiter riêng.","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V151-PB1-213","surface":"Friend repeatedly opens his own lab portal; đó không phải behaviour của tôi. Context là outpatient care plan, với clinician document được cập nhật riêng.","expected":{"route":"input:third-party-only","families":[],"sequence":false}}
+  ]
+}
