@@ -16,6 +16,7 @@ function prediction(doc){
 function decision(doc){
  return has(/^(?:toi|minh)\s+nen\s+.{1,100}\s+hay\s+.{1,100}\??$/,doc)
  || has(/^(?:theo may|theo ban|noi thang giup toi|noi thang voi toi).{0,45}(?:toi\s+)?(?:co\s+nen|nen).{1,130}(?:khong|hay).{0,90}\??$/,doc)
+ || has(/^(?:noi thang giup toi|noi thang voi toi).{0,35}:.{1,100}\s+hay\s+.{1,100}\??$/,doc)
  || has(/^(?:should i|tell me straight|which should i choose).{1,150}(?:\bor\b|between).{1,100}\??$/,doc);
 }
 function hypothetical(doc){
