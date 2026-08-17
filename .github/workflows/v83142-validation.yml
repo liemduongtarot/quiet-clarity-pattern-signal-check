@@ -1,0 +1,193 @@
+name: V8.3.142 Validation
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - v83142-validation
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Extract V8.3.139 authority parent
+        run: |
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z: z.extractall('.')
+          PY
+
+      - name: Materialize V8.3.142 semantic and browser authority
+        run: |
+          cp validation/psc-v83142-sealed-failure-convergence.js PSC_V8_3_138_DEV/public/psc-v83142-sealed-failure-convergence.js
+          cp validation/psc-v83142-browser-authority-lock.js PSC_V8_3_138_DEV/public/psc-v83142-browser-authority-lock.js
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('PSC_V8_3_138_DEV/public/candidate.html'); s=p.read_text()
+          old='<script src="psc-v83139-semantic-convergence.js"></script><script src="psc-v83137-ui-gate-authority.js"></script>'
+          new='<script src="psc-v83139-semantic-convergence.js"></script><script src="psc-v83142-sealed-failure-convergence.js"></script><script src="psc-v83142-browser-authority-lock.js"></script><script src="psc-v83137-ui-gate-authority.js"></script>'
+          if old not in s: raise SystemExit('expected V8.3.139 script authority sequence not found')
+          s=s.replace(old,new,1)
+          old_boot='if(globalThis.QCSemanticCoreV9)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV9;else if(globalThis.QCSemanticCoreV8)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV8;'
+          new_boot='if(globalThis.QCSemanticCoreV11)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV11;else if(globalThis.QCSemanticCoreV10)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV10;else if(globalThis.QCSemanticCoreV9)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV9;else if(globalThis.QCSemanticCoreV8)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV8;'
+          if old_boot not in s: raise SystemExit('expected inherited final bootstrap not found')
+          p.write_text(s.replace(old_boot,new_boot,1))
+          PY
+
+      - name: V8.3.142 immutable failure regression
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+          const sandbox={};vm.createContext(sandbox);
+          for(const f of ['psc-v3.js','psc-v4.js','psc-v83121-r1-reconstructed.js','psc-v83122-operator-aware.js','psc-v83123-family-preservation.js','psc-v83124-operator-context.js','psc-v83125-semantic-routing.js','psc-v83126-public-route-canonicalization.js','psc-v83127-review-intent-authority.js','psc-v83129-canonical-shadow.js','psc-v83130-representation-coverage.js','psc-v83131-proposition-consolidation.js','psc-v83132-relation-graph.js','psc-v83133-canonical-role-binding.js','psc-v83135-scoped-operator.js','psc-v83138-semantic-convergence.js','psc-v83139-semantic-convergence.js','psc-v83142-sealed-failure-convergence.js','psc-v83142-browser-authority-lock.js','psc-v83137-ui-gate-authority.js']) vm.runInContext(fs.readFileSync('public/'+f,'utf8'),sandbox);
+          sandbox.QCSemanticCoreV4=sandbox.QCSemanticCoreV11;
+          assert.equal(sandbox.QCSemanticCoreV4,sandbox.QCSemanticCoreV11);
+          const forensic=JSON.parse(fs.readFileSync('../validation/V8_3_141_BATCH_A_FAILURE_FORENSIC_IMMUTABLE.json','utf8'));
+          for(const f of forensic.failures){const r=sandbox.QCSemanticCoreV11.analyze(f.surface);assert.equal(r.input_route.id,f.expected.route,f.case_id+' route');assert.deepEqual(Array.from(r.families).sort(),Array.from(f.expected.families).sort(),f.case_id+' families');assert.equal(!!r.sequence,!!f.expected.sequence,f.case_id+' sequence');}
+          console.log('V8.3.142 immutable V8.3.141 failures PASS',forensic.failures.length);
+          NODE
+
+      - name: V8.3.142 inherited and compositional gates
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          h=Path('tests/v83117-helper.cjs').read_text()
+          h=h.replace("  const v139 = process.env.PSC_V83139 === '1';", "  const v142 = process.env.PSC_V83142 === '1';\n  const v139 = process.env.PSC_V83139 === '1' || v142;")
+          h=h.replace("  if (v139) vm.runInContext(fs.readFileSync('public/psc-v83139-semantic-convergence.js', 'utf8'), sandbox);", "  if (v139) vm.runInContext(fs.readFileSync('public/psc-v83139-semantic-convergence.js', 'utf8'), sandbox);\n  if (v142) vm.runInContext(fs.readFileSync('public/psc-v83142-sealed-failure-convergence.js', 'utf8'), sandbox);")
+          h=h.replace("  return v139 ? sandbox.QCSemanticCoreV10 : v138 ?", "  return v142 ? sandbox.QCSemanticCoreV11 : v139 ? sandbox.QCSemanticCoreV10 : v138 ?")
+          Path('tests/v83142-helper.cjs').write_text(h)
+          for src,dst in [('v83139-fresh-convergence-probe-250.test.cjs','v83142-fresh250.test.cjs'),('v83139-v137-12-failure-regressions.test.cjs','v83142-v137.test.cjs'),('v83139-scoped-operator-regression.test.cjs','v83142-scoped.test.cjs'),('v83139-v83117-100-edge-case-gate.test.cjs','v83142-edge.test.cjs'),('v83139-v83135-contrasts-metamorphic.test.cjs','v83142-meta.test.cjs'),('v83139-architecture-and-atomic.test.cjs','v83142-atomic.test.cjs')]:
+              t=Path('tests/'+src).read_text().replace("process.env.PSC_V83139='1';", "process.env.PSC_V83142='1';").replace("require('./v83117-helper.cjs')", "require('./v83142-helper.cjs')")
+              Path('tests/'+dst).write_text(t)
+          s=Path('tests/v83139-600-real-case-regression.test.cjs').read_text().replace("'psc-v83139-semantic-convergence.js']", "'psc-v83139-semantic-convergence.js','psc-v83142-sealed-failure-convergence.js']").replace('return sandbox.QCSemanticCoreV10;','return sandbox.QCSemanticCoreV11;')
+          Path('tests/v83142-600.test.cjs').write_text(s)
+          PY
+          node tests/v83142-v137.test.cjs
+          node tests/v83142-scoped.test.cjs
+          node tests/v83142-fresh250.test.cjs
+          node tests/v83142-600.test.cjs
+          node tests/v83142-edge.test.cjs
+          node tests/v83142-meta.test.cjs
+          node tests/v83142-atomic.test.cjs
+
+      - name: Static safety and syntax
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          node --check public/psc-v83142-sealed-failure-convergence.js
+          node --check public/psc-v83142-browser-authority-lock.js
+          ! grep -Eq 'eval\(|new Function|fetch\(|localStorage|sessionStorage|document\.cookie|sourceMappingURL' public/psc-v83142-sealed-failure-convergence.js
+
+      - name: Install locked dependencies
+        working-directory: PSC_V8_3_138_DEV
+        run: npm run install:ci
+
+      - name: Fresh production build
+        working-directory: PSC_V8_3_138_DEV
+        run: npm run build
+
+      - name: Validate artifact and source maps
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          npm run validate:artifact
+          test "$(find dist -type f -name '*.map' | wc -l)" -eq 0
+          test -f dist/client/psc-v83142-sealed-failure-convergence.js
+          test -f dist/client/psc-v83142-browser-authority-lock.js
+          grep -q 'psc-v83142-sealed-failure-convergence.js' dist/client/candidate.html
+          grep -q 'psc-v83142-browser-authority-lock.js' dist/client/candidate.html
+          grep -q 'QCSemanticCoreV11)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV11' dist/client/candidate.html
+
+      - name: Record exact V8.3.142 authority hashes
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          sha256sum public/psc-v83142-sealed-failure-convergence.js public/psc-v83142-browser-authority-lock.js public/psc-v83139-semantic-convergence.js public/psc-v83138-semantic-convergence.js public/psc-v83137-ui-gate-authority.js public/psc-v83135-scoped-operator.js public/candidate.html package.json package-lock.json > V8_3_142_CI_AUTHORITY_HASHES.txt
+          find dist -type f -print0 | sort -z | xargs -0 sha256sum > V8_3_142_DIST_SHA256.txt
+
+      - name: Install isolated browser tooling
+        run: |
+          mkdir -p .e2e
+          printf '{"private":true}\n' > .e2e/package.json
+          npm install --prefix .e2e --no-package-lock playwright@1.55.0
+          .e2e/node_modules/.bin/playwright install --with-deps chromium
+
+      - name: Start exact static build
+        run: |
+          cd PSC_V8_3_138_DEV/dist/client
+          python3 -m http.server 4173 --bind 127.0.0.1 > ../../../V8_3_142_HTTP_SERVER.log 2>&1 & echo $! > ../../../V8_3_142_HTTP_SERVER.pid
+          cd ../../..
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/candidate.html >/dev/null && exit 0; sleep 1; done
+          exit 1
+
+      - name: Start temporary external HTTPS tunnel
+        run: |
+          curl -fsSL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o cloudflared
+          chmod +x cloudflared
+          ./cloudflared tunnel --url http://127.0.0.1:4173 --no-autoupdate > V8_3_142_CLOUDFLARED.log 2>&1 & echo $! > V8_3_142_CLOUDFLARED.pid
+          for i in $(seq 1 60); do URL=$(grep -Eo 'https://[a-z0-9-]+\.trycloudflare\.com' V8_3_142_CLOUDFLARED.log | tail -1 || true); if [ -n "$URL" ]; then echo "$URL" | tee V8_3_142_TEMP_HTTPS_URL.txt; echo "PSC_E2E_URL=$URL" >> "$GITHUB_ENV"; exit 0; fi; sleep 1; done
+          cat V8_3_142_CLOUDFLARED.log
+          exit 1
+
+      - name: Browser E2E exactly once
+        run: node validation/v83142-browser-e2e.mjs
+
+      - name: Teardown temporary transport
+        if: always()
+        run: |
+          if [ -f V8_3_142_CLOUDFLARED.pid ]; then kill "$(cat V8_3_142_CLOUDFLARED.pid)" || true; fi
+          if [ -f V8_3_142_HTTP_SERVER.pid ]; then kill "$(cat V8_3_142_HTTP_SERVER.pid)" || true; fi
+          sleep 3
+          URL=$(cat V8_3_142_TEMP_HTTPS_URL.txt 2>/dev/null || true)
+          if [ -n "$URL" ]; then CODE=$(curl -L -sS -o V8_3_142_POST_TEARDOWN_BODY.txt -w '%{http_code}' --max-time 15 "$URL/candidate.html" || true); echo "$CODE" > V8_3_142_POST_TEARDOWN_HTTP_CODE.txt; if [ "$CODE" = "200" ] && grep -q 'Pattern Signal Check' V8_3_142_POST_TEARDOWN_BODY.txt; then echo 'Preview still serves application' >&2; exit 1; fi; fi
+
+      - name: Recheck authority after E2E
+        if: always()
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          sha256sum -c V8_3_142_CI_AUTHORITY_HASHES.txt
+          test "$(find dist -type f -name '*.map' | wc -l)" -eq 0
+
+      - name: Package compact V8.3.142 checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,shutil,zipfile,hashlib
+          stage=pathlib.Path('V8_3_142_CHECKPOINT'); stage.mkdir(exist_ok=True)
+          parent=pathlib.Path('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip'); shutil.copy2(parent,stage/parent.name)
+          root=pathlib.Path('PSC_V8_3_138_DEV')
+          for src,name in [(root/'public/psc-v83142-sealed-failure-convergence.js','psc-v83142-sealed-failure-convergence.js'),(root/'public/psc-v83142-browser-authority-lock.js','psc-v83142-browser-authority-lock.js'),(root/'public/candidate.html','candidate.html'),(root/'V8_3_142_CI_AUTHORITY_HASHES.txt','V8_3_142_CI_AUTHORITY_HASHES.txt'),(root/'V8_3_142_DIST_SHA256.txt','V8_3_142_DIST_SHA256.txt'),(pathlib.Path('validation/v83142-browser-e2e.mjs'),'v83142-browser-e2e.mjs'),(pathlib.Path('validation/V8_3_141_BATCH_A_FAILURE_FORENSIC_IMMUTABLE.json'),'V8_3_141_BATCH_A_FAILURE_FORENSIC_IMMUTABLE.json')]: shutil.copy2(src,stage/name)
+          for n in ['V8_3_142_BROWSER_TRANSPORT_PREFLIGHT.json','V8_3_142_BROWSER_E2E_RESULTS.json','V8_3_142_TEMP_HTTPS_URL.txt','V8_3_142_CLOUDFLARED.log','V8_3_142_POST_TEARDOWN_HTTP_CODE.txt','V8_3_142_POST_TEARDOWN_BODY.txt']:
+              p=pathlib.Path(n)
+              if p.exists(): shutil.copy2(p,stage/n)
+          shutil.copytree(root/'dist',stage/'dist',dirs_exist_ok=True)
+          manifest=[]
+          for p in sorted(x for x in stage.rglob('*') if x.is_file()): manifest.append(f"{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.relative_to(stage)}")
+          (stage/'SHA256_MANIFEST.txt').write_text('\n'.join(manifest)+'\n')
+          with zipfile.ZipFile('PSC_V8_3_142_VALIDATION_CHECKPOINT.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for p in stage.rglob('*'):
+                  if p.is_file(): z.write(p,p.relative_to(stage))
+          PY
+          sha256sum PSC_V8_3_142_VALIDATION_CHECKPOINT.zip > PSC_V8_3_142_VALIDATION_CHECKPOINT_SHA256.txt
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v83142-validation-evidence
+          path: |
+            PSC_V8_3_138_DEV/V8_3_142_CI_AUTHORITY_HASHES.txt
+            PSC_V8_3_138_DEV/V8_3_142_DIST_SHA256.txt
+            V8_3_142_BROWSER_TRANSPORT_PREFLIGHT.json
+            V8_3_142_BROWSER_E2E_RESULTS.json
+            V8_3_142_TEMP_HTTPS_URL.txt
+            V8_3_142_CLOUDFLARED.log
+            V8_3_142_POST_TEARDOWN_HTTP_CODE.txt
+            V8_3_142_POST_TEARDOWN_BODY.txt
+            PSC_V8_3_142_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_142_VALIDATION_CHECKPOINT_SHA256.txt
+          if-no-files-found: warn
