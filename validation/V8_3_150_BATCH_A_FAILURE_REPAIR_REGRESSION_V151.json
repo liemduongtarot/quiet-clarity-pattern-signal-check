@@ -1,0 +1,17 @@
+{
+  "authority": "V8.3.151 immutable regression from V8.3.150 sealed Batch A first-run failures",
+  "source_candidate": "V8.3.150",
+  "failures": [
+    {"case_id":"V150-PB1-102","surface":"Một đồng nghiệp trì hoãn hồ sơ của chính anh ấy nhiều tuần; đó không phải hành động của tôi.","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V150-PB1-112","surface":"Toi thay ca hai phong deu chap nhan duoc, nhung cu doi qua doi lai va chua dat lich xem.","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"case_id":"V150-PB1-013","surface":"The message says 'we postponed it' without identifying whether 'we' means me or the landlord.","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V150-PB1-184","surface":"Renew tenancy hay move to cheaper place?","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V150-PB1-144","surface":"Bai hoc dat ra sinh vien hu cau quyet qua nhanh khi van con thoi gian.","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V150-PB1-033","surface":"The training scenario describes a patient who changes behaviour after receiving corrected instructions.","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V150-PB1-140","surface":"Bai minh hoa dung nhan vat du lich bo qua email visa roi lam viec khac.","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V150-PB1-194","surface":"Illustration only: traveller bỏ visa email rồi edit photos.","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V150-PB1-107","surface":"Người mua này bấm đặt hàng trước khi xem điều kiện; tôi chỉ đang nói về cách cô ấy xử lý.","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V150-PB1-121","surface":"Cau 'minh doi lich' khong cho biet 'minh' la toi hay nguoi quan ly nha.","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V150-PB1-157","surface":"Nguoi o tang tren doi lich sua cua ho lien tuc, khong phai toi doi.","expected":{"route":"input:third-party-only","families":[],"sequence":false}}
+  ]
+}
