@@ -1,0 +1,110 @@
+{
+  "authority": "V8.3.153 IMMUTABLE REGRESSION FROM V8.3.152 SEALED A FIRST-RUN FAILURES",
+  "source_candidate": "V8.3.152",
+  "source_development_authority_commit": "b58c9eda55772832798a69ca9e03665e28298856",
+  "source_sealed_execution_head": "8d86d8da0e0c55e3a6d1d57d188f738d80480b1d",
+  "source_github_actions_run": 32046483284,
+  "source_github_actions_job": 95435471355,
+  "source_run_attempt": 1,
+  "expected_contract_locked": true,
+  "failures": [
+    {
+      "case_id": "V152-PB1-013",
+      "surface": "The message says 'we changed the inspection' without identifying whether 'we' means me, the agent, or the owner.",
+      "expected": {"route": "input:clarification-required", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V152-PB1-174",
+      "surface": "HR note says I cancelled, calendar audit names coordinator; ownership chưa resolve. Context: probation review, manager email, promotion packet, competency evidence.",
+      "expected": {"route": "input:clarification-required", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V152-PB1-180",
+      "surface": "Text says someone delays the choice, nhưng decision owner chưa được identify. Context: course transfer, timetable clash, fee deadline, programme handbook.",
+      "expected": {"route": "input:clarification-required", "families": [], "sequence": false},
+      "actual": {"route": "input:third-party-only", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V152-PB1-022",
+      "surface": "My landlord has offered another term in the current flat, while I also have a viewing for a cheaper studio. Which option should I choose?",
+      "expected": {"route": "input:decision-request", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V152-PB1-186",
+      "surface": "Take private scan slot hay remain on hospital waiting list? Context: blood-test portal, GP message, prescription review, follow-up appointment.",
+      "expected": {"route": "input:decision-request", "families": [], "sequence": false},
+      "actual": {"route": "input:clarification-required", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V152-PB1-082",
+      "surface": "Trong vignette đào tạo, một contractor tưởng tượng kiểm lại cùng tổng hóa đơn năm lần trước khi gửi.",
+      "expected": {"route": "input:hypothetical-or-example", "families": [], "sequence": false},
+      "actual": {"route": "input:clarification-required", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V152-PB1-004",
+      "surface": "Both appointment windows were practical for me. I repeatedly hovered over one confirmation, switched to the other, then left both bookings unconfirmed.",
+      "expected": {"route": "input:self-lived", "families": ["freeze"], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": ["ignore", "slow"], "sequence": true},
+      "failure_dimensions": ["families", "sequence"]
+    },
+    {
+      "case_id": "V152-PB1-168",
+      "surface": "Tôi ignored physio message vài ngày; corrected session time đến thì tôi read it và rearranged childcare. Context: outpatient plan, clinician letter, medication list, work-rota adjustment.",
+      "expected": {"route": "input:self-lived", "families": ["adaptive", "ignore"], "sequence": true},
+      "actual": {"route": "input:self-lived", "families": ["adaptive"], "sequence": false},
+      "failure_dimensions": ["families", "sequence"]
+    },
+    {
+      "case_id": "V152-PB1-164",
+      "surface": "I had until Friday, nhưng tôi answer yes almost instantly chỉ để uncertainty biến mất. Context: weekend invitation, boundary message, shared calendar, recent conversation history.",
+      "expected": {"route": "input:self-lived", "families": ["fast"], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["families"]
+    },
+    {
+      "case_id": "V152-PB1-109",
+      "surface": "Trong ba buoi toi, toi doi chieu cung mot bang sao ke the tin dung du chua co giao dich moi xuat hien.",
+      "expected": {"route": "input:self-lived", "families": ["slow"], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["families"]
+    },
+    {
+      "case_id": "V152-PB1-108",
+      "surface": "Em gái tôi cứ đổi giữa hai offer đại học của em ấy; toàn bộ quyết định và việc đổi qua lại là của em ấy.",
+      "expected": {"route": "input:third-party-only", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": ["adaptive"], "sequence": false},
+      "failure_dimensions": ["route", "families"]
+    },
+    {
+      "case_id": "V152-PB1-161",
+      "surface": "Nguoi mua kia tu bam order qua som ma khong doc dieu kien; hanh vi thuoc ve co ay.",
+      "expected": {"route": "input:third-party-only", "families": [], "sequence": false},
+      "actual": {"route": "input:clarification-required", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V152-PB1-155",
+      "surface": "Ban cua toi tu xem lai tin nhan cu cua co ay moi dem; toi chi ke ve hanh vi cua co ay.",
+      "expected": {"route": "input:third-party-only", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V152-PB1-158",
+      "surface": "Chi ho toi bo qua email cua hang tau va lo han sua booking; do la hanh dong cua chi ay.",
+      "expected": {"route": "input:third-party-only", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": ["ignore"], "sequence": false},
+      "failure_dimensions": ["route", "families"]
+    }
+  ]
+}
