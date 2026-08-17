@@ -1,0 +1,687 @@
+{
+  "authority": "V8.3.156 INDEPENDENT GOLD V1",
+  "development_authority_commit": "257c6e066e349e86ba18a07f5e376011a1a0f045",
+  "case_count": 60,
+  "cases": [
+    {
+      "case_id": "V156-PB1-013",
+      "surface": "A message says 'we cancelled the inspection', but nothing identifies whether 'we' refers to me, the landlord or the managing agent.",
+      "language": "English",
+      "domain": "housing",
+      "gold": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-018",
+      "surface": "The note says someone postponed choosing a module, but it never identifies who is making that choice.",
+      "language": "English",
+      "domain": "education",
+      "gold": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-015",
+      "surface": "The account contains worry, pressure and uncertainty, but no concrete action by me is stated.",
+      "language": "English",
+      "domain": "health",
+      "gold": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-172",
+      "surface": "Receipt says I paid, but reconciliation file says co-founder paid the same amount; payer identity chưa được resolve.",
+      "language": "Mixed VI/EN",
+      "domain": "money",
+      "gold": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-180",
+      "surface": "Note says someone delays a module choice, nhưng không xác định decision-maker là ai.",
+      "language": "Mixed VI/EN",
+      "domain": "education",
+      "gold": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-174",
+      "surface": "HR note says I withdrew, system audit says hiring manager closed it; actor ownership vẫn unclear.",
+      "language": "Mixed VI/EN",
+      "domain": "career",
+      "gold": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-065",
+      "surface": "Tôi nói được mình thấy bị áp lực trong cuộc trao đổi, nhưng chưa nêu một hành động cụ thể nào của bản thân.",
+      "language": "Vietnamese with diacritics",
+      "domain": "relationship",
+      "gold": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-067",
+      "surface": "Tin nhắn chỉ ghi 'mình đã dời lịch bàn giao' mà không cho biết 'mình' là tôi, chủ nhà hay agent.",
+      "language": "Vietnamese with diacritics",
+      "domain": "housing",
+      "gold": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-118",
+      "surface": "Bien lai ghi toi chuyen tien nhung file ngan hang lai ghi nguoi dong sang lap chuyen dung khoan do; chua biet ai la nguoi tra.",
+      "language": "Vietnamese without diacritics",
+      "domain": "money",
+      "gold": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-124",
+      "surface": "Hai record cua cung mot ho so lai ghi hai nguoi nop khac nhau; ownership chua resolve.",
+      "language": "Vietnamese without diacritics",
+      "domain": "admin",
+      "gold": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-019",
+      "surface": "Should I dispute the revised business-rates bill or pay it before the deadline?",
+      "language": "English",
+      "domain": "money",
+      "gold": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-022",
+      "surface": "Should I renew this lease or take the smaller flat closer to work?",
+      "language": "English",
+      "domain": "housing",
+      "gold": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-183",
+      "surface": "Do toi take the internal role or continue external interviews?",
+      "language": "Mixed VI/EN",
+      "domain": "career",
+      "gold": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-185",
+      "surface": "Do toi buy flexible fare or cheaper no-change ticket?",
+      "language": "Mixed VI/EN",
+      "domain": "travel",
+      "gold": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-186",
+      "surface": "Should toi use private clinic or remain on NHS list?",
+      "language": "Mixed VI/EN",
+      "domain": "health",
+      "gold": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-076",
+      "surface": "Tôi nên gia hạn hợp đồng hiện tại hay chuyển sang căn nhỏ hơn gần ga?",
+      "language": "Vietnamese with diacritics",
+      "domain": "housing",
+      "gold": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-079",
+      "surface": "Tôi nên yêu cầu xem xét lại quyết định này hay nộp hồ sơ mới?",
+      "language": "Vietnamese with diacritics",
+      "domain": "admin",
+      "gold": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-081",
+      "surface": "Tôi nên chuyển sang lớp buổi tối hay giữ lớp sáng thứ Bảy?",
+      "language": "Vietnamese with diacritics",
+      "domain": "education",
+      "gold": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-129",
+      "surface": "Giua offer lam remote cho startup va role on-site cua firm cu, toi nen chon huong nao?",
+      "language": "Vietnamese without diacritics",
+      "domain": "career",
+      "gold": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-135",
+      "surface": "Toi nen doi sang lop toi hay giu lop cuoi tuan?",
+      "language": "Vietnamese without diacritics",
+      "domain": "education",
+      "gold": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-032",
+      "surface": "A workshop scenario features an invented traveller leaving a route-change notice unread while spending the evening organising photos.",
+      "language": "English",
+      "domain": "travel",
+      "gold": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-036",
+      "surface": "A teaching example shows an imaginary student committing to a course immediately although the reply date is still days away.",
+      "language": "English",
+      "domain": "education",
+      "gold": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-191",
+      "surface": "Role-play only: một fictional partner postpones the same boundary talk across three scenes.",
+      "language": "Mixed VI/EN",
+      "domain": "relationship",
+      "gold": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-198",
+      "surface": "Teaching case: imaginary student commits immediately although response deadline còn xa.",
+      "language": "Mixed VI/EN",
+      "domain": "education",
+      "gold": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-084",
+      "surface": "Case trên lớp nói về một nhân viên tưởng tượng nhận offer ngay dù hạn trả lời còn vài ngày.",
+      "language": "Vietnamese with diacritics",
+      "domain": "career",
+      "gold": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-083",
+      "surface": "Bài role-play mô tả một người yêu giả định trì hoãn cùng cuộc nói chuyện về ranh giới qua ba cảnh khác nhau.",
+      "language": "Vietnamese with diacritics",
+      "domain": "relationship",
+      "gold": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-085",
+      "surface": "Ví dụ minh họa có một người thuê nhà hư cấu đổi qua lại giữa hai phòng phù hợp rồi không đặt lịch phòng nào.",
+      "language": "Vietnamese with diacritics",
+      "domain": "housing",
+      "gold": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-137",
+      "surface": "Tinh huong role play co mot nhan vat hu cau tri hoan cung mot cuoc noi chuyen kho qua ba canh.",
+      "language": "Vietnamese without diacritics",
+      "domain": "relationship",
+      "gold": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-141",
+      "surface": "Case gia dinh trong workbook noi ve mot benh nhan fictional chuyen sang lich dung thuoc moi sau khi nurse gui instruction correction.",
+      "language": "Vietnamese without diacritics",
+      "domain": "health",
+      "gold": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-140",
+      "surface": "Scenario gia dinh co mot du khach de thong bao doi chuyen chua doc va di sap anh ca toi.",
+      "language": "Vietnamese without diacritics",
+      "domain": "travel",
+      "gold": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-037",
+      "surface": "When is the customer likely to clear the overdue service invoice owed to me?",
+      "language": "English",
+      "domain": "money",
+      "gold": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-039",
+      "surface": "What date is the recruitment team likely to finish its reference review and tell me whether I passed the final stage?",
+      "language": "English",
+      "domain": "career",
+      "gold": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-044",
+      "surface": "How soon is the retailer likely to return the money to my card?",
+      "language": "English",
+      "domain": "consumer",
+      "gold": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-201",
+      "surface": "When should toi expect employer gửi interview decision?",
+      "language": "Mixed VI/EN",
+      "domain": "career",
+      "gold": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-203",
+      "surface": "Future timing question: bao giờ embassy dự kiến trả lại passport sau khi hồ sơ entry clearance của toi đã vào queue?",
+      "language": "Mixed VI/EN",
+      "domain": "travel",
+      "gold": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-094",
+      "surface": "Bao lâu nữa agent mới xác nhận việc gia hạn nhà?",
+      "language": "Vietnamese with diacritics",
+      "domain": "housing",
+      "gold": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-096",
+      "surface": "Bao lâu nữa bệnh viện mới gửi ngày hẹn cho tôi?",
+      "language": "Vietnamese with diacritics",
+      "domain": "health",
+      "gold": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-148",
+      "surface": "Bao lau nua agent moi confirm renewal?",
+      "language": "Vietnamese without diacritics",
+      "domain": "housing",
+      "gold": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-146",
+      "surface": "Bao lau nua nguoi toi dang hen ho moi reply?",
+      "language": "Vietnamese without diacritics",
+      "domain": "relationship",
+      "gold": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-152",
+      "surface": "Bao lau nua retailer moi refund tien vao card?",
+      "language": "Vietnamese without diacritics",
+      "domain": "consumer",
+      "gold": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-009",
+      "surface": "I am disappointed by the assessment mark, but I have not described repeated checking, delay, avoidance, rapid commitment or being stuck between options.",
+      "language": "English",
+      "domain": "education",
+      "gold": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-003",
+      "surface": "I needed to finish a professional-accreditation declaration; instead I spent the evening sorting old meeting notes and never opened the declaration.",
+      "language": "English",
+      "domain": "career",
+      "gold": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-008",
+      "surface": "The retailer gave me ten days to choose a remedy, but I accepted store credit immediately so I would not have to keep considering the options.",
+      "language": "English",
+      "domain": "consumer",
+      "gold": {
+        "route": "input:self-lived",
+        "families": [
+          "fast"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-163",
+      "surface": "For five evenings toi mo lai cung mot cashflow export, nhưng không có transaction mới hay balance change nào.",
+      "language": "Mixed VI/EN",
+      "domain": "money",
+      "gold": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-166",
+      "surface": "Two flatshares đều vừa budget và commute; toi keep switching preference rồi không book viewing nào.",
+      "language": "Mixed VI/EN",
+      "domain": "housing",
+      "gold": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-168",
+      "surface": "Toi ignored the clinic email for days; after a corrected appointment code arrived, toi read it, replied and rearranged rota.",
+      "language": "Mixed VI/EN",
+      "domain": "health",
+      "gold": {
+        "route": "input:self-lived",
+        "families": [
+          "adaptive",
+          "ignore"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V156-PB1-062",
+      "surface": "Cửa hàng cho tôi một tuần để chọn cách xử lý, nhưng tôi nhận voucher ngay lập tức chỉ để không phải cân nhắc tiếp.",
+      "language": "Vietnamese with diacritics",
+      "domain": "consumer",
+      "gold": {
+        "route": "input:self-lived",
+        "families": [
+          "fast"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-057",
+      "surface": "Tôi cần hoàn tất form chứng nhận nghề nghiệp, nhưng lại dành cả tối phân loại file đào tạo cũ để khỏi bắt đầu form đó.",
+      "language": "Vietnamese with diacritics",
+      "domain": "career",
+      "gold": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-117",
+      "surface": "Toi that vong vi diem bai, nhung chua mo ta viec lap lai, ne tranh, chot qua nhanh hay khong chon duoc.",
+      "language": "Vietnamese without diacritics",
+      "domain": "education",
+      "gold": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-114",
+      "surface": "Toi de email hen vat ly tri lieu chua mo may ngay; khi co ma lich moi toi doc, tra loi va sap lai lich lam.",
+      "language": "Vietnamese without diacritics",
+      "domain": "health",
+      "gold": {
+        "route": "input:self-lived",
+        "families": [
+          "adaptive",
+          "ignore"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V156-PB1-047",
+      "surface": "A friend keeps rereading messages from her former partner; I am describing her behaviour, not mine.",
+      "language": "English",
+      "domain": "relationship",
+      "gold": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-046",
+      "surface": "My brother accepted his own loan restructuring within minutes. I did not take part in that decision.",
+      "language": "English",
+      "domain": "money",
+      "gold": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-215",
+      "surface": "That buyer ordered appliance without reading terms; toi only describe her behaviour.",
+      "language": "Mixed VI/EN",
+      "domain": "consumer",
+      "gold": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-211",
+      "surface": "Neighbour keeps moving his contractor booking; toi không phải người đổi appointment.",
+      "language": "Mixed VI/EN",
+      "domain": "housing",
+      "gold": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-216",
+      "surface": "My sister switches between her two programmes; decision là của em ấy, not mine.",
+      "language": "Mixed VI/EN",
+      "domain": "education",
+      "gold": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-106",
+      "surface": "Khách hàng của tôi tự nộp giấy phép ngay khi portal mở; thời điểm và hành động đều thuộc về cô ấy.",
+      "language": "Vietnamese with diacritics",
+      "domain": "admin",
+      "gold": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-107",
+      "surface": "Một khách trong nhóm chạy của tôi mua tablet refurbished mà không xem warranty; việc mua và bỏ qua điều khoản hoàn toàn là của cô ấy.",
+      "language": "Vietnamese with diacritics",
+      "domain": "consumer",
+      "gold": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-100",
+      "surface": "Anh họ tôi tự chấp nhận phương án trả góp của anh ấy trong vài phút; tôi không tham gia quyết định đó.",
+      "language": "Vietnamese with diacritics",
+      "domain": "money",
+      "gold": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-158",
+      "surface": "Em ho toi bo qua ferry notice cua co ay va lo chuyen; hanh dong la cua co ay.",
+      "language": "Vietnamese without diacritics",
+      "domain": "travel",
+      "gold": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V156-PB1-156",
+      "surface": "Mot teammate cua toi cu de credential renewal cua anh ay qua deadline; day la viec anh ay tu lam, toi khong xu ly ho so do.",
+      "language": "Vietnamese without diacritics",
+      "domain": "career",
+      "gold": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ],
+  "created_before_runtime_execution": true,
+  "runtime_execution_count_at_creation": 0
+}
