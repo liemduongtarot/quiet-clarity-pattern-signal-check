@@ -17,6 +17,7 @@ function familyRepair(d,base){
  const ignore=has(/(?:doi ten cac file cu|renam(?:e|ing) old files|leaving the repair email unanswered|de lai email sua chua khong tra loi).{0,160}(?:chua phai|avoid|unanswered|khong tra loi|xu ly cuoc goi|deal with the call)?/,d);
  const slow=has(/(?:quay lai mo no nhieu lan|reopen(?:ed|ing)? it many times|kept reopening).{0,120}(?:khong co cap nhat moi|no new update|same status|van hien dung mot trang thai)/,d)||has(/(?:same status|van hien dung mot trang thai).{0,100}(?:nhieu lan|many times|reopen|quay lai)/,d);
  const adaptive=has(/(?:corrected access window|khung truy cap da sua|cap nhat moi|corrected window).{0,120}(?:replied|reorganised|reorganized|dieu chinh|sap xep lai)/,d);
+ if(ignore&&!adaptive)f=f.filter(x=>x!=='adaptive');
  if(ignore&&!f.includes('ignore'))f.push('ignore');
  if(slow&&!f.includes('slow'))f.unshift('slow');
  if(adaptive&&!f.includes('adaptive'))f.push('adaptive');
