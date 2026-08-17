@@ -23,6 +23,9 @@ jobs:
           with zipfile.ZipFile(p) as z:
               z.extractall('.')
           PY
+      - name: Restore script execute bits
+        working-directory: PSC_V8_3_138_DEV
+        run: chmod +x scripts/*.sh
       - name: Install locked dependencies
         working-directory: PSC_V8_3_138_DEV
         run: npm run install:ci
