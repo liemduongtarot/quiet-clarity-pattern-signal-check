@@ -15,7 +15,9 @@ function repair(raw,base){
    || has(/(?:ban minh|kept myself busy|stayed busy).{0,120}(?:organising old emails|organizing old emails|old emails|viec phu|unrelated work).{0,120}(?:de chua phai|so i would not have to|so i didn't have to|avoid).{0,90}(?:xu ly|deal with|touch|start)/,doc)
    || has(/(?:kept putting|putting|put).{0,80}(?:aside|to one side).{0,120}(?:then|later|afterward|after that|eventually|finally)/,doc);
  const intentionalNonEngagement=has(/(?:i|toi|minh).{0,40}(?:leave|left|keep|kept|de|bo).{0,55}(?:message|email|notification|tin nhan|thu).{0,45}(?:unopened|unread|chua mo|khong mo).{0,45}(?:on purpose|deliberately|intentionally|co y)/,doc);
+ const prematureDecisionBeforeReview=has(/(?:i|toi|minh).{0,35}(?:choose|chose|select|selected|decide|decided|commit|committed|chon|lua chon|quyet dinh|chot).{0,90}(?:before|truoc khi).{0,90}(?:review|reviewing|check|checking|compare|comparing|xem|kiem tra|doi chieu|so sanh).{0,90}(?:relevant details|details|relevant information|information|facts|thong tin lien quan|thong tin|du kien)/,doc);
  if((busyAvoidance||intentionalNonEngagement)&&!families.includes('ignore'))families.push('ignore');
+ if(prematureDecisionBeforeReview&&!families.includes('fast'))families.push('fast');
  families=uniq(families);
  const ordered=has(/(?:then|later|afterward|after that|eventually|finally|roi|sau do|roi sau do|cuoi cung)/,doc);
  if(families.length>=2&&ordered)sequence=true;
