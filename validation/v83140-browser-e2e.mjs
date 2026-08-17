@@ -9,39 +9,57 @@ const results=[];
 let appConsoleErrors=[];
 let preflight={pass:false,attempts:[],execution_count:0};
 try {
-  // Transport-only browser preflight. No matrix case is executed until the exact browser authority is reachable.
-  for (let attempt=1; attempt<=30 && !preflight.pass; attempt++) {
+  for (let attempt=1; attempt<=6 && !preflight.pass; attempt++) {
     const page=await browser.newPage();
-    const reqFailures=[];
+    const reqFailures=[],pageErrors=[],consoleErrors=[],scriptResponses=[];
     page.on('requestfailed', req=>reqFailures.push({url:req.url(),error:req.failure()?.errorText||'unknown'}));
-    let status=null,title='',body='',ready=false;
+    page.on('pageerror', err=>pageErrors.push(String(err?.stack||err?.message||err)));
+    page.on('console', msg=>{if(msg.type()==='error')consoleErrors.push(msg.text())});
+    page.on('response', async res=>{
+      try{
+        const u=res.url(); if(!u.endsWith('.js')) return;
+        const ct=res.headers()['content-type']||'';
+        const txt=await res.text();
+        scriptResponses.push({url:u,status:res.status(),contentType:ct,bytes:txt.length,prefix:txt.slice(0,120)});
+      }catch{}
+    });
+    let status=null,title='',body='',ready=false,globals={},scripts=[];
     try {
-      const res=await page.goto(base + '/candidate.html?transport_preflight=' + attempt,{waitUntil:'domcontentloaded',timeout:15000});
+      const res=await page.goto(base + '/candidate.html?transport_preflight=' + attempt,{waitUntil:'networkidle',timeout:20000});
       status=res?.status()??null;
       title=await page.title().catch(()=> '');
       body=(await page.locator('body').innerText().catch(()=> '')).slice(0,500);
-      ready=await page.evaluate(() => !!globalThis.QCSemanticCoreV10 && !!globalThis.PSC_V83140 && globalThis.QCSemanticCoreV4===globalThis.QCSemanticCoreV10 && !!globalThis.PSCUIAuthorityV83137).catch(()=>false);
-    } catch (e) {
-      body=String(e?.message||e).slice(0,500);
-    }
-    preflight.attempts.push({attempt,status,title,ready,requestFailures:reqFailures,body});
+      scripts=await page.locator('script[src]').evaluateAll(es=>es.map(e=>e.getAttribute('src'))).catch(()=>[]);
+      globals=await page.evaluate(() => ({
+        v4: globalThis.QCSemanticCoreV4?.version||null,
+        v8: globalThis.QCSemanticCoreV8?.version||null,
+        v9: globalThis.QCSemanticCoreV9?.version||null,
+        v10: globalThis.QCSemanticCoreV10?.version||null,
+        p139: globalThis.PSC_V83139?.version||null,
+        p140: globalThis.PSC_V83140?.version||null,
+        ui137: globalThis.PSCUIAuthorityV83137?.version||null,
+        sameV4V10: !!globalThis.QCSemanticCoreV4 && globalThis.QCSemanticCoreV4===globalThis.QCSemanticCoreV10,
+        htmlDataset: {...document.documentElement.dataset}
+      })).catch(e=>({evaluationError:String(e)}));
+      ready=!!globals.v10 && !!globals.p140 && globals.sameV4V10 && !!globals.ui137;
+    } catch (e) { body=String(e?.message||e).slice(0,500); }
+    preflight.attempts.push({attempt,status,title,ready,globals,scripts,requestFailures:reqFailures,pageErrors,consoleErrors,scriptResponses,body});
     await page.close();
     if (status===200 && ready) preflight.pass=true;
-    else await new Promise(r=>setTimeout(r,2000));
+    else await new Promise(r=>setTimeout(r,1500));
   }
   fs.writeFileSync('V8_3_140_BROWSER_TRANSPORT_PREFLIGHT.json',JSON.stringify(preflight,null,2));
-  if(!preflight.pass){
-    console.error(JSON.stringify(preflight,null,2));
-    process.exitCode=2;
-  } else {
+  if(!preflight.pass){ console.error(JSON.stringify(preflight,null,2)); process.exitCode=2; }
+  else {
     preflight.execution_count=1;
     for (const tc of matrix.cases) {
       const page = await browser.newPage();
       const errs=[];
       page.on('console', msg => { if (msg.type()==='error' && !msg.text().includes('chrome-extension://')) errs.push(msg.text()); });
-      const res=await page.goto(base + '/candidate.html', {waitUntil:'domcontentloaded', timeout:30000});
+      page.on('pageerror', err=>errs.push(String(err?.message||err)));
+      const res=await page.goto(base + '/candidate.html', {waitUntil:'networkidle', timeout:30000});
       if(!res || res.status()!==200) throw new Error(`case ${tc.case_id}: candidate HTTP ${res?.status()}`);
-      await page.waitForFunction(() => !!globalThis.QCSemanticCoreV10 && !!globalThis.PSC_V83140 && globalThis.QCSemanticCoreV4===globalThis.QCSemanticCoreV10 && !!globalThis.PSCUIAuthorityV83137, null, {timeout:15000});
+      await page.waitForFunction(() => !!globalThis.QCSemanticCoreV10 && !!globalThis.PSC_V83140 && globalThis.QCSemanticCoreV4===globalThis.QCSemanticCoreV10 && !!globalThis.PSCUIAuthorityV83137, null, {timeout:10000});
       const runtime = await page.evaluate((input) => {
         const a = globalThis.QCSemanticCoreV4.analyze(input,'other',null);
         const legacy = typeof globalThis.bad === 'function' ? globalThis.bad(input) : null;
