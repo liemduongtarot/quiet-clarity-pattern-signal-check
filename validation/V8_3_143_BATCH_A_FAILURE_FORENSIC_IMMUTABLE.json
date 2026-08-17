@@ -1,0 +1,33 @@
+{
+  "candidate": "V8.3.143",
+  "batch": "A",
+  "run": "first-run",
+  "status": "FAILED_REVIEW_CANDIDATE",
+  "total": 30,
+  "passed": 13,
+  "failed": 17,
+  "route_failures": 3,
+  "family_failures": 14,
+  "sequence_failures": 6,
+  "batch_b_executed": false,
+  "step_111_executed": false,
+  "failures": [
+    {"case_id":"V143-BANK-09-03","surface":"The university replaced the deadline, so I adjusted my reminder to the revised date.","expected":{"route":"input:self-lived","families":["adaptive"],"sequence":false},"actual":{"route":"input:self-lived","families":[],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-16-04","surface":"Tôi buồn vì kết quả hồ sơ; không có hành động kiểm tra, né tránh, làm vội hay đứng lại nào được mô tả.","expected":{"route":"input:self-lived","families":[],"sequence":false},"actual":{"route":"input:self-lived","families":["ignore"],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-41-04","surface":"Tôi đang lặp việc kiểm tra, nhưng sau khi nhận số liệu mới tôi đổi cách xử lý theo số liệu đó.","expected":{"route":"input:self-lived","families":["adaptive"],"sequence":true},"actual":{"route":"input:self-lived","families":[],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-06-04","surface":"Tôi chốt lựa chọn khóa học trong vài phút dù còn đủ thời gian để xem thông tin.","expected":{"route":"input:self-lived","families":["fast"],"sequence":false},"actual":{"route":"input:self-lived","families":[],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-53-05","surface":"Why am I forcing quick decisions before comparing the available details?","expected":{"route":"input:self-lived","families":["fast"],"sequence":false},"actual":{"route":"input:self-lived","families":[],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-28-05","surface":"The case file attributes the check to both me and another person without resolving which account is correct.","expected":{"route":"input:clarification-required","families":[],"sequence":false},"actual":{"route":"input:self-lived","families":[],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-29-03","surface":"The message states that someone rushed the submission, but the actor is not named.","expected":{"route":"input:clarification-required","families":[],"sequence":false},"actual":{"route":"input:third-party-only","families":[],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-25-01","surface":"Why does my colleague keep checking her own claim? I am not asking about any behaviour of mine.","expected":{"route":"input:third-party-only","families":[],"sequence":false},"actual":{"route":"input:self-lived","families":["slow"],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-42-02","surface":"Tôi trước đó cố tình bỏ qua hồ sơ; khi có thông tin mới quan trọng, tôi điều chỉnh và xử lý theo thông tin đó.","expected":{"route":"input:self-lived","families":["ignore","adaptive"],"sequence":true},"actual":{"route":"input:self-lived","families":[],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-02-02","surface":"Tôi đã xem lại lịch tiêm bốn lần sáng nay dù giờ hẹn vẫn y nguyên.","expected":{"route":"input:self-lived","families":["slow"],"sequence":false},"actual":{"route":"input:self-lived","families":[],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-14-03","surface":"I froze at the opening screen, spent too long cycling through the same figures once I began, then sped through confirmation.","expected":{"route":"input:self-lived","families":["freeze","slow","fast"],"sequence":true},"actual":{"route":"input:self-lived","families":["freeze"],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-22-02","surface":"Tai lieu ghi “gia su mot nguoi tri hoan nop don”; thuc te toi da hoan tat don cua minh dung luc.","expected":{"route":"input:self-lived","families":[],"sequence":false},"actual":{"route":"input:self-lived","families":["ignore"],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-43-05","surface":"I had been looping over the same details; a real update arrived and I adapted instead of continuing the loop.","expected":{"route":"input:self-lived","families":["slow","adaptive"],"sequence":true},"actual":{"route":"input:self-lived","families":[],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-23-05","surface":"The assessor proposed that I might be delaying the form, while the record shows I submitted it on time.","expected":{"route":"input:self-lived","families":[],"sequence":false},"actual":{"route":"input:self-lived","families":["ignore"],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-44-03","surface":"I rushed the first confirmation, but when the actual amount changed I reviewed the change and corrected my next step.","expected":{"route":"input:self-lived","families":["fast","adaptive"],"sequence":true},"actual":{"route":"input:self-lived","families":["fast","adaptive"],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-12-02","surface":"Tôi cố tình không đụng tới đơn đăng ký vài ngày, rồi tối cuối cùng làm vội và gửi ngay.","expected":{"route":"input:self-lived","families":["ignore","fast"],"sequence":true},"actual":{"route":"input:self-lived","families":[],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}},
+    {"case_id":"V143-BANK-21-04","surface":"Tôi bị chặn ở bước cuối vì bên bảo hiểm chưa cấp mã cần thiết, không phải vì tôi tránh làm.","expected":{"route":"input:self-lived","families":[],"sequence":false},"actual":{"route":"input:self-lived","families":["ignore"],"sequence":false,"authority":"V8.3.143-SEALED-BATCH-A-CONVERGENCE"}}
+  ]
+}
