@@ -7,9 +7,9 @@ on:
       - v83139-validation
 
 jobs:
-  build:
+  build-e2e:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -43,11 +43,69 @@ jobs:
         run: |
           sha256sum public/psc-v83139-semantic-convergence.js public/psc-v83138-semantic-convergence.js public/psc-v83137-ui-gate-authority.js public/psc-v83135-scoped-operator.js public/candidate.html package.json package-lock.json > V8_3_139_CI_AUTHORITY_HASHES.txt
           find dist -type f -print0 | sort -z | xargs -0 sha256sum > V8_3_139_DIST_SHA256.txt
+      - name: Install isolated browser test tooling
+        run: |
+          mkdir -p .e2e
+          printf '{"private":true}\n' > .e2e/package.json
+          npm install --prefix .e2e --no-package-lock playwright@1.55.0
+          .e2e/node_modules/.bin/playwright install --with-deps chromium
+      - name: Start exact static build locally
+        run: |
+          cd PSC_V8_3_138_DEV/dist/client
+          python3 -m http.server 4173 --bind 127.0.0.1 > ../../../V8_3_139_HTTP_SERVER.log 2>&1 &
+          echo $! > ../../../V8_3_139_HTTP_SERVER.pid
+          cd ../../..
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/candidate.html >/dev/null && exit 0; sleep 1; done
+          exit 1
+      - name: Start temporary external HTTPS tunnel
+        run: |
+          curl -fsSL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o cloudflared
+          chmod +x cloudflared
+          ./cloudflared tunnel --url http://127.0.0.1:4173 --no-autoupdate > V8_3_139_CLOUDFLARED.log 2>&1 &
+          echo $! > V8_3_139_CLOUDFLARED.pid
+          for i in $(seq 1 60); do
+            URL=$(grep -Eo 'https://[a-z0-9-]+\.trycloudflare\.com' V8_3_139_CLOUDFLARED.log | tail -1 || true)
+            if [ -n "$URL" ]; then echo "$URL" | tee V8_3_139_TEMP_HTTPS_URL.txt; echo "PSC_E2E_URL=$URL" >> "$GITHUB_ENV"; exit 0; fi
+            sleep 1
+          done
+          cat V8_3_139_CLOUDFLARED.log
+          exit 1
+      - name: External HTTPS transport sanity
+        run: |
+          for i in $(seq 1 30); do curl -fsS "$PSC_E2E_URL/candidate.html" | grep -q 'Pattern Signal Check' && exit 0; sleep 1; done
+          exit 1
+      - name: Run Browser E2E exactly once
+        run: node validation/v83139-browser-e2e.mjs
+      - name: Teardown temporary HTTPS transport
+        if: always()
+        run: |
+          if [ -f V8_3_139_CLOUDFLARED.pid ]; then kill "$(cat V8_3_139_CLOUDFLARED.pid)" || true; fi
+          if [ -f V8_3_139_HTTP_SERVER.pid ]; then kill "$(cat V8_3_139_HTTP_SERVER.pid)" || true; fi
+          sleep 3
+          URL=$(cat V8_3_139_TEMP_HTTPS_URL.txt 2>/dev/null || true)
+          if [ -n "$URL" ]; then
+            CODE=$(curl -L -sS -o V8_3_139_POST_TEARDOWN_BODY.txt -w '%{http_code}' --max-time 15 "$URL/candidate.html" || true)
+            echo "$CODE" > V8_3_139_POST_TEARDOWN_HTTP_CODE.txt
+            if [ "$CODE" = "200" ] && grep -q 'Pattern Signal Check' V8_3_139_POST_TEARDOWN_BODY.txt; then echo 'Preview still serves application' >&2; exit 1; fi
+          fi
+      - name: Recheck authority after E2E
+        if: always()
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          sha256sum -c <(awk '{print $1"  "$2}' V8_3_139_CI_AUTHORITY_HASHES.txt)
+          test "$(find dist -type f -name '*.map' | wc -l)" -eq 0
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: v83139-validation-evidence
+          name: v83139-validation-e2e-evidence
           path: |
             PSC_V8_3_138_DEV/V8_3_139_CI_AUTHORITY_HASHES.txt
             PSC_V8_3_138_DEV/V8_3_139_DIST_SHA256.txt
             PSC_V8_3_138_DEV/dist
-          if-no-files-found: error
+            V8_3_139_BROWSER_E2E_RESULTS.json
+            V8_3_139_TEMP_HTTPS_URL.txt
+            V8_3_139_CLOUDFLARED.log
+            V8_3_139_HTTP_SERVER.log
+            V8_3_139_POST_TEARDOWN_HTTP_CODE.txt
+            V8_3_139_POST_TEARDOWN_BODY.txt
+          if-no-files-found: warn
