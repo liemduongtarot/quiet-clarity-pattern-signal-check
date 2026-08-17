@@ -1,0 +1,193 @@
+{
+  "authority": "V8.3.156 IMMUTABLE V8.3.155 SEALED BATCH A FAILURE REPAIR REGRESSION",
+  "source_run": 32069144955,
+  "source_candidate": "V8.3.155",
+  "source_batch": "SEALED Batch A first run",
+  "failure_count": 12,
+  "failures": [
+    {
+      "case_id": "V155-PB1-059",
+      "surface": "Hãng tàu sửa lại họ hành khách nên tôi bỏ itinerary cũ và dựng lại thông tin chuyến đi theo record đã sửa. Hồ sơ chuyến đi có rail itinerary, passenger record, disruption notice và khoảng đệm connection. Đây là bằng chứng về phản ứng thật của chính tôi, không phải yêu cầu chọn phương án hay dự báo tương lai.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "adaptive"
+        ],
+        "sequence": false
+      },
+      "actual_at_V8_3_155": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V155-PB1-157",
+      "surface": "Nguoi hang xom cu doi lich nhan do cua anh ay; toi khong phai nguoi lam cham. Ho so cho o co gio nhan chia khoa, kich thuoc kho, gioi han di lai va quy dinh ra vao. Tat ca hanh dong thuoc ve nguoi khac va user khong nhan do la hanh vi cua minh. Chi tiet scene rieng gom storage dimensions, inspection rule, service charge, moving date, storage dimensions, inspection rule. Chi tiet scene rieng gom deposit receipt, handover slot, building manager, key collection, deposit receipt, handover slot. Chi tiet scene rieng gom commute route, inventory note, utility record, access code, commute route, inventory note. Chi tiet scene rieng gom service charge, moving date, storage dimensions, inspection rule, service charge, moving date. Chi tiet scene rieng gom building manager, key collection, deposit receipt, handover slot, building manager, key collection. Chi tiet scene rieng gom utility record, access code, commute route, inventory note, utility record, access code. Chi tiet scene rieng gom storage dimensions, inspection rule, service charge, moving date, storage dimensions, inspection rule. Chi tiet scene rieng gom deposit receipt, handover slot, building manager, key collection, deposit receipt, handover slot. Hanh vi cua nguoi khac con lien quan den his own locker key, van booking, delivery crew, access pass, collection receipt, loading slot, storage insurance, vehicle registration, gate code, proof of identity, removal blanket, pickup docket, trolley hire, weekend surcharge, unit padlock, collection signature va driver call log.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual_at_V8_3_155": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V155-PB1-209",
+      "surface": "Not my behaviour: friend reopens ex-partner messages repeatedly; do la action cua co ay. Extra relationship context: co dinner plan, boundary memo, work rota va recent call log. Routing evidence: actions belong to another person, khong phai behaviour cua user.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual_at_V8_3_155": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V155-PB1-214",
+      "surface": "Third-party only: client uploaded licence form as portal opened; submission timing la cua co ay. Extra admin context: co licence reference, portal receipt, document checklist va service-desk note. Routing evidence: actions belong to another person, khong phai behaviour cua user.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual_at_V8_3_155": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V155-PB1-158",
+      "surface": "Em ho toi bo qua thong bao tau cua co ay va lo chuyen; toi dang hoi ve hanh dong cua co ay. Ho so chuyen di co lich tau, thong tin hanh khach, thong bao gian doan va thoi gian noi chuyen. Tat ca hanh dong thuoc ve nguoi khac va user khong nhan do la hanh vi cua minh.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual_at_V8_3_155": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V155-PB1-003",
+      "surface": "I needed to submit one apprenticeship reference, yet I spent the evening reorganising archived interview notes instead of opening the form. The work file includes an apprenticeship brief, manager feedback, a reference deadline and a team-allocation note. This is evidence from my own lived response; it is not a request for a recommendation or a future forecast.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual_at_V8_3_155": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V155-PB1-107",
+      "surface": "Customer kia order appliance mà không đọc return terms; tôi chỉ muốn hiểu behaviour của cô ấy. Hồ sơ mua hàng có appliance serial, return window, courier trace và warranty condition. Mọi hành động được mô tả đều thuộc về người khác và user không nhận đó là hành vi của mình.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual_at_V8_3_155": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V155-PB1-025",
+      "surface": "Do I request a formal review of this licence notice or submit a new application? The licensing file includes a renewal reference, portal receipt, document checklist and service-desk note. The user is directly requesting a choice between alternatives rather than reporting response evidence.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual_at_V8_3_155": {
+        "route": "input:self-lived",
+        "families": [
+          "adaptive"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V155-PB1-137",
+      "surface": "Tinh huong dong vai: mot nhan vat gia dinh tre cung mot cuoc noi chuyen ranh gioi qua ba canh. Tinh huong con co lich hen an, ghi chu ranh gioi, ca lam va lich su cuoc goi. Noi dung la tai lieu dao tao hoac gia dinh, khong phai su viec user noi da trai qua.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual_at_V8_3_155": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V155-PB1-004",
+      "surface": "Two storage units met my price and distance limits; I kept switching my preference between them and reserved neither. The housing file includes a key-collection window, storage dimensions, commute constraints and a building access rule. This is evidence from my own lived response; it is not a request for a recommendation or a future forecast.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual_at_V8_3_155": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V155-PB1-199",
+      "surface": "Timing request: when will contractor settle service invoice dang no toi? Extra finance context: co supplier quarter statement, settlement reference, month close va reconciliation owner. Routing evidence: future timing/outcome ask, khong phai current response pattern.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual_at_V8_3_155": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V155-PB1-058",
+      "surface": "Hai kho lưu trữ đều hợp giá và khoảng cách; tôi cứ đổi lựa chọn qua lại rồi không reserve chỗ nào. Hồ sơ nhà ở có khung giờ nhận chìa khóa, kích thước kho, giới hạn commute và quy định access. Đây là bằng chứng về phản ứng thật của chính tôi, không phải yêu cầu chọn phương án hay dự báo tương lai.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual_at_V8_3_155": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
