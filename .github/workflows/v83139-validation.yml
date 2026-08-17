@@ -15,8 +15,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-          cache: 'npm'
-          cache-dependency-path: 'PSC_V8_3_138_DEV/package-lock.json'
       - name: Extract exact checkpoint
         run: |
           python - <<'PY'
@@ -36,8 +34,7 @@ jobs:
         run: npm run validate:artifact
       - name: Assert no source maps
         working-directory: PSC_V8_3_138_DEV
-        run: |
-          test "$(find dist -type f -name '*.map' | wc -l)" -eq 0
+        run: test "$(find dist -type f -name '*.map' | wc -l)" -eq 0
       - name: Record hashes
         working-directory: PSC_V8_3_138_DEV
         run: |
