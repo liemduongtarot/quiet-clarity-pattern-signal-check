@@ -1,0 +1,103 @@
+{
+  "source": "V8.3.154 SEALED Batch A first-run immutable failures",
+  "source_candidate": "V8.3.154",
+  "target_candidate": "V8.3.155",
+  "source_run": 32064820584,
+  "source_job": 95494246238,
+  "source_attempt": 1,
+  "batch_a_first_run": "FAIL 17/30",
+  "failure_count": 13,
+  "failures": [
+    {
+      "case_id": "V154-PB1-165",
+      "surface": "Real incident: Việc cần làm là tải lên một form xác nhận, nhưng tôi lại dành tối đổi tên các thư mục dự án cũ để khỏi bắt đầu. Extra work context: co performance note, hiring timeline, project allocation, manager feedback va promotion window. Routing note: this is my lived incident, evidence ve actual response cua toi, not a choice request or future forecast.",
+      "expected": {"route": "input:self-lived", "families": ["ignore"], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["families"]
+    },
+    {
+      "case_id": "V154-PB1-207",
+      "surface": "Prediction ask: Khi nào trường đại học mới công bố kết quả cuối? Extra study context: co assessment brief, seminar schedule, credit count, tutor note va enrolment deadline. Routing note: this asks about future timing/outcome, khong phai current response evidence.",
+      "expected": {"route": "input:prediction", "families": [], "sequence": false},
+      "actual": {"route": "input:clarification-required", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V154-PB1-117",
+      "surface": "Toi buc boi ve diem module, nhung chua neu viec kiem tra lap, ne tranh, quyet qua nhanh hay khong chon duoc. Tinh huong hoc tap con co lich thi, tin chi, de cuong mon, lich tutor, han nop bai va thong bao khoa. Day la su viec that cua chinh toi; bang chung tap trung vao viec toi da lam, khong phai nho chon lua chon hay doan thoi gian.",
+      "expected": {"route": "input:self-lived", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": ["fast", "ignore", "slow"], "sequence": false},
+      "failure_dimensions": ["families"]
+    },
+    {
+      "case_id": "V154-PB1-176",
+      "surface": "Ownership unclear: Log hành trình có nhiều lần kiểm tra booking nhưng không xác định đó là tôi hay người đi cùng. Extra travel context: co booking code, luggage rule, border document, connection time va airline update. Routing note: actor or concrete response van unresolved, so clarify ownership before any questionnaire starts.",
+      "expected": {"route": "input:clarification-required", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V154-PB1-041",
+      "surface": "When is my visa application likely to receive a decision? The travel file includes passenger details, itinerary revision, carrier notice and check-in deadline. The request asks about a future time or external outcome rather than evidence of the user's current response.",
+      "expected": {"route": "input:prediction", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V154-PB1-115",
+      "surface": "Ba buoi toi toi doc lai cung quyet dinh cua council du khong co thu hay cap nhat moi. Tinh huong thu tuc con co ma ho so, ban scan, lich hen, thu xac nhan, phi xu ly va nguoi tiep nhan. Day la su viec that cua chinh toi; bang chung tap trung vao viec toi da lam, khong phai nho chon lua chon hay doan thoi gian.",
+      "expected": {"route": "input:self-lived", "families": ["slow"], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": ["adaptive"], "sequence": false},
+      "failure_dimensions": ["families"]
+    },
+    {
+      "case_id": "V154-PB1-017",
+      "surface": "The complaint says the issue keeps repeating, yet it gives no concrete incident showing what I personally do. The consumer file includes warranty terms, retailer case number, replacement window and return label. The unresolved point is factual attribution; the next step would be to identify the actor or concrete response before any questionnaire.",
+      "expected": {"route": "input:clarification-required", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V154-PB1-143",
+      "surface": "Mo phong: mot nguoi mua hu cau ban dau ne form tra hang roi hoan tat sau khi co label da sua. Tinh huong mua hang con co serial, hoa don, thoi han doi tra, lich giao hang va bien ban kiem tra. Noi dung chi dung cho bai tap hoac minh hoa gia dinh, khong duoc trinh bay nhu mot su viec user da song qua.",
+      "expected": {"route": "input:hypothetical-or-example", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": ["ignore"], "sequence": false},
+      "failure_dimensions": ["route", "families"]
+    },
+    {
+      "case_id": "V154-PB1-038",
+      "surface": "How long until the person I am dating sends a reply? The surrounding facts include a weekend plan, boundary discussion, shared calendar and recent message thread. The request asks about a future time or external outcome rather than evidence of the user's current response.",
+      "expected": {"route": "input:prediction", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V154-PB1-002",
+      "surface": "The invitation could wait until Thursday, yet I replied yes before finishing the message because I wanted the uncertainty gone. The surrounding facts include a weekend plan, boundary discussion, shared calendar and recent message thread. This is a real event from my own behaviour; the evidence concerns what I actually did, not a request for advice or timing.",
+      "expected": {"route": "input:self-lived", "families": ["fast"], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["families"]
+    },
+    {
+      "case_id": "V154-PB1-177",
+      "surface": "Need clarification: Đoạn này chỉ nói về lo lắng và áp lực, chưa nêu tôi thực sự đã làm gì. Extra health context: co clinic note, symptom diary, rota constraint, follow-up slot va treatment revision. Routing note: actor or concrete response van unresolved, so clarify ownership before any questionnaire starts.",
+      "expected": {"route": "input:clarification-required", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V154-PB1-067",
+      "surface": "Tin nhắn viết 'bọn mình dời lịch kiểm tra' nhưng không nói đó là tôi, chủ nhà hay agent. Bối cảnh nhà ở còn có lịch inspection, tiền cọc, giới hạn commute và thư tenancy. Điểm còn thiếu là xác định chủ thể hoặc hành động cụ thể; chưa đủ cơ sở để đưa vào questionnaire.",
+      "expected": {"route": "input:clarification-required", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    },
+    {
+      "case_id": "V154-PB1-138",
+      "surface": "Case dao tao: mot nhan vien tuong tuong nhan offer ngay du han phan hoi con vai ngay. Tinh huong cong viec con co muc tieu quy, lich hop nhom, phieu danh gia, tai lieu onboarding va moc thang tien. Noi dung chi dung cho bai tap hoac minh hoa gia dinh, khong duoc trinh bay nhu mot su viec user da song qua.",
+      "expected": {"route": "input:hypothetical-or-example", "families": [], "sequence": false},
+      "actual": {"route": "input:self-lived", "families": [], "sequence": false},
+      "failure_dimensions": ["route"]
+    }
+  ]
+}
