@@ -18,7 +18,9 @@ function repair(raw,base){
  families=uniq(families);
  const ordered=has(/(?:then|later|afterward|after that|eventually|finally|roi|sau do|roi sau do|cuoi cung)/,doc);
  if(families.length>=2&&ordered)sequence=true;
- if(families.length<2)sequence=false;
+ const adaptiveOnlyTransition=families.length===1&&families[0]==='adaptive'&&!!base.sequence;
+ if(families.length<2&&!adaptiveOnlyTransition)sequence=false;
+ if(adaptiveOnlyTransition)sequence=true;
  return{families,sequence};
 }
 function analyze(raw,domain='other',subtopic=null){
