@@ -42,7 +42,7 @@ function repair(raw,base){
  if(!v145SuppressionState&&!explicitSet.length&&inheritedV144Sequence&&families.length>=2)sequence=true;
  const comparisonOnly=has(/(?:doi chieu|so sanh|compare|cross-check)/,doc)
    && !has(/(?:new evidence|new information|new data|material update|genuine update|real update|updated facts|revised facts|thong tin moi|du kien moi|du lieu moi|so lieu moi|cap nhat that su|ban sua chinh thuc|quy trinh moi).{0,140}(?:adjust|adapt|changed approach|changed course|dieu chinh|doi cach|thich nghi)/,doc)
-   && !has(/(?:adjusted|adapted|changed approach|changed course|dieu chinh|doi cach|thich nghi).{0,140}(?:new|updated|revised|evidence|information|data|facts|thong tin|du kien|du lieu|so lieu|cap nhat)/,doc);
+   && !has(/(?:adjust|adjusted|adapt|adapted|changed approach|changed course|dieu chinh|doi cach|thich nghi).{0,140}(?:new|updated|revised|evidence|information|data|facts|thong tin|du kien|du lieu|so lieu|cap nhat)/,doc);
  if(comparisonOnly&&families.includes('adaptive'))families=families.filter(x=>x!=='adaptive');
  const busyAvoidance=has(/(?:thay vi|instead of|rather than).{0,150}(?:ban minh|kept myself busy|stayed busy|organising old emails|organizing old emails|old emails|viec phu|unrelated work).{0,150}(?:chua phai|khong phai|avoid|not have to|defer|delay|xu ly viec chinh|deal with the main|touch the main)/,doc)
    || has(/(?:ban minh|kept myself busy|stayed busy).{0,120}(?:organising old emails|organizing old emails|old emails|viec phu|unrelated work).{0,120}(?:de chua phai|so i would not have to|so i didn't have to|avoid).{0,90}(?:xu ly|deal with|touch|start)/,doc)
