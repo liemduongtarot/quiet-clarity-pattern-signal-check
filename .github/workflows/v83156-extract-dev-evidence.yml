@@ -1,0 +1,22 @@
+name: V8.3.156 Extract Development Evidence
+on:
+  push:
+    branches: [v83156-validation]
+permissions:
+  contents: write
+jobs:
+  extract:
+    if: github.event.head_commit.message == 'Extract V8.3.156 development evidence'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract checkpoint evidence and publish text files
+        run: |
+          rm -rf validation/v83156-final-dev-evidence/extracted
+          mkdir -p validation/v83156-final-dev-evidence/extracted
+          unzip -q validation/v83156-final-dev-evidence/PSC_V8_3_156_DEVELOPMENT_PASS_5_STEP_CHECKPOINT.zip -d validation/v83156-final-dev-evidence/extracted
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83156-final-dev-evidence/extracted
+          git commit -m 'Publish extracted V8.3.156 development evidence [skip ci]'
+          git push
