@@ -4,7 +4,7 @@ on:
     branches: [v83146-validation]
 jobs:
   diagnose:
-    if: github.event.head_commit.message == 'Diagnose V8.3.146 600 ignore case 257 source'
+    if: github.event.head_commit.message == 'Diagnose V8.3.146 generated ignore case 257'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,11 +14,33 @@ jobs:
           import zipfile
           with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
           PY
-      - name: Print exact 600-case source lines 1-170
+      - name: Print generated case 257 surfaces without executing engine
         working-directory: PSC_V8_3_138_DEV
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          s=Path('tests/v83139-600-real-case-regression.test.cjs').read_text().splitlines()
-          for i,line in enumerate(s[:170],1): print(f'{i:04d}: {line}')
-          PY
+          node - <<'NODE'
+          const patterns = [
+            ['slow', 'Mỗi khi yêu cầu chưa rõ, tôi kiểm tra thêm và trì hoãn bắt đầu.', 'When requirements are unclear, I keep checking and delay getting started.'],
+            ['slow', 'Tôi hỏi thêm nhiều người để được xác nhận rồi vẫn chuẩn bị thêm.', 'I ask several people for reassurance and still prepare further.'],
+            ['fast', 'Khi phấn khích, tôi quyết ngay và nhận quá nhiều việc.', 'When excited, I decide immediately and take on too much.'],
+            ['fast', 'Khi áp lực tăng, tôi hành động ngay và cam kết trước khi đủ điều kiện.', 'When pressure rises, I act immediately and commit before the conditions are sufficient.'],
+            ['freeze', 'Tôi biết cần xử lý nhưng bị đứng lại và không bắt đầu được.', 'I know it needs dealing with, but I become stuck and cannot begin.'],
+            ['freeze', 'Tôi không chọn được bước đầu tiên dù đã có vài lựa chọn hợp lý.', 'I cannot choose the first step despite having reasonable options.'],
+            ['ignore', 'Tôi chuyển sang việc khác và giữ mình bận để né phần khó chịu.', 'I move to something else and keep busy to avoid the uncomfortable part.'],
+            ['ignore', 'Tôi không mở phản hồi và làm như vấn đề không quan trọng.', 'I do not open the response and behave as though the issue does not matter.'],
+            ['slow', 'Tôi kiểm tra rất lâu rồi cuối cùng quyết ngay vì sát hạn.', 'I check for a long time and then eventually decide immediately because the deadline is close.'],
+            ['freeze', 'Tôi đứng lại rồi sau đó chuyển sang né và không trả lời.', 'I become stuck and then avoid it and do not reply.'],
+            ['freeze', 'Tôi chưa bắt đầu vì đang chờ phê duyệt và chưa có quyền quyết định.', 'I have not started because I am waiting for approval and do not have authority to decide.'],
+            ['adaptive', 'Tôi kiểm tra vừa đủ, dừng khi đủ thông tin và điều chỉnh khi có dữ kiện mới.', 'I check enough, stop when I have enough information and adjust when new evidence appears.']
+          ];
+          const contexts = [
+            ['Điều này đã xảy ra nhiều lần gần đây.', 'This has happened repeatedly recently.'],['Nó ảnh hưởng rõ tới thời gian của tôi.', 'It clearly affects my time.'],['Tôi nhận ra nó nhưng vẫn thường làm theo.', 'I notice it but still usually follow it.'],['Chuyện này rõ hơn khi tôi mệt.', 'This is clearer when I am tired.'],['Một khả năng xấu chiếm nhiều sự chú ý.', 'A negative possibility takes much of my attention.'],['Tôi vẫn phân biệt được dữ kiện với điều mình sợ.', 'I can still distinguish evidence from what I fear.'],['Nó ảnh hưởng cách tôi giao tiếp.', 'It affects how I communicate.'],['Tôi có kỹ năng nhưng không phải lúc nào cũng có thời gian.', 'I have the skill but do not always have time.'],['Không ai trực tiếp ép tôi chọn.', 'No one directly forces me to choose.'],['Có cả cảm xúc và quyết định thực tế liên quan.', 'Both emotion and a practical decision are involved.'],['Hậu quả rõ nhất là phần việc chưa hoàn tất.', 'The clearest consequence is that the task remains unfinished.'],['Mức phản ứng thay đổi theo bối cảnh.', 'The strength changes with context.'],['Tôi vẫn ngắt được phản ứng trong một số lần.', 'I can still interrupt the response sometimes.'],['So với trước đây, phản ứng chưa đổi nhiều.', 'Compared with before, it has not changed much.'],['Đây là một tình huống thật đang xảy ra.', 'This is a real situation happening now.'],['Chuyện có một số ràng buộc thực tế.', 'The situation includes practical constraints.'],['Tôi chưa biết đây là thói quen hay phản ứng nhất thời.', 'I do not know whether this is a habit or temporary.'],['Nó có thể nhẹ đi khi yêu cầu rõ hơn.', 'It may ease when requirements become clearer.'],['Tôi không muốn hệ thống giả định động cơ.', 'I do not want the system to assume a motive.'],['Phản ứng này đi vào một quyết định cụ thể.', 'This response affects a specific decision.'],['Tôi thấy nó quay lại ở nhiều hoàn cảnh tương tự.', 'I see it return in similar circumstances.'],['Tôi thường thấy nhẹ đi ngay sau phản ứng.', 'I often feel immediate relief after the response.'],['Sau đó vấn đề thực tế vẫn còn.', 'The practical issue remains afterwards.'],['Tôi đang kiểm tra phản ứng của chính mình.', 'I am examining my own response.'],['Tình huống liên quan tới nguồn lực thực tế.', 'The situation concerns practical resources.']
+          ];
+          const unaccent=v=>v.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D');
+          const mixed=v=>v.split(/(\s+)/).map((p,i)=>i%4===0?unaccent(p):p).join('');
+          let n=0;
+          outer: for(let pi=0;pi<patterns.length;pi++)for(let ci=0;ci<contexts.length;ci++)for(const variant of [0,1]){
+            n++; if(n!==257)continue;
+            const p=patterns[pi],c=contexts[ci]; const vi=`${p[1]} ${c[0]} ${variant?'Tôi đang nhìn cả hành vi lẫn điều kiện thực tế.':''}`; const en=`${p[2]} ${c[1]} ${variant?'I am considering both behaviour and the practical conditions.':''}`;
+            console.log(JSON.stringify({case:257,patternIndex:pi,contextIndex:ci,variant,expected:p[0],vi,unaccent:unaccent(vi),mixed:mixed(vi),en},null,2)); break outer;
+          }
+          NODE
