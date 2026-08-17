@@ -25,7 +25,7 @@ function familyRepair(d,base){
   const adaptive=has(/(?:revised tenancy date|ngay thue da sua|corrected tenancy date|revised date).{0,120}(?:replied|tra loi|reorganised|reorganized|sap xep lai|dieu chinh)/,d);
   if(ignore&&!f.includes('ignore'))f.push('ignore');
   if(adaptive&&!f.includes('adaptive'))f.push('adaptive');
-  if(ignore&&adaptive)seq=true;
+  if(adaptive&&f.includes('ignore')&&has(/(?:after|sau khi|revised|da sua|corrected)/,d))seq=true;
   f=uniq(f);
   if(f.length<2)seq=false;
   return{families:f,sequence:seq};
