@@ -1,0 +1,21 @@
+{
+  "candidate": "V8.3.154",
+  "source": "V8.3.153 SEALED Batch A first-run immutable failures",
+  "source_run": 32054133628,
+  "source_job": 95460255472,
+  "source_attempt": 1,
+  "source_development_authority": "3ade485b160b98febad948db1504faa8c12fe0e9",
+  "immutable": true,
+  "failures": [
+    {"case_id":"V153-PB1-014","surface":"The itinerary log records several booking checks but never establishes whether I made them or my travel companion did.","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V153-PB1-144","surface":"Classroom exercise ve imaginary student chon course ngay du con vai ngay. Context: course transfer, timetable clash, fee deadline, programme handbook. Exercise note: day la material gia dinh, khong phai lived event cua user.","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V153-PB1-088","surface":"Hãy tưởng tượng một applicant mẫu mở lại cùng portal giấy phép nhiều lần dù chưa có cập nhật mới.","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V153-PB1-037","surface":"When is the client likely to settle the outstanding invoice owed to me?Additional scene records mention ledger, itinerary, folder, remittance, seminar, probation, reconciliation, maintenance, outpatient, replacement, vignette, retailer.","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V153-PB1-117","surface":"Toi buc boi ve module result, nhung chua neu repeated behaviour, avoidance, rushing hay freeze nao. Context: course transfer, timetable clash, fee deadline, programme handbook. Scene note: day la response cua chinh toi trong mot incident that.","expected":{"route":"input:self-lived","families":[],"sequence":false}},
+    {"case_id":"V153-PB1-062","surface":"Hạn phản hồi bảo hành còn tới tuần sau nhưng tôi nhận ngay phương án đổi hàng đầu tiên chỉ để khỏi phải nghĩ tiếp.","expected":{"route":"input:self-lived","families":["fast"],"sequence":false}},
+    {"case_id":"V153-PB1-065","surface":"Tôi có thể nói mình thấy bị dồn trong cuộc nói chuyện, nhưng vẫn chưa nêu một hành động cụ thể nào của chính tôi.","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V153-PB1-064","surface":"Một biên nhận ghi tôi chuyển khoản, còn bảng đối soát sau đó lại ghi em gái tôi chuyển đúng khoản đó; người trả tiền chưa được xác định.","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V153-PB1-087","surface":"Tình huống workshop mô tả một bệnh nhân hư cấu đổi cách xử lý sau khi nhận hướng dẫn điều trị đã sửa.","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V153-PB1-137","surface":"Role play dung mot fictional person cu postpone conversation kho voi partner. Context: boundary discussion, weekend plan, shared calendar, recent message history. Exercise note: day la material gia dinh, khong phai lived event cua user.","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}}
+  ]
+}
