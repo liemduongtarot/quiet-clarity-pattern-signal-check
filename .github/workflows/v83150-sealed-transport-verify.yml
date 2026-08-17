@@ -1,0 +1,26 @@
+name: V8.3.150 Sealed Transport Verify
+on:
+  push:
+    branches: [v83150-sealed-validation]
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Verify V8.3.150 sealed transport'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify chunk hashes only; no runtime execution
+        run: |
+          sha256sum validation/v83150-sealed/V8_3_150_SEALED_PACK_V1.part1
+          sha256sum validation/v83150-sealed/V8_3_150_SEALED_PACK_V1.part2
+          sha256sum validation/v83150-sealed/V8_3_150_SEALED_PACK_V1.part3
+          sha256sum validation/v83150-sealed/V8_3_150_SEALED_PACK_V1.part4
+          sha256sum validation/v83150-sealed/V8_3_150_SEALED_PACK_V1.part5
+          python - <<'PY'
+          import pathlib,hashlib
+          exp=['c9180c204831330b5b16a98ae61d9d239126584c0a4e1a78aa865469c5c3e807','2b85abfb87a7296cfa937d61cd90e08c1a40faccd583abdaa3940dd76971e5c8','ec9a60471301cecaa0f718dae586665b806caa2169a1fd034845157a1eef19da','e23e4d62328d3dc47716a6686be6f9527af2d8e8de8772da574fb0bdc3e2a321','562202f6f252af234cdad92ab15ac75b85cad7b652a7a151c374b7a2a012e2b3']
+          for i,e in enumerate(exp,1):
+              p=pathlib.Path(f'validation/v83150-sealed/V8_3_150_SEALED_PACK_V1.part{i}')
+              h=hashlib.sha256(p.read_text().strip().encode()).hexdigest()
+              print(i,h,'PASS' if h==e else 'FAIL')
+              assert h==e
+          PY
