@@ -1,0 +1,1 @@
+(function(global){'use strict';if(!global.QCSemanticCoreV18)throw new Error('V8.3.149 browser lock requires V18');global.QCSemanticCoreV4=global.QCSemanticCoreV18;global.PSC_V83149_BROWSER=Object.freeze({version:'V8.3.149-BROWSER-AUTHORITY-LOCK'});})(typeof globalThis!=='undefined'?globalThis:this);
