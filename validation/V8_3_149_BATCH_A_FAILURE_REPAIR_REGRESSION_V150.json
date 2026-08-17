@@ -1,0 +1,22 @@
+{
+  "authority": "V8.3.149 Batch A immutable failures for V8.3.150 bounded repair",
+  "source_sealed_execution_head": "38aa09dd2a7f3d4b2129b535c2af2929663ece28",
+  "failures": [
+    {"case_id":"V149-PB1-040","surface":"I feel overloaded by the move, yet I have not said what I actually do when that happens.","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V149-PB1-037","surface":"The note says I approved the refund, while another paragraph says my colleague approved it; it never resolves which account is accurate.","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V149-PB1-057","surface":"Khong co bang chung hanh vi rieng nao kem theo cau nay. Trong ho so lien quan den tien dat coc, Tin nhan nhac viec kiem tra nhieu lan nhung khong ro do la toi hay nguoi yeu toi.","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V149-PB1-133","surface":"Van ban nay chi duoc dung de xac dinh chu the hanh dong. Sau khi nhan mot hoa don dang tranh chap, Theo ban, toi nen khieu nai hoa don hay tra luon?","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V149-PB1-142","surface":"Tell me straight: nên challenge invoice hay pay it?","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V149-PB1-203","surface":"Khong co boi canh nao khac duoc cung cap. Trong case study dung de thao luan nhom, Mot case study mo ta nguoi mua doi cach xu ly sau khi gia duoc sua.","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V149-PB1-204","surface":"Day la toan bo cau dang duoc kiem tra ve routing. Trong bai tap ve hanh vi tren cong thong tin, Gia su mot sinh vien hu cau kiem tra cung trang diem nhieu lan trong ngay.","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V149-PB1-165","surface":"Day la toan bo cau dang duoc kiem tra ve routing. Trong luc doi tin nhan tu nguoi yeu, Khi nao nguoi yeu toi se nhan lai?","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V149-PB1-161","surface":"Không có bối cảnh nào khác được cung cấp. Bao lâu nữa bệnh viện mới cho tôi lịch hẹn?","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V149-PB1-018","surface":"Tôi đang lo về kết quả hồ sơ, nhưng chưa nêu hành động lặp lại, né tránh, vội hay đứng hình nào.","expected":{"route":"input:self-lived","families":[],"sequence":false}},
+    {"case_id":"V149-PB1-012","surface":"Tình huống liên quan đến kế hoạch đi lại sắp tới. Tôi cần gọi ngân hàng về khoản phí, nhưng tối đó lại dọn ảnh cũ để chưa phải xử lý cuộc gọi.","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"case_id":"V149-PB1-027","surface":"Khi toi dang chuan bi ke hoach cho quy moi, Toi thay that vong ve ket qua, nhung chua mo ta viec kiem tra lap, tri hoan, voi hay dung lai.","expected":{"route":"input:self-lived","families":[],"sequence":false}},
+    {"case_id":"V149-PB1-006","surface":"I had left the landlord's email unanswered; after a revised tenancy date arrived, I replied and reorganised the move.","expected":{"route":"input:self-lived","families":["adaptive","ignore"],"sequence":true}},
+    {"case_id":"V149-PB1-081","surface":"My brother accepted his loan offer immediately; the decision was entirely his.","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V149-PB1-107","surface":"Upstairs tenant keeps moving his repair slot; tôi không phải person delaying it.","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V149-PB1-085","surface":"Một khách hàng đặt phòng quá vội trước khi đọc điều khoản; tôi chỉ hỏi về hành động của cô ấy.","expected":{"route":"input:third-party-only","families":[],"sequence":false}}
+  ]
+}
