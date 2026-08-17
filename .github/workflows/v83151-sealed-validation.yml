@@ -28,7 +28,7 @@ jobs:
           f=json.loads(pathlib.Path('V8_3_151_SEALED/V8_3_151_SEALED_EXECUTION_FIXTURE_V1.json').read_text())
           assert f['authority']=='V8.3.151 SEALED EXECUTION FIXTURE V1'
           assert f['development_authority_commit']=='240024b7e0674127d1557b6239861401e72d7446'
-          assert f['candidate_sha256']=='2f111f5277e1f264565853b660c3bed79c43e058248b97e4da71b2500d572952'
+          assert f['candidate_sha256']=='265c812c633c34e4b8cc7821ed3f028075cd66a4e391e9f407815f73c28786c2'
           assert f['sealed_before_execution'] is True
           assert f['V8_3_145_Batch_B_accessed'] is False and f['V8_3_149_Batch_B_accessed'] is False and f['V8_3_150_Batch_B_accessed'] is False
           assert len(f['cases'])==60 and len(f['batch_a'])==30 and len(f['batch_b'])==30 and not(set(f['batch_a'])&set(f['batch_b']))
