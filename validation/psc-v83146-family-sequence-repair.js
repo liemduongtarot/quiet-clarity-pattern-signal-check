@@ -24,7 +24,8 @@ function repair(raw,base){
  const explicitAdaptive=has(/(?:new|updated|revised|corrected|genuine|real update|material update|thong tin moi|du lieu moi|so lieu moi|cap nhat|sua).{0,140}(?:adjust|adapt|changed|corrected|updated|doi cach|dieu chinh|xu ly theo)/,doc)
    ||has(/(?:adjusted|adapted|changed|corrected|updated|doi cach|dieu chinh).{0,130}(?:new|updated|revised|corrected|evidence|information|data|facts|thong tin|du lieu|so lieu)/,doc);
  const explicitSlow=has(/(?:reopen|recheck|kept checking|repeatedly check|repeatedly review|xem di xem lai|xem lai nhieu lan|kiem tra lap|kiem tra lai|quay lai).{0,120}(?:unchanged|same|nothing new|no new|not changed|y nguyen|khong doi|van khong co thong tin moi|same status|same page|same information)/,doc)
-   ||has(/(?:unchanged|same|nothing new|no new|not changed|y nguyen|khong doi|van khong co thong tin moi).{0,120}(?:reopen|recheck|check|review|quay lai|kiem tra|xem lai)/,doc);
+   ||has(/(?:unchanged|same|nothing new|no new|not changed|y nguyen|khong doi|van khong co thong tin moi).{0,120}(?:reopen|recheck|check|review|quay lai|kiem tra|xem lai)/,doc)
+   ||has(/(?:xem di xem lai|xem lai nhieu lan|kiem tra lap|lap di lap lai|repeated review|repeatedly check|repeatedly review|kept checking|kept rechecking)/,doc);
  const explicitSet=[];
  if(families.includes('ignore')&&explicitIgnore)explicitSet.push('ignore');
  if(families.includes('fast')&&explicitFast)explicitSet.push('fast');
