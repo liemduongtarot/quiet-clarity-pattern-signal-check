@@ -7,6 +7,17 @@ const uniq=a=>[...new Set(a||[])],has=(r,s)=>r.test(s);
 function repair(raw,base){
  if(base.input_route?.id!=='input:self-lived')return{families:[],sequence:false};
  const doc=fold(raw);let families=uniq(base.families||[]),sequence=!!base.sequence;
+ const inheritedV144=uniq(base.canonical_shadow?.v144?.families||[]);
+ const inheritedV144Sequence=!!base.canonical_shadow?.v144?.sequence;
+ const v145SuppressionState=
+   has(/(?:last year|months ago|previously|used to|old issue|belonged to the past|thuoc ve giai doan truoc|giai doan truoc|truoc day|truoc do|da tung).{0,170}(?:stopped|ended|no longer|not happening now|ceased|has since ceased|khong con|da dung|da het|hien tai toi khong con|gio da dung hoan toan)/,doc)
+   ||has(/(?:frustrated|disappointed|upset|unhappy|lo|buon|that vong|kho chiu).{0,140}(?:no .{0,25}(?:behavio(?:u)?ral response|action|checking|avoidance|rushing|freezing)|not a description of any|only an emotional reaction|khong co hanh dong|khong co phan ung)/,doc)
+   ||has(/(?:no checking|no repeated review|no postponement|no rushing|no freezing|not a description of any checking or avoidance|no behavioural response at all|no action pattern is stated|khong co hanh dong kiem tra lap|khong co .{0,50}(?:tri hoan|voi|freeze))/,doc)
+   ||has(/(?:hmrc|authority|provider|system|portal|third party|external|co quan|he thong|ben ngoai|don vi khac|ben thu ba).{0,120}(?:had not issued|had not supplied|had not provided|not issued|not supplied|not provided|missing|dependency|delayed|held the process up|chua cap|chua cung cap|thieu ma|thieu).{0,160}(?:not because i|not due to|was ready to continue|once .{0,35} arrived|completed my own step|delay was not caused by me|khong phai do toi|toi da san sang)/,doc)
+   ||has(/(?:checked|reviewed).{0,40}(?:once).{0,100}(?:corrected one typo|corrected a typo|fixed one typo|submitted|sent|completed|finished)/,doc)
+   ||has(/(?:normally|normal sequence|ordinary sequence|ordinary way|on schedule|on time|dung thoi gian|dung han|nhu thuong).{0,90}(?:submit|sent|completed|finished|xu ly|nop)/,doc);
+ if(!v145SuppressionState&&inheritedV144.length)families=uniq([...inheritedV144,...families]);
+ if(!v145SuppressionState&&inheritedV144Sequence&&families.length>=2)sequence=true;
  const comparisonOnly=has(/(?:doi chieu|so sanh|compare|cross-check)/,doc)
    && !has(/(?:new evidence|new information|new data|material update|genuine update|real update|updated facts|revised facts|thong tin moi|du lieu moi|so lieu moi|cap nhat that su|ban sua chinh thuc|quy trinh moi).{0,140}(?:adjust|adapt|changed approach|changed course|dieu chinh|doi cach|thich nghi)/,doc)
    && !has(/(?:adjusted|adapted|changed approach|changed course|dieu chinh|doi cach|thich nghi).{0,140}(?:new|updated|revised|evidence|information|data|facts|thong tin|du lieu|so lieu|cap nhat)/,doc);
