@@ -4,7 +4,7 @@ on:
     branches: [v83156-validation]
 jobs:
   validate:
-    if: github.event.head_commit.message == 'Run V8.3.156 deep validation'
+    if: github.event.head_commit.message == 'Run V8.3.156 deep validation transport v2'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -82,13 +82,15 @@ jobs:
         run: |
           mkdir -p .e2e; printf '{"private":true}\n' > .e2e/package.json
           npm install --prefix .e2e --no-package-lock playwright@1.55.0
-          .e2e/node_modules/.bin/playwright install --with-deps chromium
+          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          test -n "$CHROME"
+          printf '%s\n' "$CHROME" > V8_3_156_CHROME_PATH.txt
       - name: Browser E2E
         run: |
           cd PSC_V8_3_138_DEV/dist/client;python3 -m http.server 4173 --bind 127.0.0.1 > ../../../V8_3_156_HTTP.log 2>&1 & echo $! > ../../../V8_3_156_HTTP.pid;cd ../../..
           node - <<'NODE'
           const fs=require('fs'),{createRequire}=require('module'),req=createRequire(process.cwd()+'/x.js'),{chromium}=req('./.e2e/node_modules/playwright');
-          (async()=>{const A=JSON.parse(fs.readFileSync('validation/V8_3_155_BATCH_A_FAILURE_REPAIR_REGRESSION_V156.json')).failures,b=await chromium.launch({headless:true});let err=0;
+          (async()=>{const A=JSON.parse(fs.readFileSync('validation/V8_3_155_BATCH_A_FAILURE_REPAIR_REGRESSION_V156.json')).failures,exe=fs.readFileSync('V8_3_156_CHROME_PATH.txt','utf8').trim(),b=await chromium.launch({headless:true,executablePath:exe,args:['--no-sandbox']});let err=0;
           try{const p=await b.newPage();p.on('console',m=>{if(m.type()==='error')err++});p.on('pageerror',()=>err++);await p.goto('http://127.0.0.1:4173/candidate.html',{waitUntil:'networkidle'});
           const pf=await p.evaluate(()=>({same:QCSemanticCoreV4===QCSemanticCoreV25,browser:PSC_V83156_BROWSER?.version}));
           if(!pf.same||pf.browser!=='V8.3.156-BROWSER-AUTHORITY-LOCK')throw Error(JSON.stringify(pf));
