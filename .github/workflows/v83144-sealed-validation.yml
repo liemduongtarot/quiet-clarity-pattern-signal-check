@@ -1,0 +1,126 @@
+name: V8.3.144 Sealed Validation First Run
+
+on:
+  push:
+    branches: [v83144-sealed-validation]
+
+jobs:
+  sealed-first-run:
+    if: github.event.head_commit.message == 'Execute V8.3.144 sealed validation first-run'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Enforce first workflow attempt only
+        run: |
+          test "${{ github.run_attempt }}" = "1" || { echo 'SEALED RERUN PROHIBITED'; exit 97; }
+
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Verify and extract immutable sealed pre-run checkpoint
+        run: |
+          echo 'de52b77d487510c58be5488fa9d5959629fde5a50d5c955b84339e0bc0c21549  validation/PSC_V8_3_144_SEALED_VALIDATION_PRE_RUN_CHECKPOINT.zip' | sha256sum -c -
+          rm -rf validation/sealed-pre-run
+          mkdir -p validation/sealed-pre-run
+          unzip -q validation/PSC_V8_3_144_SEALED_VALIDATION_PRE_RUN_CHECKPOINT.zip -d validation/sealed-pre-run
+          cp validation/sealed-pre-run/V8_3_144_SEALED_POOL_GOLD.json validation/V8_3_144_SEALED_POOL_GOLD.json
+          cp validation/sealed-pre-run/V8_3_144_SEALED_BATCH_A_30.json validation/V8_3_144_SEALED_BATCH_A_30.json
+          cp validation/sealed-pre-run/V8_3_144_SEALED_BATCH_B_30.json validation/V8_3_144_SEALED_BATCH_B_30.json
+          cp validation/sealed-pre-run/V8_3_144_SEALED_AUTHORITY_MANIFEST.json validation/V8_3_144_SEALED_AUTHORITY_MANIFEST.json
+
+      - name: Extract immutable V8.3.139 authority parent
+        run: |
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z: z.extractall('.')
+          PY
+
+      - name: Materialize exact V8.3.144 semantic authority
+        run: |
+          cp validation/psc-v83142-sealed-failure-convergence.js PSC_V8_3_138_DEV/public/psc-v83142-sealed-failure-convergence.js
+          cp validation/psc-v83143-semantic-convergence.js PSC_V8_3_138_DEV/public/psc-v83143-semantic-convergence.js
+          cp validation/psc-v83144-sealed-failure-convergence.js PSC_V8_3_138_DEV/public/psc-v83144-sealed-failure-convergence.js
+          cp validation/psc-v83144-browser-authority-lock.js PSC_V8_3_138_DEV/public/psc-v83144-browser-authority-lock.js
+          node --check PSC_V8_3_138_DEV/public/psc-v83144-sealed-failure-convergence.js
+          node --check PSC_V8_3_138_DEV/public/psc-v83144-browser-authority-lock.js
+
+      - name: Verify sealed inputs before execution
+        run: |
+          python - <<'PY'
+          import json
+          g=json.load(open('validation/V8_3_144_SEALED_POOL_GOLD.json'))
+          a=json.load(open('validation/V8_3_144_SEALED_BATCH_A_30.json'))
+          b=json.load(open('validation/V8_3_144_SEALED_BATCH_B_30.json'))
+          assert g['classification']=='IMMUTABLE_GOLD_LOCKED_BEFORE_EXECUTION' and len(g['cases'])==60
+          assert a['classification']=='SEALED_FIRST_RUN_MEMBERSHIP' and b['classification']=='SEALED_FIRST_RUN_MEMBERSHIP'
+          assert a['execution_count']==0 and b['execution_count']==0 and len(a['cases'])==30 and len(b['cases'])==30
+          ai={x['case_id'] for x in a['cases']}; bi={x['case_id'] for x in b['cases']}; gi={x['case_id'] for x in g['cases']}
+          assert not (ai & bi) and ai|bi==gi
+          print('SEALED INPUT INTEGRITY PASS')
+          PY
+
+      - name: Batch A first-run exactly once
+        id: batch_a
+        run: node validation/v83144-sealed-runner.mjs A
+
+      - name: Batch B first-run exactly once after A PASS
+        id: batch_b
+        if: success()
+        run: node validation/v83144-sealed-runner.mjs B
+
+      - name: Record freeze / acceptance state
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          def read(p):
+            q=pathlib.Path(p); return json.load(open(q)) if q.exists() else None
+          a=read('V8_3_144_BATCH_A_FIRST_RUN_SUMMARY.json'); b=read('V8_3_144_BATCH_B_FIRST_RUN_SUMMARY.json')
+          if not a:
+            state='EXECUTION_BLOCKED_BEFORE_BATCH_A'
+          elif a['status']!='PASS':
+            state='FROZEN_AFTER_BATCH_A_FAILURE'
+          elif not b:
+            state='BATCH_A_PASS_BATCH_B_NOT_COMPLETED'
+          elif b['status']!='PASS':
+            state='FROZEN_AFTER_BATCH_B_FAILURE'
+          else:
+            state='SEALED_BATCH_A_B_PASS_AWAITING_STEP_111_OWNER_AUTHORIZATION'
+          out={'candidate':'V8.3.144','state':state,'batch_a':a,'batch_b':b,'step_111_executed':False,'production_authorized':False,'github_run_id':'${{ github.run_id }}','github_run_attempt':'${{ github.run_attempt }}','commit':'${{ github.sha }}'}
+          pathlib.Path('V8_3_144_SEALED_VALIDATION_STATE.json').write_text(json.dumps(out,indent=2))
+          print(state)
+          PY
+
+      - name: Create meaningful checkpoint ZIP + SHA256
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib, shutil, hashlib, zipfile
+          stage=pathlib.Path('V8_3_144_SEALED_FIRST_RUN_CHECKPOINT'); stage.mkdir(exist_ok=True)
+          wanted=[
+            'validation/V8_3_144_SEALED_POOL_GOLD.json','validation/V8_3_144_SEALED_BATCH_A_30.json','validation/V8_3_144_SEALED_BATCH_B_30.json','validation/V8_3_144_SEALED_AUTHORITY_MANIFEST.json',
+            'validation/psc-v83142-sealed-failure-convergence.js','validation/psc-v83143-semantic-convergence.js','validation/psc-v83144-sealed-failure-convergence.js','validation/psc-v83144-browser-authority-lock.js',
+            'V8_3_144_BATCH_A_FIRST_RUN_CASE_LEVEL.json','V8_3_144_BATCH_A_FIRST_RUN_SUMMARY.json','V8_3_144_BATCH_B_FIRST_RUN_CASE_LEVEL.json','V8_3_144_BATCH_B_FIRST_RUN_SUMMARY.json','V8_3_144_SEALED_VALIDATION_STATE.json'
+          ]
+          for s in wanted:
+            p=pathlib.Path(s)
+            if p.exists(): shutil.copy2(p,stage/p.name)
+          def sha(p): return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          lines=[f'{sha(p)}  {p.name}' for p in sorted(stage.iterdir()) if p.is_file()]
+          (stage/'SHA256_MANIFEST.txt').write_text('\n'.join(lines)+'\n')
+          z=pathlib.Path('PSC_V8_3_144_SEALED_FIRST_RUN_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as f:
+            for p in sorted(stage.iterdir()): f.write(p,p.name)
+          pathlib.Path('PSC_V8_3_144_SEALED_FIRST_RUN_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          print(sha(z))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_144_SEALED_FIRST_RUN_CHECKPOINT
+          path: |
+            PSC_V8_3_144_SEALED_FIRST_RUN_CHECKPOINT.zip
+            PSC_V8_3_144_SEALED_FIRST_RUN_CHECKPOINT_SHA256.txt
