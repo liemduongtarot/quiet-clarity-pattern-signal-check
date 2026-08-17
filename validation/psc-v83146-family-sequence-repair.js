@@ -17,9 +17,10 @@ function repair(raw,base){
  const intentionalNonEngagement=has(/(?:i|toi|minh).{0,40}(?:leave|left|keep|kept|de|bo).{0,55}(?:message|email|notification|tin nhan|thu).{0,45}(?:unopened|unread|chua mo|khong mo).{0,45}(?:on purpose|deliberately|intentionally|co y)/,doc);
  const prematureDecisionBeforeReview=has(/(?:i|toi|minh).{0,35}(?:choose|chose|select|selected|decide|decided|commit|committed|chon|lua chon|quyet dinh|chot).{0,90}(?:before|truoc khi).{0,90}(?:review|reviewing|check|checking|compare|comparing|xem|kiem tra|doi chieu|so sanh).{0,90}(?:relevant details|details|relevant information|information|facts|thong tin lien quan|thong tin|du kien)/,doc);
  const sufficientInfoParalysis=has(/(?:i|toi|minh).{0,45}(?:remain|still|van|cu).{0,35}(?:unable to choose|unable to decide|cannot choose|can't choose|cannot decide|can't decide|khong the chon|khong chon duoc|khong the quyet dinh|khong quyet duoc).{0,90}(?:despite|even though|although|du|mac du).{0,45}(?:enough information|sufficient information|enough details|du thong tin|thong tin da du)/,doc);
+ const reasonableOptionsParalysis=has(/(?:i|toi|minh).{0,35}(?:cannot choose|can't choose|unable to choose|khong chon duoc|khong the chon).{0,55}(?:first step|buoc dau tien|buoc dau).{0,90}(?:despite|even though|although|du|mac du).{0,55}(?:reasonable options|several reasonable options|vai lua chon hop ly|nhung lua chon hop ly)/,doc);
  if((busyAvoidance||intentionalNonEngagement)&&!families.includes('ignore'))families.push('ignore');
  if(prematureDecisionBeforeReview&&!families.includes('fast'))families.push('fast');
- if(sufficientInfoParalysis&&!families.includes('freeze'))families.push('freeze');
+ if((sufficientInfoParalysis||reasonableOptionsParalysis)&&!families.includes('freeze'))families.push('freeze');
  families=uniq(families);
  const ordered=has(/(?:then|later|afterward|after that|eventually|finally|roi|sau do|roi sau do|cuoi cung)/,doc);
  if(families.length>=2&&ordered)sequence=true;
