@@ -1,0 +1,16 @@
+{
+  "candidate": "V8.3.142",
+  "batch": "A",
+  "run": "first-run",
+  "status": "FAILED_REVIEW_CANDIDATE",
+  "total": 30,
+  "passed": 15,
+  "failed": 15,
+  "route_failures": 6,
+  "family_failures": 9,
+  "sequence_failures": 0,
+  "batch_b_executed": false,
+  "step_111_executed": false,
+  "checkpoint_sha256": "4a04a081f2dd982f12e0921da0411dadcbf3b8ad3aea777d13e0c79e67983acd",
+  "note": "Full immutable failure evidence is preserved in PSC_V8_3_142_SEALED_VALIDATION_FAILED_CHECKPOINT.zip. V8.3.142 is frozen as a failed review candidate; no Batch B, production promotion, or Step 111 was executed."
+}
