@@ -1,0 +1,29 @@
+name: V8.3.146 Diagnose 600 Case
+on:
+  push:
+    branches: [v83146-validation]
+jobs:
+  diagnose:
+    if: github.event.head_commit.message == 'Diagnose V8.3.146 600 ignore case 257'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract parent test authority only
+        run: |
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          PY
+      - name: Print exact ignore-case generator context
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('tests/v83139-600-real-case-regression.test.cjs')
+          s=p.read_text().splitlines()
+          for i,line in enumerate(s):
+              if 'ignore case' in line or 'ignoreCases' in line or "'ignore'" in line and ('cases' in line.lower() or 'expected' in line.lower()):
+                  lo=max(0,i-35); hi=min(len(s),i+40)
+                  print(f'--- CONTEXT lines {lo+1}-{hi} around source line {i+1} ---')
+                  for j in range(lo,hi): print(f'{j+1:04d}: {s[j]}')
+          PY
