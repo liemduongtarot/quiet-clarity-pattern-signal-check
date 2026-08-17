@@ -16,8 +16,25 @@ function repair(raw,base){
    ||has(/(?:hmrc|authority|provider|system|portal|third party|external|co quan|he thong|ben ngoai|don vi khac|ben thu ba).{0,120}(?:had not issued|had not supplied|had not provided|not issued|not supplied|not provided|missing|dependency|delayed|held the process up|chua cap|chua cung cap|thieu ma|thieu).{0,160}(?:not because i|not due to|was ready to continue|once .{0,35} arrived|completed my own step|delay was not caused by me|khong phai do toi|toi da san sang)/,doc)
    ||has(/(?:checked|reviewed).{0,40}(?:once).{0,100}(?:corrected one typo|corrected a typo|fixed one typo|submitted|sent|completed|finished)/,doc)
    ||has(/(?:normally|normal sequence|ordinary sequence|ordinary way|on schedule|on time|dung thoi gian|dung han|nhu thuong).{0,90}(?:submit|sent|completed|finished|xu ly|nop)/,doc);
- if(!v145SuppressionState&&inheritedV144.length)families=uniq([...inheritedV144,...families]);
- if(!v145SuppressionState&&inheritedV144Sequence&&families.length>=2)sequence=true;
+ const explicitIgnore=has(/(?:\bavoided\b|\bavoiding\b|\bpostponed\b|\bpostpone\b|put(?:ting)? .{0,22}(?:off|aside|to one side)|deliberately ignored|intentionally ignored|\bne\b|\btri hoan\b|\bbo qua\b|\bde lai\b)/,doc)
+   ||has(/(?:instead of|rather than|thay vi).{0,150}(?:unrelated|low-priority|minor task|unimportant|old emails|spreadsheet|downloads folder|viec phu|thu muc).{0,150}(?:avoid|postpone|delay|chua phai|de ne|ne viec|xu ly viec chinh|deal with the main|start)/,doc);
+ const explicitFast=has(/(?:within minutes|almost immediately|too quickly|qua nhanh|trong vai phut|gan nhu ngay lap tuc|voi vang|voi chot|voi xac nhan|sat cuoi|sat han|last minute).{0,130}(?:decid|select|choose|confirm|submit|send|booking|authoris|sign|quyet dinh|chon|xac nhan|gui|chot|booking)/,doc)
+   ||has(/(?:decid|select|choose|confirm|submit|send|booking|authoris|sign|quyet dinh|chon|xac nhan|gui|chot).{0,90}(?:within minutes|almost immediately|too quickly|qua nhanh|trong vai phut|gan nhu ngay lap tuc|truoc khi|before).{0,100}(?:review|compare|check|doi chieu|xem|kiem tra|information|details|thong tin)?/,doc);
+ const explicitFreeze=has(/(?:froze|freeze|frozen|got stuck|became stuck|stuck at|could not start|couldn't start|could not begin|couldn't begin|bi ket|dung hinh|khong the bat dau|khong bat dau duoc)/,doc);
+ const explicitAdaptive=has(/(?:new|updated|revised|corrected|genuine|real update|material update|thong tin moi|du lieu moi|so lieu moi|cap nhat|sua).{0,140}(?:adjust|adapt|changed|corrected|updated|doi cach|dieu chinh|xu ly theo)/,doc)
+   ||has(/(?:adjusted|adapted|changed|corrected|updated|doi cach|dieu chinh).{0,130}(?:new|updated|revised|corrected|evidence|information|data|facts|thong tin|du lieu|so lieu)/,doc);
+ const explicitSlow=has(/(?:reopen|recheck|kept checking|repeatedly check|repeatedly review|xem di xem lai|xem lai nhieu lan|kiem tra lap|kiem tra lai|quay lai).{0,120}(?:unchanged|same|nothing new|no new|not changed|y nguyen|khong doi|van khong co thong tin moi|same status|same page|same information)/,doc)
+   ||has(/(?:unchanged|same|nothing new|no new|not changed|y nguyen|khong doi|van khong co thong tin moi).{0,120}(?:reopen|recheck|check|review|quay lai|kiem tra|xem lai)/,doc);
+ const explicitSet=[];
+ if(families.includes('ignore')&&explicitIgnore)explicitSet.push('ignore');
+ if(families.includes('fast')&&explicitFast)explicitSet.push('fast');
+ if(families.includes('freeze')&&explicitFreeze)explicitSet.push('freeze');
+ if(families.includes('adaptive')&&explicitAdaptive)explicitSet.push('adaptive');
+ if(families.includes('slow')&&explicitSlow)explicitSet.push('slow');
+ if(v145SuppressionState)families=[];
+ else if(explicitSet.length)families=uniq(explicitSet);
+ else if(inheritedV144.length)families=uniq(inheritedV144);
+ if(!v145SuppressionState&&!explicitSet.length&&inheritedV144Sequence&&families.length>=2)sequence=true;
  const comparisonOnly=has(/(?:doi chieu|so sanh|compare|cross-check)/,doc)
    && !has(/(?:new evidence|new information|new data|material update|genuine update|real update|updated facts|revised facts|thong tin moi|du lieu moi|so lieu moi|cap nhat that su|ban sua chinh thuc|quy trinh moi).{0,140}(?:adjust|adapt|changed approach|changed course|dieu chinh|doi cach|thich nghi)/,doc)
    && !has(/(?:adjusted|adapted|changed approach|changed course|dieu chinh|doi cach|thich nghi).{0,140}(?:new|updated|revised|evidence|information|data|facts|thong tin|du lieu|so lieu|cap nhat)/,doc);
