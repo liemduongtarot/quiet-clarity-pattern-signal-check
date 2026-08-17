@@ -1,0 +1,111 @@
+name: V8.3.146 V3 Sealed Validation
+on:
+  push:
+    branches: [v83146-v3-sealed-validation]
+jobs:
+  sealed_validate:
+    if: github.event.head_commit.message == 'Run V8.3.146 V3 sealed validation'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify sealed fixture and materialize exact V8.3.146 authority
+        run: |
+          python - <<'PY'
+          import json,hashlib,pathlib,zipfile
+          f=pathlib.Path('validation/v83146-v3-sealed/V8_3_146_V3_SEALED_EXECUTION_FIXTURE.json')
+          b=f.read_bytes(); o=json.loads(b)
+          assert o['authority']=='V8.3.146 V3 SEALED EXECUTION FIXTURE'
+          assert o['base_commit']=='81e4398a2088d4fd4555c0a331b1fcf7e07ff5be'
+          assert o['candidate_sha256']=='21c70aff9e08afeca5165bac89cb40e3862fa5e9890d837a6cf36a34b509a815'
+          assert o['selection_sha256']=='ba4f1f8cad596dd2a0bf39260b9cc0433eeabd7e96af8989885535035826e3de'
+          assert o['gold_sha256']=='5d7017f6ad46f84b4192142183c0638452d3027a83491c6145150af6cfd5b130'
+          assert o['membership_sha256']=='c465e38488517b87ab4202ac2920041bc724760ab20e88ba800eeba632f04b64'
+          assert o['sealed_before_execution'] is True and o['V8_3_145_Batch_B_accessed'] is False
+          ids=[c['case_id'] for c in o['cases']]
+          assert len(ids)==60 and len(set(ids))==60
+          A=o['batch_a'];B=o['batch_b']
+          assert len(A)==len(B)==30 and not (set(A)&set(B)) and set(A)|set(B)==set(ids)
+          assert all(not x.startswith('V145-BANK-') for x in ids)
+          pathlib.Path('V8_3_146_V3_SEALED_FIXTURE_SHA256.txt').write_text(hashlib.sha256(b).hexdigest()+'  '+str(f)+'\n')
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          PY
+          for f in psc-v83142-sealed-failure-convergence.js psc-v83143-semantic-convergence.js psc-v83144-sealed-failure-convergence.js psc-v83145-route-layer.js psc-v83145-family-state-layer.js psc-v83146-route-boundary-repair.js psc-v83146-family-sequence-repair.js psc-v83146-browser-authority-lock.js; do cp validation/$f PSC_V8_3_138_DEV/public/; done
+          sha256sum PSC_V8_3_138_DEV/public/psc-v83146-route-boundary-repair.js PSC_V8_3_138_DEV/public/psc-v83146-family-sequence-repair.js PSC_V8_3_138_DEV/public/psc-v83146-browser-authority-lock.js > V8_3_146_V3_RUNTIME_AUTHORITY_SHA256.txt
+      - name: SEALED Batch A first run exactly once
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),vm=require('vm');
+          const fixture=JSON.parse(fs.readFileSync('validation/v83146-v3-sealed/V8_3_146_V3_SEALED_EXECUTION_FIXTURE.json','utf8'));
+          const by=Object.fromEntries(fixture.cases.map(c=>[c.case_id,c]));
+          const s={};vm.createContext(s);
+          const files=['psc-v3.js','psc-v4.js','psc-v83121-r1-reconstructed.js','psc-v83122-operator-aware.js','psc-v83123-family-preservation.js','psc-v83124-operator-context.js','psc-v83125-semantic-routing.js','psc-v83126-public-route-canonicalization.js','psc-v83127-review-intent-authority.js','psc-v83129-canonical-shadow.js','psc-v83130-representation-coverage.js','psc-v83131-proposition-consolidation.js','psc-v83132-relation-graph.js','psc-v83133-canonical-role-binding.js','psc-v83135-scoped-operator.js','psc-v83138-semantic-convergence.js','psc-v83139-semantic-convergence.js','psc-v83142-sealed-failure-convergence.js','psc-v83143-semantic-convergence.js','psc-v83144-sealed-failure-convergence.js','psc-v83145-route-layer.js','psc-v83145-family-state-layer.js','psc-v83146-route-boundary-repair.js','psc-v83146-family-sequence-repair.js'];
+          for(const f of files)vm.runInContext(fs.readFileSync('PSC_V8_3_138_DEV/public/'+f,'utf8'),s);
+          if(!s.QCSemanticCoreV15)throw Error('QCSemanticCoreV15 missing');
+          const results=[];let passed=0;
+          for(const id of fixture.batch_a){
+            const c=by[id],r=s.QCSemanticCoreV15.analyze(c.surface);
+            const actual={route:r.input_route.id,families:[...r.families].sort(),sequence:!!r.sequence};
+            const expected={route:c.expected.route,families:[...c.expected.families].sort(),sequence:!!c.expected.sequence};
+            const pass=JSON.stringify(actual)===JSON.stringify(expected); if(pass)passed++;
+            results.push({case_id:id,pass,expected,actual});
+          }
+          const out={authority:'V8.3.146 V3 SEALED BATCH A FIRST RUN',run_id:process.env.GITHUB_RUN_ID,run_attempt:process.env.GITHUB_RUN_ATTEMPT,total:fixture.batch_a.length,passed,failed:fixture.batch_a.length-passed,results};
+          fs.writeFileSync('V8_3_146_V3_BATCH_A_FIRST_RUN_RESULTS.json',JSON.stringify(out,null,2));
+          console.log(`SEALED Batch A first run: ${passed}/${fixture.batch_a.length}`);
+          if(passed!==fixture.batch_a.length)process.exit(1);
+          NODE
+      - name: SEALED Batch B exactly once after A PASS
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),vm=require('vm');
+          const fixture=JSON.parse(fs.readFileSync('validation/v83146-v3-sealed/V8_3_146_V3_SEALED_EXECUTION_FIXTURE.json','utf8'));
+          const by=Object.fromEntries(fixture.cases.map(c=>[c.case_id,c]));
+          const a=JSON.parse(fs.readFileSync('V8_3_146_V3_BATCH_A_FIRST_RUN_RESULTS.json','utf8'));
+          if(a.failed!==0||a.passed!==30)throw Error('Batch A not PASS; Batch B forbidden');
+          const s={};vm.createContext(s);
+          const files=['psc-v3.js','psc-v4.js','psc-v83121-r1-reconstructed.js','psc-v83122-operator-aware.js','psc-v83123-family-preservation.js','psc-v83124-operator-context.js','psc-v83125-semantic-routing.js','psc-v83126-public-route-canonicalization.js','psc-v83127-review-intent-authority.js','psc-v83129-canonical-shadow.js','psc-v83130-representation-coverage.js','psc-v83131-proposition-consolidation.js','psc-v83132-relation-graph.js','psc-v83133-canonical-role-binding.js','psc-v83135-scoped-operator.js','psc-v83138-semantic-convergence.js','psc-v83139-semantic-convergence.js','psc-v83142-sealed-failure-convergence.js','psc-v83143-semantic-convergence.js','psc-v83144-sealed-failure-convergence.js','psc-v83145-route-layer.js','psc-v83145-family-state-layer.js','psc-v83146-route-boundary-repair.js','psc-v83146-family-sequence-repair.js'];
+          for(const f of files)vm.runInContext(fs.readFileSync('PSC_V8_3_138_DEV/public/'+f,'utf8'),s);
+          const results=[];let passed=0;
+          for(const id of fixture.batch_b){
+            const c=by[id],r=s.QCSemanticCoreV15.analyze(c.surface);
+            const actual={route:r.input_route.id,families:[...r.families].sort(),sequence:!!r.sequence};
+            const expected={route:c.expected.route,families:[...c.expected.families].sort(),sequence:!!c.expected.sequence};
+            const pass=JSON.stringify(actual)===JSON.stringify(expected); if(pass)passed++;
+            results.push({case_id:id,pass,expected,actual});
+          }
+          const out={authority:'V8.3.146 V3 SEALED BATCH B',run_id:process.env.GITHUB_RUN_ID,run_attempt:process.env.GITHUB_RUN_ATTEMPT,total:fixture.batch_b.length,passed,failed:fixture.batch_b.length-passed,results};
+          fs.writeFileSync('V8_3_146_V3_BATCH_B_RESULTS.json',JSON.stringify(out,null,2));
+          console.log(`SEALED Batch B: ${passed}/${fixture.batch_b.length}`);
+          if(passed!==fixture.batch_b.length)process.exit(1);
+          NODE
+      - name: Package sealed validation checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,zipfile,hashlib,json,shutil
+          st=pathlib.Path('V8_3_146_V3_SEALED_CHECKPOINT');st.mkdir(exist_ok=True)
+          for f in ['V8_3_146_V3_SEALED_FIXTURE_SHA256.txt','V8_3_146_V3_RUNTIME_AUTHORITY_SHA256.txt','V8_3_146_V3_BATCH_A_FIRST_RUN_RESULTS.json','V8_3_146_V3_BATCH_B_RESULTS.json']:
+              p=pathlib.Path(f)
+              if p.exists():shutil.copy2(p,st/p.name)
+          src=pathlib.Path('validation/v83146-v3-sealed/V8_3_146_V3_SEALED_EXECUTION_FIXTURE.json')
+          shutil.copy2(src,st/src.name)
+          status={'batch_a_executed':(st/'V8_3_146_V3_BATCH_A_FIRST_RUN_RESULTS.json').exists(),'batch_b_executed':(st/'V8_3_146_V3_BATCH_B_RESULTS.json').exists(),'step_111_executed':False,'production_authorized':False,'V8_3_145_Batch_B_accessed':False}
+          (st/'V8_3_146_V3_SEALED_STATUS.json').write_text(json.dumps(status,indent=2))
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+          z=pathlib.Path('PSC_V8_3_146_V3_SEALED_VALIDATION_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+              for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_146_V3_SEALED_VALIDATION_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_146_V3_SEALED_VALIDATION_CHECKPOINT
+          path: |
+            PSC_V8_3_146_V3_SEALED_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_146_V3_SEALED_VALIDATION_CHECKPOINT_SHA256.txt
