@@ -1,0 +1,68 @@
+{
+  "authority": "V8.3.165 V1 CARRIER DIAGNOSTIC",
+  "runtime_executed": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "objects": {
+    "selection": {
+      "parts": [
+        "V8_3_165_PRESEAL_OWNER_SELECTION_V1.json.gz.b64"
+      ],
+      "expected_canonical_sha256": "102bb455c95b2e42334c965b3a7d09d1773fccd3d50093fcb2537f1223b3fe5c",
+      "part_lengths": {
+        "V8_3_165_PRESEAL_OWNER_SELECTION_V1.json.gz.b64": 888
+      },
+      "result": "PASS",
+      "actual_canonical_sha256": "102bb455c95b2e42334c965b3a7d09d1773fccd3d50093fcb2537f1223b3fe5c"
+    },
+    "gold": {
+      "parts": [
+        "V8_3_165_INDEPENDENT_GOLD_V1.json.gz.b64.part01",
+        "V8_3_165_INDEPENDENT_GOLD_V1.json.gz.b64.part02",
+        "V8_3_165_INDEPENDENT_GOLD_V1.json.gz.b64.part03",
+        "V8_3_165_INDEPENDENT_GOLD_V1.json.gz.b64.part04",
+        "V8_3_165_INDEPENDENT_GOLD_V1.json.gz.b64.part05"
+      ],
+      "expected_canonical_sha256": "e495d5c2546629ffc7fb0f623c0a0b373e21d68085bf65b049c0e11eeea27eac",
+      "part_lengths": {
+        "V8_3_165_INDEPENDENT_GOLD_V1.json.gz.b64.part01": 1800,
+        "V8_3_165_INDEPENDENT_GOLD_V1.json.gz.b64.part02": 1800,
+        "V8_3_165_INDEPENDENT_GOLD_V1.json.gz.b64.part03": 1800,
+        "V8_3_165_INDEPENDENT_GOLD_V1.json.gz.b64.part04": 1800,
+        "V8_3_165_INDEPENDENT_GOLD_V1.json.gz.b64.part05": 480
+      },
+      "result": "DECOMPRESSION_OR_PARSE_FAIL",
+      "error": "error('Error -3 while decompressing data: invalid distance too far back')"
+    },
+    "membership": {
+      "parts": [
+        "V8_3_165_SEALED_MEMBERSHIP_V1.json.gz.b64"
+      ],
+      "expected_canonical_sha256": "393960bd88bcef9796cc62c75234c28718b1120ec8c6533a4ec64f58dcda7d96",
+      "part_lengths": {
+        "V8_3_165_SEALED_MEMBERSHIP_V1.json.gz.b64": 1000
+      },
+      "result": "PASS",
+      "actual_canonical_sha256": "393960bd88bcef9796cc62c75234c28718b1120ec8c6533a4ec64f58dcda7d96"
+    },
+    "fixture": {
+      "parts": [
+        "V8_3_165_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part01",
+        "V8_3_165_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part02",
+        "V8_3_165_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part03",
+        "V8_3_165_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part04",
+        "V8_3_165_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part05"
+      ],
+      "expected_canonical_sha256": "b47ca6e4535ad2974dead6bd9e4b78f7ed5ef0689db898c97102aa26843b3fbf",
+      "part_lengths": {
+        "V8_3_165_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part01": 1800,
+        "V8_3_165_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part02": 1800,
+        "V8_3_165_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part03": 1800,
+        "V8_3_165_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part04": 1800,
+        "V8_3_165_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part05": 760
+      },
+      "result": "PASS",
+      "actual_canonical_sha256": "b47ca6e4535ad2974dead6bd9e4b78f7ed5ef0689db898c97102aa26843b3fbf"
+    }
+  }
+}
