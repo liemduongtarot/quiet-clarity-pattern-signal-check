@@ -5,6 +5,7 @@ const VERSION='V8.3.163-V162-V1-SEALED-A-BOUNDED-REPAIR';
 const fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').replace(/[’‘“”]/g,'"').toLowerCase().replace(/\s+/g,' ').trim();
 const has=(r,s)=>r.test(s);
 function routeFrame(id,prev){const redirect=['input:prediction','input:hypothetical-or-example','input:decision-request'].includes(id);const clarify=['input:third-party-only','input:clarification-required'].includes(id);return{...(prev||{}),id,action:redirect?'redirect':clarify?'clarify':'continue',must_stop:['input:prediction','input:decision-request'].includes(id),must_redirect:redirect};}
+function explicitSelfLivedFreeze(d){return has(/(?:enough information|information was enough|facts were enough|thong tin da du|du lieu da du|du du kien).{0,120}(?:i still looked for more|i kept looking for more|toi van tim them|toi van mo them|van tim them tai lieu|van gom them).{0,120}(?:did not start|had not started|chua bat dau|chua hanh dong|chua lam)/,d);}
 function routeRepair(d){
   if(has(/(?:bao toi|noi toi|hay chon|quyet dinh|quyet thay toi|chon thay toi|decide for me|decide on my behalf|choose for me|make the final call).{0,100}(?:tiep tuc|tam dung|rut lui|accept|decline|yes|no|thay toi|for me|on my behalf)/,d))return'input:decision-request';
   if(has(/(?:classroom|training|workshop|case[- ]study|role[- ]play|fictional|imaginary|made[- ]up|fabricated|bai tap|gia su|hu cau|tuong tuong|gia lap|vi du hoc tap|vi du training)/,d))return'input:hypothetical-or-example';
@@ -16,11 +17,17 @@ function routeRepair(d){
 }
 function familyRepair(d,base){
   if(base.input_route?.id!=='input:self-lived')return{families:[],sequence:false};
+  if(explicitSelfLivedFreeze(d))return{families:['freeze'],sequence:false};
   if(has(/(?:urge to rush or avoid|rush hoac avoid|muon chot.*doi du|wanted.*immediate.*waited|used the concrete information|xu ly dung muc|responded proportionately|normal pace|du du kien.*moi lam)/,d))return{families:[],sequence:false};
   return{families:[...(base.families||[])],sequence:!!base.sequence};
 }
 function analyze(raw,domain='other',subtopic=null){
- const base=parent.analyze(raw,domain,subtopic),d=fold(raw),rid=routeRepair(d);
+ const base=parent.analyze(raw,domain,subtopic),d=fold(raw);
+ if(explicitSelfLivedFreeze(d)){
+   const input_route=routeFrame('input:self-lived',base.input_route);const r={families:['freeze'],sequence:false};
+   return{...base,version:VERSION,input_route,can_continue:true,must_stop:false,must_redirect:false,families:r.families,sequence:false,oscillation:false,response_known:true,canonical_shadow:{...(base.canonical_shadow||{}),difference_classification:'V8_3_163_V162_V1_SEALED_A_REPAIR',v163:{route:'input:self-lived',families:['freeze'],sequence:false}}};
+ }
+ const rid=routeRepair(d);
  if(rid){const input_route=routeFrame(rid,base.input_route);return{...base,version:VERSION,input_route,can_continue:input_route.action==='continue',must_stop:!!input_route.must_stop,must_redirect:!!input_route.must_redirect,families:[],sequence:false,oscillation:false,response_known:false,canonical_shadow:{...(base.canonical_shadow||{}),difference_classification:'V8_3_163_V162_V1_SEALED_A_REPAIR',v163:{route:rid,families:[],sequence:false}}};}
  const r=familyRepair(d,base);return{...base,version:VERSION,families:r.families,sequence:r.sequence,oscillation:r.sequence,response_known:r.families.length>0,canonical_shadow:{...(base.canonical_shadow||{}),difference_classification:'V8_3_163_V162_V1_SEALED_A_REPAIR',v163:{route:base.input_route?.id,families:[...r.families],sequence:r.sequence}}};
 }
