@@ -1,0 +1,47 @@
+name: V8.3.157 V1 Transport Preflight
+on:
+  push:
+    branches: [v83157-v1-sealed-validation]
+jobs:
+  preflight:
+    if: github.event.head_commit.message == 'Run V8.3.157 V1 transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct and verify immutable sealed material only
+        run: |
+          python - <<'PY'
+          import base64,gzip,pathlib,hashlib,json
+          root=pathlib.Path('validation/v83157-v1-sealed')
+          def mat(parts,out,sha):
+              s=''.join((root/p).read_text().strip() for p in parts)
+              assert len(s)%4==0,(out,'base64-length',len(s))
+              raw=gzip.decompress(base64.b64decode(s,validate=True))
+              got=hashlib.sha256(raw).hexdigest(); assert got==sha,(out,got,sha)
+              pathlib.Path(out).write_bytes(raw); return json.loads(raw)
+          sel=mat(['V8_3_157_PRESEAL_OWNER_SELECTION_V1.json.gz.b64.part01'],'V8_3_157_PRESEAL_OWNER_SELECTION_V1.json','ae004ee3c13324b18dd82ab5e193cbcccaf2a70ef3d0931f34b0468da3498c94')
+          gold=mat(['V8_3_157_INDEPENDENT_GOLD_V1.json.gz.b64.part01'],'V8_3_157_INDEPENDENT_GOLD_V1.json','5c218c61758cd9ef72fb647ed773666d04de61244242ed55642b8452df2efc5e')
+          mem=mat(['V8_3_157_SEALED_MEMBERSHIP_V1.json.gz.b64.part01'],'V8_3_157_SEALED_MEMBERSHIP_V1.json','81e7a32d268ddca2a52cdff2276b7511caa1667c7d8e0dcb5883c9c514a1e162')
+          fix=mat([f'V8_3_157_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part{i:02d}' for i in range(1,6)],'V8_3_157_SEALED_EXECUTION_FIXTURE_V1.json','074363f4f9c9f9aaede70e236c0aa8f4161829dca3d2d06cdb1e83a9709d3db6')
+          assert fix['authority']=='V8.3.157 SEALED EXECUTION FIXTURE V1'
+          assert fix['development_authority_commit']=='c158030ec3ec4d65ab43d945eb096ece8837bf9a'
+          assert fix['candidate_sha256']=='c08d955661a31d09d316c951616b55c26a06fc62fb34edd5dfa51f37abf4b404'
+          assert fix['selection_sha256']=='ae004ee3c13324b18dd82ab5e193cbcccaf2a70ef3d0931f34b0468da3498c94'
+          assert fix['gold_sha256']=='5c218c61758cd9ef72fb647ed773666d04de61244242ed55642b8452df2efc5e'
+          assert fix['membership_sha256']=='81e7a32d268ddca2a52cdff2276b7511caa1667c7d8e0dcb5883c9c514a1e162'
+          assert fix['sealed_before_execution'] is True and fix['runtime_execution_before_fixture']==0
+          assert len(fix['cases'])==60 and len(sel['selected_case_ids'])==60
+          assert mem['batch_A_count']==30 and mem['batch_B_count']==30
+          A=set(mem['batch_A_case_ids']);B=set(mem['batch_B_case_ids']);ids=set(c['case_id'] for c in fix['cases'])
+          assert not(A&B) and A|B==ids
+          from collections import Counter
+          by={c['case_id']:c for c in fix['cases']}
+          assert Counter(by[x]['route'] for x in A)==Counter({r:5 for r in ['input:self-lived','input:clarification-required','input:decision-request','input:hypothetical-or-example','input:prediction','input:third-party-only']})
+          assert Counter(by[x]['route'] for x in B)==Counter({r:5 for r in ['input:self-lived','input:clarification-required','input:decision-request','input:hypothetical-or-example','input:prediction','input:third-party-only']})
+          status={'authority':'V8.3.157 V1 TRANSPORT PREFLIGHT','run_id':'${{ github.run_id }}','run_attempt':'${{ github.run_attempt }}','head_sha':'${{ github.sha }}','transport_pass':True,'runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('V8_3_157_V1_TRANSPORT_PREFLIGHT_RESULT.json').write_text(json.dumps(status,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_157_V1_TRANSPORT_PREFLIGHT
+          path: V8_3_157_V1_TRANSPORT_PREFLIGHT_RESULT.json
