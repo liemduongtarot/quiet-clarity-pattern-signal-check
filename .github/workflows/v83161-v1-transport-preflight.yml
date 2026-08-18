@@ -1,0 +1,41 @@
+name: V8.3.161 V1 Transport Preflight
+on:
+  push:
+    branches: [v83161-v1-sealed-validation]
+jobs:
+  preflight:
+    if: github.event.head_commit.message == 'Run V8.3.161 V1 transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify exact immutable V8.3.161 V1 sealed material only
+        run: |
+          python - <<'PY'
+          import pathlib,json,hashlib,base64,gzip
+          root=pathlib.Path('validation/v83161-v1-sealed')
+          def mat(parts):
+              txt=''.join((root/p).read_text().strip() for p in parts)
+              raw=gzip.decompress(base64.b64decode(txt))
+              return json.loads(raw)
+          def csha(o):
+              x=dict(o);x.pop('sha256_without_sha_field',None)
+              return hashlib.sha256(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+          sel=mat(['V8_3_161_PRESEAL_OWNER_SELECTION_V1.json.gz.b64'])
+          gold=mat([f'V8_3_161_INDEPENDENT_GOLD_V1.json.gz.b64.part{i:02d}' for i in range(1,4)])
+          mem=mat(['V8_3_161_SEALED_MEMBERSHIP_V1.json.gz.b64'])
+          fix=mat([f'V8_3_161_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part{i:02d}' for i in range(1,4)])
+          assert csha(sel)=='333a6e5450cb12c1986ab0d1d6c2c1880cfc9db261ecdcf35ce15ec5476cc1f0'
+          assert csha(gold)=='2982e2cbdad648d6561fd3e1eab11b175080a391afe1aee1c1a3e09f1d67e8d2'
+          assert csha(mem)=='6d5bd87b71a30331e2a2e1c1306684cb5dc5150c0f44fb03bf5b68a3a3cc8cc2'
+          assert csha(fix)=='dc0a1735bd963e89cd00324a6d5597c939eff0202d3ea61d8fd12f52dc014b5e'
+          assert sel['source_bank_sha256']=='390b7c07ae4045866a01a2754c4d1c6ec018d36617714e17cc3d8adc4b2ac0e1'
+          assert fix['development_authority_commit']=='675ea633585b37597b05101571c823fda1e518c2'
+          A=set(mem['batch_A_case_ids']);B=set(mem['batch_B_case_ids']);ids=set(sel['case_ids'])
+          assert len(A)==30 and len(B)==30 and not(A&B) and A|B==ids
+          status={'authority':'V8.3.161 V1 TRANSPORT PREFLIGHT','run_id':'${{ github.run_id }}','run_attempt':'${{ github.run_attempt }}','head_sha':'${{ github.sha }}','transport_pass':True,'runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('V8_3_161_V1_TRANSPORT_PREFLIGHT_RESULT.json').write_text(json.dumps(status,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_161_V1_TRANSPORT_PREFLIGHT
+          path: V8_3_161_V1_TRANSPORT_PREFLIGHT_RESULT.json
