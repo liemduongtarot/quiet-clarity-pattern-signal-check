@@ -1,0 +1,39 @@
+name: V8.3.155 V3 Transport Preflight
+on:
+  push:
+    branches: [v83155-v3-transport-repair]
+jobs:
+  transport_preflight:
+    if: github.event.head_commit.message == 'Run V8.3.155 V3 transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decode chunked sealed material and verify immutable hashes
+        run: |
+          python - <<'PY'
+          import base64,gzip,pathlib,hashlib,json
+          root=pathlib.Path('validation/v83155-v3-sealed')
+          def materialize(parts,out,sha):
+              s=''.join((root/p).read_text().strip() for p in parts)
+              assert len(s)%4==0, ('base64-length',len(s))
+              raw=gzip.decompress(base64.b64decode(s,validate=True))
+              got=hashlib.sha256(raw).hexdigest(); assert got==sha,(out,got,sha)
+              pathlib.Path(out).write_bytes(raw)
+              return json.loads(raw)
+          f=materialize([f'V8_3_155_SEALED_EXECUTION_FIXTURE_V3.json.gz.b64.part{i:02d}' for i in range(1,6)],'V8_3_155_SEALED_EXECUTION_FIXTURE_V3.json','0aa2c499692441c9d3f6d273cb9fece06c8a0269d847637a3afa97adfee28dfd')
+          m=materialize(['V8_3_155_SEALED_MEMBERSHIP_V3.json.gz.b64.part01'],'V8_3_155_SEALED_MEMBERSHIP_V3.json','e94ae03f7f92b8128be57b833bc9fa86b4f6b26c1ad3bf65bcfdfe28a73f59f5')
+          assert f['authority']=='V8.3.155 SEALED EXECUTION FIXTURE V3'
+          assert f['candidate_sha256']=='0064b4d313c98750964733f72656360e8ed067ca747e71dcd9bcb0a31523fbc4'
+          assert f['selection_sha256']=='f7f81ddc47aefb9b0bce38eace8f9c26e401103a68fb8810960452e429e3d36c'
+          assert f['gold_sha256']=='e8ce01570c07f565d8bce8b7e10bfbd0f21af9eab0a6c367ee51c616f61fcc8c'
+          assert f['membership_sha256']=='e94ae03f7f92b8128be57b833bc9fa86b4f6b26c1ad3bf65bcfdfe28a73f59f5'
+          assert f['sealed_before_execution'] is True and f['runtime_execution_before_fixture']==0
+          assert len(f['cases'])==60 and m['batch_A_count']==30 and m['batch_B_count']==30
+          assert not(set(m['batch_A_case_ids'])&set(m['batch_B_case_ids']))
+          status={'authority':'V8.3.155 V3 TRANSPORT PREFLIGHT','run_id': '${{ github.run_id }}','run_attempt':'${{ github.run_attempt }}','head_sha':'${{ github.sha }}','transport_pass':True,'runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('V8_3_155_V3_TRANSPORT_PREFLIGHT_RESULT.json').write_text(json.dumps(status,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_155_V3_TRANSPORT_PREFLIGHT
+          path: V8_3_155_V3_TRANSPORT_PREFLIGHT_RESULT.json
