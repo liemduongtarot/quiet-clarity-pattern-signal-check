@@ -1,0 +1,21 @@
+{
+  "authority": "V8.3.167 TRANSPORT RUN DIAGNOSTIC",
+  "target_head_sha": "6b8bd6ee5e9a1fb9bf41928028b0a9e9bf2a70e8",
+  "total_count": 1,
+  "runs": [
+    {
+      "id": 32187833284,
+      "name": "V8.3.167 V1 Transport Preflight",
+      "status": "completed",
+      "conclusion": "success",
+      "head_branch": "v83167-v1-sealed-validation",
+      "head_sha": "6b8bd6ee5e9a1fb9bf41928028b0a9e9bf2a70e8",
+      "run_attempt": 1
+    }
+  ],
+  "runtime_executed_by_diagnostic": false,
+  "batch_a_executed_by_diagnostic": false,
+  "batch_b_executed_by_diagnostic": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
