@@ -13,18 +13,17 @@ jobs:
           python - <<'PY'
           import pathlib,json,hashlib,base64,gzip
           root=pathlib.Path('validation/v83160-v1-sealed')
-          def mat(name,parts):
+          def mat(parts):
               txt=''.join((root/p).read_text().strip() for p in parts)
               raw=gzip.decompress(base64.b64decode(txt))
-              obj=json.loads(raw)
-              return obj
+              return json.loads(raw)
           def canonical_sha(obj):
               x=dict(obj);x.pop('sha256_without_sha_field',None)
               return hashlib.sha256(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
-          sel=mat('sel',['V8_3_160_PRESEAL_OWNER_SELECTION_V1.json.gz.b64'])
-          gold=mat('gold',[f'V8_3_160_INDEPENDENT_GOLD_V1.json.gz.b64.part{i:02d}' for i in range(1,6)])
-          mem=mat('mem',['V8_3_160_SEALED_MEMBERSHIP_V1.json.gz.b64'])
-          fix=mat('fix',[f'V8_3_160_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part{i:02d}' for i in range(1,6)])
+          sel=mat(['V8_3_160_PRESEAL_OWNER_SELECTION_V1.json.gz.b64'])
+          gold=mat([f'V8_3_160_INDEPENDENT_GOLD_V1.json.gz.b64.part{i:02d}' for i in range(1,6)])
+          mem=mat(['V8_3_160_SEALED_MEMBERSHIP_V1.json.gz.b64'])
+          fix=mat(['V8_3_160_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part01','V8_3_160_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part02a','V8_3_160_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part02b','V8_3_160_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part03','V8_3_160_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part04','V8_3_160_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part05'])
           bank='8d502904efd6099f275a966921d6a684aa02fd666eb104c4a83f95fc18a33271'
           assert canonical_sha(sel)=='75a41fe32a6d24465040d94d38b5264e89a929b695214320d056dac7f602faa0'
           assert canonical_sha(gold)=='4f7ca25d771ecb9faf8cf4f1fb099182876683bf61f62398ce45ebcb3bdcd622'
