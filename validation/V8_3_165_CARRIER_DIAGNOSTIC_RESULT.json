@@ -31,8 +31,8 @@
         "V8_3_165_INDEPENDENT_GOLD_V1.json.gz.b64.part04": 1800,
         "V8_3_165_INDEPENDENT_GOLD_V1.json.gz.b64.part05": 480
       },
-      "result": "DECOMPRESSION_OR_PARSE_FAIL",
-      "error": "error('Error -3 while decompressing data: invalid distance too far back')"
+      "result": "PASS",
+      "actual_canonical_sha256": "e495d5c2546629ffc7fb0f623c0a0b373e21d68085bf65b049c0e11eeea27eac"
     },
     "membership": {
       "parts": [
