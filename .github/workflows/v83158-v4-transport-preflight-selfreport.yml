@@ -1,0 +1,43 @@
+name: V8.3.158 V4 Transport Preflight Selfreport
+on:
+  push:
+    branches: [v83158-v4-sealed-validation]
+permissions:
+  contents: write
+jobs:
+  preflight:
+    if: github.event.head_commit.message == 'Run V8.3.158 V4 selfreport transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct and verify immutable sealed V4 material only
+        run: |
+          python - <<'PY'
+          import base64,gzip,pathlib,hashlib,json
+          root=pathlib.Path('validation/v83158-v4-sealed')
+          def raw_file(name):
+              compact=''.join((root/(name+'.gz.b64')).read_text().split())
+              return gzip.decompress(base64.b64decode(compact,validate=True))
+          def raw_parts(prefix,count):
+              compact=''.join((root/f'{prefix}.part{i:02d}').read_text().strip() for i in range(1,count+1))
+              return gzip.decompress(base64.b64decode(compact,validate=True))
+          expected={'selection':'a1b7c791e1281c4e42aee8b447a0fe2cdaab15e20b0071bee7437a243dbc896c','gold':'7a8b84cb4e75773388d04c7abcfb8b65287bedf2efd5571f47defe51f554e238','membership':'6bbd2d486cb9515aa876f674f0c2964144231afc4a61bbb92e852cced8a476a5','fixture':'f5729682cd197a620993078d1cb7425b6f33167ab1beb7fea2e88b99c58a6a5a'}
+          sr=raw_file('V8_3_158_PRESEAL_OWNER_SELECTION_V4.json'); gr=raw_file('V8_3_158_INDEPENDENT_GOLD_V4.json'); mr=raw_parts('V8_3_158_SEALED_MEMBERSHIP_V4.json.gz.b64',4); fr=raw_file('V8_3_158_SEALED_EXECUTION_FIXTURE_V4.json')
+          assert hashlib.sha256(sr).hexdigest()==expected['selection']; assert hashlib.sha256(gr).hexdigest()==expected['gold']; assert hashlib.sha256(mr).hexdigest()==expected['membership']; assert hashlib.sha256(fr).hexdigest()==expected['fixture']
+          sel,gold,mem,fix=map(json.loads,[sr,gr,mr,fr]); bank='ba2d182dd5570150b52dbc33930abf6ddab0f63dcea6d7fd725851096381f826'
+          assert sel['source_bank_sha256']==bank and sel['case_count']==60 and sel['runtime_execution_before_selection']==0
+          assert gold['source_bank_sha256']==bank and gold['selection_sha256']==expected['selection'] and gold['case_count']==60 and gold['runtime_execution_before_gold']==0
+          assert mem['source_bank_sha256']==bank and mem['selection_sha256']==expected['selection'] and mem['gold_sha256']==expected['gold'] and mem['sealed_before_runtime'] is True and mem['runtime_execution_before_membership']==0
+          assert fix['development_authority_commit']=='d99649243354bd71970e71a85f03c37848d9173b' and fix['candidate_sha256']==bank and fix['selection_sha256']==expected['selection'] and fix['gold_sha256']==expected['gold'] and fix['membership_sha256']==expected['membership'] and fix['sealed_before_execution'] is True and fix['runtime_execution_before_fixture']==0
+          A=set(mem['batch_A_case_ids']); B=set(mem['batch_B_case_ids']); ids=set(sel['case_ids']); assert len(A)==30 and len(B)==30 and not(A&B) and A|B==ids
+          routes=['input:self-lived','input:clarification-required','input:decision-request','input:hypothetical-or-example','input:prediction','input:third-party-only']; assert mem['batch_A_route_counts']=={r:5 for r in routes} and mem['batch_B_route_counts']=={r:5 for r in routes}
+          out={'authority':'V8.3.158 V4 SELFREPORT TRANSPORT PREFLIGHT','run_id':'${{ github.run_id }}','run_attempt':'${{ github.run_attempt }}','head_sha':'${{ github.sha }}','transport_pass':True,'runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_158_V4_SELFREPORT_TRANSPORT_RESULT.json').write_text(json.dumps(out,indent=2))
+          PY
+      - name: Publish preflight evidence
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_158_V4_SELFREPORT_TRANSPORT_RESULT.json
+          git commit -m 'Publish V8.3.158 V4 transport preflight PASS [skip ci]'
+          git push
