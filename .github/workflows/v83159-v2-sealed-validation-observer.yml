@@ -1,0 +1,35 @@
+name: V8.3.159 V2 Sealed Validation Observer
+on:
+  workflow_run:
+    workflows: ["V8.3.159 V2 Sealed Validation"]
+    types: [completed]
+permissions:
+  contents: write
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Write immutable run evidence only
+        run: |
+          mkdir -p validation
+          cat > validation/V8_3_159_V2_SEALED_RUN_EVIDENCE.json <<EOF
+          {
+            "authority": "V8.3.159 V2 SEALED RUN EVIDENCE",
+            "run_id": ${{ github.event.workflow_run.id }},
+            "run_attempt": ${{ github.event.workflow_run.run_attempt }},
+            "conclusion": "${{ github.event.workflow_run.conclusion }}",
+            "head_sha": "${{ github.event.workflow_run.head_sha }}",
+            "head_branch": "${{ github.event.workflow_run.head_branch }}",
+            "transport_preflight_run_id": 32121540476,
+            "step_111_authorized": false,
+            "production_authorized": false
+          }
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add validation/V8_3_159_V2_SEALED_RUN_EVIDENCE.json
+          git commit -m "Record V8.3.159 V2 sealed run evidence" || exit 0
+          git push origin main
