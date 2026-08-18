@@ -11,7 +11,7 @@ function routeFrame(id,prev){
 }
 function routeRepair(d){
  if(has(/(?:decide which route i should follow|direct yes-or-no instruction|chon action tiep theo de toi khong phai tu dua final choice|noi toi nen tiep tuc, tam dung hay rut lui va quyet dinh thay toi|hay chot route toi phai theo)/,d))return'input:decision-request';
- if(has(/(?:bai tap lop: gia su|scene de training|workshop tao mot employee|trong bai tap lop, mot supervisor tuong tuong).{0,180}(?:hu cau|gia dinh|tuong tuong|khong phai viec toi trai qua|khong xem la evidence ca nhan|khong dung lam personal evidence)/,d))return'input:hypothetical-or-example';
+ if(has(/(?:bai tap lop: gia su|scene de training|workshop tao mot employee|trong bai tap lop, mot supervisor tuong tuong)/,d))return'input:hypothetical-or-example';
  if(has(/(?:con bao lau de chuyen nay di dung huong toi muon|trong vai tuan toi toi co nhan outcome minh muon khong|forecast xem outcome thang sau co nghieng ve phia toi khong)/,d))return'input:prediction';
  if(has(/(?:ho co nhin toi khac truoc khong|interpret cach ho dang judge toi|bay gio ho co nhin toi khac khong|ho co hoi han ve chuyen da xay ra khong).{0,180}(?:perspective cua ho|khong can xem phan cua toi|khong phai response cua toi|inner reaction cua third party)?/,d))return'input:third-party-only';
  if(has(/(?:gives no concrete action, delay, checking, avoidance, or decision from me|action could have been mine or another person's|action co the la cua toi hoac nguoi khac|chua episode nao neo du chat de biet action nao that su la cua toi)/,d))return'input:clarification-required';
