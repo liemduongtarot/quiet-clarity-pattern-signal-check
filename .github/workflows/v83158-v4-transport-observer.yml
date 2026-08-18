@@ -1,0 +1,29 @@
+name: V8.3.158 V4 Transport Observer
+on:
+  workflow_run:
+    workflows: ["V8.3.158 V4 Transport Preflight"]
+    types: [completed]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish transport evidence only
+        env:
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          RUN_ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          pathlib.Path('validation/V8_3_158_V4_TRANSPORT_RUN_EVIDENCE.json').write_text(json.dumps({'authority':'V8.3.158 V4 TRANSPORT RUN EVIDENCE','run_id':int(os.environ['RUN_ID']),'run_attempt':int(os.environ['RUN_ATTEMPT']),'conclusion':os.environ['CONCLUSION'],'head_sha':os.environ['HEAD_SHA'],'head_branch':os.environ['HEAD_BRANCH'],'runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'step_111_authorized':False,'production_authorized':False},indent=2))
+          PY
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_158_V4_TRANSPORT_RUN_EVIDENCE.json
+          git commit -m "Publish V8.3.158 V4 transport run evidence [skip ci]" || exit 0
+          git push
