@@ -1,0 +1,158 @@
+{
+  "authority": "V8.3.159 SEALED EXECUTION FIXTURE V2",
+  "development_authority_commit": "9cc6d0c9a96fa0a6cd0c7b6c0c8265d789ee6f1f",
+  "candidate_sha256": "61827266acfe807d43d9acc5762186c8a41b2057c5bbad442625ae90b7ff2947",
+  "selection_sha256": "7c58338e6b7e4c999db9ff047c166b132364c78c9b1a80f8e2936ebaa22669ea",
+  "gold_sha256": "58e958e1df86b25350902258f0f3ab6c80c5f5d626d6623ed67bff4141c64251",
+  "membership_sha256": "3513fb05021bda714501e8111e66583f2c610a4a036ddd12ee88e210732705b1",
+  "sealed_before_execution": true,
+  "runtime_execution_before_fixture": 0,
+  "prior_frozen_v158_batch_a_rerun": false,
+  "prior_frozen_v158_batch_b_accessed": false,
+  "cases": [
+    {
+      "case_id": "V159-PB2-007",
+      "language": "EN",
+      "domain": "pension",
+      "surface": "I had enough evidence to test one direction, yet I kept gathering more material rather than acting on that test. A pension portal revised one contribution figure. The statement date and plan reference stayed documented.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-009",
+      "language": "EN",
+      "domain": "venue",
+      "surface": "I committed to a response before finishing the full message because I wanted the uncertainty gone. A venue account changed one booking condition. The booking code and cancellation date remained recorded.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "fast"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-002",
+      "language": "EN",
+      "domain": "subscription",
+      "surface": "The available facts were enough for a provisional next step, but I opened extra comparison tabs and delayed choosing. A software subscription added a seat-charge adjustment. The renewal date and invoice reference remained unchanged.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-062",
+      "language": "VI",
+      "domain": "dịch vụ",
+      "surface": "Tôi kiểm lại cùng một record vài lần trong tuần dù hệ thống không có update mới. Coworking account thêm một fee notice. Cancel date và access record đã được xác nhận.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-063",
+      "language": "VI",
+      "domain": "du lịch",
+      "surface": "Tôi chốt action trước khi đọc hết note vì muốn kết thúc sự không chắc chắn ngay. Airline portal đổi trạng thái một refund. Booking reference và travel date vẫn được lưu.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "fast"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-059",
+      "language": "VI",
+      "domain": "điện nước",
+      "surface": "Tôi thấy áp lực nhưng vẫn kiểm dữ kiện vừa đủ rồi xử lý theo nhịp phù hợp, không né và không ép chốt. Energy provider sửa một meter estimate. Tariff end date và direct-debit day không đổi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-110",
+      "language": "VI_NO_DIACRITICS",
+      "domain": "hoa don",
+      "surface": "Du lieu hien co da du cho mot buoc thu, nhung toi van mo them nhieu tai lieu va chua chon hanh dong. He thong freelancer doi trang thai mot hoa don cu. So invoice va payment term van duoc luu rieng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-116",
+      "language": "VI_NO_DIACRITICS",
+      "domain": "giay phep",
+      "surface": "Toi mo lai mot record khong doi nhieu lan trong tuan chi de kiem tra lai. Portal giay phep doi ngay review ho so. Application code va receipt phi van co san.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-164",
+      "language": "MIXED_VI_EN",
+      "domain": "rental",
+      "surface": "Facts đã đủ cho one testable step nhưng tôi vẫn collect thêm comparison material và postpone action. Landlord system thêm inspection comment. Deposit id và tenancy end date vẫn documented.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-168",
+      "language": "MIXED_VI_EN",
+      "domain": "education-admin",
+      "surface": "Sau update tôi moved sang một unrelated admin task và left the actual issue for later. Training portal change module window. Paid invoice và learner id vẫn recorded.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-014",
+      "language": "EN",
+      "domain": "school",
+      "surface": "The account alternates between what 'we' did and what 'they' did, so my own behaviour cannot be isolated. A school portal changed one parent-meeting slot. The pupil reference and term dates remained fixed.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-018",
+      "language": "EN",
+      "domain": "venue",
+      "surface": "Before a questionnaire I need to name one concrete thing I did in response to one event. A venue account changed one booking condition. The booking code and cancellation date remained recorded.",
+      "expected": {
+        "route": "input:clarification-r

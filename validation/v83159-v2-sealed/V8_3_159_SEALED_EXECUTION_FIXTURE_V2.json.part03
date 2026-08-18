@@ -1,0 +1,155 @@
+hai lam tiep. Tai khoan rail sua estimate cho mot refund. Claim code va cac ngay di van nhu cu.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-186",
+      "language": "MIXED_VI_EN",
+      "domain": "education-admin",
+      "surface": "Tôi want action selection from you, không phải check response. Training portal change module window. Paid invoice và learner id vẫn recorded.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-182",
+      "language": "MIXED_VI_EN",
+      "domain": "rental",
+      "surface": "Tell me accept hay decline; tôi muốn you decide on my behalf. Landlord system thêm inspection comment. Deposit id và tenancy end date vẫn documented.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-185",
+      "language": "MIXED_VI_EN",
+      "domain": "travel-admin",
+      "surface": "Decide giúp tôi continue, pause hay withdraw và replace my choice. Airline account update refund stage. Ticket code và travel dates vẫn saved.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-034",
+      "language": "EN",
+      "domain": "pension",
+      "surface": "Training vignette: an imaginary applicant gathers endless comparisons; it is not my situation. A pension portal revised one contribution figure. The statement date and plan reference stayed documented.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-029",
+      "language": "EN",
+      "domain": "subscription",
+      "surface": "For training, suppose an invented manager replies instantly because uncertainty feels unpleasant; it is not personal evidence. A software subscription added a seat-charge adjustment. The renewal date and invoice reference remained unchanged.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-035",
+      "language": "EN",
+      "domain": "banking",
+      "surface": "Suppose a fictional flatmate keeps reopening the same confirmation; this is an example only. A banking app replaced a pending charge with a corrected amount. The card reference and dispute deadline were fixed.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-083",
+      "language": "VI",
+      "domain": "nhà ở",
+      "surface": "Chỉ để training, tưởng tượng một manager reply ngay vì ghét uncertainty; không phải personal evidence. Agent gửi thêm note về lịch inspection. Ngày tenancy kết thúc và deposit reference không đổi.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-085",
+      "language": "VI",
+      "domain": "bảo hiểm",
+      "surface": "Role-play case: một customer giả định cứ check portal; không dùng làm evidence về tôi. Insurer thêm yêu cầu một document mới. Claim number và evidence deadline đã có sẵn.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-143",
+      "language": "VI_NO_DIACRITICS",
+      "domain": "giay phep",
+      "surface": "Gia su flatmate hu cau mo confirmation nhieu lan; chi la minh hoa. Portal giay phep doi ngay review ho so. Application code va receipt phi van co san.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-142",
+      "language": "VI_NO_DIACRITICS",
+      "domain": "the thanh vien",
+      "surface": "Training vignette dung applicant ao thu thap so sanh lien tuc; khong phai situation cua toi. Gym portal cap nhat mot muc phi nho. Membership id va notice period khong doi.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-193",
+      "language": "MIXED_VI_EN",
+      "domain": "health-admin",
+      "surface": "Role-play: fictional customer keeps checking portal; đừng treat as evidence về tôi. Clinic app move one appointment slot. Referral number và review date vẫn fixed.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-192",
+      "language": "MIXED_VI_EN",
+      "domain": "project",
+      "surface": "Workshop uses một made-up employee trì hoãn form; chỉ illustration, not my experience. Client workspace đổi delivery milestone. Signed scope và payment term vẫn unchanged.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-198",
+      "language": "MIXED_VI_EN",
+      "domain": "insurance-admin",
+      "surface": "Workshop prompt creates made-up supervisor delaying action; no personal evidence. Claim portal add assessor request. Excess amount và evidence cutoff vẫn written.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-039",
+      "language": "EN",
+      "domain": "delivery",
+      "surface": "Can you forecast whether next month's result will favour me? A courier account changed the compensatio

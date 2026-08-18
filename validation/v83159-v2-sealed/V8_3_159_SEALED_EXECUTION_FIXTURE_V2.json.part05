@@ -1,0 +1,118 @@
+hu cu.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-159",
+      "language": "VI_NO_DIACRITICS",
+      "domain": "thiet bi",
+      "surface": "Ho co con muon contact khong? Toi dang hoi private intention cua ho. Trung tam sua chua them mot ky thuat vien vao job. Warranty id va pickup window van giu nguyen.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-208",
+      "language": "MIXED_VI_EN",
+      "domain": "tax-admin",
+      "surface": "What is người kia privately thinking về tôi now? Target only their perspective. Hmrc-style portal đổi one balance line. Filing receipt và response date vẫn fixed.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-216",
+      "language": "MIXED_VI_EN",
+      "domain": "insurance-admin",
+      "surface": "How do they see tôi now versus before? Requested target is their mind. Claim portal add assessor request. Excess amount và evidence cutoff vẫn written.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-214",
+      "language": "MIXED_VI_EN",
+      "domain": "utilities-admin",
+      "surface": "Tell me what họ secretly think; tôi không asking about my response. Energy dashboard revise usage estimate. Tariff end và debit date vẫn stable.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ],
+  "batch_a": [
+    "V159-PB2-059",
+    "V159-PB2-110",
+    "V159-PB2-116",
+    "V159-PB2-164",
+    "V159-PB2-168",
+    "V159-PB2-120",
+    "V159-PB2-123",
+    "V159-PB2-124",
+    "V159-PB2-177",
+    "V159-PB2-180",
+    "V159-PB2-130",
+    "V159-PB2-132",
+    "V159-PB2-182",
+    "V159-PB2-185",
+    "V159-PB2-186",
+    "V159-PB2-029",
+    "V159-PB2-034",
+    "V159-PB2-035",
+    "V159-PB2-083",
+    "V159-PB2-142",
+    "V159-PB2-039",
+    "V159-PB2-042",
+    "V159-PB2-044",
+    "V159-PB2-093",
+    "V159-PB2-094",
+    "V159-PB2-050",
+    "V159-PB2-054",
+    "V159-PB2-104",
+    "V159-PB2-105",
+    "V159-PB2-106"
+  ],
+  "batch_b": [
+    "V159-PB2-002",
+    "V159-PB2-007",
+    "V159-PB2-009",
+    "V159-PB2-062",
+    "V159-PB2-063",
+    "V159-PB2-014",
+    "V159-PB2-018",
+    "V159-PB2-064",
+    "V159-PB2-069",
+    "V159-PB2-072",
+    "V159-PB2-022",
+    "V159-PB2-027",
+    "V159-PB2-078",
+    "V159-PB2-081",
+    "V159-PB2-134",
+    "V159-PB2-085",
+    "V159-PB2-143",
+    "V159-PB2-192",
+    "V159-PB2-193",
+    "V159-PB2-198",
+    "V159-PB2-147",
+    "V159-PB2-149",
+    "V159-PB2-150",
+    "V159-PB2-202",
+    "V159-PB2-207",
+    "V159-PB2-157",
+    "V159-PB2-159",
+    "V159-PB2-208",
+    "V159-PB2-214",
+    "V159-PB2-216"
+  ],
+  "sha256_without_sha_field": "c0cd4a7746327e3eb98f01c3c1e36c14e4b2930b0cecfeb409def18cfc3bd516"
+}

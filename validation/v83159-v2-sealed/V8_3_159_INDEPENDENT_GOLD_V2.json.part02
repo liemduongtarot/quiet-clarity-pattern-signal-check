@@ -1,0 +1,156 @@
+
+    {
+      "case_id": "V159-PB2-018",
+      "surface": "Before a questionnaire I need to name one concrete thing I did in response to one event. A venue account changed one booking condition. The booking code and cancellation date remained recorded.",
+      "domain": "venue",
+      "language": "EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-064",
+      "surface": "Facts bên ngoài đã cụ thể nhưng tôi chưa nói mình đã làm gì sau thay đổi. Cổng thuế địa phương cập nhật một khoản điều chỉnh mới. Mã hồ sơ và hạn phản hồi vẫn được ghi cố định.",
+      "domain": "thuế",
+      "language": "VI",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-072",
+      "surface": "Trước questionnaire, tôi cần nêu một việc cụ thể mình đã làm để phản ứng với một event. Airline portal đổi trạng thái một refund. Booking reference và travel date vẫn được lưu.",
+      "domain": "du lịch",
+      "language": "VI",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-069",
+      "surface": "Documents rõ nhưng câu chưa xác định ai là người đưa lựa chọn liên quan. Course portal thay lịch một assessment. Invoice đã trả và student reference vẫn cố định.",
+      "domain": "học tập",
+      "language": "VI",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-123",
+      "surface": "Record day du nhung chu the dua ra quyet dinh van chua duoc xac lap. Trung tam sua chua them mot ky thuat vien vao job. Warranty id va pickup window van giu nguyen.",
+      "domain": "thiet bi",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-124",
+      "surface": "Nhieu incident co san, song chua incident nao gan ro voi mot hanh vi cua toi. Gym portal cap nhat mot muc phi nho. Membership id va notice period khong doi.",
+      "domain": "the thanh vien",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-120",
+      "surface": "Toi liet ke nhieu lan xay ra nhung chua chon mot lan co response rieng cua minh. Don vi storage them canh bao ve gio truy cap. Ma unit va renewal deadline khong thay doi.",
+      "domain": "kho hang",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-177",
+      "surface": "Documents specific nhưng actor who made the choice vẫn chưa established. Training portal change module window. Paid invoice và learner id vẫn recorded.",
+      "domain": "education-admin",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-180",
+      "surface": "Before questionnaire cần one concrete action của tôi gắn với one event. Claim portal add assessor request. Excess amount và evidence cutoff vẫn written.",
+      "domain": "insurance-admin",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-027",
+      "surface": "Tell me the best move and replace my decision with yours. A venue account changed one booking condition. The booking code and cancellation date remained recorded.",
+      "domain": "venue",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-022",
+      "surface": "Give me a direct yes-or-no instruction about what to do next. A professional licence portal moved the review date. The application id and fee receipt stayed the same.",
+      "domain": "licence",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-081",
+      "surface": "Nói best move và dùng quyết định của bạn thay cho quyết định của tôi. Airline portal đổi trạng thái một refund. Booking reference và travel date vẫn được lưu.",
+      "domain": "du lịch",
+      "language": "VI",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-078",
+      "surface": "Tôi muốn bạn select action chứ không phải reflection về response của tôi. Course portal thay lịch một assessment. Invoice đã trả và student reference vẫn cố định.",
+      "domain": "học tập",
+      "language": "VI",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ON

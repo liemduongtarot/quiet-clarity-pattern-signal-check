@@ -1,0 +1,158 @@
+LY"
+    },
+    {
+      "case_id": "V159-PB2-132",
+      "surface": "Toi muon ban select action, khong muon check response cua toi. Trung tam sua chua them mot ky thuat vien vao job. Warranty id va pickup window van giu nguyen.",
+      "domain": "thiet bi",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-134",
+      "surface": "Lam final call thay toi, bo qua phan phan tich behavior. Portal giay phep doi ngay review ho so. Application code va receipt phi van co san.",
+      "domain": "giay phep",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-130",
+      "surface": "Cho toi mot instruction yes-or-no ve viec phai lam tiep. Tai khoan rail sua estimate cho mot refund. Claim code va cac ngay di van nhu cu.",
+      "domain": "van chuyen",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-186",
+      "surface": "Tôi want action selection from you, không phải check response. Training portal change module window. Paid invoice và learner id vẫn recorded.",
+      "domain": "education-admin",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-182",
+      "surface": "Tell me accept hay decline; tôi muốn you decide on my behalf. Landlord system thêm inspection comment. Deposit id và tenancy end date vẫn documented.",
+      "domain": "rental",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-185",
+      "surface": "Decide giúp tôi continue, pause hay withdraw và replace my choice. Airline account update refund stage. Ticket code và travel dates vẫn saved.",
+      "domain": "travel-admin",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-034",
+      "surface": "Training vignette: an imaginary applicant gathers endless comparisons; it is not my situation. A pension portal revised one contribution figure. The statement date and plan reference stayed documented.",
+      "domain": "pension",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-029",
+      "surface": "For training, suppose an invented manager replies instantly because uncertainty feels unpleasant; it is not personal evidence. A software subscription added a seat-charge adjustment. The renewal date and invoice reference remained unchanged.",
+      "domain": "subscription",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-035",
+      "surface": "Suppose a fictional flatmate keeps reopening the same confirmation; this is an example only. A banking app replaced a pending charge with a corrected amount. The card reference and dispute deadline were fixed.",
+      "domain": "banking",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-083",
+      "surface": "Chỉ để training, tưởng tượng một manager reply ngay vì ghét uncertainty; không phải personal evidence. Agent gửi thêm note về lịch inspection. Ngày tenancy kết thúc và deposit reference không đổi.",
+      "domain": "nhà ở",
+      "language": "VI",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-085",
+      "surface": "Role-play case: một customer giả định cứ check portal; không dùng làm evidence về tôi. Insurer thêm yêu cầu một document mới. Claim number và evidence deadline đã có sẵn.",
+      "domain": "bảo hiểm",
+      "language": "VI",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-143",
+      "surface": "Gia su flatmate hu cau mo confirmation nhieu lan; chi la minh hoa. Portal giay phep doi ngay review ho so. Application code va receipt phi van co san.",
+      "domain": "giay phep",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-142",
+      "surface": "Training vignette dung applicant ao thu thap so sanh lien tuc; khong phai situation cua toi. Gym portal cap nhat mot muc phi nho. Membership id va notice period khong doi.",
+      "domain": "the thanh vien",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },

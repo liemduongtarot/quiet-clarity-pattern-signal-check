@@ -1,0 +1,166 @@
+n estimate. The parcel id and claim cutoff were already documented.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-042",
+      "language": "EN",
+      "domain": "repair",
+      "surface": "Is the future outcome likely to go my way? A repair company added a technician note. The warranty number and collection window were unchanged.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-044",
+      "language": "EN",
+      "domain": "banking",
+      "surface": "Can you predict whether this will be approved soon? A banking app replaced a pending charge with a corrected amount. The card reference and dispute deadline were fixed.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-094",
+      "language": "VI",
+      "domain": "bảo hiểm",
+      "surface": "Còn bao lâu nữa answer mới chuyển thành kết quả tích cực cho tôi? Insurer thêm yêu cầu một document mới. Claim number và evidence deadline đã có sẵn.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-093",
+      "language": "VI",
+      "domain": "công việc",
+      "surface": "Bạn forecast xem result tháng sau có nghiêng về phía tôi không? Hệ thống tuyển dụng dời một interview slot. Job code và salary band vẫn như trước.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-149",
+      "language": "VI_NO_DIACRITICS",
+      "domain": "y te",
+      "surface": "Decision cuoi cung co den truoc khi het thang khong? Clinic doi mot khung gio review. Referral code va prescription date van co tren record.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-147",
+      "language": "VI_NO_DIACRITICS",
+      "domain": "kho hang",
+      "surface": "Forecast ho toi result thang sau co thuan loi khong? Don vi storage them canh bao ve gio truy cap. Ma unit va renewal deadline khong thay doi.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-150",
+      "language": "VI_NO_DIACRITICS",
+      "domain": "thiet bi",
+      "surface": "Tuong lai viec nay co di dung huong toi ky vong khong? Trung tam sua chua them mot ky thuat vien vao job. Warranty id va pickup window van giu nguyen.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-202",
+      "language": "MIXED_VI_EN",
+      "domain": "health-admin",
+      "surface": "How long until answer trở thành positive cho tôi? Clinic app move one appointment slot. Referral number và review date vẫn fixed.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-207",
+      "language": "MIXED_VI_EN",
+      "domain": "insurance-admin",
+      "surface": "Is outcome tôi muốn likely in coming weeks? Claim portal add assessor request. Excess amount và evidence cutoff vẫn written.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-050",
+      "language": "EN",
+      "domain": "school",
+      "surface": "What feelings are they hiding from me right now? The target is their internal state. A school portal changed one parent-meeting slot. The pupil reference and term dates remained fixed.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-054",
+      "language": "EN",
+      "domain": "venue",
+      "surface": "How do they see me now compared with before? The requested target is the other person's mind. A venue account changed one booking condition. The booking code and cancellation date remained recorded.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-104",
+      "language": "VI",
+      "domain": "điện nước",
+      "surface": "Họ đang giấu cảm xúc gì với tôi? Target là internal state của họ. Energy provider sửa một meter estimate. Tariff end date và direct-debit day không đổi.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-106",
+      "language": "VI",
+      "domain": "chăm trẻ",
+      "surface": "Nói tôi biết họ secretly nghĩ gì về tình huống; tôi không hỏi response của mình. Rota chăm trẻ đổi một buổi tối. School pickup time và clinic appointment vẫn như cũ.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-105",
+      "language": "VI",
+      "domain": "học tập",
+      "surface": "Họ còn muốn contact với tôi không? Tôi muốn private intention của họ chứ không check behaviour của tôi. Course portal thay lịch một assessment. Invoice đã trả và student reference vẫn cố định.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V159-PB2-157",
+      "language": "VI_NO_DIACRITICS",
+      "domain": "van chuyen",
+      "surface": "Interpret cach ho judge toi va bo qua phan behavior cua toi. Tai khoan rail sua estimate cho mot refund. Claim code va cac ngay di van n

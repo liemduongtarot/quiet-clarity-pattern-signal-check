@@ -1,0 +1,121 @@
+get is their internal state. A school portal changed one parent-meeting slot. The pupil reference and term dates remained fixed.",
+      "domain": "school",
+      "language": "EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-054",
+      "surface": "How do they see me now compared with before? The requested target is the other person's mind. A venue account changed one booking condition. The booking code and cancellation date remained recorded.",
+      "domain": "venue",
+      "language": "EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-104",
+      "surface": "Họ đang giấu cảm xúc gì với tôi? Target là internal state của họ. Energy provider sửa một meter estimate. Tariff end date và direct-debit day không đổi.",
+      "domain": "điện nước",
+      "language": "VI",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-106",
+      "surface": "Nói tôi biết họ secretly nghĩ gì về tình huống; tôi không hỏi response của mình. Rota chăm trẻ đổi một buổi tối. School pickup time và clinic appointment vẫn như cũ.",
+      "domain": "chăm trẻ",
+      "language": "VI",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-105",
+      "surface": "Họ còn muốn contact với tôi không? Tôi muốn private intention của họ chứ không check behaviour của tôi. Course portal thay lịch một assessment. Invoice đã trả và student reference vẫn cố định.",
+      "domain": "học tập",
+      "language": "VI",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-157",
+      "surface": "Interpret cach ho judge toi va bo qua phan behavior cua toi. Tai khoan rail sua estimate cho mot refund. Claim code va cac ngay di van nhu cu.",
+      "domain": "van chuyen",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-159",
+      "surface": "Ho co con muon contact khong? Toi dang hoi private intention cua ho. Trung tam sua chua them mot ky thuat vien vao job. Warranty id va pickup window van giu nguyen.",
+      "domain": "thiet bi",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-208",
+      "surface": "What is người kia privately thinking về tôi now? Target only their perspective. Hmrc-style portal đổi one balance line. Filing receipt và response date vẫn fixed.",
+      "domain": "tax-admin",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-216",
+      "surface": "How do they see tôi now versus before? Requested target is their mind. Claim portal add assessor request. Excess amount và evidence cutoff vẫn written.",
+      "domain": "insurance-admin",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-214",
+      "surface": "Tell me what họ secretly think; tôi không asking about my response. Energy dashboard revise usage estimate. Tariff end và debit date vẫn stable.",
+      "domain": "utilities-admin",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    }
+  ],
+  "sha256_without_sha_field": "58e958e1df86b25350902258f0f3ab6c80c5f5d626d6623ed67bff4141c64251"
+}

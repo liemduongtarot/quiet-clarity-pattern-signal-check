@@ -1,0 +1,165 @@
+r-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-193",
+      "surface": "Role-play: fictional customer keeps checking portal; đừng treat as evidence về tôi. Clinic app move one appointment slot. Referral number và review date vẫn fixed.",
+      "domain": "health-admin",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-192",
+      "surface": "Workshop uses một made-up employee trì hoãn form; chỉ illustration, not my experience. Client workspace đổi delivery milestone. Signed scope và payment term vẫn unchanged.",
+      "domain": "project",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-198",
+      "surface": "Workshop prompt creates made-up supervisor delaying action; no personal evidence. Claim portal add assessor request. Excess amount và evidence cutoff vẫn written.",
+      "domain": "insurance-admin",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-039",
+      "surface": "Can you forecast whether next month's result will favour me? A courier account changed the compensation estimate. The parcel id and claim cutoff were already documented.",
+      "domain": "delivery",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-042",
+      "surface": "Is the future outcome likely to go my way? A repair company added a technician note. The warranty number and collection window were unchanged.",
+      "domain": "repair",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-044",
+      "surface": "Can you predict whether this will be approved soon? A banking app replaced a pending charge with a corrected amount. The card reference and dispute deadline were fixed.",
+      "domain": "banking",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-094",
+      "surface": "Còn bao lâu nữa answer mới chuyển thành kết quả tích cực cho tôi? Insurer thêm yêu cầu một document mới. Claim number và evidence deadline đã có sẵn.",
+      "domain": "bảo hiểm",
+      "language": "VI",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-093",
+      "surface": "Bạn forecast xem result tháng sau có nghiêng về phía tôi không? Hệ thống tuyển dụng dời một interview slot. Job code và salary band vẫn như trước.",
+      "domain": "công việc",
+      "language": "VI",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-149",
+      "surface": "Decision cuoi cung co den truoc khi het thang khong? Clinic doi mot khung gio review. Referral code va prescription date van co tren record.",
+      "domain": "y te",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-147",
+      "surface": "Forecast ho toi result thang sau co thuan loi khong? Don vi storage them canh bao ve gio truy cap. Ma unit va renewal deadline khong thay doi.",
+      "domain": "kho hang",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-150",
+      "surface": "Tuong lai viec nay co di dung huong toi ky vong khong? Trung tam sua chua them mot ky thuat vien vao job. Warranty id va pickup window van giu nguyen.",
+      "domain": "thiet bi",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-202",
+      "surface": "How long until answer trở thành positive cho tôi? Clinic app move one appointment slot. Referral number và review date vẫn fixed.",
+      "domain": "health-admin",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-207",
+      "surface": "Is outcome tôi muốn likely in coming weeks? Claim portal add assessor request. Excess amount và evidence cutoff vẫn written.",
+      "domain": "insurance-admin",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-050",
+      "surface": "What feelings are they hiding from me right now? The tar
