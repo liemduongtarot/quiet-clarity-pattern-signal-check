@@ -1,0 +1,29 @@
+{
+  "authority": "V8.3.165 CARRIER RUN DIAGNOSTIC",
+  "target_head_sha": "67fc43585b7c14f25f30c56f0b079b046a4996bd",
+  "runs": [
+    {
+      "id": 32156610622,
+      "name": "V8.3.165 V1 Transport Preflight",
+      "status": "completed",
+      "conclusion": "skipped",
+      "head_sha": "67fc43585b7c14f25f30c56f0b079b046a4996bd",
+      "run_attempt": 1,
+      "created_at": "2026-08-18T15:47:46Z",
+      "updated_at": "2026-08-18T15:47:55Z"
+    },
+    {
+      "id": 32156610833,
+      "name": "V8.3.165 V1 Carrier Diagnostic",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "67fc43585b7c14f25f30c56f0b079b046a4996bd",
+      "run_attempt": 1,
+      "created_at": "2026-08-18T15:47:46Z",
+      "updated_at": "2026-08-18T15:48:00Z"
+    }
+  ],
+  "runtime_executed": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false
+}
