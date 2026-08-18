@@ -1,0 +1,21 @@
+{
+  "authority": "V8.3.167 DEVELOPMENT RUN DIAGNOSTIC",
+  "target_head_sha": "edf030ca5f0f8c8095e811954b6abc8aae36173b",
+  "total_count": 1,
+  "runs": [
+    {
+      "id": 32187040394,
+      "name": "V8.3.167 V1 Deep Validation",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "head_branch": "v83167-v1-validation",
+      "head_sha": "edf030ca5f0f8c8095e811954b6abc8aae36173b",
+      "run_attempt": 1
+    }
+  ],
+  "runtime_executed_by_diagnostic": false,
+  "sealed_validation_executed_by_diagnostic": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
