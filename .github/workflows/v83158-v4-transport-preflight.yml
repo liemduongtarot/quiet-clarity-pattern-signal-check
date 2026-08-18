@@ -1,0 +1,41 @@
+name: V8.3.158 V4 Transport Preflight
+on:
+  push:
+    branches: [v83158-v4-sealed-validation]
+jobs:
+  preflight:
+    if: github.event.head_commit.message == 'Run V8.3.158 V4 transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct and verify immutable sealed V4 material only
+        run: |
+          python - <<'PY'
+          import base64,gzip,pathlib,hashlib,json
+          root=pathlib.Path('validation/v83158-v4-sealed')
+          def mat(name,sha):
+              raw=gzip.decompress(base64.b64decode((root/(name+'.gz.b64')).read_text()))
+              got=hashlib.sha256(raw).hexdigest(); assert got==sha,(name,got,sha)
+              pathlib.Path(name).write_bytes(raw); return json.loads(raw)
+          sel=mat('V8_3_158_PRESEAL_OWNER_SELECTION_V4.json','a1b7c791e1281c4e42aee8b447a0fe2cdaab15e20b0071bee7437a243dbc896c')
+          gold=mat('V8_3_158_INDEPENDENT_GOLD_V4.json','7a8b84cb4e75773388d04c7abcfb8b65287bedf2efd5571f47defe51f554e238')
+          mem=mat('V8_3_158_SEALED_MEMBERSHIP_V4.json','6bbd2d486cb9515aa876f674f0c2964144231afc4a61bbb92e852cced8a476a5')
+          fix=mat('V8_3_158_SEALED_EXECUTION_FIXTURE_V4.json','f5729682cd197a620993078d1cb7425b6f33167ab1beb7fea2e88b99c58a6a5a')
+          bank='ba2d182dd5570150b52dbc33930abf6ddab0f63dcea6d7fd725851096381f826'
+          assert sel['authority']=='V8.3.158 PRESEAL OWNER SELECTION V4' and sel['source_bank_sha256']==bank and sel['case_count']==60 and sel['runtime_execution_before_selection']==0
+          assert gold['authority']=='V8.3.158 INDEPENDENT GOLD V4' and gold['source_bank_sha256']==bank and gold['selection_sha256']=='a1b7c791e1281c4e42aee8b447a0fe2cdaab15e20b0071bee7437a243dbc896c' and gold['case_count']==60 and gold['runtime_execution_before_gold']==0
+          assert mem['authority']=='V8.3.158 SEALED MEMBERSHIP V4' and mem['source_bank_sha256']==bank and mem['selection_sha256']==gold['selection_sha256'] and mem['gold_sha256']=='7a8b84cb4e75773388d04c7abcfb8b65287bedf2efd5571f47defe51f554e238' and mem['sealed_before_runtime'] is True and mem['runtime_execution_before_membership']==0
+          assert fix['authority']=='V8.3.158 SEALED EXECUTION FIXTURE V4' and fix['development_authority_commit']=='d99649243354bd71970e71a85f03c37848d9173b' and fix['candidate_sha256']==bank and fix['selection_sha256']==gold['selection_sha256'] and fix['gold_sha256']==mem['gold_sha256'] and fix['membership_sha256']=='6bbd2d486cb9515aa876f674f0c2964144231afc4a61bbb92e852cced8a476a5' and fix['sealed_before_execution'] is True and fix['runtime_execution_before_fixture']==0 and fix['prior_frozen_v157_batch_a_rerun'] is False and fix['prior_frozen_v157_batch_b_accessed'] is False
+          assert len(fix['cases'])==60 and len(set(sel['case_ids']))==60 and set(sel['case_ids'])==set(c['case_id'] for c in fix['cases'])
+          A=set(mem['batch_A_case_ids']);B=set(mem['batch_B_case_ids']);ids=set(sel['case_ids'])
+          assert mem['batch_A_count']==30 and mem['batch_B_count']==30 and len(A)==30 and len(B)==30 and not(A&B) and A|B==ids
+          routes=['input:self-lived','input:clarification-required','input:decision-request','input:hypothetical-or-example','input:prediction','input:third-party-only']
+          assert mem['batch_A_route_counts']=={r:5 for r in routes} and mem['batch_B_route_counts']=={r:5 for r in routes}
+          assert set(fix['batch_a'])==A and set(fix['batch_b'])==B
+          status={'authority':'V8.3.158 V4 TRANSPORT PREFLIGHT','run_id':'${{ github.run_id }}','run_attempt':'${{ github.run_attempt }}','head_sha':'${{ github.sha }}','transport_pass':True,'runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('V8_3_158_V4_TRANSPORT_PREFLIGHT_RESULT.json').write_text(json.dumps(status,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_158_V4_TRANSPORT_PREFLIGHT
+          path: V8_3_158_V4_TRANSPORT_PREFLIGHT_RESULT.json
