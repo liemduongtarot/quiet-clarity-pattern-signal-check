@@ -1,0 +1,37 @@
+name: V8.3.164 V1 Transport Preflight
+on:
+  push:
+    branches: [v83164-v1-sealed-validation]
+jobs:
+  transport_preflight:
+    if: github.event.head_commit.message == 'Run V8.3.164 V1 transport preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct and verify immutable V8.3.164 sealed material without runtime
+        run: |
+          python - <<'PY'
+          import pathlib,json,hashlib,base64,gzip
+          root=pathlib.Path('validation/v83164-v1-sealed')
+          def csha(o):
+              x=dict(o); x.pop('sha256_without_sha_field',None)
+              return hashlib.sha256(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+          def mat(parts):
+              txt=''.join((root/p).read_text().strip() for p in parts)
+              return json.loads(gzip.decompress(base64.b64decode(txt)))
+          sel=mat(['V8_3_164_PRESEAL_OWNER_SELECTION_V1.json.gz.b64.part01'])
+          gold=mat([f'V8_3_164_INDEPENDENT_GOLD_V1.json.gz.b64.part{i:02d}' for i in range(1,5)])
+          mem=mat(['V8_3_164_SEALED_MEMBERSHIP_V1.json.gz.b64.part01'])
+          fix=mat([f'V8_3_164_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part{i:02d}' for i in range(1,6)])
+          assert csha(sel)=='7fd64c1ade8e2f6d5f3943eedf7e25a2316269b882b5038556b37adbe0b1e5f4'
+          assert csha(gold)=='8ce27db375dbde0f089ee29d6509c99d62895ba41d3f6bcf29be411d00f2650b'
+          assert csha(mem)=='aba4728c7b1a73d464ae1bf8d5c0bd61511aaac60745dabd4885ccf46da170f2'
+          assert csha(fix)=='7a9efe92726805b2057973d867b1f356fd225c462e5e130361e9add34a33a3e2'
+          assert fix['development_authority_commit']=='b184d7066368a4cc3b465828beabaa4bf72c1c9d'
+          assert len(fix['batch_a'])==30 and len(fix['batch_b'])==30
+          assert set(fix['batch_a']).isdisjoint(set(fix['batch_b']))
+          assert len(set(fix['batch_a']+fix['batch_b']))==60
+          print('TRANSPORT PREFLIGHT PASS: runtime=0; A=0; B=0')
+          PY
+          test -f validation/psc-v83164-v163-v1-sealed-a-bounded-repair.js
