@@ -18,8 +18,13 @@ jobs:
           python - <<'PY'
           import zipfile,base64,gzip,pathlib,json
           with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
-          for n in ['V8_3_159_V158_FAILURE_REGRESSION.json','V8_3_159_V158_PREVIOUS_PASS_REGRESSION.json']:
-              raw=gzip.decompress(base64.b64decode(''.join(pathlib.Path('validation/'+n+'.gz.b64').read_text().split())))
+          specs={
+            'V8_3_159_V158_FAILURE_REGRESSION.json':4,
+            'V8_3_159_V158_PREVIOUS_PASS_REGRESSION.json':2,
+          }
+          for n,count in specs.items():
+              parts=[pathlib.Path(f'validation/{n}.gz.b64.part{i:02d}').read_text().strip() for i in range(1,count+1)]
+              raw=gzip.decompress(base64.b64decode(''.join(parts)))
               pathlib.Path('validation/'+n).write_bytes(raw);json.loads(raw)
           PY
           for f in psc-v83142-sealed-failure-convergence.js psc-v83143-semantic-convergence.js psc-v83144-sealed-failure-convergence.js psc-v83145-route-layer.js psc-v83145-family-state-layer.js psc-v83146-route-boundary-repair.js psc-v83146-family-sequence-repair.js psc-v83147-sealed-failure-repair.js psc-v83148-sealed-failure-repair.js psc-v83149-sealed-failure-repair.js psc-v83150-sealed-failure-repair.js psc-v83151-sealed-failure-repair.js psc-v83152-sealed-failure-repair.js psc-v83153-sealed-failure-repair.js psc-v83154-sealed-failure-repair.js psc-v83155-sealed-failure-repair.js psc-v83156-v155-v3-bounded-repair.js psc-v83157-v156-sealed-a-bounded-repair.js psc-v83158-v157-sealed-a-bounded-repair.js psc-v83159-v158-sealed-a-bounded-repair.js; do cp validation/$f PSC_V8_3_138_DEV/public/; done
