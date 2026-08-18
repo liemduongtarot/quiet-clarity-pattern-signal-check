@@ -1,0 +1,47 @@
+name: V8.3.165 V1 Carrier Diagnostic
+on:
+  push:
+    branches: [v83165-v1-sealed-validation]
+jobs:
+  carrier_diagnostic:
+    if: github.event.head_commit.message == 'Run V8.3.165 V1 carrier diagnostic'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Diagnose sealed carrier reconstruction without runtime
+        run: |
+          python - <<'PY'
+          import pathlib,json,hashlib,base64,gzip
+          root=pathlib.Path('validation/v83165-v1-sealed')
+          specs={
+            'selection':(['V8_3_165_PRESEAL_OWNER_SELECTION_V1.json.gz.b64'],'102bb455c95b2e42334c965b3a7d09d1773fccd3d50093fcb2537f1223b3fe5c'),
+            'gold':([f'V8_3_165_INDEPENDENT_GOLD_V1.json.gz.b64.part{i:02d}' for i in range(1,6)],'e495d5c2546629ffc7fb0f623c0a0b373e21d68085bf65b049c0e11eeea27eac'),
+            'membership':(['V8_3_165_SEALED_MEMBERSHIP_V1.json.gz.b64'],'393960bd88bcef9796cc62c75234c28718b1120ec8c6533a4ec64f58dcda7d96'),
+            'fixture':([f'V8_3_165_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part{i:02d}' for i in range(1,6)],'b47ca6e4535ad2974dead6bd9e4b78f7ed5ef0689db898c97102aa26843b3fbf')
+          }
+          def csha(o):
+              x=dict(o);x.pop('sha256_without_sha_field',None)
+              return hashlib.sha256(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+          out={'authority':'V8.3.165 V1 CARRIER DIAGNOSTIC','runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'objects':{}}
+          for name,(parts,expected) in specs.items():
+              rec={'parts':parts,'expected_canonical_sha256':expected,'part_lengths':{},'result':'UNKNOWN'}
+              try:
+                  texts=[]
+                  for p in parts:
+                      t=(root/p).read_text().strip(); texts.append(t); rec['part_lengths'][p]=len(t)
+                  raw=gzip.decompress(base64.b64decode(''.join(texts)))
+                  obj=json.loads(raw); actual=csha(obj)
+                  rec['actual_canonical_sha256']=actual
+                  rec['result']='PASS' if actual==expected else 'HASH_MISMATCH'
+              except Exception as e:
+                  rec['result']='DECOMPRESSION_OR_PARSE_FAIL';rec['error']=repr(e)
+              out['objects'][name]=rec
+          pathlib.Path('V8_3_165_CARRIER_DIAGNOSTIC.json').write_text(json.dumps(out,indent=2))
+          print(json.dumps(out,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_165_CARRIER_DIAGNOSTIC
+          path: V8_3_165_CARRIER_DIAGNOSTIC.json
