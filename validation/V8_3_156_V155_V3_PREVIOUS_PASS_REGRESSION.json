@@ -3,70 +3,70 @@
   "count": 11,
   "cases": [
     {
-      "case_id": "V155-PB3-008",
-      "surface": "I asked myself what I had actually done after the council letter arrived. I read the same decision again on three separate evenings even though there was no new letter, portal update or factual change. The wider situation included a fixed booking condition and a late-shift calendar alert, but those did not change the decision itself.",
-      "domain": "housing",
-      "expected": {"route": "input:self-lived", "families": ["slow"], "sequence": false}
+      "case_id": "V155-PB3-077",
+      "surface": "Nếu là bạn, bạn sẽ chọn phương án A hay B quanh nhóm việc hành chính? Tôi có một form thuế, thư bảo hiểm và yêu cầu sửa tài khoản điện nước cùng rơi vào một tuần nhưng mỗi việc có hạn riêng. Điểm làm case này khác là tổ hợp một tin nhắn thoại, một ghi chú cuộc họp và mức ngân sách cố định theo tuần trong lúc trên đường về nhà.",
+      "domain": "việc hành chính",
+      "expected": {"route": "input:decision-request", "families": [], "sequence": false}
     },
     {
-      "case_id": "V155-PB3-020",
-      "surface": "The new invitation could have waited until Thursday, but I replied yes before finishing the message because I wanted the uncertainty gone. A concrete work deadline and one family pickup time were both already known, so the urgency came from my response rather than a new external fact.",
-      "domain": "social",
-      "expected": {"route": "input:self-lived", "families": ["fast"], "sequence": false}
+      "case_id": "V155-PB3-078",
+      "surface": "Tôi có nên nói đồng ý với góp ý trong kỳ đánh giá không? Chọn cho tôi hành động nào có outcome tốt nhất. Đợt đánh giá hiệu suất đang mở; tôi vừa nhận một góp ý cụ thể về dự án, còn mốc xét thăng tiến vẫn cách vài tuần. Ngay tại thời điểm đó, trước bữa sáng, phần record chỉ có một lá thư giấy và một phiếu giao hàng; constraint bên ngoài là slot hẹn ba mươi phút.",
+      "domain": "công việc",
+      "expected": {"route": "input:decision-request", "families": [], "sequence": false}
     },
     {
-      "case_id": "V155-PB3-036",
-      "surface": "A complaint keeps repeating that the company is unfair, but it does not give one concrete incident showing what I personally did when the latest reply arrived. Before any questionnaire, I need to describe my own response to one event.",
-      "domain": "consumer",
-      "expected": {"route": "input:clarification-required", "families": [], "sequence": false}
+      "case_id": "V155-PB3-132",
+      "surface": "Toi co nen chap nhan de nghi quanh invoice dang tre hom nay khong? Hay pick mot action cho toi. Mot invoice freelance da qua han, trong khi client vua doi PO number va finance team chi tra loi qua mot shared mailbox. Tai thoi diem truoc bua sang, record chi gom mot la thu giay va mot phieu giao hang; ben ngoai con co slot hen ba muoi phut.",
+      "domain": "freelance invoice",
+      "expected": {"route": "input:decision-request", "families": [], "sequence": false}
     },
     {
-      "case_id": "V155-PB3-055",
-      "surface": "Tôi đã đổi tên rồi sắp lại các thư mục của form xác nhận để khỏi bắt đầu phần cần gửi, dù yêu cầu và deadline đã rõ. Không có thông tin mới nào xuất hiện trong lúc đó.",
-      "domain": "admin",
-      "expected": {"route": "input:self-lived", "families": ["ignore"], "sequence": false}
+      "case_id": "V155-PB3-186",
+      "surface": "Tôi có nên say yes với review note này không? Pick action có strongest outcome cho tôi. Performance review đang mở; tôi vừa nhận một project note khá cụ thể, còn promotion window vẫn cách vài tuần. At that moment before breakfast, record gồm printed letter và một delivery slip; outside constraint là 30-minute appointment slot.",
+      "domain": "work",
+      "expected": {"route": "input:decision-request", "families": [], "sequence": false}
     },
     {
       "case_id": "V155-PB3-079",
-      "surface": "Tôi bực vì kết quả module này thấp hơn mong đợi, nhưng đoạn mô tả chưa nói tôi có kiểm tra lặp lại, né tránh, quyết quá nhanh hay không chọn được gì. Đây mới chỉ là trạng thái cảm xúc quanh sự việc.",
-      "domain": "study",
-      "expected": {"route": "input:self-lived", "families": [], "sequence": false}
+      "surface": "Sau hồ sơ gia hạn, tôi nên giữ cách hiện tại hay đổi hướng? Hợp đồng thuê sắp gia hạn, đồng thời có đề nghị tăng tiền nhà, một yêu cầu sửa chữa và hạn báo trước được ghi ở các email khác nhau. Tôi muốn bạn đưa ra quyết định thay tôi. Evidence trail của incident khá hẹp: một chỉnh sửa trong tài liệu chung, một trang gia hạn và hạn phản hồi hai ngày; các chi tiết này cùng xuất hiện ngay trước một cuộc gọi đã hẹn.",
+      "domain": "nhà ở",
+      "expected": {"route": "input:decision-request", "families": [], "sequence": false}
     },
     {
       "case_id": "V155-PB3-090",
-      "surface": "Khi nào offer này sẽ có kết quả cuối cùng? Tôi đang hỏi thời điểm của một outcome tương lai chứ chưa đưa một tình huống đã sống qua để xem phản ứng của mình.",
-      "domain": "work",
-      "expected": {"route": "input:prediction", "families": [], "sequence": false}
-    },
-    {
-      "case_id": "V155-PB3-114",
-      "surface": "Mo phong cho bai tap: gia dinh mot nguoi lien tuc kiem tra booking sau khi itinerary doi. Day chi la training case, khong phai su viec toi da trai qua.",
-      "domain": "travel",
+      "surface": "Ví dụ tưởng tượng: một người thấy lo sau tin nhắn mới nhất, dừng lại kiểm dữ kiện rồi đổi hướng. Nội dung chỉ phục vụ training. Một người bạn đã hủy hai cuộc hẹn rồi đề nghị ngày thứ ba, sau khi bọn tôi từng nói rõ về việc cần báo trước bao lâu. Có một ràng buộc cần giữ nguyên trong scene này: thời gian review một tuần. Sau lớp buổi tối, tài liệu trước mặt chỉ gồm một banner trên portal và một biên nhận thanh toán.",
+      "domain": "bạn bè",
       "expected": {"route": "input:hypothetical-or-example", "families": [], "sequence": false}
     },
     {
-      "case_id": "V155-PB3-137",
-      "surface": "Log hành trình ghi nhiều lần kiểm tra booking nhưng không xác định tôi hay người đi cùng là người thực hiện. Chủ thể của response vẫn chưa rõ nên cần làm rõ trước.",
-      "domain": "travel",
-      "expected": {"route": "input:clarification-required", "families": [], "sequence": false}
+      "case_id": "V155-PB3-030",
+      "surface": "Hypothetical case: a caregiver keeps taking extra duties after the admin queue even when other relatives could do them. Use it only as an example, not as personal evidence. I have a tax form, an insurance letter and a utility account correction sitting in the same week, each with a different deadline. The surrounding scene had its own limits: a handover due the next morning, plus a paper receipt linked to a reference number; this occurred on a quiet Sunday.",
+      "domain": "daily-admin",
+      "expected": {"route": "input:hypothetical-or-example", "families": [], "sequence": false}
     },
     {
-      "case_id": "V155-PB3-147",
-      "surface": "What will my manager decide next month about the role change? This asks for a future outcome outside my control rather than examining a response I have already made.",
-      "domain": "work",
+      "case_id": "V155-PB3-195",
+      "surface": "Role-play prompt: friend gửi abrupt reply sau care rota rồi later thấy quá mạnh. Person is fictional. Một người thân cần coordination cho appointment, transport và weekly care rota, với vài người trong family cùng tham gia. Evidence trail khá narrow: printed letter, một delivery slip, 30-minute appointment slot; các detail cùng thuộc incident before breakfast.",
+      "domain": "family",
+      "expected": {"route": "input:hypothetical-or-example", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V155-PB3-138",
+      "surface": "Scenario tuong tuong: mot volunteer nhan them viec khi return request xuat hien du rota con nguoi khac. Chi dung de practice. Mot mon hang online co return window ngan, courier da doi pickup va shop gui hai label khac nhau. Lan nay con co moc ban giao sang hom sau, them mot bien nhan giay gan voi mot ma tham chieu; cac chi tiet cung xuat hien vao mot Chu nhat yen.",
+      "domain": "shopping return",
+      "expected": {"route": "input:hypothetical-or-example", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V155-PB3-043",
+      "surface": "When should I expect the final answer connected to the latest message to come through? A friend cancelled two plans and proposed a third date after we had already discussed how much notice each of us needs. The record for this event is concrete rather than abstract: a shared-document edit arrived just before a scheduled call, and I also had a renewal page plus a two-day response window to work around.",
+      "domain": "friendship",
       "expected": {"route": "input:prediction", "families": [], "sequence": false}
     },
     {
-      "case_id": "V155-PB3-174",
-      "surface": "The note says 'we moved the inspection' but never identifies whether I, the landlord or the agent made that choice. I need to establish the actor before interpreting any response pattern.",
-      "domain": "housing",
-      "expected": {"route": "input:clarification-required", "families": [], "sequence": false}
-    },
-    {
-      "case_id": "V155-PB3-215",
-      "surface": "Routing note: this asks whether a future application will be approved and when the decision will arrive. It is a timing/outcome request, not a lived-response case.",
-      "domain": "application",
-      "expected": {"route": "input:prediction", "families": [], "sequence": false}
+      "case_id": "V155-PB3-166",
+      "surface": "My behaviour: tôi nhận thêm task của người khác sau course decision, dù responsibility của mình vốn đã rõ. Course của tôi có resubmission brief, seminar feedback và enrolment deadline rơi vào các tuần khác nhau. Không phải generic domain example: cùng scene có spreadsheet comment, một draft schedule và monthly billing cutoff, diễn ra near end of workday.",
+      "domain": "study",
+      "expected": {"route": "input:self-lived", "families": [], "sequence": false}
     }
   ]
 }
