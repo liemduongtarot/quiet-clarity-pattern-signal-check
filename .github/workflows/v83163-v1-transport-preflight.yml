@@ -1,0 +1,56 @@
+name: V8.3.163 V1 Transport Preflight
+on:
+  push:
+    branches: [v83163-v1-sealed-validation]
+jobs:
+  transport_preflight:
+    if: github.event.head_commit.message == 'Run V8.3.163 V1 transport preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct and verify immutable V8.3.163 sealed material without runtime
+        run: |
+          python - <<'PY'
+          import pathlib,json,hashlib,base64,gzip,zipfile
+          root=pathlib.Path('validation/v83163-v1-sealed')
+          def csha(o):
+              x=dict(o); x.pop('sha256_without_sha_field',None)
+              return hashlib.sha256(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+          def mat(parts,out):
+              txt=''.join((root/p).read_text().strip() for p in parts)
+              raw=gzip.decompress(base64.b64decode(txt)); pathlib.Path(out).write_bytes(raw); return json.loads(raw)
+          sel=mat(['V8_3_163_PRESEAL_OWNER_SELECTION_V1.json.gz.b64'],'V8_3_163_PRESEAL_OWNER_SELECTION_V1.json')
+          gold=mat([f'V8_3_163_INDEPENDENT_GOLD_V1.json.gz.b64.part{i:02d}' for i in range(1,5)],'V8_3_163_INDEPENDENT_GOLD_V1.json')
+          mem=mat(['V8_3_163_SEALED_MEMBERSHIP_V1.json.gz.b64.part01'],'V8_3_163_SEALED_MEMBERSHIP_V1.json')
+          fix=mat([f'V8_3_163_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part{i:02d}' for i in range(1,5)],'V8_3_163_SEALED_EXECUTION_FIXTURE_V1.json')
+          assert csha(sel)=='7d4723bfb8542b02d3329d13108474210e927ef79746aac16020afc2f391ad6f'
+          assert csha(gold)=='6153d608a5566b23096a409811ec1b52ec28b5462076cd7ffb5b5bf71401d8a3'
+          assert csha(mem)=='285a5f169f4665c48b3177af06a752702d088cfefe6ccacde99769e16da76c00'
+          assert csha(fix)=='cb5e6cc8e622342cb88ae0d03cec99faadacaa53a7f952346be0aa52cc797534'
+          assert fix['development_authority_commit']=='a93d90c7291ada42308b3513d904685628f2065a'
+          assert len(fix['batch_a'])==30 and len(fix['batch_b'])==30
+          assert set(fix['batch_a']).isdisjoint(set(fix['batch_b']))
+          assert len(set(fix['batch_a']+fix['batch_b']))==60
+          print('TRANSPORT PREFLIGHT PASS: sealed material reconstructed; runtime=0; A=0; B=0')
+          PY
+          test -f validation/psc-v83163-v162-v1-sealed-a-bounded-repair.js
+      - name: Record transport status artifact
+        run: |
+          cat > V8_3_163_V1_TRANSPORT_STATUS.json <<EOF
+          {
+            "authority": "V8.3.163 V1 TRANSPORT PREFLIGHT",
+            "run_id": "${{ github.run_id }}",
+            "run_attempt": "${{ github.run_attempt }}",
+            "head_sha": "${{ github.sha }}",
+            "runtime_executed": false,
+            "batch_a_executed": false,
+            "batch_b_executed": false,
+            "step_111_authorized": false,
+            "production_authorized": false
+          }
+          EOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_163_V1_TRANSPORT_PREFLIGHT
+          path: V8_3_163_V1_TRANSPORT_STATUS.json
