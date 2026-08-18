@@ -1,0 +1,35 @@
+name: V8.3.165 Sealed Trigger Run Diagnostic
+on:
+  push:
+    branches: [main]
+jobs:
+  diagnose:
+    if: github.event.head_commit.message == 'Run V8.3.165 sealed trigger diagnostic'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Query exact sealed trigger head without runtime
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,urllib.request,os,pathlib
+          repo='liemduongtarot/quiet-clarity-pattern-signal-check'
+          head='64cab3a68ff098774cff6c42233de0e9b26e7532'
+          url=f'https://api.github.com/repos/{repo}/actions/runs?head_sha={head}&per_page=20'
+          req=urllib.request.Request(url,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+          data=json.load(urllib.request.urlopen(req))
+          runs=[]
+          for r in data.get('workflow_runs',[]):
+              runs.append({'id':r['id'],'name':r['name'],'event':r['event'],'status':r['status'],'conclusion':r['conclusion'],'head_branch':r['head_branch'],'head_sha':r['head_sha'],'run_attempt':r['run_attempt'],'workflow_id':r['workflow_id'],'created_at':r['created_at'],'updated_at':r['updated_at']})
+          out={'authority':'V8.3.165 SEALED TRIGGER RUN DIAGNOSTIC','target_head_sha':head,'total_count':len(runs),'runs':runs,'runtime_executed_by_diagnostic':False,'batch_a_executed_by_diagnostic':False,'batch_b_executed_by_diagnostic':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_165_SEALED_TRIGGER_RUN_DIAGNOSTIC.json').write_text(json.dumps(out,indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add validation/V8_3_165_SEALED_TRIGGER_RUN_DIAGNOSTIC.json
+          git commit -m 'Record V8.3.165 sealed trigger diagnostic' || exit 0
+          git push
