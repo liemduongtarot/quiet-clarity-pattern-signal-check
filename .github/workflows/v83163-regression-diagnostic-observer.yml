@@ -1,0 +1,33 @@
+name: V8.3.163 Regression Diagnostic Observer
+on:
+  workflow_run:
+    workflows: ['V8.3.163 Regression Diagnostic']
+    types: [completed]
+permissions:
+  contents: write
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record diagnostic run evidence
+        run: |
+          mkdir -p validation
+          cat > validation/V8_3_163_REGRESSION_DIAGNOSTIC_RUN_EVIDENCE.json <<EOF
+          {
+            "authority": "V8.3.163 REGRESSION DIAGNOSTIC RUN EVIDENCE",
+            "run_id": ${{ github.event.workflow_run.id }},
+            "run_attempt": ${{ github.event.workflow_run.run_attempt }},
+            "conclusion": "${{ github.event.workflow_run.conclusion }}",
+            "head_sha": "${{ github.event.workflow_run.head_sha }}",
+            "head_branch": "${{ github.event.workflow_run.head_branch }}",
+            "sealed_validation_executed": false,
+            "step_111_authorized": false,
+            "production_authorized": false
+          }
+          EOF
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add validation/V8_3_163_REGRESSION_DIAGNOSTIC_RUN_EVIDENCE.json
+          git commit -m 'Record V8.3.163 regression diagnostic run evidence' || exit 0
+          git push
