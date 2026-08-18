@@ -1,0 +1,98 @@
+name: V8.3.162 V1 Deep Validation
+on:
+  push:
+    branches: [v83162-v1-validation]
+jobs:
+  validate:
+    if: github.event.head_commit.message == 'Run V8.3.162 V1 deep validation'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize exact V8.3.162 authority
+        run: |
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          PY
+          for f in psc-v83142-sealed-failure-convergence.js psc-v83143-semantic-convergence.js psc-v83144-sealed-failure-convergence.js psc-v83145-route-layer.js psc-v83145-family-state-layer.js psc-v83146-route-boundary-repair.js psc-v83146-family-sequence-repair.js psc-v83147-sealed-failure-repair.js psc-v83148-sealed-failure-repair.js psc-v83149-sealed-failure-repair.js psc-v83150-sealed-failure-repair.js psc-v83151-sealed-failure-repair.js psc-v83152-sealed-failure-repair.js psc-v83153-sealed-failure-repair.js psc-v83154-sealed-failure-repair.js psc-v83155-sealed-failure-repair.js psc-v83156-v155-v3-bounded-repair.js psc-v83157-v156-sealed-a-bounded-repair.js psc-v83158-v157-sealed-a-bounded-repair.js psc-v83159-v158-sealed-a-bounded-repair.js psc-v83160-v159-v2-sealed-a-bounded-repair.js psc-v83161-v160-v1-sealed-a-bounded-repair.js psc-v83162-v161-v1-sealed-a-bounded-repair.js; do cp validation/$f PSC_V8_3_138_DEV/public/; done
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('PSC_V8_3_138_DEV/public/candidate.html');s=p.read_text()
+          old='<script src="psc-v83139-semantic-convergence.js"></script><script src="psc-v83137-ui-gate-authority.js"></script>'
+          chain=['psc-v83142-sealed-failure-convergence.js','psc-v83143-semantic-convergence.js','psc-v83144-sealed-failure-convergence.js','psc-v83145-route-layer.js','psc-v83145-family-state-layer.js','psc-v83146-route-boundary-repair.js','psc-v83146-family-sequence-repair.js','psc-v83147-sealed-failure-repair.js','psc-v83148-sealed-failure-repair.js','psc-v83149-sealed-failure-repair.js','psc-v83150-sealed-failure-repair.js','psc-v83151-sealed-failure-repair.js','psc-v83152-sealed-failure-repair.js','psc-v83153-sealed-failure-repair.js','psc-v83154-sealed-failure-repair.js','psc-v83155-sealed-failure-repair.js','psc-v83156-v155-v3-bounded-repair.js','psc-v83157-v156-sealed-a-bounded-repair.js','psc-v83158-v157-sealed-a-bounded-repair.js','psc-v83159-v158-sealed-a-bounded-repair.js','psc-v83160-v159-v2-sealed-a-bounded-repair.js','psc-v83161-v160-v1-sealed-a-bounded-repair.js','psc-v83162-v161-v1-sealed-a-bounded-repair.js']
+          new='<script src="psc-v83139-semantic-convergence.js"></script>'+''.join(f'<script src="{x}"></script>' for x in chain)+'<script src="psc-v83137-ui-gate-authority.js"></script>'
+          if old not in s: raise SystemExit('script anchor missing')
+          s=s.replace(old,new,1)
+          oldb='if(globalThis.QCSemanticCoreV9)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV9;else if(globalThis.QCSemanticCoreV8)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV8;'
+          newb='if(globalThis.QCSemanticCoreV31)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV31;else if(globalThis.QCSemanticCoreV30)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV30;else if(globalThis.QCSemanticCoreV29)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV29;else if(globalThis.QCSemanticCoreV28)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV28;else if(globalThis.QCSemanticCoreV27)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV27;else if(globalThis.QCSemanticCoreV26)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV26;else if(globalThis.QCSemanticCoreV25)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV25;else if(globalThis.QCSemanticCoreV24)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV24;else if(globalThis.QCSemanticCoreV23)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV23;else if(globalThis.QCSemanticCoreV22)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV22;else if(globalThis.QCSemanticCoreV21)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV21;else if(globalThis.QCSemanticCoreV20)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV20;else if(globalThis.QCSemanticCoreV19)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV19;else if(globalThis.QCSemanticCoreV18)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV18;else if(globalThis.QCSemanticCoreV17)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV17;else if(globalThis.QCSemanticCoreV16)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV16;else if(globalThis.QCSemanticCoreV15)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV15;else if(globalThis.QCSemanticCoreV10)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV10;else if(globalThis.QCSemanticCoreV9)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV9;else if(globalThis.QCSemanticCoreV8)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV8;'
+          if oldb not in s: raise SystemExit('bootstrap anchor missing')
+          p.write_text(s.replace(oldb,newb,1))
+          PY
+      - name: Immutable regressions
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),vm=require('vm'),assert=require('assert/strict'),s={};vm.createContext(s);
+          const files=['psc-v3.js','psc-v4.js','psc-v83121-r1-reconstructed.js','psc-v83122-operator-aware.js','psc-v83123-family-preservation.js','psc-v83124-operator-context.js','psc-v83125-semantic-routing.js','psc-v83126-public-route-canonicalization.js','psc-v83127-review-intent-authority.js','psc-v83129-canonical-shadow.js','psc-v83130-representation-coverage.js','psc-v83131-proposition-consolidation.js','psc-v83132-relation-graph.js','psc-v83133-canonical-role-binding.js','psc-v83135-scoped-operator.js','psc-v83138-semantic-convergence.js','psc-v83139-semantic-convergence.js','psc-v83142-sealed-failure-convergence.js','psc-v83143-semantic-convergence.js','psc-v83144-sealed-failure-convergence.js','psc-v83145-route-layer.js','psc-v83145-family-state-layer.js','psc-v83146-route-boundary-repair.js','psc-v83146-family-sequence-repair.js','psc-v83147-sealed-failure-repair.js','psc-v83148-sealed-failure-repair.js','psc-v83149-sealed-failure-repair.js','psc-v83150-sealed-failure-repair.js','psc-v83151-sealed-failure-repair.js','psc-v83152-sealed-failure-repair.js','psc-v83153-sealed-failure-repair.js','psc-v83154-sealed-failure-repair.js','psc-v83155-sealed-failure-repair.js','psc-v83156-v155-v3-bounded-repair.js','psc-v83157-v156-sealed-a-bounded-repair.js','psc-v83158-v157-sealed-a-bounded-repair.js','psc-v83159-v158-sealed-a-bounded-repair.js','psc-v83160-v159-v2-sealed-a-bounded-repair.js','psc-v83161-v160-v1-sealed-a-bounded-repair.js','psc-v83162-v161-v1-sealed-a-bounded-repair.js'];
+          for(const f of files)vm.runInContext(fs.readFileSync('public/'+f,'utf8'),s);
+          function run(path,label){const A=JSON.parse(fs.readFileSync(path)).cases;let pass=0;for(const c of A){const r=s.QCSemanticCoreV31.analyze(c.surface,c.domain),a={route:r.input_route.id,families:[...r.families].sort(),sequence:!!r.sequence},e={route:c.expected.route,families:[...(c.expected.families||[])].sort(),sequence:!!c.expected.sequence};assert.deepEqual(a,e,c.case_id+' '+JSON.stringify({a,e}));pass++}console.log(label+' PASS '+pass+'/'+A.length)}
+          run('../validation/V8_3_162_V161_V1_FAILURE_REGRESSION.json','V161 immutable failures');
+          run('../validation/V8_3_162_V161_V1_PREVIOUS_PASS_REGRESSION.json','V161 previous passes');
+          run('../validation/V8_3_161_V160_V1_FAILURE_REGRESSION.json','V160 immutable failures');
+          run('../validation/V8_3_161_V160_V1_PREVIOUS_PASS_REGRESSION.json','V160 previous passes');
+          run('../validation/V8_3_160_V159_V2_FAILURE_REGRESSION.json','V159 immutable failures');
+          run('../validation/V8_3_160_V159_V2_PREVIOUS_PASS_REGRESSION.json','V159 previous passes');
+          NODE
+          node --check public/psc-v83162-v161-v1-sealed-a-bounded-repair.js
+      - name: Build artifact validation
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          chmod +x scripts/*.sh
+          npm run install:ci
+          npm run build
+          npm run validate:artifact
+          test "$(find dist -type f -name '*.map' | wc -l)" -eq 0
+          test -f dist/client/psc-v83162-v161-v1-sealed-a-bounded-repair.js
+          sha256sum public/psc-v83162-v161-v1-sealed-a-bounded-repair.js public/psc-v83161-v160-v1-sealed-a-bounded-repair.js public/candidate.html > V8_3_162_AUTHORITY_SHA256.txt
+      - name: Browser tooling
+        run: |
+          mkdir -p .e2e; printf '{"private":true}\n' > .e2e/package.json
+          npm install --prefix .e2e --no-package-lock playwright@1.55.0
+          .e2e/node_modules/.bin/playwright install --with-deps chromium
+      - name: Browser E2E
+        run: |
+          cd PSC_V8_3_138_DEV/dist/client;python3 -m http.server 4173 --bind 127.0.0.1 > ../../../V8_3_162_HTTP.log 2>&1 & echo $! > ../../../V8_3_162_HTTP.pid;cd ../../..
+          node - <<'NODE'
+          const fs=require('fs'),{createRequire}=require('module'),req=createRequire(process.cwd()+'/x.js'),{chromium}=req('./.e2e/node_modules/playwright');
+          (async()=>{const files=['validation/V8_3_162_V161_V1_FAILURE_REGRESSION.json','validation/V8_3_162_V161_V1_PREVIOUS_PASS_REGRESSION.json','validation/V8_3_161_V160_V1_FAILURE_REGRESSION.json','validation/V8_3_161_V160_V1_PREVIOUS_PASS_REGRESSION.json','validation/V8_3_160_V159_V2_FAILURE_REGRESSION.json','validation/V8_3_160_V159_V2_PREVIOUS_PASS_REGRESSION.json'],A=files.flatMap(f=>JSON.parse(fs.readFileSync(f)).cases),b=await chromium.launch({headless:true});let err=0;try{const p=await b.newPage();p.on('console',m=>{if(m.type()==='error')err++});p.on('pageerror',()=>err++);await p.goto('http://127.0.0.1:4173/candidate.html',{waitUntil:'networkidle'});const pf=await p.evaluate(()=>({same:QCSemanticCoreV4===QCSemanticCoreV31,version:QCSemanticCoreV31?.version,authority:document.documentElement.dataset.pscSemanticAuthority}));if(!pf.same||!pf.version?.startsWith('V8.3.162'))throw Error(JSON.stringify(pf));let pass=0;for(const c of A){const a=await p.evaluate(x=>{const r=QCSemanticCoreV4.analyze(x.surface,x.domain);return{route:r.input_route.id,families:[...r.families].sort(),sequence:!!r.sequence}},c),e={route:c.expected.route,families:[...(c.expected.families||[])].sort(),sequence:!!c.expected.sequence};if(JSON.stringify(a)!==JSON.stringify(e))throw Error(c.case_id+' '+JSON.stringify({a,e}));pass++}fs.writeFileSync('V8_3_162_BROWSER_E2E_RESULTS.json',JSON.stringify({total:A.length,passed:pass,failed:0,console_errors:err,preflight:pf},null,2));if(err)throw Error('console '+err)}finally{await b.close()}})().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+      - name: Teardown
+        if: always()
+        run: |
+          [ -f V8_3_162_HTTP.pid ] && kill "$(cat V8_3_162_HTTP.pid)" || true
+      - name: Package checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,shutil,zipfile,hashlib,json
+          st=pathlib.Path('V8_3_162_CHECKPOINT');st.mkdir(exist_ok=True);r=pathlib.Path('PSC_V8_3_138_DEV')
+          for p in [r/'public/psc-v83162-v161-v1-sealed-a-bounded-repair.js',r/'V8_3_162_AUTHORITY_SHA256.txt',pathlib.Path('V8_3_162_BROWSER_E2E_RESULTS.json'),pathlib.Path('validation/V8_3_162_V161_V1_FAILURE_REGRESSION.json'),pathlib.Path('validation/V8_3_162_V161_V1_PREVIOUS_PASS_REGRESSION.json')]:
+              if p.exists():shutil.copy2(p,st/p.name)
+          status={'candidate':'V8.3.162','development':'PASS' if (st/'V8_3_162_BROWSER_E2E_RESULTS.json').exists() else 'FAIL_OR_INCOMPLETE','sealed_validation_executed':False,'v161_batch_a_rerun':False,'v161_batch_b_accessed':False,'step_111_authorized':False,'production_authorized':False};(st/'V8_3_162_DEVELOPMENT_STATUS.json').write_text(json.dumps(status,indent=2))
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+          z=pathlib.Path('PSC_V8_3_162_DEVELOPMENT_VALIDATION_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+              for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_162_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_162_DEVELOPMENT_VALIDATION_CHECKPOINT
+          path: |
+            PSC_V8_3_162_DEVELOPMENT_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_162_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt
