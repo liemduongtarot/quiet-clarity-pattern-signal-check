@@ -1,0 +1,85 @@
+name: V8.3.164 V1 Sealed Validation
+on:
+  push:
+    branches: [v83164-v1-sealed-validation]
+jobs:
+  sealed_validate:
+    if: github.event.head_commit.message == 'Run V8.3.164 V1 sealed validation'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Verify immutable sealed material and materialize exact V8.3.164 authority
+        run: |
+          python - <<'PY'
+          import pathlib,json,hashlib,base64,gzip,zipfile
+          root=pathlib.Path('validation/v83164-v1-sealed')
+          def csha(o):
+              x=dict(o); x.pop('sha256_without_sha_field',None)
+              return hashlib.sha256(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+          def mat(parts,out):
+              txt=''.join((root/p).read_text().strip() for p in parts)
+              raw=gzip.decompress(base64.b64decode(txt)); pathlib.Path(out).write_bytes(raw); return json.loads(raw)
+          sel=mat(['V8_3_164_PRESEAL_OWNER_SELECTION_V1.json.gz.b64.part01'],'V8_3_164_PRESEAL_OWNER_SELECTION_V1.json')
+          gold=mat([f'V8_3_164_INDEPENDENT_GOLD_V1.json.gz.b64.part{i:02d}' for i in range(1,5)],'V8_3_164_INDEPENDENT_GOLD_V1.json')
+          mem=mat(['V8_3_164_SEALED_MEMBERSHIP_V1.json.gz.b64.part01'],'V8_3_164_SEALED_MEMBERSHIP_V1.json')
+          fix=mat([f'V8_3_164_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part{i:02d}' for i in range(1,6)],'V8_3_164_SEALED_EXECUTION_FIXTURE_V1.json')
+          assert csha(sel)=='7fd64c1ade8e2f6d5f3943eedf7e25a2316269b882b5038556b37adbe0b1e5f4'
+          assert csha(gold)=='8ce27db375dbde0f089ee29d6509c99d62895ba41d3f6bcf29be411d00f2650b'
+          assert csha(mem)=='aba4728c7b1a73d464ae1bf8d5c0bd61511aaac60745dabd4885ccf46da170f2'
+          assert csha(fix)=='7a9efe92726805b2057973d867b1f356fd225c462e5e130361e9add34a33a3e2'
+          assert fix['development_authority_commit']=='b184d7066368a4cc3b465828beabaa4bf72c1c9d'
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          PY
+          for f in psc-v83142-sealed-failure-convergence.js psc-v83143-semantic-convergence.js psc-v83144-sealed-failure-convergence.js psc-v83145-route-layer.js psc-v83145-family-state-layer.js psc-v83146-route-boundary-repair.js psc-v83146-family-sequence-repair.js psc-v83147-sealed-failure-repair.js psc-v83148-sealed-failure-repair.js psc-v83149-sealed-failure-repair.js psc-v83150-sealed-failure-repair.js psc-v83151-sealed-failure-repair.js psc-v83152-sealed-failure-repair.js psc-v83153-sealed-failure-repair.js psc-v83154-sealed-failure-repair.js psc-v83155-sealed-failure-repair.js psc-v83156-v155-v3-bounded-repair.js psc-v83157-v156-sealed-a-bounded-repair.js psc-v83158-v157-sealed-a-bounded-repair.js psc-v83159-v158-sealed-a-bounded-repair.js psc-v83160-v159-v2-sealed-a-bounded-repair.js psc-v83161-v160-v1-sealed-a-bounded-repair.js psc-v83162-v161-v1-sealed-a-bounded-repair.js psc-v83163-v162-v1-sealed-a-bounded-repair.js psc-v83164-v163-v1-sealed-a-bounded-repair.js; do cp validation/$f PSC_V8_3_138_DEV/public/; done
+      - name: SEALED Batch A first run exactly once
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),vm=require('vm'),s={};vm.createContext(s);
+          const files=['psc-v3.js','psc-v4.js','psc-v83121-r1-reconstructed.js','psc-v83122-operator-aware.js','psc-v83123-family-preservation.js','psc-v83124-operator-context.js','psc-v83125-semantic-routing.js','psc-v83126-public-route-canonicalization.js','psc-v83127-review-intent-authority.js','psc-v83129-canonical-shadow.js','psc-v83130-representation-coverage.js','psc-v83131-proposition-consolidation.js','psc-v83132-relation-graph.js','psc-v83133-canonical-role-binding.js','psc-v83135-scoped-operator.js','psc-v83138-semantic-convergence.js','psc-v83139-semantic-convergence.js','psc-v83142-sealed-failure-convergence.js','psc-v83143-semantic-convergence.js','psc-v83144-sealed-failure-convergence.js','psc-v83145-route-layer.js','psc-v83145-family-state-layer.js','psc-v83146-route-boundary-repair.js','psc-v83146-family-sequence-repair.js','psc-v83147-sealed-failure-repair.js','psc-v83148-sealed-failure-repair.js','psc-v83149-sealed-failure-repair.js','psc-v83150-sealed-failure-repair.js','psc-v83151-sealed-failure-repair.js','psc-v83152-sealed-failure-repair.js','psc-v83153-sealed-failure-repair.js','psc-v83154-sealed-failure-repair.js','psc-v83155-sealed-failure-repair.js','psc-v83156-v155-v3-bounded-repair.js','psc-v83157-v156-sealed-a-bounded-repair.js','psc-v83158-v157-sealed-a-bounded-repair.js','psc-v83159-v158-sealed-a-bounded-repair.js','psc-v83160-v159-v2-sealed-a-bounded-repair.js','psc-v83161-v160-v1-sealed-a-bounded-repair.js','psc-v83162-v161-v1-sealed-a-bounded-repair.js','psc-v83163-v162-v1-sealed-a-bounded-repair.js','psc-v83164-v163-v1-sealed-a-bounded-repair.js'];
+          for(const f of files)vm.runInContext(fs.readFileSync('public/'+f,'utf8'),s);
+          const F=JSON.parse(fs.readFileSync('../V8_3_164_SEALED_EXECUTION_FIXTURE_V1.json'));const ids=new Set(F.batch_a);const cases=F.cases.filter(c=>ids.has(c.case_id));let passed=0;const results=[];
+          for(const c of cases){const r=s.QCSemanticCoreV33.analyze(c.surface,c.domain),a={route:r.input_route.id,families:[...r.families].sort(),sequence:!!r.sequence},e={route:c.expected.route,families:[...(c.expected.families||[])].sort(),sequence:!!c.expected.sequence},ok=JSON.stringify(a)===JSON.stringify(e);if(ok)passed++;results.push({case_id:c.case_id,pass:ok,expected:e,actual:a,surface:c.surface,domain:c.domain,language:c.language});}
+          fs.writeFileSync('../V8_3_164_BATCH_A_FIRST_RUN_RESULTS.json',JSON.stringify({authority:'V8.3.164 V1 SEALED BATCH A FIRST RUN',run_id:process.env.GITHUB_RUN_ID,run_attempt:process.env.GITHUB_RUN_ATTEMPT,total:cases.length,passed,failed:cases.length-passed,results},null,2));
+          console.log('Batch A',passed+'/'+cases.length);if(passed!==cases.length)process.exit(1);
+          NODE
+      - name: SEALED Batch B exactly once only after A PASS
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),vm=require('vm'),s={};vm.createContext(s);
+          const files=['psc-v3.js','psc-v4.js','psc-v83121-r1-reconstructed.js','psc-v83122-operator-aware.js','psc-v83123-family-preservation.js','psc-v83124-operator-context.js','psc-v83125-semantic-routing.js','psc-v83126-public-route-canonicalization.js','psc-v83127-review-intent-authority.js','psc-v83129-canonical-shadow.js','psc-v83130-representation-coverage.js','psc-v83131-proposition-consolidation.js','psc-v83132-relation-graph.js','psc-v83133-canonical-role-binding.js','psc-v83135-scoped-operator.js','psc-v83138-semantic-convergence.js','psc-v83139-semantic-convergence.js','psc-v83142-sealed-failure-convergence.js','psc-v83143-semantic-convergence.js','psc-v83144-sealed-failure-convergence.js','psc-v83145-route-layer.js','psc-v83145-family-state-layer.js','psc-v83146-route-boundary-repair.js','psc-v83146-family-sequence-repair.js','psc-v83147-sealed-failure-repair.js','psc-v83148-sealed-failure-repair.js','psc-v83149-sealed-failure-repair.js','psc-v83150-sealed-failure-repair.js','psc-v83151-sealed-failure-repair.js','psc-v83152-sealed-failure-repair.js','psc-v83153-sealed-failure-repair.js','psc-v83154-sealed-failure-repair.js','psc-v83155-sealed-failure-repair.js','psc-v83156-v155-v3-bounded-repair.js','psc-v83157-v156-sealed-a-bounded-repair.js','psc-v83158-v157-sealed-a-bounded-repair.js','psc-v83159-v158-sealed-a-bounded-repair.js','psc-v83160-v159-v2-sealed-a-bounded-repair.js','psc-v83161-v160-v1-sealed-a-bounded-repair.js','psc-v83162-v161-v1-sealed-a-bounded-repair.js','psc-v83163-v162-v1-sealed-a-bounded-repair.js','psc-v83164-v163-v1-sealed-a-bounded-repair.js'];for(const f of files)vm.runInContext(fs.readFileSync('public/'+f,'utf8'),s);
+          const F=JSON.parse(fs.readFileSync('../V8_3_164_SEALED_EXECUTION_FIXTURE_V1.json'));const ids=new Set(F.batch_b);const cases=F.cases.filter(c=>ids.has(c.case_id));let passed=0;const results=[];
+          for(const c of cases){const r=s.QCSemanticCoreV33.analyze(c.surface,c.domain),a={route:r.input_route.id,families:[...r.families].sort(),sequence:!!r.sequence},e={route:c.expected.route,families:[...(c.expected.families||[])].sort(),sequence:!!c.expected.sequence},ok=JSON.stringify(a)===JSON.stringify(e);if(ok)passed++;results.push({case_id:c.case_id,pass:ok,expected:e,actual:a,surface:c.surface,domain:c.domain,language:c.language});}
+          fs.writeFileSync('../V8_3_164_BATCH_B_FIRST_RUN_RESULTS.json',JSON.stringify({authority:'V8.3.164 V1 SEALED BATCH B FIRST RUN',run_id:process.env.GITHUB_RUN_ID,run_attempt:process.env.GITHUB_RUN_ATTEMPT,total:cases.length,passed,failed:cases.length-passed,results},null,2));
+          console.log('Batch B',passed+'/'+cases.length);if(passed!==cases.length)process.exit(1);
+          NODE
+      - name: Package immutable sealed checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,json,zipfile,hashlib,shutil
+          st=pathlib.Path('V8_3_164_SEALED_CHECKPOINT');st.mkdir(exist_ok=True)
+          for n in ['V8_3_164_PRESEAL_OWNER_SELECTION_V1.json','V8_3_164_INDEPENDENT_GOLD_V1.json','V8_3_164_SEALED_MEMBERSHIP_V1.json','V8_3_164_SEALED_EXECUTION_FIXTURE_V1.json','V8_3_164_BATCH_A_FIRST_RUN_RESULTS.json','V8_3_164_BATCH_B_FIRST_RUN_RESULTS.json']:
+              p=pathlib.Path(n)
+              if p.exists():shutil.copy2(p,st/n)
+          a=pathlib.Path('V8_3_164_BATCH_A_FIRST_RUN_RESULTS.json');b=pathlib.Path('V8_3_164_BATCH_B_FIRST_RUN_RESULTS.json')
+          A=json.loads(a.read_text()) if a.exists() else None;B=json.loads(b.read_text()) if b.exists() else None
+          status={'candidate':'V8.3.164','run_id':'${{ github.run_id }}','run_attempt':'${{ github.run_attempt }}','head_sha':'${{ github.sha }}','batch_a_executed':A is not None,'batch_a_passed':A['passed'] if A else None,'batch_a_failed':A['failed'] if A else None,'batch_b_executed':B is not None,'batch_b_passed':B['passed'] if B else None,'batch_b_failed':B['failed'] if B else None,'step_111_authorized':False,'production_authorized':False};(st/'V8_3_164_SEALED_STATUS.json').write_text(json.dumps(status,indent=2))
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+          z=pathlib.Path('PSC_V8_3_164_V1_SEALED_VALIDATION_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+              for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_164_V1_SEALED_VALIDATION_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_164_V1_SEALED_VALIDATION_CHECKPOINT
+          path: |
+            PSC_V8_3_164_V1_SEALED_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_164_V1_SEALED_VALIDATION_CHECKPOINT_SHA256.txt
