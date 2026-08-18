@@ -1,0 +1,32 @@
+name: V8.3.165 Carrier Run Diagnostic
+on:
+  push:
+    branches: [main]
+jobs:
+  inspect:
+    if: github.event.head_commit.message == 'Run V8.3.165 carrier run diagnostic'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Query exact carrier diagnostic run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request,pathlib
+          repo=os.environ['GITHUB_REPOSITORY'];sha='67fc43585b7c14f25f30c56f0b079b046a4996bd'
+          url=f'https://api.github.com/repos/{repo}/actions/runs?head_sha={sha}&per_page=100'
+          req=urllib.request.Request(url,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'})
+          with urllib.request.urlopen(req) as r:data=json.load(r)
+          runs=[{k:x.get(k) for k in ['id','name','status','conclusion','head_sha','run_attempt','created_at','updated_at']} for x in data.get('workflow_runs',[])]
+          out={'authority':'V8.3.165 CARRIER RUN DIAGNOSTIC','target_head_sha':sha,'runs':runs,'runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False}
+          pathlib.Path('validation/V8_3_165_CARRIER_RUN_DIAGNOSTIC.json').write_text(json.dumps(out,indent=2));print(json.dumps(out,indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add validation/V8_3_165_CARRIER_RUN_DIAGNOSTIC.json
+          git commit -m 'Record V8.3.165 carrier run diagnostic' || exit 0
+          git push
