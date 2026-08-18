@@ -1,0 +1,51 @@
+{
+  "authority": "V8.3.165 SEALED TRIGGER RUN DIAGNOSTIC",
+  "target_head_sha": "64cab3a68ff098774cff6c42233de0e9b26e7532",
+  "total_count": 3,
+  "runs": [
+    {
+      "id": 32160159414,
+      "name": "V8.3.165 V1 Carrier Diagnostic",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "skipped",
+      "head_branch": "v83165-v1-sealed-validation",
+      "head_sha": "64cab3a68ff098774cff6c42233de0e9b26e7532",
+      "run_attempt": 1,
+      "workflow_id": 337120830,
+      "created_at": "2026-08-18T16:24:50Z",
+      "updated_at": "2026-08-18T16:24:51Z"
+    },
+    {
+      "id": 32160159384,
+      "name": "V8.3.165 V1 Transport Preflight",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "skipped",
+      "head_branch": "v83165-v1-sealed-validation",
+      "head_sha": "64cab3a68ff098774cff6c42233de0e9b26e7532",
+      "run_attempt": 1,
+      "workflow_id": 337118172,
+      "created_at": "2026-08-18T16:24:50Z",
+      "updated_at": "2026-08-18T16:24:51Z"
+    },
+    {
+      "id": 32160159417,
+      "name": "V8.3.165 V1 Sealed Validation",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_branch": "v83165-v1-sealed-validation",
+      "head_sha": "64cab3a68ff098774cff6c42233de0e9b26e7532",
+      "run_attempt": 1,
+      "workflow_id": 337145445,
+      "created_at": "2026-08-18T16:24:50Z",
+      "updated_at": "2026-08-18T16:25:00Z"
+    }
+  ],
+  "runtime_executed_by_diagnostic": false,
+  "batch_a_executed_by_diagnostic": false,
+  "batch_b_executed_by_diagnostic": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
