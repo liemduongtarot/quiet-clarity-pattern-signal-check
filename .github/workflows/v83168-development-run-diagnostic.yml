@@ -1,0 +1,30 @@
+name: V8.3.168 Development Run Diagnostic
+on:
+  push:
+    branches: [main]
+jobs:
+  diagnose:
+    if: github.event.head_commit.message == 'Run V8.3.168 development run diagnostic'
+    permissions:
+      contents: write
+      actions: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Query Actions by target head SHA
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request,pathlib
+          sha='5efe185555d650c31b04532dd34bf538524a9a1c'
+          req=urllib.request.Request(f'https://api.github.com/repos/${{ github.repository }}/actions/runs?head_sha={sha}&per_page=100',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+          with urllib.request.urlopen(req) as r:data=json.load(r)
+          out={'authority':'V8.3.168 DEVELOPMENT RUN DIAGNOSTIC','target_head_sha':sha,'total_count':data.get('total_count',0),'runs':[{'id':x['id'],'name':x['name'],'status':x['status'],'conclusion':x['conclusion'],'head_branch':x['head_branch'],'head_sha':x['head_sha'],'run_attempt':x['run_attempt']} for x in data.get('workflow_runs',[])],'runtime_executed_by_diagnostic':False,'sealed_validation_executed_by_diagnostic':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_168_DEVELOPMENT_RUN_DIAGNOSTIC.json').write_text(json.dumps(out,indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add validation/V8_3_168_DEVELOPMENT_RUN_DIAGNOSTIC.json
+          git commit -m 'Record V8.3.168 development run diagnostic' || exit 0
+          git push
