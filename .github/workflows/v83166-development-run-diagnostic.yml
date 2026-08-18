@@ -1,0 +1,31 @@
+name: V8.3.166 Development Run Diagnostic
+on:
+  push:
+    branches: [main]
+jobs:
+  diagnose:
+    if: github.event.head_commit.message == 'Run V8.3.166 development diagnostic'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Query exact development head without runtime
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,urllib.request,os,pathlib
+          repo='liemduongtarot/quiet-clarity-pattern-signal-check';head='fe867115344bf0ffb2c212c5c9d13207e9381570'
+          req=urllib.request.Request(f'https://api.github.com/repos/{repo}/actions/runs?head_sha={head}&per_page=20',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+          data=json.load(urllib.request.urlopen(req));runs=[]
+          for r in data.get('workflow_runs',[]):
+              runs.append({'id':r['id'],'name':r['name'],'event':r['event'],'status':r['status'],'conclusion':r['conclusion'],'head_branch':r['head_branch'],'head_sha':r['head_sha'],'run_attempt':r['run_attempt'],'workflow_id':r['workflow_id'],'created_at':r['created_at'],'updated_at':r['updated_at']})
+          pathlib.Path('validation/V8_3_166_DEVELOPMENT_RUN_DIAGNOSTIC.json').write_text(json.dumps({'authority':'V8.3.166 DEVELOPMENT RUN DIAGNOSTIC','target_head_sha':head,'runs':runs,'sealed_validation_executed_by_diagnostic':False,'v165_batch_a_rerun':False,'v165_batch_b_accessed':False,'step_111_authorized':False,'production_authorized':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add validation/V8_3_166_DEVELOPMENT_RUN_DIAGNOSTIC.json
+          git commit -m 'Record V8.3.166 development diagnostic' || exit 0
+          git push
