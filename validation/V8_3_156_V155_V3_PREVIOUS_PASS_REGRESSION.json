@@ -1,0 +1,72 @@
+{
+  "authority": "V8.3.156 V155 V3 SEALED-A PREVIOUS PASS REGRESSION",
+  "count": 11,
+  "cases": [
+    {
+      "case_id": "V155-PB3-008",
+      "surface": "I asked myself what I had actually done after the council letter arrived. I read the same decision again on three separate evenings even though there was no new letter, portal update or factual change. The wider situation included a fixed booking condition and a late-shift calendar alert, but those did not change the decision itself.",
+      "domain": "housing",
+      "expected": {"route": "input:self-lived", "families": ["slow"], "sequence": false}
+    },
+    {
+      "case_id": "V155-PB3-020",
+      "surface": "The new invitation could have waited until Thursday, but I replied yes before finishing the message because I wanted the uncertainty gone. A concrete work deadline and one family pickup time were both already known, so the urgency came from my response rather than a new external fact.",
+      "domain": "social",
+      "expected": {"route": "input:self-lived", "families": ["fast"], "sequence": false}
+    },
+    {
+      "case_id": "V155-PB3-036",
+      "surface": "A complaint keeps repeating that the company is unfair, but it does not give one concrete incident showing what I personally did when the latest reply arrived. Before any questionnaire, I need to describe my own response to one event.",
+      "domain": "consumer",
+      "expected": {"route": "input:clarification-required", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V155-PB3-055",
+      "surface": "Tôi đã đổi tên rồi sắp lại các thư mục của form xác nhận để khỏi bắt đầu phần cần gửi, dù yêu cầu và deadline đã rõ. Không có thông tin mới nào xuất hiện trong lúc đó.",
+      "domain": "admin",
+      "expected": {"route": "input:self-lived", "families": ["ignore"], "sequence": false}
+    },
+    {
+      "case_id": "V155-PB3-079",
+      "surface": "Tôi bực vì kết quả module này thấp hơn mong đợi, nhưng đoạn mô tả chưa nói tôi có kiểm tra lặp lại, né tránh, quyết quá nhanh hay không chọn được gì. Đây mới chỉ là trạng thái cảm xúc quanh sự việc.",
+      "domain": "study",
+      "expected": {"route": "input:self-lived", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V155-PB3-090",
+      "surface": "Khi nào offer này sẽ có kết quả cuối cùng? Tôi đang hỏi thời điểm của một outcome tương lai chứ chưa đưa một tình huống đã sống qua để xem phản ứng của mình.",
+      "domain": "work",
+      "expected": {"route": "input:prediction", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V155-PB3-114",
+      "surface": "Mo phong cho bai tap: gia dinh mot nguoi lien tuc kiem tra booking sau khi itinerary doi. Day chi la training case, khong phai su viec toi da trai qua.",
+      "domain": "travel",
+      "expected": {"route": "input:hypothetical-or-example", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V155-PB3-137",
+      "surface": "Log hành trình ghi nhiều lần kiểm tra booking nhưng không xác định tôi hay người đi cùng là người thực hiện. Chủ thể của response vẫn chưa rõ nên cần làm rõ trước.",
+      "domain": "travel",
+      "expected": {"route": "input:clarification-required", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V155-PB3-147",
+      "surface": "What will my manager decide next month about the role change? This asks for a future outcome outside my control rather than examining a response I have already made.",
+      "domain": "work",
+      "expected": {"route": "input:prediction", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V155-PB3-174",
+      "surface": "The note says 'we moved the inspection' but never identifies whether I, the landlord or the agent made that choice. I need to establish the actor before interpreting any response pattern.",
+      "domain": "housing",
+      "expected": {"route": "input:clarification-required", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V155-PB3-215",
+      "surface": "Routing note: this asks whether a future application will be approved and when the decision will arrive. It is a timing/outcome request, not a lived-response case.",
+      "domain": "application",
+      "expected": {"route": "input:prediction", "families": [], "sequence": false}
+    }
+  ]
+}
