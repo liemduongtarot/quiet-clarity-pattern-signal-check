@@ -1,0 +1,44 @@
+name: V8.3.160 V1 Sealed Observer
+on:
+  workflow_run:
+    workflows: ["V8.3.160 V1 Sealed Validation"]
+    types: [completed]
+permissions:
+  contents: write
+jobs:
+  record:
+    if: github.event.workflow_run.head_branch == 'v83160-v1-sealed-validation'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Record sealed run evidence
+        run: |
+          python - <<'PY'
+          import json, pathlib, os
+          o={
+            'authority':'V8.3.160 V1 SEALED RUN EVIDENCE',
+            'run_id':int(os.environ['RUN_ID']),
+            'run_attempt':int(os.environ['RUN_ATTEMPT']),
+            'conclusion':os.environ['CONCLUSION'],
+            'head_sha':os.environ['HEAD_SHA'],
+            'head_branch':os.environ['HEAD_BRANCH'],
+            'step_111_authorized':False,
+            'production_authorized':False
+          }
+          pathlib.Path('validation/V8_3_160_V1_SEALED_RUN_EVIDENCE.json').write_text(json.dumps(o,indent=2))
+          PY
+        env:
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          RUN_ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+      - name: Commit evidence
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add validation/V8_3_160_V1_SEALED_RUN_EVIDENCE.json
+          git commit -m 'Record V8.3.160 V1 sealed run evidence' || exit 0
+          git push
