@@ -14,7 +14,9 @@ jobs:
           import base64,gzip,pathlib,hashlib,json
           root=pathlib.Path('validation/v83158-v4-sealed')
           def mat(name,sha):
-              raw=gzip.decompress(base64.b64decode((root/(name+'.gz.b64')).read_text()))
+              text=(root/(name+'.gz.b64')).read_text(); compact=''.join(text.split())
+              print(name,'b64_chars',len(compact),'mod4',len(compact)%4)
+              raw=gzip.decompress(base64.b64decode(compact,validate=True))
               got=hashlib.sha256(raw).hexdigest(); assert got==sha,(name,got,sha)
               pathlib.Path(name).write_bytes(raw); return json.loads(raw)
           sel=mat('V8_3_158_PRESEAL_OWNER_SELECTION_V4.json','a1b7c791e1281c4e42aee8b447a0fe2cdaab15e20b0071bee7437a243dbc896c')
