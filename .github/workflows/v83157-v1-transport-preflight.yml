@@ -23,7 +23,7 @@ jobs:
           sel=mat(['V8_3_157_PRESEAL_OWNER_SELECTION_V1.json.gz.b64.part01'],'V8_3_157_PRESEAL_OWNER_SELECTION_V1.json','ae004ee3c13324b18dd82ab5e193cbcccaf2a70ef3d0931f34b0468da3498c94')
           gold=mat(['V8_3_157_INDEPENDENT_GOLD_V1.json.gz.b64.part01'],'V8_3_157_INDEPENDENT_GOLD_V1.json','5c218c61758cd9ef72fb647ed773666d04de61244242ed55642b8452df2efc5e')
           mem=mat(['V8_3_157_SEALED_MEMBERSHIP_V1.json.gz.b64.part01'],'V8_3_157_SEALED_MEMBERSHIP_V1.json','81e7a32d268ddca2a52cdff2276b7511caa1667c7d8e0dcb5883c9c514a1e162')
-          fix=mat([f'V8_3_157_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part{i:02d}' for i in range(1,6)],'V8_3_157_SEALED_EXECUTION_FIXTURE_V1.json','074363f4f9c9f9aaede70e236c0aa8f4161829dca3d2d06cdb1e83a9709d3db6')
+          fix=mat(['V8_3_157_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part01a','V8_3_157_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part01b']+[f'V8_3_157_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part{i:02d}' for i in range(2,6)],'V8_3_157_SEALED_EXECUTION_FIXTURE_V1.json','074363f4f9c9f9aaede70e236c0aa8f4161829dca3d2d06cdb1e83a9709d3db6')
           assert fix['authority']=='V8.3.157 SEALED EXECUTION FIXTURE V1'
           assert fix['development_authority_commit']=='c158030ec3ec4d65ab43d945eb096ece8837bf9a'
           assert fix['candidate_sha256']=='c08d955661a31d09d316c951616b55c26a06fc62fb34edd5dfa51f37abf4b404'
