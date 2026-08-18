@@ -1,0 +1,27 @@
+name: V8.3.155 Contamination Observer
+on:
+  workflow_run:
+    workflows: ["V8.3.155 Contamination Reference Extract"]
+    types: [completed]
+permissions:
+  contents: write
+jobs:
+  record:
+    if: github.event.workflow_run.head_branch == 'v83155-validation'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83155-validation
+      - name: Record extractor result
+        env:
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          RESULT: ${{ github.event.workflow_run.conclusion }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          printf '{"run_id":%s,"conclusion":"%s","head_sha":"%s"}\n' "$RUN_ID" "$RESULT" "$HEAD_SHA" > validation/V8_3_155_CONTAMINATION_EXTRACT_RUN.json
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_155_CONTAMINATION_EXTRACT_RUN.json
+          git commit -m 'Record V8.3.155 contamination extractor result' || exit 0
+          git push origin HEAD:v83155-validation
