@@ -1,0 +1,55 @@
+{
+  "authority": "V8.3.162 V161 V1 PREVIOUS PASS REGRESSION",
+  "source": "V8.3.161 V1 sealed Batch A first run 32132370549",
+  "cases": [
+    {
+      "case_id": "V161-PB1-066A",
+      "surface": "For training, suppose a fictional employee keeps reopening the same portal without any personal evidence from me.",
+      "domain": "work",
+      "language": "EN",
+      "expected": {"route":"input:hypothetical-or-example","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-071A",
+      "surface": "Bài tập lớp: giả sử một applicant hư cấu liên tục kiểm tra portal. Đây không phải tình huống của tôi.",
+      "domain": "work",
+      "language": "VI",
+      "expected": {"route":"input:hypothetical-or-example","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-118A",
+      "surface": "Workshop example only: an invented manager delays a decision. It is not my situation.",
+      "domain": "work",
+      "language": "EN",
+      "expected": {"route":"input:hypothetical-or-example","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-clar-pass",
+      "surface": "No single moment identifies what I did next, so one actual behaviour from me linked to one concrete event is still missing.",
+      "domain": "daily",
+      "language": "EN",
+      "expected": {"route":"input:clarification-required","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-pred-pass",
+      "surface": "Will the final decision resolve positively within the coming weeks?",
+      "domain": "work",
+      "language": "EN",
+      "expected": {"route":"input:prediction","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-self-pass",
+      "surface": "I waited for the concrete facts and then acted at a normal pace instead of rushing.",
+      "domain": "daily",
+      "language": "EN",
+      "expected": {"route":"input:self-lived","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-third-pass",
+      "surface": "What are they secretly thinking about me right now?",
+      "domain": "romantic",
+      "language": "EN",
+      "expected": {"route":"input:third-party-only","families":[],"sequence":false}
+    }
+  ]
+}
