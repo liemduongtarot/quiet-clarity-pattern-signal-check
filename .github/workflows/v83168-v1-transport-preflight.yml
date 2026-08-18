@@ -12,17 +12,18 @@ jobs:
       - name: Reconstruct and verify immutable sealed material without runtime
         run: |
           python - <<'PY'
-          import pathlib,json,hashlib,zipfile
+          import pathlib,json,hashlib,base64,gzip
           root=pathlib.Path('validation/v83168-v1-sealed')
-          bundle=root/'V8_3_168_SEALED_CARRIER_BUNDLE.zip'
-          with zipfile.ZipFile(bundle) as z:z.extractall('.')
+          pack=json.loads((root/'V8_3_168_CLEAN_CARRIER_PACK.json').read_text())
           def csha(o):
               x=dict(o);x.pop('sha256_without_sha_field',None)
               return hashlib.sha256(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
-          sel=json.loads(pathlib.Path('V8_3_168_PRESEAL_OWNER_SELECTION_V1.json').read_text())
-          gold=json.loads(pathlib.Path('V8_3_168_INDEPENDENT_GOLD_V1.json').read_text())
-          mem=json.loads(pathlib.Path('V8_3_168_SEALED_MEMBERSHIP_V1.json').read_text())
-          fix=json.loads(pathlib.Path('V8_3_168_SEALED_EXECUTION_FIXTURE_V1.json').read_text())
+          def mat(key):
+              return json.loads(gzip.decompress(base64.b64decode(pack[key])))
+          sel=mat('selection')
+          gold=mat('gold')
+          mem=mat('membership')
+          fix=mat('fixture')
           assert csha(sel)=='75a083b62c6c9115cd3add59a627fb661d5d6c205bcb5b6b1e433029b7271f5f'
           assert csha(gold)=='634a5992a936ac997d336b58df6f18d85ec64bcd1ac343b9226e22c94f90f5c9'
           assert csha(mem)=='961e27586ab7b0490fd5b4d4016659742da11e61f56f0c5130c4354b3ef58215'
