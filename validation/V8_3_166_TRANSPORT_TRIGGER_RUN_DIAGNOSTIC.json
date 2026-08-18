@@ -1,0 +1,22 @@
+{
+  "authority": "V8.3.166 TRANSPORT TRIGGER RUN DIAGNOSTIC",
+  "target_head_sha": "d29df1ae6850fa14dac047cf3fbee4145f4bc07d",
+  "total_count": 1,
+  "runs": [
+    {
+      "id": 32185943227,
+      "name": "V8.3.166 V1 Transport Preflight",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "head_branch": "v83166-v1-sealed-validation",
+      "head_sha": "d29df1ae6850fa14dac047cf3fbee4145f4bc07d",
+      "run_attempt": 1
+    }
+  ],
+  "runtime_executed_by_diagnostic": false,
+  "batch_a_executed_by_diagnostic": false,
+  "batch_b_executed_by_diagnostic": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
