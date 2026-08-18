@@ -1,1 +1,161 @@
-PLACEHOLDER
+{
+  "authority": "V8.3.160 V159 V2 FAILURE REGRESSION",
+  "source_run_id": 32125126363,
+  "source_head_sha": "96f8eb0284b52e2ce424e1b63bd3d2a9756d4f7a",
+  "cases": [
+    {
+      "case_id": "V159-PB2-059",
+      "surface": "Tôi thấy áp lực nhưng vẫn kiểm dữ kiện vừa đủ rồi xử lý theo nhịp phù hợp, không né và không ép chốt. Energy provider sửa một meter estimate. Tariff end date và direct-debit day không đổi.",
+      "domain": "điện nước",
+      "language": "VI",
+      "expected": {"route":"input:self-lived","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-110",
+      "surface": "Du lieu hien co da du cho mot buoc thu, nhung toi van mo them nhieu tai lieu va chua chon hanh dong. He thong freelancer doi trang thai mot hoa don cu. So invoice va payment term van duoc luu rieng.",
+      "domain": "hoa don",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:self-lived","families":["freeze"],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-164",
+      "surface": "Facts đã đủ cho one testable step nhưng tôi vẫn collect thêm comparison material và postpone action. Landlord system thêm inspection comment. Deposit id và tenancy end date vẫn documented.",
+      "domain": "rental",
+      "language": "MIXED_VI_EN",
+      "expected": {"route":"input:self-lived","families":["freeze"],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-120",
+      "surface": "Toi liet ke nhieu lan xay ra nhung chua chon mot lan co response rieng cua minh. Don vi storage them canh bao ve gio truy cap. Ma unit va renewal deadline khong thay doi.",
+      "domain": "kho hang",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:clarification-required","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-124",
+      "surface": "Nhieu incident co san, song chua incident nao gan ro voi mot hanh vi cua toi. Gym portal cap nhat mot muc phi nho. Membership id va notice period khong doi.",
+      "domain": "the thanh vien",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:clarification-required","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-180",
+      "surface": "Before questionnaire cần one concrete action của tôi gắn với one event. Claim portal add assessor request. Excess amount và evidence cutoff vẫn written.",
+      "domain": "insurance",
+      "language": "MIXED_VI_EN",
+      "expected": {"route":"input:clarification-required","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-130",
+      "surface": "Cho toi mot instruction yes-or-no ve viec phai lam tiep. Tai khoan rail sua estimate cho mot refund. Claim code va cac ngay di van nhu cu.",
+      "domain": "rail refund",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:decision-request","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-132",
+      "surface": "Toi muon ban select action, khong muon check response cua toi. Trung tam sua chua them mot ky thuat vien vao job. Warranty id va pickup window van giu nguyen.",
+      "domain": "repair",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:decision-request","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-182",
+      "surface": "Tell me accept hay decline; tôi muốn you decide on my behalf. Landlord system thêm inspection comment. Deposit id và tenancy end date vẫn documented.",
+      "domain": "rental",
+      "language": "MIXED_VI_EN",
+      "expected": {"route":"input:decision-request","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-185",
+      "surface": "Decide giúp tôi continue, pause hay withdraw và replace my choice. Airline account update refund stage. Ticket code và travel dates vẫn saved.",
+      "domain": "travel",
+      "language": "MIXED_VI_EN",
+      "expected": {"route":"input:decision-request","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-186",
+      "surface": "Tôi want action selection from you, không phải check response. Training portal change module window. Paid invoice và learner id vẫn recorded.",
+      "domain": "training",
+      "language": "MIXED_VI_EN",
+      "expected": {"route":"input:decision-request","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-029",
+      "surface": "For training, suppose an invented manager replies instantly because uncertainty feels unpleasant; it is not personal evidence. A software subscription added a seat-charge adjustment. The renewal date and invoice reference remained unchanged.",
+      "domain": "software",
+      "language": "EN",
+      "expected": {"route":"input:hypothetical-or-example","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-083",
+      "surface": "Chỉ để training, tưởng tượng một manager reply ngay vì ghét uncertainty; không phải personal evidence. Agent gửi thêm note về lịch inspection. Ngày tenancy kết thúc và deposit reference không đổi.",
+      "domain": "rental",
+      "language": "VI",
+      "expected": {"route":"input:hypothetical-or-example","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-142",
+      "surface": "Training vignette dung applicant ao thu thap so sanh lien tuc; khong phai situation cua toi. Gym portal cap nhat mot muc phi nho. Membership id va notice period khong doi.",
+      "domain": "the thanh vien",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:hypothetical-or-example","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-039",
+      "surface": "Can you forecast whether next month's result will favour me? A courier account changed the compensation estimate. The parcel id and claim cutoff were already documented.",
+      "domain": "courier",
+      "language": "EN",
+      "expected": {"route":"input:prediction","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-042",
+      "surface": "Is the future outcome likely to go my way? A repair company added a technician note. The warranty number and collection window were unchanged.",
+      "domain": "repair",
+      "language": "EN",
+      "expected": {"route":"input:prediction","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-093",
+      "surface": "Bạn forecast xem result tháng sau có nghiêng về phía tôi không? Hệ thống tuyển dụng dời một interview slot. Job code và salary band vẫn như trước.",
+      "domain": "recruitment",
+      "language": "VI",
+      "expected": {"route":"input:prediction","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-094",
+      "surface": "Còn bao lâu nữa answer mới chuyển thành kết quả tích cực cho tôi? Insurer thêm yêu cầu một document mới. Claim number và evidence deadline đã có sẵn.",
+      "domain": "insurance",
+      "language": "VI",
+      "expected": {"route":"input:prediction","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-050",
+      "surface": "What feelings are they hiding from me right now? The target is their internal state. A school portal changed one parent-meeting slot. The pupil reference and term dates remained fixed.",
+      "domain": "school",
+      "language": "EN",
+      "expected": {"route":"input:third-party-only","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-054",
+      "surface": "How do they see me now compared with before? The requested target is the other person's mind. A venue account changed one booking condition. The booking code and cancellation date remained recorded.",
+      "domain": "booking",
+      "language": "EN",
+      "expected": {"route":"input:third-party-only","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-105",
+      "surface": "Họ còn muốn contact với tôi không? Tôi muốn private intention của họ chứ không check behaviour của tôi. Course portal thay lịch một assessment. Invoice đã trả và student reference vẫn cố định.",
+      "domain": "course",
+      "language": "VI",
+      "expected": {"route":"input:third-party-only","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V159-PB2-106",
+      "surface": "Nói tôi biết họ secretly nghĩ gì về tình huống; tôi không hỏi response của mình. Rota chăm trẻ đổi một buổi tối. School pickup time và clinic appointment vẫn như cũ.",
+      "domain": "childcare",
+      "language": "VI",
+      "expected": {"route":"input:third-party-only","families":[],"sequence":false}
+    }
+  ]
+}
