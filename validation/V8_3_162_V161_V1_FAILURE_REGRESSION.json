@@ -1,0 +1,167 @@
+{
+  "authority": "V8.3.162 V161 V1 FAILURE REGRESSION",
+  "source": "V8.3.161 V1 sealed Batch A first run 32132370549",
+  "cases": [
+    {
+      "case_id": "V161-PB1-015",
+      "surface": "I have not chosen one incident where my own action can be identified clearly. A conference platform moved a webinar slot; the registration ID and ticket tier stayed recorded. Separately, the screening note from Portsmouth was separately logged; that record does not identify the response mechanism.",
+      "domain": "work",
+      "language": "EN",
+      "expected": {"route":"input:clarification-required","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-070",
+      "surface": "Phần của tôi và phần của người khác đang bị trộn nên chưa thể gán response. Tài khoản điện nước chỉnh số đọc ước tính; mã khách hàng và hạn thanh toán vẫn hiển thị. Riêng hồ sơ expense claim tại Reading vẫn được lưu độc lập; chi tiết đó không xác định cơ chế phản ứng.",
+      "domain": "money",
+      "language": "VI",
+      "expected": {"route":"input:clarification-required","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-066",
+      "surface": "Tôi kể được bối cảnh nhưng chưa nói rõ response thực tế của mình lúc đó. Hệ thống giao hàng thêm một lần quét; mã vận đơn và khu vực nhận vẫn được ghi. Riêng hồ sơ clinic referral tại Cambridge vẫn được lưu độc lập; chi tiết đó không xác định cơ chế phản ứng.",
+      "domain": "daily",
+      "language": "VI",
+      "expected": {"route":"input:clarification-required","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-173",
+      "surface": "Several episodes có mặt nhưng chưa separate behaviour của tôi khỏi what others did. University portal moved the room; module code và enrolment record vẫn fixed. Separately, record insurance schedule tại Nottingham vẫn independent; detail đó không define response mechanism.",
+      "domain": "work",
+      "language": "MIXED_VI_EN",
+      "expected": {"route":"input:clarification-required","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-023",
+      "surface": "Decide whether I should accept or decline; I do not want to make the choice myself. A council portal amended one waste-service date; the property reference and billing cycle remained visible. Separately, the payroll memo from Liverpool was separately logged; that record does not identify the response mechanism.",
+      "domain": "daily",
+      "language": "EN",
+      "expected": {"route":"input:decision-request","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-077",
+      "surface": "Hãy quyết định giúp tôi nên nhận hay từ chối; tôi không muốn tự chọn. Hệ thống bảo hành cập nhật trạng thái kiểm tra; mã sản phẩm và ngày mua vẫn giữ nguyên. Riêng hồ sơ payroll memo tại Nottingham vẫn được lưu độc lập; chi tiết đó không xác định cơ chế phản ứng.",
+      "domain": "daily",
+      "language": "VI",
+      "expected": {"route":"input:decision-request","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-132",
+      "surface": "Bao toi tiep tuc, tam dung hay rut lui va quyet thay toi. Cong truong chuyen phong hoc; ma mon va ho so dang ky van con nguyen. Mot record rieng ve refund record o Derby van tach biet; chi tiet nay khong xac dinh response mechanism. Mot chi tiet nen rieng ve training workbook duoc luu o muc khac, khong noi gi ve choice, actor, timing, hay behavioural response dang duoc danh gia. The background record concerns a theatre membership and a locker rental, neither describing who made the decision.",
+      "domain": "work",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:decision-request","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-130",
+      "surface": "Pick action tiep theo cho toi va own final call. Ung dung y te doi mot khung hen; ma ho so va ghi chu dat lich van co san. Mot record rieng ve warranty slip o Manchester van tach biet; chi tiet nay khong xac dinh response mechanism. Mot chi tiet nen rieng ve utility tariff duoc luu o muc khac, khong noi gi ve choice, actor, timing, hay behavioural response dang duoc danh gia.",
+      "domain": "wellbeing",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:decision-request","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-188",
+      "surface": "Select one route rồi instruct tôi follow để khỏi tự decide. Supplier dashboard updated dispatch note; order number và payment terms vẫn stable. Separately, record account statement tại Leicester vẫn independent; detail đó không define response mechanism.",
+      "domain": "business",
+      "language": "MIXED_VI_EN",
+      "expected": {"route":"input:decision-request","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-141",
+      "surface": "Workshop gia su freelancer ao tao qua nhieu backup plan. Tai khoan dien nuoc chinh so doc uoc tinh; ma khach hang va han thanh toan van hien thi. Mot record rieng ve parcel manifest o Oxford van tach biet; chi tiet nay khong xac dinh response mechanism. Mot chi tiet nen rieng ve inspection sheet duoc luu o muc khac, khong noi gi ve choice, actor, timing, hay behavioural response dang duoc danh gia.",
+      "domain": "business",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:hypothetical-or-example","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-138",
+      "surface": "Bai tap lop gia su applicant hu cau cu gom comparison roi khong act. Portal nha cung cap cap nhat phieu xuat; ma don va dieu khoan thanh toan van giu nguyen. Mot record rieng ve conference badge o Cambridge van tach biet; chi tiet nay khong xac dinh response mechanism. Mot chi tiet nen rieng ve subscription receipt duoc luu o muc khac, khong noi gi ve choice, actor, timing, hay behavioural response dang duoc danh gia.",
+      "domain": "work",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:hypothetical-or-example","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-153",
+      "surface": "Predict update tiep theo co confirm result toi muon khong. Ung dung ngan hang sua mo ta mot giao dich; ma tham chieu va ngay sao ke khong doi. Mot record rieng ve delivery docket o Plymouth van tach biet; chi tiet nay khong xac dinh response mechanism. Mot chi tiet nen rieng ve statement page duoc luu o muc khac, khong noi gi ve choice, actor, timing, hay behavioural response dang duoc danh gia.",
+      "domain": "money",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:prediction","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-203",
+      "surface": "Final decision có land on outcome tôi muốn không? University portal moved the room; module code và enrolment record vẫn fixed. Separately, record maintenance ticket tại Cardiff vẫn independent; detail đó không define response mechanism.",
+      "domain": "work",
+      "language": "MIXED_VI_EN",
+      "expected": {"route":"input:prediction","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-207",
+      "surface": "Predict next update có confirm outcome tôi muốn không. Banking app relabelled one transaction; reference code và statement date không đổi. Separately, record delivery docket tại Portsmouth vẫn independent; detail đó không define response mechanism.",
+      "domain": "money",
+      "language": "MIXED_VI_EN",
+      "expected": {"route":"input:prediction","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-206",
+      "surface": "Do you expect process này end successfully trong coming weeks? Portal thư viện changed pickup time; member code và return date vẫn separate. Separately, record booking amendment tại Newcastle vẫn independent; detail đó không define response mechanism.",
+      "domain": "daily",
+      "language": "MIXED_VI_EN",
+      "expected": {"route":"input:prediction","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-009",
+      "surface": "I revisited the same screen several times without new information and delayed the choice. A travel account changed a seat assignment; the booking code and departure date remained recorded. Separately, the supplier ledger from Plymouth remained archived; that record does not identify the response mechanism.",
+      "domain": "daily",
+      "language": "EN",
+      "expected": {"route":"input:self-lived","families":["slow"],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-060",
+      "surface": "Tôi muốn chốt thật nhanh nhưng đã đợi đủ dữ kiện cần thiết rồi mới làm. Hệ thống bảo hành cập nhật trạng thái kiểm tra; mã sản phẩm và ngày mua vẫn giữ nguyên. Riêng hồ sơ parcel manifest tại Derby vẫn được lưu độc lập; chi tiết đó không xác định cơ chế phản ứng.",
+      "domain": "daily",
+      "language": "VI",
+      "expected": {"route":"input:self-lived","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-057",
+      "surface": "Dữ kiện đã đủ cho một bước hợp lý nhưng tôi vẫn mở thêm nhiều tài liệu so sánh và chưa hành động. Tài khoản điện nước chỉnh số đọc ước tính; mã khách hàng và hạn thanh toán vẫn hiển thị. Riêng hồ sơ conference badge tại Plymouth vẫn được lưu độc lập; chi tiết đó không xác định cơ chế phản ứng.",
+      "domain": "money",
+      "language": "VI",
+      "expected": {"route":"input:self-lived","families":["freeze"],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-111",
+      "surface": "Thong tin da du de thu mot buoc nhung toi van tim them tai lieu va chua bat dau. Tai khoan dien nuoc chinh so doc uoc tinh; ma khach hang va han thanh toan van hien thi. Mot record rieng ve conference badge o Portsmouth van tach biet; chi tiet nay khong xac dinh response mechanism. Mot chi tiet nen rieng ve warehouse shelf duoc luu o muc khac, khong noi gi ve choice, actor, timing, hay behavioural response dang duoc danh gia.",
+      "domain": "money",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:self-lived","families":["freeze"],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-053",
+      "surface": "How do they see me inside their own mind compared with before? A council portal amended one waste-service date; the property reference and billing cycle remained visible. Separately, the account statement from Nottingham kept its original reference; that record does not identify the response mechanism.",
+      "domain": "romantic",
+      "language": "EN",
+      "expected": {"route":"input:third-party-only","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-156",
+      "surface": "Ben trong ho dang judge toi nhu the nao? Cong thu vien doi gio nhan sach; ma thanh vien va ngay tra van duoc luu rieng. Mot record rieng ve tenancy statement o Derby van tach biet; chi tiet nay khong xac dinh response mechanism. Mot chi tiet nen rieng ve enrolment card duoc luu o muc khac, khong noi gi ve choice, actor, timing, hay behavioural response dang duoc danh gia.",
+      "domain": "romantic",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:third-party-only","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-162",
+      "surface": "Inner reaction nao cua ho dang co ma toi khong observe duoc? Cong truong chuyen phong hoc; ma mon va ho so dang ky van con nguyen. Mot record rieng ve enrolment note o Cambridge van tach biet; chi tiet nay khong xac dinh response mechanism. Mot chi tiet nen rieng ve permit letter duoc luu o muc khac, khong noi gi ve choice, actor, timing, hay behavioural response dang duoc danh gia.",
+      "domain": "romantic",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {"route":"input:third-party-only","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-214",
+      "surface": "Tell private motive của họ, not anything about my behaviour. Clinic app moved an appointment window; patient code và booking note vẫn available. Separately, record service request tại Reading vẫn independent; detail đó không define response mechanism.",
+      "domain": "romantic",
+      "language": "MIXED_VI_EN",
+      "expected": {"route":"input:third-party-only","families":[],"sequence":false}
+    }
+  ]
+}
