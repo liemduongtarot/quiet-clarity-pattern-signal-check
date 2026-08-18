@@ -1,0 +1,35 @@
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-029",
+      "surface": "For training, suppose an invented manager replies instantly because uncertainty feels unpleasant; it is not personal evidence. A software subscription added a seat-charge adjustment. The renewal date and invoice reference remained unchanged.",
+      "domain": "subscription",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-035",
+      "surface": "Suppose a fictional flatmate keeps reopening the same confirmation; this is an example only. A banking app replaced a pending charge with a corrected amount. The card reference and dispute deadline were fixed.",
+      "domain": "banking",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-083",
+      "surface": "Chỉ để training, tưởng tượng một manager reply ngay vì ghét uncertainty; không phải personal evidence. Agent gửi thêm note về lịch inspection. Ngày tenancy kết thúc và deposit reference không đổi.",
+      "domain": "n

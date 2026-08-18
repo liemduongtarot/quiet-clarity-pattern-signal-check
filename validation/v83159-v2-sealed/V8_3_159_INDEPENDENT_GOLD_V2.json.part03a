@@ -1,0 +1,41 @@
+LY"
+    },
+    {
+      "case_id": "V159-PB2-132",
+      "surface": "Toi muon ban select action, khong muon check response cua toi. Trung tam sua chua them mot ky thuat vien vao job. Warranty id va pickup window van giu nguyen.",
+      "domain": "thiet bi",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-134",
+      "surface": "Lam final call thay toi, bo qua phan phan tich behavior. Portal giay phep doi ngay review ho so. Application code va receipt phi van co san.",
+      "domain": "giay phep",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-130",
+      "surface": "Cho toi mot instruction yes-or-no ve viec phai lam tiep. Tai khoan rail sua estimate cho mot refund. Claim code va cac ngay di van nhu cu.",
+      "domain": "van chuyen",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-186",
+      "surface": "Tôi want action selection from you, không phải check response. Training portal change m

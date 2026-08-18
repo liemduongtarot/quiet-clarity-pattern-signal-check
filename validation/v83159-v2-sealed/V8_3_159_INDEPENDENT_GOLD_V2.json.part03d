@@ -1,0 +1,40 @@
+hà ở",
+      "language": "VI",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-085",
+      "surface": "Role-play case: một customer giả định cứ check portal; không dùng làm evidence về tôi. Insurer thêm yêu cầu một document mới. Claim number và evidence deadline đã có sẵn.",
+      "domain": "bảo hiểm",
+      "language": "VI",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-143",
+      "surface": "Gia su flatmate hu cau mo confirmation nhieu lan; chi la minh hoa. Portal giay phep doi ngay review ho so. Application code va receipt phi van co san.",
+      "domain": "giay phep",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "adjudication_basis": "RAW_SURFACE_ONLY"
+    },
+    {
+      "case_id": "V159-PB2-142",
+      "surface": "Training vignette dung applicant ao thu thap so sanh lien tuc; khong phai situation cua toi. Gym portal cap nhat mot muc phi nho. Membership id va notice period khong doi.",
+      "domain": "the thanh vien",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:hypothetical-o

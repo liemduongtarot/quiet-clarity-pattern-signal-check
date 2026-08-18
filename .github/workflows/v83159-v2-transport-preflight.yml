@@ -13,19 +13,14 @@ jobs:
           python - <<'PY'
           import pathlib,json,hashlib
           root=pathlib.Path('validation/v83159-v2-sealed')
-          def read(name,parts=None):
-              if parts:
-                  text=''.join((root/f'{name}.part{i:02d}').read_text() for i in range(1,parts+1))
-              else:
-                  text=(root/name).read_text()
-              return json.loads(text)
+          def obj_from_paths(paths): return json.loads(''.join((root/p).read_text() for p in paths))
           def canonical_sha(obj):
               x=dict(obj); x.pop('sha256_without_sha_field',None)
               return hashlib.sha256(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
-          sel=read('V8_3_159_PRESEAL_OWNER_SELECTION_V2.json')
-          mem=read('V8_3_159_SEALED_MEMBERSHIP_V2.json')
-          gold=read('V8_3_159_INDEPENDENT_GOLD_V2.json',5)
-          fix=read('V8_3_159_SEALED_EXECUTION_FIXTURE_V2.json',5)
+          sel=json.loads((root/'V8_3_159_PRESEAL_OWNER_SELECTION_V2.json').read_text())
+          mem=json.loads((root/'V8_3_159_SEALED_MEMBERSHIP_V2.json').read_text())
+          gold=obj_from_paths(['V8_3_159_INDEPENDENT_GOLD_V2.json.part01','V8_3_159_INDEPENDENT_GOLD_V2.json.part02','V8_3_159_INDEPENDENT_GOLD_V2.json.part03a','V8_3_159_INDEPENDENT_GOLD_V2.json.part03b','V8_3_159_INDEPENDENT_GOLD_V2.json.part03c','V8_3_159_INDEPENDENT_GOLD_V2.json.part03d','V8_3_159_INDEPENDENT_GOLD_V2.json.part04','V8_3_159_INDEPENDENT_GOLD_V2.json.part05'])
+          fix=obj_from_paths([f'V8_3_159_SEALED_EXECUTION_FIXTURE_V2.json.part{i:02d}' for i in range(1,6)])
           bank='61827266acfe807d43d9acc5762186c8a41b2057c5bbad442625ae90b7ff2947'
           assert canonical_sha(sel)=='7c58338e6b7e4c999db9ff047c166b132364c78c9b1a80f8e2936ebaa22669ea'
           assert canonical_sha(gold)=='58e958e1df86b25350902258f0f3ab6c80c5f5d626d6623ed67bff4141c64251'
