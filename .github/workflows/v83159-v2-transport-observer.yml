@@ -1,0 +1,37 @@
+name: V8.3.159 V2 Transport Observer
+on:
+  workflow_run:
+    workflows: ["V8.3.159 V2 Transport Preflight"]
+    types: [completed]
+permissions:
+  contents: write
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Record immutable transport run evidence only
+        run: |
+          mkdir -p validation
+          cat > validation/V8_3_159_V2_TRANSPORT_RUN_EVIDENCE.json <<EOF
+          {
+            "authority": "V8.3.159 V2 TRANSPORT RUN EVIDENCE",
+            "run_id": ${{ github.event.workflow_run.id }},
+            "run_attempt": ${{ github.event.workflow_run.run_attempt }},
+            "conclusion": "${{ github.event.workflow_run.conclusion }}",
+            "head_sha": "${{ github.event.workflow_run.head_sha }}",
+            "head_branch": "${{ github.event.workflow_run.head_branch }}",
+            "runtime_executed": false,
+            "batch_a_executed": false,
+            "batch_b_executed": false,
+            "step_111_authorized": false,
+            "production_authorized": false
+          }
+          EOF
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add validation/V8_3_159_V2_TRANSPORT_RUN_EVIDENCE.json
+          git commit -m "Record V8.3.159 V2 transport run evidence" || exit 0
+          git push origin HEAD:main
