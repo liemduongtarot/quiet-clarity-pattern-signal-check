@@ -20,7 +20,7 @@ function routeRepair(d){
 }
 function familyRepair(d,base){
   if(base.input_route?.id!=='input:self-lived')return{families:[],sequence:false};
-  if(has(/(?:closed the message|closed message|dong message|dong lai).{0,120}(?:sorting unrelated|sap xep .* khong lien quan|sorting unrelated files|sorting unrelated material).{0,120}(?:half an hour|nua gio|thirty minutes|30 minutes)/,d))return{families:['ignore'],sequence:false};
+  if(has(/(?:closed the message|closed message|dong message|dong lai).{0,180}(?:(?:half an hour|nua gio|thirty minutes|30 minutes).{0,100}(?:sorting unrelated|sap xep .* khong lien quan|sorting unrelated files|sorting unrelated material)|(?:sorting unrelated|sap xep .* khong lien quan|sorting unrelated files|sorting unrelated material).{0,100}(?:half an hour|nua gio|thirty minutes|30 minutes))/,d))return{families:['ignore'],sequence:false};
   if(has(/(?:doc lai|read again|reread|reopened?).{0,120}(?:same information|cung mot thong tin|confirmed information|thong tin da xac nhan).{0,160}(?:three times|ba thoi diem|ba lan).{0,160}(?:no update|khong co cap nhat|nothing changed|khong co thong tin moi)/,d))return{families:['slow'],sequence:false};
   return{families:[...(base.families||[])],sequence:!!base.sequence};
 }
