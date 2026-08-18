@@ -37,8 +37,8 @@ jobs:
           assert not(A&B) and A|B==ids
           from collections import Counter
           by={c['case_id']:c for c in fix['cases']}; routes=['input:self-lived','input:clarification-required','input:decision-request','input:hypothetical-or-example','input:prediction','input:third-party-only']
-          assert Counter(by[x]['route'] for x in A)==Counter({r:5 for r in routes})
-          assert Counter(by[x]['route'] for x in B)==Counter({r:5 for r in routes})
+          assert Counter(by[x]['expected']['route'] for x in A)==Counter({r:5 for r in routes})
+          assert Counter(by[x]['expected']['route'] for x in B)==Counter({r:5 for r in routes})
           status={'authority':'V8.3.157 V1 TRANSPORT PREFLIGHT','run_id':'${{ github.run_id }}','run_attempt':'${{ github.run_attempt }}','head_sha':'${{ github.sha }}','transport_pass':True,'runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'step_111_authorized':False,'production_authorized':False}
           pathlib.Path('V8_3_157_V1_TRANSPORT_PREFLIGHT_RESULT.json').write_text(json.dumps(status,indent=2))
           PY
