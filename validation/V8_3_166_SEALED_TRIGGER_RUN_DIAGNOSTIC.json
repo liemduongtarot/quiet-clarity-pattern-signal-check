@@ -1,0 +1,32 @@
+{
+  "authority": "V8.3.166 SEALED TRIGGER RUN DIAGNOSTIC",
+  "target_head_sha": "7e226f7a49e5e7d998b33dcc69fa21cdbcdd0f0a",
+  "total_count": 2,
+  "runs": [
+    {
+      "id": 32186120181,
+      "name": "V8.3.166 V1 Transport Preflight",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "skipped",
+      "head_branch": "v83166-v1-sealed-validation",
+      "head_sha": "7e226f7a49e5e7d998b33dcc69fa21cdbcdd0f0a",
+      "run_attempt": 1
+    },
+    {
+      "id": 32186120135,
+      "name": "V8.3.166 V1 Sealed Validation",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_branch": "v83166-v1-sealed-validation",
+      "head_sha": "7e226f7a49e5e7d998b33dcc69fa21cdbcdd0f0a",
+      "run_attempt": 1
+    }
+  ],
+  "runtime_executed_by_diagnostic": false,
+  "batch_a_executed_by_diagnostic": false,
+  "batch_b_executed_by_diagnostic": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
