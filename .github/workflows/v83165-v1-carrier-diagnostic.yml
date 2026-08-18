@@ -30,18 +30,19 @@ jobs:
               try:
                   texts=[]
                   for p in parts:
-                      t=(root/p).read_text().strip(); texts.append(t); rec['part_lengths'][p]=len(t)
+                      t=(root/p).read_text().strip();texts.append(t);rec['part_lengths'][p]=len(t)
                   raw=gzip.decompress(base64.b64decode(''.join(texts)))
-                  obj=json.loads(raw); actual=csha(obj)
+                  obj=json.loads(raw);actual=csha(obj)
                   rec['actual_canonical_sha256']=actual
                   rec['result']='PASS' if actual==expected else 'HASH_MISMATCH'
               except Exception as e:
                   rec['result']='DECOMPRESSION_OR_PARSE_FAIL';rec['error']=repr(e)
               out['objects'][name]=rec
-          pathlib.Path('V8_3_165_CARRIER_DIAGNOSTIC.json').write_text(json.dumps(out,indent=2))
+          pathlib.Path('validation/V8_3_165_CARRIER_DIAGNOSTIC_RESULT.json').write_text(json.dumps(out,indent=2))
           print(json.dumps(out,indent=2))
           PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: PSC_V8_3_165_CARRIER_DIAGNOSTIC
-          path: V8_3_165_CARRIER_DIAGNOSTIC.json
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add validation/V8_3_165_CARRIER_DIAGNOSTIC_RESULT.json
+          git commit -m 'Record V8.3.165 carrier diagnostic result' || exit 0
+          git push
