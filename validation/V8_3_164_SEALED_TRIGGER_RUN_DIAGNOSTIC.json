@@ -1,0 +1,38 @@
+{
+  "authority": "V8.3.164 SEALED TRIGGER RUN DIAGNOSTIC",
+  "target_head_sha": "c05740395de2834e13a9d80886561dbaa0f2c3d4",
+  "total_count": 2,
+  "runs": [
+    {
+      "id": 32150831969,
+      "name": "V8.3.164 V1 Transport Preflight",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "skipped",
+      "head_branch": "v83164-v1-sealed-validation",
+      "head_sha": "c05740395de2834e13a9d80886561dbaa0f2c3d4",
+      "run_attempt": 1,
+      "workflow_id": 337077306,
+      "created_at": "2026-08-18T14:50:47Z",
+      "updated_at": "2026-08-18T14:50:55Z"
+    },
+    {
+      "id": 32150831910,
+      "name": "V8.3.164 V1 Sealed Validation",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_branch": "v83164-v1-sealed-validation",
+      "head_sha": "c05740395de2834e13a9d80886561dbaa0f2c3d4",
+      "run_attempt": 1,
+      "workflow_id": 337078777,
+      "created_at": "2026-08-18T14:50:47Z",
+      "updated_at": "2026-08-18T14:50:56Z"
+    }
+  ],
+  "runtime_executed_by_diagnostic": false,
+  "batch_a_executed_by_diagnostic": false,
+  "batch_b_executed_by_diagnostic": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
