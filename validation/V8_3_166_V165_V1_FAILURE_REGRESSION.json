@@ -1,0 +1,174 @@
+{
+  "authority": "V8_3_166_V165_V1_FAILURE_REGRESSION",
+  "cases": [
+    {
+      "case_id": "V165-PB1-043",
+      "surface": "The sequence is too broad to show what I personally did immediately afterward. Context: when a locksmith changed the pickup counter. The context was narrow and tied to a single episode.",
+      "domain": "money",
+      "language": "EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-047",
+      "surface": "Tôi giải thích áp lực nhưng phần behaviour tiếp theo của mình vẫn chưa được nói rõ. Bối cảnh: khi council portal đổi một application status label. Chỉ một appointment slot liên quan.",
+      "domain": "home",
+      "language": "VI",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-061",
+      "surface": "Trinh tu con qua rong nen chua thay toi da lam gi ngay sau do. Boi canh: khi meal subscription bo qua mot delivery week. Su viec gioi han o mot booking line va mot confirmation screen.",
+      "domain": "home",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-076",
+      "surface": "Pick the option for me because I do not want to choose it myself. Context: when a training centre changed the room for an induction. The event affected one ordinary transaction only.",
+      "domain": "daily",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-107",
+      "surface": "I want you to make the choice, not reflect my behaviour back to me. Bối cảnh: sau khi client bỏ một paragraph khỏi draft brief. Chỉ một entry nhỏ được sửa, phần còn lại vẫn ổn định.",
+      "domain": "family",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-110",
+      "surface": "For teaching purposes, imagine an invented applicant in this situation. Context: after a repair technician changed the part number on an estimate. The context was narrow and tied to a single episode.",
+      "domain": "direction",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-159",
+      "surface": "Bạn có nghĩ việc này sẽ được approved sớm và kết thúc tốt cho tôi không? Bối cảnh: sau khi đồng nghiệp đổi thứ tự hai mục trong meeting agenda. Chỉ một entry nhỏ được sửa, phần còn lại vẫn ổn định.",
+      "domain": "family",
+      "language": "VI",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-180",
+      "surface": "Nói xem future result có khả năng thành công cho tôi không. Context: when a cleaner changed the arrival window. The episode included one short message, one reference number and no second request.",
+      "domain": "family",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-174",
+      "surface": "Dự đoán xem final decision có trở nên thuận lợi trong vài tuần tới không. Context: when a training centre changed the room for an induction. One small entry was corrected while the rest stayed stable.",
+      "domain": "romantic",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-022",
+      "surface": "Toi kiem facts da co, chon mot next step vua du roi hanh dong. Boi canh: khi photographer doi deadline review proof. Chi mot reference code doi va arrangement van giu nguyen.",
+      "domain": "wellbeing",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-019",
+      "surface": "Toi da co du information cho mot test nho nhung van gom alternatives va chua bat dau. Boi canh: sau khi repair technician doi part number tren estimate. Thay doi chi hien tren mot confirmation screen.",
+      "domain": "home",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-032",
+      "surface": "Tôi biết practical next move nhưng vẫn research thêm vì việc chọn khiến tôi khó chịu. Context: when a vet clinic moved a follow-up call. The context was narrow and tied to a single episode.",
+      "domain": "wellbeing",
+      "language": "MIXED_VI_EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-196",
+      "surface": "Động cơ nào họ đang giữ kín với tôi? Bối cảnh: sau khi airline sửa middle initial của tôi. Sự việc chỉ ảnh hưởng một transaction bình thường.",
+      "domain": "business",
+      "language": "VI",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-204",
+      "surface": "Ho co con muon contact du chua noi ra khong? Boi canh: sau khi pension provider cap nhat mot reference code. Context duoc giu hep va gan voi mot episode.",
+      "domain": "home",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V165-PB1-205",
+      "surface": "Dong co nao ho dang giu kin voi toi? Boi canh: khi museum doi timed entry cua toi hai muoi phut. Update chi anh huong mot morning slot, mot contact name va khong gi rong hon.",
+      "domain": "daily",
+      "language": "VI_NO_DIACRITICS",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
