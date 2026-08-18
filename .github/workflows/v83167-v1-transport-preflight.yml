@@ -1,0 +1,43 @@
+name: V8.3.167 V1 Transport Preflight
+on:
+  push:
+    branches: [v83167-v1-sealed-validation]
+jobs:
+  transport_preflight:
+    if: github.event.head_commit.message == 'Run V8.3.167 V1 transport preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct and verify immutable sealed material without runtime
+        run: |
+          python - <<'PY'
+          import pathlib,json,hashlib,base64,gzip
+          root=pathlib.Path('validation/v83167-v1-sealed')
+          def csha(o):
+              x=dict(o);x.pop('sha256_without_sha_field',None)
+              return hashlib.sha256(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+          def mat(name):
+              raw=gzip.decompress(base64.b64decode((root/name).read_text().strip()))
+              return json.loads(raw)
+          sel=mat('V8_3_167_PRESEAL_OWNER_SELECTION_V1.json.gz.b64')
+          gold=mat('V8_3_167_INDEPENDENT_GOLD_V1.json.gz.b64')
+          mem=mat('V8_3_167_SEALED_MEMBERSHIP_V1.json.gz.b64')
+          fix=mat('V8_3_167_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64')
+          assert csha(sel)=='80fe64b15bd87a15e9b334209ed18f08ba8b8a35ac4e680e1a9d4d408cb917a4'
+          assert csha(gold)=='41e3a3b48498ed526cd649712ef2c3c0f2527116d09f9a40599971903f40319d'
+          assert csha(mem)=='15534be710e0be240d7dd559ca4152a0e30d61e243f2b38905ae553260e89aa8'
+          assert csha(fix)=='1191e476de2f67052bd67d1b26d9c2fbba0d5aa1aace49c842462104c348c6cd'
+          assert fix['development_authority_commit']=='edf030ca5f0f8c8095e811954b6abc8aae36173b'
+          assert len(fix['batch_a'])==30 and len(fix['batch_b'])==30
+          assert set(fix['batch_a']).isdisjoint(set(fix['batch_b']))
+          assert len(set(fix['batch_a']+fix['batch_b']))==60
+          assert pathlib.Path('validation/psc-v83167-v166-v1-sealed-a-bounded-repair.js').exists()
+          out={'authority':'V8.3.167 V1 TRANSPORT PASS','head_sha':'${{ github.sha }}','runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'selection_sha256':csha(sel),'gold_sha256':csha(gold),'membership_sha256':csha(mem),'fixture_sha256':csha(fix),'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('V8_3_167_V1_TRANSPORT_PASS_EVIDENCE.json').write_text(json.dumps(out,indent=2))
+          print('TRANSPORT PREFLIGHT PASS: runtime=0; A=0; B=0')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_167_V1_TRANSPORT_PASS_EVIDENCE
+          path: V8_3_167_V1_TRANSPORT_PASS_EVIDENCE.json
