@@ -3,50 +3,50 @@
   "source": "V8.3.161 V1 sealed Batch A first run 32132370549",
   "cases": [
     {
-      "case_id": "V161-PB1-066A",
-      "surface": "For training, suppose a fictional employee keeps reopening the same portal without any personal evidence from me.",
+      "case_id": "V161-PB1-071",
+      "surface": "Trình tự khá rõ nhưng chủ thể của hành động vẫn chưa được xác lập. Cổng đặt vé đổi vị trí ghế; mã booking và ngày khởi hành không thay đổi. Riêng hồ sơ booking amendment tại Liverpool vẫn được lưu độc lập; chi tiết đó không xác định cơ chế phản ứng.",
+      "domain": "daily",
+      "language": "VI",
+      "expected": {"route":"input:clarification-required","families":[],"sequence":false}
+    },
+    {
+      "case_id": "V161-PB1-034",
+      "surface": "Workshop scenario: a fictional employee avoids one task by doing unrelated admin. A utility account revised an estimated reading; the customer number and due date stayed the same. Separately, the utility meter from Manchester remained a neutral record; that record does not identify the response mechanism.",
       "domain": "work",
       "language": "EN",
       "expected": {"route":"input:hypothetical-or-example","families":[],"sequence":false}
     },
     {
-      "case_id": "V161-PB1-071A",
-      "surface": "Bài tập lớp: giả sử một applicant hư cấu liên tục kiểm tra portal. Đây không phải tình huống của tôi.",
-      "domain": "work",
+      "case_id": "V161-PB1-085",
+      "surface": "Bài tập giả định: một khách hàng hư cấu chốt complaint thật nhanh để giảm khó chịu. Cổng thư viện đổi giờ nhận sách; mã thành viên và ngày trả vẫn được lưu riêng. Riêng hồ sơ parking permit tại Dundee vẫn được lưu độc lập; chi tiết đó không xác định cơ chế phản ứng.",
+      "domain": "daily",
       "language": "VI",
       "expected": {"route":"input:hypothetical-or-example","families":[],"sequence":false}
     },
     {
-      "case_id": "V161-PB1-118A",
-      "surface": "Workshop example only: an invented manager delays a decision. It is not my situation.",
+      "case_id": "V161-PB1-196",
+      "surface": "Workshop scenario: fictional employee avoids main task bằng unrelated admin. Travel account changed seat assignment; booking code và departure date vẫn unchanged. Separately, record utility meter tại Sheffield vẫn independent; detail đó không define response mechanism.",
       "domain": "work",
-      "language": "EN",
+      "language": "MIXED_VI_EN",
       "expected": {"route":"input:hypothetical-or-example","families":[],"sequence":false}
     },
     {
-      "case_id": "V161-PB1-clar-pass",
-      "surface": "No single moment identifies what I did next, so one actual behaviour from me linked to one concrete event is still missing.",
-      "domain": "daily",
-      "language": "EN",
-      "expected": {"route":"input:clarification-required","families":[],"sequence":false}
-    },
-    {
-      "case_id": "V161-PB1-pred-pass",
-      "surface": "Will the final decision resolve positively within the coming weeks?",
+      "case_id": "V161-PB1-038",
+      "surface": "Predict whether the application will be approved soon. A utility account revised an estimated reading; the customer number and due date stayed the same. Separately, the insurance schedule from Newcastle remained traceable; that record does not identify the response mechanism.",
       "domain": "work",
       "language": "EN",
       "expected": {"route":"input:prediction","families":[],"sequence":false}
     },
     {
-      "case_id": "V161-PB1-self-pass",
-      "surface": "I waited for the concrete facts and then acted at a normal pace instead of rushing.",
+      "case_id": "V161-PB1-004",
+      "surface": "Nothing new arrived, but I kept the task open and checked it repeatedly before deciding. A utility account revised an estimated reading; the customer number and due date stayed the same. Separately, the parking permit from Sheffield was not altered; that record does not identify the response mechanism.",
       "domain": "daily",
       "language": "EN",
-      "expected": {"route":"input:self-lived","families":[],"sequence":false}
+      "expected": {"route":"input:self-lived","families":["slow"],"sequence":false}
     },
     {
-      "case_id": "V161-PB1-third-pass",
-      "surface": "What are they secretly thinking about me right now?",
+      "case_id": "V161-PB1-048",
+      "surface": "How are they judging me internally at the moment? A pharmacy app corrected a collection window; the prescription code and branch address stayed unchanged. Separately, the tenancy statement from Swansea stayed unchanged; that record does not identify the response mechanism.",
       "domain": "romantic",
       "language": "EN",
       "expected": {"route":"input:third-party-only","families":[],"sequence":false}
