@@ -1,0 +1,28 @@
+{
+  "authority": "V8.3.167 SEALED RUN DIAGNOSTIC",
+  "target_head_sha": "48f71183db87a5e797ed1a94e3b42ad42472eb6c",
+  "total_count": 2,
+  "runs": [
+    {
+      "id": 32187944738,
+      "name": "V8.3.167 V1 Transport Preflight",
+      "status": "completed",
+      "conclusion": "skipped",
+      "head_branch": "v83167-v1-sealed-validation",
+      "head_sha": "48f71183db87a5e797ed1a94e3b42ad42472eb6c",
+      "run_attempt": 1
+    },
+    {
+      "id": 32187944775,
+      "name": "V8.3.167 V1 Sealed Validation",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_branch": "v83167-v1-sealed-validation",
+      "head_sha": "48f71183db87a5e797ed1a94e3b42ad42472eb6c",
+      "run_attempt": 1
+    }
+  ],
+  "diagnostic_runtime_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
