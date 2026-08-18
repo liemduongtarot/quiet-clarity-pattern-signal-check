@@ -1,0 +1,32 @@
+name: V8.3.168 Transport Run Diagnostic
+on:
+  push:
+    branches: [main]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  diagnose:
+    if: github.event.head_commit.message == 'Run V8.3.168 transport diagnostic'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Query exact transport trigger run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import os,json,urllib.request,pathlib
+          sha='af2e2f6391171b91f80ca24ce1ce3ac63d02ff1e'
+          url=f'https://api.github.com/repos/${{ github.repository }}/actions/runs?head_sha={sha}'
+          req=urllib.request.Request(url,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+          data=json.load(urllib.request.urlopen(req))
+          runs=[{'id':r['id'],'name':r['name'],'status':r['status'],'conclusion':r['conclusion'],'head_sha':r['head_sha'],'run_attempt':r['run_attempt']} for r in data['workflow_runs']]
+          out={'authority':'V8.3.168 TRANSPORT TRIGGER RUN DIAGNOSTIC','target_head_sha':sha,'total_count':len(runs),'runs':runs,'runtime_executed_by_diagnostic':False,'batch_a_executed_by_diagnostic':False,'batch_b_executed_by_diagnostic':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_168_TRANSPORT_TRIGGER_RUN_DIAGNOSTIC.json').write_text(json.dumps(out,indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add validation/V8_3_168_TRANSPORT_TRIGGER_RUN_DIAGNOSTIC.json
+          git commit -m 'Record V8.3.168 transport trigger diagnostic' || exit 0
+          git push
