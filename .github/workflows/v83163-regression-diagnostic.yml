@@ -1,0 +1,43 @@
+name: V8.3.163 Regression Diagnostic
+on:
+  push:
+    branches: [v83163-v1-validation]
+jobs:
+  diagnose:
+    if: github.event.head_commit.message == 'Run V8.3.163 regression diagnostic'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize exact V8.3.163 authority and regression fixtures
+        run: |
+          python - <<'PY'
+          import pathlib,base64,gzip,zipfile
+          for n in ['V8_3_163_V162_V1_FAILURE_REGRESSION.json','V8_3_163_V162_V1_PREVIOUS_PASS_REGRESSION.json']:
+              raw=gzip.decompress(base64.b64decode(pathlib.Path('validation/'+n+'.gz.b64').read_text().strip()))
+              pathlib.Path('validation/'+n).write_bytes(raw)
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          PY
+          for f in psc-v83142-sealed-failure-convergence.js psc-v83143-semantic-convergence.js psc-v83144-sealed-failure-convergence.js psc-v83145-route-layer.js psc-v83145-family-state-layer.js psc-v83146-route-boundary-repair.js psc-v83146-family-sequence-repair.js psc-v83147-sealed-failure-repair.js psc-v83148-sealed-failure-repair.js psc-v83149-sealed-failure-repair.js psc-v83150-sealed-failure-repair.js psc-v83151-sealed-failure-repair.js psc-v83152-sealed-failure-repair.js psc-v83153-sealed-failure-repair.js psc-v83154-sealed-failure-repair.js psc-v83155-sealed-failure-repair.js psc-v83156-v155-v3-bounded-repair.js psc-v83157-v156-sealed-a-bounded-repair.js psc-v83158-v157-sealed-a-bounded-repair.js psc-v83159-v158-sealed-a-bounded-repair.js psc-v83160-v159-v2-sealed-a-bounded-repair.js psc-v83161-v160-v1-sealed-a-bounded-repair.js psc-v83162-v161-v1-sealed-a-bounded-repair.js psc-v83163-v162-v1-sealed-a-bounded-repair.js; do cp validation/$f PSC_V8_3_138_DEV/public/; done
+      - name: Collect all immutable regression mismatches
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),vm=require('vm'),s={};vm.createContext(s);
+          const files=['psc-v3.js','psc-v4.js','psc-v83121-r1-reconstructed.js','psc-v83122-operator-aware.js','psc-v83123-family-preservation.js','psc-v83124-operator-context.js','psc-v83125-semantic-routing.js','psc-v83126-public-route-canonicalization.js','psc-v83127-review-intent-authority.js','psc-v83129-canonical-shadow.js','psc-v83130-representation-coverage.js','psc-v83131-proposition-consolidation.js','psc-v83132-relation-graph.js','psc-v83133-canonical-role-binding.js','psc-v83135-scoped-operator.js','psc-v83138-semantic-convergence.js','psc-v83139-semantic-convergence.js','psc-v83142-sealed-failure-convergence.js','psc-v83143-semantic-convergence.js','psc-v83144-sealed-failure-convergence.js','psc-v83145-route-layer.js','psc-v83145-family-state-layer.js','psc-v83146-route-boundary-repair.js','psc-v83146-family-sequence-repair.js','psc-v83147-sealed-failure-repair.js','psc-v83148-sealed-failure-repair.js','psc-v83149-sealed-failure-repair.js','psc-v83150-sealed-failure-repair.js','psc-v83151-sealed-failure-repair.js','psc-v83152-sealed-failure-repair.js','psc-v83153-sealed-failure-repair.js','psc-v83154-sealed-failure-repair.js','psc-v83155-sealed-failure-repair.js','psc-v83156-v155-v3-bounded-repair.js','psc-v83157-v156-sealed-a-bounded-repair.js','psc-v83158-v157-sealed-a-bounded-repair.js','psc-v83159-v158-sealed-a-bounded-repair.js','psc-v83160-v159-v2-sealed-a-bounded-repair.js','psc-v83161-v160-v1-sealed-a-bounded-repair.js','psc-v83162-v161-v1-sealed-a-bounded-repair.js','psc-v83163-v162-v1-sealed-a-bounded-repair.js'];
+          for(const f of files)vm.runInContext(fs.readFileSync('public/'+f,'utf8'),s);
+          const sets=[
+            ['../validation/V8_3_163_V162_V1_FAILURE_REGRESSION.json','V162_FAILURES'],
+            ['../validation/V8_3_163_V162_V1_PREVIOUS_PASS_REGRESSION.json','V162_PASSES'],
+            ['../validation/V8_3_162_V161_V1_FAILURE_REGRESSION.json','V161_FAILURES'],
+            ['../validation/V8_3_162_V161_V1_PREVIOUS_PASS_REGRESSION.json','V161_PASSES']
+          ];
+          const mismatches=[];let total=0,passed=0;
+          for(const [path,set] of sets){const cases=JSON.parse(fs.readFileSync(path)).cases;for(const c of cases){total++;const r=s.QCSemanticCoreV32.analyze(c.surface,c.domain),a={route:r.input_route.id,families:[...r.families].sort(),sequence:!!r.sequence},e={route:c.expected.route,families:[...(c.expected.families||[])].sort(),sequence:!!c.expected.sequence};if(JSON.stringify(a)===JSON.stringify(e))passed++;else mismatches.push({set,case_id:c.case_id,surface:c.surface,domain:c.domain,language:c.language,expected:e,actual:a});}}
+          const out={authority:'V8.3.163 REGRESSION DIAGNOSTIC ONLY',head_sha:process.env.GITHUB_SHA,total,passed,failed:mismatches.length,mismatches,sealed_validation_executed:false,step_111_authorized:false,production_authorized:false};fs.writeFileSync('../V8_3_163_REGRESSION_DIAGNOSTIC.json',JSON.stringify(out,null,2));console.log(JSON.stringify({total,passed,failed:mismatches.length,ids:mismatches.map(x=>x.case_id)},null,2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_163_REGRESSION_DIAGNOSTIC
+          path: V8_3_163_REGRESSION_DIAGNOSTIC.json
