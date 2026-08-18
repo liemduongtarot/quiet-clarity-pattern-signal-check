@@ -1,0 +1,30 @@
+name: V8.3.166 Sealed Run Diagnostic
+on:
+  push:
+    branches: [main]
+jobs:
+  diagnose:
+    if: github.event.head_commit.message == 'Run V8.3.166 sealed diagnostic'
+    permissions:
+      contents: write
+      actions: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Query runs for V8.3.166 sealed trigger
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request, pathlib
+          sha='7e226f7a49e5e7d998b33dcc69fa21cdbcdd0f0a'
+          req=urllib.request.Request(f'https://api.github.com/repos/${{ github.repository }}/actions/runs?head_sha={sha}',headers={'Authorization':f'Bearer {os.environ["GH_TOKEN"]}','Accept':'application/vnd.github+json'})
+          data=json.load(urllib.request.urlopen(req))
+          out={'authority':'V8.3.166 SEALED TRIGGER RUN DIAGNOSTIC','target_head_sha':sha,'total_count':data.get('total_count',0),'runs':[{'id':r['id'],'name':r['name'],'event':r['event'],'status':r['status'],'conclusion':r['conclusion'],'head_branch':r['head_branch'],'head_sha':r['head_sha'],'run_attempt':r['run_attempt']} for r in data.get('workflow_runs',[])],'runtime_executed_by_diagnostic':False,'batch_a_executed_by_diagnostic':False,'batch_b_executed_by_diagnostic':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_166_SEALED_TRIGGER_RUN_DIAGNOSTIC.json').write_text(json.dumps(out,indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add validation/V8_3_166_SEALED_TRIGGER_RUN_DIAGNOSTIC.json
+          git commit -m 'Record V8.3.166 sealed trigger diagnostic' || exit 0
+          git push
