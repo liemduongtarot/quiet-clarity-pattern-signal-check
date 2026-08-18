@@ -14,8 +14,9 @@ jobs:
           import base64,gzip,pathlib,hashlib,json
           root=pathlib.Path('validation/v83157-v1-sealed')
           def mat(parts,out,sha):
-              s=''.join((root/p).read_text().strip() for p in parts)
-              assert len(s)%4==0,(out,'base64-length',len(s))
+              vals=[(p,(root/p).read_text().strip()) for p in parts]
+              s=''.join(v for _,v in vals)
+              assert len(s)%4==0,(out,'base64-length',len(s),[(p,len(v)) for p,v in vals])
               raw=gzip.decompress(base64.b64decode(s,validate=True))
               got=hashlib.sha256(raw).hexdigest(); assert got==sha,(out,got,sha)
               pathlib.Path(out).write_bytes(raw); return json.loads(raw)
@@ -35,9 +36,9 @@ jobs:
           A=set(mem['batch_A_case_ids']);B=set(mem['batch_B_case_ids']);ids=set(c['case_id'] for c in fix['cases'])
           assert not(A&B) and A|B==ids
           from collections import Counter
-          by={c['case_id']:c for c in fix['cases']}
-          assert Counter(by[x]['route'] for x in A)==Counter({r:5 for r in ['input:self-lived','input:clarification-required','input:decision-request','input:hypothetical-or-example','input:prediction','input:third-party-only']})
-          assert Counter(by[x]['route'] for x in B)==Counter({r:5 for r in ['input:self-lived','input:clarification-required','input:decision-request','input:hypothetical-or-example','input:prediction','input:third-party-only']})
+          by={c['case_id']:c for c in fix['cases']}; routes=['input:self-lived','input:clarification-required','input:decision-request','input:hypothetical-or-example','input:prediction','input:third-party-only']
+          assert Counter(by[x]['route'] for x in A)==Counter({r:5 for r in routes})
+          assert Counter(by[x]['route'] for x in B)==Counter({r:5 for r in routes})
           status={'authority':'V8.3.157 V1 TRANSPORT PREFLIGHT','run_id':'${{ github.run_id }}','run_attempt':'${{ github.run_attempt }}','head_sha':'${{ github.sha }}','transport_pass':True,'runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'step_111_authorized':False,'production_authorized':False}
           pathlib.Path('V8_3_157_V1_TRANSPORT_PREFLIGHT_RESULT.json').write_text(json.dumps(status,indent=2))
           PY
