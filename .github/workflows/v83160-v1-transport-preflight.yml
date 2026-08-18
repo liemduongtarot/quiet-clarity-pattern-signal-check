@@ -1,0 +1,48 @@
+name: V8.3.160 V1 Transport Preflight
+on:
+  push:
+    branches: [v83160-v1-sealed-validation]
+jobs:
+  preflight:
+    if: github.event.head_commit.message == 'Run V8.3.160 V1 transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify exact immutable V8.3.160 V1 sealed material only
+        run: |
+          python - <<'PY'
+          import pathlib,json,hashlib,base64,gzip
+          root=pathlib.Path('validation/v83160-v1-sealed')
+          def mat(name,parts):
+              txt=''.join((root/p).read_text().strip() for p in parts)
+              raw=gzip.decompress(base64.b64decode(txt))
+              obj=json.loads(raw)
+              return obj
+          def canonical_sha(obj):
+              x=dict(obj);x.pop('sha256_without_sha_field',None)
+              return hashlib.sha256(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+          sel=mat('sel',['V8_3_160_PRESEAL_OWNER_SELECTION_V1.json.gz.b64'])
+          gold=mat('gold',[f'V8_3_160_INDEPENDENT_GOLD_V1.json.gz.b64.part{i:02d}' for i in range(1,6)])
+          mem=mat('mem',['V8_3_160_SEALED_MEMBERSHIP_V1.json.gz.b64'])
+          fix=mat('fix',[f'V8_3_160_SEALED_EXECUTION_FIXTURE_V1.json.gz.b64.part{i:02d}' for i in range(1,6)])
+          bank='8d502904efd6099f275a966921d6a684aa02fd666eb104c4a83f95fc18a33271'
+          assert canonical_sha(sel)=='75a41fe32a6d24465040d94d38b5264e89a929b695214320d056dac7f602faa0'
+          assert canonical_sha(gold)=='4f7ca25d771ecb9faf8cf4f1fb099182876683bf61f62398ce45ebcb3bdcd622'
+          assert canonical_sha(mem)=='4ed69a8e80e0c74f93bfdaec38bdb2c8e724104c89ab4c45810024faa277dc71'
+          assert canonical_sha(fix)=='43b8384c36f0a51687a333bf6e96ac664d3a702a487e044c5c72abce0b69d699'
+          assert sel['source_bank_sha256']==bank and sel['case_count']==60 and sel['runtime_execution_before_selection']==0
+          assert gold['source_bank_sha256']==bank and gold['selection_sha256']==sel['sha256_without_sha_field'] and gold['case_count']==60 and gold['runtime_execution_before_gold']==0
+          assert mem['source_bank_sha256']==bank and mem['selection_sha256']==sel['sha256_without_sha_field'] and mem['gold_sha256']==gold['sha256_without_sha_field'] and mem['sealed_before_runtime'] is True and mem['runtime_execution_before_membership']==0
+          assert fix['development_authority_commit']=='bcc2e44437f262f0062386095bf4da6282ab0145' and fix['candidate_sha256']==bank and fix['selection_sha256']==sel['sha256_without_sha_field'] and fix['gold_sha256']==gold['sha256_without_sha_field'] and fix['membership_sha256']==mem['sha256_without_sha_field'] and fix['sealed_before_execution'] is True and fix['runtime_execution_before_fixture']==0
+          ids=set(sel['case_ids']);A=set(mem['batch_A_case_ids']);B=set(mem['batch_B_case_ids'])
+          assert len(ids)==60 and len(A)==30 and len(B)==30 and not(A&B) and A|B==ids
+          assert set(fix['batch_a'])==A and set(fix['batch_b'])==B and len(fix['cases'])==60
+          routes=['input:self-lived','input:clarification-required','input:decision-request','input:hypothetical-or-example','input:prediction','input:third-party-only']
+          assert mem['batch_A_route_counts']=={r:5 for r in routes} and mem['batch_B_route_counts']=={r:5 for r in routes}
+          status={'authority':'V8.3.160 V1 TRANSPORT PREFLIGHT','run_id':'${{ github.run_id }}','run_attempt':'${{ github.run_attempt }}','head_sha':'${{ github.sha }}','transport_pass':True,'runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('V8_3_160_V1_TRANSPORT_PREFLIGHT_RESULT.json').write_text(json.dumps(status,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_160_V1_TRANSPORT_PREFLIGHT
+          path: V8_3_160_V1_TRANSPORT_PREFLIGHT_RESULT.json
