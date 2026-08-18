@@ -1,0 +1,19 @@
+{
+  "authority": "V8.3.162 PRESEAL OWNER SELECTION V1",
+  "development_authority_commit": "daa10400ab5d230d20a40dcc7b638cabbff6641c",
+  "source_bank_sha256": "067d48b20e6942ef7881d8cd79f35eb56a129777f4a10ea742559980e3537c40",
+  "case_count": 60,
+  "route_counts": {
+    "input:clarification-required": 10,
+    "input:decision-request": 10,
+    "input:hypothetical-or-example": 10,
+    "input:prediction": 10,
+    "input:self-lived": 10,
+    "input:third-party-only": 10
+  },
+  "language_counts": {"EN":15,"VI":15,"VI_NO_DIACRITICS":15,"MIXED_VI_EN":15},
+  "case_ids": ["V162-PB1-045","V162-PB1-043","V162-PB1-041","V162-PB1-049","V162-PB1-053","V162-PB1-057","V162-PB1-050","V162-PB1-058","V162-PB1-052","V162-PB1-054","V162-PB1-074","V162-PB1-075","V162-PB1-067","V162-PB1-064","V162-PB1-061","V162-PB1-065","V162-PB1-069","V162-PB1-066","V162-PB1-092","V162-PB1-096","V162-PB1-095","V162-PB1-098","V162-PB1-099","V162-PB1-102","V162-PB1-100","V162-PB1-101","V162-PB1-104","V162-PB1-108","V162-PB1-122","V162-PB1-119","V162-PB1-116","V162-PB1-117","V162-PB1-113","V162-PB1-114","V162-PB1-126","V162-PB1-123","V162-PB1-128","V162-PB1-131","V162-PB1-141","V162-PB1-150","V162-PB1-146","V162-PB1-151","V162-PB1-156","V162-PB1-152","V162-PB1-170","V162-PB1-171","V162-PB1-177","V162-PB1-176","V162-PB1-001","V162-PB1-005","V162-PB1-009","V162-PB1-014","V162-PB1-016","V162-PB1-019","V162-PB1-023","V162-PB1-025","V162-PB1-033","V162-PB1-037","V162-PB1-199","V162-PB1-204"],
+  "runtime_execution_before_selection": 0,
+  "standing_owner_approval_applied": true,
+  "sha256_without_sha_field": "627977a3776bde9f02e3dd2acaea08a9d6b14dff7823c7acf13834011172de29"
+}
