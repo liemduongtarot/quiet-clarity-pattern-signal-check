@@ -31,7 +31,7 @@ jobs:
           assert fix['gold_sha256']=='5c218c61758cd9ef72fb647ed773666d04de61244242ed55642b8452df2efc5e'
           assert fix['membership_sha256']=='81e7a32d268ddca2a52cdff2276b7511caa1667c7d8e0dcb5883c9c514a1e162'
           assert fix['sealed_before_execution'] is True and fix['runtime_execution_before_fixture']==0
-          assert len(fix['cases'])==60 and len(sel['selected_case_ids'])==60
+          assert len(fix['cases'])==60 and len(sel['case_ids'])==60
           assert mem['batch_A_count']==30 and mem['batch_B_count']==30
           A=set(mem['batch_A_case_ids']);B=set(mem['batch_B_case_ids']);ids=set(c['case_id'] for c in fix['cases'])
           assert not(A&B) and A|B==ids
