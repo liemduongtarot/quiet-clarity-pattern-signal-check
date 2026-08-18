@@ -1,0 +1,23 @@
+{
+  "authority": "V8.3.155 V3 TRANSPORT-BLOCKED FROZEN STATUS",
+  "sealed_run_id": 32093613391,
+  "sealed_run_attempt": 1,
+  "head_sha": "67379c1366b89dfca3da08dbe403465d460ca995",
+  "job_id": 95580576656,
+  "workflow_conclusion": "failure",
+  "failure_layer": "TRANSPORT / PRE-RUNTIME MATERIALIZATION",
+  "failure_step": "Verify sealed V3 material and materialize exact authority",
+  "error": "binascii.Error: Incorrect padding while base64-decoding sealed transport material",
+  "batch_A_executed": false,
+  "batch_A_step": "skipped",
+  "batch_B_executed": false,
+  "batch_B_step": "skipped",
+  "semantic_result": "NOT EXECUTED",
+  "sealed_membership_changed": false,
+  "gold_changed": false,
+  "old_v155_wip_sealed_reused": false,
+  "rerun_authorized": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "governance_state": "HARD GATE - STOP; preserve exact state and checkpoint before any transport repair or new trigger"
+}
