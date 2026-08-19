@@ -1,0 +1,17 @@
+{
+  "candidate": "V8.3.178",
+  "phase": "sealed-validation",
+  "target_head_sha": "155d1aa02f4666fae04b61728b63d54b590fcbe5",
+  "run_id": 32271390941,
+  "status": "completed",
+  "conclusion": "failure",
+  "run_attempt": 1,
+  "batch_a_executed": true,
+  "batch_a_passed": 12,
+  "batch_a_failed": 18,
+  "batch_b_executed": false,
+  "batch_b_passed": null,
+  "batch_b_failed": null,
+  "sealed_trigger_repeated": false,
+  "v177_sealed_rerun": false
+}
