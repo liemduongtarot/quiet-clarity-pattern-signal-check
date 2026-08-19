@@ -1,0 +1,49 @@
+name: V8.3.170 V1 Transport Preflight
+on:
+  push:
+    branches: [v83170-v1-sealed-validation]
+jobs:
+  transport:
+    if: github.event.head_commit.message == 'Run V8.3.170 V1 transport preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify immutable sealed carrier without runtime
+        run: |
+          python - <<'PY'
+          import pathlib,json,hashlib,collections
+          root=pathlib.Path('validation/v83170-v1-sealed')
+          man=json.loads((root/'V8_3_170_RUNTIME_CARRIER_MANIFEST_V1.json').read_text())
+          assert man['development_authority_commit']=='c02294b1badec3497b6071a1aa7b63fdb0474c4f'
+          assert man['source_fixture_sha256']=='efa9b75874961d4830f77044ccd7c3d0f08256814181d1d00ed57aa69d73c5fa'
+          assert man['selection_sha256']=='417a1d2b28048de231665d491833e3c4d284c90a156654228497a3386b81a7aa'
+          assert man['gold_sha256']=='1d72c1d8b48b3097bcb0cf04d1e76f0db67fab7e3cae44ddef3ad588a5dba7f3'
+          assert man['membership_sha256']=='411b021ae92cce65164045c7ab1b309d06fab2d7767ef456f06c809050077883'
+          def sha_bytes(p): return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          allcases=[]
+          for spec in man['parts']:
+              p=root/spec['file']; assert sha_bytes(p)==spec['sha256']; obj=json.loads(p.read_text()); assert len(obj['cases'])==spec['count']; allcases.extend(obj['cases'])
+          assert len(allcases)==60 and len({c['case_id'] for c in allcases})==60
+          assert len(man['batch_a'])==30 and len(man['batch_b'])==30 and set(man['batch_a']).isdisjoint(man['batch_b'])
+          assert set(man['batch_a']+man['batch_b'])=={c['case_id'] for c in allcases}
+          def csha(o): return hashlib.sha256(json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+          routes=collections.Counter(c['expected']['route'] for c in allcases); langs=collections.Counter(c['language'] for c in allcases)
+          selection={'authority':'V8.3.170 PRESEAL OWNER SELECTION V1','development_authority_commit':'c02294b1badec3497b6071a1aa7b63fdb0474c4f','development_run_id':32218492637,'source_bank_sha256':'832fb45dd6be87b7e2c4edae9a3ae127bc904b0ea0d8756218be1ba0e25909e7','preseal_audit':'PASS WITH DOCUMENTED HISTORICAL RECOVERY LIMITATION','case_count':60,'route_counts':dict(routes),'language_counts':dict(langs),'case_ids':[c['case_id'] for c in allcases],'runtime_execution_before_selection':0}
+          assert csha(selection)==man['selection_sha256']
+          goldcases=[{'case_id':c['case_id'],'surface':c['surface'],'domain':c['domain'],'language':c['language'],'expected':c['expected'],'adjudication_basis':'RAW_SURFACE_ONLY'} for c in allcases]
+          gold={'authority':'V8.3.170 INDEPENDENT GOLD V1','development_authority_commit':'c02294b1badec3497b6071a1aa7b63fdb0474c4f','source_bank_sha256':'832fb45dd6be87b7e2c4edae9a3ae127bc904b0ea0d8756218be1ba0e25909e7','selection_sha256':man['selection_sha256'],'case_count':60,'adjudication_source':'RAW SURFACES ONLY — NO ENGINE OUTPUTS','runtime_execution_before_gold':0,'contract_crosscheck_after_adjudication':'60/60 MATCH','cases':goldcases}
+          assert csha(gold)==man['gold_sha256']
+          by={c['case_id']:c for c in allcases}; A=[by[x] for x in man['batch_a']]; B=[by[x] for x in man['batch_b']]
+          membership={'authority':'V8.3.170 SEALED MEMBERSHIP V1','source_bank_sha256':'832fb45dd6be87b7e2c4edae9a3ae127bc904b0ea0d8756218be1ba0e25909e7','selection_sha256':man['selection_sha256'],'gold_sha256':man['gold_sha256'],'batch_A_count':30,'batch_B_count':30,'batch_A_case_ids':man['batch_a'],'batch_B_case_ids':man['batch_b'],'batch_A_route_counts':dict(collections.Counter(c['expected']['route'] for c in A)),'batch_B_route_counts':dict(collections.Counter(c['expected']['route'] for c in B)),'batch_A_language_counts':dict(collections.Counter(c['language'] for c in A)),'batch_B_language_counts':dict(collections.Counter(c['language'] for c in B)),'sealed_before_runtime':True,'runtime_execution_before_membership':0}
+          assert csha(membership)==man['membership_sha256']
+          fixture={'authority':'V8.3.170 SEALED EXECUTION FIXTURE V1','development_authority_commit':'c02294b1badec3497b6071a1aa7b63fdb0474c4f','candidate_sha256':'832fb45dd6be87b7e2c4edae9a3ae127bc904b0ea0d8756218be1ba0e25909e7','selection_sha256':man['selection_sha256'],'gold_sha256':man['gold_sha256'],'membership_sha256':man['membership_sha256'],'sealed_before_execution':True,'runtime_execution_before_fixture':0,'prior_frozen_v169_batch_a_rerun':False,'prior_frozen_v169_batch_b_accessed':False,'cases':allcases,'batch_a':man['batch_a'],'batch_b':man['batch_b']}
+          assert csha(fixture)==man['source_fixture_sha256']
+          out={'authority':'V8.3.170 V1 TRANSPORT PASS','run_id':'${{ github.run_id }}','run_attempt':'${{ github.run_attempt }}','head_sha':'${{ github.sha }}','runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'selection_sha256':csha(selection),'gold_sha256':csha(gold),'membership_sha256':csha(membership),'fixture_sha256':csha(fixture),'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('V8_3_170_V1_TRANSPORT_PASS_EVIDENCE.json').write_text(json.dumps(out,indent=2))
+          print('TRANSPORT PASS runtime=0 A=0 B=0')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_170_V1_TRANSPORT_PASS
+          path: V8_3_170_V1_TRANSPORT_PASS_EVIDENCE.json
