@@ -2,6 +2,8 @@ name: V8.3.169 V1 Transport Preflight
 on:
   push:
     branches: [v83169-v1-sealed-validation]
+permissions:
+  contents: write
 jobs:
   transport_preflight:
     if: github.event.head_commit.message == 'Run V8.3.169 V1 transport preflight'
@@ -10,6 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Verify sealed runtime carriers without runtime
+        id: verify
+        continue-on-error: true
         run: |
           python - <<'PY'
           import pathlib,json,hashlib
@@ -46,11 +50,24 @@ jobs:
           assert man['batch_a']==mem['batch_A_case_ids']
           assert man['batch_b']==mem['batch_B_case_ids']
           assert pathlib.Path('validation/psc-v83169-v168-v1-sealed-a-bounded-repair.js').exists()
-          out={'authority':'V8.3.169 V1 TRANSPORT PASS','head_sha':'${{ github.sha }}','runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'selection_sha256':csha(sel),'gold_sha256':man['source_gold_sha256'],'membership_sha256':csha(mem),'fixture_sha256':man['source_fixture_sha256'],'recovery_limitation_documented':True,'step_111_authorized':False,'production_authorized':False}
-          pathlib.Path('V8_3_169_V1_TRANSPORT_PASS_EVIDENCE.json').write_text(json.dumps(out,indent=2))
           print('TRANSPORT PREFLIGHT PASS: runtime=0; A=0; B=0')
           PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: PSC_V8_3_169_V1_TRANSPORT_PASS_EVIDENCE
-          path: V8_3_169_V1_TRANSPORT_PASS_EVIDENCE.json
+      - name: Persist transport run evidence
+        if: always()
+        env:
+          VERIFY_OUTCOME: ${{ steps.verify.outcome }}
+        run: |
+          python - <<'PY'
+          import os,json,pathlib
+          ok=os.environ['VERIFY_OUTCOME']=='success'
+          out={'authority':'V8.3.169 V1 TRANSPORT RUN EVIDENCE','run_id':int('${{ github.run_id }}'),'run_attempt':int('${{ github.run_attempt }}'),'conclusion':'success' if ok else 'failure','head_sha':'${{ github.sha }}','head_branch':'v83169-v1-sealed-validation','runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'selection_sha256':'31643c78ab76d53eb41add364531ffaa945fd3a4539756cadc4367ea500123b4','gold_sha256':'3bd7491dc1fb1fdba633077732720207314be79d1371e71e3ba4aa7207af41c9','membership_sha256':'3acba9a1f0a50f700bcb214ed375e8ca3a9ac3ab506764876d6146486559b4da','fixture_sha256':'b373aa24ce3b0f452e2cf60654bd1181ca61b3d9c24a3da67ed76abc8d94107b','recovery_limitation_documented':True,'step_111_authorized':False,'production_authorized':False}
+          p=pathlib.Path('validation/v83169-v1-sealed/V8_3_169_V1_TRANSPORT_RUN_EVIDENCE.json');p.write_text(json.dumps(out,indent=2))
+          PY
+          git config user.name liemduongtarot
+          git config user.email liemduongtarot@gmail.com
+          git add validation/v83169-v1-sealed/V8_3_169_V1_TRANSPORT_RUN_EVIDENCE.json
+          git commit -m 'Record V8.3.169 V1 transport run evidence' || true
+          git push origin HEAD:v83169-v1-sealed-validation
+      - name: Enforce transport verdict
+        if: steps.verify.outcome != 'success'
+        run: exit 1
