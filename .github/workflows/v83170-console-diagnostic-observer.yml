@@ -1,0 +1,31 @@
+name: V8.3.170 Console Diagnostic Observer
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  observe:
+    if: github.event.head_commit.message == 'Observe V8.3.170 console diagnostic'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Observe diagnostic run
+        run: |
+          python - <<'PY'
+          import json,urllib.request,pathlib
+          sha='26a6a0dc0cb671928c08fd5e80c8a43dc2bffeab'
+          url=f'https://api.github.com/repos/liemduongtarot/quiet-clarity-pattern-signal-check/actions/runs?head_sha={sha}&event=push&per_page=20'
+          req=urllib.request.Request(url,headers={'Authorization':'Bearer ${{ github.token }}','Accept':'application/vnd.github+json'})
+          with urllib.request.urlopen(req) as r:data=json.load(r)
+          runs=[x for x in data.get('workflow_runs',[]) if x.get('name')=='V8.3.170 Console Diagnostic']
+          assert runs,'diagnostic run not found'
+          x=sorted(runs,key=lambda a:a['id'],reverse=True)[0]
+          pathlib.Path('validation/V8_3_170_CONSOLE_DIAGNOSTIC_RUN_EVIDENCE.json').write_text(json.dumps({'run_id':x['id'],'status':x['status'],'conclusion':x['conclusion'],'head_sha':x['head_sha'],'workflow_name':x['name'],'semantic_authority_changed':False,'sealed_validation_executed':False},indent=2))
+          PY
+      - name: Commit evidence
+        run: |
+          git config user.name 'github-actions[bot]';git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add validation/V8_3_170_CONSOLE_DIAGNOSTIC_RUN_EVIDENCE.json
+          git commit -m 'Record V8.3.170 console diagnostic run evidence' || exit 0
+          git push
