@@ -1,0 +1,19 @@
+{
+  "authority": "V8.3.169 PRESEAL RECOVERY AUDIT V2",
+  "interpretation": "Historical artifact loss is not itself a semantic contamination failure. Current locked rules require independent fresh construction and contamination evidence, but do not require every historical 216-case bank to remain available forever.",
+  "current_bank_sha256": "dc62ababff3ff8a885a305b0dc5be7b942c73c6b709e69885a6b0b4fc9f80e15",
+  "fresh_construction": true,
+  "runtime_during_construction": 0,
+  "internal_diversity_result": "PASS",
+  "internal_max_similarity": 0.5950357669391827,
+  "immediate_prior_full_bank_v168_checked": "PASS",
+  "v167_full_bank_available": false,
+  "v167_immutable_sealed_proxy_checked": "60/60 surfaces, no threshold hit",
+  "older_recoverable_banks_checked": "V159 V2, V160, V161, V162, V163, V164, V165, V166",
+  "available_cross_bank_threshold": 0.6,
+  "available_cross_bank_hits": 0,
+  "available_cross_bank_max_similarity": 0.5126195376557859,
+  "claim_boundary": "No claim of full V167 216-case comparison. Claims only that all available authority shows no contamination and V169 was independently constructed.",
+  "result": "PASS WITH DOCUMENTED RECOVERY LIMITATION",
+  "runtime_authorized_next": false
+}
