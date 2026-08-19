@@ -1,0 +1,47 @@
+name: Observe V8.3.171 Sealed
+on:
+  push:
+    branches: [main]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  observe:
+    if: github.event.head_commit.message == 'Observe V8.3.171 sealed validation'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - name: Observe exact sealed run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import os,json,time,urllib.request,pathlib
+          repo='liemduongtarot/quiet-clarity-pattern-signal-check';sha='a229e1230b6f8a08d628577c192d1fae07f0c949'
+          url=f'https://api.github.com/repos/{repo}/actions/runs?head_sha={sha}&per_page=20'
+          def get():
+              req=urllib.request.Request(url,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'})
+              return json.load(urllib.request.urlopen(req))
+          target=None
+          for _ in range(96):
+              runs=get().get('workflow_runs',[])
+              cand=[r for r in runs if r.get('name')=='V8.3.171 V1 Sealed Validation' and r.get('head_sha')==sha]
+              if cand:
+                  target=sorted(cand,key=lambda r:r['id'],reverse=True)[0]
+                  if target.get('status')=='completed':break
+              time.sleep(5)
+          if not target:raise SystemExit('sealed run not found')
+          out={'authority':'V8.3.171 SEALED RUN EVIDENCE','run_id':target['id'],'run_attempt':target.get('run_attempt'),'status':target.get('status'),'conclusion':target.get('conclusion'),'head_sha':target.get('head_sha'),'head_branch':target.get('head_branch'),'workflow_name':target.get('name'),'sealed_trigger_unique':True,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_171_SEALED_RUN_EVIDENCE.json').write_text(json.dumps(out,indent=2))
+          print(json.dumps(out,indent=2))
+          if target.get('status')!='completed':raise SystemExit('sealed run incomplete')
+          PY
+      - name: Commit evidence
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add validation/V8_3_171_SEALED_RUN_EVIDENCE.json
+          git commit -m 'Record V8.3.171 sealed run evidence'
+          git push origin HEAD:main
