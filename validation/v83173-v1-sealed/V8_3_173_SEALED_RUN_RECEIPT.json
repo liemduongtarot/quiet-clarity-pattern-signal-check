@@ -1,0 +1,98 @@
+{
+  "candidate": "V8.3.173",
+  "phase": "sealed-validation",
+  "target_head_sha": "8cd5b383194c40a697d25538aab6b3717bc678e2",
+  "run_id": 32230344339,
+  "status": "completed",
+  "conclusion": "failure",
+  "run_attempt": 1,
+  "jobs": [
+    {
+      "id": 95998594670,
+      "name": "sealed_validate",
+      "status": "completed",
+      "conclusion": "failure",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Verify sealed material and materialize exact V8.3.173 authority",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "SEALED Batch A first run exactly once",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 5
+        },
+        {
+          "name": "SEALED Batch B exactly once only after A PASS",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6
+        },
+        {
+          "name": "Package immutable sealed checkpoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 9356995040,
+      "name": "PSC_V8_3_173_V1_SEALED_VALIDATION_CHECKPOINT",
+      "size_in_bytes": 8427,
+      "expired": false
+    }
+  ],
+  "v172_batch_a_rerun": false,
+  "v172_batch_b_accessed": false,
+  "v171_batch_a_rerun": false,
+  "v171_batch_b_accessed": false,
+  "sealed_trigger_repeated": false
+}
