@@ -1,0 +1,65 @@
+{
+  "candidate": "V8.3.176",
+  "phase": "transport-preflight",
+  "target_head_sha": "cf4830621fa8d5c1d921d3cf0245d34070983fb4",
+  "run_id": 32240261527,
+  "status": "completed",
+  "conclusion": "success",
+  "run_attempt": 1,
+  "jobs": [
+    {
+      "id": 96029045737,
+      "name": "verify",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Verify frozen bank, contract vocabulary, and transport only",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 9360492571,
+      "name": "PSC_V8_3_176_V1_TRANSPORT_PREFLIGHT_CHECKPOINT",
+      "size_in_bytes": 5771,
+      "expired": false
+    }
+  ],
+  "semantic_runtime_executed": false,
+  "v175_sealed_rerun": false
+}
