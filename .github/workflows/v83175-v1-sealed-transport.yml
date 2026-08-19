@@ -20,9 +20,13 @@ jobs:
           assert pack['development_authority_commit']=='beaa99db8f0fadf525efdf1b6847fb8beac77959'
           assert pack['semantic_runtime_executed_before_transport'] is False
           assert pack['v174_batch_a_rerun'] is False and pack['v174_batch_b_accessed'] is False
-          out=pathlib.Path('V8_3_175_TRANSPORT_MATERIALIZED');out.mkdir()
+          out=pathlib.Path('V8_3_175_TRANSPORT_MATERIALIZED');out.mkdir(exist_ok=True)
           for n,b64 in pack['compressed_files'].items():
-            raw=gzip.decompress(base64.b64decode(b64))
+            try:
+              raw=gzip.decompress(base64.b64decode(b64))
+            except Exception as e:
+              print('CARRIER_DECODE_FAILURE',n,repr(e),flush=True)
+              raise
             (out/n).write_bytes(raw)
           objs={n:json.loads((out/n).read_text()) for n in pack['compressed_files']}
           def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
@@ -31,7 +35,10 @@ jobs:
             'selection_sha256':'V8_3_175_OWNER_SELECTION_V1.json',
             'gold_sha256':'V8_3_175_INDEPENDENT_GOLD_V1.json',
             'membership_sha256':'V8_3_175_SEALED_MEMBERSHIP_V1.json'}
-          for k,n in mapping.items(): assert hashlib.sha256(canon(objs[n])).hexdigest()==pack[k],(k,n)
+          for k,n in mapping.items():
+            actual=hashlib.sha256(canon(objs[n])).hexdigest()
+            if actual!=pack[k]: print('CARRIER_HASH_FAILURE',n,'expected',pack[k],'actual',actual,flush=True)
+            assert actual==pack[k],(k,n)
           f=objs['V8_3_175_SEALED_EXECUTION_FIXTURE_V1.json']
           assert len(f['cases'])==60 and len(f['batch_a'])==30 and len(f['batch_b'])==30
           assert set(f['batch_a']).isdisjoint(f['batch_b']) and len(set(f['batch_a']+f['batch_b']))==60
@@ -39,6 +46,7 @@ jobs:
           pathlib.Path('V8_3_175_TRANSPORT_STATUS.json').write_text(json.dumps(status,indent=2))
           PY
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: PSC_V8_3_175_V1_TRANSPORT_PREFLIGHT_CHECKPOINT
           path: |
