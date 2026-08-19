@@ -7,7 +7,7 @@ permissions:
   contents: write
 jobs:
   record:
-    if: github.event.workflow_run.head_branch == 'v83169-v1-sealed-validation'
+    if: github.event.workflow_run.head_branch == 'v83169-v1-sealed-validation' && github.event.workflow_run.conclusion != 'skipped'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,4 +29,5 @@ jobs:
           git config user.email liemduongtarot@gmail.com
           git add validation/V8_3_169_V1_SEALED_RUN_EVIDENCE.json
           git commit -m 'Record V8.3.169 V1 sealed run evidence' || true
+          git pull --rebase origin main
           git push origin HEAD:main
