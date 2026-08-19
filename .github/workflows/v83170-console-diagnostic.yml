@@ -1,0 +1,51 @@
+name: V8.3.170 Console Diagnostic
+on:
+  push:
+    branches: [v83170-v1-validation]
+jobs:
+  diagnose:
+    if: github.event.head_commit.message == 'Run V8.3.170 console diagnostic'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize candidate composition
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile,re,shutil
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          pub=Path('PSC_V8_3_138_DEV/public')
+          files=[]
+          for p in Path('validation').glob('psc-v831*.js'):
+              m=re.match(r'psc-v831(\d+)',p.name)
+              if m and 42<=int(m.group(1))<=70:
+                  shutil.copy2(p,pub/p.name);files.append(p.name)
+          files=sorted(set(files),key=lambda x:(int(re.match(r'psc-v831(\d+)',x).group(1)),x))
+          h=pub/'candidate.html';s=h.read_text();anchor='<script src="psc-v83139-semantic-convergence.js"></script><script src="psc-v83137-ui-gate-authority.js"></script>'
+          assert anchor in s
+          s=s.replace(anchor,'<script src="psc-v83139-semantic-convergence.js"></script>'+''.join(f'<script src="{f}"></script>' for f in files)+'<script src="psc-v83137-ui-gate-authority.js"></script>',1)
+          old='if(globalThis.QCSemanticCoreV9)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV9;else if(globalThis.QCSemanticCoreV8)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV8;'
+          new='if(globalThis.QCSemanticCoreV39)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV39;else if(globalThis.QCSemanticCoreV38)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV38;else if(globalThis.QCSemanticCoreV37)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV37;else '+old
+          assert old in s;h.write_text(s.replace(old,new,1))
+          PY
+      - name: Browser diagnostic
+        run: |
+          mkdir -p .e2e; printf '{"private":true}\n' > .e2e/package.json
+          npm install --prefix .e2e --no-package-lock playwright@1.55.0
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"; test -n "$CHROME"; echo "$CHROME" > chrome.txt
+          cd PSC_V8_3_138_DEV/public;python3 -m http.server 4173 --bind 127.0.0.1 > ../../http.log 2>&1 & echo $! > ../../http.pid;cd ../..
+          node - <<'NODE'
+          const fs=require('fs'),{createRequire}=require('module'),req=createRequire(process.cwd()+'/x.js'),{chromium}=req('./.e2e/node_modules/playwright');
+          (async()=>{const exe=fs.readFileSync('chrome.txt','utf8').trim(),b=await chromium.launch({headless:true,executablePath:exe,args:['--no-sandbox']});const out={console:[],pageerrors:[],requestfailed:[],responses:[]};try{const p=await b.newPage();p.on('console',m=>out.console.push({type:m.type(),text:m.text()}));p.on('pageerror',e=>out.pageerrors.push(String(e)));p.on('requestfailed',r=>out.requestfailed.push({url:r.url(),failure:r.failure()}));p.on('response',r=>{if(r.status()>=400)out.responses.push({url:r.url(),status:r.status()})});await p.goto('http://127.0.0.1:4173/candidate.html',{waitUntil:'networkidle'});out.preflight=await p.evaluate(()=>({same:QCSemanticCoreV4===QCSemanticCoreV39,version:QCSemanticCoreV39?.version,authority:document.documentElement.dataset.pscSemanticAuthority}));fs.writeFileSync('validation/V8_3_170_CONSOLE_DIAGNOSTIC.json',JSON.stringify(out,null,2));console.log(JSON.stringify(out,null,2))}finally{await b.close()}})().catch(e=>{console.error(e);process.exit(1)})
+          NODE
+      - name: Teardown
+        if: always()
+        run: '[ -f http.pid ] && kill "$(cat http.pid)" || true'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: V8_3_170_CONSOLE_DIAGNOSTIC
+          path: validation/V8_3_170_CONSOLE_DIAGNOSTIC.json
