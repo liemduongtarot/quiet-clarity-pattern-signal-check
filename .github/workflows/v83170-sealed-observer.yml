@@ -1,0 +1,31 @@
+name: V8.3.170 Sealed Observer
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  observe:
+    if: github.event.head_commit.message == 'Observe V8.3.170 sealed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Observe exact sealed run
+        run: |
+          python - <<'PY'
+          import json,urllib.request,pathlib
+          sha='4d8f43104640b6c0891c02e252ae06c92ee3a0e6'
+          url=f'https://api.github.com/repos/liemduongtarot/quiet-clarity-pattern-signal-check/actions/runs?head_sha={sha}&event=push&per_page=20'
+          req=urllib.request.Request(url,headers={'Authorization':'Bearer ${{ github.token }}','Accept':'application/vnd.github+json'})
+          with urllib.request.urlopen(req) as r:data=json.load(r)
+          runs=[x for x in data.get('workflow_runs',[]) if x.get('name')=='V8.3.170 V1 Sealed Validation']
+          assert runs,'sealed run not found'
+          x=sorted(runs,key=lambda a:a['id'],reverse=True)[0]
+          pathlib.Path('validation/V8_3_170_V1_SEALED_RUN_EVIDENCE.json').write_text(json.dumps({'authority':'V8.3.170 V1 SEALED RUN EVIDENCE','run_id':x['id'],'run_attempt':x['run_attempt'],'status':x['status'],'conclusion':x['conclusion'],'head_sha':x['head_sha'],'head_branch':x['head_branch'],'step_111_authorized':False,'production_authorized':False},indent=2))
+          PY
+      - name: Commit evidence
+        run: |
+          git config user.name 'github-actions[bot]';git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add validation/V8_3_170_V1_SEALED_RUN_EVIDENCE.json
+          git commit -m 'Record V8.3.170 sealed run evidence' || exit 0
+          git push
