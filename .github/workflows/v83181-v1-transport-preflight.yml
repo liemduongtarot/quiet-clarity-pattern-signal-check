@@ -1,0 +1,64 @@
+name: V8.3.181 V1 Transport Preflight
+on:
+  push:
+    branches: [v83181-v1-sealed-validation]
+permissions:
+  contents: write
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Run V8.3.181 V1 transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate and verify frozen bank only
+        run: |
+          python validation/v83181-v1-sealed/build_v181_sealed_bank.py
+          python - <<'PY'
+          import json,hashlib,pathlib
+          root=pathlib.Path('validation/v83181-v1-sealed');auth=json.loads((root/'V8_3_181_SEALED_AUTHORITY_V1.json').read_text())
+          names={'fixture':'V8_3_181_SEALED_EXECUTION_FIXTURE_V1.json','selection':'V8_3_181_SEALED_SELECTION_V1.json','membership':'V8_3_181_SEALED_MEMBERSHIP_V1.json','independent_gold':'V8_3_181_INDEPENDENT_GOLD_V1.json'}
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          objs={k:json.loads((root/n).read_text()) for k,n in names.items()}
+          for k,o in objs.items():assert hashlib.sha256(canon(o)).hexdigest()==auth['hashes'][k],k
+          f=objs['fixture'];g=objs['independent_gold'];sel=objs['selection'];mem=objs['membership'];gm={cid:x['expected'] for x in g['groups'] for cid in x['case_ids']}
+          assert len(f['cases'])==60 and len(f['batch_a'])==30 and len(f['batch_b'])==30 and len(gm)==60
+          assert set(f['batch_a']).isdisjoint(f['batch_b']) and len(set(f['batch_a']+f['batch_b']))==60
+          assert set(f['batch_a'])==set(sel['batch_a']) and set(f['batch_b'])==set(sel['batch_b'])
+          assert set(f['batch_a']+f['batch_b'])==set(mem['all_case_ids'])
+          allowed={'input:clarification-required','input:decision-request','input:hypothetical-or-example','input:third-party-only','input:prediction','input:self-lived'};fams={'freeze','ignore','slow'}
+          for c in f['cases']:
+            e=c['expected'];assert e['route'] in allowed;assert all(x in fams for x in e.get('families',[]));assert gm[c['case_id']]==e
+          assert auth['semantic_runtime_executed_before_transport'] is False and auth['v180_batch_a_rerun'] is False and auth['v180_batch_b_accessed'] is False
+          print('V181 transport PASS; semantic runtime=0')
+          PY
+      - name: Package transport checkpoint
+        run: |
+          mkdir -p V8_3_181_TRANSPORT_CHECKPOINT
+          cp validation/v83181-v1-sealed/V8_3_181_SEALED_AUTHORITY_V1.json V8_3_181_TRANSPORT_CHECKPOINT/
+          cp validation/v83181-v1-sealed/V8_3_181_SEALED_*_V1.json V8_3_181_TRANSPORT_CHECKPOINT/ || true
+          cp validation/v83181-v1-sealed/V8_3_181_INDEPENDENT_GOLD_V1.json V8_3_181_TRANSPORT_CHECKPOINT/
+          python - <<'PY'
+          import pathlib,zipfile,hashlib,json
+          st=pathlib.Path('V8_3_181_TRANSPORT_CHECKPOINT');(st/'V8_3_181_TRANSPORT_STATUS.json').write_text(json.dumps({'candidate':'V8.3.181','phase':'transport-preflight','semantic_runtime_executed':False,'v180_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2))
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()));z=pathlib.Path('PSC_V8_3_181_V1_TRANSPORT_PREFLIGHT_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_181_V1_TRANSPORT_PREFLIGHT_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_181_V1_TRANSPORT_PREFLIGHT_CHECKPOINT
+          path: |
+            PSC_V8_3_181_V1_TRANSPORT_PREFLIGHT_CHECKPOINT.zip
+            PSC_V8_3_181_V1_TRANSPORT_PREFLIGHT_CHECKPOINT_SHA256.txt
+      - name: Record transport receipt
+        run: |
+          cat > validation/v83181-v1-sealed/V8_3_181_TRANSPORT_RUN_RECEIPT.json <<EOF
+          {"candidate":"V8.3.181","phase":"transport-preflight","target_head_sha":"${GITHUB_SHA}","run_id":${GITHUB_RUN_ID},"status":"completed","conclusion":"success","run_attempt":${GITHUB_RUN_ATTEMPT},"semantic_runtime_executed":false,"v180_sealed_rerun":false}
+          EOF
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83181-v1-sealed/V8_3_181_TRANSPORT_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.181 transport run receipt'
+          git push
