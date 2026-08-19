@@ -2,6 +2,8 @@ name: V8.3.169 V1 Sealed Validation
 on:
   push:
     branches: [v83169-v1-sealed-validation]
+permissions:
+  contents: write
 jobs:
   sealed_validate:
     if: github.event.head_commit.message == 'Run V8.3.169 V1 sealed validation'
@@ -81,6 +83,21 @@ jobs:
               for p in sorted(st.iterdir()):q.write(p,p.name)
           pathlib.Path('PSC_V8_3_169_V1_SEALED_VALIDATION_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
           PY
+      - name: Persist sealed run evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,json
+          a=pathlib.Path('V8_3_169_BATCH_A_FIRST_RUN_RESULTS.json');b=pathlib.Path('V8_3_169_BATCH_B_FIRST_RUN_RESULTS.json')
+          A=json.loads(a.read_text()) if a.exists() else None;B=json.loads(b.read_text()) if b.exists() else None
+          out={'authority':'V8.3.169 V1 SEALED RUN EVIDENCE','run_id':int('${{ github.run_id }}'),'run_attempt':int('${{ github.run_attempt }}'),'head_sha':'${{ github.sha }}','head_branch':'v83169-v1-sealed-validation','batch_a_executed':A is not None,'batch_a_passed':A['passed'] if A else None,'batch_a_failed':A['failed'] if A else None,'batch_b_executed':B is not None,'batch_b_passed':B['passed'] if B else None,'batch_b_failed':B['failed'] if B else None,'recovery_limitation_documented':True,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/v83169-v1-sealed/V8_3_169_V1_SEALED_RUN_EVIDENCE.json').write_text(json.dumps(out,indent=2))
+          PY
+          git config user.name liemduongtarot
+          git config user.email liemduongtarot@gmail.com
+          git add validation/v83169-v1-sealed/V8_3_169_V1_SEALED_RUN_EVIDENCE.json
+          git commit -m 'Record V8.3.169 V1 sealed run evidence' || true
+          git push origin HEAD:v83169-v1-sealed-validation
       - uses: actions/upload-artifact@v4
         if: always()
         with:
