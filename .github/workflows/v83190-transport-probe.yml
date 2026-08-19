@@ -1,0 +1,30 @@
+name: V8.3.190 Transport Probe
+on:
+  push:
+    branches: [v83190-v1-sealed-validation]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'Probe V8.3.190 transport evidence'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read exact transport run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: 4ec345387f40a2a3694ac5595ffa8791479f3401
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request,pathlib
+          repo=os.environ['GITHUB_REPOSITORY'];token=os.environ['GH_TOKEN'];target=os.environ['TARGET_SHA']
+          req=urllib.request.Request(f'https://api.github.com/repos/{repo}/actions/workflows/v83190-sealed-transport.yml/runs?event=push&per_page=20',headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json'})
+          data=json.load(urllib.request.urlopen(req));m=[r for r in data.get('workflow_runs',[]) if r.get('head_sha')==target];assert m
+          r=m[0];pathlib.Path('validation/v83190-v1-sealed/V8_3_190_TRANSPORT_METADATA.json').write_text(json.dumps({'target_head_sha':target,'run_id':r['id'],'status':r['status'],'conclusion':r.get('conclusion'),'run_attempt':r.get('run_attempt'),'semantic_runtime_executed':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83190-v1-sealed/V8_3_190_TRANSPORT_METADATA.json
+          git commit -m 'Record V8.3.190 transport metadata'
+          git push
