@@ -1,0 +1,95 @@
+{
+  "candidate": "V8.3.176",
+  "phase": "sealed-validation",
+  "target_head_sha": "a246c990708f8492ecbac93dc7d1757c0663ffb9",
+  "run_id": 32240384696,
+  "status": "completed",
+  "conclusion": "failure",
+  "run_attempt": 1,
+  "jobs": [
+    {
+      "id": 96029422474,
+      "name": "sealed_validate",
+      "status": "completed",
+      "conclusion": "failure",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Verify frozen bank and materialize exact V8.3.176 authority",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "SEALED Batch A first run exactly once",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 5
+        },
+        {
+          "name": "SEALED Batch B exactly once only after A PASS",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6
+        },
+        {
+          "name": "Package immutable sealed checkpoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 9360541006,
+      "name": "PSC_V8_3_176_V1_SEALED_VALIDATION_CHECKPOINT",
+      "size_in_bytes": 7627,
+      "expired": false
+    }
+  ],
+  "sealed_trigger_repeated": false,
+  "v175_sealed_rerun": false
+}
