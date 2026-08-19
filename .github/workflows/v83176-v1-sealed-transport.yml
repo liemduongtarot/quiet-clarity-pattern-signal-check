@@ -1,0 +1,44 @@
+name: V8.3.176 V1 Sealed Transport Preflight
+on:
+  push:
+    branches: [v83176-v1-sealed-validation]
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Run V8.3.176 V1 sealed transport preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen bank, contract vocabulary, and transport only
+        run: |
+          python - <<'PY'
+          import json,base64,gzip,hashlib,pathlib
+          pack=json.loads(pathlib.Path('validation/v83176-v1-sealed/V8_3_176_SEALED_TRANSPORT_PACK_V1.json').read_text())
+          rules=json.loads(pathlib.Path('validation/V8_3_176_SEALED_BANK_CONTRACT_RULES.json').read_text())
+          assert pack['development_authority_commit']=='8c995bd8eacf522e7b722ba477cff3228bc3cc2f'
+          assert pack['semantic_runtime_executed_before_transport'] is False and pack['v175_sealed_rerun'] is False and pack['contract_vocabulary_audit_required'] is True
+          objs={}
+          for n,b64 in pack['compressed_files'].items(): objs[n]=json.loads(gzip.decompress(base64.b64decode(b64)))
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          mapping={'fixture_sha256':'V8_3_176_SEALED_EXECUTION_FIXTURE_V1.json','selection_sha256':'V8_3_176_OWNER_SELECTION_V1.json','gold_sha256':'V8_3_176_INDEPENDENT_GOLD_V1.json','membership_sha256':'V8_3_176_SEALED_MEMBERSHIP_V1.json'}
+          for k,n in mapping.items(): assert hashlib.sha256(canon(objs[n])).hexdigest()==pack[k],(k,n)
+          f=objs['V8_3_176_SEALED_EXECUTION_FIXTURE_V1.json'];assert len(f['cases'])==60 and len(f['batch_a'])==30 and len(f['batch_b'])==30
+          assert set(f['batch_a']).isdisjoint(f['batch_b']) and len(set(f['batch_a']+f['batch_b']))==60
+          allowed=set(rules['allowed_route_values']);forbidden=set(rules['forbidden_conceptual_route_values'])
+          for c in f['cases']:
+            r=c['expected']['route'];assert r in allowed,(c['case_id'],r);assert r not in forbidden
+            fam=c['expected'].get('families',[]);assert all(x in {'freeze','slow','ignore'} for x in fam),(c['case_id'],fam)
+          # independently authored gold must match fixture contracts byte-semantically by case id, not runtime output
+          gold={x['case_id']:x['expected'] for x in objs['V8_3_176_INDEPENDENT_GOLD_V1.json']['cases']}
+          assert len(gold)==60
+          for c in f['cases']: assert gold[c['case_id']]==c['expected'],c['case_id']
+          pathlib.Path('V8_3_176_TRANSPORT_STATUS.json').write_text(json.dumps({'candidate':'V8.3.176','transport':'PASS','contract_vocabulary_audit':'PASS','semantic_runtime_executed':False,'v175_sealed_rerun':False},indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_176_V1_TRANSPORT_PREFLIGHT_CHECKPOINT
+          path: |
+            V8_3_176_TRANSPORT_STATUS.json
+            validation/v83176-v1-sealed/V8_3_176_SEALED_TRANSPORT_PACK_V1.json
