@@ -1,0 +1,31 @@
+name: V8.3.180 Transport Probe V2
+on:
+  push:
+    branches: [v83180-v1-sealed-validation]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'Probe V8.3.180 transport V2 evidence'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record transport V2 receipt
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: e782a96aa1d4db49e105b2d85ba2ec2da433231a
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request,pathlib
+          repo=os.environ['GITHUB_REPOSITORY'];target=os.environ['TARGET_SHA'];token=os.environ['GH_TOKEN']
+          req=urllib.request.Request(f'https://api.github.com/repos/{repo}/actions/runs?branch=v83180-v1-sealed-validation&per_page=50',headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json'})
+          runs=json.load(urllib.request.urlopen(req))['workflow_runs'];cand=[r for r in runs if r.get('head_sha')==target and r.get('name')=='V8.3.180 V1 Transport Preflight'];assert cand
+          r=sorted(cand,key=lambda x:x['id'],reverse=True)[0]
+          pathlib.Path('validation/v83180-v1-sealed/V8_3_180_TRANSPORT_V2_RUN_RECEIPT.json').write_text(json.dumps({'candidate':'V8.3.180','phase':'transport-preflight-v2','target_head_sha':target,'run_id':r['id'],'status':r['status'],'conclusion':r.get('conclusion'),'semantic_runtime_executed':False,'v179_sealed_rerun':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83180-v1-sealed/V8_3_180_TRANSPORT_V2_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.180 transport V2 run receipt'
+          git push
