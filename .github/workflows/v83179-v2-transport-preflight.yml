@@ -1,0 +1,48 @@
+name: V8.3.179 V2 Transport Preflight
+on:
+  push:
+    branches: [v83179-v1-sealed-validation]
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Run V8.3.179 V2 transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen authority and contract only
+        run: |
+          python - <<'PY'
+          import json,hashlib,pathlib
+          root=pathlib.Path('validation/v83179-v1-sealed')
+          auth=json.loads((root/'V8_3_179_SEALED_AUTHORITY_V2.json').read_text())
+          pack=json.loads((root/'V8_3_179_SEALED_PACK_V1.json').read_text())
+          gold=json.loads((root/'V8_3_179_INDEPENDENT_GOLD_V2.json').read_text())
+          assert auth['development_authority_commit']=='83690d403a585f7c88d39ecc7cfdddb6ae2b1e74'
+          assert auth['semantic_runtime_executed_before_transport'] is False
+          assert auth['pretransport_repair']['v1_status']=='SUPERSEDED_BEFORE_TRANSPORT'
+          def canon(o): return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          assert hashlib.sha256(canon(pack['fixture'])).hexdigest()==auth['hashes']['fixture']
+          assert hashlib.sha256(canon(pack['selection'])).hexdigest()==auth['hashes']['selection']
+          assert hashlib.sha256(canon(pack['membership'])).hexdigest()==auth['hashes']['membership']
+          assert hashlib.sha256(canon(gold)).hexdigest()==auth['hashes']['independent_gold_v2']
+          f=pack['fixture']; assert len(f['cases'])==60 and len(f['batch_a'])==30 and len(f['batch_b'])==30
+          assert set(f['batch_a']).isdisjoint(f['batch_b']) and len(set(f['batch_a']+f['batch_b']))==60
+          assert set(f['batch_a'])==set(pack['selection']['batch_a']) and set(f['batch_b'])==set(pack['selection']['batch_b'])
+          assert set(f['batch_a']+f['batch_b'])==set(pack['membership']['all_case_ids'])
+          gm={cid:g['expected'] for g in gold['groups'] for cid in g['case_ids']}
+          assert len(gm)==60
+          allowed={'input:clarification-required','input:decision-request','input:hypothetical-or-example','input:third-party-only','input:prediction','input:self-lived'}
+          fam={'freeze','ignore','slow'}
+          for c in f['cases']:
+            e=c['expected']; assert c['case_id'] in gm and gm[c['case_id']]==e
+            assert e['route'] in allowed and all(x in fam for x in e.get('families',[]))
+          print('V179 V2 transport PASS; semantic runtime = 0')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_179_V2_TRANSPORT_PREFLIGHT_CHECKPOINT
+          path: |
+            validation/v83179-v1-sealed/V8_3_179_SEALED_AUTHORITY_V2.json
+            validation/v83179-v1-sealed/V8_3_179_SEALED_PACK_V1.json
+            validation/v83179-v1-sealed/V8_3_179_INDEPENDENT_GOLD_V2.json
