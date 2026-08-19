@@ -1,0 +1,26 @@
+name: V8.3.191 Sealed Transport Preflight
+on:
+  push:
+    branches: [v83191-v1-sealed-validation]
+jobs:
+  transport:
+    if: github.event.head_commit.message == 'Run V8.3.191 transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen sealed bank without semantic runtime
+        run: |
+          python - <<'PY'
+          import json,hashlib,pathlib
+          root=pathlib.Path('validation/v83191-v1-sealed')
+          fixture=json.loads((root/'V8_3_191_SEALED_FIXTURE_V1.json').read_text());sel=json.loads((root/'V8_3_191_SEALED_SELECTION_V1.json').read_text());gold=json.loads((root/'V8_3_191_INDEPENDENT_GOLD_V1.json').read_text());auth=json.loads((root/'V8_3_191_SEALED_AUTHORITY_V1.json').read_text())
+          membership={'authority':'V8.3.191 V1 SEALED MEMBERSHIP','members':[{'case_id':c['case_id'],'batch':'A' if c['case_id'] in sel['batch_a'] else 'B'} for c in fixture['cases']]}
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          for k,o in {'fixture':fixture,'selection':sel,'membership':membership,'independent_gold':gold}.items():assert hashlib.sha256(canon(o)).hexdigest()==auth['hashes'][k],k
+          assert len(fixture['cases'])==60 and len(sel['batch_a'])==30 and len(sel['batch_b'])==30
+          assert set(sel['batch_a']).isdisjoint(sel['batch_b']) and set(sel['batch_a'])|set(sel['batch_b'])=={c['case_id'] for c in fixture['cases']}
+          gm={cid:g['expected'] for g in gold['groups'] for cid in g['case_ids']};assert len(gm)==60
+          for c in fixture['cases']:assert gm[c['case_id']]==c['expected']
+          assert auth['semantic_runtime_executed_before_transport'] is False and auth['v190_batch_a_rerun'] is False and auth['v190_batch_b_accessed'] is False
+          print('V8.3.191 transport PASS; semantic runtime 0')
+          PY
