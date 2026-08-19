@@ -1,0 +1,43 @@
+name: V8.3.182 Transport Preflight
+on:
+  push:
+    branches: [v83182-v1-sealed-validation]
+permissions:
+  contents: write
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Run V8.3.182 transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen bank only
+        run: |
+          python - <<'PY'
+          import json,hashlib,pathlib
+          root=pathlib.Path('validation/v83182-v1-sealed')
+          fixture=json.loads((root/'V8_3_182_SEALED_EXECUTION_FIXTURE_V1.json').read_text());sel=json.loads((root/'V8_3_182_SEALED_SELECTION_V1.json').read_text());gold=json.loads((root/'V8_3_182_INDEPENDENT_GOLD_V1.json').read_text());auth=json.loads((root/'V8_3_182_SEALED_AUTHORITY_V1.json').read_text())
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          members=[{'case_id':c['case_id'],'batch':'A' if c['case_id'] in sel['batch_a'] else 'B'} for c in fixture['cases']]
+          membership={'authority':'V8.3.182 V1 SEALED MEMBERSHIP','members':members}
+          objs={'fixture':fixture,'selection':sel,'membership':membership,'independent_gold':gold}
+          for k,o in objs.items(): assert hashlib.sha256(canon(o)).hexdigest()==auth['hashes'][k],k
+          assert len(fixture['cases'])==60 and len(sel['batch_a'])==30 and len(sel['batch_b'])==30
+          assert set(sel['batch_a']).isdisjoint(sel['batch_b']) and set(sel['batch_a']+sel['batch_b'])=={c['case_id'] for c in fixture['cases']}
+          gm={cid:g['expected'] for g in gold['groups'] for cid in g['case_ids']}; assert len(gm)==60
+          allowed_routes={'input:clarification-required','input:decision-request','input:hypothetical-or-example','input:third-party-only','input:prediction','input:self-lived'};allowed_families={'freeze','ignore','slow'}
+          for c in fixture['cases']:
+            assert gm[c['case_id']]==c['expected']; assert c['expected']['route'] in allowed_routes; assert set(c['expected'].get('families',[]))<=allowed_families; assert c['expected'].get('sequence') is False
+          assert auth['semantic_runtime_executed_before_transport'] is False and auth['v181_batch_a_rerun'] is False and auth['v181_batch_b_accessed'] is False
+          print('V182 transport PASS; semantic runtime=0')
+          PY
+      - name: Record transport receipt
+        run: |
+          python - <<'PY'
+          import json,pathlib,os
+          p=pathlib.Path('validation/v83182-v1-sealed/V8_3_182_TRANSPORT_RUN_RECEIPT.json');p.write_text(json.dumps({'candidate':'V8.3.182','phase':'transport-preflight','target_head_sha':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'status':'completed','conclusion':'success','semantic_runtime_executed':False,'v181_sealed_rerun':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83182-v1-sealed/V8_3_182_TRANSPORT_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.182 transport run receipt'
+          git push
