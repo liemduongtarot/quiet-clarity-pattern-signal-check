@@ -1,0 +1,27 @@
+{
+  "authority": "V8.3.175 V1 SEALED FIRST RUN FORENSIC",
+  "sealed_run_id": 32239622119,
+  "sealed_head_sha": "e7680966abc76721b5047d851167344de071ac77",
+  "batch_a": {"executed_once": true, "passed": 0, "failed": 30},
+  "batch_b": {"executed": false, "status": "SKIPPED"},
+  "v175_frozen": true,
+  "rerun_authorized": false,
+  "classification": "SEALED_BANK_CONSTRUCTION_DEFECT_NOT_SEMANTIC_EVIDENCE",
+  "systematic_defect": "expected route/family vocabulary was authored in conceptual labels rather than the immutable runtime contract vocabulary",
+  "examples": [
+    {"invalid_expected_route": "clarification", "runtime_contract_example": "input:clarification-required"},
+    {"invalid_expected_route": "hypothetical", "runtime_contract_example": "input:hypothetical-or-example"},
+    {"invalid_expected_route": "third_party_private", "runtime_contract_example": "input:third-party-only"},
+    {"invalid_expected_route": "prediction", "runtime_contract_example": "input:prediction"},
+    {"invalid_expected_route": "state_only", "runtime_contract_example": "input:self-lived"},
+    {"invalid_expected_route": "action", "runtime_contract_example": "input:self-lived"}
+  ],
+  "governance": {
+    "do_not_rerun_v175_sealed": true,
+    "do_not_use_v175_0_of_30_as_semantic_repair_target": true,
+    "carry_forward_v44_behavior_into_v176": true,
+    "require_contract_vocabulary_audit_before_future_sealed_runtime": true,
+    "step_111_authorized": false,
+    "production_authorized": false
+  }
+}
