@@ -1,0 +1,102 @@
+name: V8.3.178 V1 Deep Validation
+on:
+  push:
+    branches: [v83178-v1-validation]
+permissions:
+  contents: write
+jobs:
+  validate:
+    if: github.event.head_commit.message == 'Run V8.3.178 V1 deep validation'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize exact V8.3.178 authority
+        run: |
+          python - <<'PY'
+          import pathlib,zipfile,base64,gzip
+          compressed=['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION','V8_3_168_V167_V1_FAILURE_REGRESSION','V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION']
+          for n in compressed:
+            p=pathlib.Path('validation/'+n+'.json.gz.b64'); assert p.exists(),n
+            pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
+          plain=['V8_3_178_V177_V1_FAILURE_REGRESSION.json','V8_3_178_V177_V1_PREVIOUS_PASS_REGRESSION.json','V8_3_177_V176_V1_FAILURE_REGRESSION.json','V8_3_177_V176_V1_PREVIOUS_PASS_REGRESSION.json','V8_3_175_V174_V1_FAILURE_REGRESSION.json','V8_3_175_V174_V1_PREVIOUS_PASS_REGRESSION.json','V8_3_174_V173_V1_FAILURE_REGRESSION.json','V8_3_174_V173_V1_PREVIOUS_PASS_REGRESSION.json','V8_3_173_V172_V1_FAILURE_REGRESSION.json','V8_3_173_V172_V1_PREVIOUS_PASS_REGRESSION.json']
+          for n in plain: assert pathlib.Path('validation/'+n).exists(),n
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          PY
+          for f in psc-v83142-sealed-failure-convergence.js psc-v83143-semantic-convergence.js psc-v83144-sealed-failure-convergence.js psc-v83145-route-layer.js psc-v83145-family-state-layer.js psc-v83146-route-boundary-repair.js psc-v83146-family-sequence-repair.js psc-v83147-sealed-failure-repair.js psc-v83148-sealed-failure-repair.js psc-v83149-sealed-failure-repair.js psc-v83150-sealed-failure-repair.js psc-v83151-sealed-failure-repair.js psc-v83152-sealed-failure-repair.js psc-v83153-sealed-failure-repair.js psc-v83154-sealed-failure-repair.js psc-v83155-sealed-failure-repair.js psc-v83156-v155-v3-bounded-repair.js psc-v83157-v156-sealed-a-bounded-repair.js psc-v83158-v157-sealed-a-bounded-repair.js psc-v83159-v158-sealed-a-bounded-repair.js psc-v83160-v159-v2-sealed-a-bounded-repair.js psc-v83161-v160-v1-sealed-a-bounded-repair.js psc-v83162-v161-v1-sealed-a-bounded-repair.js psc-v83163-v162-v1-sealed-a-bounded-repair.js psc-v83164-v163-v1-sealed-a-bounded-repair.js psc-v83165-v164-v1-sealed-a-bounded-repair.js psc-v83166-v165-v1-sealed-a-bounded-repair.js psc-v83167-v166-v1-sealed-a-bounded-repair.js psc-v83168-v167-v1-sealed-a-bounded-repair.js psc-v83169-v168-v1-sealed-a-bounded-repair.js psc-v83170-v169-v1-sealed-a-bounded-repair.js psc-v83171-v170-v1-sealed-a-bounded-repair.js psc-v83172-v171-v1-sealed-a-bounded-repair.js psc-v83173-v172-v1-sealed-a-bounded-repair.js psc-v83174-v173-v1-sealed-a-bounded-repair.js psc-v83175-v174-v1-sealed-a-bounded-repair.js psc-v83176-v175-bank-contract-carry-forward.js psc-v83177-v176-sealed-a-bounded-repair.js psc-v83178-v177-sealed-a-bounded-repair.js; do cp validation/$f PSC_V8_3_138_DEV/public/; done
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('PSC_V8_3_138_DEV/public/candidate.html');s=p.read_text();old='<script src="psc-v83139-semantic-convergence.js"></script><script src="psc-v83137-ui-gate-authority.js"></script>'
+          chain=['psc-v83142-sealed-failure-convergence.js','psc-v83143-semantic-convergence.js','psc-v83144-sealed-failure-convergence.js','psc-v83145-route-layer.js','psc-v83145-family-state-layer.js','psc-v83146-route-boundary-repair.js','psc-v83146-family-sequence-repair.js','psc-v83147-sealed-failure-repair.js','psc-v83148-sealed-failure-repair.js','psc-v83149-sealed-failure-repair.js','psc-v83150-sealed-failure-repair.js','psc-v83151-sealed-failure-repair.js','psc-v83152-sealed-failure-repair.js','psc-v83153-sealed-failure-repair.js','psc-v83154-sealed-failure-repair.js','psc-v83155-sealed-failure-repair.js','psc-v83156-v155-v3-bounded-repair.js','psc-v83157-v156-sealed-a-bounded-repair.js','psc-v83158-v157-sealed-a-bounded-repair.js','psc-v83159-v158-sealed-a-bounded-repair.js','psc-v83160-v159-v2-sealed-a-bounded-repair.js','psc-v83161-v160-v1-sealed-a-bounded-repair.js','psc-v83162-v161-v1-sealed-a-bounded-repair.js','psc-v83163-v162-v1-sealed-a-bounded-repair.js','psc-v83164-v163-v1-sealed-a-bounded-repair.js','psc-v83165-v164-v1-sealed-a-bounded-repair.js','psc-v83166-v165-v1-sealed-a-bounded-repair.js','psc-v83167-v166-v1-sealed-a-bounded-repair.js','psc-v83168-v167-v1-sealed-a-bounded-repair.js','psc-v83169-v168-v1-sealed-a-bounded-repair.js','psc-v83170-v169-v1-sealed-a-bounded-repair.js','psc-v83171-v170-v1-sealed-a-bounded-repair.js','psc-v83172-v171-v1-sealed-a-bounded-repair.js','psc-v83173-v172-v1-sealed-a-bounded-repair.js','psc-v83174-v173-v1-sealed-a-bounded-repair.js','psc-v83175-v174-v1-sealed-a-bounded-repair.js','psc-v83176-v175-bank-contract-carry-forward.js','psc-v83177-v176-sealed-a-bounded-repair.js','psc-v83178-v177-sealed-a-bounded-repair.js']
+          assert old in s;s=s.replace(old,'<script src="psc-v83139-semantic-convergence.js"></script>'+''.join(f'<script src="{x}"></script>' for x in chain)+'<script src="psc-v83137-ui-gate-authority.js"></script>',1)
+          oldb='if(globalThis.QCSemanticCoreV9)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV9;else if(globalThis.QCSemanticCoreV8)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV8;'
+          newb='if(globalThis.QCSemanticCoreV47)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV47;else if(globalThis.QCSemanticCoreV46)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV46;else '+oldb
+          assert oldb in s;p.write_text(s.replace(oldb,newb,1))
+          PY
+      - name: Immutable regressions
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),vm=require('vm'),s={};vm.createContext(s);
+          const files=['psc-v3.js','psc-v4.js','psc-v83121-r1-reconstructed.js','psc-v83122-operator-aware.js','psc-v83123-family-preservation.js','psc-v83124-operator-context.js','psc-v83125-semantic-routing.js','psc-v83126-public-route-canonicalization.js','psc-v83127-review-intent-authority.js','psc-v83129-canonical-shadow.js','psc-v83130-representation-coverage.js','psc-v83131-proposition-consolidation.js','psc-v83132-relation-graph.js','psc-v83133-canonical-role-binding.js','psc-v83135-scoped-operator.js','psc-v83138-semantic-convergence.js','psc-v83139-semantic-convergence.js','psc-v83142-sealed-failure-convergence.js','psc-v83143-semantic-convergence.js','psc-v83144-sealed-failure-convergence.js','psc-v83145-route-layer.js','psc-v83145-family-state-layer.js','psc-v83146-route-boundary-repair.js','psc-v83146-family-sequence-repair.js','psc-v83147-sealed-failure-repair.js','psc-v83148-sealed-failure-repair.js','psc-v83149-sealed-failure-repair.js','psc-v83150-sealed-failure-repair.js','psc-v83151-sealed-failure-repair.js','psc-v83152-sealed-failure-repair.js','psc-v83153-sealed-failure-repair.js','psc-v83154-sealed-failure-repair.js','psc-v83155-sealed-failure-repair.js','psc-v83156-v155-v3-bounded-repair.js','psc-v83157-v156-sealed-a-bounded-repair.js','psc-v83158-v157-sealed-a-bounded-repair.js','psc-v83159-v158-sealed-a-bounded-repair.js','psc-v83160-v159-v2-sealed-a-bounded-repair.js','psc-v83161-v160-v1-sealed-a-bounded-repair.js','psc-v83162-v161-v1-sealed-a-bounded-repair.js','psc-v83163-v162-v1-sealed-a-bounded-repair.js','psc-v83164-v163-v1-sealed-a-bounded-repair.js','psc-v83165-v164-v1-sealed-a-bounded-repair.js','psc-v83166-v165-v1-sealed-a-bounded-repair.js','psc-v83167-v166-v1-sealed-a-bounded-repair.js','psc-v83168-v167-v1-sealed-a-bounded-repair.js','psc-v83169-v168-v1-sealed-a-bounded-repair.js','psc-v83170-v169-v1-sealed-a-bounded-repair.js','psc-v83171-v170-v1-sealed-a-bounded-repair.js','psc-v83172-v171-v1-sealed-a-bounded-repair.js','psc-v83173-v172-v1-sealed-a-bounded-repair.js','psc-v83174-v173-v1-sealed-a-bounded-repair.js','psc-v83175-v174-v1-sealed-a-bounded-repair.js','psc-v83176-v175-bank-contract-carry-forward.js','psc-v83177-v176-sealed-a-bounded-repair.js','psc-v83178-v177-sealed-a-bounded-repair.js'];for(const f of files)vm.runInContext(fs.readFileSync('public/'+f,'utf8'),s);if(!s.QCSemanticCoreV47)throw Error('V47 missing');
+          const paths=['../validation/V8_3_178_V177_V1_FAILURE_REGRESSION.json','../validation/V8_3_178_V177_V1_PREVIOUS_PASS_REGRESSION.json','../validation/V8_3_177_V176_V1_FAILURE_REGRESSION.json','../validation/V8_3_177_V176_V1_PREVIOUS_PASS_REGRESSION.json','../validation/V8_3_175_V174_V1_FAILURE_REGRESSION.json','../validation/V8_3_175_V174_V1_PREVIOUS_PASS_REGRESSION.json','../validation/V8_3_174_V173_V1_FAILURE_REGRESSION.json','../validation/V8_3_174_V173_V1_PREVIOUS_PASS_REGRESSION.json','../validation/V8_3_173_V172_V1_FAILURE_REGRESSION.json','../validation/V8_3_173_V172_V1_PREVIOUS_PASS_REGRESSION.json','../validation/V8_3_172_V171_V1_FAILURE_REGRESSION.json','../validation/V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION.json','../validation/V8_3_171_V170_V1_FAILURE_REGRESSION.json','../validation/V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION.json','../validation/V8_3_169_V168_V1_FAILURE_REGRESSION.json','../validation/V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION.json','../validation/V8_3_168_V167_V1_FAILURE_REGRESSION.json','../validation/V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION.json'];let total=0;
+          for(const path of paths){const A=JSON.parse(fs.readFileSync(path)).cases;for(const c of A){const r=s.QCSemanticCoreV47.analyze(c.surface,c.domain),a={route:r.input_route.id,families:[...r.families].sort(),sequence:!!r.sequence},e={route:c.expected.route,families:[...(c.expected.families||[])].sort(),sequence:!!c.expected.sequence};if(JSON.stringify(a)!==JSON.stringify(e))throw Error('regression '+c.case_id+' '+JSON.stringify({a,e}));total++;}}
+          console.log('V178 immutable regressions PASS',total);
+          NODE
+          node --check public/psc-v83178-v177-sealed-a-bounded-repair.js
+      - name: Build artifact validation
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          chmod +x scripts/*.sh
+          npm run install:ci
+          npm run build
+          npm run validate:artifact
+          test "$(find dist -type f -name '*.map' | wc -l)" -eq 0
+          test -f dist/client/psc-v83178-v177-sealed-a-bounded-repair.js
+      - name: Browser E2E
+        run: |
+          mkdir -p .e2e;printf '{"private":true}\n' > .e2e/package.json
+          npm install --prefix .e2e --no-package-lock playwright@1.55.0
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)";test -n "$CHROME";echo "$CHROME" > chrome.txt
+          cd PSC_V8_3_138_DEV/dist/client;python3 -m http.server 4173 --bind 127.0.0.1 > ../../../http178.log 2>&1 & echo $! > ../../../http178.pid;cd ../../..
+          node - <<'NODE'
+          const fs=require('fs'),{createRequire}=require('module'),req=createRequire(process.cwd()+'/x.js'),{chromium}=req('./.e2e/node_modules/playwright');(async()=>{const paths=['validation/V8_3_178_V177_V1_FAILURE_REGRESSION.json','validation/V8_3_178_V177_V1_PREVIOUS_PASS_REGRESSION.json'],A=paths.flatMap(f=>JSON.parse(fs.readFileSync(f)).cases),exe=fs.readFileSync('chrome.txt','utf8').trim(),b=await chromium.launch({headless:true,executablePath:exe,args:['--no-sandbox']});try{const p=await b.newPage();await p.goto('http://127.0.0.1:4173/candidate.html',{waitUntil:'networkidle'});const pf=await p.evaluate(()=>({same:QCSemanticCoreV4===QCSemanticCoreV47,version:QCSemanticCoreV47?.version}));if(!pf.same||!pf.version?.startsWith('V8.3.178'))throw Error(JSON.stringify(pf));let pass=0;for(const c of A){const a=await p.evaluate(x=>{const r=QCSemanticCoreV4.analyze(x.surface,x.domain);return{route:r.input_route.id,families:[...r.families].sort(),sequence:!!r.sequence}},c),e={route:c.expected.route,families:[...(c.expected.families||[])].sort(),sequence:!!c.expected.sequence};if(JSON.stringify(a)!==JSON.stringify(e))throw Error(c.case_id+' '+JSON.stringify({a,e}));pass++;}fs.writeFileSync('V8_3_178_BROWSER_E2E_RESULTS.json',JSON.stringify({passed:true,total:pass,preflight:pf},null,2))}finally{await b.close()}})().catch(e=>{console.error(e);process.exit(1)})
+          NODE
+      - name: Teardown
+        if: always()
+        run: '[ -f http178.pid ] && kill "$(cat http178.pid)" || true'
+      - name: Package checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,shutil,zipfile,hashlib,json
+          st=pathlib.Path('V8_3_178_CHECKPOINT');st.mkdir(exist_ok=True);r=pathlib.Path('PSC_V8_3_138_DEV')
+          for p in [r/'public/psc-v83178-v177-sealed-a-bounded-repair.js',pathlib.Path('V8_3_178_BROWSER_E2E_RESULTS.json'),pathlib.Path('validation/V8_3_178_V177_V1_FAILURE_REGRESSION.json'),pathlib.Path('validation/V8_3_178_V177_V1_PREVIOUS_PASS_REGRESSION.json')]:
+            if p.exists():shutil.copy2(p,st/p.name)
+          status={'candidate':'V8.3.178','development':'PASS' if (st/'V8_3_178_BROWSER_E2E_RESULTS.json').exists() else 'FAIL_OR_INCOMPLETE','sealed_validation_executed':False,'v177_batch_a_rerun':False,'v177_batch_b_accessed':False,'step_111_authorized':False,'production_authorized':False};(st/'V8_3_178_DEVELOPMENT_STATUS.json').write_text(json.dumps(status,indent=2))
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()));z=pathlib.Path('PSC_V8_3_178_DEVELOPMENT_VALIDATION_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_178_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_178_DEVELOPMENT_VALIDATION_CHECKPOINT
+          path: |
+            PSC_V8_3_178_DEVELOPMENT_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_178_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt
+      - name: Record success receipt
+        if: success()
+        run: |
+          cat > validation/V8_3_178_LATEST_DEVELOPMENT_RUN_RECEIPT.json <<EOF
+          {"candidate":"V8.3.178","phase":"development","target_head_sha":"${GITHUB_SHA}","run_id":${GITHUB_RUN_ID},"status":"completed","conclusion":"success","run_attempt":${GITHUB_RUN_ATTEMPT},"sealed_validation_executed":false,"v177_sealed_rerun":false}
+          EOF
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_178_LATEST_DEVELOPMENT_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.178 development run receipt'
+          git push
