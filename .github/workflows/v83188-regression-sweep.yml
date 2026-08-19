@@ -1,0 +1,28 @@
+name: V8.3.188 Regression Sweep
+on:
+  push:
+    branches: [v83188-v1-validation]
+jobs:
+  regressions:
+    if: github.event.head_commit.message == 'Run V8.3.188 regression sweep'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize historical carriers and base
+        run: |
+          python - <<'PY'
+          import pathlib,base64,gzip,zipfile
+          names=['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION','V8_3_168_V167_V1_FAILURE_REGRESSION','V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION']
+          for n in names:
+            p=pathlib.Path('validation/'+n+'.json.gz.b64');pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          PY
+      - name: Run full immutable sweep
+        run: node validation/run-v83188-full-regression-sweep.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_188_REGRESSION_SWEEP
+          path: V8_3_188_FULL_REGRESSION_SWEEP_RESULTS.json
