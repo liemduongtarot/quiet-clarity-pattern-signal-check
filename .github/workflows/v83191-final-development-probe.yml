@@ -1,0 +1,30 @@
+name: V8.3.191 Final Development Probe
+on:
+  push:
+    branches: [v83191-v1-validation]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'Probe V8.3.191 final development evidence'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read exact final-development run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: fd3de0762f65301194dfcabdd69170a0d3fbde82
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request,pathlib
+          repo=os.environ['GITHUB_REPOSITORY'];token=os.environ['GH_TOKEN'];target=os.environ['TARGET_SHA']
+          req=urllib.request.Request(f'https://api.github.com/repos/{repo}/actions/workflows/v83191-final-development.yml/runs?event=push&per_page=20',headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json'})
+          data=json.load(urllib.request.urlopen(req));m=[r for r in data.get('workflow_runs',[]) if r.get('head_sha')==target];assert m
+          r=m[0];pathlib.Path('validation/V8_3_191_FINAL_DEVELOPMENT_RECEIPT.json').write_text(json.dumps({'candidate':'V8.3.191','phase':'development','target_head_sha':target,'run_id':r['id'],'status':r['status'],'conclusion':r.get('conclusion'),'run_attempt':r.get('run_attempt'),'sealed_validation_executed':False,'v190_sealed_rerun':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_191_FINAL_DEVELOPMENT_RECEIPT.json
+          git commit -m 'Record V8.3.191 final development receipt'
+          git push
