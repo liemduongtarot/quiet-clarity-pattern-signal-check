@@ -1,0 +1,46 @@
+name: V8.3.175 V1 Sealed Transport Preflight
+on:
+  push:
+    branches: [v83175-v1-sealed-validation]
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Run V8.3.175 V1 sealed transport preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify immutable sealed transport only
+        run: |
+          python - <<'PY'
+          import json,base64,gzip,hashlib,pathlib
+          p=pathlib.Path('validation/v83175-v1-sealed/V8_3_175_SEALED_TRANSPORT_PACK_V1.json')
+          pack=json.loads(p.read_text())
+          assert pack['development_authority_commit']=='beaa99db8f0fadf525efdf1b6847fb8beac77959'
+          assert pack['semantic_runtime_executed_before_transport'] is False
+          assert pack['v174_batch_a_rerun'] is False and pack['v174_batch_b_accessed'] is False
+          out=pathlib.Path('V8_3_175_TRANSPORT_MATERIALIZED');out.mkdir()
+          for n,b64 in pack['compressed_files'].items():
+            raw=gzip.decompress(base64.b64decode(b64))
+            (out/n).write_bytes(raw)
+          objs={n:json.loads((out/n).read_text()) for n in pack['compressed_files']}
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          mapping={
+            'fixture_sha256':'V8_3_175_SEALED_EXECUTION_FIXTURE_V1.json',
+            'selection_sha256':'V8_3_175_OWNER_SELECTION_V1.json',
+            'gold_sha256':'V8_3_175_INDEPENDENT_GOLD_V1.json',
+            'membership_sha256':'V8_3_175_SEALED_MEMBERSHIP_V1.json'}
+          for k,n in mapping.items(): assert hashlib.sha256(canon(objs[n])).hexdigest()==pack[k],(k,n)
+          f=objs['V8_3_175_SEALED_EXECUTION_FIXTURE_V1.json']
+          assert len(f['cases'])==60 and len(f['batch_a'])==30 and len(f['batch_b'])==30
+          assert set(f['batch_a']).isdisjoint(f['batch_b']) and len(set(f['batch_a']+f['batch_b']))==60
+          status={'candidate':'V8.3.175','phase':'transport-preflight','transport':'PASS','semantic_runtime_executed':False,'v174_batch_a_rerun':False,'v174_batch_b_accessed':False}
+          pathlib.Path('V8_3_175_TRANSPORT_STATUS.json').write_text(json.dumps(status,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_175_V1_TRANSPORT_PREFLIGHT_CHECKPOINT
+          path: |
+            V8_3_175_TRANSPORT_STATUS.json
+            validation/v83175-v1-sealed/V8_3_175_SEALED_TRANSPORT_PACK_V1.json
