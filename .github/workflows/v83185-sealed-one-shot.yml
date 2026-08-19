@@ -1,0 +1,57 @@
+name: V8.3.185 Sealed Validation
+on:
+  push:
+    branches: [v83185-v1-sealed-validation]
+permissions:
+  contents: read
+jobs:
+  sealed_validate:
+    if: github.event.head_commit.message == 'Run V8.3.185 sealed one-shot'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Verify frozen authority and materialize exact V8.3.185 runtime
+        run: |
+          python validation/v83185-v1-sealed/build_v185_sealed_bank.py
+          python - <<'PY'
+          import json,hashlib,pathlib,zipfile
+          root=pathlib.Path('validation/v83185-v1-sealed');fixture=json.loads((root/'V8_3_185_SEALED_FIXTURE_V1.json').read_text());sel=json.loads((root/'V8_3_185_SEALED_SELECTION_V1.json').read_text());membership=json.loads((root/'V8_3_185_SEALED_MEMBERSHIP_V1.json').read_text());gold=json.loads((root/'V8_3_185_INDEPENDENT_GOLD_V1.json').read_text());auth=json.loads((root/'V8_3_185_SEALED_AUTHORITY_V1.json').read_text())
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          for k,o in {'fixture':fixture,'selection':sel,'membership':membership,'independent_gold':gold}.items():assert hashlib.sha256(canon(o)).hexdigest()==auth['hashes'][k],k
+          gm={cid:g['expected'] for g in gold['groups'] for cid in g['case_ids']};assert len(gm)==60
+          for c in fixture['cases']:assert gm[c['case_id']]==c['expected']
+          assert auth['semantic_runtime_executed_before_transport'] is False and auth['v184_batch_a_rerun'] is False and auth['v184_batch_b_accessed'] is False
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          PY
+      - name: SEALED Batch A first run exactly once
+        run: node validation/v83185-v1-sealed/run-v185-sealed.cjs A
+      - name: SEALED Batch B exactly once only after A PASS
+        run: node validation/v83185-v1-sealed/run-v185-sealed.cjs B
+      - name: Package immutable sealed checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,json,zipfile,hashlib,shutil,os
+          st=pathlib.Path('V8_3_185_SEALED_CHECKPOINT');st.mkdir(exist_ok=True)
+          for n in ['V8_3_185_BATCH_A_FIRST_RUN_RESULTS.json','V8_3_185_BATCH_B_FIRST_RUN_RESULTS.json']:
+            p=pathlib.Path(n)
+            if p.exists():shutil.copy2(p,st/n)
+          for p in [pathlib.Path('validation/v83185-v1-sealed/V8_3_185_SEALED_AUTHORITY_V1.json'),pathlib.Path('validation/v83185-v1-sealed/V8_3_185_SEALED_FIXTURE_V1.json'),pathlib.Path('validation/v83185-v1-sealed/V8_3_185_INDEPENDENT_GOLD_V1.json')]:
+            if p.exists():shutil.copy2(p,st/p.name)
+          A=pathlib.Path('V8_3_185_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_185_BATCH_B_FIRST_RUN_RESULTS.json');a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
+          status={'candidate':'V8.3.185','run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ['GITHUB_RUN_ATTEMPT'],'head_sha':os.environ['GITHUB_SHA'],'batch_a_executed':a is not None,'batch_a_passed':a['passed'] if a else None,'batch_a_failed':a['failed'] if a else None,'batch_b_executed':b is not None,'batch_b_passed':b['passed'] if b else None,'batch_b_failed':b['failed'] if b else None,'sealed_trigger_repeated':False,'v184_batch_a_rerun':False,'v184_batch_b_accessed':False,'step_111_authorized':False,'production_authorized':False};(st/'V8_3_185_SEALED_STATUS.json').write_text(json.dumps(status,indent=2))
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()));z=pathlib.Path('PSC_V8_3_185_V1_SEALED_VALIDATION_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_185_V1_SEALED_VALIDATION_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_185_V1_SEALED_VALIDATION_CHECKPOINT
+          path: |
+            PSC_V8_3_185_V1_SEALED_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_185_V1_SEALED_VALIDATION_CHECKPOINT_SHA256.txt
