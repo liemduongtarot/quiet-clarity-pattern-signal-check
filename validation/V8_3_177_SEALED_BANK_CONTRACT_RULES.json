@@ -1,0 +1,32 @@
+{
+  "authority": "V8.3.177 V1 SEALED BANK CONTRACT RULES",
+  "allowed_route_values": [
+    "input:clarification-required",
+    "input:decision-request",
+    "input:hypothetical-or-example",
+    "input:third-party-only",
+    "input:prediction",
+    "input:self-lived"
+  ],
+  "allowed_family_values": [
+    "freeze",
+    "slow",
+    "ignore"
+  ],
+  "forbidden_conceptual_route_values": [
+    "clarification",
+    "decision",
+    "hypothetical",
+    "third_party",
+    "prediction_only",
+    "state_only"
+  ],
+  "requirements": [
+    "60 cases exactly",
+    "30 Batch A / 30 Batch B",
+    "A/B disjoint",
+    "gold assigned independently from runtime output",
+    "no V176 sealed membership reuse",
+    "no runtime execution during transport preflight"
+  ]
+}
