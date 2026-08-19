@@ -1,0 +1,87 @@
+name: V8.3.170 V1 Browser E2E V3
+on:
+  push:
+    branches: [v83170-v1-validation]
+jobs:
+  validate:
+    if: github.event.head_commit.message == 'Run V8.3.170 V1 browser E2E V3'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize exact V8.3.170 authority
+        run: |
+          mkdir -p validation/v83169-v1-sealed-proxy
+          for f in V8_3_169_RUNTIME_CARRIER_MANIFEST_V1.json V8_3_169_RUNTIME_CARRIER_PART_1.json V8_3_169_RUNTIME_CARRIER_PART_2.json V8_3_169_RUNTIME_CARRIER_PART_3.json V8_3_169_RUNTIME_CARRIER_PART_4.json; do curl -fsSL "https://raw.githubusercontent.com/liemduongtarot/quiet-clarity-pattern-signal-check/d9e76ac21843a85775853d48b07e752e49205311/validation/v83169-v1-sealed/$f" -o "validation/v83169-v1-sealed-proxy/$f"; done
+          python - <<'PY'
+          import pathlib,json,zipfile,base64,gzip
+          root=pathlib.Path('validation/v83169-v1-sealed-proxy');man=json.loads((root/'V8_3_169_RUNTIME_CARRIER_MANIFEST_V1.json').read_text())
+          assert man['source_fixture_sha256']=='b373aa24ce3b0f452e2cf60654bd1181ca61b3d9c24a3da67ed76abc8d94107b'
+          assert man['development_authority_commit']=='f0b88579e615e5de79d6455d95df69dd790a0f37'
+          all=[]
+          for spec in man['parts']: all.extend(json.loads((root/spec['file']).read_text())['cases'])
+          amap={c['case_id']:c for c in all};cases=[amap[x] for x in man['batch_a']]
+          failids={'V169-PB1-042','V169-PB1-051','V169-PB1-062','V169-PB1-074','V169-PB1-134','V169-PB1-170','V169-PB1-163','V169-PB1-005','V169-PB1-023','V169-PB1-028'}
+          assert len(all)==60 and len(cases)==30 and failids.issubset(set(man['batch_a']))
+          pathlib.Path('validation/V8_3_170_V169_V1_BATCH_A_REGRESSION.json').write_text(json.dumps({'authority':'V8.3.170 V169 V1 exact Batch A regression','source_sealed_trigger_commit':'d9e76ac21843a85775853d48b07e752e49205311','failure_ids':sorted(failids),'cases':cases},ensure_ascii=False,indent=2))
+          for n in ['V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION']:
+              p=pathlib.Path('validation/'+n+'.json.gz.b64');pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          PY
+          for f in psc-v83142-sealed-failure-convergence.js psc-v83143-semantic-convergence.js psc-v83144-sealed-failure-convergence.js psc-v83145-route-layer.js psc-v83145-family-state-layer.js psc-v83146-route-boundary-repair.js psc-v83146-family-sequence-repair.js psc-v83147-sealed-failure-repair.js psc-v83148-sealed-failure-repair.js psc-v83149-sealed-failure-repair.js psc-v83150-sealed-failure-repair.js psc-v83151-sealed-failure-repair.js psc-v83152-sealed-failure-repair.js psc-v83153-sealed-failure-repair.js psc-v83154-sealed-failure-repair.js psc-v83155-sealed-failure-repair.js psc-v83156-v155-v3-bounded-repair.js psc-v83157-v156-sealed-a-bounded-repair.js psc-v83158-v157-sealed-a-bounded-repair.js psc-v83159-v158-sealed-a-bounded-repair.js psc-v83160-v159-v2-sealed-a-bounded-repair.js psc-v83161-v160-v1-sealed-a-bounded-repair.js psc-v83162-v161-v1-sealed-a-bounded-repair.js psc-v83163-v162-v1-sealed-a-bounded-repair.js psc-v83164-v163-v1-sealed-a-bounded-repair.js psc-v83165-v164-v1-sealed-a-bounded-repair.js psc-v83166-v165-v1-sealed-a-bounded-repair.js psc-v83167-v166-v1-sealed-a-bounded-repair.js psc-v83168-v167-v1-sealed-a-bounded-repair.js psc-v83169-v168-v1-sealed-a-bounded-repair.js psc-v83170-v169-v1-sealed-a-bounded-repair.js; do cp validation/$f PSC_V8_3_138_DEV/public/; done
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('PSC_V8_3_138_DEV/public/candidate.html');s=p.read_text();old='<script src="psc-v83139-semantic-convergence.js"></script><script src="psc-v83137-ui-gate-authority.js"></script>'
+          chain=['psc-v83142-sealed-failure-convergence.js','psc-v83143-semantic-convergence.js','psc-v83144-sealed-failure-convergence.js','psc-v83145-route-layer.js','psc-v83145-family-state-layer.js','psc-v83146-route-boundary-repair.js','psc-v83146-family-sequence-repair.js','psc-v83147-sealed-failure-repair.js','psc-v83148-sealed-failure-repair.js','psc-v83149-sealed-failure-repair.js','psc-v83150-sealed-failure-repair.js','psc-v83151-sealed-failure-repair.js','psc-v83152-sealed-failure-repair.js','psc-v83153-sealed-failure-repair.js','psc-v83154-sealed-failure-repair.js','psc-v83155-sealed-failure-repair.js','psc-v83156-v155-v3-bounded-repair.js','psc-v83157-v156-sealed-a-bounded-repair.js','psc-v83158-v157-sealed-a-bounded-repair.js','psc-v83159-v158-sealed-a-bounded-repair.js','psc-v83160-v159-v2-sealed-a-bounded-repair.js','psc-v83161-v160-v1-sealed-a-bounded-repair.js','psc-v83162-v161-v1-sealed-a-bounded-repair.js','psc-v83163-v162-v1-sealed-a-bounded-repair.js','psc-v83164-v163-v1-sealed-a-bounded-repair.js','psc-v83165-v164-v1-sealed-a-bounded-repair.js','psc-v83166-v165-v1-sealed-a-bounded-repair.js','psc-v83167-v166-v1-sealed-a-bounded-repair.js','psc-v83168-v167-v1-sealed-a-bounded-repair.js','psc-v83169-v168-v1-sealed-a-bounded-repair.js','psc-v83170-v169-v1-sealed-a-bounded-repair.js']
+          assert old in s;s=s.replace(old,'<script src="psc-v83139-semantic-convergence.js"></script>'+''.join(f'<script src="{x}"></script>' for x in chain)+'<script src="psc-v83137-ui-gate-authority.js"></script>',1)
+          oldb='if(globalThis.QCSemanticCoreV9)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV9;else if(globalThis.QCSemanticCoreV8)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV8;'
+          newb='if(globalThis.QCSemanticCoreV39)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV39;else if(globalThis.QCSemanticCoreV38)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV38;else if(globalThis.QCSemanticCoreV37)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV37;else if(globalThis.QCSemanticCoreV9)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV9;else if(globalThis.QCSemanticCoreV8)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV8;'
+          assert oldb in s;p.write_text(s.replace(oldb,newb,1))
+          PY
+      - name: Build artifact validation
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          chmod +x scripts/*.sh
+          npm run install:ci
+          npm run build
+          npm run validate:artifact
+          test "$(find dist -type f -name '*.map' | wc -l)" -eq 0
+          test -f dist/client/psc-v83170-v169-v1-sealed-a-bounded-repair.js
+      - name: Browser E2E with system Chrome
+        run: |
+          mkdir -p .e2e; printf '{"private":true}\n' > .e2e/package.json
+          npm install --prefix .e2e --no-package-lock playwright@1.55.0
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)";test -n "$CHROME";echo "$CHROME" > chrome.txt
+          cd PSC_V8_3_138_DEV/dist/client;python3 -m http.server 4173 --bind 127.0.0.1 > ../../../V8_3_170_HTTP.log 2>&1 & echo $! > ../../../V8_3_170_HTTP.pid;cd ../../..
+          node - <<'NODE'
+          const fs=require('fs'),{createRequire}=require('module'),req=createRequire(process.cwd()+'/x.js'),{chromium}=req('./.e2e/node_modules/playwright');
+          (async()=>{const paths=['validation/V8_3_170_V169_V1_BATCH_A_REGRESSION.json','validation/V8_3_169_V168_V1_FAILURE_REGRESSION.json','validation/V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION.json','validation/V8_3_168_V167_V1_FAILURE_REGRESSION.json','validation/V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION.json'],A=paths.flatMap(f=>JSON.parse(fs.readFileSync(f)).cases),exe=fs.readFileSync('chrome.txt','utf8').trim(),b=await chromium.launch({headless:true,executablePath:exe,args:['--no-sandbox']});const diagnostics={console:[],pageerrors:[],failedResponses:[]};try{const p=await b.newPage();await p.route('**/favicon.ico',r=>r.fulfill({status:204,body:''}));p.on('console',m=>{if(m.type()==='error')diagnostics.console.push(m.text())});p.on('pageerror',e=>diagnostics.pageerrors.push(String(e)));p.on('response',r=>{if(r.status()>=400)diagnostics.failedResponses.push({url:r.url(),status:r.status()})});await p.goto('http://127.0.0.1:4173/candidate.html',{waitUntil:'networkidle'});const pf=await p.evaluate(()=>({same:QCSemanticCoreV4===QCSemanticCoreV39,version:QCSemanticCoreV39?.version,authority:document.documentElement.dataset.pscSemanticAuthority}));if(!pf.same||!pf.version?.startsWith('V8.3.170'))throw Error(JSON.stringify(pf));let pass=0;for(const c of A){const a=await p.evaluate(x=>{const r=QCSemanticCoreV4.analyze(x.surface,x.domain);return{route:r.input_route.id,families:[...r.families].sort(),sequence:!!r.sequence}},c),e={route:c.expected.route,families:[...(c.expected.families||[])].sort(),sequence:!!c.expected.sequence};if(JSON.stringify(a)!==JSON.stringify(e))throw Error(c.case_id+' '+JSON.stringify({a,e}));pass++}const out={total:A.length,passed:pass,failed:0,console_errors:diagnostics.console.length,page_errors:diagnostics.pageerrors.length,failed_responses:diagnostics.failedResponses,console_messages:diagnostics.console,preflight:pf,executablePath:exe,favicon_intercepted:true};fs.writeFileSync('V8_3_170_BROWSER_E2E_V3_RESULTS.json',JSON.stringify(out,null,2));console.log(JSON.stringify(out,null,2));if(diagnostics.console.length||diagnostics.pageerrors.length||diagnostics.failedResponses.length)throw Error('browser diagnostics not clean')}finally{await b.close()}})().catch(e=>{console.error(e);process.exit(1)})
+          NODE
+      - name: Teardown
+        if: always()
+        run: '[ -f V8_3_170_HTTP.pid ] && kill "$(cat V8_3_170_HTTP.pid)" || true'
+      - name: Package checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,shutil,zipfile,hashlib,json
+          st=pathlib.Path('V8_3_170_V3_CHECKPOINT');st.mkdir(exist_ok=True);r=pathlib.Path('PSC_V8_3_138_DEV')
+          for p in [r/'public/psc-v83170-v169-v1-sealed-a-bounded-repair.js',pathlib.Path('V8_3_170_BROWSER_E2E_V3_RESULTS.json'),pathlib.Path('validation/V8_3_170_V169_V1_BATCH_A_REGRESSION.json')]:
+              if p.exists():shutil.copy2(p,st/p.name)
+          status={'candidate':'V8.3.170','development':'PASS' if (st/'V8_3_170_BROWSER_E2E_V3_RESULTS.json').exists() else 'FAIL_OR_INCOMPLETE','sealed_validation_executed':False,'v169_batch_a_rerun':False,'v169_batch_b_accessed':False,'step_111_authorized':False,'production_authorized':False};(st/'V8_3_170_DEVELOPMENT_STATUS.json').write_text(json.dumps(status,indent=2))
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+          z=pathlib.Path('PSC_V8_3_170_DEVELOPMENT_V3_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+              for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_170_DEVELOPMENT_V3_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_170_DEVELOPMENT_V3_CHECKPOINT
+          path: |
+            PSC_V8_3_170_DEVELOPMENT_V3_CHECKPOINT.zip
+            PSC_V8_3_170_DEVELOPMENT_V3_CHECKPOINT_SHA256.txt
