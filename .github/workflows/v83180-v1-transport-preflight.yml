@@ -1,0 +1,31 @@
+name: V8.3.180 V1 Transport Preflight
+on:
+  push:
+    branches: [v83180-v1-sealed-validation]
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Run V8.3.180 V1 transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate and verify frozen bank only
+        run: |
+          python validation/v83180-v1-sealed/build_v180_sealed_bank.py
+          python - <<'PY'
+          import json,hashlib,pathlib
+          root=pathlib.Path('validation/v83180-v1-sealed');gen=root/'generated';auth=json.loads((root/'V8_3_180_SEALED_AUTHORITY_V1.json').read_text())
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          files={'fixture':'V8_3_180_SEALED_EXECUTION_FIXTURE_V1.json','selection':'V8_3_180_SEALED_SELECTION_V1.json','membership':'V8_3_180_SEALED_MEMBERSHIP_V1.json','independent_gold':'V8_3_180_INDEPENDENT_GOLD_V1.json'}
+          objs={k:json.loads((gen/n).read_text()) for k,n in files.items()}
+          for k,o in objs.items(): assert hashlib.sha256(canon(o)).hexdigest()==auth['hashes'][k],k
+          f=objs['fixture'];g=objs['independent_gold'];gm={cid:x['expected'] for x in g['groups'] for cid in x['case_ids']};assert len(f['cases'])==60 and len(f['batch_a'])==30 and len(f['batch_b'])==30 and len(gm)==60
+          assert set(f['batch_a']).isdisjoint(f['batch_b']) and len(set(f['batch_a']+f['batch_b']))==60
+          for c in f['cases']: assert gm[c['case_id']]==c['expected']
+          print('V180 transport PASS; semantic runtime=0')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_180_V1_TRANSPORT_PREFLIGHT_CHECKPOINT
+          path: validation/v83180-v1-sealed/generated
