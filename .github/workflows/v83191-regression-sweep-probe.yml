@@ -1,0 +1,30 @@
+name: V8.3.191 Regression Sweep Probe
+on:
+  push:
+    branches: [v83191-v1-validation]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'Probe V8.3.191 regression sweep evidence'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read exact regression run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: 462de3f595e0403cfa417846b16e8e1a2d831475
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request,pathlib
+          repo=os.environ['GITHUB_REPOSITORY'];token=os.environ['GH_TOKEN'];target=os.environ['TARGET_SHA']
+          req=urllib.request.Request(f'https://api.github.com/repos/{repo}/actions/workflows/v83191-regression-sweep.yml/runs?event=push&per_page=20',headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json'})
+          data=json.load(urllib.request.urlopen(req));m=[r for r in data.get('workflow_runs',[]) if r.get('head_sha')==target];assert m
+          r=m[0];pathlib.Path('validation/V8_3_191_REGRESSION_SWEEP_RECEIPT.json').write_text(json.dumps({'target_head_sha':target,'run_id':r['id'],'status':r['status'],'conclusion':r.get('conclusion')},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_191_REGRESSION_SWEEP_RECEIPT.json
+          git commit -m 'Record V8.3.191 regression sweep receipt'
+          git push
