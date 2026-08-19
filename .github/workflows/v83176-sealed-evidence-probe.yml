@@ -1,0 +1,43 @@
+name: V8.3.176 Sealed Evidence Probe
+on:
+  push:
+    branches: [v83176-v1-sealed-validation]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'Probe V8.3.176 sealed run evidence'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Capture sealed evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          TARGET_SHA: a246c990708f8492ecbac93dc7d1757c0663ffb9
+        run: |
+          python - <<'PY'
+          import json,os,time,urllib.request,pathlib
+          H={'Authorization':f"Bearer {os.environ['GH_TOKEN']}",'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'};base=f"https://api.github.com/repos/{os.environ['REPO']}"
+          def get(u):
+            with urllib.request.urlopen(urllib.request.Request(u,headers=H),timeout=30) as r:return json.load(r)
+          target=os.environ['TARGET_SHA'];sel=None
+          for _ in range(60):
+            d=get(base+'/actions/workflows/v83176-v1-sealed-validation.yml/runs?branch=v83176-v1-sealed-validation&event=push&per_page=50');m=[r for r in d.get('workflow_runs',[]) if r.get('head_sha')==target]
+            if not m:raise SystemExit('target V176 sealed run not found')
+            sel=sorted(m,key=lambda r:r['id'],reverse=True)[0]
+            if sel.get('status')=='completed':break
+            time.sleep(5)
+          jobs=get(base+f"/actions/runs/{sel['id']}/jobs?per_page=100");arts=get(base+f"/actions/runs/{sel['id']}/artifacts?per_page=100")
+          out={'candidate':'V8.3.176','phase':'sealed-validation','target_head_sha':target,'run_id':sel['id'],'status':sel.get('status'),'conclusion':sel.get('conclusion'),'run_attempt':sel.get('run_attempt'),'jobs':[{'id':j['id'],'name':j['name'],'status':j['status'],'conclusion':j['conclusion'],'steps':[{'name':s['name'],'status':s['status'],'conclusion':s['conclusion'],'number':s['number']} for s in j.get('steps',[])]} for j in jobs.get('jobs',[])],'artifacts':[{'id':a['id'],'name':a['name'],'size_in_bytes':a['size_in_bytes'],'expired':a['expired']} for a in arts.get('artifacts',[])],'sealed_trigger_repeated':False,'v175_sealed_rerun':False}
+          pathlib.Path('validation/v83176-v1-sealed/V8_3_176_SEALED_RUN_RECEIPT.json').write_text(json.dumps(out,indent=2))
+          PY
+      - name: Publish receipt
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83176-v1-sealed/V8_3_176_SEALED_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.176 sealed run receipt'
+          git push origin HEAD:v83176-v1-sealed-validation
