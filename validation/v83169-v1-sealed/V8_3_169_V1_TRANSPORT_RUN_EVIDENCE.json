@@ -1,0 +1,18 @@
+{
+  "authority": "V8.3.169 V1 TRANSPORT RUN EVIDENCE",
+  "run_id": 32211300038,
+  "run_attempt": 1,
+  "conclusion": "success",
+  "head_sha": "bf20c4e205e309f47331ee639613106dc071d6cd",
+  "head_branch": "v83169-v1-sealed-validation",
+  "runtime_executed": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "selection_sha256": "31643c78ab76d53eb41add364531ffaa945fd3a4539756cadc4367ea500123b4",
+  "gold_sha256": "3bd7491dc1fb1fdba633077732720207314be79d1371e71e3ba4aa7207af41c9",
+  "membership_sha256": "3acba9a1f0a50f700bcb214ed375e8ca3a9ac3ab506764876d6146486559b4da",
+  "fixture_sha256": "b373aa24ce3b0f452e2cf60654bd1181ca61b3d9c24a3da67ed76abc8d94107b",
+  "recovery_limitation_documented": true,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
