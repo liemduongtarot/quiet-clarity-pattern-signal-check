@@ -1,0 +1,26 @@
+{
+  "authority": "V8.3.176 SEALED BANK CONTRACT VOCABULARY RULES",
+  "purpose": "block invalid conceptual labels before sealed runtime",
+  "allowed_route_values": [
+    "input:self-lived",
+    "input:clarification-required",
+    "input:decision-request",
+    "input:hypothetical-or-example",
+    "input:third-party-only",
+    "input:prediction"
+  ],
+  "forbidden_conceptual_route_values": [
+    "clarification",
+    "hypothetical",
+    "third_party_private",
+    "prediction",
+    "state_only",
+    "action",
+    "emotion_state",
+    "sequence"
+  ],
+  "family_rule": "families must use runtime family vocabulary only; route concepts must never be injected as synthetic families",
+  "source_of_truth": "historical immutable runtime contracts and independently authored case semantics, never candidate runtime output",
+  "must_run_before_transport": true,
+  "must_run_before_sealed_runtime": true
+}
