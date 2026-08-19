@@ -1,0 +1,23 @@
+{
+  "candidate": "V8.3.178",
+  "phase": "development",
+  "validation_target_commit": "fd36bac029e466dda18d0f2a355a39f636e132e1",
+  "run_id": 32270848050,
+  "semantic_development_gates": "PASS",
+  "materialization": "PASS",
+  "immutable_regressions": "PASS_270",
+  "build_artifact_validation": "PASS",
+  "browser_e2e": "PASS",
+  "teardown": "PASS",
+  "checkpoint_packaging": "PASS",
+  "checkpoint_upload": "PASS",
+  "checkpoint_artifact_id": 9372098250,
+  "checkpoint_artifact_digest": "sha256:223a6e18a7a2a7ac4e76a8271e5ffb6327316311e69dd1c307acd6964058469d",
+  "workflow_conclusion": "failure_due_only_to_post_gate_receipt_push_race",
+  "receipt_push_failure": "non_fast_forward_after_probe_commit",
+  "semantic_failure": false,
+  "sealed_validation_executed": false,
+  "v177_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
