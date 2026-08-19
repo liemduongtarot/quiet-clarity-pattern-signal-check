@@ -7,16 +7,16 @@ permissions:
   actions: read
 jobs:
   probe:
-    if: github.event.head_commit.message == 'Probe V8.3.173 transport run evidence'
+    if: github.event.head_commit.message == 'Probe V8.3.173 sealed run evidence'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Capture transport run evidence
+      - name: Capture sealed validation run evidence
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
-          TARGET_SHA: e04b138f55de2d25341e4b5ee0e7e74252359213
+          TARGET_SHA: 8cd5b383194c40a697d25538aab6b3717bc678e2
         run: |
           python - <<'PY'
           import json,os,time,urllib.request,pathlib
@@ -24,20 +24,20 @@ jobs:
           def get(u):
             with urllib.request.urlopen(urllib.request.Request(u,headers=H),timeout=30) as r:return json.load(r)
           target=os.environ['TARGET_SHA'];sel=None
-          for _ in range(40):
-            d=get(base+'/actions/workflows/v83173-v1-transport-preflight.yml/runs?branch=v83173-v1-sealed-validation&event=push&per_page=50');m=[r for r in d.get('workflow_runs',[]) if r.get('head_sha')==target]
-            if not m:raise SystemExit('target transport run not found')
+          for _ in range(60):
+            d=get(base+'/actions/workflows/v83173-v1-sealed-validation.yml/runs?branch=v83173-v1-sealed-validation&event=push&per_page=50');m=[r for r in d.get('workflow_runs',[]) if r.get('head_sha')==target]
+            if not m:raise SystemExit('target sealed run not found')
             sel=sorted(m,key=lambda r:r['id'],reverse=True)[0]
             if sel.get('status')=='completed':break
             time.sleep(5)
           jobs=get(base+f"/actions/runs/{sel['id']}/jobs?per_page=100");arts=get(base+f"/actions/runs/{sel['id']}/artifacts?per_page=100")
-          out={'candidate':'V8.3.173','phase':'transport-preflight','target_head_sha':target,'run_id':sel['id'],'status':sel.get('status'),'conclusion':sel.get('conclusion'),'jobs':[{'id':j['id'],'name':j['name'],'conclusion':j['conclusion'],'steps':[{'name':s['name'],'conclusion':s['conclusion']} for s in j.get('steps',[])]} for j in jobs.get('jobs',[])],'artifacts':[{'id':a['id'],'name':a['name'],'size_in_bytes':a['size_in_bytes'],'expired':a['expired']} for a in arts.get('artifacts',[])],'semantic_runtime_executed':False,'v172_batch_a_rerun':False,'v172_batch_b_accessed':False}
-          pathlib.Path('validation/v83173-v1-sealed/V8_3_173_TRANSPORT_RUN_RECEIPT.json').write_text(json.dumps(out,indent=2))
+          out={'candidate':'V8.3.173','phase':'sealed-validation','target_head_sha':target,'run_id':sel['id'],'status':sel.get('status'),'conclusion':sel.get('conclusion'),'run_attempt':sel.get('run_attempt'),'jobs':[{'id':j['id'],'name':j['name'],'status':j['status'],'conclusion':j['conclusion'],'steps':[{'name':s['name'],'status':s['status'],'conclusion':s['conclusion'],'number':s['number']} for s in j.get('steps',[])]} for j in jobs.get('jobs',[])],'artifacts':[{'id':a['id'],'name':a['name'],'size_in_bytes':a['size_in_bytes'],'expired':a['expired']} for a in arts.get('artifacts',[])],'v172_batch_a_rerun':False,'v172_batch_b_accessed':False,'v171_batch_a_rerun':False,'v171_batch_b_accessed':False,'sealed_trigger_repeated':False}
+          pathlib.Path('validation/v83173-v1-sealed/V8_3_173_SEALED_RUN_RECEIPT.json').write_text(json.dumps(out,indent=2))
           PY
       - name: Publish receipt
         run: |
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83173-v1-sealed/V8_3_173_TRANSPORT_RUN_RECEIPT.json
-          git commit -m 'Record V8.3.173 transport run receipt'
+          git add validation/v83173-v1-sealed/V8_3_173_SEALED_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.173 sealed run receipt'
           git push origin HEAD:v83173-v1-sealed-validation
