@@ -1,0 +1,66 @@
+{
+  "candidate": "V8.3.174",
+  "phase": "transport-preflight",
+  "target_head_sha": "186a00e9641bc525446b635b179ca3f1e6734043",
+  "run_id": 32232510238,
+  "status": "completed",
+  "conclusion": "success",
+  "run_attempt": 1,
+  "jobs": [
+    {
+      "id": 96005205081,
+      "name": "verify",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Verify immutable sealed transport only",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 9357748942,
+      "name": "PSC_V8_3_174_V1_TRANSPORT_PREFLIGHT_CHECKPOINT",
+      "size_in_bytes": 5074,
+      "expired": false
+    }
+  ],
+  "semantic_runtime_executed": false,
+  "v173_batch_a_rerun": false,
+  "v173_batch_b_accessed": false
+}
