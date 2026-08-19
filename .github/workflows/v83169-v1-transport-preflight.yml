@@ -1,0 +1,56 @@
+name: V8.3.169 V1 Transport Preflight
+on:
+  push:
+    branches: [v83169-v1-sealed-validation]
+jobs:
+  transport_preflight:
+    if: github.event.head_commit.message == 'Run V8.3.169 V1 transport preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify sealed runtime carriers without runtime
+        run: |
+          python - <<'PY'
+          import pathlib,json,hashlib
+          root=pathlib.Path('validation/v83169-v1-sealed')
+          def csha(o):
+              x=dict(o);x.pop('sha256_without_sha_field',None)
+              return hashlib.sha256(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+          def carrier_sha(o):
+              x=dict(o);x.pop('carrier_sha256',None)
+              return hashlib.sha256(json.dumps(x,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
+          sel=json.loads((root/'V8_3_169_PRESEAL_OWNER_SELECTION_V1.json').read_text())
+          mem=json.loads((root/'V8_3_169_SEALED_MEMBERSHIP_V1.json').read_text())
+          man=json.loads((root/'V8_3_169_RUNTIME_CARRIER_MANIFEST_V1.json').read_text())
+          assert csha(sel)=='31643c78ab76d53eb41add364531ffaa945fd3a4539756cadc4367ea500123b4'
+          assert csha(mem)=='3acba9a1f0a50f700bcb214ed375e8ca3a9ac3ab506764876d6146486559b4da'
+          assert man['source_fixture_sha256']=='b373aa24ce3b0f452e2cf60654bd1181ca61b3d9c24a3da67ed76abc8d94107b'
+          assert man['source_gold_sha256']=='3bd7491dc1fb1fdba633077732720207314be79d1371e71e3ba4aa7207af41c9'
+          assert man['source_membership_sha256']==csha(mem)
+          assert man['source_selection_sha256']==csha(sel)
+          assert man['development_authority_commit']=='f0b88579e615e5de79d6455d95df69dd790a0f37'
+          cases=[]
+          for spec in man['parts']:
+              p=json.loads((root/spec['file']).read_text())
+              assert p['source_fixture_sha256']==man['source_fixture_sha256']
+              assert carrier_sha(p)==spec['sha256']==p['carrier_sha256']
+              assert [c['case_id'] for c in p['cases']]==spec['case_ids']
+              cases.extend(p['cases'])
+          ids=[c['case_id'] for c in cases]
+          assert len(ids)==60 and len(set(ids))==60
+          assert set(ids)==set(sel['case_ids'])
+          assert len(man['batch_a'])==30 and len(man['batch_b'])==30
+          assert set(man['batch_a']).isdisjoint(set(man['batch_b']))
+          assert set(man['batch_a']+man['batch_b'])==set(ids)
+          assert man['batch_a']==mem['batch_A_case_ids']
+          assert man['batch_b']==mem['batch_B_case_ids']
+          assert pathlib.Path('validation/psc-v83169-v168-v1-sealed-a-bounded-repair.js').exists()
+          out={'authority':'V8.3.169 V1 TRANSPORT PASS','head_sha':'${{ github.sha }}','runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'selection_sha256':csha(sel),'gold_sha256':man['source_gold_sha256'],'membership_sha256':csha(mem),'fixture_sha256':man['source_fixture_sha256'],'recovery_limitation_documented':True,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('V8_3_169_V1_TRANSPORT_PASS_EVIDENCE.json').write_text(json.dumps(out,indent=2))
+          print('TRANSPORT PREFLIGHT PASS: runtime=0; A=0; B=0')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_169_V1_TRANSPORT_PASS_EVIDENCE
+          path: V8_3_169_V1_TRANSPORT_PASS_EVIDENCE.json
