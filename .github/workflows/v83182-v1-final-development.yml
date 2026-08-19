@@ -1,0 +1,70 @@
+name: V8.3.182 V1 Final Development
+on:
+  push:
+    branches: [v83182-v1-validation]
+jobs:
+  validate:
+    if: github.event.head_commit.message == 'Run V8.3.182 V1 final development'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize exact historical carriers and base
+        run: |
+          python - <<'PY'
+          import pathlib,base64,gzip,zipfile
+          names=['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION','V8_3_168_V167_V1_FAILURE_REGRESSION','V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION']
+          for n in names:
+            p=pathlib.Path('validation/'+n+'.json.gz.b64'); assert p.exists(),n
+            pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          PY
+          for f in psc-v83142-sealed-failure-convergence.js psc-v83143-semantic-convergence.js psc-v83144-sealed-failure-convergence.js psc-v83145-route-layer.js psc-v83145-family-state-layer.js psc-v83146-route-boundary-repair.js psc-v83146-family-sequence-repair.js psc-v83147-sealed-failure-repair.js psc-v83148-sealed-failure-repair.js psc-v83149-sealed-failure-repair.js psc-v83150-sealed-failure-repair.js psc-v83151-sealed-failure-repair.js psc-v83152-sealed-failure-repair.js psc-v83153-sealed-failure-repair.js psc-v83154-sealed-failure-repair.js psc-v83155-sealed-failure-repair.js psc-v83156-v155-v3-bounded-repair.js psc-v83157-v156-sealed-a-bounded-repair.js psc-v83158-v157-sealed-a-bounded-repair.js psc-v83159-v158-sealed-a-bounded-repair.js psc-v83160-v159-v2-sealed-a-bounded-repair.js psc-v83161-v160-v1-sealed-a-bounded-repair.js psc-v83162-v161-v1-sealed-a-bounded-repair.js psc-v83163-v162-v1-sealed-a-bounded-repair.js psc-v83164-v163-v1-sealed-a-bounded-repair.js psc-v83165-v164-v1-sealed-a-bounded-repair.js psc-v83166-v165-v1-sealed-a-bounded-repair.js psc-v83167-v166-v1-sealed-a-bounded-repair.js psc-v83168-v167-v1-sealed-a-bounded-repair.js psc-v83169-v168-v1-sealed-a-bounded-repair.js psc-v83170-v169-v1-sealed-a-bounded-repair.js psc-v83171-v170-v1-sealed-a-bounded-repair.js psc-v83172-v171-v1-sealed-a-bounded-repair.js psc-v83173-v172-v1-sealed-a-bounded-repair.js psc-v83174-v173-v1-sealed-a-bounded-repair.js psc-v83175-v174-v1-sealed-a-bounded-repair.js psc-v83176-v175-bank-contract-carry-forward.js psc-v83177-v176-sealed-a-bounded-repair.js psc-v83178-v177-sealed-a-bounded-repair.js psc-v83179-v178-sealed-a-bounded-repair.js psc-v83180-v179-sealed-a-bounded-repair.js psc-v83181-v180-sealed-a-bounded-repair.js psc-v83181-v180-v1-historical-precedence-repair.js psc-v83181-v180-v1-historical-self-family-precedence-repair.js psc-v83181-v180-v1-explicit-intent-precedence-repair.js psc-v83182-v181-sealed-a-bounded-repair.js; do cp validation/$f PSC_V8_3_138_DEV/public/; done
+      - name: Full immutable regression sweep
+        run: node validation/run-v83182-full-regression-sweep.cjs
+      - name: Build artifact validation
+        working-directory: PSC_V8_3_138_DEV
+        run: |
+          chmod +x scripts/*.sh
+          npm run install:ci
+          npm run build
+          npm run validate:artifact
+          test "$(find dist -type f -name '*.map' | wc -l)" -eq 0
+          test -f dist/client/psc-v83182-v181-sealed-a-bounded-repair.js
+      - name: Browser E2E all immutable regressions
+        run: |
+          mkdir -p .e2e; printf '{"private":true}\n' > .e2e/package.json
+          npm install --prefix .e2e --no-package-lock playwright@1.55.0
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)"; test -n "$CHROME"; export CHROME
+          cd PSC_V8_3_138_DEV/dist/client; python3 -m http.server 4173 --bind 127.0.0.1 > ../../../http182.log 2>&1 & echo $! > ../../../http182.pid; cd ../../..
+          node - <<'NODE'
+          const fs=require('fs'),path=require('path'),{createRequire}=require('module'),req=createRequire(process.cwd()+'/x.js'),{chromium}=req('./.e2e/node_modules/playwright');
+          (async()=>{const dir='validation',cases=fs.readdirSync(dir).filter(x=>/REGRESSION\.json$/.test(x)).flatMap(n=>{const o=JSON.parse(fs.readFileSync(path.join(dir,n)));return Array.isArray(o.cases)?o.cases:[]});const b=await chromium.launch({headless:true,executablePath:process.env.CHROME,args:['--no-sandbox']});try{const p=await b.newPage();await p.goto('http://127.0.0.1:4173/candidate.html',{waitUntil:'networkidle'});for(const f of ['psc-v83181-v180-sealed-a-bounded-repair.js','psc-v83181-v180-v1-historical-precedence-repair.js','psc-v83181-v180-v1-historical-self-family-precedence-repair.js','psc-v83181-v180-v1-explicit-intent-precedence-repair.js','psc-v83182-v181-sealed-a-bounded-repair.js'])await p.addScriptTag({url:'http://127.0.0.1:4173/'+f});const pf=await p.evaluate(()=>({version:QCSemanticCoreV51?.version}));if(!pf.version?.startsWith('V8.3.182'))throw Error(JSON.stringify(pf));let passed=0;for(const c of cases){const a=await p.evaluate(x=>{const r=QCSemanticCoreV51.analyze(x.surface,x.domain);return{route:r.input_route.id,families:[...r.families].sort(),sequence:!!r.sequence}},c),e={route:c.expected.route,families:[...(c.expected.families||[])].sort(),sequence:!!c.expected.sequence};if(JSON.stringify(a)!==JSON.stringify(e))throw Error(c.case_id+' '+JSON.stringify({a,e}));passed++;}fs.writeFileSync('V8_3_182_BROWSER_E2E_RESULTS.json',JSON.stringify({passed:true,total:passed,preflight:pf},null,2));}finally{await b.close()}})().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+      - name: Teardown
+        if: always()
+        run: '[ -f http182.pid ] && kill "$(cat http182.pid)" || true'
+      - name: Package final development checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,shutil,zipfile,hashlib,json
+          st=pathlib.Path('V8_3_182_CHECKPOINT');st.mkdir(exist_ok=True);r=pathlib.Path('PSC_V8_3_138_DEV')
+          for p in [r/'public/psc-v83182-v181-sealed-a-bounded-repair.js',pathlib.Path('V8_3_182_FULL_REGRESSION_SWEEP_RESULTS.json'),pathlib.Path('V8_3_182_BROWSER_E2E_RESULTS.json'),pathlib.Path('validation/V8_3_182_V181_V1_FAILURE_REGRESSION.json'),pathlib.Path('validation/V8_3_182_V181_V1_PREVIOUS_PASS_REGRESSION.json')]:
+            if p.exists():shutil.copy2(p,st/p.name)
+          status={'candidate':'V8.3.182','development':'PASS' if (st/'V8_3_182_BROWSER_E2E_RESULTS.json').exists() else 'FAIL_OR_INCOMPLETE','sealed_validation_executed':False,'v181_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False};(st/'V8_3_182_DEVELOPMENT_STATUS.json').write_text(json.dumps(status,indent=2))
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()));z=pathlib.Path('PSC_V8_3_182_DEVELOPMENT_VALIDATION_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_182_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_182_DEVELOPMENT_VALIDATION_CHECKPOINT
+          path: |
+            PSC_V8_3_182_DEVELOPMENT_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_182_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt
