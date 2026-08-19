@@ -1,0 +1,17 @@
+{
+  "authority": "V8.3.169 SEALED MEMBERSHIP V1",
+  "source_bank_sha256": "dc62ababff3ff8a885a305b0dc5be7b942c73c6b709e69885a6b0b4fc9f80e15",
+  "selection_sha256": "31643c78ab76d53eb41add364531ffaa945fd3a4539756cadc4367ea500123b4",
+  "gold_sha256": "3bd7491dc1fb1fdba633077732720207314be79d1371e71e3ba4aa7207af41c9",
+  "batch_A_count": 30,
+  "batch_B_count": 30,
+  "batch_A_case_ids": ["V169-PB1-042","V169-PB1-049","V169-PB1-051","V169-PB1-062","V169-PB1-066","V169-PB1-074","V169-PB1-080","V169-PB1-078","V169-PB1-103","V169-PB1-105","V169-PB1-115","V169-PB1-117","V169-PB1-121","V169-PB1-132","V169-PB1-134","V169-PB1-152","V169-PB1-170","V169-PB1-166","V169-PB1-163","V169-PB1-174","V169-PB1-005","V169-PB1-016","V169-PB1-012","V169-PB1-023","V169-PB1-028","V169-PB1-190","V169-PB1-195","V169-PB1-201","V169-PB1-208","V169-PB1-210"],
+  "batch_B_case_ids": ["V169-PB1-044","V169-PB1-045","V169-PB1-052","V169-PB1-060","V169-PB1-067","V169-PB1-088","V169-PB1-082","V169-PB1-085","V169-PB1-097","V169-PB1-092","V169-PB1-116","V169-PB1-124","V169-PB1-120","V169-PB1-143","V169-PB1-139","V169-PB1-153","V169-PB1-159","V169-PB1-160","V169-PB1-176","V169-PB1-177","V169-PB1-001","V169-PB1-022","V169-PB1-025","V169-PB1-036","V169-PB1-029","V169-PB1-185","V169-PB1-181","V169-PB1-207","V169-PB1-200","V169-PB1-211"],
+  "batch_A_route_counts": {"input:clarification-required":5,"input:decision-request":5,"input:hypothetical-or-example":5,"input:prediction":5,"input:self-lived":5,"input:third-party-only":5},
+  "batch_B_route_counts": {"input:clarification-required":5,"input:decision-request":5,"input:hypothetical-or-example":5,"input:prediction":5,"input:self-lived":5,"input:third-party-only":5},
+  "batch_A_language_counts": {"EN":8,"VI":7,"VI_NO_DIACRITICS":8,"MIXED_VI_EN":7},
+  "batch_B_language_counts": {"EN":7,"VI":8,"VI_NO_DIACRITICS":7,"MIXED_VI_EN":8},
+  "sealed_before_runtime": true,
+  "runtime_execution_before_membership": 0,
+  "sha256_without_sha_field": "3acba9a1f0a50f700bcb214ed375e8ca3a9ac3ab506764876d6146486559b4da"
+}
