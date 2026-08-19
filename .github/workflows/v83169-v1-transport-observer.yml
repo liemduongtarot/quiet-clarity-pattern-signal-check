@@ -1,0 +1,32 @@
+name: V8.3.169 V1 Transport Observer
+on:
+  workflow_run:
+    workflows: ["V8.3.169 V1 Transport Preflight"]
+    types: [completed]
+permissions:
+  contents: write
+jobs:
+  record:
+    if: github.event.workflow_run.head_branch == 'v83169-v1-sealed-validation'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - name: Record transport evidence
+        env:
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          RUN_ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+        run: |
+          python - <<'PY'
+          import os,json,pathlib
+          out={'authority':'V8.3.169 V1 TRANSPORT RUN EVIDENCE','run_id':int(os.environ['RUN_ID']),'run_attempt':int(os.environ['RUN_ATTEMPT']),'conclusion':os.environ['CONCLUSION'],'head_sha':os.environ['HEAD_SHA'],'head_branch':os.environ['HEAD_BRANCH'],'runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_169_V1_TRANSPORT_RUN_EVIDENCE.json').write_text(json.dumps(out,indent=2))
+          PY
+          git config user.name liemduongtarot
+          git config user.email liemduongtarot@gmail.com
+          git add validation/V8_3_169_V1_TRANSPORT_RUN_EVIDENCE.json
+          git commit -m 'Record V8.3.169 V1 transport run evidence' || true
+          git push origin HEAD:main
