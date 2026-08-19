@@ -1,0 +1,32 @@
+name: V8.3.170 Development Run Diagnostic
+on:
+  push:
+    branches: [main]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  inspect:
+    if: github.event.head_commit.message == 'Run V8.3.170 development run diagnostic'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - name: Inspect exact V170 development trigger
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import urllib.request,json,pathlib,os
+          sha='d6da49eff42a9021002b238bd605c8073f89aba3'
+          u=f'https://api.github.com/repos/${{ github.repository }}/actions/runs?head_sha={sha}&per_page=20'
+          req=urllib.request.Request(u,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+          data=json.load(urllib.request.urlopen(req))
+          runs=[{'id':r['id'],'name':r['name'],'status':r['status'],'conclusion':r['conclusion'],'head_sha':r['head_sha'],'run_attempt':r['run_attempt']} for r in data.get('workflow_runs',[])]
+          pathlib.Path('validation/V8_3_170_DEVELOPMENT_RUN_DIAGNOSTIC.json').write_text(json.dumps({'authority':'V8.3.170 DEVELOPMENT RUN DIAGNOSTIC','target_head_sha':sha,'runs':runs},indent=2))
+          PY
+          git config user.name liemduongtarot
+          git config user.email liemduongtarot@gmail.com
+          git add validation/V8_3_170_DEVELOPMENT_RUN_DIAGNOSTIC.json
+          git commit -m 'Record V8.3.170 development run diagnostic'
+          git push origin HEAD:main
