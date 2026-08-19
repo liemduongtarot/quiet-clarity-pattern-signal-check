@@ -1,0 +1,35 @@
+name: V8.3.179 Evidence Probe
+on:
+  push:
+    branches: [v83179-v1-validation]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'Probe V8.3.179 run evidence'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record exact target run receipt
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: 83690d403a585f7c88d39ecc7cfdddb6ae2b1e74
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request,time,pathlib
+          repo=os.environ['GITHUB_REPOSITORY']; target=os.environ['TARGET_SHA']; token=os.environ['GH_TOKEN']
+          url=f'https://api.github.com/repos/{repo}/actions/runs?branch=v83179-v1-validation&per_page=50'
+          req=urllib.request.Request(url,headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json'})
+          runs=json.load(urllib.request.urlopen(req))['workflow_runs']
+          cand=[r for r in runs if r.get('head_sha')==target and r.get('name')=='V8.3.179 V1 Deep Validation']
+          assert cand, 'target development run not found'
+          r=sorted(cand,key=lambda x:x['id'],reverse=True)[0]
+          out={'candidate':'V8.3.179','phase':'development','target_head_sha':target,'run_id':r['id'],'status':r['status'],'conclusion':r.get('conclusion'),'run_attempt':r.get('run_attempt',1),'sealed_validation_executed':False,'v178_sealed_rerun':False}
+          pathlib.Path('validation/V8_3_179_LATEST_DEVELOPMENT_RUN_RECEIPT.json').write_text(json.dumps(out,indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_179_LATEST_DEVELOPMENT_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.179 development run receipt'
+          git push
