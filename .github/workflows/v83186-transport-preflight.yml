@@ -1,0 +1,42 @@
+name: V8.3.186 Transport Preflight
+on:
+  push:
+    branches: [v83186-v1-sealed-validation]
+permissions:
+  contents: write
+jobs:
+  transport:
+    if: github.event.head_commit.message == 'Run V8.3.186 transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct and verify frozen sealed bank
+        run: |
+          python - <<'PY'
+          import pathlib,base64,gzip,json,hashlib
+          root=pathlib.Path('validation/v83186-v1-sealed')
+          src=gzip.decompress(base64.b64decode((root/'build_v186_sealed_bank.py.gz.b64').read_text().strip()))
+          (root/'build_v186_sealed_bank.py').write_bytes(src)
+          exec(compile(src,'build_v186_sealed_bank.py','exec'),{})
+          auth=json.loads((root/'V8_3_186_SEALED_AUTHORITY_V1.json').read_text())
+          names={'fixture':'V8_3_186_SEALED_FIXTURE_V1.json','selection':'V8_3_186_SEALED_SELECTION_V1.json','membership':'V8_3_186_SEALED_MEMBERSHIP_V1.json','independent_gold':'V8_3_186_INDEPENDENT_GOLD_V1.json'}
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          objs={k:json.loads((root/n).read_text()) for k,n in names.items()}
+          for k,o in objs.items(): assert hashlib.sha256(canon(o)).hexdigest()==auth['hashes'][k],k
+          assert len(objs['fixture']['cases'])==60 and len(objs['selection']['batch_a'])==30 and len(objs['selection']['batch_b'])==30
+          gm={cid:g['expected'] for g in objs['independent_gold']['groups'] for cid in g['case_ids']}; assert len(gm)==60
+          for c in objs['fixture']['cases']: assert gm[c['case_id']]==c['expected']
+          assert auth['semantic_runtime_executed_before_transport'] is False
+          PY
+      - name: Record transport receipt
+        run: |
+          python - <<'PY'
+          import json,pathlib,os
+          p=pathlib.Path('validation/v83186-v1-sealed/V8_3_186_TRANSPORT_RUN_RECEIPT.json')
+          p.write_text(json.dumps({'candidate':'V8.3.186','phase':'transport-preflight','target_head_sha':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'status':'completed','conclusion':'success','semantic_runtime_executed':False,'v185_sealed_rerun':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83186-v1-sealed/V8_3_186_TRANSPORT_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.186 transport receipt'
+          git push
