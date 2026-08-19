@@ -1,0 +1,65 @@
+name: V8.3.178 V1 Transport Preflight
+on:
+  push:
+    branches: [v83178-v1-sealed-validation]
+permissions:
+  contents: write
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Run V8.3.178 V1 transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen bank and contract vocabulary only
+        run: |
+          python - <<'PY'
+          import pathlib,json,hashlib
+          f=json.loads(pathlib.Path('validation/v83178-v1-sealed/V8_3_178_SEALED_EXECUTION_FIXTURE_V1.json').read_text())
+          h=json.loads(pathlib.Path('validation/v83178-v1-sealed/V8_3_178_SEALED_HASH_AUTHORITY.json').read_text())
+          assert h['development_authority_commit']=='fd36bac029e466dda18d0f2a355a39f636e132e1'
+          assert h['semantic_runtime_executed_before_transport'] is False and h['v177_sealed_rerun'] is False
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          def sha(o):return hashlib.sha256(canon(o)).hexdigest()
+          selection={'authority':'V8.3.178 V1 OWNER SELECTION','selection_method':'odd/even deterministic split after bank freeze; 30 A / 30 B','batch_a':f['batch_a'],'batch_b':f['batch_b']}
+          gold={'authority':'V8.3.178 V1 INDEPENDENT GOLD','source':'manual contract assignment before runtime execution','cases':[{'case_id':c['case_id'],'expected':c['expected']} for c in f['cases']]}
+          membership={'authority':'V8.3.178 V1 SEALED MEMBERSHIP','all_case_ids':sorted(f['batch_a']+f['batch_b']),'batch_a':f['batch_a'],'batch_b':f['batch_b']}
+          assert sha(f)==h['fixture_sha256'];assert sha(selection)==h['selection_sha256'];assert sha(gold)==h['gold_sha256'];assert sha(membership)==h['membership_sha256']
+          allowed={'input:clarification-required','input:decision-request','input:hypothetical-or-example','input:third-party-only','input:prediction','input:self-lived'}; fam={'freeze','slow','ignore'}
+          assert len(f['cases'])==60 and len(f['batch_a'])==30 and len(f['batch_b'])==30 and set(f['batch_a']).isdisjoint(f['batch_b'])
+          for c in f['cases']:
+            e=c['expected'];assert e['route'] in allowed;assert all(x in fam for x in e.get('families',[]))
+          pathlib.Path('validation/v83178-v1-sealed/V8_3_178_OWNER_SELECTION_V1.json').write_text(json.dumps(selection,ensure_ascii=False,indent=2))
+          pathlib.Path('validation/v83178-v1-sealed/V8_3_178_INDEPENDENT_GOLD_V1.json').write_text(json.dumps(gold,ensure_ascii=False,indent=2))
+          pathlib.Path('validation/v83178-v1-sealed/V8_3_178_SEALED_MEMBERSHIP_V1.json').write_text(json.dumps(membership,ensure_ascii=False,indent=2))
+          print('V178 transport PASS; semantic runtime=0')
+          PY
+      - name: Package transport checkpoint
+        run: |
+          mkdir -p V8_3_178_TRANSPORT_CHECKPOINT
+          cp validation/v83178-v1-sealed/V8_3_178_* V8_3_178_TRANSPORT_CHECKPOINT/ || true
+          python - <<'PY'
+          import pathlib,zipfile,hashlib,json
+          st=pathlib.Path('V8_3_178_TRANSPORT_CHECKPOINT');(st/'V8_3_178_TRANSPORT_STATUS.json').write_text(json.dumps({'candidate':'V8.3.178','phase':'transport-preflight','semantic_runtime_executed':False,'v177_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2))
+          def sh(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sh(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+          z=pathlib.Path('PSC_V8_3_178_V1_TRANSPORT_PREFLIGHT_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_178_V1_TRANSPORT_PREFLIGHT_CHECKPOINT_SHA256.txt').write_text(f'{sh(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_178_V1_TRANSPORT_PREFLIGHT_CHECKPOINT
+          path: |
+            PSC_V8_3_178_V1_TRANSPORT_PREFLIGHT_CHECKPOINT.zip
+            PSC_V8_3_178_V1_TRANSPORT_PREFLIGHT_CHECKPOINT_SHA256.txt
+      - name: Record transport receipt
+        run: |
+          cat > validation/v83178-v1-sealed/V8_3_178_TRANSPORT_RUN_RECEIPT.json <<EOF
+          {"candidate":"V8.3.178","phase":"transport-preflight","target_head_sha":"${GITHUB_SHA}","run_id":${GITHUB_RUN_ID},"status":"completed","conclusion":"success","run_attempt":${GITHUB_RUN_ATTEMPT},"semantic_runtime_executed":false,"v177_sealed_rerun":false}
+          EOF
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83178-v1-sealed/V8_3_178_TRANSPORT_RUN_RECEIPT.json validation/v83178-v1-sealed/V8_3_178_OWNER_SELECTION_V1.json validation/v83178-v1-sealed/V8_3_178_INDEPENDENT_GOLD_V1.json validation/v83178-v1-sealed/V8_3_178_SEALED_MEMBERSHIP_V1.json
+          git commit -m 'Record V8.3.178 transport run receipt'
+          git push
