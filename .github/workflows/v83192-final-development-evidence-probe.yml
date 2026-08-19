@@ -1,0 +1,33 @@
+name: V8.3.192 Final Development Evidence Probe
+on:
+  push:
+    branches: [v83192-v1-validation]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'Probe V8.3.192 final development evidence'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1}
+      - name: Record target run metadata only
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET: 83261dbad504b60f6a730dee7b684bfe4877c4eb
+        run: |
+          python - <<'PY'
+          import os,json,urllib.request,pathlib
+          repo=os.environ['GITHUB_REPOSITORY']; target=os.environ['TARGET']; token=os.environ['GH_TOKEN']
+          req=urllib.request.Request(f'https://api.github.com/repos/{repo}/actions/runs?head_sha={target}&event=push&per_page=20',headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json','User-Agent':'psc-probe'})
+          runs=json.load(urllib.request.urlopen(req))['workflow_runs']; runs=[r for r in runs if r['head_sha']==target and r['name']=='V8.3.192 Final Development']
+          if not runs: raise SystemExit('target run not found')
+          r=sorted(runs,key=lambda x:x['id'])[-1]
+          pathlib.Path('validation/V8_3_192_FINAL_DEVELOPMENT_RECEIPT.json').write_text(json.dumps({'candidate':'V8.3.192','phase':'development','target_head_sha':target,'run_id':r['id'],'status':r['status'],'conclusion':r['conclusion'],'run_attempt':r['run_attempt'],'sealed_validation_executed':False,'v191_sealed_rerun':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_192_FINAL_DEVELOPMENT_RECEIPT.json
+          git commit -m 'Record V8.3.192 final development receipt'
+          git push
