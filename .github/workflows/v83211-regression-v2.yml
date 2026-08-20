@@ -1,0 +1,53 @@
+name: V8.3.211 Regression V2
+on:
+  push:
+    branches: [v83211-v1-validation]
+permissions:
+  contents: write
+jobs:
+  regression:
+    if: github.event.head_commit.message == 'Run V8.3.211 regression V2'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize immutable authority and V88 runner
+        run: |
+          python - <<'PY'
+          import pathlib,base64,gzip,zipfile
+          names=['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION','V8_3_168_V167_V1_FAILURE_REGRESSION','V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION']
+          for n in names:
+            p=pathlib.Path('validation/'+n+'.json.gz.b64');pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          src=pathlib.Path('validation/run-v83196-full-regression-sweep-v2.cjs').read_text()
+          chain="'psc-v83196-v195-v1-hypothetical-preservation-repair.js','psc-v83197-v196-sealed-a-bounded-repair.js','psc-v83198-v197-sealed-a-bounded-repair.js','psc-v83199-v198-sealed-a-bounded-repair.js','psc-v83200-v199-sealed-a-bounded-repair.js','psc-v83201-v200-sealed-a-bounded-repair.js','psc-v83201-v200-v1-preservation-precedence-repair.js','psc-v83202-v201-sealed-a-bounded-repair.js','psc-v83203-v202-sealed-a-bounded-repair.js','psc-v83204-v203-sealed-a-bounded-repair.js','psc-v83205-v204-sealed-a-bounded-repair.js','psc-v83206-v205-compositional-generalization.js','psc-v83206-v205-v1-preservation-repair.js','psc-v83207-v206-mechanism-cue-repair.js','psc-v83207-v206-v1-preservation-repair.js','psc-v83208-v207-mechanism-cue-repair.js','psc-v83208-v207-v1-preservation-repair.js','psc-v83209-v208-evidence-slot-composition.js','psc-v83209-v208-v1-preservation-repair.js','qc-evidence-extractor-v1-review-candidate.js','qc-evidence-extractor-v1r-review-candidate.js','qc-evidence-extractor-v1r2-review-candidate.js','psc-v83209-semantic-rule-table-v3-review-candidate.js','psc-v83209-v208-semantic-rule-table-promotion.js','qc-evidence-extractor-v1r3-v210-concept-coverage.js','psc-v83210-v209-semantic-rule-table-v4.js','qc-evidence-extractor-v1r4-v210-relational-preservation.js','psc-v83210-v209-v1-relational-preservation.js','qc-evidence-extractor-v2-v210-relational-semantics.js','psc-v83210-v210-semantic-rule-table-v5.js','qc-evidence-extractor-v2r-v210-multilingual-aliases.js','psc-v83210-v210-semantic-rule-table-v6.js','qc-evidence-extractor-v2s-v210-context-sanitizer.js','psc-v83210-v210-semantic-rule-table-v7.js','qc-evidence-extractor-v2t-v210-contextual-recall.js','psc-v83210-v210-semantic-rule-table-v8-parent-containment.js','qc-evidence-extractor-v3-v211-context-scoped.js','psc-v83211-v210-context-scoped-rule-table.js','qc-evidence-extractor-v3r-v211-preservation.js','psc-v83211-v210-preservation-containment.js'"
+          src=src.replace("'psc-v83196-v195-v1-hypothetical-preservation-repair.js'];",chain+"];")
+          src=src.replace('QCSemanticCoreV65R','QCSemanticCoreV88').replace('V8.3.196 V65R full immutable regression sweep V2','V8.3.211 V88 regression V2').replace('V8_3_196_V2_FULL_REGRESSION_SWEEP_RESULTS.json','V8_3_211_REGRESSION_V2_RESULTS.json')
+          pathlib.Path('validation/run-v83211-regression-v2.cjs').write_text(src)
+          PY
+      - name: Run full immutable regression plus V210 frozen carriers
+        continue-on-error: true
+        run: node validation/run-v83211-regression-v2.cjs
+      - name: Record receipt
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,json,os
+          p=pathlib.Path('V8_3_211_REGRESSION_V2_RESULTS.json');r=json.loads(p.read_text()) if p.exists() else None
+          pathlib.Path('validation/V8_3_211_REGRESSION_V2_RUN_RECEIPT.json').write_text(json.dumps({'candidate':'V8.3.211','phase':'development-regression-v2','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'status':'completed','conclusion':'success' if r and r.get('failed')==0 else 'failure','total':r.get('total') if r else None,'passed':r.get('passed') if r else None,'failed':r.get('failed') if r else None,'semantic_authority':'QCSemanticCoreV88','v210_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/V8_3_211_REGRESSION_V2_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.211 regression V2 receipt'
+          git push
+      - name: Fail unless regression passes
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,pathlib,sys
+          p=pathlib.Path('V8_3_211_REGRESSION_V2_RESULTS.json');r=json.loads(p.read_text()) if p.exists() else None
+          if not(r and r.get('failed')==0):sys.exit(1)
+          PY
