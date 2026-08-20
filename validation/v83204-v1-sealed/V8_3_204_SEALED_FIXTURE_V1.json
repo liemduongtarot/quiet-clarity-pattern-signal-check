@@ -1,0 +1,843 @@
+{
+  "authority": "V8.3.204 V1 SEALED EXECUTION FIXTURE",
+  "candidate": "V8.3.204",
+  "development_authority_head": "5cea433e15cd35cdb4de6f5fc09bcf9c88c32bdb",
+  "semantic_authority": "QCSemanticCoreV73",
+  "runtime_execution_before_fixture": 0,
+  "sealed_before_execution": true,
+  "v203_sealed_rerun": false,
+  "batch_a": [
+    "V204-C018",
+    "V204-C004",
+    "V204-C002",
+    "V204-C022",
+    "V204-C032",
+    "V204-C019",
+    "V204-C091",
+    "V204-C092",
+    "V204-C099",
+    "V204-C040",
+    "V204-C041",
+    "V204-C045",
+    "V204-C111",
+    "V204-C124",
+    "V204-C120",
+    "V204-C171",
+    "V204-C173",
+    "V204-C174",
+    "V204-C077",
+    "V204-C080",
+    "V204-C082",
+    "V204-C147",
+    "V204-C146",
+    "V204-C157",
+    "V204-C137",
+    "V204-C132",
+    "V204-C134",
+    "V204-C062",
+    "V204-C058",
+    "V204-C065"
+  ],
+  "batch_b": [
+    "V204-C017",
+    "V204-C009",
+    "V204-C001",
+    "V204-C027",
+    "V204-C024",
+    "V204-C029",
+    "V204-C102",
+    "V204-C100",
+    "V204-C101",
+    "V204-C037",
+    "V204-C042",
+    "V204-C038",
+    "V204-C119",
+    "V204-C122",
+    "V204-C121",
+    "V204-C163",
+    "V204-C172",
+    "V204-C170",
+    "V204-C075",
+    "V204-C079",
+    "V204-C078",
+    "V204-C160",
+    "V204-C155",
+    "V204-C162",
+    "V204-C142",
+    "V204-C141",
+    "V204-C139",
+    "V204-C072",
+    "V204-C055",
+    "V204-C063"
+  ],
+  "cases": [
+    {
+      "case_id": "V204-C001",
+      "category": "clarification",
+      "language": "en",
+      "surface": "The surrounding events are clear, but the last action I personally took is still missing from the account.",
+      "domain": "work",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C002",
+      "category": "clarification",
+      "language": "en",
+      "surface": "We can reconstruct what everyone else did; what remains unknown is my own concrete closing move.",
+      "domain": "business",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C004",
+      "category": "clarification",
+      "language": "en",
+      "surface": "The sequence makes sense until the point where my personal response should appear; that step is absent.",
+      "domain": "money",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C009",
+      "category": "clarification",
+      "language": "en",
+      "surface": "The story reaches the closing moment, but it never states the action I myself took.",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C017",
+      "category": "clarification",
+      "language": "vi",
+      "surface": "Mọi chi tiết bên ngoài đã xác định; điều còn bỏ trống là tôi đã làm gì ở thời điểm kết thúc.",
+      "domain": "housing",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C018",
+      "category": "clarification",
+      "language": "vi",
+      "surface": "Diễn biến đã đi tới đoạn cuối nhưng chưa hề nói rõ hành động cuối cùng của tôi là gì.",
+      "domain": "daily-admin",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C019",
+      "category": "decision",
+      "language": "en",
+      "surface": "Choose for me and give me the single option I should follow; I do not want to make the judgement myself.",
+      "domain": "business",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C022",
+      "category": "decision",
+      "language": "en",
+      "surface": "Take responsibility for the choice and name the one course I should commit to.",
+      "domain": "housing",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C024",
+      "category": "decision",
+      "language": "en",
+      "surface": "Make the call for me so I can simply follow the answer you give.",
+      "domain": "work",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C027",
+      "category": "decision",
+      "language": "en",
+      "surface": "Give me one final directive and decide the choice in my place.",
+      "domain": "money",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C029",
+      "category": "decision",
+      "language": "vi",
+      "surface": "Tôi muốn bạn quyết định giúp tôi nên đi hướng nào thay vì để tôi tự lựa chọn.",
+      "domain": "daily-admin",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C032",
+      "category": "decision",
+      "language": "vi",
+      "surface": "Tôi đang muốn thay phán đoán của mình bằng chỉ dẫn trực tiếp của bạn về phương án phải chọn.",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C037",
+      "category": "hypothetical",
+      "language": "en",
+      "surface": "This is an invented scenario for checking the classifier, not something that occurred in my life.",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C038",
+      "category": "hypothetical",
+      "language": "en",
+      "surface": "I made this case up purely as test data; it is not a personal experience.",
+      "domain": "money",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C040",
+      "category": "hypothetical",
+      "language": "en",
+      "surface": "This situation is fictional and exists only to test how the system categorises it.",
+      "domain": "daily-admin",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C041",
+      "category": "hypothetical",
+      "language": "en",
+      "surface": "I am supplying a fabricated practice case, not describing anything I actually lived through.",
+      "domain": "work",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C042",
+      "category": "hypothetical",
+      "language": "en",
+      "surface": "This is deliberately constructed test material with no connection to an episode from my history.",
+      "domain": "business",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C045",
+      "category": "hypothetical",
+      "language": "en",
+      "surface": "I wrote this fictional vignette solely for testing and not as evidence from my life.",
+      "domain": "housing",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C055",
+      "category": "third",
+      "language": "en",
+      "surface": "What does my colleague secretly think of me when they have given no outward indication I can observe?",
+      "domain": "money",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C058",
+      "category": "third",
+      "language": "en",
+      "surface": "I want to know my manager's unspoken view of me, not an inference from anything I did or they expressed.",
+      "domain": "work",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C062",
+      "category": "third",
+      "language": "en",
+      "surface": "I want their hidden assessment of me, specifically beyond the evidence available in their behaviour.",
+      "domain": "housing",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C063",
+      "category": "third",
+      "language": "en",
+      "surface": "What secret stance is my supervisor taking toward me if no external sign reveals it?",
+      "domain": "daily-admin",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C065",
+      "category": "third",
+      "language": "vi",
+      "surface": "Hãy nói cho tôi kết luận riêng trong đầu quản lý về tôi, vượt ngoài mọi thứ họ thực sự đã thể hiện.",
+      "domain": "business",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C072",
+      "category": "third",
+      "language": "vi",
+      "surface": "Sếp của tôi đang giữ lập trường bí mật nào về tôi khi không có dấu hiệu bên ngoài nào cho thấy điều đó?",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C075",
+      "category": "prediction",
+      "language": "en",
+      "surface": "Will the final outcome be positive for me by the time the deadline arrives?",
+      "domain": "work",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C077",
+      "category": "prediction",
+      "language": "en",
+      "surface": "Is this likely to finish well for me over the coming weeks?",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C078",
+      "category": "prediction",
+      "language": "en",
+      "surface": "By the stated cutoff, does the eventual result become advantageous to me?",
+      "domain": "money",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C079",
+      "category": "prediction",
+      "language": "en",
+      "surface": "Can you tell me whether the outcome will work to my advantage by the end of the month?",
+      "domain": "housing",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C080",
+      "category": "prediction",
+      "language": "en",
+      "surface": "Is the result going to land positively for me within the next several weeks?",
+      "domain": "daily-admin",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C082",
+      "category": "prediction",
+      "language": "vi",
+      "surface": "Từ giờ đến lúc tháng này khép lại, kết cục có nghiêng về phía có lợi cho tôi không?",
+      "domain": "business",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C091",
+      "category": "freeze",
+      "language": "en",
+      "surface": "I had a small reversible test available, but instead of trying it I kept adding new alternatives to compare.",
+      "domain": "daily-admin",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C092",
+      "category": "freeze",
+      "language": "en",
+      "surface": "A low-commitment experiment was ready to run; I postponed it by widening the list of possible options.",
+      "domain": "work",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C099",
+      "category": "freeze",
+      "language": "en",
+      "surface": "The first move carried little commitment, but I avoided beginning it by continuing to gather options.",
+      "domain": "business",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C100",
+      "category": "freeze",
+      "language": "vi",
+      "surface": "Tôi có một thử nghiệm nhỏ có thể quay lại dễ dàng, nhưng thay vì làm thử tôi cứ thêm phương án mới để so sánh.",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C101",
+      "category": "freeze",
+      "language": "vi",
+      "surface": "Một bước thử ít ràng buộc đã sẵn sàng, nhưng tôi trì hoãn bằng cách mở rộng danh sách lựa chọn.",
+      "domain": "money",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C102",
+      "category": "freeze",
+      "language": "vi",
+      "surface": "Tôi có thể làm một bước đầu rất dễ đảo ngược, vậy mà vẫn chưa chốt và tiếp tục tìm thêm phương án.",
+      "domain": "housing",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C111",
+      "category": "ignore",
+      "language": "en",
+      "surface": "The main request needed a reply; I left it alone and switched my attention to something lower priority.",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C119",
+      "category": "ignore",
+      "language": "vi",
+      "surface": "Một phần công việc cốt lõi cần hành động, nhưng tôi lại chuyển sang xử lý việc hành chính bên lề.",
+      "domain": "housing",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C120",
+      "category": "ignore",
+      "language": "vi",
+      "surface": "Yêu cầu chính cần tôi trả lời; tôi bỏ đó và chuyển sự chú ý sang việc ưu tiên thấp hơn.",
+      "domain": "daily-admin",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C121",
+      "category": "ignore",
+      "language": "vi",
+      "surface": "Tôi tránh nhiệm vụ cần quyết định của mình bằng cách đi làm một chi tiết không liên quan.",
+      "domain": "work",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C122",
+      "category": "ignore",
+      "language": "vi",
+      "surface": "Chuyện quan trọng đang chờ hành động từ tôi, vậy mà tôi lại chiếm thời gian bằng công việc thứ yếu.",
+      "domain": "business",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C124",
+      "category": "ignore",
+      "language": "vi",
+      "surface": "Nhiệm vụ ưu tiên vẫn chưa được trả lời trong khi tôi tập trung vào thứ không ảnh hưởng đáng kể.",
+      "domain": "money",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C132",
+      "category": "slow",
+      "language": "en",
+      "surface": "I took extra time before replying, checked once for reassurance, then let the issue remain closed.",
+      "domain": "work",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C134",
+      "category": "slow",
+      "language": "en",
+      "surface": "There was a delay in my response; after one check I moved forward without reopening the question.",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C137",
+      "category": "slow",
+      "language": "vi",
+      "surface": "Câu trả lời của tôi mất nhiều thời gian hơn thường lệ; tôi xem lại đúng một lần rồi chuyển tiếp.",
+      "domain": "daily-admin",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C139",
+      "category": "slow",
+      "language": "vi",
+      "surface": "Tôi phản hồi chậm, nhưng sau một lần xem lại thì để chuyện đó kết thúc.",
+      "domain": "business",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C141",
+      "category": "slow",
+      "language": "vi",
+      "surface": "Tôi mất thêm thời gian trước khi phản hồi, kiểm một lần để yên tâm rồi để vấn đề đóng lại.",
+      "domain": "money",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C142",
+      "category": "slow",
+      "language": "vi",
+      "surface": "Tôi trả lời muộn, rà lại một lần và sau đó không vòng lại nữa.",
+      "domain": "housing",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C146",
+      "category": "sequence",
+      "language": "en",
+      "surface": "I approached the decision, stepped back, and re-entered the identical checking cycle again and again without new information.",
+      "domain": "money",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V204-C147",
+      "category": "sequence",
+      "language": "en",
+      "surface": "I began to move forward, retreated, then kept coming back to the same review loop with no fresh evidence.",
+      "domain": "housing",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V204-C155",
+      "category": "sequence",
+      "language": "vi",
+      "surface": "Tôi tiếp cận quyết định, rút lui, rồi hết lần này đến lần khác trở lại cùng một chu kỳ kiểm tra mà chẳng có dữ kiện mới.",
+      "domain": "work",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V204-C157",
+      "category": "sequence",
+      "language": "vi",
+      "surface": "Tôi gần hành động thì dừng, lùi ra, rồi lặp lại việc kiểm tra cùng một chuyện dù không có gì mới để đánh giá.",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V204-C160",
+      "category": "sequence",
+      "language": "vi",
+      "surface": "Tôi tiến vào, lùi lại, rồi liên tục tiếp tục đúng vòng đánh giá cũ mà không có đầu vào mới.",
+      "domain": "daily-admin",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V204-C162",
+      "category": "sequence",
+      "language": "vi",
+      "surface": "Tôi bắt đầu hướng tới hành động, rút lại, rồi quay đi quay lại cùng một quá trình kiểm tra dù không xuất hiện sự kiện mới.",
+      "domain": "business",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V204-C163",
+      "category": "neutral",
+      "language": "en",
+      "surface": "I chose a workable step myself, carried it through, and considered the matter finished.",
+      "domain": "money",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C170",
+      "category": "neutral",
+      "language": "en",
+      "surface": "I chose and completed a proportionate next step myself, then left it alone.",
+      "domain": "housing",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C171",
+      "category": "neutral",
+      "language": "en",
+      "surface": "I made the call myself, carried out the chosen step, and moved forward without revisiting it.",
+      "domain": "daily-admin",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C172",
+      "category": "neutral",
+      "language": "vi",
+      "surface": "Tôi tự chọn một bước hợp lý, làm xong bước đó và xem chuyện này đã kết thúc.",
+      "domain": "work",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C173",
+      "category": "neutral",
+      "language": "vi",
+      "surface": "Tôi tự đưa ra một quyết định giới hạn, hoàn thành hành động và không quay lại cân nhắc nữa.",
+      "domain": "business",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V204-C174",
+      "category": "neutral",
+      "language": "vi",
+      "surface": "Tôi tự chọn một hướng thực tế, làm xong rồi chuyển tiếp mà không giao quyết định cho người khác.",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
