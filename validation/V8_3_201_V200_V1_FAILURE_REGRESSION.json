@@ -1,0 +1,89 @@
+{
+  "authority": "V8.3.201 V200 V1 FAILURE REGRESSION",
+  "cases": [
+    {
+      "case_id": "V200-S001",
+      "surface": "The surrounding events are clear, but the last observable action that belonged to me has not been pinned down.",
+      "domain": "work",
+      "expected": {"route": "input:clarification-required", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V200-S003",
+      "surface": "I described the context thoroughly, yet what I personally did at the end is still absent.",
+      "domain": "relationship",
+      "expected": {"route": "input:clarification-required", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V200-S005",
+      "surface": "We know what happened before and after, but not the concrete response I myself made.",
+      "domain": "business",
+      "expected": {"route": "input:clarification-required", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V200-S009",
+      "surface": "I want you to take over the judgement and tell me exactly what to choose.",
+      "domain": "housing",
+      "expected": {"route": "input:decision-request", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V200-S015",
+      "surface": "Use this invented case for testing only; it is not an event from my life.",
+      "domain": "money",
+      "expected": {"route": "input:hypothetical-or-example", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V200-S021",
+      "surface": "What hidden assessment does my colleague have of me beyond anything I can directly observe?",
+      "domain": "business",
+      "expected": {"route": "input:third-party-only", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V200-S023",
+      "surface": "Tell me the other person's secret view of me, not anything about my own actions.",
+      "domain": "money",
+      "expected": {"route": "input:third-party-only", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V200-S027",
+      "surface": "Is this likely to end positively for me during the next few weeks?",
+      "domain": "relationship",
+      "expected": {"route": "input:prediction", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V200-S031",
+      "surface": "A reversible experiment was ready, but I kept adding alternatives instead of beginning it.",
+      "domain": "work",
+      "expected": {"route": "input:self-lived", "families": ["freeze"], "sequence": false}
+    },
+    {
+      "case_id": "V200-S041",
+      "surface": "The important task required action, yet I distracted myself with something peripheral.",
+      "domain": "business",
+      "expected": {"route": "input:self-lived", "families": ["ignore"], "sequence": false}
+    },
+    {
+      "case_id": "V200-S043",
+      "surface": "I answered later than usual, reviewed it once, and then let the matter rest.",
+      "domain": "work",
+      "expected": {"route": "input:self-lived", "families": ["slow"], "sequence": false}
+    },
+    {
+      "case_id": "V200-S045",
+      "surface": "My response came late; after one check I did not reopen the issue.",
+      "domain": "money",
+      "expected": {"route": "input:self-lived", "families": ["slow"], "sequence": false}
+    },
+    {
+      "case_id": "V200-S047",
+      "surface": "I waited before replying, looked once more, and then moved on.",
+      "domain": "housing",
+      "expected": {"route": "input:self-lived", "families": ["slow"], "sequence": false}
+    },
+    {
+      "case_id": "V200-S049",
+      "surface": "I moved toward acting, stepped back, then re-entered the same review loop repeatedly without new evidence.",
+      "domain": "relationship",
+      "expected": {"route": "input:self-lived", "families": ["slow"], "sequence": true}
+    }
+  ]
+}
