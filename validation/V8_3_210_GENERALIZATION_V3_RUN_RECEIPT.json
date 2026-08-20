@@ -1,0 +1,22 @@
+{
+  "candidate": "V8.3.210",
+  "phase": "development-generalization-v3",
+  "run_id": 32374302353,
+  "run_attempt": 1,
+  "head_sha": "7c29fe49b00adf6134cc01cb1b2e482dcd99a581",
+  "status": "completed",
+  "conclusion": "success",
+  "total": 400,
+  "extraction_passed": 379,
+  "classification_passed": 400,
+  "failure_attribution": {
+    "extraction_failure": 0,
+    "classification_or_precedence_failure": 0,
+    "pass": 400
+  },
+  "semantic_authority": "QCSemanticCoreV84",
+  "sealed_validation_executed": false,
+  "v209_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
