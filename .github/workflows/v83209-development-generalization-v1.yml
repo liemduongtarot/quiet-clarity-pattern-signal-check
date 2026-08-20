@@ -28,17 +28,19 @@ jobs:
         run: |
           mkdir -p validation/generalization_refs
           for v in 201 202 203 204 205 206 207 208; do
-            git fetch --depth=1 origin refs/heads/v8320${v#20}-v1-sealed-validation:refs/remotes/origin/v8320${v#20}-v1-sealed-validation
+            s=${v#20}
+            git fetch --depth=1 origin refs/heads/v8320${s}-v1-sealed-validation:refs/remotes/origin/v8320${s}-v1-sealed-validation
           done
           python - <<'PY'
           import subprocess,pathlib
           out=pathlib.Path('validation/generalization_refs'); out.mkdir(exist_ok=True)
           for v in range(201,209):
-            branch=f'origin/v832{v:02d}-v1-sealed-validation'
-            path=f'validation/v832{v:02d}-v1-sealed/V8_3_{v}_SEALED_FIXTURE_V1.json'
+            suffix=str(v)[1:]
+            branch=f'origin/v832{suffix}-v1-sealed-validation'
+            path=f'validation/v832{suffix}-v1-sealed/V8_3_{v}_SEALED_FIXTURE_V1.json'
             try:
               data=subprocess.check_output(['git','show',f'{branch}:{path}'])
-            except subprocess.CalledProcessError as e:
+            except subprocess.CalledProcessError:
               raise SystemExit(f'MISSING_FROZEN_SEALED_REFERENCE {branch}:{path}')
             (out/f'V8_3_{v}_SEALED_FIXTURE_REFERENCE.json').write_bytes(data)
           PY
@@ -54,11 +56,7 @@ jobs:
           python - <<'PY'
           import pathlib,zipfile,hashlib,json,shutil,os
           st=pathlib.Path('V8_3_209_GENERALIZATION_V1_CHECKPOINT');st.mkdir(exist_ok=True)
-          files=[
-            pathlib.Path('validation/V8_3_209_DEVELOPMENT_GENERALIZATION_CHALLENGE_V1.json'),
-            pathlib.Path('V8_3_209_DEVELOPMENT_GENERALIZATION_RESULTS_V1.json'),
-            pathlib.Path('validation/qc-evidence-extractor-v1-review-candidate.js'),
-            pathlib.Path('validation/run-v83209-development-generalization-challenge.cjs')]
+          files=[pathlib.Path('validation/V8_3_209_DEVELOPMENT_GENERALIZATION_CHALLENGE_V1.json'),pathlib.Path('V8_3_209_DEVELOPMENT_GENERALIZATION_RESULTS_V1.json'),pathlib.Path('validation/qc-evidence-extractor-v1-review-candidate.js'),pathlib.Path('validation/run-v83209-development-generalization-challenge.cjs')]
           for p in files:
             if p.exists():shutil.copy2(p,st/p.name)
           r=pathlib.Path('V8_3_209_DEVELOPMENT_GENERALIZATION_RESULTS_V1.json');rr=json.loads(r.read_text()) if r.exists() else None
