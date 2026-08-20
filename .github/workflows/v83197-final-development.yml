@@ -1,0 +1,68 @@
+name: V8.3.197 Final Development
+on:
+  push:
+    branches: [v83197-v1-validation]
+jobs:
+  validate:
+    if: github.event.head_commit.message == 'Run V8.3.197 final development'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize exact authority and build
+        run: |
+          python - <<'PY'
+          import pathlib,base64,gzip,zipfile
+          names=['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION','V8_3_168_V167_V1_FAILURE_REGRESSION','V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION']
+          for n in names:
+            p=pathlib.Path('validation/'+n+'.json.gz.b64'); pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          src=pathlib.Path('validation/run-v83196-full-regression-sweep-v2.cjs').read_text()
+          src=src.replace("'psc-v83196-v195-v1-hypothetical-preservation-repair.js'];","'psc-v83196-v195-v1-hypothetical-preservation-repair.js','psc-v83197-v196-sealed-a-bounded-repair.js'];")
+          src=src.replace('QCSemanticCoreV65R','QCSemanticCoreV66').replace('V8.3.196 V65R full immutable regression sweep V2','V8.3.197 V66 full immutable regression sweep').replace('V8_3_196_V2_FULL_REGRESSION_SWEEP_RESULTS.json','V8_3_197_FULL_REGRESSION_SWEEP_RESULTS.json')
+          pathlib.Path('validation/run-v83197-final-regression.cjs').write_text(src)
+          b=pathlib.Path('validation/run-v83196-browser-e2e.cjs').read_text()
+          b=b.replace("'psc-v83196-v195-v1-hypothetical-preservation-repair.js'];","'psc-v83196-v195-v1-hypothetical-preservation-repair.js','psc-v83197-v196-sealed-a-bounded-repair.js'];")
+          b=b.replace('QCSemanticCoreV65R','QCSemanticCoreV66').replace("V8.3.196","V8.3.197").replace('V8_3_196_BROWSER_E2E_RESULTS.json','V8_3_197_BROWSER_E2E_RESULTS.json').replace('built_v65_v65r_identity','built_v66_identity')
+          pathlib.Path('validation/run-v83197-browser-e2e.cjs').write_text(b)
+          PY
+          node validation/run-v83197-final-regression.cjs
+          cp validation/psc-v83197-v196-sealed-a-bounded-repair.js PSC_V8_3_138_DEV/public/
+          cd PSC_V8_3_138_DEV
+          chmod +x scripts/*.sh
+          npm run install:ci
+          npm run build
+          npm run validate:artifact
+          test "$(find dist -type f -name '*.map' | wc -l)" -eq 0
+          test -f dist/client/psc-v83197-v196-sealed-a-bounded-repair.js
+          cmp -s public/psc-v83197-v196-sealed-a-bounded-repair.js dist/client/psc-v83197-v196-sealed-a-bounded-repair.js
+      - name: Browser E2E all immutable regressions
+        run: |
+          mkdir -p .e2e; printf '{"private":true}\n' > .e2e/package.json
+          npm install --prefix .e2e --no-package-lock playwright@1.55.0
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)"; test -n "$CHROME"; export CHROME
+          node validation/run-v83197-browser-e2e.cjs
+      - name: Package checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,zipfile,hashlib,json,shutil
+          st=pathlib.Path('V8_3_197_CHECKPOINT');st.mkdir(exist_ok=True)
+          for p in [pathlib.Path('V8_3_197_FULL_REGRESSION_SWEEP_RESULTS.json'),pathlib.Path('V8_3_197_BROWSER_E2E_RESULTS.json'),pathlib.Path('validation/V8_3_197_V196_V1_FAILURE_REGRESSION.json'),pathlib.Path('validation/V8_3_197_V196_V1_PREVIOUS_PASS_REGRESSION.json'),pathlib.Path('validation/psc-v83197-v196-sealed-a-bounded-repair.js')]:
+            if p.exists(): shutil.copy2(p,st/p.name)
+          status={'candidate':'V8.3.197','development':'PASS' if (st/'V8_3_197_BROWSER_E2E_RESULTS.json').exists() else 'FAIL_OR_INCOMPLETE','sealed_validation_executed':False,'v196_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False};(st/'V8_3_197_DEVELOPMENT_STATUS.json').write_text(json.dumps(status,indent=2))
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()));z=pathlib.Path('PSC_V8_3_197_DEVELOPMENT_VALIDATION_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_197_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_197_DEVELOPMENT_VALIDATION_CHECKPOINT
+          path: |
+            PSC_V8_3_197_DEVELOPMENT_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_197_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt
