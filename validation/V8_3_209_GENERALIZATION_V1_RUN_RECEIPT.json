@@ -1,0 +1,19 @@
+{
+  "candidate": "V8.3.209",
+  "phase": "development-generalization-v1",
+  "run_id": 32352377319,
+  "run_attempt": 1,
+  "head_sha": "b1872de85bba729ac00e6cf8fd13a91fd28b8c6e",
+  "status": "completed",
+  "conclusion": "failure",
+  "total": null,
+  "extraction_passed": null,
+  "classification_passed": null,
+  "failure_attribution": null,
+  "semantic_authority": "QCSemanticCoreV78R",
+  "extractor": "QCEvidenceExtractorV1-REVIEW-CANDIDATE",
+  "sealed_validation_executed": false,
+  "v208_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
