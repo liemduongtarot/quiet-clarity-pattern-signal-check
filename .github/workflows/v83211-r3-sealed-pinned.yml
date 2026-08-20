@@ -1,0 +1,98 @@
+name: V8.3.211 R3 Pinned Sealed Validation
+on:
+  push:
+    branches: [v83211-v1-validation]
+permissions:
+  contents: write
+jobs:
+  sealed:
+    if: github.event.head_commit.message == 'Run V8.3.211 R3 pinned sealed one-shot'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Pin exact source and R3 carrier
+        run: |
+          git fetch --depth=1 origin ec0646c126ffd60358013663c148f4ffd7080ca2
+          git fetch --depth=1 origin 28b739914d6a16836547437452d11206df6978b2
+          rm -rf /tmp/v211-r3-authority
+          git worktree add --detach /tmp/v211-r3-authority ec0646c126ffd60358013663c148f4ffd7080ca2
+          mkdir -p /tmp/v211-r3-authority/validation/v83211-r3-sealed
+          for i in 0 1 2 3 4; do git show 28b739914d6a16836547437452d11206df6978b2:validation/v83211-r3-carrier/part${i}.b64 > /tmp/v211-r3-authority/validation/v83211-r3-sealed/part${i}.b64; done
+          git show 28b739914d6a16836547437452d11206df6978b2:validation/v83211-r3-carrier/MANIFEST.json > /tmp/v211-r3-authority/validation/v83211-r3-sealed/MANIFEST.json
+          test "$(git -C /tmp/v211-r3-authority rev-parse HEAD)" = "ec0646c126ffd60358013663c148f4ffd7080ca2"
+      - name: TRANSPORT verify and materialize exact V89 runner
+        run: python validation/v83211-r3-materialize.py /tmp/v211-r3-authority
+      - name: Assert semantic first-run has never executed
+        run: |
+          test ! -e /tmp/v211-r3-authority/V8_3_211_R3_BATCH_A_FIRST_RUN_RESULTS.json
+          test ! -e /tmp/v211-r3-authority/V8_3_211_R3_BATCH_B_FIRST_RUN_RESULTS.json
+      - name: SEALED Batch A first run exactly once
+        id: batcha
+        continue-on-error: true
+        run: cd /tmp/v211-r3-authority && node validation/v83211-r3-sealed/run-v211-r3-sealed.cjs A
+      - name: SEALED Batch B exactly once only after A PASS
+        id: batchb
+        if: steps.batcha.outcome == 'success'
+        continue-on-error: true
+        run: cd /tmp/v211-r3-authority && node validation/v83211-r3-sealed/run-v211-r3-sealed.cjs B
+      - name: Package immutable checkpoint
+        if: always()
+        run: |
+          cd /tmp/v211-r3-authority
+          python - <<'PY'
+          import json,pathlib,zipfile,hashlib,shutil,os
+          root=pathlib.Path('validation/v83211-r3-sealed');st=pathlib.Path('V8_3_211_R3_SEALED_CHECKPOINT');st.mkdir(exist_ok=True)
+          for p in root.iterdir():
+              if p.is_file() and not p.name.startswith('part'):shutil.copy2(p,st/p.name)
+          for n in ['V8_3_211_R3_BATCH_A_FIRST_RUN_RESULTS.json','V8_3_211_R3_BATCH_B_FIRST_RUN_RESULTS.json']:
+              p=pathlib.Path(n)
+              if p.exists():shutil.copy2(p,st/n)
+          A=pathlib.Path('V8_3_211_R3_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_211_R3_BATCH_B_FIRST_RUN_RESULTS.json');a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
+          status={'candidate':'V8.3.211','phase':'sealed-validation-r3','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'semantic_authority':'QCSemanticCoreV89','validated_development_head_sha':'ec0646c126ffd60358013663c148f4ffd7080ca2','carrier_commit':'28b739914d6a16836547437452d11206df6978b2','batch_a_executed':a is not None,'batch_a_passed':a.get('passed') if a else None,'batch_a_failed':a.get('failed') if a else None,'batch_b_executed':b is not None,'batch_b_passed':b.get('passed') if b else None,'batch_b_failed':b.get('failed') if b else None,'frozen_on_batch_a_failure':bool(a and a.get('failed',0)>0),'v210_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False};(st/'STATUS.json').write_text(json.dumps(status,indent=2)+'\n')
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+          z=pathlib.Path('PSC_V8_3_211_R3_SEALED_VALIDATION_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+              for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_211_R3_SEALED_VALIDATION_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          print(status)
+          PY
+          cp PSC_V8_3_211_R3_SEALED_VALIDATION_CHECKPOINT.zip "$GITHUB_WORKSPACE/"
+          cp PSC_V8_3_211_R3_SEALED_VALIDATION_CHECKPOINT_SHA256.txt "$GITHUB_WORKSPACE/"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_211_R3_SEALED_VALIDATION_CHECKPOINT
+          path: |
+            PSC_V8_3_211_R3_SEALED_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_211_R3_SEALED_VALIDATION_CHECKPOINT_SHA256.txt
+      - name: Record sealed receipt
+        if: always()
+        run: |
+          cd /tmp/v211-r3-authority
+          python - <<'PY'
+          import json,pathlib,os
+          A=pathlib.Path('V8_3_211_R3_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_211_R3_BATCH_B_FIRST_RUN_RESULTS.json');a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
+          success=bool(a and a['failed']==0 and b and b['failed']==0)
+          r={'candidate':'V8.3.211','phase':'sealed-validation-r3','target_validated_head':'ec0646c126ffd60358013663c148f4ffd7080ca2','carrier_commit':'28b739914d6a16836547437452d11206df6978b2','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'status':'completed','conclusion':'success' if success else 'failure','batch_a_executed':a is not None,'batch_a_passed':a.get('passed') if a else None,'batch_a_failed':a.get('failed') if a else None,'batch_b_executed':b is not None,'batch_b_passed':b.get('passed') if b else None,'batch_b_failed':b.get('failed') if b else None,'sealed_trigger_repeated':False,'v210_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path(os.environ['GITHUB_WORKSPACE']+'/validation/V8_3_211_R3_PINNED_SEALED_RUN_RECEIPT.json').write_text(json.dumps(r,indent=2)+'\n')
+          PY
+          cd "$GITHUB_WORKSPACE"
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/V8_3_211_R3_PINNED_SEALED_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.211 R3 pinned sealed run receipt'
+          git push
+      - name: Fail unless both batches passed
+        if: always()
+        run: |
+          cd /tmp/v211-r3-authority
+          python - <<'PY'
+          import json,pathlib,sys
+          A=pathlib.Path('V8_3_211_R3_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_211_R3_BATCH_B_FIRST_RUN_RESULTS.json');a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
+          if not(a and a['failed']==0 and b and b['failed']==0):sys.exit(1)
+          PY
