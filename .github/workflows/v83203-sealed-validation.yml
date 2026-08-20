@@ -4,7 +4,7 @@ on:
     branches: [v83203-v1-sealed-validation]
 jobs:
   sealed_validate:
-    if: github.event.head_commit.message == 'Run V8.3.203 sealed validation one-shot'
+    if: github.event.head_commit.message == 'Run V8.3.203 sealed semantic first-run after config repair'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -13,40 +13,44 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: {node-version: '24'}
-      - name: Verify frozen authority and materialize exact V8.3.203 runtime
+      - name: Verify frozen authority and pre-execution governance
         run: |
           python - <<'PY'
           import json,hashlib,pathlib,base64,gzip,zipfile
           root=pathlib.Path('validation/v83203-v1-sealed')
-          fixture=json.loads((root/'V8_3_203_SEALED_FIXTURE_V1.json').read_text()); sel=json.loads((root/'V8_3_203_SEALED_SELECTION_V1.json').read_text()); gold=json.loads((root/'V8_3_203_INDEPENDENT_GOLD_V1.json').read_text()); auth=json.loads((root/'V8_3_203_SEALED_AUTHORITY_V1.json').read_text()); membership=json.loads((root/'V8_3_203_SEALED_MEMBERSHIP_V1.json').read_text()); transport=json.loads((root/'V8_3_203_TRANSPORT_METADATA_V1.json').read_text())
-          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
-          for k,o in {'fixture':fixture,'selection':sel,'membership':membership,'independent_gold':gold}.items():assert hashlib.sha256(canon(o)).hexdigest()==auth['hashes'][k],k
+          fixture=json.loads((root/'V8_3_203_SEALED_FIXTURE_V1.json').read_text())
+          sel=json.loads((root/'V8_3_203_SEALED_SELECTION_V1.json').read_text())
+          gold=json.loads((root/'V8_3_203_INDEPENDENT_GOLD_V1.json').read_text())
+          auth=json.loads((root/'V8_3_203_SEALED_AUTHORITY_V1.json').read_text())
+          membership=json.loads((root/'V8_3_203_SEALED_MEMBERSHIP_V1.json').read_text())
+          transport=json.loads((root/'V8_3_203_TRANSPORT_METADATA_V1.json').read_text())
+          def canon(o): return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          for k,o in {'fixture':fixture,'selection':sel,'membership':membership,'independent_gold':gold}.items():
+            assert hashlib.sha256(canon(o)).hexdigest()==auth['hashes'][k],k
           assert auth['validated_development_head_sha']=='ef9aca50e281ec53c36b68f4ea0e3ab40a0fb787'
           assert auth['semantic_authority']=='QCSemanticCoreV72'
           assert auth['v202_sealed_rerun'] is False and auth['semantic_runtime_before_transport'] is False
           assert transport['conclusion']=='success' and transport['semantic_runtime_executed'] is False and transport['v202_sealed_rerun'] is False
-          assert len(fixture['cases'])==60 and len(sel['batch_a'])==30 and len(sel['batch_b'])==30 and set(sel['batch_a']).isdisjoint(sel['batch_b'])
-          g={x['case_id']:x['expected'] for x in gold['gold']};assert len(g)==60
-          for c in fixture['cases']:assert g[c['case_id']]==c['expected']
+          assert len(fixture['cases'])==60 and len(sel['batch_a'])==30 and len(sel['batch_b'])==30
+          assert set(sel['batch_a']).isdisjoint(sel['batch_b'])
+          g={x['case_id']:x['expected'] for x in gold['gold']}; assert len(g)==60
+          for c in fixture['cases']: assert g[c['case_id']]==c['expected']
+          assert not (root/'V8_3_203_BATCH_A_FIRST_RUN_RESULTS.json').exists()
+          assert not (root/'V8_3_203_BATCH_B_FIRST_RUN_RESULTS.json').exists()
           names=['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION','V8_3_168_V167_V1_FAILURE_REGRESSION','V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION']
           for n in names:
-            p=pathlib.Path('validation/'+n+'.json.gz.b64');pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
-          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+            p=pathlib.Path('validation/'+n+'.json.gz.b64')
+            pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z: z.extractall('.')
           PY
+      - name: Materialize exact sealed runner
+        run: |
           python - <<'PY'
           import pathlib
-          js=r'''const fs=require('fs'),vm=require('vm'),path=require('path');
-const batch=(process.argv[2]||'A').toUpperCase();if(!['A','B'].includes(batch))throw Error('batch must be A or B');
-const template=fs.readFileSync('validation/run-v83196-full-regression-sweep-v2.cjs','utf8');
-const mb=template.match(/const base=(\[[\s\S]*?\]);\nconst later=/);const ml=template.match(/const later=(\[[\s\S]*?\]);\nfor\(const f of base\)/);if(!mb||!ml)throw Error('runtime chain extraction failed');
-const base=eval(mb[1]);const later=eval(ml[1]);later.push('psc-v83197-v196-sealed-a-bounded-repair.js','psc-v83198-v197-sealed-a-bounded-repair.js','psc-v83199-v198-sealed-a-bounded-repair.js','psc-v83200-v199-sealed-a-bounded-repair.js','psc-v83201-v200-sealed-a-bounded-repair.js','psc-v83201-v200-v1-preservation-precedence-repair.js','psc-v83202-v201-sealed-a-bounded-repair.js','psc-v83203-v202-sealed-a-bounded-repair.js');
-const s={};vm.createContext(s);const pub='PSC_V8_3_138_DEV/public';for(const f of base)vm.runInContext(fs.readFileSync(path.join(pub,f),'utf8'),s,{filename:f});for(const f of later)vm.runInContext(fs.readFileSync(path.join('validation',f),'utf8'),s,{filename:f});if(!s.QCSemanticCoreV72)throw Error('QCSemanticCoreV72 missing');
-const root='validation/v83203-v1-sealed';const F=JSON.parse(fs.readFileSync(root+'/V8_3_203_SEALED_FIXTURE_V1.json','utf8'));const S=JSON.parse(fs.readFileSync(root+'/V8_3_203_SEALED_SELECTION_V1.json','utf8'));const ids=new Set(batch==='A'?S.batch_a:S.batch_b),cases=F.cases.filter(c=>ids.has(c.case_id));let passed=0;const results=[];
-for(const c of cases){const r=s.QCSemanticCoreV72.analyze(c.surface,c.domain),a={route:r.input_route.id,families:[...(r.families||[])].sort(),sequence:!!r.sequence},e={route:c.expected.route,families:[...(c.expected.families||[])].sort(),sequence:!!c.expected.sequence},ok=JSON.stringify(a)===JSON.stringify(e);if(ok)passed++;results.push({case_id:c.case_id,category:c.category,pass:ok,expected:e,actual:a,surface:c.surface,domain:c.domain});}
-const out={authority:`V8.3.203 V1 SEALED BATCH ${batch} FIRST RUN`,run_id:process.env.GITHUB_RUN_ID,run_attempt:process.env.GITHUB_RUN_ATTEMPT,total:cases.length,passed,failed:cases.length-passed,results};fs.writeFileSync(`V8_3_203_BATCH_${batch}_FIRST_RUN_RESULTS.json`,JSON.stringify(out,null,2));console.log('Batch',batch,passed+'/'+cases.length);if(passed!==cases.length)process.exit(1);'''
+          js="const fs=require('fs'),vm=require('vm'),path=require('path');const batch=(process.argv[2]||'A').toUpperCase();if(!['A','B'].includes(batch))throw Error('batch must be A or B');const template=fs.readFileSync('validation/run-v83196-full-regression-sweep-v2.cjs','utf8');const mb=template.match(/const base=(\\[[\\s\\S]*?\\]);\\nconst later=/);const ml=template.match(/const later=(\\[[\\s\\S]*?\\]);\\nfor\\(const f of base\\)/);if(!mb||!ml)throw Error('runtime chain extraction failed');const base=eval(mb[1]);const later=eval(ml[1]);later.push('psc-v83197-v196-sealed-a-bounded-repair.js','psc-v83198-v197-sealed-a-bounded-repair.js','psc-v83199-v198-sealed-a-bounded-repair.js','psc-v83200-v199-sealed-a-bounded-repair.js','psc-v83201-v200-sealed-a-bounded-repair.js','psc-v83201-v200-v1-preservation-precedence-repair.js','psc-v83202-v201-sealed-a-bounded-repair.js','psc-v83203-v202-sealed-a-bounded-repair.js');const s={};vm.createContext(s);const pub='PSC_V8_3_138_DEV/public';for(const f of base)vm.runInContext(fs.readFileSync(path.join(pub,f),'utf8'),s,{filename:f});for(const f of later)vm.runInContext(fs.readFileSync(path.join('validation',f),'utf8'),s,{filename:f});if(!s.QCSemanticCoreV72)throw Error('QCSemanticCoreV72 missing');const root='validation/v83203-v1-sealed';const F=JSON.parse(fs.readFileSync(root+'/V8_3_203_SEALED_FIXTURE_V1.json','utf8'));const S=JSON.parse(fs.readFileSync(root+'/V8_3_203_SEALED_SELECTION_V1.json','utf8'));const ids=new Set(batch==='A'?S.batch_a:S.batch_b),cases=F.cases.filter(c=>ids.has(c.case_id));let passed=0;const results=[];for(const c of cases){const r=s.QCSemanticCoreV72.analyze(c.surface,c.domain),a={route:r.input_route.id,families:[...(r.families||[])].sort(),sequence:!!r.sequence},e={route:c.expected.route,families:[...(c.expected.families||[])].sort(),sequence:!!c.expected.sequence},ok=JSON.stringify(a)===JSON.stringify(e);if(ok)passed++;results.push({case_id:c.case_id,category:c.category,pass:ok,expected:e,actual:a,surface:c.surface,domain:c.domain});}const out={authority:'V8.3.203 V1 SEALED BATCH '+batch+' FIRST RUN',run_id:process.env.GITHUB_RUN_ID,run_attempt:process.env.GITHUB_RUN_ATTEMPT,total:cases.length,passed,failed:cases.length-passed,results};fs.writeFileSync('V8_3_203_BATCH_'+batch+'_FIRST_RUN_RESULTS.json',JSON.stringify(out,null,2));console.log('Batch',batch,passed+'/'+cases.length);if(passed!==cases.length)process.exit(1);"
           pathlib.Path('validation/v83203-v1-sealed/run-v203-sealed.cjs').write_text(js)
           PY
-      - name: SEALED Batch A first run exactly once
+      - name: SEALED Batch A first semantic run exactly once
         id: batcha
         continue-on-error: true
         run: node validation/v83203-v1-sealed/run-v203-sealed.cjs A
@@ -63,17 +67,20 @@ const out={authority:`V8.3.203 V1 SEALED BATCH ${batch} FIRST RUN`,run_id:proces
           st=pathlib.Path('V8_3_203_SEALED_CHECKPOINT');st.mkdir(exist_ok=True)
           for n in ['V8_3_203_BATCH_A_FIRST_RUN_RESULTS.json','V8_3_203_BATCH_B_FIRST_RUN_RESULTS.json']:
             p=pathlib.Path(n)
-            if p.exists():shutil.copy2(p,st/n)
+            if p.exists(): shutil.copy2(p,st/n)
           root=pathlib.Path('validation/v83203-v1-sealed')
           for n in ['V8_3_203_SEALED_AUTHORITY_V1.json','V8_3_203_SEALED_FIXTURE_V1.json','V8_3_203_INDEPENDENT_GOLD_V1.json','V8_3_203_SEALED_SELECTION_V1.json','V8_3_203_SEALED_MEMBERSHIP_V1.json','V8_3_203_PRESEAL_DIVERSITY_AUDIT_V1.json','V8_3_203_TRANSPORT_METADATA_V1.json']:
             p=root/n
-            if p.exists():shutil.copy2(p,st/n)
-          A=pathlib.Path('V8_3_203_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_203_BATCH_B_FIRST_RUN_RESULTS.json');a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
-          status={'candidate':'V8.3.203','run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ['GITHUB_RUN_ATTEMPT'],'head_sha':os.environ['GITHUB_SHA'],'batch_a_executed':a is not None,'batch_a_passed':a['passed'] if a else None,'batch_a_failed':a['failed'] if a else None,'batch_b_executed':b is not None,'batch_b_passed':b['passed'] if b else None,'batch_b_failed':b['failed'] if b else None,'sealed_trigger_repeated':False,'v202_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False};(st/'V8_3_203_SEALED_STATUS.json').write_text(json.dumps(status,indent=2))
-          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
-          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()));z=pathlib.Path('PSC_V8_3_203_V1_SEALED_VALIDATION_CHECKPOINT.zip')
+            if p.exists(): shutil.copy2(p,st/n)
+          A=pathlib.Path('V8_3_203_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_203_BATCH_B_FIRST_RUN_RESULTS.json')
+          a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
+          status={'candidate':'V8.3.203','run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ['GITHUB_RUN_ATTEMPT'],'head_sha':os.environ['GITHUB_SHA'],'pre_execution_config_failure_run_id':32330979697,'pre_execution_config_failure_jobs':0,'batch_a_prior_execution_count':0,'batch_a_executed':a is not None,'batch_a_passed':a['passed'] if a else None,'batch_a_failed':a['failed'] if a else None,'batch_b_executed':b is not None,'batch_b_passed':b['passed'] if b else None,'batch_b_failed':b['failed'] if b else None,'sealed_semantic_trigger_repeated':False,'v202_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          (st/'V8_3_203_SEALED_STATUS.json').write_text(json.dumps(status,indent=2))
+          def sha(p): return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+          z=pathlib.Path('PSC_V8_3_203_V1_SEALED_VALIDATION_CHECKPOINT.zip')
           with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
-            for p in sorted(st.iterdir()):q.write(p,p.name)
+            for p in sorted(st.iterdir()): q.write(p,p.name)
           pathlib.Path('PSC_V8_3_203_V1_SEALED_VALIDATION_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
           PY
       - uses: actions/upload-artifact@v4
@@ -83,25 +90,28 @@ const out={authority:`V8.3.203 V1 SEALED BATCH ${batch} FIRST RUN`,run_id:proces
           path: |
             PSC_V8_3_203_V1_SEALED_VALIDATION_CHECKPOINT.zip
             PSC_V8_3_203_V1_SEALED_VALIDATION_CHECKPOINT_SHA256.txt
-      - name: Record sealed run receipt
+      - name: Record sealed semantic run receipt
         if: always()
         run: |
           python - <<'PY'
           import json,os,pathlib
-          A=pathlib.Path('V8_3_203_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_203_BATCH_B_FIRST_RUN_RESULTS.json');a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
+          A=pathlib.Path('V8_3_203_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_203_BATCH_B_FIRST_RUN_RESULTS.json')
+          a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
           success=bool(a and a['failed']==0 and b and b['failed']==0)
-          p=pathlib.Path('validation/v83203-v1-sealed/V8_3_203_SEALED_RUN_RECEIPT.json');p.write_text(json.dumps({'candidate':'V8.3.203','phase':'sealed-validation','target_head_sha':os.environ['GITHUB_SHA'],'run_id':int(os.environ['GITHUB_RUN_ID']),'status':'completed','conclusion':'success' if success else 'failure','run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'sealed_trigger_repeated':False,'v202_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2))
+          p=pathlib.Path('validation/v83203-v1-sealed/V8_3_203_SEALED_RUN_RECEIPT.json')
+          p.write_text(json.dumps({'candidate':'V8.3.203','phase':'sealed-validation','target_head_sha':os.environ['GITHUB_SHA'],'run_id':int(os.environ['GITHUB_RUN_ID']),'status':'completed','conclusion':'success' if success else 'failure','run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'pre_execution_config_failure_run_id':32330979697,'pre_execution_config_failure_jobs':0,'batch_a_prior_execution_count':0,'sealed_semantic_trigger_repeated':False,'v202_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2))
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add validation/v83203-v1-sealed/V8_3_203_SEALED_RUN_RECEIPT.json
-          git commit -m 'Record V8.3.203 sealed run receipt'
+          git commit -m 'Record V8.3.203 sealed semantic run receipt'
           git push
       - name: Fail workflow unless both batches passed
         if: always()
         run: |
           python - <<'PY'
           import json,pathlib,sys
-          A=pathlib.Path('V8_3_203_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_203_BATCH_B_FIRST_RUN_RESULTS.json');a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
-          if not (a and a['failed']==0 and b and b['failed']==0):sys.exit(1)
+          A=pathlib.Path('V8_3_203_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_203_BATCH_B_FIRST_RUN_RESULTS.json')
+          a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
+          if not (a and a['failed']==0 and b and b['failed']==0): sys.exit(1)
           PY
