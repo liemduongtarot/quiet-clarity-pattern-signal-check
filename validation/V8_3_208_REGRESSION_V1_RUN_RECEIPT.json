@@ -1,0 +1,16 @@
+{
+  "candidate": "V8.3.208",
+  "phase": "development-regression-v1",
+  "run_id": 32346622563,
+  "run_attempt": 1,
+  "head_sha": "f9a9eeab1db251d62b624edd74369b8692cdc479",
+  "status": "completed",
+  "conclusion": "failure",
+  "total": 1350,
+  "passed": 1349,
+  "failed": 1,
+  "semantic_authority": "QCSemanticCoreV77",
+  "v207_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
