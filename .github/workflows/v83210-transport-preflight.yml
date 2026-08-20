@@ -1,0 +1,42 @@
+name: V8.3.210 Transport Preflight
+on:
+  push:
+    branches: [v83210-v1-sealed-validation]
+permissions:
+  contents: write
+jobs:
+  transport:
+    if: github.event.head_commit.message == 'Run V8.3.210 transport-only preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen authority without semantic runtime
+        run: |
+          python - <<'PY'
+          import json,hashlib,pathlib,os
+          root=pathlib.Path('validation/v83210-v1-sealed')
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          files={'candidate_bank':'V8_3_210_PRESEAL_CANDIDATE_BANK_V1.json','selection':'V8_3_210_SEALED_SELECTION_V1.json','fixture':'V8_3_210_SEALED_FIXTURE_V1.json','independent_gold':'V8_3_210_INDEPENDENT_GOLD_V1.json','membership':'V8_3_210_SEALED_MEMBERSHIP_V1.json','preseal_audit':'V8_3_210_PRESEAL_DIVERSITY_AUDIT_V1.json'}
+          auth=json.loads((root/'V8_3_210_SEALED_AUTHORITY_V1.json').read_text())
+          for k,n in files.items():
+            o=json.loads((root/n).read_text()); got=hashlib.sha256(canon(o)).hexdigest(); assert got==auth['hashes'][k],(k,got,auth['hashes'][k])
+          fixture=json.loads((root/files['fixture']).read_text());sel=json.loads((root/files['selection']).read_text());audit=json.loads((root/files['preseal_audit']).read_text())
+          assert auth['validated_development_head_sha']=='3b38e1a445230428e4b48c7a19335ba3a9bfa568'
+          assert auth['development_checkpoint_inner_sha256']=='7689959df9d1fc22d309e19c76ea15531a19d006b07d132ddd2c7c63f803d21a'
+          assert auth['semantic_authority']=='QCSemanticCoreV86'
+          assert auth['v209_batch_a_rerun'] is False and auth['v209_batch_b_accessed'] is False
+          assert audit['pass'] is True and audit['external_cases_at_or_above_0_75']==0
+          assert len(fixture['cases'])==60 and len(sel['batch_a'])==30 and len(sel['batch_b'])==30 and not(set(sel['batch_a'])&set(sel['batch_b']))
+          assert not (root/'V8_3_210_BATCH_A_FIRST_RUN_RESULTS.json').exists()
+          assert not (root/'V8_3_210_BATCH_B_FIRST_RUN_RESULTS.json').exists()
+          meta={'candidate':'V8.3.210','phase':'transport-only-preflight','run_id':int(os.environ['GITHUB_RUN_ID']),'head_sha':os.environ['GITHUB_SHA'],'conclusion':'success','semantic_runtime_executed':False,'semantic_authority_loaded':False,'fixture_materialized':True,'hashes_verified':True,'semantic_authority':'QCSemanticCoreV86','validated_development_head_sha':auth['validated_development_head_sha'],'v209_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          (root/'V8_3_210_TRANSPORT_METADATA_V1.json').write_text(json.dumps(meta,indent=2)+'\n')
+          PY
+      - name: Record transport metadata
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/v83210-v1-sealed/V8_3_210_TRANSPORT_METADATA_V1.json
+          git commit -m 'Record V8.3.210 transport-only metadata'
+          git push
