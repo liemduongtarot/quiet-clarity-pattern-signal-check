@@ -1,0 +1,26 @@
+{
+  "authority": "V8.3.212 DEVELOPMENT forensic carrier from V8.3.211 R4 sealed first run",
+  "source_result_commit": "5bb4a845196a61428f66e037efda58ec3086d036",
+  "source_run_id": 32424102535,
+  "source_semantic_authority": "QCSemanticCoreV89",
+  "source_validated_development_head": "ec0646c126ffd60358013663c148f4ffd7080ca2",
+  "batch_a_total": 30,
+  "batch_a_passed": 20,
+  "batch_a_failed": 10,
+  "batch_b_executed": false,
+  "never_rerun_v211_r4": true,
+  "failed_case_ids": ["V211-R4-02-15","V211-R4-03-06","V211-R4-03-01","V211-R4-04-15","V211-R4-05-14","V211-R4-05-10","V211-R4-07-00","V211-R4-07-10","V211-R4-08-14","V211-R4-08-04"],
+  "passed_case_ids": ["V211-R4-00-06","V211-R4-00-09","V211-R4-00-05","V211-R4-01-06","V211-R4-01-08","V211-R4-01-09","V211-R4-02-00","V211-R4-02-08","V211-R4-03-08","V211-R4-04-00","V211-R4-04-08","V211-R4-05-12","V211-R4-06-00","V211-R4-06-10","V211-R4-06-17","V211-R4-07-07","V211-R4-08-06","V211-R4-09-06","V211-R4-09-09","V211-R4-09-17"],
+  "groups": [
+    {"id":"G1","mechanism":"hypothetical","cases":["V211-R4-02-15"],"actual":"third-party-only","diagnosis":"constructed/non-lived VI evidence weakened by unrelated evidence-disclaimer context"},
+    {"id":"G2","mechanism":"third-party hidden state","cases":["V211-R4-03-06","V211-R4-03-01"],"actuals":["self-lived","decision-request"],"diagnosis":"hidden-state + no-observable-basis relational recall incomplete"},
+    {"id":"G3","mechanism":"prediction","cases":["V211-R4-04-15"],"actual":"self-lived+slow","diagnosis":"future-outcome VI recall lost under neutral timing/context distractor"},
+    {"id":"G4","mechanism":"freeze","cases":["V211-R4-05-14","V211-R4-05-10"],"actual":"self-lived none","diagnosis":"low-commitment/reversible + option expansion + non-start relational recall incomplete"},
+    {"id":"G5","mechanism":"slow","cases":["V211-R4-07-00","V211-R4-07-10"],"actuals":["self-lived none","third-party-only"],"diagnosis":"bounded delay + one check + closure recall incomplete; neutral background can contaminate route"},
+    {"id":"G6","mechanism":"sequence","cases":["V211-R4-08-14","V211-R4-08-04"],"actuals":["slow sequence=false","self-lived none"],"diagnosis":"approach-retreat-return + unchanged evidence sequence slots incomplete"}
+  ],
+  "dominant_root_cause": "ENGINE LOGIC: semantic evidence extraction recall plus context-scope contamination; classification taxonomy is not the dominant failure",
+  "locked_contract_changes": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
