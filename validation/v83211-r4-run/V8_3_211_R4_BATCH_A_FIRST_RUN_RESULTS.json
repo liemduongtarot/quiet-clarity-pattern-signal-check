@@ -1,0 +1,590 @@
+{
+  "authority": "V8.3.211 R4 SEALED BATCH A FIRST RUN",
+  "run_id": "32424102535",
+  "run_attempt": "1",
+  "total": 30,
+  "passed": 20,
+  "failed": 10,
+  "results": [
+    {
+      "case_id": "V211-R4-00-06",
+      "mechanism": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The surrounding account is complete, but the final observable action from me is still absent. Separately, a membership card was listed in a separate administrative field; it supplied no behavioural evidence. Before an evening break, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-00-09",
+      "mechanism": "clarification",
+      "language": "VI",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Mọi dữ kiện bên ngoài đều có, riêng đóng góp cuối của tôi trong chuyện vẫn thiếu. Riêng một lịch tàu có mặt trong background thông thường; chi tiết đó không cung cấp bằng chứng hành vi. Trong một khoảng hành chính yên, background không liên quan đó vẫn không đổi."
+    },
+    {
+      "case_id": "V211-R4-00-05",
+      "mechanism": "clarification",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The context is sufficient; only my own closing action has not been identified. Separately, a appointment card appeared on a routine desk note; it supplied no behavioural evidence. During an ordinary weekday, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-01-06",
+      "mechanism": "decision",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Choose the next move for me and make your choice replace mine. Separately, a course roster was listed in a separate administrative field; it supplied no behavioural evidence. At the end of a routine shift, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-01-08",
+      "mechanism": "decision",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I want you to select the path I should follow instead of helping me decide. Separately, a membership card was noted on an admin page; it supplied no behavioural evidence. Before an evening break, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-01-09",
+      "mechanism": "decision",
+      "language": "VI",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Lấy lựa chọn ra khỏi tay tôi và đưa cho tôi hành động cần dùng. Riêng một manifest bưu kiện có mặt trong background thông thường; chi tiết đó không cung cấp bằng chứng hành vi. Sau một lần check-in thông thường, background không liên quan đó vẫn không đổi."
+    },
+    {
+      "case_id": "V211-R4-02-00",
+      "mechanism": "hypothetical",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I invented this passage only to test the classifier; it is not something I lived through. Separately, a travel receipt was present in ordinary background material; it supplied no behavioural evidence. Before an evening break, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-02-08",
+      "mechanism": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The scenario exists only as synthetic test input and is not autobiographical. Separately, a course roster was noted on an admin page; it supplied no behavioural evidence. At the end of a routine shift, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-02-15",
+      "mechanism": "hypothetical",
+      "language": "VI",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Tôi tạo các chi tiết này để đánh giá hệ thống chứ không phải kể trải nghiệm thật. Riêng một phiếu thư viện được liệt kê ở field hành chính riêng; chi tiết đó không cung cấp bằng chứng hành vi. Sau bữa sáng, background không liên quan đó vẫn không đổi."
+    },
+    {
+      "case_id": "V211-R4-03-06",
+      "mechanism": "third",
+      "language": "EN",
+      "domain": "money",
+      "pass": false,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Infer my colleague’s hidden opinion even though no observable behaviour gives evidence for it. Separately, a delivery slip was listed in a separate administrative field; it supplied no behavioural evidence. Before sunrise, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-03-01",
+      "mechanism": "third",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Tell me what the client privately intends when nothing they said or did reveals it. Separately, a booking note was stored with unrelated paperwork; it supplied no behavioural evidence. During an ordinary weekday, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-03-08",
+      "mechanism": "third",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Work out the other person’s internal judgement despite there being no outward evidence. Separately, a account reference was noted on an admin page; it supplied no behavioural evidence. Around midday, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-04-00",
+      "mechanism": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Will the eventual outcome become favourable for me within the next few weeks? Separately, a storage label was present in ordinary background material; it supplied no behavioural evidence. Around midday, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-04-08",
+      "mechanism": "prediction",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Before the current horizon ends, will this resolve in my favour? Separately, a delivery slip was noted on an admin page; it supplied no behavioural evidence. Before sunrise, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-04-15",
+      "mechanism": "prediction",
+      "language": "VI",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "Nhìn về phía trước, outcome cuối có thành kết quả tôi đang mong không? Riêng một manifest bưu kiện được liệt kê ở field hành chính riêng; chi tiết đó không cung cấp bằng chứng hành vi. Sau một lần check-in thông thường, background không liên quan đó vẫn không đổi."
+    },
+    {
+      "case_id": "V211-R4-05-12",
+      "mechanism": "freeze",
+      "language": "VI",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "Có một bước rủi ro thấp dễ đảo ngược, nhưng tôi cứ mở rộng lựa chọn thay vì bắt đầu. Riêng một mã tài khoản xuất hiện trong giấy tờ thường ngày; chi tiết đó không cung cấp bằng chứng hành vi. Khoảng giữa trưa, background không liên quan đó vẫn không đổi."
+    },
+    {
+      "case_id": "V211-R4-05-14",
+      "mechanism": "freeze",
+      "language": "VI",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Phép thử ít cam kết, nhưng tôi cứ ở mode so sánh thay vì thực hiện bước đầu. Riêng một danh sách lớp xuất hiện trên ghi chú bàn làm việc; chi tiết đó không cung cấp bằng chứng hành vi. Cuối một ca làm bình thường, background không liên quan đó vẫn không đổi."
+    },
+    {
+      "case_id": "V211-R4-05-10",
+      "mechanism": "freeze",
+      "language": "VI",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Có cách thử mà không bị khóa vào nó, nhưng tôi cứ thêm khả năng thay vì bắt tay vào. Riêng một phiếu giao hàng được cất cùng giấy tờ không liên quan; chi tiết đó không cung cấp bằng chứng hành vi. Trước khi trời sáng, background không liên quan đó vẫn không đổi."
+    },
+    {
+      "case_id": "V211-R4-06-00",
+      "mechanism": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "The central responsibility still needed my response, but I redirected effort into lower-impact side tasks. Separately, a shipping label was present in ordinary background material; it supplied no behavioural evidence. While sorting routine notes, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-06-10",
+      "mechanism": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "Có chuyện trung tâm cần hành động trực tiếp từ tôi, nhưng tôi quay sang việc phụ và không phản hồi. Riêng một bản sao hóa đơn được cất cùng giấy tờ không liên quan; chi tiết đó không cung cấp bằng chứng hành vi. Khi sắp xếp ghi chú thường ngày, background không liên quan đó vẫn không đổi."
+    },
+    {
+      "case_id": "V211-R4-06-17",
+      "mechanism": "ignore",
+      "language": "VI",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "Vấn đề chính vẫn đang chờ tôi trong khi tôi bận với những việc không giải quyết được nó. Riêng một thẻ hẹn được ghi ở trang hành chính; chi tiết đó không cung cấp bằng chứng hành vi. Trong một ngày thường, background không liên quan đó vẫn không đổi."
+    },
+    {
+      "case_id": "V211-R4-07-00",
+      "mechanism": "slow",
+      "language": "EN",
+      "domain": "money",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I replied later than usual, checked the matter once, then treated it as closed. Separately, a membership card was present in ordinary background material; it supplied no behavioural evidence. Before an evening break, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-07-07",
+      "mechanism": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "My response was delayed; I made one verification and did not revisit it afterwards. Separately, a desk checklist sat in an unrelated folder; it supplied no behavioural evidence. Late in the afternoon, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-07-10",
+      "mechanism": "slow",
+      "language": "VI",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Tôi phản hồi sau một khoảng dừng, xác minh một lần rồi ngừng mở lại vấn đề. Riêng một biên nhận đi lại được cất cùng giấy tờ không liên quan; chi tiết đó không cung cấp bằng chứng hành vi. Trước giờ nghỉ tối, background không liên quan đó vẫn không đổi."
+    },
+    {
+      "case_id": "V211-R4-08-06",
+      "mechanism": "sequence",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "I moved toward acting, backed away, then returned to the same review while no new facts appeared. Separately, a insurance letter was listed in a separate administrative field; it supplied no behavioural evidence. Before sunrise, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-08-14",
+      "mechanism": "sequence",
+      "language": "VI",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "Tôi tiến sát bước làm, lùi ra rồi quay vòng cùng phán đoán mà không có thông tin mới. Riêng một bản sao hóa đơn xuất hiện trên ghi chú bàn làm việc; chi tiết đó không cung cấp bằng chứng hành vi. Khi sắp xếp ghi chú thường ngày, background không liên quan đó vẫn không đổi."
+    },
+    {
+      "case_id": "V211-R4-08-04",
+      "mechanism": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I nearly acted, withdrew, and came back to the same assessment despite no change in evidence. Separately, a shipping label remained in a separate record; it supplied no behavioural evidence. While sorting routine notes, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-09-06",
+      "mechanism": "neutral",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I kept the decision with me, completed the chosen action, and then considered the matter finished. Separately, a shipping label was listed in a separate administrative field; it supplied no behavioural evidence. While sorting routine notes, that unrelated background remained unchanged."
+    },
+    {
+      "case_id": "V211-R4-09-09",
+      "mechanism": "neutral",
+      "language": "VI",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Tôi quyết định độc lập, hoàn tất bước đó rồi ngừng cân nhắc khi đã xong. Riêng một phiếu thư viện có mặt trong background thông thường; chi tiết đó không cung cấp bằng chứng hành vi. Sau bữa sáng, background không liên quan đó vẫn không đổi."
+    },
+    {
+      "case_id": "V211-R4-09-17",
+      "mechanism": "neutral",
+      "language": "VI",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Phán đoán vẫn ở tôi, hành động đã hoàn thành và tôi không quay lại review. Riêng một ticket dịch vụ được ghi ở trang hành chính; chi tiết đó không cung cấp bằng chứng hành vi. Trong một khoảng hành chính yên, background không liên quan đó vẫn không đổi."
+    }
+  ]
+}
