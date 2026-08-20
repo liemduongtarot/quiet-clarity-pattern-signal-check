@@ -1,0 +1,17 @@
+const fs=require('fs'),path=require('path');
+let src=fs.readFileSync('validation/run-v83209-development-generalization-challenge.cjs','utf8');
+const anchor="vm.runInContext(fs.readFileSync('validation/qc-evidence-extractor-v1-review-candidate.js','utf8'),s,{filename:'qc-evidence-extractor-v1-review-candidate.js'});";
+const files=['qc-evidence-extractor-v1r-review-candidate.js','qc-evidence-extractor-v1r2-review-candidate.js','psc-v83209-semantic-rule-table-v3-review-candidate.js','psc-v83209-v208-semantic-rule-table-promotion.js','qc-evidence-extractor-v1r3-v210-concept-coverage.js','psc-v83210-v209-semantic-rule-table-v4.js','qc-evidence-extractor-v1r4-v210-relational-preservation.js','psc-v83210-v209-v1-relational-preservation.js','qc-evidence-extractor-v2-v210-relational-semantics.js','psc-v83210-v210-semantic-rule-table-v5.js','qc-evidence-extractor-v2r-v210-multilingual-aliases.js','psc-v83210-v210-semantic-rule-table-v6.js','qc-evidence-extractor-v2s-v210-context-sanitizer.js','psc-v83210-v210-semantic-rule-table-v7.js'];
+const inject=anchor+'\n'+files.map(f=>`vm.runInContext(fs.readFileSync('validation/${f}','utf8'),s,{filename:'${f}'});`).join('\n');
+if(!src.includes(anchor))throw new Error('base generalization anchor missing');
+src=src.replace(anchor,inject);
+src=src.replaceAll("if(!s.QCSemanticCoreV78R)throw new Error('QCSemanticCoreV78R missing');","if(!s.QCSemanticCoreV85)throw new Error('QCSemanticCoreV85 missing');");
+src=src.replaceAll("if(!s.QCEvidenceExtractorV1)throw new Error('QCEvidenceExtractorV1 missing');","if(!s.QCEvidenceExtractorV2S)throw new Error('QCEvidenceExtractorV2S missing');");
+src=src.replaceAll('s.QCEvidenceExtractorV1.extract','s.QCEvidenceExtractorV2S.extract');
+src=src.replaceAll('s.QCSemanticCoreV78R.analyze','s.QCSemanticCoreV85.analyze');
+src=src.replaceAll('V8_3_209_DEVELOPMENT_GENERALIZATION_CHALLENGE_V1.json','V8_3_210_DEVELOPMENT_GENERALIZATION_CHALLENGE_V1.json');
+src=src.replaceAll('V8.3.209 DEVELOPMENT-ONLY GENERALIZATION AUDIT V1','V8.3.210 DEVELOPMENT-ONLY FRESH GENERALIZATION AUDIT V4');
+src=src.replaceAll("semantic_authority:'QCSemanticCoreV78R'","semantic_authority:'QCSemanticCoreV85'");
+src=src.replaceAll("extractor:'QCEvidenceExtractorV1-REVIEW-CANDIDATE'","extractor:'QCEvidenceExtractorV2S-V210-CONTEXT-SANITIZER'");
+src=src.replaceAll('V8_3_209_DEVELOPMENT_GENERALIZATION_RESULTS_V1.json','V8_3_210_DEVELOPMENT_GENERALIZATION_RESULTS_V4.json');
+const mod={exports:{}};const fn=new Function('require','module','exports','__filename','__dirname',src);fn(require,mod,mod.exports,path.resolve('generated-v83210-generalization-v4.cjs'),process.cwd());
