@@ -1,0 +1,17 @@
+{
+  "candidate": "V8.3.209",
+  "phase": "review-candidate-historical-regression",
+  "run_id": 32353348513,
+  "run_attempt": 1,
+  "head_sha": "997be5eb3a1667eac0c0d0df8f5456dc34ebbf79",
+  "status": "completed",
+  "conclusion": "failure",
+  "total": 1380,
+  "passed": 1379,
+  "failed": 1,
+  "semantic_authority": "QCSemanticCoreV79RC2",
+  "sealed_validation_executed": false,
+  "v208_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
