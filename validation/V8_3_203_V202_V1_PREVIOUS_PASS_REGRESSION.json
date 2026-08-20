@@ -1,0 +1,105 @@
+{
+  "authority": "V8.3.203 V202 V1 PREVIOUS PASS REGRESSION",
+  "source_sealed_run_id": 32328277631,
+  "source_candidate": "V8.3.202",
+  "source_batch": "A",
+  "frozen_first_run": true,
+  "cases": [
+    {
+      "case_id": "V202-S007",
+      "surface": "Remove the choice from me and tell me the single course I must take.",
+      "domain": "money",
+      "expected": {"route": "input:decision-request", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V202-S009",
+      "surface": "I want your instruction to replace my own decision about which path to choose.",
+      "domain": "relationship",
+      "expected": {"route": "input:decision-request", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V202-S015",
+      "surface": "Use this fictional case as analysis material, not as an event from my own life.",
+      "domain": "money",
+      "expected": {"route": "input:hypothetical-or-example", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V202-S017",
+      "surface": "Treat the following as fabricated practice data, not personal experience.",
+      "domain": "daily-admin",
+      "expected": {"route": "input:hypothetical-or-example", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V202-S021",
+      "surface": "Tell me my supervisor's private conclusion about me, not anything inferred from my own conduct.",
+      "domain": "business",
+      "expected": {"route": "input:third-party-only", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V202-S023",
+      "surface": "What hidden intention is my manager holding about me that I cannot directly observe?",
+      "domain": "relationship",
+      "expected": {"route": "input:third-party-only", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V202-S027",
+      "surface": "Is the eventual outcome likely to be positive for me over the coming weeks?",
+      "domain": "relationship",
+      "expected": {"route": "input:prediction", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V202-S029",
+      "surface": "Is the final result going to land in my favour before the deadline?",
+      "domain": "work",
+      "expected": {"route": "input:prediction", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V202-S037",
+      "surface": "The main task needed a response, but I left it untouched and switched to peripheral work.",
+      "domain": "work",
+      "expected": {"route": "input:self-lived", "families": ["ignore"], "sequence": false}
+    },
+    {
+      "case_id": "V202-S041",
+      "surface": "The central matter needed my reply, but I avoided it by doing something peripheral.",
+      "domain": "daily-admin",
+      "expected": {"route": "input:self-lived", "families": ["ignore"], "sequence": false}
+    },
+    {
+      "case_id": "V202-S045",
+      "surface": "I waited before responding, looked once more, and then moved on without reopening it.",
+      "domain": "housing",
+      "expected": {"route": "input:self-lived", "families": ["slow"], "sequence": false}
+    },
+    {
+      "case_id": "V202-S049",
+      "surface": "I moved toward acting, pulled back, then returned to the same review loop repeatedly with no new evidence.",
+      "domain": "relationship",
+      "expected": {"route": "input:self-lived", "families": ["slow"], "sequence": true}
+    },
+    {
+      "case_id": "V202-S053",
+      "surface": "I approached action, stepped away, and re-entered the same cycle repeatedly without new evidence.",
+      "domain": "housing",
+      "expected": {"route": "input:self-lived", "families": ["slow"], "sequence": true}
+    },
+    {
+      "case_id": "V202-S055",
+      "surface": "I chose one proportionate step myself, completed it, and left the issue closed.",
+      "domain": "work",
+      "expected": {"route": "input:self-lived", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V202-S057",
+      "surface": "I selected the practical action myself, finished it, and stopped there.",
+      "domain": "money",
+      "expected": {"route": "input:self-lived", "families": [], "sequence": false}
+    },
+    {
+      "case_id": "V202-S059",
+      "surface": "I made the decision myself, executed the small step, and did not revisit it.",
+      "domain": "business",
+      "expected": {"route": "input:self-lived", "families": [], "sequence": false}
+    }
+  ]
+}
