@@ -1,0 +1,29 @@
+{
+  "candidate": "V8.3.211",
+  "phase": "v89-pair",
+  "run_id": 32387386940,
+  "run_attempt": 1,
+  "head_sha": "e351e6e7fc39412afd9b3d128133f950e07f3cd7",
+  "status": "completed",
+  "conclusion": "success",
+  "regression_total": 1440,
+  "regression_passed": 1440,
+  "regression_failed": 0,
+  "generalization_total": 600,
+  "generalization_passed": 594,
+  "generalization_extraction_passed": 562,
+  "independence": {
+    "reference_surfaces": 1718,
+    "max_jaccard_similarity": 0.6666666666666666,
+    "cases_at_or_above_0_75": 0,
+    "max_pair": {
+      "case_id": "V211-G04-29",
+      "reference": "K\u1ebft qu\u1ea3 cu\u1ed1i c\u00f9ng c\u00f3 nghi\u00eang v\u1ec1 ph\u00eda c\u00f3 l\u1ee3i cho t\u00f4i tr\u01b0\u1edbc cu\u1ed1i th\u00e1ng kh\u00f4ng?",
+      "similarity": 0.6666666666666666
+    }
+  },
+  "semantic_authority": "QCSemanticCoreV89",
+  "v210_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
