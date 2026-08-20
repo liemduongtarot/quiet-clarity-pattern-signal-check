@@ -1,0 +1,26 @@
+{
+  "authority": "V8.3.208 V207 V1 FAILURE REGRESSION",
+  "source_candidate": "V8.3.207",
+  "source_run_id": 32341357226,
+  "source_batch": "A",
+  "source_first_run_only": true,
+  "v207_sealed_rerun": false,
+  "cases": [
+    {"id":"V207-C002","surface":"The chronology is clear except for my own observable response in the final moment, which has not been supplied.","domain":"business","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"id":"V207-C004","surface":"The account reaches the end, yet my specific closing behaviour is absent from the description.","domain":"money","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"id":"V207-C013","surface":"Câu chuyện đã đi tới đoạn kết nhưng hành vi chốt của riêng tôi vẫn còn bỏ trống.","domain":"work","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"id":"V207-C030","surface":"Chọn phương án tôi nên theo để quyết định của bạn thay thế quyết định của tôi.","domain":"daily-admin","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"id":"V207-C039","surface":"Treat this as synthetic test material rather than an episode I actually experienced.","domain":"housing","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"id":"V207-C042","surface":"Nothing here comes from my lived history; the scenario was constructed for testing.","domain":"business","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"id":"V207-C074","surface":"Across the coming weeks, am I headed toward a result that ultimately benefits me?","domain":"relationship","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"id":"V207-C094","surface":"I could test one small step with little downside, but gathered more options rather than begin.","domain":"business","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"id":"V207-C113","surface":"The core request remained unanswered while I focused on secondary tasks.","domain":"housing","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"id":"V207-C126","surface":"Hành động trung tâm thuộc về tôi, nhưng tôi quay sang chi tiết bên lề thay vì phản hồi.","domain":"work","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"id":"V207-C133","surface":"I took a while to respond, checked it a single time, and did not return to the issue.","domain":"work","expected":{"route":"input:self-lived","families":["slow"],"sequence":false}},
+    {"id":"V207-C142","surface":"Tôi mất một lúc mới phản hồi, kiểm đúng một lần và không quay lại vấn đề.","domain":"daily-admin","expected":{"route":"input:self-lived","families":["slow"],"sequence":false}},
+    {"id":"V207-C146","surface":"I nearly made the move, retreated, and re-entered the identical evaluation several times without fresh information.","domain":"relationship","expected":{"route":"input:self-lived","families":["slow"],"sequence":true}},
+    {"id":"V207-C156","surface":"Tôi tiến tới hành động, lùi ra và cứ mở lại cùng một vòng lý luận dù dữ kiện vẫn y nguyên.","domain":"housing","expected":{"route":"input:self-lived","families":["slow"],"sequence":true}},
+    {"id":"V207-C161","surface":"Tôi tiến tới hành động, lùi ra và lặp cùng một vòng review mặc dù thông tin không thay đổi.","domain":"money","expected":{"route":"input:self-lived","families":["slow"],"sequence":true}},
+    {"id":"V207-C177","surface":"Tôi tự đưa ra một quyết định giới hạn, hoàn thành rồi dừng ở đó thay vì review lại.","domain":"housing","expected":{"route":"input:self-lived","families":[],"sequence":false}}
+  ]
+}
