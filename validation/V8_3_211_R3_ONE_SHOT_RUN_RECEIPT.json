@@ -1,0 +1,22 @@
+{
+  "candidate": "V8.3.211",
+  "phase": "sealed-validation-r3",
+  "target_validated_head": "ec0646c126ffd60358013663c148f4ffd7080ca2",
+  "carrier_commit": "bb15242d740bd169e3a8655ef2e002f291ac6acf",
+  "run_id": 32412225960,
+  "run_attempt": 1,
+  "status": "completed",
+  "conclusion": "failure",
+  "transport_passed": false,
+  "batch_a_executed": false,
+  "batch_a_passed": null,
+  "batch_a_failed": null,
+  "batch_b_executed": false,
+  "batch_b_passed": null,
+  "batch_b_failed": null,
+  "sealed_trigger_repeated": false,
+  "v210_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "error": "CalledProcessError: Command '['/usr/bin/python', '/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83211-r3-materialize.py', '/tmp/v211-r3-authority']' returned non-zero exit status 1."
+}
