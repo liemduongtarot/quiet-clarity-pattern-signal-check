@@ -1,0 +1,56 @@
+name: V8.3.205 Transport Preflight
+on:
+  push:
+    branches: [v83205-v1-sealed-validation]
+jobs:
+  transport:
+    if: github.event.head_commit.message == 'Run V8.3.205 transport preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and materialize sealed inputs without semantic runtime
+        run: |
+          python - <<'PY'
+          import json,hashlib,pathlib,base64,gzip,os
+          root=pathlib.Path('validation/v83205-v1-sealed')
+          raw=gzip.decompress(base64.b64decode((root/'V8_3_205_PRESEAL_CANDIDATE_BANK_V1.json.gz.b64').read_text().strip())).decode()
+          bank=json.loads(raw)
+          sel=json.loads((root/'V8_3_205_SEALED_SELECTION_V1.json').read_text())
+          audit=json.loads((root/'V8_3_205_PRESEAL_DIVERSITY_AUDIT_V1.json').read_text())
+          auth=json.loads((root/'V8_3_205_SEALED_AUTHORITY_V1.json').read_text())
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          assert hashlib.sha256(canon(bank)).hexdigest()==auth['hashes']['candidate_bank']
+          assert hashlib.sha256(canon(sel)).hexdigest()==auth['hashes']['selection']
+          assert hashlib.sha256(canon(audit)).hexdigest()==auth['hashes']['preseal_audit']
+          assert audit['pass'] is True and audit['runtime_executed_during_bank_or_selection'] is False
+          assert auth['semantic_authority']=='QCSemanticCoreV74'
+          assert auth['validated_development_head_sha']=='31660ed0d9ca8de3b63843d4f9d9d94684ce7ad3'
+          assert auth['v204_batch_a_rerun'] is False and auth['v204_batch_b_accessed'] is False
+          assert len(bank['cases'])==180 and len(sel['batch_a'])==30 and len(sel['batch_b'])==30
+          assert set(sel['batch_a']).isdisjoint(sel['batch_b'])
+          ids=set(sel['batch_a']+sel['batch_b']);lookup={c['case_id']:c for c in bank['cases']};cases=[c for c in bank['cases'] if c['case_id'] in ids]
+          assert len(cases)==60
+          fixture={'authority':'V8.3.205 V1 SEALED EXECUTION FIXTURE','candidate':'V8.3.205','development_authority_head':'31660ed0d9ca8de3b63843d4f9d9d94684ce7ad3','semantic_authority':'QCSemanticCoreV74','runtime_execution_before_fixture':0,'sealed_before_execution':True,'v204_sealed_rerun':False,'batch_a':sel['batch_a'],'batch_b':sel['batch_b'],'cases':cases}
+          gold={'authority':'V8.3.205 V1 INDEPENDENT GOLD','candidate':'V8.3.205','derived_from_runtime':False,'gold':[{'case_id':c['case_id'],'expected':c['expected']} for c in cases]}
+          members=[{'batch':'A','case_id':cid,'category':lookup[cid]['category'],'domain':lookup[cid]['domain']} for cid in sel['batch_a']]+[{'batch':'B','case_id':cid,'category':lookup[cid]['category'],'domain':lookup[cid]['domain']} for cid in sel['batch_b']]
+          membership={'authority':'V8.3.205 V1 SEALED MEMBERSHIP','candidate':'V8.3.205','members':members}
+          assert hashlib.sha256(canon(fixture)).hexdigest()==auth['hashes']['fixture']
+          assert hashlib.sha256(canon(gold)).hexdigest()==auth['hashes']['independent_gold']
+          assert hashlib.sha256(canon(membership)).hexdigest()==auth['hashes']['membership']
+          (root/'V8_3_205_PRESEAL_CANDIDATE_BANK_V1.json').write_text(json.dumps(bank,ensure_ascii=False,indent=2))
+          (root/'V8_3_205_SEALED_FIXTURE_V1.json').write_text(json.dumps(fixture,ensure_ascii=False,indent=2))
+          (root/'V8_3_205_INDEPENDENT_GOLD_V1.json').write_text(json.dumps(gold,ensure_ascii=False,indent=2))
+          (root/'V8_3_205_SEALED_MEMBERSHIP_V1.json').write_text(json.dumps(membership,ensure_ascii=False,indent=2))
+          metadata={'candidate':'V8.3.205','phase':'transport-only-preflight','run_id':int(os.environ['GITHUB_RUN_ID']),'head_sha':os.environ['GITHUB_SHA'],'conclusion':'success','semantic_runtime_executed':False,'semantic_authority_loaded':False,'fixture_materialized':True,'hashes_verified':True,'v204_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          (root/'V8_3_205_TRANSPORT_METADATA_V1.json').write_text(json.dumps(metadata,indent=2))
+          PY
+      - name: Record transport materialization and metadata
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/v83205-v1-sealed/V8_3_205_PRESEAL_CANDIDATE_BANK_V1.json validation/v83205-v1-sealed/V8_3_205_SEALED_FIXTURE_V1.json validation/v83205-v1-sealed/V8_3_205_INDEPENDENT_GOLD_V1.json validation/v83205-v1-sealed/V8_3_205_SEALED_MEMBERSHIP_V1.json validation/v83205-v1-sealed/V8_3_205_TRANSPORT_METADATA_V1.json
+          git commit -m 'Record V8.3.205 transport materialization and metadata'
+          git push
