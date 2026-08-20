@@ -1,0 +1,59 @@
+name: V8.3.201 Regression V2
+on:
+  push:
+    branches: [v83201-v1-validation]
+permissions:
+  contents: write
+jobs:
+  regressions:
+    if: github.event.head_commit.message == 'Run V8.3.201 regression V2'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize historical carriers and exact runner
+        run: |
+          python - <<'PY'
+          import pathlib,base64,gzip,zipfile
+          names=['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION','V8_3_168_V167_V1_FAILURE_REGRESSION','V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION']
+          for n in names:
+            p=pathlib.Path('validation/'+n+'.json.gz.b64');pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          src=pathlib.Path('validation/run-v83196-full-regression-sweep-v2.cjs').read_text()
+          src=src.replace("'psc-v83196-v195-v1-hypothetical-preservation-repair.js'];","'psc-v83196-v195-v1-hypothetical-preservation-repair.js','psc-v83197-v196-sealed-a-bounded-repair.js','psc-v83198-v197-sealed-a-bounded-repair.js','psc-v83199-v198-sealed-a-bounded-repair.js','psc-v83200-v199-sealed-a-bounded-repair.js','psc-v83201-v200-sealed-a-bounded-repair.js','psc-v83201-v200-v1-preservation-precedence-repair.js'];")
+          src=src.replace('QCSemanticCoreV65R','QCSemanticCoreV70R').replace('V8.3.196 V65R full immutable regression sweep V2','V8.3.201 V70R full immutable regression sweep V2').replace('V8_3_196_V2_FULL_REGRESSION_SWEEP_RESULTS.json','V8_3_201_V2_FULL_REGRESSION_SWEEP_RESULTS.json')
+          pathlib.Path('validation/run-v83201-regression-v2.cjs').write_text(src)
+          PY
+      - name: Run full immutable sweep V2
+        id: sweep
+        continue-on-error: true
+        run: node validation/run-v83201-regression-v2.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_201_REGRESSION_V2
+          path: V8_3_201_V2_FULL_REGRESSION_SWEEP_RESULTS.json
+      - name: Record V2 receipt
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path('V8_3_201_V2_FULL_REGRESSION_SWEEP_RESULTS.json');r=json.loads(p.read_text()) if p.exists() else {'failed':None}
+          out={'target_head_sha':os.environ['GITHUB_SHA'],'run_id':int(os.environ['GITHUB_RUN_ID']),'status':'completed','conclusion':'success' if r.get('failed')==0 else 'failure','run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'total':r.get('total'),'passed':r.get('passed'),'failed':r.get('failed')}
+          pathlib.Path('validation/V8_3_201_REGRESSION_V2_RECEIPT.json').write_text(json.dumps(out,indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_201_REGRESSION_V2_RECEIPT.json
+          git commit -m 'Record V8.3.201 regression V2 receipt'
+          git push
+      - name: Fail if V2 failed
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,sys
+          r=json.load(open('V8_3_201_V2_FULL_REGRESSION_SWEEP_RESULTS.json'))
+          sys.exit(0 if r['failed']==0 else 1)
+          PY
