@@ -1,0 +1,38 @@
+name: V8.3.200 Transport Preflight
+on:
+  push:
+    branches: [v83200-v1-sealed-validation]
+permissions:
+  contents: write
+jobs:
+  transport:
+    if: github.event.head_commit.message == 'Run V8.3.200 transport preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Materialize and verify frozen sealed pack only
+        run: |
+          python - <<'PY'
+          import json,hashlib,pathlib,base64,gzip,os
+          root=pathlib.Path('validation/v83200-v1-sealed')
+          pack=json.loads(gzip.decompress(base64.b64decode((root/'V8_3_200_SEALED_PACK_V1.json.gz.b64').read_text().strip())))
+          fixture=pack['fixture'];sel=pack['selection'];gold=pack['independent_gold'];auth=json.loads((root/'V8_3_200_SEALED_AUTHORITY_V1.json').read_text())
+          membership={'authority':'V8.3.200 V1 SEALED MEMBERSHIP','members':[{'case_id':c['case_id'],'batch':'A' if c['case_id'] in sel['batch_a'] else 'B'} for c in fixture['cases']]}
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          for k,o in {'fixture':fixture,'selection':sel,'membership':membership,'independent_gold':gold}.items():
+            got=hashlib.sha256(canon(o)).hexdigest();assert got==auth['hashes'][k],(k,got,auth['hashes'][k])
+          assert len(fixture['cases'])==60 and len(sel['batch_a'])==30 and len(sel['batch_b'])==30
+          assert set(sel['batch_a']).isdisjoint(sel['batch_b']) and set(sel['batch_a'])|set(sel['batch_b'])=={c['case_id'] for c in fixture['cases']}
+          g={x['case_id']:x['expected'] for x in gold['gold']};assert len(g)==60
+          for c in fixture['cases']:assert g[c['case_id']]==c['expected']
+          (root/'V8_3_200_SEALED_FIXTURE_V1.json').write_text(json.dumps(fixture,ensure_ascii=False,separators=(',',':')))
+          (root/'V8_3_200_SEALED_SELECTION_V1.json').write_text(json.dumps(sel,ensure_ascii=False,separators=(',',':')))
+          (root/'V8_3_200_INDEPENDENT_GOLD_V1.json').write_text(json.dumps(gold,ensure_ascii=False,separators=(',',':')))
+          (root/'V8_3_200_SEALED_MEMBERSHIP_V1.json').write_text(json.dumps(membership,ensure_ascii=False,separators=(',',':')))
+          (root/'V8_3_200_TRANSPORT_METADATA.json').write_text(json.dumps({'target_head_sha':os.environ['GITHUB_SHA'],'run_id':int(os.environ['GITHUB_RUN_ID']),'status':'completed','conclusion':'success','run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'semantic_runtime_executed':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83200-v1-sealed/V8_3_200_SEALED_FIXTURE_V1.json validation/v83200-v1-sealed/V8_3_200_SEALED_SELECTION_V1.json validation/v83200-v1-sealed/V8_3_200_INDEPENDENT_GOLD_V1.json validation/v83200-v1-sealed/V8_3_200_SEALED_MEMBERSHIP_V1.json validation/v83200-v1-sealed/V8_3_200_TRANSPORT_METADATA.json
+          git commit -m 'Record V8.3.200 transport materialization and metadata'
+          git push
