@@ -1,4 +1,4 @@
-const fs=require('fs'),vm=require('vm');
+const fs=require('fs'),path=require('path');
 let src=fs.readFileSync('validation/run-v83209-development-generalization-challenge.cjs','utf8');
 const anchor="vm.runInContext(fs.readFileSync('validation/qc-evidence-extractor-v1-review-candidate.js','utf8'),s,{filename:'qc-evidence-extractor-v1-review-candidate.js'});";
 const inject=anchor+"\nvm.runInContext(fs.readFileSync('validation/psc-v83209-semantic-rule-table-review-candidate.js','utf8'),s,{filename:'psc-v83209-semantic-rule-table-review-candidate.js'});";
@@ -9,4 +9,6 @@ src=src.replaceAll('s.QCSemanticCoreV78R.analyze','s.QCSemanticCoreV79RC.analyze
 src=src.replaceAll("V8.3.209 DEVELOPMENT-ONLY GENERALIZATION AUDIT V1","V8.3.209 DEVELOPMENT-ONLY GENERALIZATION AUDIT V2 RULE TABLE RC");
 src=src.replaceAll("semantic_authority:'QCSemanticCoreV78R'","semantic_authority:'QCSemanticCoreV79RC'");
 src=src.replaceAll('V8_3_209_DEVELOPMENT_GENERALIZATION_RESULTS_V1.json','V8_3_209_DEVELOPMENT_GENERALIZATION_RESULTS_V2.json');
-vm.runInThisContext(src,{filename:'generated-v83209-generalization-v2.cjs'});
+const mod={exports:{}};
+const fn=new Function('require','module','exports','__filename','__dirname',src);
+fn(require,mod,mod.exports,path.resolve('generated-v83209-generalization-v2.cjs'),process.cwd());
