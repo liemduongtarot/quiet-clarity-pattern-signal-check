@@ -1,0 +1,35 @@
+{
+  "candidate": "V8.3.211",
+  "carrier": "R3 chunked preseal authority",
+  "validated_development_head_sha": "ec0646c126ffd60358013663c148f4ffd7080ca2",
+  "development_checkpoint_inner_sha256": "444b1f6e22537fb0d378afb818c190976fae71758d0bc56f44fd3f225d27f11c",
+  "semantic_authority": "QCSemanticCoreV89",
+  "chunk_count": 5,
+  "chunk_sha256": [
+    "24fd47d59a52e4fc880a706a41c2eb4ca0cb27104facc58546ebb59474b4523c",
+    "79ca9e2563cbc70530c435ec72c3a2ee4dc1a17c0a8e666b96295a9546fc6542",
+    "e1c45f98d117758465c1053f3d170c485cb6dd93e7fc3834f32bb19b351f0d13",
+    "2c0823f3772796f60245ea8edcc640dccc2d36af2b24d6cda71a51f3eceb6fc4",
+    "08f71423720af7d68ea14f96e90ff02ded292f829f630c8cf5535b088ca6cc25"
+  ],
+  "combined_base64_sha256": "580b694492d7abd89e434cde75998ff4e5f153e13fb21635eb4a69269a1f15a9",
+  "gzip_sha256": "8bead8075c60c6f25c4615f6f3f95c4848f387e593fa14673157376f8790ecd2",
+  "object_hashes": {
+    "candidate_bank": "da3897fb4343c0feead9520d1b660dfec8f5385b9410cb89dac063967099cfa3",
+    "selection": "6100c1387702d1d2a1db053a8cb552479e8c5e4532e0ecc51ecb81e503141159",
+    "fixture": "40b06c7be9ca07e787507bad4abbf20d2ec5b6bfe4650ad8efd8d27b37f5f0ab",
+    "independent_gold": "08446ceabf448c49e70f11653737d49362ac62d0d0f83c8d3103d1dcf8c7831d",
+    "membership": "0fed0ee1d79cc6a16609cb772e31da33425427c35b17b3ddc6ddbae5cfa710da",
+    "preseal_audit": "53a6d092d5714caf07e5063aa5712280db52e57b80a23e9762d1bd37d395122e"
+  },
+  "candidate_count": 180,
+  "selected_count": 60,
+  "batch_a_count": 30,
+  "batch_b_count": 30,
+  "semantic_runtime_executed_during_construction": false,
+  "semantic_authority_loaded_during_construction": false,
+  "selection_uses_runtime_output": false,
+  "v210_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
