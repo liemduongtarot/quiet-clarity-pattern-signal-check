@@ -1,0 +1,29 @@
+{
+  "authority": "V8.3.208 V207 V1 FAILURE FORENSIC IMMUTABLE",
+  "source_run_id": 32341357226,
+  "source_batch": "A",
+  "batch_a_passed": 14,
+  "batch_a_failed": 16,
+  "batch_b_executed": false,
+  "diagnostic_layer": "ENGINE LOGIC / semantic cue composition and precedence",
+  "architecture_change_required": false,
+  "mechanism_groups": [
+    {"id":"G1","name":"clarification evidence-completion gap","cases":["V207-C002","V207-C004","V207-C013"],"cause":"Situation reaches closure but the user's own observable closing response is explicitly absent; current cue composition misses absence/end-state variants."},
+    {"id":"G2","name":"delegated decision replacement gap","cases":["V207-C030"],"cause":"User explicitly asks the assistant's decision to replace the user's own decision; current delegated-choice cue composition does not cover this replacement construction."},
+    {"id":"G3","name":"hypothetical constructed/non-lived gap","cases":["V207-C039","V207-C042"],"cause":"Synthetic/constructed test framing plus explicit non-lived evidence is present but current hypothetical composition is lexically too narrow."},
+    {"id":"G4","name":"prediction benefit-horizon gap","cases":["V207-C074"],"cause":"Future horizon plus requested beneficial result is present without current prediction lexemes."},
+    {"id":"G5","name":"reversible-option freeze gap","cases":["V207-C094"],"cause":"Small low-downside test is available, but option gathering replaces beginning; current freeze composition misses this form."},
+    {"id":"G6","name":"priority-diversion ignore gap","cases":["V207-C113","V207-C126"],"cause":"Central response/action remains pending while attention shifts to secondary/peripheral work; current ignore cues are incomplete."},
+    {"id":"G7","name":"bounded-delay slow gap","cases":["V207-C133","V207-C142"],"cause":"Delayed response plus one check plus closure/no return is present in uncovered EN/VI variants."},
+    {"id":"G8","name":"approach-retreat repeated-review sequence gap","cases":["V207-C146","V207-C156","V207-C161"],"cause":"Approach, retreat, repeated same-loop review, and unchanged/no-new evidence are all present; sequence composition misses re-entry/review-loop variants."},
+    {"id":"G9","name":"neutral completion false-positive freeze","cases":["V207-C177"],"cause":"Self-authored bounded decision was completed and closed; parent freeze inference must be suppressed when ownership + execution + closure evidence is complete."}
+  ],
+  "constraints": {
+    "do_not_change_expected": true,
+    "do_not_change_gold": true,
+    "do_not_change_route_or_family_taxonomy": true,
+    "do_not_rerun_v207_sealed": true,
+    "step_111_authorized": false,
+    "production_authorized": false
+  }
+}
