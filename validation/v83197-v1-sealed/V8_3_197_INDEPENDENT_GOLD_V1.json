@@ -1,0 +1,173 @@
+{
+  "authority": "V8.3.197 V1 INDEPENDENT GOLD",
+  "groups": [
+    {
+      "group": "clarification",
+      "case_ids": [
+        "V197-S001",
+        "V197-S002",
+        "V197-S003",
+        "V197-S004",
+        "V197-S005",
+        "V197-S006"
+      ],
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "group": "decision",
+      "case_ids": [
+        "V197-S007",
+        "V197-S008",
+        "V197-S009",
+        "V197-S010",
+        "V197-S011",
+        "V197-S012"
+      ],
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "group": "hypothetical",
+      "case_ids": [
+        "V197-S013",
+        "V197-S014",
+        "V197-S015",
+        "V197-S016",
+        "V197-S017",
+        "V197-S018"
+      ],
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "group": "third",
+      "case_ids": [
+        "V197-S019",
+        "V197-S020",
+        "V197-S021",
+        "V197-S022",
+        "V197-S023",
+        "V197-S024"
+      ],
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "group": "prediction",
+      "case_ids": [
+        "V197-S025",
+        "V197-S026",
+        "V197-S027",
+        "V197-S028",
+        "V197-S029",
+        "V197-S030"
+      ],
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "group": "freeze",
+      "case_ids": [
+        "V197-S031",
+        "V197-S032",
+        "V197-S033",
+        "V197-S034",
+        "V197-S035",
+        "V197-S036"
+      ],
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "group": "ignore",
+      "case_ids": [
+        "V197-S037",
+        "V197-S038",
+        "V197-S039",
+        "V197-S040",
+        "V197-S041",
+        "V197-S042"
+      ],
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "group": "slow",
+      "case_ids": [
+        "V197-S043",
+        "V197-S044",
+        "V197-S045",
+        "V197-S046",
+        "V197-S047",
+        "V197-S048"
+      ],
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "group": "sequence",
+      "case_ids": [
+        "V197-S049",
+        "V197-S050",
+        "V197-S051",
+        "V197-S052",
+        "V197-S053",
+        "V197-S054"
+      ],
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "group": "neutral",
+      "case_ids": [
+        "V197-S055",
+        "V197-S056",
+        "V197-S057",
+        "V197-S058",
+        "V197-S059",
+        "V197-S060"
+      ],
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
