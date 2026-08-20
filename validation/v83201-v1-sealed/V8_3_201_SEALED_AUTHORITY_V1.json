@@ -1,0 +1,19 @@
+{
+  "candidate": "V8.3.201",
+  "phase": "sealed-validation-preparation",
+  "validated_development_head_sha": "5e7c302231d694fb73d49634cf87d2677fc02206",
+  "semantic_authority": "QCSemanticCoreV70R",
+  "development_regression_run_id": 32327388961,
+  "development_final_run_id": 32327441032,
+  "hashes": {
+    "fixture": "618a3c7cb2d8164a97434f9fa35cde23e160def857b157a3b838302c3d1c6004",
+    "selection": "a9a4a9b26a10f44e2af031f54cb4366f7a74b4e1318c3d5037bce007c64addf8",
+    "membership": "b3e14c334cab5d77da1ce9000259fd4cdfb5c0756e1fbfa4fbe0f5f6ecd86bfa",
+    "independent_gold": "01572b08ed23e851d3671997757a874fe4ec17de25d6047e3638170975f14145"
+  },
+  "v200_batch_a_rerun": false,
+  "v200_batch_b_accessed": false,
+  "semantic_runtime_before_transport": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
