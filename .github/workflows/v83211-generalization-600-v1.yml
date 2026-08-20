@@ -1,0 +1,81 @@
+name: V8.3.211 Generalization 600 V1
+on:
+  push:
+    branches: [v83211-v1-validation]
+permissions:
+  contents: write
+jobs:
+  generalization:
+    if: github.event.head_commit.message == 'Run V8.3.211 generalization 600 V1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize historical application authority
+        run: |
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          PY
+          test -f PSC_V8_3_138_DEV/public/psc-v3.js
+      - name: Materialize frozen references
+        run: |
+          mkdir -p validation/generalization_refs
+          git fetch --depth=1 origin refs/heads/v83210-v1-sealed-validation:refs/remotes/origin/v83210-v1-sealed-validation
+          git show origin/v83210-v1-sealed-validation:validation/v83210-v1-sealed/V8_3_210_SEALED_FIXTURE_V1.json > validation/generalization_refs/V8_3_210_SEALED_FIXTURE_REFERENCE.json
+          if git show origin/v83210-v1-sealed-validation:validation/V8_3_210_DEVELOPMENT_GENERALIZATION_CHALLENGE_V1.json >/dev/null 2>&1; then git show origin/v83210-v1-sealed-validation:validation/V8_3_210_DEVELOPMENT_GENERALIZATION_CHALLENGE_V1.json > validation/generalization_refs/V8_3_210_DEVELOPMENT_GENERALIZATION_REFERENCE.json; fi
+      - name: Generate fresh V211 600-case challenge
+        run: python validation/v83211-generalization-600-generator.py
+      - name: Run V88 extraction and classification audit
+        id: challenge
+        continue-on-error: true
+        run: node validation/run-v83211-generalization-600-v1.cjs
+      - name: Package checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,zipfile,hashlib,json,shutil,os
+          st=pathlib.Path('V8_3_211_GENERALIZATION_600_V1_CHECKPOINT');st.mkdir(exist_ok=True)
+          files=[pathlib.Path('validation/V8_3_211_DEVELOPMENT_GENERALIZATION_600_V1.json'),pathlib.Path('V8_3_211_DEVELOPMENT_GENERALIZATION_600_RESULTS_V1.json'),pathlib.Path('validation/qc-evidence-extractor-v3r-v211-preservation.js'),pathlib.Path('validation/psc-v83211-v210-preservation-containment.js')]
+          for p in files:
+            if p.exists():shutil.copy2(p,st/p.name)
+          rp=pathlib.Path('V8_3_211_DEVELOPMENT_GENERALIZATION_600_RESULTS_V1.json');r=json.loads(rp.read_text()) if rp.exists() else None
+          (st/'STATUS.json').write_text(json.dumps({'candidate':'V8.3.211','phase':'generalization-600-v1','run_id':int(os.environ['GITHUB_RUN_ID']),'semantic_authority':'QCSemanticCoreV88','total':r.get('total') if r else None,'classification_passed':r.get('classification_passed') if r else None,'pass':bool(r and r.get('pass')),'v210_sealed_rerun':False,'step_111_authorized':False},indent=2))
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+          z=pathlib.Path('PSC_V8_3_211_GENERALIZATION_600_V1_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_211_GENERALIZATION_600_V1_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_211_GENERALIZATION_600_V1_CHECKPOINT
+          path: |
+            PSC_V8_3_211_GENERALIZATION_600_V1_CHECKPOINT.zip
+            PSC_V8_3_211_GENERALIZATION_600_V1_CHECKPOINT_SHA256.txt
+      - name: Record receipt
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,json,os
+          p=pathlib.Path('V8_3_211_DEVELOPMENT_GENERALIZATION_600_RESULTS_V1.json');r=json.loads(p.read_text()) if p.exists() else None
+          pathlib.Path('validation/V8_3_211_GENERALIZATION_600_V1_RUN_RECEIPT.json').write_text(json.dumps({'candidate':'V8.3.211','phase':'development-generalization-600-v1','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'status':'completed','conclusion':'success' if r and r.get('pass') else 'failure','total':r.get('total') if r else None,'extraction_passed':r.get('extraction_passed') if r else None,'classification_passed':r.get('classification_passed') if r else None,'failure_attribution':r.get('failure_attribution') if r else None,'semantic_authority':'QCSemanticCoreV88','v210_sealed_rerun':False,'step_111_authorized':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/V8_3_211_GENERALIZATION_600_V1_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.211 generalization 600 V1 receipt'
+          git push
+      - name: Fail unless challenge passes
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,pathlib,sys
+          p=pathlib.Path('V8_3_211_DEVELOPMENT_GENERALIZATION_600_RESULTS_V1.json');r=json.loads(p.read_text()) if p.exists() else None
+          if not(r and r.get('pass')):sys.exit(1)
+          PY
