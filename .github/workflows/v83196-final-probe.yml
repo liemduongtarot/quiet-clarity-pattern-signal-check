@@ -1,0 +1,31 @@
+name: V8.3.196 Final Development Probe
+on:
+  push:
+    branches: [v83196-v1-validation]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'Probe V8.3.196 final development'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: 10e3abbca4f86e8f141139547d1c5e041a74c3e4
+        run: |
+          python - <<'PY'
+          import os,json,urllib.request,pathlib
+          u='https://api.github.com/repos/liemduongtarot/quiet-clarity-pattern-signal-check/actions/runs?head_sha='+os.environ['TARGET_SHA']+'&per_page=20'
+          q=urllib.request.Request(u,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'})
+          d=json.load(urllib.request.urlopen(q)); rs=[r for r in d.get('workflow_runs',[]) if r.get('name')=='V8.3.196 Final Development']
+          if not rs: raise SystemExit('target run not found')
+          r=sorted(rs,key=lambda x:x['id'])[-1]
+          pathlib.Path('validation/V8_3_196_FINAL_DEVELOPMENT_RECEIPT.json').write_text(json.dumps({'target_head_sha':os.environ['TARGET_SHA'],'run_id':r['id'],'status':r['status'],'conclusion':r.get('conclusion'),'run_attempt':r.get('run_attempt',1),'sealed_validation_executed':False,'v195_sealed_rerun':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_196_FINAL_DEVELOPMENT_RECEIPT.json
+          git commit -m 'Record V8.3.196 final development receipt'
+          git push
