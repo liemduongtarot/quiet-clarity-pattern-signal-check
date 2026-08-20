@@ -1,0 +1,14 @@
+const fs=require('fs'),path=require('path');
+let src=fs.readFileSync('validation/run-v83209-development-generalization-challenge.cjs','utf8');
+const anchor="vm.runInContext(fs.readFileSync('validation/qc-evidence-extractor-v1-review-candidate.js','utf8'),s,{filename:'qc-evidence-extractor-v1-review-candidate.js'});";
+const inject=anchor+"\nvm.runInContext(fs.readFileSync('validation/qc-evidence-extractor-v1r-review-candidate.js','utf8'),s,{filename:'qc-evidence-extractor-v1r-review-candidate.js'});\nvm.runInContext(fs.readFileSync('validation/psc-v83209-semantic-rule-table-v2-review-candidate.js','utf8'),s,{filename:'psc-v83209-semantic-rule-table-v2-review-candidate.js'});";
+if(!src.includes(anchor))throw new Error('V1 runner extractor anchor missing');
+src=src.replace(anchor,inject);
+src=src.replace("if(!s.QCSemanticCoreV78R)throw new Error('QCSemanticCoreV78R missing');","if(!s.QCSemanticCoreV79RC2)throw new Error('QCSemanticCoreV79RC2 missing');");
+src=src.replaceAll('s.QCEvidenceExtractorV1.extract','s.QCEvidenceExtractorV1R.extract');
+src=src.replaceAll('s.QCSemanticCoreV78R.analyze','s.QCSemanticCoreV79RC2.analyze');
+src=src.replaceAll("V8.3.209 DEVELOPMENT-ONLY GENERALIZATION AUDIT V1","V8.3.209 DEVELOPMENT-ONLY GENERALIZATION AUDIT V3 RULE TABLE RC2");
+src=src.replaceAll("semantic_authority:'QCSemanticCoreV78R'","semantic_authority:'QCSemanticCoreV79RC2'");
+src=src.replaceAll("extractor:'QCEvidenceExtractorV1-REVIEW-CANDIDATE'","extractor:'QCEvidenceExtractorV1R-REVIEW-CANDIDATE'");
+src=src.replaceAll('V8_3_209_DEVELOPMENT_GENERALIZATION_RESULTS_V1.json','V8_3_209_DEVELOPMENT_GENERALIZATION_RESULTS_V3.json');
+const mod={exports:{}};const fn=new Function('require','module','exports','__filename','__dirname',src);fn(require,mod,mod.exports,path.resolve('generated-v83209-generalization-v3.cjs'),process.cwd());
