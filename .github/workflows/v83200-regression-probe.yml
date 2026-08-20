@@ -1,0 +1,31 @@
+name: V8.3.200 Regression Probe
+on:
+  push:
+    branches: [v83200-v1-validation]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'Probe V8.3.200 regression sweep'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record target run metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request,pathlib
+          target='c1a59ab844c87f03c20833ea25d10edb9b04276e'
+          req=urllib.request.Request('https://api.github.com/repos/liemduongtarot/quiet-clarity-pattern-signal-check/actions/runs?head_sha='+target+'&event=push&per_page=100',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'})
+          data=json.load(urllib.request.urlopen(req));runs=[r for r in data.get('workflow_runs',[]) if r.get('name')=='V8.3.200 Regression Sweep']
+          if not runs:raise SystemExit('target run not found')
+          r=sorted(runs,key=lambda x:x['id'])[-1]
+          pathlib.Path('validation/V8_3_200_REGRESSION_SWEEP_RECEIPT.json').write_text(json.dumps({'target_head_sha':target,'run_id':r['id'],'status':r['status'],'conclusion':r.get('conclusion'),'run_attempt':r.get('run_attempt',1)},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_200_REGRESSION_SWEEP_RECEIPT.json
+          git commit -m 'Record V8.3.200 regression sweep receipt'
+          git push
