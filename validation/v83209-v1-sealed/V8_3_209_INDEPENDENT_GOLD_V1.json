@@ -1,0 +1,536 @@
+{
+  "authority": "V8.3.209 V1 INDEPENDENT GOLD",
+  "candidate": "V8.3.209",
+  "cases": [
+    {
+      "case_id": "V209-C001",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C007",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C013",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C022",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C028",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C036",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C039",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C045",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C049",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C060",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C065",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C072",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C075",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C080",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C085",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C095",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C100",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C107",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C109",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C116",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C123",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C130",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C138",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C144",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C147",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V209-C153",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V209-C159",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V209-C168",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C173",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C180",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C005",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C012",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C018",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C021",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C027",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C033",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C041",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C047",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C054",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C055",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C063",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C067",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C076",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C082",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C088",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C091",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C097",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C105",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C113",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C120",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C126",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C128",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C135",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C140",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C149",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V209-C154",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V209-C160",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V209-C163",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C170",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V209-C175",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      }
+    }
+  ],
+  "runtime_output_used": false,
+  "source": "approved contract taxonomy only; generated before semantic runtime; no V80 outputs used"
+}

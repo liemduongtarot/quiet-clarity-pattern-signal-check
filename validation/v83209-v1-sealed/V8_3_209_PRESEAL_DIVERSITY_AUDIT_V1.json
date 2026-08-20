@@ -1,0 +1,127 @@
+{
+  "authority": "V8.3.209 V1 PRESEAL DIVERSITY AUDIT",
+  "batch_a_category_counts": {
+    "clarification": 3,
+    "decision": 3,
+    "freeze": 3,
+    "hypothetical": 3,
+    "ignore": 3,
+    "neutral": 3,
+    "prediction": 3,
+    "sequence": 3,
+    "slow": 3,
+    "third": 3
+  },
+  "batch_a_domain_counts": {
+    "business": 5,
+    "daily-admin": 5,
+    "housing": 5,
+    "money": 5,
+    "relationship": 5,
+    "work": 5
+  },
+  "batch_a_language_counts": {
+    "EN": 15,
+    "VI": 15
+  },
+  "batch_b_category_counts": {
+    "clarification": 3,
+    "decision": 3,
+    "freeze": 3,
+    "hypothetical": 3,
+    "ignore": 3,
+    "neutral": 3,
+    "prediction": 3,
+    "sequence": 3,
+    "slow": 3,
+    "third": 3
+  },
+  "batch_b_domain_counts": {
+    "business": 5,
+    "daily-admin": 5,
+    "housing": 5,
+    "money": 5,
+    "relationship": 5,
+    "work": 5
+  },
+  "batch_b_language_counts": {
+    "EN": 15,
+    "VI": 15
+  },
+  "candidate": "V8.3.209",
+  "candidate_count": 180,
+  "category_counts": {
+    "clarification": 18,
+    "decision": 18,
+    "freeze": 18,
+    "hypothetical": 18,
+    "ignore": 18,
+    "neutral": 18,
+    "prediction": 18,
+    "sequence": 18,
+    "slow": 18,
+    "third": 18
+  },
+  "development_challenge_cases_at_or_above_0_75": 0,
+  "development_challenge_max_similarity": 0.564103,
+  "development_challenge_reference_count": 400,
+  "development_challenge_reused": false,
+  "domain_counts": {
+    "business": 30,
+    "daily-admin": 30,
+    "housing": 30,
+    "money": 30,
+    "relationship": 30,
+    "work": 30
+  },
+  "exact_external_duplicates": 0,
+  "expected_contracts_modified_after_runtime": false,
+  "external_cases_at_or_above_0_75": 0,
+  "external_max_similarity": 0.481481,
+  "external_reference_count": 480,
+  "internal_max_similarity": 0.684211,
+  "language_counts": {
+    "EN": 90,
+    "VI": 90
+  },
+  "pass": true,
+  "reference_sealed_versions": [
+    "V8.3.201",
+    "V8.3.202",
+    "V8.3.203",
+    "V8.3.204",
+    "V8.3.205",
+    "V8.3.206",
+    "V8.3.207",
+    "V8.3.208"
+  ],
+  "runtime_executed_during_bank_or_selection": false,
+  "selected_category_counts": {
+    "clarification": 6,
+    "decision": 6,
+    "freeze": 6,
+    "hypothetical": 6,
+    "ignore": 6,
+    "neutral": 6,
+    "prediction": 6,
+    "sequence": 6,
+    "slow": 6,
+    "third": 6
+  },
+  "selected_count": 60,
+  "selected_domain_counts": {
+    "business": 10,
+    "daily-admin": 10,
+    "housing": 10,
+    "money": 10,
+    "relationship": 10,
+    "work": 10
+  },
+  "selected_language_counts": {
+    "EN": 30,
+    "VI": 30
+  },
+  "selection_uses_runtime_output": false,
+  "semantic_authority_loaded_during_bank_or_selection": false,
+  "unique_surface_count": 180
+}

@@ -1,0 +1,774 @@
+{
+  "authority": "V8.3.209 V1 SEALED FIXTURE",
+  "candidate": "V8.3.209",
+  "cases": [
+    {
+      "case_id": "V209-C001",
+      "category": "clarification",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "The project review is described through its closing point, but the specific action I myself took there is absent from the account. The manager, deadline, and handover notes are already known."
+    },
+    {
+      "case_id": "V209-C007",
+      "category": "clarification",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Vấn đề thanh toán đã được kể tới tận điểm kết, nhưng phần hành động cụ thể do chính tôi làm ở đó vẫn chưa có trong mô tả. Số tiền, hạn thanh toán và lịch sử tài khoản đều đã rõ."
+    },
+    {
+      "case_id": "V209-C013",
+      "category": "clarification",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Vấn đề thuê nhà đã được kể tới tận điểm kết, nhưng phần hành động cụ thể do chính tôi làm ở đó vẫn chưa có trong mô tả. Ngày thuê, chi tiết xem nhà và điều khoản bằng văn bản đều đã rõ."
+    },
+    {
+      "case_id": "V209-C022",
+      "category": "decision",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Đừng chỉ giúp tôi cân nhắc cuộc trao đổi giữa hai người; hãy lấy quyền lựa chọn khỏi tay tôi và chọn phương án tôi phải theo. Tin nhắn, bối cảnh gặp mặt và ranh giới đã nói đều đã rõ."
+    },
+    {
+      "case_id": "V209-C028",
+      "category": "decision",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "Do not just help me weigh the client matter; take the choice out of my hands and select the option I should follow. The client brief, commercial terms, and meeting notes are already available."
+    },
+    {
+      "case_id": "V209-C036",
+      "category": "decision",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Hãy chọn bước tiếp theo cho tôi trong yêu cầu hành chính; tôi đang yêu cầu bạn quyết định thay vì để phần phán đoán lại cho tôi. Lịch sử hồ sơ, giấy tờ cần có và timeline đều đã rõ."
+    },
+    {
+      "case_id": "V209-C039",
+      "category": "hypothetical",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Case cuộc nói chuyện về vai trò này là input thực hành được bịa ra, không phải điều tôi thật sự đã trải qua. Vai trò, đội ngũ và trao đổi bằng văn bản đều đã được ghi nhận."
+    },
+    {
+      "case_id": "V209-C045",
+      "category": "hypothetical",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "This the money conversation case is invented practice input rather than something I actually experienced. The transaction details, balance, and earlier messages are already clear."
+    },
+    {
+      "case_id": "V209-C049",
+      "category": "hypothetical",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Tôi viết tình huống vấn đề thuê nhà này chỉ như dữ liệu kiểm thử tổng hợp; đây không phải sự việc trong đời tôi. Ngày thuê, chi tiết xem nhà và điều khoản bằng văn bản đều đã rõ."
+    },
+    {
+      "case_id": "V209-C060",
+      "category": "third",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "Work out the hidden intention of the person involved in the meeting with this person despite there being no outward evidence from which to know it. The people involved, timing, and prior exchange are already clear."
+    },
+    {
+      "case_id": "V209-C065",
+      "category": "third",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Suy ra người còn lại đang âm thầm nghĩ gì về đề xuất kinh doanh; không có lời nói hay hành động bên ngoài nào tiết lộ đánh giá nội tâm ấy. Lịch sử đề xuất, các bên liên quan và record bằng văn bản đều đã rõ."
+    },
+    {
+      "case_id": "V209-C072",
+      "category": "third",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Xác định ý định kín của người liên quan tới yêu cầu hành chính mặc dù không có bằng chứng bên ngoài để biết điều đó. Lịch sử hồ sơ, giấy tờ cần có và timeline đều đã rõ."
+    },
+    {
+      "case_id": "V209-C075",
+      "category": "prediction",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "Looking ahead to next month, will the final result of the handoff at work turn out positively for me? The role, team, and written exchange are already documented."
+    },
+    {
+      "case_id": "V209-C080",
+      "category": "prediction",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "By the upcoming deadline, is the budgeting decision going to resolve in my favour? The figures, payment history, and stated deadline are already available."
+    },
+    {
+      "case_id": "V209-C085",
+      "category": "prediction",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Trong vài tuần tới, vấn đề thuê nhà có kết thúc bằng kết quả tôi mong muốn không? Ngày thuê, chi tiết xem nhà và điều khoản bằng văn bản đều đã rõ."
+    },
+    {
+      "case_id": "V209-C095",
+      "category": "freeze",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "The boundary discussion offered a low-commitment experiment with a clear way back; instead of trying it, I continued expanding the option list. The sequence of contact and the spoken terms are already recorded."
+    },
+    {
+      "case_id": "V209-C100",
+      "category": "freeze",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Trong việc với khách hàng có một bước thử nhỏ rất dễ quay lại, nhưng tôi cứ mở thêm lựa chọn và cuối cùng chưa bắt đầu thử. Brief khách hàng, điều khoản thương mại và ghi chú cuộc họp đều có sẵn."
+    },
+    {
+      "case_id": "V209-C107",
+      "category": "freeze",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "The booking problem offered a low-commitment experiment with a clear way back; instead of trying it, I continued expanding the option list. The booking record, dates, and instructions are already known."
+    },
+    {
+      "case_id": "V209-C109",
+      "category": "ignore",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "The central task in the project review still required my answer, but I redirected my effort into side work and left the response undone. The manager, deadline, and handover notes are already known."
+    },
+    {
+      "case_id": "V209-C116",
+      "category": "ignore",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Khi trách nhiệm chính trong quyết định về ngân sách đang chờ tôi xử lý, tôi lại bận với các chi tiết phụ thay vì phản hồi. Các con số, lịch sử trả tiền và hạn đã nêu đều có sẵn."
+    },
+    {
+      "case_id": "V209-C123",
+      "category": "ignore",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "The housing arrangement contained one consequential item that needed action from me; I shifted attention to lower-priority activity and did not address it. The rent figures, location, and prior correspondence are already clear."
+    },
+    {
+      "case_id": "V209-C130",
+      "category": "slow",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "I answered the conversation between us later than I normally would, checked the matter once, and then closed it without returning. The messages, meeting context, and stated boundary are already known."
+    },
+    {
+      "case_id": "V209-C138",
+      "category": "slow",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Tôi dừng lâu hơn trước khi xử lý trao đổi với nhà cung cấp, xem lại một lần duy nhất rồi đi tiếp khi chuyện đã được chốt. Điều khoản nhà cung cấp, timeline và trao đổi đã ghi nhận đều đã biết."
+    },
+    {
+      "case_id": "V209-C144",
+      "category": "slow",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "I paused longer before dealing with the admin request, reviewed it a single time, then moved on with the matter settled. The application history, required documents, and timeline are already clear."
+    },
+    {
+      "case_id": "V209-C147",
+      "category": "sequence",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "language": "VI",
+      "surface": "Tôi nhiều lần chuẩn bị làm bước đó trong cuộc nói chuyện về vai trò rồi lại rút ra, xem lại cùng một logic mà không có đầu vào mới. Vai trò, đội ngũ và trao đổi bằng văn bản đều đã được ghi nhận."
+    },
+    {
+      "case_id": "V209-C153",
+      "category": "sequence",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "language": "EN",
+      "surface": "I repeatedly got ready to take the step in the money conversation and then withdrew, revisiting identical logic without any fresh input. The transaction details, balance, and earlier messages are already clear."
+    },
+    {
+      "case_id": "V209-C159",
+      "category": "sequence",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "language": "VI",
+      "surface": "Tôi nhiều lần chuẩn bị làm bước đó trong thỏa thuận nhà ở rồi lại rút ra, xem lại cùng một logic mà không có đầu vào mới. Tiền thuê, vị trí và thư từ trước đó đều đã rõ."
+    },
+    {
+      "case_id": "V209-C168",
+      "category": "neutral",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "I independently chose what to do about the meeting with this person, followed through, and moved on once the action was complete. The people involved, timing, and prior exchange are already clear."
+    },
+    {
+      "case_id": "V209-C173",
+      "category": "neutral",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "For the business proposal, I made my own judgement, completed the action, and did not return to reconsider it afterward. The proposal history, stakeholders, and written record are already clear."
+    },
+    {
+      "case_id": "V209-C180",
+      "category": "neutral",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Tôi độc lập chọn cách xử lý yêu cầu hành chính, làm tới nơi rồi đi tiếp khi hành động đã hoàn tất. Lịch sử hồ sơ, giấy tờ cần có và timeline đều đã rõ."
+    },
+    {
+      "case_id": "V209-C005",
+      "category": "clarification",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "The surrounding facts of the boundary discussion are sufficient to follow what happened; the only missing piece is my own observable response at the end. The sequence of contact and the spoken terms are already recorded."
+    },
+    {
+      "case_id": "V209-C012",
+      "category": "clarification",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Mô tả về trao đổi với nhà cung cấp có điểm chốt rõ, nhưng không hề nói chính tôi đã làm gì trong khoảnh khắc cuối. Điều khoản nhà cung cấp, timeline và trao đổi đã ghi nhận đều đã biết."
+    },
+    {
+      "case_id": "V209-C018",
+      "category": "clarification",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Mô tả về yêu cầu hành chính có điểm chốt rõ, nhưng không hề nói chính tôi đã làm gì trong khoảnh khắc cuối. Lịch sử hồ sơ, giấy tờ cần có và timeline đều đã rõ."
+    },
+    {
+      "case_id": "V209-C021",
+      "category": "decision",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "Choose the next action for me in the handoff at work; I am asking you to decide instead of leaving the judgement with me. The role, team, and written exchange are already documented."
+    },
+    {
+      "case_id": "V209-C027",
+      "category": "decision",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "Choose the next action for me in the money conversation; I am asking you to decide instead of leaving the judgement with me. The transaction details, balance, and earlier messages are already clear."
+    },
+    {
+      "case_id": "V209-C033",
+      "category": "decision",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Hãy chọn bước tiếp theo cho tôi trong thỏa thuận nhà ở; tôi đang yêu cầu bạn quyết định thay vì để phần phán đoán lại cho tôi. Tiền thuê, vị trí và thư từ trước đó đều đã rõ."
+    },
+    {
+      "case_id": "V209-C041",
+      "category": "hypothetical",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "Nothing in this the boundary discussion example is autobiographical: I constructed it only to exercise the checker. The sequence of contact and the spoken terms are already recorded."
+    },
+    {
+      "case_id": "V209-C047",
+      "category": "hypothetical",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Không phần nào của ví dụ đề xuất kinh doanh mang tính tự truyện; tôi dựng nó chỉ để thử bộ kiểm tra. Lịch sử đề xuất, các bên liên quan và record bằng văn bản đều đã rõ."
+    },
+    {
+      "case_id": "V209-C054",
+      "category": "hypothetical",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "This the admin request case is invented practice input rather than something I actually experienced. The application history, required documents, and timeline are already clear."
+    },
+    {
+      "case_id": "V209-C055",
+      "category": "third",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "Tell me the unexpressed belief the other person holds about the project review, even though their observable behaviour provides no evidence of that inner view. The manager, deadline, and handover notes are already known."
+    },
+    {
+      "case_id": "V209-C063",
+      "category": "third",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Xác định ý định kín của người liên quan tới cuộc trao đổi tiền bạc mặc dù không có bằng chứng bên ngoài để biết điều đó. Chi tiết giao dịch, số dư và tin nhắn trước đó đều đã rõ."
+    },
+    {
+      "case_id": "V209-C067",
+      "category": "third",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "Tell me the unexpressed belief the other person holds about the tenancy issue, even though their observable behaviour provides no evidence of that inner view. The tenancy dates, viewing details, and written terms are already known."
+    },
+    {
+      "case_id": "V209-C076",
+      "category": "prediction",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Trong vài tuần tới, cuộc trao đổi giữa hai người có kết thúc bằng kết quả tôi mong muốn không? Tin nhắn, bối cảnh gặp mặt và ranh giới đã nói đều đã rõ."
+    },
+    {
+      "case_id": "V209-C082",
+      "category": "prediction",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Trong vài tuần tới, việc với khách hàng có kết thúc bằng kết quả tôi mong muốn không? Brief khách hàng, điều khoản thương mại và ghi chú cuộc họp đều có sẵn."
+    },
+    {
+      "case_id": "V209-C088",
+      "category": "prediction",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "Over the next several weeks, will the application task end with the outcome I want? The form, deadline, and reference details are already available."
+    },
+    {
+      "case_id": "V209-C091",
+      "category": "freeze",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Trong buổi trao đổi công việc có một bước thử nhỏ rất dễ quay lại, nhưng tôi cứ mở thêm lựa chọn và cuối cùng chưa bắt đầu thử. Quản lý, hạn chót và ghi chú bàn giao đều đã rõ."
+    },
+    {
+      "case_id": "V209-C097",
+      "category": "freeze",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "I had a small step available in the payment issue that was easy to undo, but I kept opening new alternatives and never started the trial. The amount, due date, and account record are already known."
+    },
+    {
+      "case_id": "V209-C105",
+      "category": "freeze",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "A reversible first move in the housing arrangement carried little downside, yet I postponed beginning while collecting more possible routes. The rent figures, location, and prior correspondence are already clear."
+    },
+    {
+      "case_id": "V209-C113",
+      "category": "ignore",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Khi trách nhiệm chính trong chuyện ranh giới trong mối quan hệ đang chờ tôi xử lý, tôi lại bận với các chi tiết phụ thay vì phản hồi. Chuỗi liên lạc và những điều đã nói đều đã được ghi lại."
+    },
+    {
+      "case_id": "V209-C120",
+      "category": "ignore",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Trao đổi với nhà cung cấp có một việc quan trọng cần hành động từ tôi; tôi dời chú ý sang hoạt động ít ưu tiên hơn và không xử lý việc đó. Điều khoản nhà cung cấp, timeline và trao đổi đã ghi nhận đều đã biết."
+    },
+    {
+      "case_id": "V209-C126",
+      "category": "ignore",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Yêu cầu hành chính có một việc quan trọng cần hành động từ tôi; tôi dời chú ý sang hoạt động ít ưu tiên hơn và không xử lý việc đó. Lịch sử hồ sơ, giấy tờ cần có và timeline đều đã rõ."
+    },
+    {
+      "case_id": "V209-C128",
+      "category": "slow",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Phản ứng của tôi với việc bàn giao dự án mất thêm thời gian; sau một lượt xác minh tôi chấp nhận quyết định và không mở lại. Biên bản trao đổi và tiến độ dự án không còn tranh cãi."
+    },
+    {
+      "case_id": "V209-C135",
+      "category": "slow",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "I paused longer before dealing with the money conversation, reviewed it a single time, then moved on with the matter settled. The transaction details, balance, and earlier messages are already clear."
+    },
+    {
+      "case_id": "V209-C140",
+      "category": "slow",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Phản ứng của tôi với việc tìm chỗ ở mất thêm thời gian; sau một lượt xác minh tôi chấp nhận quyết định và không mở lại. Thông tin căn nhà, tin nhắn chủ nhà và thời điểm đều đã được ghi lại."
+    },
+    {
+      "case_id": "V209-C149",
+      "category": "sequence",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "language": "VI",
+      "surface": "Với chuyện ranh giới trong mối quan hệ, tôi tiến tới thực hiện rồi rút lui nhiều hơn một lần, cứ quay lại cùng một đánh giá trong khi dữ kiện không đổi. Chuỗi liên lạc và những điều đã nói đều đã được ghi lại."
+    },
+    {
+      "case_id": "V209-C154",
+      "category": "sequence",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "language": "EN",
+      "surface": "I moved close to acting on the client matter, backed away, and repeated that same reasoning cycle several times while no new information arrived. The client brief, commercial terms, and meeting notes are already available."
+    },
+    {
+      "case_id": "V209-C160",
+      "category": "sequence",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "language": "EN",
+      "surface": "I moved close to acting on the application task, backed away, and repeated that same reasoning cycle several times while no new information arrived. The form, deadline, and reference details are already available."
+    },
+    {
+      "case_id": "V209-C163",
+      "category": "neutral",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "I kept the decision about the project review with myself, carried out the practical step, and then left the issue closed. The manager, deadline, and handover notes are already known."
+    },
+    {
+      "case_id": "V209-C170",
+      "category": "neutral",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "VI",
+      "surface": "Với quyết định về ngân sách, tôi tự đưa ra phán đoán, hoàn thành hành động và sau đó không quay lại cân nhắc. Các con số, lịch sử trả tiền và hạn đã nêu đều có sẵn."
+    },
+    {
+      "case_id": "V209-C175",
+      "category": "neutral",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "language": "EN",
+      "surface": "I kept the decision about the tenancy issue with myself, carried out the practical step, and then left the issue closed. The tenancy dates, viewing details, and written terms are already known."
+    }
+  ]
+}
