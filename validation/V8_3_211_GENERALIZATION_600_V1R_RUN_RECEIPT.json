@@ -1,0 +1,20 @@
+{
+  "candidate": "V8.3.211",
+  "phase": "development-generalization-600-v1r",
+  "run_id": 32387097658,
+  "run_attempt": 1,
+  "head_sha": "3b37d0d450f0cc14f80e02ddb7d1bdef41ebeb03",
+  "status": "completed",
+  "conclusion": "failure",
+  "total": 600,
+  "extraction_passed": 368,
+  "classification_passed": 438,
+  "failure_attribution": {
+    "extraction_failure": 162,
+    "classification_or_precedence_failure": 0,
+    "pass": 438
+  },
+  "semantic_authority": "QCSemanticCoreV88",
+  "v210_sealed_rerun": false,
+  "step_111_authorized": false
+}
