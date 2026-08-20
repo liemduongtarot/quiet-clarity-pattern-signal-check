@@ -1,0 +1,29 @@
+{
+  "authority": "V8.3.204 V203 V1 FAILURE REGRESSION",
+  "source_sealed_run_id": 32331205314,
+  "source_candidate": "V8.3.203",
+  "source_batch": "A",
+  "frozen_first_semantic_run": true,
+  "cases": [
+    {"case_id":"V203-C007","surface":"The timeline is complete except for my own behaviour once the decision point arrived.","domain":"work","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V203-C009","surface":"The situation is fully outlined, though my personal action when it mattered remains unspecified.","domain":"money","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V203-C005","surface":"The sequence makes sense, but my observable response at the end has not been supplied.","domain":"housing","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V203-C031","surface":"Take responsibility for the choice and tell me which alternative I am supposed to select.","domain":"business","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V203-C054","surface":"This is non-personal sample content written purely for validation.","domain":"daily-admin","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V203-C052","surface":"Treat this as a mock classification case, not as evidence from my actual life.","domain":"business","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V203-C057","surface":"Tell me the hidden opinion my colleague has of me beyond anything they have said or done.","domain":"daily-admin","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V203-C068","surface":"What hidden assessment does my customer hold of me that has not been expressed outwardly?","domain":"housing","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V203-C074","surface":"Is this relationship going to work out for me over the next few weeks?","domain":"relationship","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V203-C094","surface":"I have a reversible experiment ready and keep extending the comparison rather than trying it.","domain":"work","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"case_id":"V203-C092","surface":"There is an easy first step I can undo, yet I stay uncommitted by researching more alternatives.","domain":"housing","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"case_id":"V203-C102","surface":"A reversible first attempt is available, but I postpone commitment by adding more choices.","domain":"money","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"case_id":"V203-C116","surface":"The main request was waiting for me, but I redirected attention to minor work.","domain":"relationship","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"case_id":"V203-C127","surface":"I replied later than I normally would, checked the issue once, and then closed it.","domain":"business","expected":{"route":"input:self-lived","families":["slow"],"sequence":false}},
+    {"case_id":"V203-C131","surface":"I delayed my answer, reviewed it once, and then stopped revisiting it.","domain":"relationship","expected":{"route":"input:self-lived","families":["slow"],"sequence":false}},
+    {"case_id":"V203-C139","surface":"I delayed the response, looked once more, and left the issue alone afterward.","domain":"business","expected":{"route":"input:self-lived","families":["slow"],"sequence":false}},
+    {"case_id":"V203-C162","surface":"I came close to making the move, pulled away, and repeatedly reopened the identical analysis without any new input.","domain":"daily-admin","expected":{"route":"input:self-lived","families":["slow"],"sequence":true}},
+    {"case_id":"V203-C158","surface":"I got ready to act, withdrew, and came back to the same analysis repeatedly without additional evidence.","domain":"relationship","expected":{"route":"input:self-lived","families":["slow"],"sequence":true}},
+    {"case_id":"V203-C153","surface":"I nearly acted, stepped back, and later reopened the same reasoning several times even though the evidence had not changed.","domain":"money","expected":{"route":"input:self-lived","families":["slow"],"sequence":true}},
+    {"case_id":"V203-C179","surface":"I selected a reasonable step myself, carried it out, and did not restart the review.","domain":"relationship","expected":{"route":"input:self-lived","families":[],"sequence":false}}
+  ]
+}
