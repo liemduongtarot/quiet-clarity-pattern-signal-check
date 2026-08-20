@@ -1,0 +1,20 @@
+{
+  "candidate": "V8.3.211",
+  "phase": "sealed-validation-r3",
+  "target_validated_head": "ec0646c126ffd60358013663c148f4ffd7080ca2",
+  "carrier_commit": "28b739914d6a16836547437452d11206df6978b2",
+  "run_id": 32411944931,
+  "run_attempt": 1,
+  "status": "completed",
+  "conclusion": "failure",
+  "batch_a_executed": false,
+  "batch_a_passed": null,
+  "batch_a_failed": null,
+  "batch_b_executed": false,
+  "batch_b_passed": null,
+  "batch_b_failed": null,
+  "sealed_trigger_repeated": false,
+  "v210_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
