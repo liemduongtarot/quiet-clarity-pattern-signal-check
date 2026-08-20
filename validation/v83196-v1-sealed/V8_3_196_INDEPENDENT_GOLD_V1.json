@@ -1,0 +1,173 @@
+{
+  "authority": "V8.3.196 V1 INDEPENDENT GOLD",
+  "groups": [
+    {
+      "group": "clarification",
+      "case_ids": [
+        "V196-S001",
+        "V196-S002",
+        "V196-S003",
+        "V196-S004",
+        "V196-S005",
+        "V196-S006"
+      ],
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "group": "decision",
+      "case_ids": [
+        "V196-S007",
+        "V196-S008",
+        "V196-S009",
+        "V196-S010",
+        "V196-S011",
+        "V196-S012"
+      ],
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "group": "hypothetical",
+      "case_ids": [
+        "V196-S013",
+        "V196-S014",
+        "V196-S015",
+        "V196-S016",
+        "V196-S017",
+        "V196-S018"
+      ],
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "group": "thirdparty",
+      "case_ids": [
+        "V196-S019",
+        "V196-S020",
+        "V196-S021",
+        "V196-S022",
+        "V196-S023",
+        "V196-S024"
+      ],
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "group": "prediction",
+      "case_ids": [
+        "V196-S025",
+        "V196-S026",
+        "V196-S027",
+        "V196-S028",
+        "V196-S029",
+        "V196-S030"
+      ],
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "group": "freeze",
+      "case_ids": [
+        "V196-S031",
+        "V196-S032",
+        "V196-S033",
+        "V196-S034",
+        "V196-S035",
+        "V196-S036"
+      ],
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "group": "ignore",
+      "case_ids": [
+        "V196-S037",
+        "V196-S038",
+        "V196-S039",
+        "V196-S040",
+        "V196-S041",
+        "V196-S042"
+      ],
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "group": "slow",
+      "case_ids": [
+        "V196-S043",
+        "V196-S044",
+        "V196-S045",
+        "V196-S046",
+        "V196-S047",
+        "V196-S048"
+      ],
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "group": "sequence",
+      "case_ids": [
+        "V196-S049",
+        "V196-S050",
+        "V196-S051",
+        "V196-S052",
+        "V196-S053",
+        "V196-S054"
+      ],
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "group": "neutral",
+      "case_ids": [
+        "V196-S055",
+        "V196-S056",
+        "V196-S057",
+        "V196-S058",
+        "V196-S059",
+        "V196-S060"
+      ],
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
