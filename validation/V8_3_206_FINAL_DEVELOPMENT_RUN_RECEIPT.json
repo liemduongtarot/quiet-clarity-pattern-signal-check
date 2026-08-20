@@ -1,0 +1,18 @@
+{
+  "candidate": "V8.3.206",
+  "phase": "final-development",
+  "run_id": 32339633082,
+  "run_attempt": 1,
+  "head_sha": "7a10e36b70d801d9f087ce52d54b27de30a82331",
+  "status": "completed",
+  "conclusion": "success",
+  "regression_total": 1290,
+  "regression_passed": 1290,
+  "browser_total": 1290,
+  "browser_passed": true,
+  "semantic_authority": "QCSemanticCoreV75R",
+  "v205_sealed_rerun": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
