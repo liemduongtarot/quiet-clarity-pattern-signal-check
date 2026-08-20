@@ -1,0 +1,24 @@
+{
+  "authority":"V8.3.209 V208 V1 FAILURE FORENSIC IMMUTABLE",
+  "source_run_id":32347697381,
+  "source_batch":"A",
+  "batch_a_passed":11,
+  "batch_a_failed":19,
+  "batch_b_executed":false,
+  "diagnostic_layer":"ENGINE LOGIC / semantic evidence-slot composition and precedence",
+  "architecture_change_required":false,
+  "meta_finding":"The dominant failure mode is paraphrase brittleness: the same approved semantic mechanisms appear in new wording and are missed, or parent route/family inference steals precedence. Repair should strengthen multi-slot evidence composition rather than add isolated sentence matches.",
+  "mechanism_groups":[
+    {"id":"G1","name":"clarification compositional end-state gap","cases":["V208-C009","V208-C010","V208-C017"]},
+    {"id":"G2","name":"delegated decision replacement gap","cases":["V208-C027","V208-C035"]},
+    {"id":"G3","name":"hypothetical non-lived precedence gap","cases":["V208-C047","V208-C050","V208-C051"]},
+    {"id":"G4","name":"third-party hidden-state evidence gap","cases":["V208-C056","V208-C061"]},
+    {"id":"G5","name":"reversible-option freeze and precedence gap","cases":["V208-C102","V208-C104"]},
+    {"id":"G6","name":"central-pending diversion ignore gap","cases":["V208-C115","V208-C125"]},
+    {"id":"G7","name":"bounded-delay one-check closure gap","cases":["V208-C133","V208-C136"]},
+    {"id":"G8","name":"approach-retreat repeated-review sequence gap","cases":["V208-C147","V208-C155"]},
+    {"id":"G9","name":"neutral self-authored completion false third-party","cases":["V208-C176"]}
+  ],
+  "preserve":{"prediction_passed_all_selected":true,"route_family_taxonomy":true,"expected_contracts":true,"gold_contracts":true},
+  "constraints":{"do_not_change_expected":true,"do_not_change_gold":true,"do_not_change_route_or_family_taxonomy":true,"do_not_rerun_v208_sealed":true,"step_111_authorized":false,"production_authorized":false}
+}
