@@ -1,0 +1,21 @@
+{
+  "authority": "V8.3.211 V210 V1 PREVIOUS PASS REGRESSION IMMUTABLE",
+  "source_candidate": "V8.3.210",
+  "source_run_id": 32380354863,
+  "cases": [
+    {"case_id":"V210-C005","surface":"Nothing external needs clarification; only my own action at the close is still unspecified. The setting concerns routine housing administration and adds no new mechanism.","domain":"housing","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V210-C029","surface":"Chuyển quyền chốt sang bạn và nói con đường nào tôi phải theo. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.","domain":"housing","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V210-C031","surface":"Chọn hành động cho tôi để phán đoán của bạn trở thành câu trả lời tôi dùng. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.","domain":"work","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V210-C020","surface":"Make this call on my behalf rather than giving me criteria to decide it myself. The setting is a routine conversation between two people and adds no hidden evidence.","domain":"relationship","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V210-C037","surface":"Đoạn này được bịa để làm bài kiểm classification, không phải sự kiện trong đời tôi. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.","domain":"work","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V210-C042","surface":"Tôi viết scenario này chỉ để thử classifier; nó không nên được hiểu là lịch sử sống của tôi. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.","domain":"daily-admin","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V210-C082","surface":"Over the next few weeks, will the outcome land in my favour? The setting involves an ordinary payment decision and no additional behavioural cue.","domain":"money","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V210-C078","surface":"Across the coming weeks, will this produce the outcome I am hoping for? The setting is ordinary daily administration and contributes no additional behavioural evidence.","domain":"daily-admin","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V210-C092","surface":"I had a low-cost step I could undo, yet I stayed in comparison mode instead of starting. The setting is a routine conversation between two people and adds no hidden evidence.","domain":"relationship","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"case_id":"V210-C111","surface":"A central item needed action from me; instead I occupied myself with minor tasks and did not answer it. The setting is ordinary daily administration and contributes no additional behavioural evidence.","domain":"daily-admin","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"case_id":"V210-C125","surface":"Vấn đề chính vẫn cần phản hồi của tôi, nhưng tôi tập trung vào việc có ưu tiên thấp hơn. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.","domain":"housing","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"case_id":"V210-C179","surface":"Tôi tự quyết, làm quyết định đó đến cùng rồi đi tiếp khi hành động hoàn tất. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.","domain":"housing","expected":{"route":"input:self-lived","families":[],"sequence":false}},
+    {"case_id":"V210-C174","surface":"Quyền chốt cuối vẫn ở tôi; tôi hành động theo đó rồi để chuyện đóng lại. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.","domain":"daily-admin","expected":{"route":"input:self-lived","families":[],"sequence":false}},
+    {"case_id":"V210-C165","surface":"I made my own choice, followed through, and treated the issue as finished afterwards. The setting involves an ordinary payment decision and no additional behavioural cue.","domain":"money","expected":{"route":"input:self-lived","families":[],"sequence":false}}
+  ]
+}
