@@ -1,0 +1,67 @@
+name: V8.3.211 V89 Pair Gate
+on:
+  push:
+    branches: [v83211-v1-validation]
+permissions:
+  contents: write
+jobs:
+  pair:
+    if: github.event.head_commit.message == 'Run V8.3.211 V89 pair gate'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize immutable regression authority
+        run: |
+          python - <<'PY'
+          import pathlib,base64,gzip,zipfile
+          names=['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION','V8_3_168_V167_V1_FAILURE_REGRESSION','V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION']
+          for n in names:
+            p=pathlib.Path('validation/'+n+'.json.gz.b64');pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          src=pathlib.Path('validation/run-v83196-full-regression-sweep-v2.cjs').read_text()
+          chain="'psc-v83196-v195-v1-hypothetical-preservation-repair.js','psc-v83197-v196-sealed-a-bounded-repair.js','psc-v83198-v197-sealed-a-bounded-repair.js','psc-v83199-v198-sealed-a-bounded-repair.js','psc-v83200-v199-sealed-a-bounded-repair.js','psc-v83201-v200-sealed-a-bounded-repair.js','psc-v83201-v200-v1-preservation-precedence-repair.js','psc-v83202-v201-sealed-a-bounded-repair.js','psc-v83203-v202-sealed-a-bounded-repair.js','psc-v83204-v203-sealed-a-bounded-repair.js','psc-v83205-v204-sealed-a-bounded-repair.js','psc-v83206-v205-compositional-generalization.js','psc-v83206-v205-v1-preservation-repair.js','psc-v83207-v206-mechanism-cue-repair.js','psc-v83207-v206-v1-preservation-repair.js','psc-v83208-v207-mechanism-cue-repair.js','psc-v83208-v207-v1-preservation-repair.js','psc-v83209-v208-evidence-slot-composition.js','psc-v83209-v208-v1-preservation-repair.js','qc-evidence-extractor-v1-review-candidate.js','qc-evidence-extractor-v1r-review-candidate.js','qc-evidence-extractor-v1r2-review-candidate.js','psc-v83209-semantic-rule-table-v3-review-candidate.js','psc-v83209-v208-semantic-rule-table-promotion.js','qc-evidence-extractor-v1r3-v210-concept-coverage.js','psc-v83210-v209-semantic-rule-table-v4.js','qc-evidence-extractor-v1r4-v210-relational-preservation.js','psc-v83210-v209-v1-relational-preservation.js','qc-evidence-extractor-v2-v210-relational-semantics.js','psc-v83210-v210-semantic-rule-table-v5.js','qc-evidence-extractor-v2r-v210-multilingual-aliases.js','psc-v83210-v210-semantic-rule-table-v6.js','qc-evidence-extractor-v2s-v210-context-sanitizer.js','psc-v83210-v210-semantic-rule-table-v7.js','qc-evidence-extractor-v2t-v210-contextual-recall.js','psc-v83210-v210-semantic-rule-table-v8-parent-containment.js','qc-evidence-extractor-v3-v211-context-scoped.js','psc-v83211-v210-context-scoped-rule-table.js','qc-evidence-extractor-v3r-v211-preservation.js','psc-v83211-v210-preservation-containment.js','qc-evidence-extractor-v4-v211-relational-recall.js','psc-v83211-v210-v89-relational-recall.js'"
+          src=src.replace("'psc-v83196-v195-v1-hypothetical-preservation-repair.js'];",chain+"];")
+          src=src.replace('QCSemanticCoreV65R','QCSemanticCoreV89').replace('V8.3.196 V65R full immutable regression sweep V2','V8.3.211 V89 pair regression').replace('V8_3_196_V2_FULL_REGRESSION_SWEEP_RESULTS.json','V8_3_211_V89_REGRESSION_RESULTS.json')
+          pathlib.Path('validation/run-v83211-v89-regression.cjs').write_text(src)
+          PY
+          mkdir -p validation/generalization_refs
+          git fetch --depth=1 origin refs/heads/v83210-v1-sealed-validation:refs/remotes/origin/v83210-v1-sealed-validation
+          git show origin/v83210-v1-sealed-validation:validation/v83210-v1-sealed/V8_3_210_SEALED_FIXTURE_V1.json > validation/generalization_refs/V8_3_210_SEALED_FIXTURE_REFERENCE.json
+      - name: Run 1440 immutable regression
+        id: regression
+        continue-on-error: true
+        run: node validation/run-v83211-v89-regression.cjs
+      - name: Run frozen 600-case generalization
+        id: generalization
+        continue-on-error: true
+        run: |
+          python validation/v83211-generalization-600-generator-v1r.py
+          node validation/run-v83211-generalization-600-v2.cjs
+      - name: Record pair receipt
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,json,os
+          rp=pathlib.Path('V8_3_211_V89_REGRESSION_RESULTS.json');gp=pathlib.Path('V8_3_211_DEVELOPMENT_GENERALIZATION_600_RESULTS_V2.json')
+          r=json.loads(rp.read_text()) if rp.exists() else None;g=json.loads(gp.read_text()) if gp.exists() else None
+          ok=bool(r and r.get('failed')==0 and g and g.get('pass'))
+          pathlib.Path('validation/V8_3_211_V89_PAIR_RUN_RECEIPT.json').write_text(json.dumps({'candidate':'V8.3.211','phase':'v89-pair','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'status':'completed','conclusion':'success' if ok else 'failure','regression_total':r.get('total') if r else None,'regression_passed':r.get('passed') if r else None,'regression_failed':r.get('failed') if r else None,'generalization_total':g.get('total') if g else None,'generalization_passed':g.get('classification_passed') if g else None,'generalization_extraction_passed':g.get('extraction_passed') if g else None,'independence':g.get('independence') if g else None,'semantic_authority':'QCSemanticCoreV89','v210_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/V8_3_211_V89_PAIR_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.211 V89 pair receipt'
+          git push
+      - name: Fail unless both pass
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,pathlib,sys
+          r=json.loads(pathlib.Path('V8_3_211_V89_REGRESSION_RESULTS.json').read_text()) if pathlib.Path('V8_3_211_V89_REGRESSION_RESULTS.json').exists() else None
+          g=json.loads(pathlib.Path('V8_3_211_DEVELOPMENT_GENERALIZATION_600_RESULTS_V2.json').read_text()) if pathlib.Path('V8_3_211_DEVELOPMENT_GENERALIZATION_600_RESULTS_V2.json').exists() else None
+          if not(r and r.get('failed')==0 and g and g.get('pass')):sys.exit(1)
+          PY
