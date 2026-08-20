@@ -21,7 +21,7 @@ jobs:
           python validation/v83211-generalization-600-generator-v1r.py
           cp validation/V8_3_211_DEVELOPMENT_GENERALIZATION_600_V1.json validation/preseal_refs/V8_3_211_DEVELOPMENT_GENERALIZATION_600_REFERENCE.json
       - name: Generate and audit fresh V211 bank
-        run: python validation/v83211-preseal-generator.py
+        run: python validation/v83211-preseal-generator-v1r.py
       - name: Verify preseal authority
         run: |
           python - <<'PY'
