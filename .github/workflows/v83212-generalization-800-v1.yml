@@ -23,7 +23,7 @@ jobs:
             p=pathlib.Path('validation/'+n+'.json.gz.b64');pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
           with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
           PY
-          for v in 166 167 168 169 170 171 172 173 174; do prev=$((v-1)); src="validation/psc-v831${v}-v${prev}-v1-sealed-a-bounded-repair.js"; dst="validation/psc-v831${v}-v${prev}-v1-bounded-repair.js"; if [ -f "$src" ]; then cp "$src" "$dst"; fi; done
+          for v in 166 167 168 169 170 171 172 173 174; do prev=$((v-1)); src="validation/psc-v83${v}-v${prev}-v1-sealed-a-bounded-repair.js"; dst="validation/psc-v83${v}-v${prev}-v1-bounded-repair.js"; test -f "$src"; cp "$src" "$dst"; done
       - name: Generate fresh 800-case challenge
         run: python validation/v83212-generalization-800-generator.py
       - name: Materialize prior-only contamination references
