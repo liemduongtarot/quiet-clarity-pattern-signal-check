@@ -1,0 +1,18 @@
+{
+  "candidate": "V8.3.209",
+  "phase": "rc3-integrated-validation",
+  "run_id": 32353713099,
+  "run_attempt": 1,
+  "head_sha": "52e36a232bcc52de7a18169830f9090cde8d7b73",
+  "status": "completed",
+  "conclusion": "failure",
+  "regression_total": 1380,
+  "regression_passed": 1380,
+  "browser_total": null,
+  "browser_passed": null,
+  "semantic_authority": "QCSemanticCoreV79RC3",
+  "sealed_validation_executed": false,
+  "v208_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
