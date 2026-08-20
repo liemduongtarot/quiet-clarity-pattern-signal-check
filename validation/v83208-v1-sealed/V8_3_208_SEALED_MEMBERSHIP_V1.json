@@ -1,0 +1,366 @@
+{
+  "authority": "V8.3.208 V1 SEALED MEMBERSHIP",
+  "candidate": "V8.3.208",
+  "members": [
+    {
+      "batch": "A",
+      "case_id": "V208-C010",
+      "category": "clarification",
+      "domain": "business"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C017",
+      "category": "clarification",
+      "domain": "housing"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C009",
+      "category": "clarification",
+      "domain": "money"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C026",
+      "category": "decision",
+      "domain": "relationship"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C027",
+      "category": "decision",
+      "domain": "money"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C035",
+      "category": "decision",
+      "domain": "housing"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C050",
+      "category": "hypothetical",
+      "domain": "relationship"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C047",
+      "category": "hypothetical",
+      "domain": "housing"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C051",
+      "category": "hypothetical",
+      "domain": "money"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C058",
+      "category": "third",
+      "domain": "business"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C061",
+      "category": "third",
+      "domain": "work"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C056",
+      "category": "third",
+      "domain": "relationship"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C086",
+      "category": "prediction",
+      "domain": "relationship"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C089",
+      "category": "prediction",
+      "domain": "housing"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C084",
+      "category": "prediction",
+      "domain": "daily-admin"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C104",
+      "category": "freeze",
+      "domain": "relationship"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C105",
+      "category": "freeze",
+      "domain": "money"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C102",
+      "category": "freeze",
+      "domain": "daily-admin"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C114",
+      "category": "ignore",
+      "domain": "daily-admin"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C125",
+      "category": "ignore",
+      "domain": "housing"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C115",
+      "category": "ignore",
+      "domain": "work"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C133",
+      "category": "slow",
+      "domain": "work"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C138",
+      "category": "slow",
+      "domain": "daily-admin"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C136",
+      "category": "slow",
+      "domain": "business"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C155",
+      "category": "sequence",
+      "domain": "housing"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C148",
+      "category": "sequence",
+      "domain": "business"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C147",
+      "category": "sequence",
+      "domain": "money"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C174",
+      "category": "neutral",
+      "domain": "daily-admin"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C176",
+      "category": "neutral",
+      "domain": "relationship"
+    },
+    {
+      "batch": "A",
+      "case_id": "V208-C166",
+      "category": "neutral",
+      "domain": "business"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C006",
+      "category": "clarification",
+      "domain": "daily-admin"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C014",
+      "category": "clarification",
+      "domain": "relationship"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C013",
+      "category": "clarification",
+      "domain": "work"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C024",
+      "category": "decision",
+      "domain": "daily-admin"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C028",
+      "category": "decision",
+      "domain": "business"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C025",
+      "category": "decision",
+      "domain": "work"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C042",
+      "category": "hypothetical",
+      "domain": "daily-admin"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C052",
+      "category": "hypothetical",
+      "domain": "business"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C037",
+      "category": "hypothetical",
+      "domain": "work"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C072",
+      "category": "third",
+      "domain": "daily-admin"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C069",
+      "category": "third",
+      "domain": "money"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C065",
+      "category": "third",
+      "domain": "housing"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C088",
+      "category": "prediction",
+      "domain": "business"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C081",
+      "category": "prediction",
+      "domain": "money"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C073",
+      "category": "prediction",
+      "domain": "work"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C101",
+      "category": "freeze",
+      "domain": "housing"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C091",
+      "category": "freeze",
+      "domain": "work"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C100",
+      "category": "freeze",
+      "domain": "business"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C110",
+      "category": "ignore",
+      "domain": "relationship"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C111",
+      "category": "ignore",
+      "domain": "money"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C124",
+      "category": "ignore",
+      "domain": "business"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C140",
+      "category": "slow",
+      "domain": "relationship"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C135",
+      "category": "slow",
+      "domain": "money"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C137",
+      "category": "slow",
+      "domain": "housing"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C150",
+      "category": "sequence",
+      "domain": "daily-admin"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C157",
+      "category": "sequence",
+      "domain": "work"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C158",
+      "category": "sequence",
+      "domain": "relationship"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C165",
+      "category": "neutral",
+      "domain": "money"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C167",
+      "category": "neutral",
+      "domain": "housing"
+    },
+    {
+      "batch": "B",
+      "case_id": "V208-C175",
+      "category": "neutral",
+      "domain": "work"
+    }
+  ]
+}
