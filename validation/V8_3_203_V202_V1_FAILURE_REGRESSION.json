@@ -1,0 +1,163 @@
+{
+  "authority": "V8.3.203 V202 V1 FAILURE REGRESSION",
+  "source_sealed_run_id": 32328277631,
+  "source_candidate": "V8.3.202",
+  "source_batch": "A",
+  "frozen_first_run": true,
+  "cases": [
+    {
+      "case_id": "V202-S001",
+      "surface": "The chronology is settled, but the specific final response that came from me remains unassigned.",
+      "domain": "work",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V202-S003",
+      "surface": "The sequence is complete, but nobody has identified which final move was actually mine.",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V202-S005",
+      "surface": "The account is otherwise complete; what I myself did at the end has not been established.",
+      "domain": "business",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V202-S011",
+      "surface": "Take over the decision and tell me exactly which option becomes my answer.",
+      "domain": "work",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V202-S013",
+      "surface": "This constructed example is only for classification testing and never happened to me.",
+      "domain": "business",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V202-S019",
+      "surface": "What unspoken judgement is my colleague holding about me beyond anything visible in their behaviour?",
+      "domain": "work",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V202-S025",
+      "surface": "Will this ultimately turn out well for me before month end?",
+      "domain": "money",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V202-S031",
+      "surface": "A reversible starter experiment is available, but I keep widening the option set instead of beginning.",
+      "domain": "work",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V202-S033",
+      "surface": "I have an easy-to-undo first move, but I stay uncommitted by collecting more possibilities.",
+      "domain": "housing",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V202-S035",
+      "surface": "The reversible experiment is ready; I postpone it by expanding the comparison.",
+      "domain": "money",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V202-S039",
+      "surface": "The important issue required action, yet I redirected attention to a lower-priority task.",
+      "domain": "business",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V202-S043",
+      "surface": "I answered later than usual, checked the matter once, and then left it alone.",
+      "domain": "work",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V202-S047",
+      "surface": "I took longer to answer, made one check, and left the matter closed.",
+      "domain": "money",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V202-S051",
+      "surface": "I approached the move, backed away, and came back to the same review repeatedly without fresh information.",
+      "domain": "business",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    }
+  ]
+}
