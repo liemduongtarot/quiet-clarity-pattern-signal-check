@@ -1,0 +1,74 @@
+name: V8.3.210 Development Generalization V1
+on:
+  push:
+    branches: [v83210-v1-validation]
+permissions:
+  contents: write
+jobs:
+  generalization:
+    if: github.event.head_commit.message == 'Run V8.3.210 development generalization V1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize frozen V209 sealed reference only
+        run: |
+          mkdir -p validation/generalization_refs
+          git fetch --depth=1 origin refs/heads/v83209-v1-sealed-validation:refs/remotes/origin/v83209-v1-sealed-validation
+          git show origin/v83209-v1-sealed-validation:validation/v83209-v1-sealed/V8_3_209_SEALED_FIXTURE_V1.json > validation/generalization_refs/V8_3_209_SEALED_FIXTURE_REFERENCE.json
+      - name: Generate fresh V210 development-only challenge
+        run: python validation/v83210-generalization-challenge-generator.py
+      - name: Run V82 extraction and classification audit
+        id: challenge
+        continue-on-error: true
+        run: node validation/run-v83210-development-generalization-v1.cjs
+      - name: Package generalization checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,zipfile,hashlib,json,shutil,os
+          st=pathlib.Path('V8_3_210_GENERALIZATION_V1_CHECKPOINT');st.mkdir(exist_ok=True)
+          files=[pathlib.Path('validation/V8_3_210_DEVELOPMENT_GENERALIZATION_CHALLENGE_V1.json'),pathlib.Path('V8_3_210_DEVELOPMENT_GENERALIZATION_RESULTS_V1.json'),pathlib.Path('validation/v83210-generalization-challenge-generator.py'),pathlib.Path('validation/run-v83210-development-generalization-v1.cjs'),pathlib.Path('validation/qc-evidence-extractor-v1r3-v210-concept-coverage.js'),pathlib.Path('validation/qc-evidence-extractor-v1r4-v210-relational-preservation.js'),pathlib.Path('validation/psc-v83210-v209-semantic-rule-table-v4.js'),pathlib.Path('validation/psc-v83210-v209-v1-relational-preservation.js')]
+          for p in files:
+            if p.exists():shutil.copy2(p,st/p.name)
+          rp=pathlib.Path('V8_3_210_DEVELOPMENT_GENERALIZATION_RESULTS_V1.json');r=json.loads(rp.read_text()) if rp.exists() else None
+          status={'candidate':'V8.3.210','phase':'development-generalization-v1','run_id':int(os.environ['GITHUB_RUN_ID']),'head_sha':os.environ['GITHUB_SHA'],'semantic_authority':'QCSemanticCoreV82','total':r.get('total') if r else None,'extraction_rate':r.get('extraction_rate') if r else None,'classification_rate':r.get('classification_rate') if r else None,'failure_attribution':r.get('failure_attribution') if r else None,'independence':r.get('independence') if r else None,'pass':bool(r and r.get('pass')),'sealed_validation_executed':False,'v209_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False};(st/'V8_3_210_GENERALIZATION_V1_STATUS.json').write_text(json.dumps(status,indent=2))
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+          z=pathlib.Path('PSC_V8_3_210_DEVELOPMENT_GENERALIZATION_V1_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_210_DEVELOPMENT_GENERALIZATION_V1_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_210_DEVELOPMENT_GENERALIZATION_V1_CHECKPOINT
+          path: |
+            PSC_V8_3_210_DEVELOPMENT_GENERALIZATION_V1_CHECKPOINT.zip
+            PSC_V8_3_210_DEVELOPMENT_GENERALIZATION_V1_CHECKPOINT_SHA256.txt
+      - name: Record generalization receipt
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,json,os
+          p=pathlib.Path('V8_3_210_DEVELOPMENT_GENERALIZATION_RESULTS_V1.json');r=json.loads(p.read_text()) if p.exists() else None
+          receipt={'candidate':'V8.3.210','phase':'development-generalization-v1','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'status':'completed','conclusion':'success' if r and r.get('pass') else 'failure','total':r.get('total') if r else None,'extraction_passed':r.get('extraction_passed') if r else None,'classification_passed':r.get('classification_passed') if r else None,'failure_attribution':r.get('failure_attribution') if r else None,'semantic_authority':'QCSemanticCoreV82','sealed_validation_executed':False,'v209_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_210_GENERALIZATION_V1_RUN_RECEIPT.json').write_text(json.dumps(receipt,indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/V8_3_210_GENERALIZATION_V1_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.210 generalization V1 receipt'
+          git push
+      - name: Fail unless challenge passes
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,pathlib,sys
+          p=pathlib.Path('V8_3_210_DEVELOPMENT_GENERALIZATION_RESULTS_V1.json');r=json.loads(p.read_text()) if p.exists() else None
+          if not (r and r.get('pass')):sys.exit(1)
+          PY
