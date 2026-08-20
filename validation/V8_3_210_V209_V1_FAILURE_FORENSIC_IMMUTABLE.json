@@ -1,0 +1,17 @@
+{
+  "authority": "V8.3.210 V209 V1 FAILURE FORENSIC IMMUTABLE",
+  "source_candidate": "V8.3.209",
+  "semantic_authority": "QCSemanticCoreV80",
+  "sealed_run_id": 32360990360,
+  "batch_a_passed": 15,
+  "batch_a_failed": 15,
+  "batch_b_executed": false,
+  "frozen": true,
+  "never_rerun": true,
+  "validated_development_head": "513c58f31bf7307a103c3daef7c37d74477e8899",
+  "sealed_checkpoint_inner_sha256": "6634997900134dedd79bd7ce7327986a47babade411aefd67f8b4240c812eb18",
+  "sealed_checkpoint_wrapper_sha256": "2effafcd0ebe4ce2785c83d765e7e2c9308a81a8f63702ae9b9d502610d71bdb",
+  "failure_groups": {"decision":1,"hypothetical":3,"third":2,"freeze":2,"ignore":1,"slow":3,"sequence":3,"clarification":0,"prediction":0,"neutral":0},
+  "diagnosis": "Dominant failure is evidence-extraction lexical/relational coverage plus legacy parent-fallback contamination when strong semantic evidence is not extracted. Taxonomy and expected contracts remain unchanged.",
+  "repair_scope": "Broaden concept-level evidence extraction and contain false parent fallback only when strong semantic slot combinations support an approved route/family. Preserve V80 rule-table taxonomy and precedence."
+}
