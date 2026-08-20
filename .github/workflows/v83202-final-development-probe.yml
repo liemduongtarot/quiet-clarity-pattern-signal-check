@@ -1,0 +1,31 @@
+name: V8.3.202 Final Development Probe
+on:
+  push:
+    branches: [v83202-v1-validation]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'Probe V8.3.202 final development'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record target run metadata only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,subprocess,pathlib,os
+          target='77eeb4a0bed90bf89138deb9c42147cf2ebdcc83';repo=os.environ['GITHUB_REPOSITORY']
+          raw=subprocess.check_output(['gh','api',f'repos/{repo}/actions/runs?head_sha={target}&event=push&per_page=100'],text=True)
+          runs=[r for r in json.loads(raw)['workflow_runs'] if r['head_sha']==target and r['name']=='V8.3.202 Final Development']
+          assert len(runs)==1,runs
+          r=runs[0];out={'candidate':'V8.3.202','phase':'development','target_head_sha':target,'run_id':r['id'],'status':r['status'],'conclusion':r['conclusion'],'run_attempt':r['run_attempt'],'sealed_validation_executed':False,'v201_sealed_rerun':False}
+          pathlib.Path('validation/V8_3_202_FINAL_DEVELOPMENT_RECEIPT.json').write_text(json.dumps(out,indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_202_FINAL_DEVELOPMENT_RECEIPT.json
+          git commit -m 'Record V8.3.202 final development receipt'
+          git push
