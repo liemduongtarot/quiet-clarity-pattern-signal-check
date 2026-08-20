@@ -1,0 +1,21 @@
+{
+  "authority": "V8.3.201 V200 V1 PREVIOUS PASS REGRESSION",
+  "cases": [
+    {"case_id":"V200-S007","surface":"Make the decision for me and give me the single option I should follow.","domain":"work","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V200-S011","surface":"Choose on my behalf and make your answer the decision I must use.","domain":"business","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V200-S013","surface":"This fabricated scenario is only a classification exercise, not something I actually lived.","domain":"work","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V200-S017","surface":"This made-up example is for analysis practice rather than a real episode I experienced.","domain":"business","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V200-S019","surface":"What private opinion is my supervisor holding about me without showing it in observable behaviour?","domain":"work","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V200-S025","surface":"Will the eventual result turn favourable for me before the deadline?","domain":"money","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V200-S029","surface":"Will the outcome resolve in my favour by the date we discussed?","domain":"business","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V200-S033","surface":"A low-risk trial was available, but I continued comparing more possibilities instead of trying it.","domain":"money","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"case_id":"V200-S035","surface":"I had an easy-to-reverse first step, yet I kept researching alternatives rather than act.","domain":"housing","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"case_id":"V200-S037","surface":"The main request needed my response, but I ignored it and switched to an unrelated task.","domain":"work","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"case_id":"V200-S039","surface":"I left the central issue untouched and occupied myself with something unrelated.","domain":"daily-admin","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"case_id":"V200-S051","surface":"I approached the action, withdrew, then returned to the same cycle again with nothing new added.","domain":"work","expected":{"route":"input:self-lived","families":["slow"],"sequence":true}},
+    {"case_id":"V200-S053","surface":"I checked, backed away, and came back to the identical review cycle repeatedly without fresh evidence.","domain":"business","expected":{"route":"input:self-lived","families":["slow"],"sequence":true}},
+    {"case_id":"V200-S055","surface":"I chose one proportionate action myself, completed it, and left the matter closed.","domain":"work","expected":{"route":"input:self-lived","families":[],"sequence":false}},
+    {"case_id":"V200-S057","surface":"I made one bounded decision on my own, carried it out, and did not reopen the issue.","domain":"business","expected":{"route":"input:self-lived","families":[],"sequence":false}},
+    {"case_id":"V200-S059","surface":"I selected the practical step myself, finished it, and stopped there.","domain":"money","expected":{"route":"input:self-lived","families":[],"sequence":false}}
+  ]
+}
