@@ -1,0 +1,56 @@
+name: V8.3.203 Transport Preflight
+on:
+  push:
+    branches: [v83203-v1-sealed-validation]
+permissions:
+  contents: write
+jobs:
+  transport:
+    if: github.event.head_commit.message == 'Run V8.3.203 transport preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reassemble immutable carrier and verify hashes only
+        run: |
+          python - <<'PY'
+          import json,hashlib,pathlib,base64,gzip,os
+          root=pathlib.Path('validation/v83203-v1-sealed'); cdir=root/'carrier'
+          b64=''.join((cdir/f'V8_3_203_PACK_CHUNK_{i:02d}.txt').read_text().strip() for i in range(1,5))
+          auth=json.loads((root/'V8_3_203_SEALED_AUTHORITY_V1.json').read_text())
+          assert hashlib.sha256(b64.encode()).hexdigest()==auth['carrier_b64_sha256']
+          raw=gzip.decompress(base64.b64decode(b64))
+          assert hashlib.sha256(raw).hexdigest()==auth['pack_sha256']
+          pack=json.loads(raw)
+          bank=pack['candidate_bank'];audit=pack['audit'];fixture=pack['fixture'];sel=pack['selection'];gold=pack['independent_gold'];membership=pack['membership']
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          for k,o in {'candidate_bank':bank,'audit':audit,'fixture':fixture,'selection':sel,'independent_gold':gold,'membership':membership}.items():
+            got=hashlib.sha256(canon(o)).hexdigest();assert got==auth['hashes'][k],(k,got,auth['hashes'][k])
+          assert auth['validated_development_head_sha']=='ef9aca50e281ec53c36b68f4ea0e3ab40a0fb787'
+          assert auth['semantic_authority']=='QCSemanticCoreV72'
+          assert auth['semantic_runtime_before_transport'] is False and auth['v202_sealed_rerun'] is False
+          assert bank['case_count']==180 and len(bank['cases'])==180 and audit['pass'] is True
+          assert audit['exact_duplicate_count']==0 and audit['external_cases_at_or_above_0_75']==0
+          assert audit['runtime_executed_during_bank_or_selection'] is False and audit['v201_or_v202_sealed_material_reused'] is False
+          assert len(fixture['cases'])==60 and len(sel['batch_a'])==30 and len(sel['batch_b'])==30
+          assert set(sel['batch_a']).isdisjoint(sel['batch_b']) and set(sel['batch_a'])|set(sel['batch_b'])=={c['case_id'] for c in fixture['cases']}
+          g={x['case_id']:x['expected'] for x in gold['gold']};assert len(g)==60
+          for c in fixture['cases']:assert g[c['case_id']]==c['expected']
+          assert fixture['runtime_execution_before_fixture']==0 and fixture['sealed_before_execution'] is True and fixture['v202_sealed_rerun'] is False
+          files={
+            'V8_3_203_CANDIDATE_BANK_V1.json':bank,
+            'V8_3_203_PRESEAL_DIVERSITY_AUDIT_V1.json':audit,
+            'V8_3_203_SEALED_FIXTURE_V1.json':fixture,
+            'V8_3_203_SEALED_SELECTION_V1.json':sel,
+            'V8_3_203_INDEPENDENT_GOLD_V1.json':gold,
+            'V8_3_203_SEALED_MEMBERSHIP_V1.json':membership,
+          }
+          for n,o in files.items():(root/n).write_text(json.dumps(o,ensure_ascii=False,indent=2))
+          meta={'candidate':'V8.3.203','phase':'transport-preflight','target_head_sha':os.environ['GITHUB_SHA'],'run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'status':'completed','conclusion':'success','semantic_runtime_executed':False,'v202_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          (root/'V8_3_203_TRANSPORT_METADATA_V1.json').write_text(json.dumps(meta,indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83203-v1-sealed/V8_3_203_CANDIDATE_BANK_V1.json validation/v83203-v1-sealed/V8_3_203_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83203-v1-sealed/V8_3_203_SEALED_FIXTURE_V1.json validation/v83203-v1-sealed/V8_3_203_SEALED_SELECTION_V1.json validation/v83203-v1-sealed/V8_3_203_INDEPENDENT_GOLD_V1.json validation/v83203-v1-sealed/V8_3_203_SEALED_MEMBERSHIP_V1.json validation/v83203-v1-sealed/V8_3_203_TRANSPORT_METADATA_V1.json
+          git commit -m 'Record V8.3.203 transport materialization and metadata'
+          git push
