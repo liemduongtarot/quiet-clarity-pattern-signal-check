@@ -1,0 +1,102 @@
+name: V8.3.210 V86 Final Development
+on:
+  push:
+    branches: [v83210-v1-validation]
+permissions:
+  contents: write
+jobs:
+  validate:
+    if: github.event.head_commit.message == 'Run V8.3.210 V86 final development'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize authorities and test runners
+        run: |
+          python - <<'PY'
+          import pathlib,base64,gzip,zipfile
+          names=['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION','V8_3_168_V167_V1_FAILURE_REGRESSION','V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION']
+          for n in names:
+            p=pathlib.Path('validation/'+n+'.json.gz.b64');pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          chain="'psc-v83196-v195-v1-hypothetical-preservation-repair.js','psc-v83197-v196-sealed-a-bounded-repair.js','psc-v83198-v197-sealed-a-bounded-repair.js','psc-v83199-v198-sealed-a-bounded-repair.js','psc-v83200-v199-sealed-a-bounded-repair.js','psc-v83201-v200-sealed-a-bounded-repair.js','psc-v83201-v200-v1-preservation-precedence-repair.js','psc-v83202-v201-sealed-a-bounded-repair.js','psc-v83203-v202-sealed-a-bounded-repair.js','psc-v83204-v203-sealed-a-bounded-repair.js','psc-v83205-v204-sealed-a-bounded-repair.js','psc-v83206-v205-compositional-generalization.js','psc-v83206-v205-v1-preservation-repair.js','psc-v83207-v206-mechanism-cue-repair.js','psc-v83207-v206-v1-preservation-repair.js','psc-v83208-v207-mechanism-cue-repair.js','psc-v83208-v207-v1-preservation-repair.js','psc-v83209-v208-evidence-slot-composition.js','psc-v83209-v208-v1-preservation-repair.js','qc-evidence-extractor-v1-review-candidate.js','qc-evidence-extractor-v1r-review-candidate.js','qc-evidence-extractor-v1r2-review-candidate.js','psc-v83209-semantic-rule-table-v3-review-candidate.js','psc-v83209-v208-semantic-rule-table-promotion.js','qc-evidence-extractor-v1r3-v210-concept-coverage.js','psc-v83210-v209-semantic-rule-table-v4.js','qc-evidence-extractor-v1r4-v210-relational-preservation.js','psc-v83210-v209-v1-relational-preservation.js','qc-evidence-extractor-v2-v210-relational-semantics.js','psc-v83210-v210-semantic-rule-table-v5.js','qc-evidence-extractor-v2r-v210-multilingual-aliases.js','psc-v83210-v210-semantic-rule-table-v6.js','qc-evidence-extractor-v2s-v210-context-sanitizer.js','psc-v83210-v210-semantic-rule-table-v7.js','qc-evidence-extractor-v2t-v210-contextual-recall.js','psc-v83210-v210-semantic-rule-table-v8-parent-containment.js'"
+          r=pathlib.Path('validation/run-v83196-full-regression-sweep-v2.cjs').read_text()
+          r=r.replace("'psc-v83196-v195-v1-hypothetical-preservation-repair.js'];",chain+"];")
+          r=r.replace('QCSemanticCoreV65R','QCSemanticCoreV86').replace('V8.3.196 V65R full immutable regression sweep V2','V8.3.210 V86 final regression').replace('V8_3_196_V2_FULL_REGRESSION_SWEEP_RESULTS.json','V8_3_210_V86_FINAL_REGRESSION_RESULTS.json')
+          pathlib.Path('validation/run-v83210-v86-final-regression.cjs').write_text(r)
+          b=pathlib.Path('validation/run-v83196-browser-e2e.cjs').read_text()
+          b=b.replace("'psc-v83196-v195-v1-hypothetical-preservation-repair.js'];",chain+"];")
+          b=b.replace('QCSemanticCoreV65R','QCSemanticCoreV86').replace('V8_3_196_BROWSER_E2E_RESULTS.json','V8_3_210_V86_BROWSER_E2E_RESULTS.json').replace('built_v65_v65r_identity','built_v86_identity')
+          b=b.replace("if(!pf.version?.startsWith('V8.3.196'))throw Error(JSON.stringify(pf));","if(pf.version!=='V8.3.210-V86-PARENT-ROUTE-CONTAINMENT')throw Error(JSON.stringify(pf));")
+          pathlib.Path('validation/run-v83210-v86-browser-e2e.cjs').write_text(b)
+          PY
+          mkdir -p validation/generalization_refs
+          git fetch --depth=1 origin refs/heads/v83209-v1-sealed-validation:refs/remotes/origin/v83209-v1-sealed-validation
+          git show origin/v83209-v1-sealed-validation:validation/v83209-v1-sealed/V8_3_209_SEALED_FIXTURE_V1.json > validation/generalization_refs/V8_3_209_SEALED_FIXTURE_REFERENCE.json
+      - name: Run final 1410 regression
+        run: node validation/run-v83210-v86-final-regression.cjs
+      - name: Run frozen 400 generalization
+        run: |
+          python validation/v83210-generalization-challenge-generator.py
+          node validation/run-v83210-development-generalization-v5.cjs
+      - name: Fresh build and artifact validation
+        run: |
+          for f in psc-v83209-v208-evidence-slot-composition.js psc-v83209-v208-v1-preservation-repair.js qc-evidence-extractor-v1-review-candidate.js qc-evidence-extractor-v1r-review-candidate.js qc-evidence-extractor-v1r2-review-candidate.js psc-v83209-semantic-rule-table-v3-review-candidate.js psc-v83209-v208-semantic-rule-table-promotion.js qc-evidence-extractor-v1r3-v210-concept-coverage.js psc-v83210-v209-semantic-rule-table-v4.js qc-evidence-extractor-v1r4-v210-relational-preservation.js psc-v83210-v209-v1-relational-preservation.js qc-evidence-extractor-v2-v210-relational-semantics.js psc-v83210-v210-semantic-rule-table-v5.js qc-evidence-extractor-v2r-v210-multilingual-aliases.js psc-v83210-v210-semantic-rule-table-v6.js qc-evidence-extractor-v2s-v210-context-sanitizer.js psc-v83210-v210-semantic-rule-table-v7.js qc-evidence-extractor-v2t-v210-contextual-recall.js psc-v83210-v210-semantic-rule-table-v8-parent-containment.js; do cp validation/$f PSC_V8_3_138_DEV/public/$f; done
+          cd PSC_V8_3_138_DEV
+          chmod +x scripts/*.sh
+          npm run install:ci
+          npm run build
+          npm run validate:artifact
+          test "$(find dist -type f -name '*.map' | wc -l)" -eq 0
+          for f in psc-v83209-v208-evidence-slot-composition.js psc-v83209-v208-v1-preservation-repair.js qc-evidence-extractor-v1-review-candidate.js qc-evidence-extractor-v1r-review-candidate.js qc-evidence-extractor-v1r2-review-candidate.js psc-v83209-semantic-rule-table-v3-review-candidate.js psc-v83209-v208-semantic-rule-table-promotion.js qc-evidence-extractor-v1r3-v210-concept-coverage.js psc-v83210-v209-semantic-rule-table-v4.js qc-evidence-extractor-v1r4-v210-relational-preservation.js psc-v83210-v209-v1-relational-preservation.js qc-evidence-extractor-v2-v210-relational-semantics.js psc-v83210-v210-semantic-rule-table-v5.js qc-evidence-extractor-v2r-v210-multilingual-aliases.js psc-v83210-v210-semantic-rule-table-v6.js qc-evidence-extractor-v2s-v210-context-sanitizer.js psc-v83210-v210-semantic-rule-table-v7.js qc-evidence-extractor-v2t-v210-contextual-recall.js psc-v83210-v210-semantic-rule-table-v8-parent-containment.js; do test -f dist/client/$f; cmp -s public/$f dist/client/$f; done
+      - name: Browser E2E all 1410 immutable cases
+        run: |
+          mkdir -p .e2e; printf '{"private":true}\n' > .e2e/package.json
+          npm install --prefix .e2e --no-package-lock playwright@1.55.0
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)";test -n "$CHROME";export CHROME
+          node validation/run-v83210-v86-browser-e2e.cjs
+      - name: Package final development checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,zipfile,hashlib,json,shutil,os
+          st=pathlib.Path('V8_3_210_V86_FINAL_DEVELOPMENT_CHECKPOINT');st.mkdir(exist_ok=True)
+          files=[pathlib.Path('V8_3_210_V86_FINAL_REGRESSION_RESULTS.json'),pathlib.Path('V8_3_210_DEVELOPMENT_GENERALIZATION_RESULTS_V5.json'),pathlib.Path('V8_3_210_V86_BROWSER_E2E_RESULTS.json'),pathlib.Path('validation/qc-evidence-extractor-v2t-v210-contextual-recall.js'),pathlib.Path('validation/psc-v83210-v210-semantic-rule-table-v8-parent-containment.js')]
+          for p in files:
+            if p.exists():shutil.copy2(p,st/p.name)
+          rp=pathlib.Path('V8_3_210_V86_FINAL_REGRESSION_RESULTS.json');gp=pathlib.Path('V8_3_210_DEVELOPMENT_GENERALIZATION_RESULTS_V5.json');bp=pathlib.Path('V8_3_210_V86_BROWSER_E2E_RESULTS.json')
+          r=json.loads(rp.read_text()) if rp.exists() else None;g=json.loads(gp.read_text()) if gp.exists() else None;b=json.loads(bp.read_text()) if bp.exists() else None
+          ok=bool(r and r.get('failed')==0 and g and g.get('pass') and b and b.get('passed') is True)
+          status={'candidate':'V8.3.210','phase':'v86-final-development','run_id':int(os.environ['GITHUB_RUN_ID']),'head_sha':os.environ['GITHUB_SHA'],'semantic_authority':'QCSemanticCoreV86','regression_total':r.get('total') if r else None,'regression_passed':r.get('passed') if r else None,'generalization_total':g.get('total') if g else None,'generalization_passed':g.get('classification_passed') if g else None,'browser_total':b.get('total') if b else None,'browser_passed':b.get('passed') if b else None,'development':'PASS' if ok else 'FAIL_OR_INCOMPLETE','sealed_validation_executed':False,'v209_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False};(st/'V8_3_210_V86_DEVELOPMENT_STATUS.json').write_text(json.dumps(status,indent=2))
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+          z=pathlib.Path('PSC_V8_3_210_V86_DEVELOPMENT_VALIDATION_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_210_V86_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_210_V86_DEVELOPMENT_VALIDATION_CHECKPOINT
+          path: |
+            PSC_V8_3_210_V86_DEVELOPMENT_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_210_V86_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt
+      - name: Record final development receipt
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,json,os
+          rp=pathlib.Path('V8_3_210_V86_FINAL_REGRESSION_RESULTS.json');gp=pathlib.Path('V8_3_210_DEVELOPMENT_GENERALIZATION_RESULTS_V5.json');bp=pathlib.Path('V8_3_210_V86_BROWSER_E2E_RESULTS.json')
+          r=json.loads(rp.read_text()) if rp.exists() else None;g=json.loads(gp.read_text()) if gp.exists() else None;b=json.loads(bp.read_text()) if bp.exists() else None
+          ok=bool(r and r.get('failed')==0 and g and g.get('pass') and b and b.get('passed') is True)
+          pathlib.Path('validation/V8_3_210_V86_FINAL_DEVELOPMENT_RUN_RECEIPT.json').write_text(json.dumps({'candidate':'V8.3.210','phase':'v86-final-development','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'status':'completed','conclusion':'success' if ok else 'failure','regression_total':r.get('total') if r else None,'regression_passed':r.get('passed') if r else None,'generalization_total':g.get('total') if g else None,'generalization_passed':g.get('classification_passed') if g else None,'browser_total':b.get('total') if b else None,'browser_passed':b.get('passed') if b else None,'semantic_authority':'QCSemanticCoreV86','sealed_validation_executed':False,'v209_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/V8_3_210_V86_FINAL_DEVELOPMENT_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.210 V86 final development receipt'
+          git push
