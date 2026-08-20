@@ -1,0 +1,49 @@
+name: V8.3.209 Transport Only Preflight
+on:
+  push:
+    branches: [v83209-v1-sealed-validation]
+permissions:
+  contents: write
+jobs:
+  transport:
+    if: github.event.head_commit.message == 'Run V8.3.209 transport-only preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Materialize frozen sealed files without semantic runtime
+        run: |
+          python validation/v83209-sealed-materialize.py
+      - name: Verify transport authority and write metadata
+        run: |
+          python - <<'PY'
+          import json,pathlib,os,hashlib,zipfile,shutil
+          root=pathlib.Path('validation/v83209-v1-sealed')
+          auth=json.loads((root/'V8_3_209_SEALED_AUTHORITY_V1.json').read_text())
+          required=['V8_3_209_PRESEAL_CANDIDATE_BANK_V1.json','V8_3_209_SEALED_SELECTION_V1.json','V8_3_209_SEALED_FIXTURE_V1.json','V8_3_209_INDEPENDENT_GOLD_V1.json','V8_3_209_SEALED_MEMBERSHIP_V1.json','V8_3_209_PRESEAL_DIVERSITY_AUDIT_V1.json']
+          for n in required: assert (root/n).exists(),n
+          metadata={'candidate':'V8.3.209','phase':'transport-only-preflight','run_id':int(os.environ['GITHUB_RUN_ID']),'head_sha':os.environ['GITHUB_SHA'],'conclusion':'success','semantic_runtime_executed':False,'semantic_authority_loaded':False,'fixture_materialized':True,'hashes_verified':True,'semantic_authority':'QCSemanticCoreV80','validated_development_head_sha':auth['validated_development_head_sha'],'v208_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          (root/'V8_3_209_TRANSPORT_METADATA_V1.json').write_text(json.dumps(metadata,indent=2)+'\n')
+          st=pathlib.Path('V8_3_209_TRANSPORT_CHECKPOINT');st.mkdir(exist_ok=True)
+          for n in required+['V8_3_209_SEALED_AUTHORITY_V1.json','V8_3_209_TRANSPORT_METADATA_V1.json']:
+              shutil.copy2(root/n,st/n)
+          def sha(p): return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+          z=pathlib.Path('PSC_V8_3_209_TRANSPORT_ONLY_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+              for p in sorted(st.iterdir()): q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_209_TRANSPORT_ONLY_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_209_TRANSPORT_ONLY_CHECKPOINT
+          path: |
+            PSC_V8_3_209_TRANSPORT_ONLY_CHECKPOINT.zip
+            PSC_V8_3_209_TRANSPORT_ONLY_CHECKPOINT_SHA256.txt
+      - name: Record materialized transport state
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/v83209-v1-sealed/V8_3_209_PRESEAL_CANDIDATE_BANK_V1.json validation/v83209-v1-sealed/V8_3_209_SEALED_SELECTION_V1.json validation/v83209-v1-sealed/V8_3_209_SEALED_FIXTURE_V1.json validation/v83209-v1-sealed/V8_3_209_INDEPENDENT_GOLD_V1.json validation/v83209-v1-sealed/V8_3_209_SEALED_MEMBERSHIP_V1.json validation/v83209-v1-sealed/V8_3_209_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83209-v1-sealed/V8_3_209_TRANSPORT_METADATA_V1.json
+          git commit -m 'Record V8.3.209 transport-only preflight'
+          git push
