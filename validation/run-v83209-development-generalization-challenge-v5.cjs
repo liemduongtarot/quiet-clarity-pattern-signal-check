@@ -1,0 +1,10 @@
+const fs=require('fs'),path=require('path');
+let src=fs.readFileSync('validation/run-v83209-development-generalization-challenge-v4.cjs','utf8');
+const anchor="vm.runInContext(fs.readFileSync('validation/psc-v83209-semantic-rule-table-v3-review-candidate.js','utf8'),s,{filename:'psc-v83209-semantic-rule-table-v3-review-candidate.js'});";
+const inject=anchor+"\nvm.runInContext(fs.readFileSync('validation/psc-v83209-v208-semantic-rule-table-promotion.js','utf8'),s,{filename:'psc-v83209-v208-semantic-rule-table-promotion.js'});";
+if(!src.includes(anchor))throw new Error('V4 runner RC3 anchor missing');
+src=src.replace(anchor,inject);
+src=src.replaceAll('QCSemanticCoreV79RC3','QCSemanticCoreV80');
+src=src.replaceAll('V8.3.209 DEVELOPMENT-ONLY GENERALIZATION AUDIT V4 RC3','V8.3.209 DEVELOPMENT-ONLY GENERALIZATION AUDIT V5 V80');
+src=src.replaceAll('V8_3_209_DEVELOPMENT_GENERALIZATION_RESULTS_V4.json','V8_3_209_DEVELOPMENT_GENERALIZATION_RESULTS_V5.json');
+const mod={exports:{}};const fn=new Function('require','module','exports','__filename','__dirname',src);fn(require,mod,mod.exports,path.resolve('generated-v83209-generalization-v5.cjs'),process.cwd());
