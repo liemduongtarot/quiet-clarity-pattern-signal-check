@@ -1,0 +1,22 @@
+name: V8.3.208 Transport Preflight
+on:
+  push:
+    branches: [v83208-v1-sealed-validation]
+permissions:
+  contents: write
+jobs:
+  transport:
+    if: github.event.head_commit.message == 'Run V8.3.208 transport preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and materialize sealed inputs without semantic runtime
+        run: python validation/v83208-transport-preflight.py
+      - name: Record transport materialization and metadata
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/v83208-v1-sealed/V8_3_208_PRESEAL_CANDIDATE_BANK_V1.json validation/v83208-v1-sealed/V8_3_208_SEALED_FIXTURE_V1.json validation/v83208-v1-sealed/V8_3_208_INDEPENDENT_GOLD_V1.json validation/v83208-v1-sealed/V8_3_208_SEALED_MEMBERSHIP_V1.json validation/v83208-v1-sealed/V8_3_208_TRANSPORT_METADATA_V1.json
+          git commit -m 'Record V8.3.208 transport materialization and metadata'
+          git push
