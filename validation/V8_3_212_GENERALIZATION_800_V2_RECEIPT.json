@@ -1,0 +1,30 @@
+{
+  "candidate": "V8.3.212",
+  "phase": "generalization-800-v2",
+  "run_id": 32425193641,
+  "run_attempt": 1,
+  "head_sha": "56424be2247810644718b9d0bb6e8938e6c64fc2",
+  "semantic_authority": "QCSemanticCoreV91",
+  "total": 800,
+  "classification_passed": 482,
+  "evidence_passed": 335,
+  "pass": false,
+  "independence": {
+    "reference_surfaces": 1260,
+    "max_jaccard_similarity": 0.5909090909090909,
+    "cases_at_or_above_0_75": 0,
+    "max_pair": {
+      "case_id": "V212-G02-50",
+      "reference": "T\u00f4i t\u1ea1o \u0111o\u1ea1n n\u00e0y ch\u1ec9 l\u00e0m d\u1eef li\u1ec7u test; n\u00f3 kh\u00f4ng m\u00f4 t\u1ea3 tr\u1ea3i nghi\u1ec7m th\u1eadt c\u1ee7a t\u00f4i.",
+      "similarity": 0.5909090909090909
+    }
+  },
+  "failure_attribution": {
+    "pass": 482,
+    "extraction_failure": 318,
+    "classification_or_precedence_failure": 0
+  },
+  "v211_r4_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
