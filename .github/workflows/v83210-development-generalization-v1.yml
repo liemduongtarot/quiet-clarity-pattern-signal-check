@@ -14,6 +14,14 @@ jobs:
         with: {fetch-depth: 1}
       - uses: actions/setup-node@v4
         with: {node-version: '24'}
+      - name: Materialize historical application authority
+        run: |
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:
+              z.extractall('.')
+          PY
+          test -f PSC_V8_3_138_DEV/public/psc-v3.js
       - name: Materialize frozen V209 sealed reference only
         run: |
           mkdir -p validation/generalization_refs
