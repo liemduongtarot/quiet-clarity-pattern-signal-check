@@ -1,0 +1,354 @@
+{
+  "authority": "V8.3.210 V1 INDEPENDENT GOLD",
+  "candidate": "V8.3.210",
+  "expected": {
+    "V210-C007": {
+      "route": "input:clarification-required",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C002": {
+      "route": "input:clarification-required",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C009": {
+      "route": "input:clarification-required",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C016": {
+      "route": "input:clarification-required",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C005": {
+      "route": "input:clarification-required",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C006": {
+      "route": "input:clarification-required",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C022": {
+      "route": "input:decision-request",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C029": {
+      "route": "input:decision-request",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C036": {
+      "route": "input:decision-request",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C031": {
+      "route": "input:decision-request",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C020": {
+      "route": "input:decision-request",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C027": {
+      "route": "input:decision-request",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C037": {
+      "route": "input:hypothetical-or-example",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C044": {
+      "route": "input:hypothetical-or-example",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C045": {
+      "route": "input:hypothetical-or-example",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C052": {
+      "route": "input:hypothetical-or-example",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C047": {
+      "route": "input:hypothetical-or-example",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C042": {
+      "route": "input:hypothetical-or-example",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C070": {
+      "route": "input:third-party-only",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C059": {
+      "route": "input:third-party-only",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C072": {
+      "route": "input:third-party-only",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C067": {
+      "route": "input:third-party-only",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C062": {
+      "route": "input:third-party-only",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C069": {
+      "route": "input:third-party-only",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C085": {
+      "route": "input:prediction",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C080": {
+      "route": "input:prediction",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C075": {
+      "route": "input:prediction",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C082": {
+      "route": "input:prediction",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C077": {
+      "route": "input:prediction",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C078": {
+      "route": "input:prediction",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C094": {
+      "route": "input:self-lived",
+      "families": [
+        "freeze"
+      ],
+      "sequence": false
+    },
+    "V210-C095": {
+      "route": "input:self-lived",
+      "families": [
+        "freeze"
+      ],
+      "sequence": false
+    },
+    "V210-C102": {
+      "route": "input:self-lived",
+      "families": [
+        "freeze"
+      ],
+      "sequence": false
+    },
+    "V210-C103": {
+      "route": "input:self-lived",
+      "families": [
+        "freeze"
+      ],
+      "sequence": false
+    },
+    "V210-C092": {
+      "route": "input:self-lived",
+      "families": [
+        "freeze"
+      ],
+      "sequence": false
+    },
+    "V210-C093": {
+      "route": "input:self-lived",
+      "families": [
+        "freeze"
+      ],
+      "sequence": false
+    },
+    "V210-C115": {
+      "route": "input:self-lived",
+      "families": [
+        "ignore"
+      ],
+      "sequence": false
+    },
+    "V210-C116": {
+      "route": "input:self-lived",
+      "families": [
+        "ignore"
+      ],
+      "sequence": false
+    },
+    "V210-C111": {
+      "route": "input:self-lived",
+      "families": [
+        "ignore"
+      ],
+      "sequence": false
+    },
+    "V210-C112": {
+      "route": "input:self-lived",
+      "families": [
+        "ignore"
+      ],
+      "sequence": false
+    },
+    "V210-C125": {
+      "route": "input:self-lived",
+      "families": [
+        "ignore"
+      ],
+      "sequence": false
+    },
+    "V210-C126": {
+      "route": "input:self-lived",
+      "families": [
+        "ignore"
+      ],
+      "sequence": false
+    },
+    "V210-C142": {
+      "route": "input:self-lived",
+      "families": [
+        "slow"
+      ],
+      "sequence": false
+    },
+    "V210-C131": {
+      "route": "input:self-lived",
+      "families": [
+        "slow"
+      ],
+      "sequence": false
+    },
+    "V210-C144": {
+      "route": "input:self-lived",
+      "families": [
+        "slow"
+      ],
+      "sequence": false
+    },
+    "V210-C133": {
+      "route": "input:self-lived",
+      "families": [
+        "slow"
+      ],
+      "sequence": false
+    },
+    "V210-C134": {
+      "route": "input:self-lived",
+      "families": [
+        "slow"
+      ],
+      "sequence": false
+    },
+    "V210-C135": {
+      "route": "input:self-lived",
+      "families": [
+        "slow"
+      ],
+      "sequence": false
+    },
+    "V210-C157": {
+      "route": "input:self-lived",
+      "families": [
+        "slow"
+      ],
+      "sequence": true
+    },
+    "V210-C152": {
+      "route": "input:self-lived",
+      "families": [
+        "slow"
+      ],
+      "sequence": true
+    },
+    "V210-C159": {
+      "route": "input:self-lived",
+      "families": [
+        "slow"
+      ],
+      "sequence": true
+    },
+    "V210-C148": {
+      "route": "input:self-lived",
+      "families": [
+        "slow"
+      ],
+      "sequence": true
+    },
+    "V210-C161": {
+      "route": "input:self-lived",
+      "families": [
+        "slow"
+      ],
+      "sequence": true
+    },
+    "V210-C156": {
+      "route": "input:self-lived",
+      "families": [
+        "slow"
+      ],
+      "sequence": true
+    },
+    "V210-C166": {
+      "route": "input:self-lived",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C179": {
+      "route": "input:self-lived",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C174": {
+      "route": "input:self-lived",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C163": {
+      "route": "input:self-lived",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C170": {
+      "route": "input:self-lived",
+      "families": [],
+      "sequence": false
+    },
+    "V210-C165": {
+      "route": "input:self-lived",
+      "families": [],
+      "sequence": false
+    }
+  }
+}

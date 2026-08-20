@@ -1,0 +1,2312 @@
+{
+  "authority": "V8.3.210 V1 PRESEAL CANDIDATE BANK",
+  "candidate": "V8.3.210",
+  "construction": "fresh independent 180-case bank; 10 contract classes x18; 6 domains x30; 90 EN/90 VI; no runtime outputs used",
+  "runtime_output_used": false,
+  "cases": [
+    {
+      "case_id": "V210-C001",
+      "category": "clarification",
+      "domain": "work",
+      "language": "EN",
+      "surface": "The surrounding chronology is settled, yet the record never identifies the concrete thing I did when the episode closed. The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C002",
+      "category": "clarification",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "All outside facts are accounted for; the missing piece is my own observable move at the stopping point. The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C003",
+      "category": "clarification",
+      "domain": "money",
+      "language": "EN",
+      "surface": "The sequence reaches a clear ending, but what I personally did at that ending has not been supplied. The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C004",
+      "category": "clarification",
+      "domain": "business",
+      "language": "EN",
+      "surface": "The account is complete around the event while my final behaviour remains absent from the description. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C005",
+      "category": "clarification",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "Nothing external needs clarification; only my own action at the close is still unspecified. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C006",
+      "category": "clarification",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "We can reconstruct the whole episode except for the response that actually came from me at the end. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C007",
+      "category": "clarification",
+      "domain": "work",
+      "language": "EN",
+      "surface": "The context is sufficiently complete, but the last action attributable to me is omitted. The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C008",
+      "category": "clarification",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "The event has an endpoint and clear surrounding facts; my direct contribution at that endpoint is still blank. The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C009",
+      "category": "clarification",
+      "domain": "money",
+      "language": "EN",
+      "surface": "The narrative finishes cleanly yet leaves out what I myself did in the final moment. The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C010",
+      "category": "clarification",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Diễn biến bên ngoài đã đầy đủ, nhưng record vẫn không nói hành động cụ thể tôi đã làm khi chuyện khép lại. Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C011",
+      "category": "clarification",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Các dữ kiện xung quanh đã rõ; phần còn thiếu là nước đi có thể quan sát của chính tôi ở điểm dừng. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C012",
+      "category": "clarification",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Chuỗi sự việc đã tới hồi kết, nhưng việc tôi trực tiếp làm ở hồi kết đó chưa được cung cấp. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C013",
+      "category": "clarification",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Mô tả bao quát đủ tình huống nhưng bỏ trống hành vi cuối xuất phát từ tôi. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C014",
+      "category": "clarification",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Không còn thiếu thông tin bên ngoài; chỉ hành động của tôi lúc chốt vẫn chưa được nêu. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C015",
+      "category": "clarification",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Có thể dựng lại toàn bộ câu chuyện ngoại trừ phản ứng thực tế của tôi ở đoạn cuối. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C016",
+      "category": "clarification",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Bối cảnh đã đủ để hiểu, nhưng hành vi cuối có thể quy cho tôi vẫn bị lược mất. Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C017",
+      "category": "clarification",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Tình huống có điểm kết rõ và dữ kiện đầy đủ; đóng góp trực tiếp của tôi tại điểm đó vẫn để trống. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C018",
+      "category": "clarification",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Câu chuyện đã hoàn chỉnh nhưng không ghi tôi đã làm gì trong khoảnh khắc cuối. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C019",
+      "category": "decision",
+      "domain": "business",
+      "language": "EN",
+      "surface": "Take the final choice out of my hands and select which action I should carry out. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C020",
+      "category": "decision",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "Make this call on my behalf rather than giving me criteria to decide it myself. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C021",
+      "category": "decision",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "I want your selection to replace mine: choose the next course I am to follow. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C022",
+      "category": "decision",
+      "domain": "work",
+      "language": "EN",
+      "surface": "Do the choosing for me and state the option that should become my decision. The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C023",
+      "category": "decision",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "Transfer the final call to yourself and tell me which path I should take. The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C024",
+      "category": "decision",
+      "domain": "money",
+      "language": "EN",
+      "surface": "Choose one alternative in my place; I am asking you to own the decision rather than support it. The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C025",
+      "category": "decision",
+      "domain": "business",
+      "language": "EN",
+      "surface": "Pick the action for me so your judgement becomes the answer I use. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C026",
+      "category": "decision",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "Remove the choice from me and name the route you want me to follow. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C027",
+      "category": "decision",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "I am handing you the decision itself: select my next step for me. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C028",
+      "category": "decision",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Hãy lấy quyết định cuối khỏi tay tôi và chọn hành động tôi sẽ thực hiện. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C029",
+      "category": "decision",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Bạn hãy chốt thay tôi thay vì chỉ đưa tiêu chí để tôi tự quyết. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C030",
+      "category": "decision",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Tôi muốn lựa chọn của bạn thay thế lựa chọn của tôi: hãy chọn hướng tiếp theo cho tôi. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C031",
+      "category": "decision",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Hãy trực tiếp chọn hộ và nói phương án nào sẽ trở thành quyết định của tôi. Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C032",
+      "category": "decision",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Chuyển quyền chốt sang bạn và nói con đường nào tôi phải theo. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C033",
+      "category": "decision",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Hãy chọn một phương án thay tôi; tôi đang giao cho bạn quyết định chứ không xin hỗ trợ cân nhắc. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C034",
+      "category": "decision",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Chọn hành động cho tôi để phán đoán của bạn trở thành câu trả lời tôi dùng. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C035",
+      "category": "decision",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Lấy quyền lựa chọn khỏi tôi và chỉ ra hướng bạn muốn tôi làm theo. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C036",
+      "category": "decision",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Tôi giao chính quyết định này cho bạn: hãy chọn bước tiếp theo thay tôi. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C037",
+      "category": "hypothetical",
+      "domain": "work",
+      "language": "EN",
+      "surface": "This passage is fabricated for a classification exercise and is not an event from my life. The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C038",
+      "category": "hypothetical",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "I constructed this sample to test the tool; none of it describes something I actually lived. The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C039",
+      "category": "hypothetical",
+      "domain": "money",
+      "language": "EN",
+      "surface": "Treat the text as synthetic validation material rather than autobiographical evidence. The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C040",
+      "category": "hypothetical",
+      "domain": "business",
+      "language": "EN",
+      "surface": "This is an invented practice case, not a real episode that happened to me. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C041",
+      "category": "hypothetical",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "I wrote this scenario only to exercise the classifier; it should not be read as lived history. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C042",
+      "category": "hypothetical",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "The material is deliberately fictional and exists for robustness testing, not as a personal account. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C043",
+      "category": "hypothetical",
+      "domain": "work",
+      "language": "EN",
+      "surface": "This example was manufactured for validation and does not represent my experience. The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C044",
+      "category": "hypothetical",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "I am supplying a made-up case for practice; there is no corresponding event in my own life. The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C045",
+      "category": "hypothetical",
+      "domain": "money",
+      "language": "EN",
+      "surface": "The scenario is test prose I created, not something that occurred to me. The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C046",
+      "category": "hypothetical",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Đoạn này được bịa để làm bài kiểm classification, không phải sự kiện trong đời tôi. Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C047",
+      "category": "hypothetical",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Tôi dựng sample này để thử công cụ; không phần nào mô tả chuyện tôi thật sự đã trải qua. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C048",
+      "category": "hypothetical",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Hãy xem đây là dữ liệu validation tổng hợp chứ không phải bằng chứng tự truyện. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C049",
+      "category": "hypothetical",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Đây là case thực hành hư cấu, không phải chuyện thật đã xảy ra với tôi. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C050",
+      "category": "hypothetical",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Tôi viết scenario này chỉ để thử classifier; nó không nên được hiểu là lịch sử sống của tôi. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C051",
+      "category": "hypothetical",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Phần nội dung này cố ý là hư cấu để kiểm độ bền, không phải bản tường thuật cá nhân. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C052",
+      "category": "hypothetical",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Ví dụ này được tạo ra cho validation và không đại diện cho trải nghiệm của tôi. Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C053",
+      "category": "hypothetical",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Tôi đưa một case giả để thực hành; đời tôi không có sự kiện tương ứng. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C054",
+      "category": "hypothetical",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Scenario này là nội dung test do tôi tạo, không phải chuyện từng xảy ra với tôi. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C055",
+      "category": "third",
+      "domain": "business",
+      "language": "EN",
+      "surface": "Infer my supervisor’s concealed opinion even though nothing they have said or done provides observable evidence for it. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C056",
+      "category": "third",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "Tell me the private conclusion my colleague keeps to themselves when the outward record gives no basis for knowing it. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C057",
+      "category": "third",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "Work out what the customer secretly thinks despite there being no visible behaviour that supports an inference. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C058",
+      "category": "third",
+      "domain": "work",
+      "language": "EN",
+      "surface": "Determine the other person’s hidden judgement even though no statement, action, or outward sign reveals it. The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C059",
+      "category": "third",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "Give me my manager’s unspoken internal view despite the absence of observable evidence. The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C060",
+      "category": "third",
+      "domain": "money",
+      "language": "EN",
+      "surface": "Identify the client’s private intention when nothing available in their words or actions indicates it. The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C061",
+      "category": "third",
+      "domain": "business",
+      "language": "EN",
+      "surface": "Tell me what the other person is secretly concluding while the behavioural record remains silent. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C062",
+      "category": "third",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "Infer the colleague’s internal assessment even though it has never been expressed or shown. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C063",
+      "category": "third",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "Determine what my supervisor privately wants despite there being no outward basis for that claim. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C064",
+      "category": "third",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Hãy suy ra quan điểm giấu kín của quản lý dù không điều gì họ nói hay làm tạo ra bằng chứng quan sát được. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C065",
+      "category": "third",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Cho tôi biết kết luận riêng đồng nghiệp đang giữ khi record bên ngoài không cho căn cứ để biết. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C066",
+      "category": "third",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Hãy xác định khách hàng bí mật nghĩ gì dù hành vi nhìn thấy không hỗ trợ suy luận đó. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C067",
+      "category": "third",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Xác định đánh giá ẩn của người kia dù không lời nói, hành động hay dấu hiệu bên ngoài nào hé lộ. Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C068",
+      "category": "third",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Cho tôi biết quan điểm nội tâm chưa nói của quản lý dù hoàn toàn thiếu bằng chứng quan sát. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C069",
+      "category": "third",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Xác định ý định riêng của khách hàng khi lời nói và hành động hiện có không chỉ ra điều đó. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C070",
+      "category": "third",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Nói cho tôi người kia đang bí mật kết luận gì khi record hành vi không có dấu hiệu. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C071",
+      "category": "third",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Hãy suy ra đánh giá bên trong của đồng nghiệp dù điều đó chưa từng được nói hay thể hiện. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C072",
+      "category": "third",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Xác định điều quản lý thật sự muốn trong lòng dù không có căn cứ bên ngoài để khẳng định. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C073",
+      "category": "prediction",
+      "domain": "work",
+      "language": "EN",
+      "surface": "Over the coming month, will this situation resolve in a way that benefits me? The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C074",
+      "category": "prediction",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "Within the next several weeks, is the final outcome likely to move in my favour? The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C075",
+      "category": "prediction",
+      "domain": "money",
+      "language": "EN",
+      "surface": "Before the approaching deadline, will this end with the result I want? The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C076",
+      "category": "prediction",
+      "domain": "business",
+      "language": "EN",
+      "surface": "Looking ahead through the near future, is this matter going to conclude positively for me? The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C077",
+      "category": "prediction",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "By next month, will the eventual result turn out well for me? The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C078",
+      "category": "prediction",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "Across the coming weeks, will this produce the outcome I am hoping for? The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C079",
+      "category": "prediction",
+      "domain": "work",
+      "language": "EN",
+      "surface": "Will the final result become favourable to me before the deadline arrives? The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C080",
+      "category": "prediction",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "In the near future, is this going to end on the positive side for me? The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C081",
+      "category": "prediction",
+      "domain": "money",
+      "language": "EN",
+      "surface": "Over the next few weeks, will the outcome land in my favour? The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C082",
+      "category": "prediction",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Trong tháng tới, chuyện này có kết thúc theo hướng có lợi cho tôi không? Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C083",
+      "category": "prediction",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Trong vài tuần tiếp theo, kết quả cuối có khả năng nghiêng về phía tôi không? Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C084",
+      "category": "prediction",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Trước deadline sắp tới, chuyện này có chốt bằng kết quả tôi mong muốn không? Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C085",
+      "category": "prediction",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Nhìn sang tương lai gần, vấn đề này có kết thúc tích cực cho tôi không? Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C086",
+      "category": "prediction",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Tới tháng sau, kết quả cuối cùng có chuyển theo hướng tốt cho tôi không? Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C087",
+      "category": "prediction",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Trong những tuần sắp tới, chuyện này có tạo ra outcome tôi đang hy vọng không? Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C088",
+      "category": "prediction",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Kết quả cuối có trở nên thuận lợi cho tôi trước khi hạn chót đến không? Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C089",
+      "category": "prediction",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Trong tương lai gần, chuyện này có kết thúc ở phía tích cực cho tôi không? Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C090",
+      "category": "prediction",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Qua vài tuần tới, outcome có rơi về hướng có lợi cho tôi không? Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C091",
+      "category": "freeze",
+      "domain": "business",
+      "language": "EN",
+      "surface": "A reversible first move was available, but I kept expanding the alternatives and never began it. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C092",
+      "category": "freeze",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "I had a low-cost step I could undo, yet I stayed in comparison mode instead of starting. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C093",
+      "category": "freeze",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "There was a trial with a clear way back; I postponed the start while adding more possibilities. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C094",
+      "category": "freeze",
+      "domain": "work",
+      "language": "EN",
+      "surface": "The next action would not lock me in, but I kept broadening the option list and left it untouched. The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C095",
+      "category": "freeze",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "I could have tested a low-risk move and reversed it easily, yet I continued researching alternatives rather than beginning. The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C096",
+      "category": "freeze",
+      "domain": "money",
+      "language": "EN",
+      "surface": "A small undoable experiment was available; I kept collecting options and did not initiate it. The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C097",
+      "category": "freeze",
+      "domain": "business",
+      "language": "EN",
+      "surface": "The first step was reversible with little downside, but I widened the decision set rather than trying it. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C098",
+      "category": "freeze",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "I had an easy-to-reverse starting move and still remained unstarted while comparing more routes. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C099",
+      "category": "freeze",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "The available trial carried a clear exit, yet I kept adding choices instead of putting the first move into action. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C100",
+      "category": "freeze",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Có một bước đầu dễ đảo ngược, nhưng tôi cứ mở rộng phương án và không bắt đầu. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C101",
+      "category": "freeze",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Tôi có một bước ít tốn kém có thể quay lại, vậy mà vẫn so sánh thay vì khởi động. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C102",
+      "category": "freeze",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Có thử nghiệm với đường lui rõ; tôi trì hoãn bắt đầu trong lúc thêm khả năng. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C103",
+      "category": "freeze",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Bước kế tiếp không khóa tôi vào lựa chọn nào, nhưng tôi vẫn mở rộng danh sách và để nguyên. Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C104",
+      "category": "freeze",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Tôi có thể thử một nước đi rủi ro thấp rồi đảo lại dễ dàng, nhưng tiếp tục nghiên cứu phương án thay vì làm. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C105",
+      "category": "freeze",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Có một thử nghiệm nhỏ có thể hoàn tác; tôi cứ gom lựa chọn và không khởi động. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C106",
+      "category": "freeze",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Bước đầu có thể đảo ngược với ít mặt trái, nhưng tôi mở rộng tập lựa chọn thay vì thử. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C107",
+      "category": "freeze",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Tôi có một nước đi khởi đầu dễ quay lại nhưng vẫn chưa làm vì cứ so thêm hướng. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C108",
+      "category": "freeze",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Thử nghiệm hiện có có lối ra rõ ràng, nhưng tôi tiếp tục thêm lựa chọn thay vì thực hiện bước đầu. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C109",
+      "category": "ignore",
+      "domain": "work",
+      "language": "EN",
+      "surface": "The consequential request still needed my answer, but I redirected myself into lower-priority side work instead. The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C110",
+      "category": "ignore",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "A central responsibility remained unanswered while I spent my effort on peripheral details. The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C111",
+      "category": "ignore",
+      "domain": "money",
+      "language": "EN",
+      "surface": "The main issue required a response from me, yet I turned toward secondary tasks and left it open. The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C112",
+      "category": "ignore",
+      "domain": "business",
+      "language": "EN",
+      "surface": "Something materially important was waiting on my answer while I kept busy with less important activity. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C113",
+      "category": "ignore",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "The core request was still mine to address, but I shifted attention into surrounding work rather than replying. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C114",
+      "category": "ignore",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "A central item needed action from me; instead I occupied myself with minor tasks and did not answer it. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C115",
+      "category": "ignore",
+      "domain": "work",
+      "language": "EN",
+      "surface": "The important matter stayed open because I diverted effort to side details instead of responding. The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C116",
+      "category": "ignore",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "My response was still required on the main issue, yet I focused on lower-priority work around it. The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C117",
+      "category": "ignore",
+      "domain": "money",
+      "language": "EN",
+      "surface": "The central obligation remained unresolved while I kept doing peripheral activity rather than dealing with it. The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C118",
+      "category": "ignore",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Yêu cầu có hệ quả vẫn cần câu trả lời của tôi, nhưng tôi chuyển sang việc phụ có ưu tiên thấp hơn. Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C119",
+      "category": "ignore",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Một trách nhiệm trung tâm chưa được trả lời trong khi tôi dành sức cho chi tiết bên lề. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C120",
+      "category": "ignore",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Vấn đề chính cần phản hồi từ tôi, vậy mà tôi quay sang task thứ yếu và để nó mở. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C121",
+      "category": "ignore",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Một chuyện quan trọng đang chờ câu trả lời của tôi trong khi tôi bận với hoạt động kém quan trọng hơn. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C122",
+      "category": "ignore",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Yêu cầu cốt lõi vẫn do tôi xử lý, nhưng tôi dời chú ý sang việc xung quanh thay vì phản hồi. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C123",
+      "category": "ignore",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Một hạng mục trung tâm cần tôi hành động; thay vào đó tôi bận với task nhỏ và không trả lời. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C124",
+      "category": "ignore",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Chuyện quan trọng vẫn mở vì tôi chuyển sức sang chi tiết phụ thay vì đáp lại. Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C125",
+      "category": "ignore",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Vấn đề chính vẫn cần phản hồi của tôi, nhưng tôi tập trung vào việc có ưu tiên thấp hơn. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C126",
+      "category": "ignore",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Nghĩa vụ trung tâm chưa được xử lý trong khi tôi tiếp tục làm việc bên lề thay vì đối diện nó. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C127",
+      "category": "slow",
+      "domain": "business",
+      "language": "EN",
+      "surface": "I answered later than I normally would, checked the matter once, and then closed it without returning. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C128",
+      "category": "slow",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "My reply came after a delay; one verification was enough and I treated the issue as finished. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C129",
+      "category": "slow",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "I took extra time before responding, reviewed it a single time, then left the decision alone. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C130",
+      "category": "slow",
+      "domain": "work",
+      "language": "EN",
+      "surface": "The response was slower than usual, but after one check I moved on and did not reopen it. The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C131",
+      "category": "slow",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "I paused longer than normal before answering, verified one point, and then stopped revisiting the matter. The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C132",
+      "category": "slow",
+      "domain": "money",
+      "language": "EN",
+      "surface": "I was delayed in replying; I made one review and afterwards regarded the issue as complete. The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C133",
+      "category": "slow",
+      "domain": "business",
+      "language": "EN",
+      "surface": "I responded late, checked it once only, and then let the matter stay closed. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C134",
+      "category": "slow",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "It took me longer to answer than usual; after a single verification I moved on without reconsidering. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C135",
+      "category": "slow",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "My response arrived slowly, followed by one check and a clean stop with no return to the issue. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C136",
+      "category": "slow",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Tôi trả lời muộn hơn bình thường, kiểm tra đúng một lần rồi khép chuyện và không quay lại. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C137",
+      "category": "slow",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Phản hồi đến sau một khoảng chậm; một lượt xác minh là đủ và tôi xem việc đã xong. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C138",
+      "category": "slow",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Tôi cần thêm thời gian trước khi trả lời, xem lại một lần rồi để quyết định yên. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C139",
+      "category": "slow",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Phản hồi chậm hơn thường lệ, nhưng sau một lần kiểm tôi đi tiếp và không mở lại. Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C140",
+      "category": "slow",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Tôi dừng lâu hơn bình thường trước khi đáp, xác minh một điểm rồi ngừng xem lại. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C141",
+      "category": "slow",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Tôi trả lời trễ; chỉ review một lần và sau đó xem vấn đề đã hoàn tất. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C142",
+      "category": "slow",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Phản hồi của tôi đến muộn, tôi kiểm đúng một lần rồi để chuyện khép lại. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C143",
+      "category": "slow",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Tôi mất lâu hơn thường lệ để trả lời; sau một lượt xác minh tôi đi tiếp mà không cân nhắc lại. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C144",
+      "category": "slow",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Tôi phản hồi chậm, kiểm một lần rồi dừng hẳn và không quay lại vấn đề. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C145",
+      "category": "sequence",
+      "domain": "work",
+      "language": "EN",
+      "surface": "I prepared to act, backed away, and repeated that approach-and-retreat cycle while the facts and reasoning stayed unchanged. The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C146",
+      "category": "sequence",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "I got close to execution, withdrew, then returned to the same evaluation several times without new information. The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C147",
+      "category": "sequence",
+      "domain": "money",
+      "language": "EN",
+      "surface": "I moved toward the step and pulled back repeatedly, re-running the same logic even though nothing new arrived. The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C148",
+      "category": "sequence",
+      "domain": "business",
+      "language": "EN",
+      "surface": "I nearly acted, retreated, and cycled through the same assessment more than once with no fresh evidence. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C149",
+      "category": "sequence",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "I approached action and stepped back again and again while using identical reasoning and receiving no new input. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C150",
+      "category": "sequence",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "I kept moving toward execution then withdrawing, revisiting the same judgement despite unchanged facts. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C151",
+      "category": "sequence",
+      "domain": "work",
+      "language": "EN",
+      "surface": "I repeatedly neared the action and backed away, returning to the same review without additional information. The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C152",
+      "category": "sequence",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "I moved in, retreated, and re-entered the identical evaluation several times while the evidence remained the same. The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C153",
+      "category": "sequence",
+      "domain": "money",
+      "language": "EN",
+      "surface": "I came close to acting and pulled out repeatedly, with the same reasoning and no new facts entering the picture. The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C154",
+      "category": "sequence",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Tôi chuẩn bị hành động rồi lùi lại, lặp vòng tiến-lùi đó trong khi dữ kiện và lý luận không đổi. Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C155",
+      "category": "sequence",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Tôi đến sát lúc thực hiện rồi rút lui, sau đó quay lại cùng một đánh giá nhiều lần mà không có thông tin mới. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C156",
+      "category": "sequence",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Tôi tiến về bước làm rồi kéo lại liên tục, chạy lại cùng logic dù chẳng có gì mới. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C157",
+      "category": "sequence",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Tôi gần như hành động rồi rút ra, lặp cùng một đánh giá hơn một lần mà không có evidence mới. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C158",
+      "category": "sequence",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Tôi tiến gần hành động rồi lùi liên tục, dùng cùng một lý luận và không nhận thêm input. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C159",
+      "category": "sequence",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Tôi cứ tiến tới thực hiện rồi rút lui, quay về cùng một phán đoán dù dữ kiện giữ nguyên. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C160",
+      "category": "sequence",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Tôi nhiều lần đến gần bước làm rồi lùi, trở lại cùng một lượt xem xét mà không có thêm thông tin. Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C161",
+      "category": "sequence",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Tôi tiến vào rồi rút, tái nhập cùng một đánh giá nhiều lần trong khi evidence không đổi. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C162",
+      "category": "sequence",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Tôi tới gần hành động rồi rút ra liên tục, với cùng reasoning và không có dữ kiện mới. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V210-C163",
+      "category": "neutral",
+      "domain": "business",
+      "language": "EN",
+      "surface": "I kept the decision with myself, carried it out, and then left the matter closed. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C164",
+      "category": "neutral",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "The judgement remained mine; I completed the practical action and did not return to reconsider it. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C165",
+      "category": "neutral",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "I made my own choice, followed through, and treated the issue as finished afterwards. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C166",
+      "category": "neutral",
+      "domain": "work",
+      "language": "EN",
+      "surface": "I retained ownership of the decision, executed it, then moved on without reopening the question. The setting is an ordinary work handover with no extra signal about the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C167",
+      "category": "neutral",
+      "domain": "relationship",
+      "language": "EN",
+      "surface": "I chose independently, completed the step, and stopped reviewing it once it was done. The setting is a routine conversation between two people and adds no hidden evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C168",
+      "category": "neutral",
+      "domain": "money",
+      "language": "EN",
+      "surface": "The final call stayed with me; I acted on it and then let the matter remain closed. The setting involves an ordinary payment decision and no additional behavioural cue.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C169",
+      "category": "neutral",
+      "domain": "business",
+      "language": "EN",
+      "surface": "I owned the choice, finished the action, and did not revisit it after completion. The setting is a standard business follow-up with no extra semantic signal.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C170",
+      "category": "neutral",
+      "domain": "housing",
+      "language": "EN",
+      "surface": "I decided for myself, carried the decision through, and moved on once the action was complete. The setting concerns routine housing administration and adds no new mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C171",
+      "category": "neutral",
+      "domain": "daily-admin",
+      "language": "EN",
+      "surface": "My judgement governed the choice; I executed the step and left the issue behind afterwards. The setting is ordinary daily administration and contributes no additional behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C172",
+      "category": "neutral",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Tôi giữ quyết định ở mình, thực hiện nó rồi để chuyện khép lại. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C173",
+      "category": "neutral",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Phán đoán vẫn là của tôi; tôi hoàn thành hành động thực tế và không quay lại cân nhắc. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C174",
+      "category": "neutral",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Tôi tự đưa ra lựa chọn, làm đến nơi rồi xem vấn đề đã xong. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C175",
+      "category": "neutral",
+      "domain": "business",
+      "language": "VI",
+      "surface": "Tôi giữ quyền sở hữu quyết định, thực hiện xong rồi đi tiếp mà không mở lại câu hỏi. Bối cảnh là follow-up kinh doanh tiêu chuẩn và không thêm tín hiệu semantic.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C176",
+      "category": "neutral",
+      "domain": "housing",
+      "language": "VI",
+      "surface": "Tôi độc lập lựa chọn, hoàn tất bước làm và ngừng review khi nó xong. Bối cảnh là admin nhà ở thông thường và không tạo thêm cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C177",
+      "category": "neutral",
+      "domain": "daily-admin",
+      "language": "VI",
+      "surface": "Quyền chốt cuối vẫn ở tôi; tôi hành động theo đó rồi để chuyện đóng lại. Bối cảnh là việc hành chính hằng ngày và không bổ sung bằng chứng hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C178",
+      "category": "neutral",
+      "domain": "work",
+      "language": "VI",
+      "surface": "Tôi sở hữu lựa chọn, hoàn thành hành động và không xem lại sau khi xong. Bối cảnh là một bàn giao công việc bình thường và không thêm tín hiệu cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C179",
+      "category": "neutral",
+      "domain": "relationship",
+      "language": "VI",
+      "surface": "Tôi tự quyết, làm quyết định đó đến cùng rồi đi tiếp khi hành động hoàn tất. Bối cảnh là cuộc trao đổi quan hệ bình thường và không thêm bằng chứng ẩn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V210-C180",
+      "category": "neutral",
+      "domain": "money",
+      "language": "VI",
+      "surface": "Phán đoán của tôi dẫn quyết định; tôi thực hiện bước đó rồi để vấn đề lại phía sau. Bối cảnh liên quan quyết định tiền bạc thông thường và không thêm cue hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
