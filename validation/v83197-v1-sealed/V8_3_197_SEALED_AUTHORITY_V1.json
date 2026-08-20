@@ -1,0 +1,23 @@
+{
+  "candidate": "V8.3.197",
+  "phase": "sealed-preparation",
+  "development_authority_sha": "d38382b34ef2dc0a33d28a84a5db619c91a26f1b",
+  "development_run_id": 32322979832,
+  "development_artifact_digest": "sha256:61a683f43c086902530d0a61495658875cea2a2d773bf7ccb60e72b9db481d60",
+  "semantic_core": "QCSemanticCoreV66",
+  "v66_commit": "2759ff831c43a22c803968af90546aa5104b3298",
+  "hashes": {
+    "fixture": "54806c2b7c05d6306185704fb236739cde0ca49dbd88b8947bfcc03f17104f97",
+    "selection": "55a716de150af958e1f42c848eb41d55278050213031f524350ff5d4c6fc4cee",
+    "membership": "f190ed42328549bfbea7c6b20ad7204f5e787140a4515f3508adc36b277f3926",
+    "independent_gold": "73dea177a2db94804e68c28e5a961af4e063c9c304f350a2a3a65761b262f637"
+  },
+  "case_count": 60,
+  "batch_a_count": 30,
+  "batch_b_count": 30,
+  "semantic_runtime_executed": false,
+  "v196_batch_a_rerun": false,
+  "v196_batch_b_accessed": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
