@@ -1,0 +1,23 @@
+{
+  "candidate": "V8.3.203",
+  "phase": "sealed-validation-preparation",
+  "validated_development_head_sha": "ef9aca50e281ec53c36b68f4ea0e3ab40a0fb787",
+  "semantic_authority": "QCSemanticCoreV72",
+  "development_regression_v1_run_id": 32330274801,
+  "development_final_run_id": 32330365952,
+  "development_checkpoint_sha256": "669daef40b6fbd4f1d2a129c2b10a225fe5581bf65a6ddaf7ec6638ad4fcfc4b",
+  "hashes": {
+    "fixture": "8403bd3fc8ad1821e334aec30314fa6778e7f5f8b828a79a8e205ddf1d98d8b0",
+    "selection": "76525eb40b7719aa5a1361f64b3363c36e888a02fe6f2ed5cf6b20b8f2ce04a5",
+    "membership": "42ff2bfb41597f4e7916c006e6049b5d8ba97343ea5060b7b7a52fb50e1119e3",
+    "independent_gold": "03321dbdbc1b0a903327c902c85f59c841ce9bcc5e2be73cd90c9a8d5ab7f05a",
+    "candidate_bank": "a45c357cc7d740bd06d4887f2cbde31d1ee6b2b7a569901538021a2724ac20b7",
+    "audit": "6a03cae631c03f8353993777509427bcd56995786918d6c67aa230d6564fad9c"
+  },
+  "v202_sealed_rerun": false,
+  "semantic_runtime_before_transport": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "pack_sha256": "45c83ad1d755f12e5d14686e03c46ce007028066957e2deb56aadd35858b63e5",
+  "carrier_b64_sha256": "e4a29dc9cf953e30e36be1df5d6368cc57e081e7410fd3a0ebba831a3ce5c90f"
+}
