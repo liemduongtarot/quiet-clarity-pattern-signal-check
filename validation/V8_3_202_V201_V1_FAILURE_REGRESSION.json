@@ -1,0 +1,21 @@
+{
+  "authority": "V8.3.202 V201 V1 FAILURE REGRESSION",
+  "cases": [
+    {"case_id":"V201-S001","surface":"The timeline is complete, yet the concrete closing response that was mine is still not identified.","domain":"work","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V201-S003","surface":"We know the event sequence, but the observable final step attributable to me has not been stated.","domain":"relationship","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V201-S005","surface":"The account covers everything except what I myself actually did at the end.","domain":"housing","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V201-S007","surface":"Take the judgement out of my hands and tell me the one choice I am supposed to make.","domain":"money","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V201-S019","surface":"What hidden judgement is my teammate holding about me beyond anything they have shown outwardly?","domain":"work","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V201-S021","surface":"Tell me my manager's private assessment of me, not anything based on my own actions.","domain":"business","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V201-S023","surface":"What secret intention does the other person have toward me when there is no observable sign?","domain":"relationship","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V201-S025","surface":"Will this eventually work out in my favour before the end of the month?","domain":"money","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V201-S027","surface":"Is this situation likely to finish positively for me by the deadline?","domain":"relationship","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V201-S031","surface":"A reversible first experiment was available, but I kept expanding the list of alternatives instead of starting.","domain":"work","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"case_id":"V201-S033","surface":"The low-risk trial was ready, yet I researched more possibilities rather than begin it.","domain":"housing","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"case_id":"V201-S035","surface":"An easy-to-undo move was available, but I stayed uncommitted by gathering more options.","domain":"money","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"case_id":"V201-S037","surface":"The central task needed a response, but I ignored it and shifted to something peripheral.","domain":"work","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"case_id":"V201-S045","surface":"My answer came late; after one review I did not reopen the issue.","domain":"housing","expected":{"route":"input:self-lived","families":["slow"],"sequence":false}},
+    {"case_id":"V201-S047","surface":"I delayed my response, looked once more, and then moved on without reopening it.","domain":"money","expected":{"route":"input:self-lived","families":["slow"],"sequence":false}},
+    {"case_id":"V201-S053","surface":"I approached the move, withdrew, and came back to the same review loop repeatedly without fresh evidence.","domain":"work","expected":{"route":"input:self-lived","families":["slow"],"sequence":true}}
+  ]
+}
