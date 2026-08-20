@@ -1,44 +1,50 @@
-name: V8.3.211 R3 Consolidated One-Shot
+name: V8.3.211 R4 Direct Preseal Proven Executor
 on:
   push:
     branches: [v83211-v1-validation]
 permissions:
   contents: write
 jobs:
-  sealed:
-    if: github.event.head_commit.message == 'Run V8.3.211 R3 consolidated one-shot'
+  preseal:
+    if: github.event.head_commit.message == 'Run V8.3.211 R4 preseal via proven executor'
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with: {fetch-depth: 1}
-      - uses: actions/setup-node@v4
-        with: {node-version: '24'}
-      - name: Execute pinned transport and semantic one-shot
-        id: run
-        continue-on-error: true
-        run: python validation/v83211-r3-one-shot.py
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: PSC_V8_3_211_R3_SEALED_VALIDATION_CHECKPOINT
-          path: |
-            PSC_V8_3_211_R3_SEALED_VALIDATION_CHECKPOINT.zip
-            PSC_V8_3_211_R3_SEALED_VALIDATION_CHECKPOINT_SHA256.txt
-      - name: Record immutable run receipt
-        if: always()
+      - name: Materialize frozen references
         run: |
-          test -f validation/V8_3_211_R3_ONE_SHOT_RUN_RECEIPT.json
-          git config user.name github-actions
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/V8_3_211_R3_ONE_SHOT_RUN_RECEIPT.json
-          git commit -m 'Record V8.3.211 R3 consolidated one-shot receipt'
-          git push
-      - name: Fail unless both sealed batches passed
-        if: always()
+          mkdir -p validation/preseal_refs
+          for v in 201 202 203 204 205 206 207 208 209; do s=${v#20}; git fetch --depth=1 origin refs/heads/v8320${s}-v1-sealed-validation:refs/remotes/origin/v8320${s}-v1-sealed-validation; git show origin/v8320${s}-v1-sealed-validation:validation/v8320${s}-v1-sealed/V8_3_${v}_SEALED_FIXTURE_V1.json > validation/preseal_refs/V8_3_${v}_SEALED_FIXTURE_REFERENCE.json; done
+          git fetch --depth=1 origin refs/heads/v83210-v1-sealed-validation:refs/remotes/origin/v83210-v1-sealed-validation
+          git show origin/v83210-v1-sealed-validation:validation/v83210-v1-sealed/V8_3_210_SEALED_FIXTURE_V1.json > validation/preseal_refs/V8_3_210_SEALED_FIXTURE_REFERENCE.json
+          python validation/v83211-generalization-600-generator-v1r.py
+          cp validation/V8_3_211_DEVELOPMENT_GENERALIZATION_600_V1.json validation/preseal_refs/V8_3_211_DEVELOPMENT_GENERALIZATION_600_REFERENCE.json
+      - name: Generate fresh direct R4 carrier without semantic runtime
+        run: |
+          git fetch --depth=1 origin refs/heads/v83211-v1-sealed-validation:refs/remotes/origin/v83211-v1-sealed-validation
+          git show origin/v83211-v1-sealed-validation:validation/v83211-preseal-generator.py > validation/v83211-preseal-generator.py
+          git show origin/v83211-v1-sealed-validation:validation/v83211-preseal-generator-v1r.py > validation/v83211-preseal-generator-v1r.py
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('validation/v83211-preseal-generator.py');s=p.read_text().replace('SEED=8321109','SEED=8321119').replace("ROOT=pathlib.Path('validation/v83211-v1-sealed')","ROOT=pathlib.Path('validation/v83211-r4-carrier')").replace('V8.3.211 V1 ','V8.3.211 R4 ');p.write_text(s)
+          PY
+          python validation/v83211-preseal-generator-v1r.py
+      - name: Verify and freeze R4 carrier
         run: |
           python - <<'PY'
-          import json,pathlib,sys
-          r=json.loads(pathlib.Path('validation/V8_3_211_R3_ONE_SHOT_RUN_RECEIPT.json').read_text())
-          if r.get('conclusion')!='success':sys.exit(1)
+          import json,pathlib,hashlib,os
+          root=pathlib.Path('validation/v83211-r4-carrier');canon=lambda o:json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          names={'candidate_bank':'V8_3_211_PRESEAL_CANDIDATE_BANK_V1.json','selection':'V8_3_211_SEALED_SELECTION_V1.json','fixture':'V8_3_211_SEALED_FIXTURE_V1.json','independent_gold':'V8_3_211_INDEPENDENT_GOLD_V1.json','membership':'V8_3_211_SEALED_MEMBERSHIP_V1.json','preseal_audit':'V8_3_211_PRESEAL_DIVERSITY_AUDIT_V1.json'}
+          a=json.loads((root/names['preseal_audit']).read_text());u=json.loads((root/'V8_3_211_SEALED_AUTHORITY_V1.json').read_text())
+          assert a['pass'] and a['candidate_count']==180 and a['selected_count']==60 and a['internal_max_similarity']<.75 and a['external_cases_at_or_above_0_75']==0 and a['exact_external_duplicates']==0
+          assert not a['runtime_executed_during_bank_or_selection'] and not a['semantic_authority_loaded_during_bank_or_selection'] and not a['selection_uses_runtime_output']
+          assert u['validated_development_head_sha']=='ec0646c126ffd60358013663c148f4ffd7080ca2' and u['semantic_authority']=='QCSemanticCoreV89' and not u['step_111_authorized']
+          for k,n in names.items(): assert hashlib.sha256(canon(json.loads((root/n).read_text()))).hexdigest()==u['hashes'][k]
+          (root/'R4_PRESEAL_RECEIPT.json').write_text(json.dumps({'candidate':'V8.3.211','phase':'r4-direct-preseal','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'conclusion':'success','candidate_count':180,'selected_count':60,'internal_max_similarity':a['internal_max_similarity'],'external_max_similarity':a['external_max_similarity'],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'validated_development_head_sha':u['validated_development_head_sha'],'semantic_authority':u['semantic_authority'],'v210_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
           PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/v83211-r4-carrier
+          git commit -m 'Freeze V8.3.211 R4 direct preseal carrier'
+          git push
