@@ -1,157 +1,78 @@
-name: V8.3.211 R2 Sealed One-Shot via Pinned Authority
+name: V8.3.211 R3 Preseal Direct Carrier
 on:
   push:
     branches: [v83211-v1-validation]
 permissions:
   contents: write
 jobs:
-  sealed:
-    if: github.event.head_commit.message == 'Run V8.3.211 R2 sealed one-shot'
+  preseal:
+    if: github.event.head_commit.message == 'Run V8.3.211 R3 preseal direct carrier'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with: {fetch-depth: 1}
-      - uses: actions/setup-node@v4
-        with: {node-version: '24'}
-      - name: Materialize exact validated V89 authority and frozen R2 carrier
+      - name: Materialize frozen references only
         run: |
-          git fetch --depth=1 origin ec0646c126ffd60358013663c148f4ffd7080ca2
+          mkdir -p validation/preseal_refs validation/v83211-v1-sealed
+          for v in 201 202 203 204 205 206 207 208 209; do s=${v#20}; git fetch --depth=1 origin refs/heads/v8320${s}-v1-sealed-validation:refs/remotes/origin/v8320${s}-v1-sealed-validation; git show origin/v8320${s}-v1-sealed-validation:validation/v8320${s}-v1-sealed/V8_3_${v}_SEALED_FIXTURE_V1.json > validation/preseal_refs/V8_3_${v}_SEALED_FIXTURE_REFERENCE.json; done
+          git fetch --depth=1 origin refs/heads/v83210-v1-sealed-validation:refs/remotes/origin/v83210-v1-sealed-validation
+          git show origin/v83210-v1-sealed-validation:validation/v83210-v1-sealed/V8_3_210_SEALED_FIXTURE_V1.json > validation/preseal_refs/V8_3_210_SEALED_FIXTURE_REFERENCE.json
+          python validation/v83211-generalization-600-generator-v1r.py
+          cp validation/V8_3_211_DEVELOPMENT_GENERALIZATION_600_V1.json validation/preseal_refs/V8_3_211_DEVELOPMENT_GENERALIZATION_600_REFERENCE.json
+      - name: Fetch reproducible preseal generators
+        run: |
           git fetch --depth=1 origin f2907d7107089dbf5d01ce5d193a0d8fb6b278dc
-          rm -rf /tmp/v211-authority
-          git worktree add --detach /tmp/v211-authority ec0646c126ffd60358013663c148f4ffd7080ca2
-          mkdir -p /tmp/v211-authority/validation/v83211-r2-sealed
-          git show f2907d7107089dbf5d01ce5d193a0d8fb6b278dc:validation/v83211-v1-sealed/V8_3_211_PRESEAL_BUNDLE_V1.json.gz.b64 > /tmp/v211-authority/validation/v83211-r2-sealed/V8_3_211_PRESEAL_BUNDLE_V1.json.gz.b64
-          git show f2907d7107089dbf5d01ce5d193a0d8fb6b278dc:validation/v83211-v1-sealed/V8_3_211_SEALED_AUTHORITY_V1.json > /tmp/v211-authority/validation/v83211-r2-sealed/V8_3_211_SEALED_AUTHORITY_V1.json
-          cd /tmp/v211-authority
-          test "$(git rev-parse HEAD)" = "ec0646c126ffd60358013663c148f4ffd7080ca2"
-      - name: Verify carrier hashes and materialize immutable fixture
+          git show f2907d7107089dbf5d01ce5d193a0d8fb6b278dc:validation/v83211-preseal-generator.py > validation/v83211-preseal-generator.py
+          git show f2907d7107089dbf5d01ce5d193a0d8fb6b278dc:validation/v83211-preseal-generator-v1r.py > validation/v83211-preseal-generator-v1r.py
+      - name: Generate R3 bank without semantic runtime
+        run: python validation/v83211-preseal-generator-v1r.py
+      - name: Verify R3 authority and direct constituents
         run: |
-          cd /tmp/v211-authority
           python - <<'PY'
-          import json,hashlib,pathlib,base64,gzip
-          root=pathlib.Path('validation/v83211-r2-sealed')
+          import json,pathlib,hashlib,shutil
+          src=pathlib.Path('validation/v83211-v1-sealed');dst=pathlib.Path('validation/v83211-r3-preseal');dst.mkdir(exist_ok=True)
           def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
-          auth=json.loads((root/'V8_3_211_SEALED_AUTHORITY_V1.json').read_text())
-          bundle=json.loads(gzip.decompress(base64.b64decode((root/'V8_3_211_PRESEAL_BUNDLE_V1.json.gz.b64').read_text().strip())))
+          auth=json.loads((src/'V8_3_211_SEALED_AUTHORITY_V1.json').read_text());audit=json.loads((src/'V8_3_211_PRESEAL_DIVERSITY_AUDIT_V1.json').read_text())
           assert auth['validated_development_head_sha']=='ec0646c126ffd60358013663c148f4ffd7080ca2'
           assert auth['semantic_authority']=='QCSemanticCoreV89'
-          for k in ['candidate_bank','selection','fixture','independent_gold','membership','preseal_audit']:
-              assert hashlib.sha256(canon(bundle[k])).hexdigest()==auth['hashes'][k]
-          assert len(bundle['candidate_bank']['cases'])==180
-          assert len(bundle['fixture']['cases'])==60
-          assert len(bundle['selection']['batch_a'])==30 and len(bundle['selection']['batch_b'])==30
-          assert set(bundle['selection']['batch_a']).isdisjoint(bundle['selection']['batch_b'])
-          assert bundle['preseal_audit']['pass'] is True
-          assert bundle['preseal_audit']['external_cases_at_or_above_0_75']==0
-          assert bundle['preseal_audit']['runtime_executed_during_bank_or_selection'] is False
-          assert bundle['preseal_audit']['semantic_authority_loaded_during_bank_or_selection'] is False
-          names={'candidate_bank':'V8_3_211_PRESEAL_CANDIDATE_BANK_V1.json','selection':'V8_3_211_SEALED_SELECTION_V1.json','fixture':'V8_3_211_SEALED_FIXTURE_V1.json','independent_gold':'V8_3_211_INDEPENDENT_GOLD_V1.json','membership':'V8_3_211_SEALED_MEMBERSHIP_V1.json','preseal_audit':'V8_3_211_PRESEAL_DIVERSITY_AUDIT_V1.json'}
-          for k,fn in names.items():(root/fn).write_text(json.dumps(bundle[k],ensure_ascii=False,indent=2)+'\n')
+          assert audit['pass'] is True and audit['candidate_count']==180 and audit['selected_count']==60
+          assert audit['internal_max_similarity']<.75 and audit['external_cases_at_or_above_0_75']==0 and audit['exact_external_duplicates']==0
+          assert audit['runtime_executed_during_bank_or_selection'] is False and audit['semantic_authority_loaded_during_bank_or_selection'] is False and audit['selection_uses_runtime_output'] is False
+          files={'candidate_bank':'V8_3_211_PRESEAL_CANDIDATE_BANK_V1.json','selection':'V8_3_211_SEALED_SELECTION_V1.json','fixture':'V8_3_211_SEALED_FIXTURE_V1.json','independent_gold':'V8_3_211_INDEPENDENT_GOLD_V1.json','membership':'V8_3_211_SEALED_MEMBERSHIP_V1.json','preseal_audit':'V8_3_211_PRESEAL_DIVERSITY_AUDIT_V1.json'}
+          for k,fn in files.items():
+              obj=json.loads((src/fn).read_text());got=hashlib.sha256(canon(obj)).hexdigest();assert got==auth['hashes'][k],(k,got,auth['hashes'][k]);shutil.copy2(src/fn,dst/fn)
+          shutil.copy2(src/'V8_3_211_SEALED_AUTHORITY_V1.json',dst/'V8_3_211_SEALED_AUTHORITY_V1.json')
           PY
-      - name: Materialize exact QCSemanticCoreV89 sealed runner
+      - name: Record and commit direct R3 carrier
         run: |
-          cd /tmp/v211-authority
           python - <<'PY'
-          import pathlib,base64,gzip,zipfile
-          names=['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V167_V1_PREVIOUS_PASS_REGRESSION']
-          # Use the same historical application materialization as validated V211 final development.
-          needed=['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION','V8_3_168_V167_V1_FAILURE_REGRESSION','V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION']
-          for n in needed:
-              p=pathlib.Path('validation/'+n+'.json.gz.b64')
-              if p.exists(): pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
-          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          import json,pathlib,os
+          p=pathlib.Path('validation/v83211-r3-preseal');a=json.loads((p/'V8_3_211_PRESEAL_DIVERSITY_AUDIT_V1.json').read_text())
+          (p/'V8_3_211_R3_PRESEAL_RUN_RECEIPT.json').write_text(json.dumps({'candidate':'V8.3.211','phase':'preseal-r3-direct-carrier','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'source_validated_head':'ec0646c126ffd60358013663c148f4ffd7080ca2','conclusion':'success','candidate_count':a['candidate_count'],'selected_count':a['selected_count'],'internal_max_similarity':a['internal_max_similarity'],'external_max_similarity':a['external_max_similarity'],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'v210_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
           PY
-          python - <<'PY'
-          import pathlib
-          p=pathlib.Path('validation/v83211-r2-sealed/run-v211-r2-sealed.cjs')
-          chain=['psc-v83196-v195-v1-hypothetical-preservation-repair.js','psc-v83197-v196-sealed-a-bounded-repair.js','psc-v83198-v197-sealed-a-bounded-repair.js','psc-v83199-v198-sealed-a-bounded-repair.js','psc-v83200-v199-sealed-a-bounded-repair.js','psc-v83201-v200-sealed-a-bounded-repair.js','psc-v83201-v200-v1-preservation-precedence-repair.js','psc-v83202-v201-sealed-a-bounded-repair.js','psc-v83203-v202-sealed-a-bounded-repair.js','psc-v83204-v203-sealed-a-bounded-repair.js','psc-v83205-v204-sealed-a-bounded-repair.js','psc-v83206-v205-compositional-generalization.js','psc-v83206-v205-v1-preservation-repair.js','psc-v83207-v206-mechanism-cue-repair.js','psc-v83207-v206-v1-preservation-repair.js','psc-v83208-v207-mechanism-cue-repair.js','psc-v83208-v207-v1-preservation-repair.js','psc-v83209-v208-evidence-slot-composition.js','psc-v83209-v208-v1-preservation-repair.js','qc-evidence-extractor-v1-review-candidate.js','qc-evidence-extractor-v1r-review-candidate.js','qc-evidence-extractor-v1r2-review-candidate.js','psc-v83209-semantic-rule-table-v3-review-candidate.js','psc-v83209-v208-semantic-rule-table-promotion.js','qc-evidence-extractor-v1r3-v210-concept-coverage.js','psc-v83210-v209-semantic-rule-table-v4.js','qc-evidence-extractor-v1r4-v210-relational-preservation.js','psc-v83210-v209-v1-relational-preservation.js','qc-evidence-extractor-v2-v210-relational-semantics.js','psc-v83210-v210-semantic-rule-table-v5.js','qc-evidence-extractor-v2r-v210-multilingual-aliases.js','psc-v83210-v210-semantic-rule-table-v6.js','qc-evidence-extractor-v2s-v210-context-sanitizer.js','psc-v83210-v210-semantic-rule-table-v7.js','qc-evidence-extractor-v2t-v210-contextual-recall.js','psc-v83210-v210-semantic-rule-table-v8-parent-containment.js','qc-evidence-extractor-v3-v211-context-scoped.js','psc-v83211-v210-context-scoped-rule-table.js','qc-evidence-extractor-v3r-v211-preservation.js','psc-v83211-v210-preservation-containment.js','qc-evidence-extractor-v4-v211-relational-recall.js','psc-v83211-v210-v89-relational-recall.js']
-          js="""const fs=require('fs'),path=require('path'),vm=require('vm');const s={};vm.createContext(s);const pub='PSC_V8_3_138_DEV/public';
-          const base=['psc-v3.js','psc-v4.js','psc-v83121-r1-reconstructed.js','psc-v83122-operator-aware.js','psc-v83123-family-preservation.js','psc-v83124-operator-context.js','psc-v83125-semantic-routing.js','psc-v83126-public-route-canonicalization.js','psc-v83127-review-intent-authority.js','psc-v83129-canonical-shadow.js','psc-v83130-representation-coverage.js','psc-v83131-proposition-consolidation.js','psc-v83132-relation-graph.js','psc-v83133-canonical-role-binding.js','psc-v83135-scoped-operator.js','psc-v83138-semantic-convergence.js','psc-v83139-semantic-convergence.js'];
-          const later=['psc-v83142-sealed-failure-convergence.js','psc-v83143-semantic-convergence.js','psc-v83144-sealed-failure-convergence.js','psc-v83145-route-layer.js','psc-v83145-family-state-layer.js','psc-v83146-route-boundary-repair.js','psc-v83146-family-sequence-repair.js','psc-v83147-sealed-failure-repair.js','psc-v83148-sealed-failure-repair.js','psc-v83149-sealed-failure-repair.js','psc-v83150-sealed-failure-repair.js','psc-v83151-sealed-failure-repair.js','psc-v83152-sealed-failure-repair.js','psc-v83153-sealed-failure-repair.js','psc-v83154-sealed-failure-repair.js','psc-v83155-sealed-failure-repair.js','psc-v83156-v155-v3-bounded-repair.js','psc-v83157-v156-sealed-a-bounded-repair.js','psc-v83158-v157-sealed-a-bounded-repair.js','psc-v83159-v158-sealed-a-bounded-repair.js','psc-v83160-v159-v2-sealed-a-bounded-repair.js','psc-v83161-v160-v1-sealed-a-bounded-repair.js','psc-v83162-v161-v1-sealed-a-bounded-repair.js','psc-v83163-v162-v1-sealed-a-bounded-repair.js','psc-v83164-v163-v1-sealed-a-bounded-repair.js','psc-v83165-v164-v1-sealed-a-bounded-repair.js','psc-v83166-v165-v1-sealed-a-bounded-repair.js','psc-v83167-v166-v1-sealed-a-bounded-repair.js','psc-v83168-v167-v1-sealed-a-bounded-repair.js','psc-v83169-v168-v1-sealed-a-bounded-repair.js','psc-v83170-v169-v1-sealed-a-bounded-repair.js','psc-v83171-v170-v1-sealed-a-bounded-repair.js','psc-v83172-v171-v1-sealed-a-bounded-repair.js','psc-v83173-v172-v1-sealed-a-bounded-repair.js','psc-v83174-v173-v1-sealed-a-bounded-repair.js','psc-v83175-v174-v1-sealed-a-bounded-repair.js','psc-v83176-v175-bank-contract-carry-forward.js','psc-v83177-v176-sealed-a-bounded-repair.js','psc-v83178-v177-sealed-a-bounded-repair.js','psc-v83179-v178-sealed-a-bounded-repair.js','psc-v83180-v179-sealed-a-bounded-repair.js','psc-v83181-v180-sealed-a-bounded-repair.js','psc-v83181-v180-v1-historical-precedence-repair.js','psc-v83181-v180-v1-historical-self-family-precedence-repair.js','psc-v83181-v180-v1-explicit-intent-precedence-repair.js','psc-v83182-v181-sealed-a-bounded-repair.js','psc-v83183-v182-sealed-a-bounded-repair.js','psc-v83184-v183-sealed-a-bounded-repair.js','psc-v83185-v184-sealed-a-bounded-repair.js','psc-v83186-v185-sealed-a-bounded-repair.js','psc-v83187-v186-sealed-a-bounded-repair.js','psc-v83188-v187-sealed-a-bounded-repair.js','psc-v83189-v188-sealed-a-bounded-repair.js','psc-v83190-v189-sealed-a-bounded-repair.js','psc-v83190-v189-v1-preservation-precedence-repair.js','psc-v83191-v190-sealed-a-bounded-repair.js','psc-v83192-v191-sealed-a-bounded-repair.js','psc-v83192-v191-v1-slow-preservation-repair.js','psc-v83193-v192-sealed-a-bounded-repair.js','psc-v83194-v193-sealed-a-bounded-repair.js','psc-v83195-v194-sealed-a-bounded-repair.js','psc-v83196-v195-sealed-a-bounded-repair.js'];
-          for(const f of base)vm.runInContext(fs.readFileSync(path.join(pub,f),'utf8'),s,{filename:f});for(const f of later)vm.runInContext(fs.readFileSync(path.join('validation',f),'utf8'),s,{filename:f});
-          """
-          js += "const chain="+repr(chain).replace("'",'"')+";for(const f of chain)vm.runInContext(fs.readFileSync(path.join('validation',f),'utf8'),s,{filename:f});\n"
-          js += "if(!s.QCSemanticCoreV89)throw Error('QCSemanticCoreV89 missing');const batch=(process.argv[2]||'A').toUpperCase();const root='validation/v83211-r2-sealed';const F=JSON.parse(fs.readFileSync(root+'/V8_3_211_SEALED_FIXTURE_V1.json','utf8'));const S=JSON.parse(fs.readFileSync(root+'/V8_3_211_SEALED_SELECTION_V1.json','utf8'));const ids=new Set(batch==='A'?S.batch_a:S.batch_b);const cases=F.cases.filter(c=>ids.has(c.case_id));let passed=0;const results=[];for(const c of cases){const r=s.QCSemanticCoreV89.analyze(c.surface,c.domain),a={route:r.input_route.id,families:[...(r.families||[])].sort(),sequence:!!r.sequence},e={route:c.expected.route,families:[...(c.expected.families||[])].sort(),sequence:!!c.expected.sequence},ok=JSON.stringify(a)===JSON.stringify(e);if(ok)passed++;results.push({case_id:c.case_id,mechanism:c.mechanism,language:c.language,domain:c.domain,pass:ok,expected:e,actual:a,surface:c.surface});}const out={authority:'V8.3.211 R2 SEALED BATCH '+batch+' FIRST RUN',run_id:process.env.GITHUB_RUN_ID,run_attempt:process.env.GITHUB_RUN_ATTEMPT,total:cases.length,passed,failed:cases.length-passed,results};fs.writeFileSync('V8_3_211_BATCH_'+batch+'_FIRST_RUN_RESULTS.json',JSON.stringify(out,null,2));console.log('Batch',batch,passed+'/'+cases.length);if(passed!==cases.length)process.exit(1);\n"
-          p.write_text(js)
-          PY
-      - name: Assert R2 sealed first-run has never executed
-        run: |
-          test ! -e /tmp/v211-authority/V8_3_211_BATCH_A_FIRST_RUN_RESULTS.json
-          test ! -e /tmp/v211-authority/V8_3_211_BATCH_B_FIRST_RUN_RESULTS.json
-      - name: SEALED Batch A first run exactly once
-        id: batcha
-        continue-on-error: true
-        run: |
-          cd /tmp/v211-authority
-          node validation/v83211-r2-sealed/run-v211-r2-sealed.cjs A
-      - name: SEALED Batch B exactly once only after A PASS
-        id: batchb
-        if: steps.batcha.outcome == 'success'
-        continue-on-error: true
-        run: |
-          cd /tmp/v211-authority
-          node validation/v83211-r2-sealed/run-v211-r2-sealed.cjs B
-      - name: Package immutable sealed checkpoint
-        if: always()
-        run: |
-          cd /tmp/v211-authority
-          python - <<'PY'
-          import json,pathlib,zipfile,hashlib,shutil,os
-          root=pathlib.Path('validation/v83211-r2-sealed');st=pathlib.Path('V8_3_211_R2_SEALED_CHECKPOINT');st.mkdir(exist_ok=True)
-          base=['V8_3_211_SEALED_AUTHORITY_V1.json','V8_3_211_PRESEAL_BUNDLE_V1.json.gz.b64','V8_3_211_SEALED_FIXTURE_V1.json','V8_3_211_SEALED_SELECTION_V1.json','V8_3_211_INDEPENDENT_GOLD_V1.json','V8_3_211_SEALED_MEMBERSHIP_V1.json','V8_3_211_PRESEAL_DIVERSITY_AUDIT_V1.json']
-          for n in base:
-              p=root/n
-              if p.exists():shutil.copy2(p,st/n)
-          for n in ['V8_3_211_BATCH_A_FIRST_RUN_RESULTS.json','V8_3_211_BATCH_B_FIRST_RUN_RESULTS.json']:
-              p=pathlib.Path(n)
-              if p.exists():shutil.copy2(p,st/n)
-          A=pathlib.Path('V8_3_211_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_211_BATCH_B_FIRST_RUN_RESULTS.json')
-          a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
-          status={'candidate':'V8.3.211','phase':'sealed-validation-r2','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'semantic_authority':'QCSemanticCoreV89','validated_development_head_sha':'ec0646c126ffd60358013663c148f4ffd7080ca2','sealed_carrier_commit':'f2907d7107089dbf5d01ce5d193a0d8fb6b278dc','batch_a_executed':a is not None,'batch_a_passed':a.get('passed') if a else None,'batch_a_failed':a.get('failed') if a else None,'batch_b_executed':b is not None,'batch_b_passed':b.get('passed') if b else None,'batch_b_failed':b.get('failed') if b else None,'frozen_on_batch_a_failure':bool(a and a.get('failed',0)>0),'v210_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
-          (st/'V8_3_211_R2_SEALED_STATUS.json').write_text(json.dumps(status,indent=2)+'\n')
-          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
-          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
-          z=pathlib.Path('PSC_V8_3_211_R2_SEALED_VALIDATION_CHECKPOINT.zip')
-          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
-              for p in sorted(st.iterdir()):q.write(p,p.name)
-          pathlib.Path('PSC_V8_3_211_R2_SEALED_VALIDATION_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
-          print(status)
-          PY
-          cp PSC_V8_3_211_R2_SEALED_VALIDATION_CHECKPOINT.zip "$GITHUB_WORKSPACE/"
-          cp PSC_V8_3_211_R2_SEALED_VALIDATION_CHECKPOINT_SHA256.txt "$GITHUB_WORKSPACE/"
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: PSC_V8_3_211_R2_SEALED_VALIDATION_CHECKPOINT
-          path: |
-            PSC_V8_3_211_R2_SEALED_VALIDATION_CHECKPOINT.zip
-            PSC_V8_3_211_R2_SEALED_VALIDATION_CHECKPOINT_SHA256.txt
-      - name: Record sealed run receipt
-        if: always()
-        run: |
-          cd /tmp/v211-authority
-          python - <<'PY'
-          import json,pathlib,os,shutil
-          A=pathlib.Path('V8_3_211_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_211_BATCH_B_FIRST_RUN_RESULTS.json')
-          a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
-          success=bool(a and a['failed']==0 and b and b['failed']==0)
-          r={'candidate':'V8.3.211','phase':'sealed-validation-r2','target_validated_head':'ec0646c126ffd60358013663c148f4ffd7080ca2','sealed_carrier_commit':'f2907d7107089dbf5d01ce5d193a0d8fb6b278dc','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'status':'completed','conclusion':'success' if success else 'failure','sealed_trigger_repeated':False,'v210_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
-          pathlib.Path(os.environ['GITHUB_WORKSPACE']+'/validation/V8_3_211_R2_SEALED_RUN_RECEIPT.json').write_text(json.dumps(r,indent=2)+'\n')
-          PY
-          cd "$GITHUB_WORKSPACE"
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/V8_3_211_R2_SEALED_RUN_RECEIPT.json
-          git commit -m 'Record V8.3.211 R2 sealed run receipt'
+          git add -- validation/v83211-r3-preseal
+          git commit -m 'Freeze V8.3.211 R3 direct preseal carrier'
           git push
-      - name: Fail workflow unless both batches passed
-        if: always()
+      - name: Package R3 preseal checkpoint
         run: |
-          cd /tmp/v211-authority
           python - <<'PY'
-          import json,pathlib,sys
-          A=pathlib.Path('V8_3_211_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_211_BATCH_B_FIRST_RUN_RESULTS.json')
-          a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
-          if not(a and a['failed']==0 and b and b['failed']==0):sys.exit(1)
+          import pathlib,zipfile,hashlib,shutil
+          src=pathlib.Path('validation/v83211-r3-preseal');st=pathlib.Path('V8_3_211_R3_PRESEAL_CHECKPOINT');st.mkdir(exist_ok=True)
+          for p in src.iterdir():
+              if p.is_file():shutil.copy2(p,st/p.name)
+          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+          z=pathlib.Path('PSC_V8_3_211_R3_PRESEAL_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+              for p in sorted(st.iterdir()):q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_211_R3_PRESEAL_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
           PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_211_R3_PRESEAL_CHECKPOINT
+          path: |
+            PSC_V8_3_211_R3_PRESEAL_CHECKPOINT.zip
+            PSC_V8_3_211_R3_PRESEAL_CHECKPOINT_SHA256.txt
