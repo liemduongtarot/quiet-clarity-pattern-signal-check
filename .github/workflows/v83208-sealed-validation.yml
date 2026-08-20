@@ -1,0 +1,58 @@
+name: V8.3.208 Sealed Validation
+on:
+  push:
+    branches: [v83208-v1-sealed-validation]
+permissions:
+  contents: write
+jobs:
+  sealed_validate:
+    if: github.event.head_commit.message == 'Run V8.3.208 sealed validation one-shot'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Verify frozen authority and materialize exact V77R sealed runner
+        run: python validation/v83208-sealed-materialize.py
+      - name: SEALED Batch A first run exactly once
+        id: batcha
+        continue-on-error: true
+        run: node validation/v83208-v1-sealed/run-v208-sealed.cjs A
+      - name: SEALED Batch B exactly once only after A PASS
+        if: steps.batcha.outcome == 'success'
+        id: batchb
+        continue-on-error: true
+        run: node validation/v83208-v1-sealed/run-v208-sealed.cjs B
+      - name: Package immutable sealed checkpoint
+        if: always()
+        run: python validation/v83208-sealed-package.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_208_V1_SEALED_VALIDATION_CHECKPOINT
+          path: |
+            PSC_V8_3_208_V1_SEALED_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_208_V1_SEALED_VALIDATION_CHECKPOINT_SHA256.txt
+      - name: Record sealed run receipt
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          A=pathlib.Path('V8_3_208_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_208_BATCH_B_FIRST_RUN_RESULTS.json');a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
+          success=bool(a and a['failed']==0 and b and b['failed']==0)
+          p=pathlib.Path('validation/v83208-v1-sealed/V8_3_208_SEALED_RUN_RECEIPT.json');p.write_text(json.dumps({'candidate':'V8.3.208','phase':'sealed-validation','target_head_sha':os.environ['GITHUB_SHA'],'run_id':int(os.environ['GITHUB_RUN_ID']),'status':'completed','conclusion':'success' if success else 'failure','run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'sealed_trigger_repeated':False,'v207_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/v83208-v1-sealed/V8_3_208_SEALED_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.208 sealed run receipt'
+          git push
+      - name: Fail workflow unless both batches passed
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,pathlib,sys
+          A=pathlib.Path('V8_3_208_BATCH_A_FIRST_RUN_RESULTS.json');B=pathlib.Path('V8_3_208_BATCH_B_FIRST_RUN_RESULTS.json');a=json.loads(A.read_text()) if A.exists() else None;b=json.loads(B.read_text()) if B.exists() else None
+          if not (a and a['failed']==0 and b and b['failed']==0):sys.exit(1)
+          PY
