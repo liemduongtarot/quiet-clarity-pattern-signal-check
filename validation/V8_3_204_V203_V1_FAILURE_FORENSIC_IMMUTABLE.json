@@ -1,0 +1,22 @@
+{
+  "authority":"V8.3.204 FORENSIC OF V8.3.203 SEALED BATCH A FIRST SEMANTIC RUN FAILURES",
+  "source_run_id":32331205314,
+  "source_result":"10/30 PASS, 20 FAIL; Batch B SKIPPED",
+  "pre_execution_config_failure_run_id":32330979697,
+  "pre_execution_config_failure_jobs":0,
+  "immutable_expected_contracts":true,
+  "sealed_rerun_permitted":false,
+  "groups":[
+    {"id":"G1","mechanism":"ownership-clarification compositional coverage","cases":["V203-C007","V203-C009","V203-C005"],"cause":"V72 requires its earlier complete/final/unresolved phrase sets and misses complete-account plus missing-own-action formulations.","bounded_fix":"Extend completed-context, self-action and unresolved-attribution cue sets; keep three-part conjunction."},
+    {"id":"G2","mechanism":"delegated-decision compositional coverage","cases":["V203-C031"],"cause":"Take responsibility for the choice + tell me which alternative + supposed to select is outside takeover/object/direct cue sets.","bounded_fix":"Extend takeover/object/direct cue sets while retaining all three required components."},
+    {"id":"G3","mechanism":"hypothetical/sample coverage and precedence","cases":["V203-C054","V203-C052"],"cause":"Non-personal sample/validation and mock classification/not actual life are semantically hypothetical but outside V72 constructed-purpose-not-lived combinations; one leaks to parent third-party route.","bounded_fix":"Generalize sample/mock + testing/validation + non-lived evidence and evaluate before parent-derived third-party output."},
+    {"id":"G4","mechanism":"third-party hidden-state coverage","cases":["V203-C057","V203-C068"],"cause":"Hidden opinion/assessment with colleague/customer and outward-expression qualifiers are uncovered variants.","bounded_fix":"Extend hidden-state, person and non-observable cue sets; retain conjunction."},
+    {"id":"G5","mechanism":"prediction future-outcome coverage","cases":["V203-C074"],"cause":"Relationship going to work out + next few weeks is future outcome language but V72 future cue set is narrower.","bounded_fix":"Add going-to future construction with outcome phrase and horizon requirement."},
+    {"id":"G6","mechanism":"reversible-option freeze coverage/precedence","cases":["V203-C094","V203-C092","V203-C102"],"cause":"V72 misses extending comparison, easy step I can undo, reversible first attempt and postpone commitment/add choices; parent slow/ignore can win.","bounded_fix":"Broaden reversible + option-expansion + non-start/commitment-delay conjunction; keep freeze before slow/ignore."},
+    {"id":"G7","mechanism":"priority-diversion ignore coverage","cases":["V203-C116"],"cause":"Main request waiting + redirected attention + minor work lacks V72 explicit required-response cue.","bounded_fix":"Treat waiting-for-response/action as need cue when paired with main/key matter and low-priority diversion."},
+    {"id":"G8","mechanism":"bounded-delay slow coverage/precedence","cases":["V203-C127","V203-C131","V203-C139"],"cause":"Later-than-normal/delayed answer/response + one review + explicit closure variants are partly uncovered and can leak to ignore.","bounded_fix":"Expand delayed/single-review/closure cue sets; keep slow before ignore."},
+    {"id":"G9","mechanism":"approach-retreat-review sequence coverage","cases":["V203-C162","V203-C158","V203-C153"],"cause":"Came close/got ready/nearly acted, identical/same analysis/reasoning, and no-new-input/evidence-unchanged variants miss V72 sequence conjunction.","bounded_fix":"Broaden each required component while preserving approach+retreat+return/reopen+same-review+repetition+no-new-information structure."},
+    {"id":"G10","mechanism":"neutral self-authored completion false positive","cases":["V203-C179"],"cause":"Parent route can interpret selected/step language as delegated decision despite explicit myself + carried it out + no restart.","bounded_fix":"Add narrow neutral-completion guard requiring self-authorship + completed execution + closure/no-reopen, overriding route/families to self-lived neutral only when all three are present."}
+  ],
+  "change_control":{"engine_layer":"bounded compositional lexical coverage and precedence guard only","copy_layer":"unchanged","ui_layer":"unchanged","expected_contracts":"unchanged","sealed_material":"frozen and never rerun"}
+}
