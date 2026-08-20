@@ -1,0 +1,2134 @@
+{
+  "authority": "V8.3.203 FRESH PRE-SEAL CANDIDATE BANK V1",
+  "candidate": "V8.3.203",
+  "case_count": 180,
+  "cases": [
+    {
+      "case_id": "V203-C001",
+      "category": "clarification",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "We know what everyone else did and how the situation ended, but my own concrete action at the turning point is not described."
+    },
+    {
+      "case_id": "V203-C002",
+      "category": "clarification",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "The events are clear up to the finish; what I personally did in response is still missing from the account."
+    },
+    {
+      "case_id": "V203-C003",
+      "category": "clarification",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "The story explains the context and the other person's move, yet it never states my actual final behaviour."
+    },
+    {
+      "case_id": "V203-C004",
+      "category": "clarification",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "I can describe the whole exchange except for the specific action I took myself after the last message."
+    },
+    {
+      "case_id": "V203-C005",
+      "category": "clarification",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "The sequence makes sense, but my observable response at the end has not been supplied."
+    },
+    {
+      "case_id": "V203-C006",
+      "category": "clarification",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "Everything around the incident is known; the missing piece is what I myself actually did."
+    },
+    {
+      "case_id": "V203-C007",
+      "category": "clarification",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "The timeline is complete except for my own behaviour once the decision point arrived."
+    },
+    {
+      "case_id": "V203-C008",
+      "category": "clarification",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "I have explained what happened before and after, but not the concrete response I made in between."
+    },
+    {
+      "case_id": "V203-C009",
+      "category": "clarification",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "The situation is fully outlined, though my personal action when it mattered remains unspecified."
+    },
+    {
+      "case_id": "V203-C010",
+      "category": "clarification",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "The account covers the outcome and the other side's behaviour, while my own closing action is absent."
+    },
+    {
+      "case_id": "V203-C011",
+      "category": "clarification",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "We can place every event in order, but there is no stated action from me at the key moment."
+    },
+    {
+      "case_id": "V203-C012",
+      "category": "clarification",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "The circumstances are detailed; the one thing not established is how I actually responded."
+    },
+    {
+      "case_id": "V203-C013",
+      "category": "clarification",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "I have given the setting and the result, but not what I did myself when the issue came to me."
+    },
+    {
+      "case_id": "V203-C014",
+      "category": "clarification",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "The external facts are complete, yet my own practical response has not been identified."
+    },
+    {
+      "case_id": "V203-C015",
+      "category": "clarification",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "The narrative says what changed and what others did, but leaves out my concrete reaction."
+    },
+    {
+      "case_id": "V203-C016",
+      "category": "clarification",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "Everything is documented except the step I personally took when the matter reached me."
+    },
+    {
+      "case_id": "V203-C017",
+      "category": "clarification",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "The chronology is understandable, but the response attributable to me is still unknown."
+    },
+    {
+      "case_id": "V203-C018",
+      "category": "clarification",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:clarification-required",
+        "sequence": false
+      },
+      "surface": "The description includes the trigger and outcome, though it never says what action I took."
+    },
+    {
+      "case_id": "V203-C019",
+      "category": "decision",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Choose for me whether I should accept the offer or turn it down; I want one answer, not options."
+    },
+    {
+      "case_id": "V203-C020",
+      "category": "decision",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Decide which path I should take and give me the instruction as my final choice."
+    },
+    {
+      "case_id": "V203-C021",
+      "category": "decision",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "I do not want to weigh the alternatives myself; tell me which one I must pick."
+    },
+    {
+      "case_id": "V203-C022",
+      "category": "decision",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Make the call for me between staying and leaving and tell me exactly what to do."
+    },
+    {
+      "case_id": "V203-C023",
+      "category": "decision",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Take the decision out of my hands and select the option I should follow."
+    },
+    {
+      "case_id": "V203-C024",
+      "category": "decision",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Tell me the single course I should commit to instead of helping me compare them."
+    },
+    {
+      "case_id": "V203-C025",
+      "category": "decision",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "I want you to decide my answer for me and state which route I should choose."
+    },
+    {
+      "case_id": "V203-C026",
+      "category": "decision",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Pick the winning option on my behalf and tell me to go with it."
+    },
+    {
+      "case_id": "V203-C027",
+      "category": "decision",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Do not give me pros and cons; make the final decision for me."
+    },
+    {
+      "case_id": "V203-C028",
+      "category": "decision",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Select which choice becomes mine and tell me to act on that one."
+    },
+    {
+      "case_id": "V203-C029",
+      "category": "decision",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "I want a direct instruction replacing my own judgement about which option to take."
+    },
+    {
+      "case_id": "V203-C030",
+      "category": "decision",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Choose the answer I should give and make the decision on my behalf."
+    },
+    {
+      "case_id": "V203-C031",
+      "category": "decision",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Take responsibility for the choice and tell me which alternative I am supposed to select."
+    },
+    {
+      "case_id": "V203-C032",
+      "category": "decision",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Tell me which decision to make as a definitive instruction, not a framework."
+    },
+    {
+      "case_id": "V203-C033",
+      "category": "decision",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Remove the choice from me and name the exact path I should follow."
+    },
+    {
+      "case_id": "V203-C034",
+      "category": "decision",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "I want you to settle the decision for me and say which option is mine."
+    },
+    {
+      "case_id": "V203-C035",
+      "category": "decision",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Make my final selection between the two routes and tell me which to take."
+    },
+    {
+      "case_id": "V203-C036",
+      "category": "decision",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:decision-request",
+        "sequence": false
+      },
+      "surface": "Decide the course of action for me instead of asking me to choose."
+    },
+    {
+      "case_id": "V203-C037",
+      "category": "hypothetical",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "For classification practice only, imagine a fictional employee who reacts this way; this did not happen to me."
+    },
+    {
+      "case_id": "V203-C038",
+      "category": "hypothetical",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "Use this invented scenario as test data rather than as something from my own life."
+    },
+    {
+      "case_id": "V203-C039",
+      "category": "hypothetical",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "This is a made-up example for checking the tool, not a real situation I experienced."
+    },
+    {
+      "case_id": "V203-C040",
+      "category": "hypothetical",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "Treat the following as synthetic practice material; it is not autobiographical."
+    },
+    {
+      "case_id": "V203-C041",
+      "category": "hypothetical",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "I am testing the classifier with a fictional case, not describing an event that happened to me."
+    },
+    {
+      "case_id": "V203-C042",
+      "category": "hypothetical",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "This fabricated example exists only for QA and is unrelated to my personal history."
+    },
+    {
+      "case_id": "V203-C043",
+      "category": "hypothetical",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "Please analyse this imaginary situation as test input; it is not my lived experience."
+    },
+    {
+      "case_id": "V203-C044",
+      "category": "hypothetical",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "The case below is constructed for validation purposes and never occurred in my life."
+    },
+    {
+      "case_id": "V203-C045",
+      "category": "hypothetical",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "This is deliberately invented sample data for testing, not a description of my behaviour."
+    },
+    {
+      "case_id": "V203-C046",
+      "category": "hypothetical",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "Use this hypothetical example to check routing; there is no real event behind it."
+    },
+    {
+      "case_id": "V203-C047",
+      "category": "hypothetical",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "I made up this scenario solely for a test run, so do not treat it as my own situation."
+    },
+    {
+      "case_id": "V203-C048",
+      "category": "hypothetical",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "This fictional vignette is for classification QA and is not something I went through."
+    },
+    {
+      "case_id": "V203-C049",
+      "category": "hypothetical",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "The following example is synthetic and exists only to test the system."
+    },
+    {
+      "case_id": "V203-C050",
+      "category": "hypothetical",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "I am supplying a fabricated practice case rather than a real-life incident."
+    },
+    {
+      "case_id": "V203-C051",
+      "category": "hypothetical",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "This invented story is only test material; none of it happened to me."
+    },
+    {
+      "case_id": "V203-C052",
+      "category": "hypothetical",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "Treat this as a mock classification case, not as evidence from my actual life."
+    },
+    {
+      "case_id": "V203-C053",
+      "category": "hypothetical",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "I created this imaginary example to test the tool, not to report something I did."
+    },
+    {
+      "case_id": "V203-C054",
+      "category": "hypothetical",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:hypothetical-or-example",
+        "sequence": false
+      },
+      "surface": "This is non-personal sample content written purely for validation."
+    },
+    {
+      "case_id": "V203-C055",
+      "category": "third",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "Without relying on anything observable, tell me what my manager secretly thinks about me."
+    },
+    {
+      "case_id": "V203-C056",
+      "category": "third",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "What private judgement is my partner holding about me that they have never shown in their behaviour?"
+    },
+    {
+      "case_id": "V203-C057",
+      "category": "third",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "Tell me the hidden opinion my colleague has of me beyond anything they have said or done."
+    },
+    {
+      "case_id": "V203-C058",
+      "category": "third",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "What is my client privately concluding about me when there is no outward evidence?"
+    },
+    {
+      "case_id": "V203-C059",
+      "category": "third",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "What private conclusion has my supervisor formed about me when I have no behavioural evidence to support an inference?"
+    },
+    {
+      "case_id": "V203-C060",
+      "category": "third",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "With nothing outward to verify it, what private motive is the other person carrying toward me?"
+    },
+    {
+      "case_id": "V203-C061",
+      "category": "third",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "I want to know what my teammate really thinks of me behind the behaviour I can see."
+    },
+    {
+      "case_id": "V203-C062",
+      "category": "third",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "What hidden conclusion is my boss holding about me with no observable sign?"
+    },
+    {
+      "case_id": "V203-C063",
+      "category": "third",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "Tell me the private view my friend has of me even though they have not expressed it."
+    },
+    {
+      "case_id": "V203-C064",
+      "category": "third",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "What unspoken judgement is the recruiter making about me beyond their visible actions?"
+    },
+    {
+      "case_id": "V203-C065",
+      "category": "third",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "I want their secret internal opinion of me, not what can be inferred from the interaction."
+    },
+    {
+      "case_id": "V203-C066",
+      "category": "third",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "What is my colleague privately deciding about me where no behaviour reveals it?"
+    },
+    {
+      "case_id": "V203-C067",
+      "category": "third",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "Tell me what my manager is secretly feeling about me without using any evidence from what they did."
+    },
+    {
+      "case_id": "V203-C068",
+      "category": "third",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "What hidden assessment does my customer hold of me that has not been expressed outwardly?"
+    },
+    {
+      "case_id": "V203-C069",
+      "category": "third",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "I want to know the other person's private intention toward me despite having no observable indication."
+    },
+    {
+      "case_id": "V203-C070",
+      "category": "third",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "What is my supervisor silently concluding about me outside anything they have communicated?"
+    },
+    {
+      "case_id": "V203-C071",
+      "category": "third",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "Tell me the concealed judgement my partner has of me, beyond what their actions show."
+    },
+    {
+      "case_id": "V203-C072",
+      "category": "third",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:third-party-only",
+        "sequence": false
+      },
+      "surface": "What private belief is my colleague holding about me that I have no direct way to observe?"
+    },
+    {
+      "case_id": "V203-C073",
+      "category": "prediction",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Will I get the promotion before the end of next month?"
+    },
+    {
+      "case_id": "V203-C074",
+      "category": "prediction",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Is this relationship going to work out for me over the next few weeks?"
+    },
+    {
+      "case_id": "V203-C075",
+      "category": "prediction",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Will the money situation turn in my favour by the deadline?"
+    },
+    {
+      "case_id": "V203-C076",
+      "category": "prediction",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Am I going to receive the offer before October?"
+    },
+    {
+      "case_id": "V203-C077",
+      "category": "prediction",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Will this business decision end positively for me this quarter?"
+    },
+    {
+      "case_id": "V203-C078",
+      "category": "prediction",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Is the housing application going to succeed by the end of the month?"
+    },
+    {
+      "case_id": "V203-C079",
+      "category": "prediction",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Will the outcome eventually be good for me before the deadline arrives?"
+    },
+    {
+      "case_id": "V203-C080",
+      "category": "prediction",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Is this situation likely to resolve in my favour over the coming weeks?"
+    },
+    {
+      "case_id": "V203-C081",
+      "category": "prediction",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Will I hear the result I want before next month ends?"
+    },
+    {
+      "case_id": "V203-C082",
+      "category": "prediction",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Is the final outcome going to be positive for me by the stated date?"
+    },
+    {
+      "case_id": "V203-C083",
+      "category": "prediction",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Will this opportunity work out for me before the month is over?"
+    },
+    {
+      "case_id": "V203-C084",
+      "category": "prediction",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Am I going to get the answer I want within the next three weeks?"
+    },
+    {
+      "case_id": "V203-C085",
+      "category": "prediction",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Before the due date arrives, am I going to end up with the outcome I want?"
+    },
+    {
+      "case_id": "V203-C086",
+      "category": "prediction",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Is this going to turn out well for me by next month?"
+    },
+    {
+      "case_id": "V203-C087",
+      "category": "prediction",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Will the situation finish positively for me before the end of the quarter?"
+    },
+    {
+      "case_id": "V203-C088",
+      "category": "prediction",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Am I likely to get the outcome I want over the next few weeks?"
+    },
+    {
+      "case_id": "V203-C089",
+      "category": "prediction",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Will this resolve successfully for me before the due date?"
+    },
+    {
+      "case_id": "V203-C090",
+      "category": "prediction",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:prediction",
+        "sequence": false
+      },
+      "surface": "Is the eventual result going to favour me by month end?"
+    },
+    {
+      "case_id": "V203-C091",
+      "category": "freeze",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I could run a small reversible test today, but I keep adding more options to compare instead of starting."
+    },
+    {
+      "case_id": "V203-C092",
+      "category": "freeze",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "There is an easy first step I can undo, yet I stay uncommitted by researching more alternatives."
+    },
+    {
+      "case_id": "V203-C093",
+      "category": "freeze",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "A low-risk trial is available, but I postpone it while widening the list of possibilities."
+    },
+    {
+      "case_id": "V203-C094",
+      "category": "freeze",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I have a reversible experiment ready and keep extending the comparison rather than trying it."
+    },
+    {
+      "case_id": "V203-C095",
+      "category": "freeze",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "The first move would be easy to reverse, but I remain stuck collecting more possible routes."
+    },
+    {
+      "case_id": "V203-C096",
+      "category": "freeze",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I can test one option cheaply, yet I keep expanding the choice set and do not begin."
+    },
+    {
+      "case_id": "V203-C097",
+      "category": "freeze",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "A bounded trial is ready; instead of using it, I continue gathering additional alternatives."
+    },
+    {
+      "case_id": "V203-C098",
+      "category": "freeze",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "The next step is low-risk and reversible, but I delay by comparing more and more possibilities."
+    },
+    {
+      "case_id": "V203-C099",
+      "category": "freeze",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I could make a temporary move and review it later, yet I keep searching for more options first."
+    },
+    {
+      "case_id": "V203-C100",
+      "category": "freeze",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "There is a small experiment with little downside, but I hold off while enlarging the comparison."
+    },
+    {
+      "case_id": "V203-C101",
+      "category": "freeze",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I have an easy-to-undo starter action, though I keep broadening the alternatives instead of acting."
+    },
+    {
+      "case_id": "V203-C102",
+      "category": "freeze",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "A reversible first attempt is available, but I postpone commitment by adding more choices."
+    },
+    {
+      "case_id": "V203-C103",
+      "category": "freeze",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I could try one route without locking myself in, yet I keep collecting possibilities rather than begin."
+    },
+    {
+      "case_id": "V203-C104",
+      "category": "freeze",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "The test step is safe to reverse, but I stay in option-expansion instead of taking it."
+    },
+    {
+      "case_id": "V203-C105",
+      "category": "freeze",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I have a low-cost experiment ready and keep researching extra routes instead of running it."
+    },
+    {
+      "case_id": "V203-C106",
+      "category": "freeze",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "The decision has a reversible first move, but I delay that move by widening the comparison."
+    },
+    {
+      "case_id": "V203-C107",
+      "category": "freeze",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I can take a small non-binding step now, yet I keep adding alternatives and remain uncommitted."
+    },
+    {
+      "case_id": "V203-C108",
+      "category": "freeze",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "freeze"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "A temporary trial would give me information, but I keep expanding the option set rather than start."
+    },
+    {
+      "case_id": "V203-C109",
+      "category": "ignore",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "The urgent task needed my response, but I redirected myself to a lower-priority admin job."
+    },
+    {
+      "case_id": "V203-C110",
+      "category": "ignore",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "An important issue required action, yet I switched to peripheral work instead."
+    },
+    {
+      "case_id": "V203-C111",
+      "category": "ignore",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "A response was due on the main issue, yet I escaped into a small housekeeping task instead."
+    },
+    {
+      "case_id": "V203-C112",
+      "category": "ignore",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I left the central request untouched and spent the time on a minor task."
+    },
+    {
+      "case_id": "V203-C113",
+      "category": "ignore",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "The priority issue required my attention, but I shifted to unrelated work."
+    },
+    {
+      "case_id": "V203-C114",
+      "category": "ignore",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "The key task needed action, yet I occupied myself with something peripheral."
+    },
+    {
+      "case_id": "V203-C115",
+      "category": "ignore",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I avoided the important response by moving to a low-priority job."
+    },
+    {
+      "case_id": "V203-C116",
+      "category": "ignore",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "The main request was waiting for me, but I redirected attention to minor work."
+    },
+    {
+      "case_id": "V203-C117",
+      "category": "ignore",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "The central issue needed a decision, yet I put energy into a less relevant task."
+    },
+    {
+      "case_id": "V203-C118",
+      "category": "ignore",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I left the important matter unanswered and switched to secondary work."
+    },
+    {
+      "case_id": "V203-C119",
+      "category": "ignore",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "The priority task required action, but I busied myself with peripheral details."
+    },
+    {
+      "case_id": "V203-C120",
+      "category": "ignore",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I diverted from the main issue into a lower-value task instead of responding."
+    },
+    {
+      "case_id": "V203-C121",
+      "category": "ignore",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "The central matter needed my reply, but I chose an unrelated task to avoid it."
+    },
+    {
+      "case_id": "V203-C122",
+      "category": "ignore",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I let the important request sit while I worked on something less consequential."
+    },
+    {
+      "case_id": "V203-C123",
+      "category": "ignore",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "The main action was due, yet I redirected myself toward a minor side task."
+    },
+    {
+      "case_id": "V203-C124",
+      "category": "ignore",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I avoided dealing with the priority issue by switching to peripheral activity."
+    },
+    {
+      "case_id": "V203-C125",
+      "category": "ignore",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "The key matter required a response, but I left it alone and did lower-priority work."
+    },
+    {
+      "case_id": "V203-C126",
+      "category": "ignore",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "ignore"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I moved away from the important task and filled the time with secondary admin."
+    },
+    {
+      "case_id": "V203-C127",
+      "category": "slow",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I replied later than I normally would, checked the issue once, and then closed it."
+    },
+    {
+      "case_id": "V203-C128",
+      "category": "slow",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I took longer to answer, made a single review, and did not reopen the matter."
+    },
+    {
+      "case_id": "V203-C129",
+      "category": "slow",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I held my reply back for longer than normal, verified the point a single time, and then treated it as finished."
+    },
+    {
+      "case_id": "V203-C130",
+      "category": "slow",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "My response came late; after one check I left the issue closed."
+    },
+    {
+      "case_id": "V203-C131",
+      "category": "slow",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I delayed my answer, reviewed it once, and then stopped revisiting it."
+    },
+    {
+      "case_id": "V203-C132",
+      "category": "slow",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "My response took longer than normal; I performed one verification and then treated the issue as complete."
+    },
+    {
+      "case_id": "V203-C133",
+      "category": "slow",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I took extra time before replying, did one review, and then closed the issue."
+    },
+    {
+      "case_id": "V203-C134",
+      "category": "slow",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I responded late, looked at it one more time, and did not reopen it."
+    },
+    {
+      "case_id": "V203-C135",
+      "category": "slow",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I waited longer before answering, made one check, and then moved on."
+    },
+    {
+      "case_id": "V203-C136",
+      "category": "slow",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "My reply was delayed; I reviewed the matter once and then let it stay closed."
+    },
+    {
+      "case_id": "V203-C137",
+      "category": "slow",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I took a while to respond, checked it once, and did not go back to it."
+    },
+    {
+      "case_id": "V203-C138",
+      "category": "slow",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I answered later than usual, made a single verification, and then stopped."
+    },
+    {
+      "case_id": "V203-C139",
+      "category": "slow",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I delayed the response, looked once more, and left the issue alone afterward."
+    },
+    {
+      "case_id": "V203-C140",
+      "category": "slow",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I took longer than normal to answer, checked once, and then closed the matter."
+    },
+    {
+      "case_id": "V203-C141",
+      "category": "slow",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I waited before sending my reply, reviewed it one time, and did not revisit it."
+    },
+    {
+      "case_id": "V203-C142",
+      "category": "slow",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "My answer came later, I made one check, and then left the issue closed."
+    },
+    {
+      "case_id": "V203-C143",
+      "category": "slow",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I responded slowly, reviewed the matter once, and then moved on without reopening it."
+    },
+    {
+      "case_id": "V203-C144",
+      "category": "slow",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I held back before replying, checked it once, and then stopped there."
+    },
+    {
+      "case_id": "V203-C145",
+      "category": "sequence",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I got close to taking the step, retreated, and later cycled through the identical reasoning several times despite learning nothing new."
+    },
+    {
+      "case_id": "V203-C146",
+      "category": "sequence",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I approached the step, backed away, and came back to the identical question again and again with nothing new."
+    },
+    {
+      "case_id": "V203-C147",
+      "category": "sequence",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I began moving on the decision, stopped myself, and repeatedly returned to the same deliberation even though no new facts appeared."
+    },
+    {
+      "case_id": "V203-C148",
+      "category": "sequence",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I got close to acting, stepped back, and returned to the same analysis several times with no new facts."
+    },
+    {
+      "case_id": "V203-C149",
+      "category": "sequence",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I neared action, withdrew from it, then revisited the identical reasoning multiple times without receiving any additional evidence."
+    },
+    {
+      "case_id": "V203-C150",
+      "category": "sequence",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I moved toward the decision, pulled away, and re-entered the same cycle again and again with no new evidence."
+    },
+    {
+      "case_id": "V203-C151",
+      "category": "sequence",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I began to act, backed off, then returned to the identical review loop repeatedly without anything new."
+    },
+    {
+      "case_id": "V203-C152",
+      "category": "sequence",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I approached action, withdrew, and came back to the same question multiple times without fresh information."
+    },
+    {
+      "case_id": "V203-C153",
+      "category": "sequence",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I nearly acted, stepped back, and later reopened the same reasoning several times even though the evidence had not changed."
+    },
+    {
+      "case_id": "V203-C154",
+      "category": "sequence",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I approached the decision point, pulled back, and returned to the same analysis repeatedly without new facts."
+    },
+    {
+      "case_id": "V203-C155",
+      "category": "sequence",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I started toward the move, retreated, then came back to the identical review again and again with no new input."
+    },
+    {
+      "case_id": "V203-C156",
+      "category": "sequence",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I almost acted, stepped away, and then kept reopening the same deliberation even though nothing new had emerged."
+    },
+    {
+      "case_id": "V203-C157",
+      "category": "sequence",
+      "domain": "work",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I approached the step, stepped back, then returned to the same review loop several times with nothing new."
+    },
+    {
+      "case_id": "V203-C158",
+      "category": "sequence",
+      "domain": "relationship",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I got ready to act, withdrew, and came back to the same analysis repeatedly without additional evidence."
+    },
+    {
+      "case_id": "V203-C159",
+      "category": "sequence",
+      "domain": "money",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I moved toward the choice, pulled back, then revisited the same review cycle again and again without new information."
+    },
+    {
+      "case_id": "V203-C160",
+      "category": "sequence",
+      "domain": "business",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I approached action, retreated, and returned to the identical question repeatedly with no fresh evidence."
+    },
+    {
+      "case_id": "V203-C161",
+      "category": "sequence",
+      "domain": "housing",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I started to move, backed away, then re-entered the same review loop multiple times without new facts."
+    },
+    {
+      "case_id": "V203-C162",
+      "category": "sequence",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [
+          "slow"
+        ],
+        "route": "input:self-lived",
+        "sequence": true
+      },
+      "surface": "I came close to making the move, pulled away, and repeatedly reopened the identical analysis without any new input."
+    },
+    {
+      "case_id": "V203-C163",
+      "category": "neutral",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I identified a sensible next action, did it under my own judgement, and considered the issue finished afterward."
+    },
+    {
+      "case_id": "V203-C164",
+      "category": "neutral",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I settled on a limited course myself, carried it through, and did not return to the decision afterward."
+    },
+    {
+      "case_id": "V203-C165",
+      "category": "neutral",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I made my own practical choice, followed through once, and then considered the question resolved."
+    },
+    {
+      "case_id": "V203-C166",
+      "category": "neutral",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I picked one reasonable step, completed it, and then moved on without revisiting it."
+    },
+    {
+      "case_id": "V203-C167",
+      "category": "neutral",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I decided on a small action myself, executed it, and left the issue alone afterward."
+    },
+    {
+      "case_id": "V203-C168",
+      "category": "neutral",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I chose the next workable step on my own, finished it, and did not go back over the decision."
+    },
+    {
+      "case_id": "V203-C169",
+      "category": "neutral",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I made one practical choice myself, carried it through, and then closed the matter."
+    },
+    {
+      "case_id": "V203-C170",
+      "category": "neutral",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I selected a proportionate action, completed it, and did not revisit the issue."
+    },
+    {
+      "case_id": "V203-C171",
+      "category": "neutral",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I chose a reasonable next move myself, did it, and then stopped reviewing the matter."
+    },
+    {
+      "case_id": "V203-C172",
+      "category": "neutral",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I made a small decision on my own, acted on it, and left the issue closed."
+    },
+    {
+      "case_id": "V203-C173",
+      "category": "neutral",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I independently picked a workable next action, completed it, and treated the question as settled afterward."
+    },
+    {
+      "case_id": "V203-C174",
+      "category": "neutral",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I chose one bounded action, completed it, and then moved forward without revisiting it."
+    },
+    {
+      "case_id": "V203-C175",
+      "category": "neutral",
+      "domain": "business",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I made the next sensible decision myself, carried it out, and stopped there."
+    },
+    {
+      "case_id": "V203-C176",
+      "category": "neutral",
+      "domain": "housing",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I selected one manageable action on my own, finished it, and left the matter settled."
+    },
+    {
+      "case_id": "V203-C177",
+      "category": "neutral",
+      "domain": "daily-admin",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I chose the proportionate move myself, completed it, and did not circle back to it."
+    },
+    {
+      "case_id": "V203-C178",
+      "category": "neutral",
+      "domain": "work",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I made one contained choice, executed it, and then let the issue remain closed."
+    },
+    {
+      "case_id": "V203-C179",
+      "category": "neutral",
+      "domain": "relationship",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I selected a reasonable step myself, carried it out, and did not restart the review."
+    },
+    {
+      "case_id": "V203-C180",
+      "category": "neutral",
+      "domain": "money",
+      "expected": {
+        "families": [],
+        "route": "input:self-lived",
+        "sequence": false
+      },
+      "surface": "I chose a contained course without outsourcing the decision, carried it through, and then moved on."
+    }
+  ],
+  "development_authority_head": "ef9aca50e281ec53c36b68f4ea0e3ab40a0fb787",
+  "semantic_authority": "QCSemanticCoreV72",
+  "source_note": "Fresh bank generated without executing candidate cases against runtime; independent gold assigned from sealed contract classes."
+}

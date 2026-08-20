@@ -1,0 +1,41 @@
+{
+  "authority": "V8.3.203 PRE-SEAL DIVERSITY AND CONTAMINATION AUDIT V1",
+  "batch_a_count": 30,
+  "batch_b_count": 30,
+  "candidate": "V8.3.203",
+  "candidate_bank_sha256": "a45c357cc7d740bd06d4887f2cbde31d1ee6b2b7a569901538021a2724ac20b7",
+  "case_count": 180,
+  "category_distribution": {
+    "clarification": 18,
+    "decision": 18,
+    "freeze": 18,
+    "hypothetical": 18,
+    "ignore": 18,
+    "neutral": 18,
+    "prediction": 18,
+    "sequence": 18,
+    "slow": 18,
+    "third": 18
+  },
+  "domain_distribution": {
+    "business": 30,
+    "daily-admin": 30,
+    "housing": 30,
+    "money": 30,
+    "relationship": 30,
+    "work": 30
+  },
+  "exact_duplicate_count": 0,
+  "external_cases_at_or_above_0_75": 0,
+  "external_max_sequence_similarity": 0.7375,
+  "external_reference_candidates": [
+    "V8.3.201 sealed V1",
+    "V8.3.202 sealed V1"
+  ],
+  "internal_max_sequence_similarity": 0.795322,
+  "pass": true,
+  "runtime_executed_during_bank_or_selection": false,
+  "selection_count": 60,
+  "selection_method": "For each of 10 contract classes, rank case_id by SHA256(candidate_bank_sha256|case_id), select first 6; split 3/3 into Batch A/B by SHA256(AB|candidate_bank_sha256|case_id). No runtime output used.",
+  "v201_or_v202_sealed_material_reused": false
+}
