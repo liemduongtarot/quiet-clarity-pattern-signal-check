@@ -1,0 +1,19 @@
+{
+  "candidate": "V8.3.210",
+  "phase": "v85-preservation-pair",
+  "run_id": 32374717550,
+  "run_attempt": 1,
+  "head_sha": "9f152b8558defc579b1da5f1cd4cb71d628da314",
+  "status": "completed",
+  "conclusion": "failure",
+  "regression_total": 1410,
+  "regression_passed": 1402,
+  "regression_failed": 8,
+  "generalization_total": 400,
+  "generalization_passed": 400,
+  "semantic_authority": "QCSemanticCoreV85",
+  "v209_sealed_rerun": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
