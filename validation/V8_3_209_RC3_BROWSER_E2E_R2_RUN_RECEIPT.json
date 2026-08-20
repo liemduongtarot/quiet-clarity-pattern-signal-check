@@ -1,0 +1,17 @@
+{
+  "candidate": "V8.3.209",
+  "phase": "rc3-browser-e2e-r2",
+  "run_id": 32353879480,
+  "run_attempt": 1,
+  "head_sha": "258312bb9cac8d80e154e38b8253d3a1dbfc392b",
+  "status": "completed",
+  "conclusion": "success",
+  "browser_total": 1380,
+  "browser_passed": true,
+  "semantic_authority": "QCSemanticCoreV79RC3",
+  "identity_expected": "V8.3.209-SEMANTIC-RULE-TABLE-V3-REVIEW-CANDIDATE",
+  "sealed_validation_executed": false,
+  "v208_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
