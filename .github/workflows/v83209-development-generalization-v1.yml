@@ -45,7 +45,7 @@ jobs:
             (out/f'V8_3_{v}_SEALED_FIXTURE_REFERENCE.json').write_bytes(data)
           PY
       - name: Generate fresh development-only challenge
-        run: python validation/v83209-generalization-challenge-generator.py
+        run: python validation/v83209-generalization-challenge-generator-v1r.py
       - name: Run extraction and classification audit
         id: challenge
         continue-on-error: true
@@ -56,7 +56,7 @@ jobs:
           python - <<'PY'
           import pathlib,zipfile,hashlib,json,shutil,os
           st=pathlib.Path('V8_3_209_GENERALIZATION_V1_CHECKPOINT');st.mkdir(exist_ok=True)
-          files=[pathlib.Path('validation/V8_3_209_DEVELOPMENT_GENERALIZATION_CHALLENGE_V1.json'),pathlib.Path('V8_3_209_DEVELOPMENT_GENERALIZATION_RESULTS_V1.json'),pathlib.Path('validation/qc-evidence-extractor-v1-review-candidate.js'),pathlib.Path('validation/run-v83209-development-generalization-challenge.cjs')]
+          files=[pathlib.Path('validation/V8_3_209_DEVELOPMENT_GENERALIZATION_CHALLENGE_V1.json'),pathlib.Path('V8_3_209_DEVELOPMENT_GENERALIZATION_RESULTS_V1.json'),pathlib.Path('validation/qc-evidence-extractor-v1-review-candidate.js'),pathlib.Path('validation/run-v83209-development-generalization-challenge.cjs'),pathlib.Path('validation/v83209-generalization-challenge-generator-v1r.py')]
           for p in files:
             if p.exists():shutil.copy2(p,st/p.name)
           r=pathlib.Path('V8_3_209_DEVELOPMENT_GENERALIZATION_RESULTS_V1.json');rr=json.loads(r.read_text()) if r.exists() else None
