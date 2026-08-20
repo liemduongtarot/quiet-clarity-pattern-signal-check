@@ -1,0 +1,23 @@
+{
+  "authority": "V8.3.211 V210 V1 FAILURE FORENSIC IMMUTABLE",
+  "source_run_id": 32380354863,
+  "batch_a_total": 30,
+  "batch_a_passed": 14,
+  "batch_a_failed": 16,
+  "batch_b_executed": false,
+  "diagnosis_layer": "ENGINE LOGIC / semantic evidence extraction + contextual conflict containment",
+  "taxonomy_change_required": false,
+  "expected_contract_change_permitted": false,
+  "groups": {
+    "clarification_indirect_omission": ["V210-C016", "V210-C006"],
+    "hypothetical_constructed_nonlived": ["V210-C045"],
+    "third_party_hidden_no_observable_basis": ["V210-C070", "V210-C059", "V210-C067"],
+    "prediction_horizon_positive_outcome": ["V210-C080"],
+    "freeze_reversible_optioning_nonstart": ["V210-C094", "V210-C095"],
+    "ignore_central_diversion_unanswered": ["V210-C115"],
+    "slow_delay_single_check_closure": ["V210-C131", "V210-C133", "V210-C135"],
+    "sequence_approach_retreat_repeat_no_new": ["V210-C157", "V210-C159", "V210-C156"]
+  },
+  "notable_conflict": "V210-C159 false prediction from mechanism-neutral money/decision context while sequence evidence was underdetected.",
+  "repair_contract": "Mechanism-level morphology/phrase-order extraction and context-neutral distractor hygiene; no case-ID matching; preserve approved taxonomy and all expected/gold contracts. New V211 development challenge must include misleading domain/context words as negative controls."
+}
