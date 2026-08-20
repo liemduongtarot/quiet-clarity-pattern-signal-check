@@ -1,0 +1,89 @@
+(function(global){
+'use strict';
+const parent=global.QCEvidenceExtractorV1R4;if(!parent)throw new Error('QCEvidenceExtractorV2 requires V1R4');
+const VERSION='QCEvidenceExtractorV2-V210-RELATIONAL-SEMANTICS';
+const fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase().replace(/[^a-z0-9?\s'-]/g,' ').replace(/\s+/g,' ').trim();
+const any=(d,a)=>a.some(x=>d.includes(x));
+function extract(raw){const d=fold(raw),o={...parent.extract(raw)};
+ const set=(k,v)=>{if(v)o[k]=true;};
+ const neg=any(d,[' not ',' no ',' never ',' none ',' without ',' does not ',' did not ',' do not ',' should not ',' rather than ',' khong ',' chang ',' chua ',' khong phai ',' khong co ',' thay vi ']);
+ const self=any(d,[' i ',' my ',' me ',' myself','personally','from me','came from me','my own','chinh toi','toi ',' cua toi','rieng toi','do toi','tu toi','phia toi']);
+ const action=any(d,['action','move','response','behaviour','behavior','did there','did at','contributed','hanh dong','nuoc di','phan ung','hanh vi','da lam','thuc hien']);
+ const omission=any(d,['missing','absent','unstated','not stated','not supplied','never been supplied','without identifying','omits','omitted','not identifying','left blank','still unstated','chua duoc neu','chua noi','bo thieu','bo trong','con trong','van chua','khong noi cu the','chua xuat hien']);
+ const endpoint=any(d,['final point','at the final','closure','endpoint','when the episode finished','when it finished','when the matter finished','at the end','closing point','final beat','khep lai','ket thuc','diem ket','hoi cuoi','luc chot','doan cuoi','diem cuoi']);
+ set('self_owned_action',self&&action);
+ set('action_missing',action&&omission);
+ set('endpoint_present',endpoint);
+ set('context_otherwise_complete',any(d,['surrounding facts are settled','nothing external is missing','sequence is understandable','account gets all the way','we know what happened around','du kien xung quanh da du','khong thieu thong tin ben ngoai','dien bien da ro','ta biet chuyen quanh','mo ta di toi']));
+
+ const choose=any(d,['choose','choice','select','decide','decision','make this call','make the call','take the choice','own the final choice','do the selecting','quyet dinh','chon','lua chon','phan quyet','chot']);
+ const transfer=any(d,['on my behalf','instead of me','for me','out of my hands','substitute your decision for mine','replace my decision','take over','become my answer','thay toi','ho toi','chon ho','quyet dinh ho','quyet dinh thay','lay quyen lua chon khoi toi','thay cho quyet dinh cua toi','nam phan quyet dinh']);
+ const choiceObj=any(d,['option','path','route','course','alternative','choice','direction','phuong an','huong','con duong','lua chon','buoc tiep theo']);
+ const delegationNeg=any(d,['without asking anyone else to decide for me','did not ask anyone to decide for me','khong nho ai quyet dinh thay toi','khong yeu cau ai quyet dinh thay toi']);
+ set('delegated_decision',choose&&transfer&&!delegationNeg);
+ set('agency_transfer_explicit',transfer&&!delegationNeg);
+ set('choice_object_present',choiceObj);
+ set('delegation_negated',delegationNeg);
+
+ const constructed=any(d,['fabricated','constructed','invented','synthetic','practice case','practice material','test material','validation sample','validation material','robustness check','stress-test','stress test','classifier','exercise the classifier','probe the tool','dung vi du','dung doan','bịa','bia ','tong hop','case thuc hanh','du lieu test','mau validation','kiem do ben','thu classifier','thu cong cu']);
+ const livedTerms=any(d,['happened to me','event from my life','from my life','lived','lived situation','lived history','autobiographical','experienced','experience','xay ra voi toi','chuyen that','trai qua','trai nghiem','tu truyen','tinh huong toi da song']);
+ const nonlived=(constructed&&neg&&livedTerms)||any(d,['none of this happened to me','not an event from my life','not be read as autobiographical','not to describe something i experienced','rather than a lived situation','khong phai chuyen tung xay ra voi toi','khong nen hieu la tu truyen','khong mo ta trai nghiem that','khong co phan nao o day xay ra voi toi','khong phai tinh huong toi da song qua']);
+ set('constructed_input',constructed);
+ set('test_or_practice_context',constructed||any(d,['practice','validation','test case','kiem thu','thuc hanh']));
+ set('non_lived_explicit',nonlived);
+
+ const thirdPerson=any(d,['supervisor','manager','customer','client','colleague','other person','they ','their ','nguoi kia','quan ly','khach hang','dong nghiep','ho ','nguoi do']);
+ const mental=any(d,['conclusion','judgement','judgment','opinion','intention','thinks','think','view','private','internal','concealed','hidden','secret','unspoken','keeps to themselves','ket luan','danh gia','quan diem','y dinh','nghi gi','noi tam','kin','bi mat','giau','giu rieng']);
+ const noBasis=(any(d,['no evidence','nothing observable','no outward','no behavioural basis','no behavioral basis','gives me no evidence','no basis for knowing','never expressed','no outward sign','available record contains no','not an interpretation of anything they have actually said or done']) || ((neg||any(d,['khong','chang']))&&any(d,['evidence','observable','outward','behaviour','behavior','record','sign','basis','bang chung','dau hieu','can cu','hanh vi','bieu hien'])));
+ set('third_party_subject',thirdPerson);
+ set('hidden_internal_state',thirdPerson&&mental);
+ set('observable_evidence_absent',thirdPerson&&noBasis);
+
+ const horizon=any(d,['next month','coming few weeks','coming weeks','next several weeks','near future','before the deadline','within the near future','over the next','by next month','thang sau','vai tuan toi','vai tuan tiep theo','tuong lai gan','truoc khi deadline','truoc han','trong thang toi']);
+ const outcome=any(d,['outcome','result','resolve','end positively','end in','favour me','favor me','produce the outcome','ket qua','ket cuc','ket thuc','nghieng ve','co loi','tich cuc','cho ra ket qua','xay ra']);
+ const askFuture=(d.includes('?')||any(d,['will ','is the final','is this going','does this end','co ','khong?']))&&outcome&&horizon;
+ set('future_horizon_present',horizon);
+ set('future_outcome_request',askFuture||any(d,['will this resolve','will the result','will the outcome','ket qua toi muon co xay ra','chuyen nay co ket thuc','co cho ra ket qua']));
+
+ const reversible=any(d,['reversible','could reverse','can reverse','could undo','can undo','way back','clear way back','low-cost step','low cost step','low-risk','low risk','not lock me in','would have locked me in','undo the small trial','de quay lai','co the quay lai','co the dao nguoc','co the hoan tac','duong lui','it ton kem','rui ro thap','khong khoa toi']);
+ const options=any(d,['adding alternatives','broadened the option','broadened option','expanded choices','expanded options','expanding options','more possibilities','more alternatives','option list','research mode','comparing more','kept comparing','kept adding','them phuong an','mo rong danh sach lua chon','mo rong lua chon','tang lua chon','so them','them kha nang','nghien cuu them','danh sach lua chon']);
+ const nostart=any(d,['never started','not started','did not start','postponed beginning','postponed starting','remained unstarted','rather than initiating','rather than starting','left the first step untouched','did not begin','chua bat dau','khong bat dau','tri hoan viec khoi dong','van chua lam','thay vi bat tay','bo nguyen buoc dau','chua dong toi']);
+ set('reversible_action_available',reversible);
+ set('option_expansion',options);
+ set('non_start',nostart);
+
+ const central=any(d,['consequential request','central responsibility','main issue','main responsibility','core matter','core request','materially important','important still needed','central issue','yeu cau co he qua','trach nhiem trung tam','van de chinh','viec cot loi','chuyen quan trong','viec quan trong']);
+ const peripheral=any(d,['secondary work','peripheral details','peripheral tasks','lower-priority','lower priority','side activity','less important','surrounding work','viec thu yeu','chi tiet phu','viec phu','uu tien thap','viec ben le','it quan trong','viec xung quanh']);
+ const divert=any(d,['redirected myself','redirected attention','occupied my attention','spent my effort','turned toward','shifted attention','kept doing','busy with','chuyen minh','don chu y','danh suc','quay sang','tap trung vao','cu lam','ban voi']);
+ const responseOpen=any(d,['required my answer','needed my answer','waiting on me','remained unanswered','left it open','instead of replying','instead of responding','rather than addressing','required a response','can toi tra loi','dang cho toi','van chua duoc tra loi','de no mo','thay vi phan hoi','thay vi xu ly','can phan hoi','chua duoc phan hoi']);
+ set('central_responsibility',central);
+ set('peripheral_activity',peripheral);
+ set('attention_diverted',peripheral&&divert);
+ set('response_omitted',central&&responseOpen||responseOpen);
+
+ const delay=(any(d,['later than','after a delay','slower to reply','slower than usual','extra time before','did not respond quickly','response came late','reply came late','muon hon binh thuong','cham hon thuong le','sau mot khoang cham','mat them thoi gian','khong phan hoi nhanh','phan hoi den cham']) || ((any(d,['answered','responded','replied','tra loi','phan hoi']))&&any(d,['later','slower','muon hon','cham hon'])&&any(d,['normal','usual','binh thuong','thuong le']))));
+ const oneReview=any(d,['checked it once','checked once','verified one','verified a single','one verification','one check','single verification','single review','made one review','after one check','kiem mot lan','xac minh mot diem','mot lan xac minh','review dung mot','mot luot','sau mot lan kiem','kiem dung mot']);
+ const closed=any(d,['closed the matter','did not return','treated the issue as finished','left the decision alone','moved on without reopening','stopped revisiting','stopped reconsidering','did not reopen','regarded the matter as complete','left the matter closed','khep chuyen','khong quay lai','xem viec da xong','de quyet dinh yen','di tiep va khong mo lai','ngung xem xet lai','ngung can nhac','xem viec da hoan tat','de chuyen khep lai']);
+ set('bounded_delay',delay);
+ set('single_review',oneReview);
+ set('closure_present',closed||o.closure_present);
+
+ const approach=any(d,['prepared to act','prepare to act','got close to execution','close to execution','moved toward the step','moved toward action','approached action','approached execution','nearly ready','nearly acted','almost acted','den sat hanh dong','chuan bi hanh dong','tien gan toi luc thuc hien','tien ve buoc lam','gan nhu san sang','gan nhu lam']);
+ const retreat=any(d,['withdrew','backed away','retreated','pulled out','pulled back','stepped back','step back','rut lai','lui ra','rut lui','thoi lai','buoc lui']);
+ const repeated=any(d,['repeatedly','several times','more than once','cycled through','kept re-entering','kept returning','re-running','rerunning','again and again','lap lai','nhieu lan','vai lan','hon mot lan','cu quay lai','lien tuc tro vao','chay lai']);
+ const same=any(d,['same reasoning','same assessment','same logic','same review','same evaluation','cung mot ly luan','cung danh gia','cung logic','cung luot xem xet','cung mot danh gia']);
+ const noNew=any(d,['no new facts','no new information','without fresh input','no fresh input','nothing new','no additional information','evidence stayed unchanged','facts stayed unchanged','no new evidence','khong co du kien moi','khong co thong tin moi','khong nhan them input','chang co gi moi','evidence khong doi','du kien khong doi','khong co them thong tin']);
+ set('approach_action',approach);
+ set('retreat_action',retreat);
+ set('repeated_cycle',repeated);
+ set('same_reasoning',same);
+ set('no_new_information',noNew);
+
+ const ownChoice=any(d,['kept the decision with myself','judgement remained mine','judgment remained mine','made my own choice','retained ownership','chose independently','decision stayed with me','giu quyet dinh o minh','phan doan van la cua toi','tu chon','giu quyen chot','doc lap lua chon']);
+ const completed=any(d,['carried out','followed through','executed','completed','finished the practical step','finished the action','thuc hien lua chon','lam toi noi','lam xong','hoan tat buoc','hoan thanh hanh dong']);
+ set('self_ownership_retained',ownChoice);
+ set('execution_completed',completed);
+ return Object.freeze(o);
+}
+global.QCEvidenceExtractorV2=Object.freeze({version:VERSION,extract});
+})(typeof globalThis!=='undefined'?globalThis:this);
