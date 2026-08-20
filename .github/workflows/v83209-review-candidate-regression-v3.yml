@@ -1,0 +1,55 @@
+name: V8.3.209 Review Candidate Regression V3
+on:
+  push:
+    branches: [v83209-v1-validation]
+permissions:
+  contents: write
+jobs:
+  regression:
+    if: github.event.head_commit.message == 'Run V8.3.209 review candidate regression V3'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Materialize immutable regression authority and RC3 runner
+        run: |
+          python - <<'PY'
+          import pathlib,base64,gzip,zipfile
+          names=['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION','V8_3_168_V167_V1_FAILURE_REGRESSION','V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION']
+          for n in names:
+            p=pathlib.Path('validation/'+n+'.json.gz.b64');pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
+          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
+          src=pathlib.Path('validation/run-v83196-full-regression-sweep-v2.cjs').read_text()
+          chain="'psc-v83196-v195-v1-hypothetical-preservation-repair.js','psc-v83197-v196-sealed-a-bounded-repair.js','psc-v83198-v197-sealed-a-bounded-repair.js','psc-v83199-v198-sealed-a-bounded-repair.js','psc-v83200-v199-sealed-a-bounded-repair.js','psc-v83201-v200-sealed-a-bounded-repair.js','psc-v83201-v200-v1-preservation-precedence-repair.js','psc-v83202-v201-sealed-a-bounded-repair.js','psc-v83203-v202-sealed-a-bounded-repair.js','psc-v83204-v203-sealed-a-bounded-repair.js','psc-v83205-v204-sealed-a-bounded-repair.js','psc-v83206-v205-compositional-generalization.js','psc-v83206-v205-v1-preservation-repair.js','psc-v83207-v206-mechanism-cue-repair.js','psc-v83207-v206-v1-preservation-repair.js','psc-v83208-v207-mechanism-cue-repair.js','psc-v83208-v207-v1-preservation-repair.js','psc-v83209-v208-evidence-slot-composition.js','psc-v83209-v208-v1-preservation-repair.js','qc-evidence-extractor-v1-review-candidate.js','qc-evidence-extractor-v1r-review-candidate.js','qc-evidence-extractor-v1r2-review-candidate.js','psc-v83209-semantic-rule-table-v3-review-candidate.js'"
+          src=src.replace("'psc-v83196-v195-v1-hypothetical-preservation-repair.js'];",chain+"];")
+          src=src.replace('QCSemanticCoreV65R','QCSemanticCoreV79RC3').replace('V8.3.196 V65R full immutable regression sweep V2','V8.3.209 RC3 full immutable regression').replace('V8_3_196_V2_FULL_REGRESSION_SWEEP_RESULTS.json','V8_3_209_RC3_FULL_REGRESSION_RESULTS.json')
+          pathlib.Path('validation/run-v83209-rc3-full-regression.cjs').write_text(src)
+          PY
+      - name: Run full immutable regression
+        id: regression
+        continue-on-error: true
+        run: node validation/run-v83209-rc3-full-regression.cjs
+      - name: Record RC3 regression receipt
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,json,os
+          p=pathlib.Path('V8_3_209_RC3_FULL_REGRESSION_RESULTS.json');r=json.loads(p.read_text()) if p.exists() else None
+          receipt={'candidate':'V8.3.209','phase':'review-candidate-historical-regression-v3','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'status':'completed','conclusion':'success' if r and r.get('failed')==0 else 'failure','total':r.get('total') if r else None,'passed':r.get('passed') if r else None,'failed':r.get('failed') if r else None,'semantic_authority':'QCSemanticCoreV79RC3','sealed_validation_executed':False,'v208_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_209_RC3_REGRESSION_RUN_RECEIPT.json').write_text(json.dumps(receipt,indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/V8_3_209_RC3_REGRESSION_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.209 RC3 regression receipt'
+          git push
+      - name: Fail unless historical regression passes
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,pathlib,sys
+          p=pathlib.Path('V8_3_209_RC3_FULL_REGRESSION_RESULTS.json');r=json.loads(p.read_text()) if p.exists() else None
+          if not (r and r.get('failed')==0):sys.exit(1)
+          PY
