@@ -1,0 +1,22 @@
+{
+  "authority": "V8.3.198 V197 V1 FAILURE REGRESSION",
+  "source_candidate": "V8.3.197",
+  "source_batch": "A",
+  "first_run_only": true,
+  "cases": [
+    {"case_id":"V197-S001","surface":"The surrounding facts are complete, but the last concrete step I personally took is still not stated.","domain":"work","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V197-S003","surface":"Everyone else's actions are described, yet my own observable closing move remains missing.","domain":"money","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V197-S005","surface":"The account resolves the sequence but leaves my personal final action unspecified.","domain":"relationship","expected":{"route":"input:clarification-required","families":[],"sequence":false}},
+    {"case_id":"V197-S011","surface":"Đừng phân tích thêm, hãy quyết định trực tiếp phương án tôi phải làm.","domain":"business","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V197-S015","surface":"Treat the scenario as invented test material rather than a lived experience of mine.","domain":"money","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V197-S019","surface":"What private view is my manager holding about me that has never appeared in observable behaviour?","domain":"work","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V197-S027","surface":"Is this likely to resolve positively for me by the deadline we discussed?","domain":"housing","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V197-S029","surface":"Will this eventually end the way I want within the next few weeks?","domain":"relationship","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V197-S031","surface":"A reversible first experiment was ready, but I kept expanding the comparison instead of starting it.","domain":"work","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"case_id":"V197-S033","surface":"A low-risk trial was available, yet I kept gathering alternatives rather than acting.","domain":"business","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"case_id":"V197-S039","surface":"Instead of addressing the request, I ignored it and occupied myself with something peripheral.","domain":"business","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"case_id":"V197-S045","surface":"My action was delayed; after one review, I did not reopen the issue.","domain":"relationship","expected":{"route":"input:self-lived","families":["slow"],"sequence":false}},
+    {"case_id":"V197-S047","surface":"I took longer to respond, reviewed it once, then moved on without returning.","domain":"housing","expected":{"route":"input:self-lived","families":["slow"],"sequence":false}},
+    {"case_id":"V197-S049","surface":"I moved toward acting, pulled back, then returned to the same review loop with no new evidence.","domain":"relationship","expected":{"route":"input:self-lived","families":["slow"],"sequence":true}}
+  ]
+}
