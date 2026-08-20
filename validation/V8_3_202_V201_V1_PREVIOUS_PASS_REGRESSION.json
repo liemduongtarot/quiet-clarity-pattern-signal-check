@@ -1,0 +1,19 @@
+{
+  "authority": "V8.3.202 V201 V1 PREVIOUS PASS REGRESSION",
+  "cases": [
+    {"case_id":"V201-S009","surface":"I do not want options; make the final call for me and tell me which path to take.","domain":"work","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V201-S011","surface":"Replace my own decision with your direct instruction about what I must choose.","domain":"business","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V201-S013","surface":"This fictional example exists only to test classification; it is not something that happened in my life.","domain":"work","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V201-S015","surface":"Treat this made-up scenario as test material rather than an event I personally experienced.","domain":"money","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V201-S017","surface":"This fabricated case is for analysis only, not a real episode from my own history.","domain":"daily-admin","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V201-S029","surface":"Will the outcome turn favourable for me over the next few weeks?","domain":"work","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V201-S039","surface":"I left the important request untouched and occupied myself with a lower-priority task.","domain":"business","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"case_id":"V201-S041","surface":"The main issue required action, yet I distracted myself with an unrelated task.","domain":"daily-admin","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"case_id":"V201-S043","surface":"I replied later than usual, checked it once, and then left the matter alone.","domain":"work","expected":{"route":"input:self-lived","families":["slow"],"sequence":false}},
+    {"case_id":"V201-S049","surface":"I moved toward acting, pulled back, and returned to the same review cycle repeatedly with no new evidence.","domain":"relationship","expected":{"route":"input:self-lived","families":["slow"],"sequence":true}},
+    {"case_id":"V201-S051","surface":"I checked, backed away, then re-entered the identical loop again and again without anything new.","domain":"business","expected":{"route":"input:self-lived","families":["slow"],"sequence":true}},
+    {"case_id":"V201-S055","surface":"I chose one reasonable step myself, completed it, and left the matter closed.","domain":"work","expected":{"route":"input:self-lived","families":[],"sequence":false}},
+    {"case_id":"V201-S057","surface":"I made one bounded decision on my own, carried it out, and did not reopen the issue.","domain":"money","expected":{"route":"input:self-lived","families":[],"sequence":false}},
+    {"case_id":"V201-S059","surface":"I selected the practical action myself, finished it, and stopped there.","domain":"business","expected":{"route":"input:self-lived","families":[],"sequence":false}}
+  ]
+}
