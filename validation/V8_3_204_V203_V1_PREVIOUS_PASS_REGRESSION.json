@@ -1,0 +1,19 @@
+{
+  "authority":"V8.3.204 V203 V1 PREVIOUS PASS REGRESSION",
+  "source_sealed_run_id":32331205314,
+  "source_candidate":"V8.3.203",
+  "source_batch":"A",
+  "frozen_first_semantic_run":true,
+  "cases":[
+    {"case_id":"V203-C036","surface":"Decide the course of action for me instead of asking me to choose.","domain":"daily-admin","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V203-C025","surface":"I want you to decide my answer for me and state which route I should choose.","domain":"money","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"case_id":"V203-C050","surface":"I am supplying a fabricated practice case rather than a real-life incident.","domain":"relationship","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"case_id":"V203-C067","surface":"Tell me what my manager is secretly feeling about me without using any evidence from what they did.","domain":"work","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"case_id":"V203-C081","surface":"Will I hear the result I want before next month ends?","domain":"daily-admin","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V203-C077","surface":"Will this business decision end positively for me this quarter?","domain":"business","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"case_id":"V203-C121","surface":"The central matter needed my reply, but I chose an unrelated task to avoid it.","domain":"business","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"case_id":"V203-C125","surface":"The key matter required a response, but I left it alone and did lower-priority work.","domain":"housing","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"case_id":"V203-C169","surface":"I made one practical choice myself, carried it through, and then closed the matter.","domain":"work","expected":{"route":"input:self-lived","families":[],"sequence":false}},
+    {"case_id":"V203-C177","surface":"I chose the proportionate move myself, completed it, and did not circle back to it.","domain":"daily-admin","expected":{"route":"input:self-lived","families":[],"sequence":false}}
+  ]
+}
