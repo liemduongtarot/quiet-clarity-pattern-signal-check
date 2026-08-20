@@ -1,0 +1,24 @@
+{
+  "authority": "V8.3.208 V207 V1 PREVIOUS PASS REGRESSION",
+  "source_candidate": "V8.3.207",
+  "source_run_id": 32341357226,
+  "source_batch": "A",
+  "source_first_run_only": true,
+  "v207_sealed_rerun": false,
+  "cases": [
+    {"id":"V207-C020","surface":"I want you to decide the route on my behalf, not give me criteria for choosing it myself.","domain":"relationship","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"id":"V207-C025","surface":"Pick the next step for me and make that your answer, not a decision framework.","domain":"work","expected":{"route":"input:decision-request","families":[],"sequence":false}},
+    {"id":"V207-C037","surface":"This is a fabricated validation sample, not a report of anything that happened in my life.","domain":"relationship","expected":{"route":"input:hypothetical-or-example","families":[],"sequence":false}},
+    {"id":"V207-C063","surface":"Describe what they are privately feeling about me, not what can be inferred from anything they actually showed.","domain":"housing","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"id":"V207-C065","surface":"Hãy nói đánh giá kín của đồng nghiệp về tôi khi không có bằng chứng quan sát nào cho điều đó.","domain":"money","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"id":"V207-C066","surface":"Người kia có ý định không nói ra nào với tôi ngoài mọi thứ có thể thấy trong hành vi của họ?","domain":"business","expected":{"route":"input:third-party-only","families":[],"sequence":false}},
+    {"id":"V207-C089","surface":"Trước cuối tháng kết quả có rơi về phía có lợi cho tôi không?","domain":"housing","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"id":"V207-C090","surface":"Nhìn một tháng tới, tình huống này có biến thành kết quả tôi muốn không?","domain":"daily-admin","expected":{"route":"input:prediction","families":[],"sequence":false}},
+    {"id":"V207-C102","surface":"Một hành động dễ hoàn tác đã sẵn sàng, vậy mà tôi vẫn chưa cam kết vì cứ mở rộng phần so sánh.","domain":"work","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"id":"V207-C105","surface":"Một thử nghiệm giới hạn không khóa tôi vào quyết định, nhưng tôi vẫn ở chế độ gom phương án thay vì làm.","domain":"business","expected":{"route":"input:self-lived","families":["freeze"],"sequence":false}},
+    {"id":"V207-C115","surface":"The important issue needed my reply, but I chose side activity and left the central item pending.","domain":"relationship","expected":{"route":"input:self-lived","families":["ignore"],"sequence":false}},
+    {"id":"V207-C143","surface":"Phản hồi chậm hơn thường lệ; có một lần review cuối rồi tôi tiếp tục tiến tới.","domain":"housing","expected":{"route":"input:self-lived","families":["slow"],"sequence":false}},
+    {"id":"V207-C167","surface":"I independently chose the practical move, executed it, and did not return to the comparison.","domain":"housing","expected":{"route":"input:self-lived","families":[],"sequence":false}},
+    {"id":"V207-C174","surface":"Tôi tự chọn một bước hợp lý, làm tới nơi và đi tiếp mà không mở lại quyết định.","domain":"work","expected":{"route":"input:self-lived","families":[],"sequence":false}}
+  ]
+}
