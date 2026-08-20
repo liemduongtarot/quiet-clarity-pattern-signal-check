@@ -1,0 +1,48 @@
+name: V8.3.211 Preseal Construction
+on:
+  push:
+    branches: [v83211-v1-sealed-validation]
+permissions:
+  contents: write
+jobs:
+  preseal:
+    if: github.event.head_commit.message == 'Run V8.3.211 preseal construction'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1}
+      - name: Materialize prior sealed references and V211 development challenge
+        run: |
+          mkdir -p validation/preseal_refs
+          for v in 201 202 203 204 205 206 207 208 209; do s=${v#20}; git fetch --depth=1 origin refs/heads/v8320${s}-v1-sealed-validation:refs/remotes/origin/v8320${s}-v1-sealed-validation; git show origin/v8320${s}-v1-sealed-validation:validation/v8320${s}-v1-sealed/V8_3_${v}_SEALED_FIXTURE_V1.json > validation/preseal_refs/V8_3_${v}_SEALED_FIXTURE_REFERENCE.json; done
+          git fetch --depth=1 origin refs/heads/v83210-v1-sealed-validation:refs/remotes/origin/v83210-v1-sealed-validation
+          git show origin/v83210-v1-sealed-validation:validation/v83210-v1-sealed/V8_3_210_SEALED_FIXTURE_V1.json > validation/preseal_refs/V8_3_210_SEALED_FIXTURE_REFERENCE.json
+          python validation/v83211-generalization-600-generator-v1r.py
+          cp validation/V8_3_211_DEVELOPMENT_GENERALIZATION_600_V1.json validation/preseal_refs/V8_3_211_DEVELOPMENT_GENERALIZATION_600_REFERENCE.json
+      - name: Generate and audit fresh V211 bank
+        run: python validation/v83211-preseal-generator.py
+      - name: Verify no semantic runtime used
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          root=pathlib.Path('validation/v83211-v1-sealed')
+          a=json.loads((root/'V8_3_211_PRESEAL_DIVERSITY_AUDIT_V1.json').read_text())
+          u=json.loads((root/'V8_3_211_SEALED_AUTHORITY_V1.json').read_text())
+          assert a['pass'] is True and a['external_cases_at_or_above_0_75']==0 and a['exact_external_duplicates']==0
+          assert a['runtime_executed_during_bank_or_selection'] is False and a['semantic_authority_loaded_during_bank_or_selection'] is False and a['selection_uses_runtime_output'] is False
+          assert u['validated_development_head_sha']=='ec0646c126ffd60358013663c148f4ffd7080ca2'
+          assert u['semantic_authority']=='QCSemanticCoreV89' and u['step_111_authorized'] is False
+          PY
+      - name: Commit frozen preseal authority
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          a=json.loads(pathlib.Path('validation/v83211-v1-sealed/V8_3_211_PRESEAL_DIVERSITY_AUDIT_V1.json').read_text())
+          pathlib.Path('validation/v83211-v1-sealed/V8_3_211_PRESEAL_RUN_RECEIPT.json').write_text(json.dumps({'candidate':'V8.3.211','phase':'preseal-construction','run_id':int(os.environ['GITHUB_RUN_ID']),'head_sha':os.environ['GITHUB_SHA'],'conclusion':'success','candidate_count':a['candidate_count'],'selected_count':a['selected_count'],'internal_max_similarity':a['internal_max_similarity'],'external_max_similarity':a['external_max_similarity'],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'v210_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2))
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/v83211-v1-sealed/V8_3_211_PRESEAL_CANDIDATE_BANK_V1.json validation/v83211-v1-sealed/V8_3_211_SEALED_SELECTION_V1.json validation/v83211-v1-sealed/V8_3_211_SEALED_FIXTURE_V1.json validation/v83211-v1-sealed/V8_3_211_INDEPENDENT_GOLD_V1.json validation/v83211-v1-sealed/V8_3_211_SEALED_MEMBERSHIP_V1.json validation/v83211-v1-sealed/V8_3_211_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83211-v1-sealed/V8_3_211_SEALED_AUTHORITY_V1.json validation/v83211-v1-sealed/V8_3_211_PRESEAL_BUNDLE_V1.json.gz.b64 validation/v83211-v1-sealed/V8_3_211_PRESEAL_RUN_RECEIPT.json
+          git commit -m 'Freeze V8.3.211 V1 preseal authority'
+          git push
