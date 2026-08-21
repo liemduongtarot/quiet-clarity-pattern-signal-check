@@ -1,0 +1,45 @@
+name: V8.3.216 Protected Sealed One-Shot
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  sealed:
+    if: github.event.head_commit.message == 'Run V8.3.216 V1 semantic one-shot'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83216-v1-sealed-validation
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Execute protected V8.3.216 V1 semantic first run
+        id: one_shot
+        continue-on-error: true
+        run: python validation/v83216-v1-sealed/v83216-v1-one-shot.py
+      - name: Record immutable first-run evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          test -f validation/V8_3_216_V1_SEMANTIC_FIRST_RUN_EXECUTED.json
+          test -f validation/v83216-v1-sealed/V8_3_216_V1_SEALED_RUN_RECEIPT.json
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/V8_3_216_V1_SEMANTIC_FIRST_RUN_EXECUTED.json validation/v83216-v1-sealed
+          git diff --cached --quiet || git commit -m 'Record V8.3.216 V1 sealed first-run evidence'
+          git push origin HEAD:v83216-v1-sealed-validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_216_V1_SEALED_VALIDATION_CHECKPOINT
+          if-no-files-found: error
+          path: |
+            PSC_V8_3_216_V1_SEALED_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_216_V1_SEALED_VALIDATION_CHECKPOINT_SHA256.txt
+      - name: Enforce sealed outcome
+        if: always()
+        run: test '${{ steps.one_shot.outcome }}' = 'success'
