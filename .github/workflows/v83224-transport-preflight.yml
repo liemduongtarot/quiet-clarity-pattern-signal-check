@@ -1,0 +1,28 @@
+name: V8.3.224 Transport + Static Preflight
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  gate:
+    if: github.event.head_commit.message == 'Run V8.3.224 transport and static preflight'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: v83224-v1-sealed-validation, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Verify gate
+        run: python validation/v83224-v1-sealed/v83224-transport-preflight.py
+      - name: Freeze evidence
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83224-v1-sealed/V8_3_224_TRANSPORT_VERIFICATION_V1.json validation/v83224-v1-sealed/V8_3_224_STATIC_SEALED_PREFLIGHT_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.224 transport and static preflight evidence'
+          git push origin HEAD:v83224-v1-sealed-validation
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_224_TRANSPORT_BUNDLE
+          path: PSC_V8_3_224_TRANSPORT_BUNDLE.zip
