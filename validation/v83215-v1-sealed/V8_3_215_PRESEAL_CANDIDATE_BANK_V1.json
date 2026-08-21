@@ -334,7 +334,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Một sheet địa điểm do bộ phận lịch trình quản lý. Marker hành chính không quyết định cơ chế. Bộ phận đối soát giữ một ghi chú kho riêng chỉ để truy xuất hồ sơ. Mã ledger đã được lưu.",
+      "surface": "Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Một hồ sơ điều phối địa điểm riêng do bộ phận lịch trình quản lý, bao gồm sơ đồ phòng và ghi chú vận hành cơ sở. Marker hành chính không quyết định cơ chế. Bộ phận đối soát giữ một ghi chú kho riêng chỉ để truy xuất hồ sơ. Mã ledger đã được lưu.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -346,7 +346,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "other",
-      "surface": "Phối hợp địa điểm lưu một memo lịch riêng ngoài phần hành vi đang đo. Lịch gặp đã có sẵn. Fact logistics tách biệt với phản ứng đang đo. Một sheet địa điểm do bộ phận lịch trình quản lý. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc.",
+      "surface": "Phối hợp địa điểm lưu một memo lịch riêng ngoài phần hành vi đang đo. Lịch gặp đã có sẵn. Fact logistics tách biệt với phản ứng đang đo. Một hồ sơ điều phối địa điểm riêng do bộ phận lịch trình quản lý, bao gồm sơ đồ phòng và ghi chú vận hành cơ sở. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -358,7 +358,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "money",
-      "surface": "Marker hồ sơ đã được ghi. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Một sheet địa điểm do bộ phận lịch trình quản lý. Mã lưu trữ chỉ neo dòng thời gian.",
+      "surface": "Marker hồ sơ đã được ghi. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Một hồ sơ điều phối địa điểm riêng do bộ phận lịch trình quản lý, bao gồm sơ đồ phòng và ghi chú vận hành cơ sở. Mã lưu trữ chỉ neo dòng thời gian.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -370,7 +370,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc. Một sheet địa điểm do bộ phận lịch trình quản lý. Chi tiết thủ tục chỉ định vị record. Giấy tờ lập kế hoạch chung mang một ghi chú sinh hoạt không liên quan evidence phản ứng. Ghi chú sinh hoạt đã có.",
+      "surface": "Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc. Một hồ sơ điều phối địa điểm riêng do bộ phận lịch trình quản lý, bao gồm sơ đồ phòng và ghi chú vận hành cơ sở. Chi tiết thủ tục chỉ định vị record. Giấy tờ lập kế hoạch chung mang một ghi chú sinh hoạt không liên quan evidence phản ứng. Ghi chú sinh hoạt đã có.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -382,7 +382,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "career",
-      "surface": "Vận hành nhân sự giữ một comment roster chỉ phục vụ quản lý ca. Định danh rota đã lưu. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Một sheet địa điểm do bộ phận lịch trình quản lý. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết.",
+      "surface": "Vận hành nhân sự giữ một comment roster chỉ phục vụ quản lý ca. Định danh rota đã lưu. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Một hồ sơ điều phối địa điểm riêng do bộ phận lịch trình quản lý, bao gồm sơ đồ phòng và ghi chú vận hành cơ sở. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -394,7 +394,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "family",
-      "surface": "Mã hành chính đã có. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc. Kiểm soát hồ sơ dùng một khóa truy xuất để lập chỉ mục tài liệu. Một sheet địa điểm do bộ phận lịch trình quản lý. Marker hành chính không quyết định cơ chế.",
+      "surface": "Mã hành chính đã có. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc. Kiểm soát hồ sơ dùng một khóa truy xuất để lập chỉ mục tài liệu. Một hồ sơ điều phối địa điểm riêng do bộ phận lịch trình quản lý, bao gồm sơ đồ phòng và ghi chú vận hành cơ sở. Marker hành chính không quyết định cơ chế.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -406,7 +406,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Một sheet địa điểm do bộ phận lịch trình quản lý. Fact logistics tách biệt với phản ứng đang đo. Xử lý kế toán giữ một notation invoice chỉ thuộc workflow bookkeeping. Marker invoice đã có.",
+      "surface": "Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Một hồ sơ điều phối địa điểm riêng do bộ phận lịch trình quản lý, bao gồm sơ đồ phòng và ghi chú vận hành cơ sở. Fact logistics tách biệt với phản ứng đang đo. Xử lý kế toán giữ một notation invoice chỉ thuộc workflow bookkeeping. Marker invoice đã có.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -418,7 +418,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "other",
-      "surface": "Lập chỉ mục liên lạc lưu một cue thread chỉ để truy xuất tin nhắn. Timestamp thread đã ghi. Mã lưu trữ chỉ neo dòng thời gian. Một sheet địa điểm do bộ phận lịch trình quản lý. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc.",
+      "surface": "Lập chỉ mục liên lạc lưu một cue thread chỉ để truy xuất tin nhắn. Timestamp thread đã ghi. Mã lưu trữ chỉ neo dòng thời gian. Một hồ sơ điều phối địa điểm riêng do bộ phận lịch trình quản lý, bao gồm sơ đồ phòng và ghi chú vận hành cơ sở. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -430,7 +430,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "money",
-      "surface": "Chi tiết booking đã lưu. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Một sheet địa điểm do bộ phận lịch trình quản lý. Chi tiết thủ tục chỉ định vị record.",
+      "surface": "Chi tiết booking đã lưu. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Một hồ sơ điều phối địa điểm riêng do bộ phận lịch trình quản lý, bao gồm sơ đồ phòng và ghi chú vận hành cơ sở. Chi tiết thủ tục chỉ định vị record.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -1216,7 +1216,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "career",
-      "surface": "Bộ phận đối soát giữ một ghi chú kho riêng chỉ để truy xuất hồ sơ. Mã ledger đã được lưu. Chi tiết thủ tục chỉ định vị record. Bìa lưu hồ sơ chung do bộ phận records quản lý. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu.",
+      "surface": "Bộ phận đối soát giữ một ghi chú kho riêng chỉ để truy xuất hồ sơ. Mã ledger đã được lưu. Chi tiết thủ tục chỉ định vị record. Một packet lưu trữ tổng hợp do bộ phận records quản lý, kèm quy tắc phân loại tài liệu và lịch luân chuyển nội bộ. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1230,7 +1230,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "family",
-      "surface": "Lịch gặp đã có sẵn. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Phối hợp địa điểm lưu một memo lịch riêng ngoài phần hành vi đang đo. Bìa lưu hồ sơ chung do bộ phận records quản lý. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "surface": "Lịch gặp đã có sẵn. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Phối hợp địa điểm lưu một memo lịch riêng ngoài phần hành vi đang đo. Một packet lưu trữ tổng hợp do bộ phận records quản lý, kèm quy tắc phân loại tài liệu và lịch luân chuyển nội bộ. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1244,7 +1244,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Bìa lưu hồ sơ chung do bộ phận records quản lý. Marker hành chính không quyết định cơ chế. Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Marker hồ sơ đã được ghi.",
+      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Một packet lưu trữ tổng hợp do bộ phận records quản lý, kèm quy tắc phân loại tài liệu và lịch luân chuyển nội bộ. Marker hành chính không quyết định cơ chế. Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Marker hồ sơ đã được ghi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1258,7 +1258,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "other",
-      "surface": "Giấy tờ lập kế hoạch chung mang một ghi chú sinh hoạt không liên quan evidence phản ứng. Ghi chú sinh hoạt đã có. Fact logistics tách biệt với phản ứng đang đo. Bìa lưu hồ sơ chung do bộ phận records quản lý. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động.",
+      "surface": "Giấy tờ lập kế hoạch chung mang một ghi chú sinh hoạt không liên quan evidence phản ứng. Ghi chú sinh hoạt đã có. Fact logistics tách biệt với phản ứng đang đo. Một packet lưu trữ tổng hợp do bộ phận records quản lý, kèm quy tắc phân loại tài liệu và lịch luân chuyển nội bộ. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1272,7 +1272,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "money",
-      "surface": "Định danh rota đã lưu. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Vận hành nhân sự giữ một comment roster chỉ phục vụ quản lý ca. Bìa lưu hồ sơ chung do bộ phận records quản lý. Mã lưu trữ chỉ neo dòng thời gian.",
+      "surface": "Định danh rota đã lưu. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Vận hành nhân sự giữ một comment roster chỉ phục vụ quản lý ca. Một packet lưu trữ tổng hợp do bộ phận records quản lý, kèm quy tắc phân loại tài liệu và lịch luân chuyển nội bộ. Mã lưu trữ chỉ neo dòng thời gian.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1286,7 +1286,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Bìa lưu hồ sơ chung do bộ phận records quản lý. Chi tiết thủ tục chỉ định vị record. Kiểm soát hồ sơ dùng một khóa truy xuất để lập chỉ mục tài liệu. Mã hành chính đã có.",
+      "surface": "Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Một packet lưu trữ tổng hợp do bộ phận records quản lý, kèm quy tắc phân loại tài liệu và lịch luân chuyển nội bộ. Chi tiết thủ tục chỉ định vị record. Kiểm soát hồ sơ dùng một khóa truy xuất để lập chỉ mục tài liệu. Mã hành chính đã có.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1300,7 +1300,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "career",
-      "surface": "Xử lý kế toán giữ một notation invoice chỉ thuộc workflow bookkeeping. Marker invoice đã có. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Bìa lưu hồ sơ chung do bộ phận records quản lý. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu.",
+      "surface": "Xử lý kế toán giữ một notation invoice chỉ thuộc workflow bookkeeping. Marker invoice đã có. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Một packet lưu trữ tổng hợp do bộ phận records quản lý, kèm quy tắc phân loại tài liệu và lịch luân chuyển nội bộ. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1314,7 +1314,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "family",
-      "surface": "Timestamp thread đã ghi. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Lập chỉ mục liên lạc lưu một cue thread chỉ để truy xuất tin nhắn. Bìa lưu hồ sơ chung do bộ phận records quản lý. Marker hành chính không quyết định cơ chế.",
+      "surface": "Timestamp thread đã ghi. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Lập chỉ mục liên lạc lưu một cue thread chỉ để truy xuất tin nhắn. Một packet lưu trữ tổng hợp do bộ phận records quản lý, kèm quy tắc phân loại tài liệu và lịch luân chuyển nội bộ. Marker hành chính không quyết định cơ chế.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1328,7 +1328,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Bìa lưu hồ sơ chung do bộ phận records quản lý. Fact logistics tách biệt với phản ứng đang đo. Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Chi tiết booking đã lưu.",
+      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Một packet lưu trữ tổng hợp do bộ phận records quản lý, kèm quy tắc phân loại tài liệu và lịch luân chuyển nội bộ. Fact logistics tách biệt với phản ứng đang đo. Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Chi tiết booking đã lưu.",
       "expected": {
         "route": "input:self-lived",
         "families": [
