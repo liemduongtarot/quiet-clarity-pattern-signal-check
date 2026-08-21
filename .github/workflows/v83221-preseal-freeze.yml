@@ -1,0 +1,41 @@
+name: V8.3.221 Fresh Preseal Freeze
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  preseal:
+    if: github.event.head_commit.message == 'Run V8.3.221 fresh preseal freeze'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83221-v1-sealed-validation
+          fetch-depth: 0
+      - name: Construct audit freeze
+        id: preseal
+        continue-on-error: true
+        run: python validation/v83221-v1-sealed/v83221-preseal-freeze.py
+      - name: Freeze preseal evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          test -f validation/v83221-v1-sealed/V8_3_221_PRESEAL_RUN_RECEIPT.json
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/v83221-v1-sealed/V8_3_221_*.json
+          git diff --cached --quiet || git commit -m 'Record V8.3.221 frozen preseal authority'
+          git push origin HEAD:v83221-v1-sealed-validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_221_V1_PRESEAL_CHECKPOINT
+          if-no-files-found: error
+          path: |
+            PSC_V8_3_221_V1_PRESEAL_CHECKPOINT.zip
+            PSC_V8_3_221_V1_PRESEAL_CHECKPOINT_SHA256.txt
+      - name: Enforce
+        if: always()
+        run: test '${{ steps.preseal.outcome }}' = 'success'
