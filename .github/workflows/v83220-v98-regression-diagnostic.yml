@@ -1,0 +1,46 @@
+name: V8.3.220 V98 Regression Diagnostic
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  diag:
+    if: github.event.head_commit.message == 'Diagnose V8.3.220 V98 regression'
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83220-v1-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Run observable regression
+        id: reg
+        continue-on-error: true
+        run: |
+          set +e
+          python validation/v83220-v98-regression-orchestrator.py > /tmp/v220-reg.log 2>&1
+          rc=$?
+          cat /tmp/v220-reg.log
+          echo "exit_code=$rc" >> "$GITHUB_OUTPUT"
+          exit $rc
+      - name: Freeze diagnostic
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          log=pathlib.Path('/tmp/v220-reg.log').read_text(errors='replace') if pathlib.Path('/tmp/v220-reg.log').exists() else ''
+          d={'candidate':'V8.3.220','phase':'v98-regression-diagnostic','outcome':os.environ['OUTCOME'],'exit_code':os.environ.get('EXIT_CODE'),'log_tail':log[-12000:],'sealed_validation_executed':False,'v219_sealed_rerun':False}
+          pathlib.Path('validation/V8_3_220_V98_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/V8_3_220_V98_REGRESSION_DIAGNOSTIC.json
+          for f in validation/V8_3_220_V98_REGRESSION_RECEIPT.json validation/V8_3_220_V219_A_IMMUTABLE_REGRESSION.json; do test ! -f "$f" || git add -- "$f"; done
+          git diff --cached --quiet || git commit -m 'Record V8.3.220 V98 regression diagnostic'
+          git push origin HEAD:v83220-v1-validation
+        env:
+          OUTCOME: ${{ steps.reg.outcome }}
+          EXIT_CODE: ${{ steps.reg.outputs.exit_code }}
