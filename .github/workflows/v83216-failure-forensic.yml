@@ -1,0 +1,24 @@
+name: V8.3.216 Failure Forensic
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  forensic:
+    if: github.event.head_commit.message == 'Run V8.3.216 frozen failure forensic'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83216-v1-validation
+          fetch-depth: 1
+      - name: Materialize frozen V8.3.215 failures
+        run: python validation/v83216-v215-failure-forensic.py
+      - name: Commit immutable forensic evidence
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/V8_3_216_V215_V1_FAILURE_FORENSIC_IMMUTABLE.json
+          git commit -m 'Record immutable V8.3.215 failure forensic'
+          git push origin HEAD:v83216-v1-validation
