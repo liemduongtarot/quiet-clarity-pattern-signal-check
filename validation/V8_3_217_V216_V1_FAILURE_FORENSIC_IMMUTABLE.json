@@ -1,0 +1,23 @@
+{
+  "candidate": "V8.3.217",
+  "source_failure_authority": "V8.3.216 V1 SEALED BATCH A FIRST RUN",
+  "source_run_id": 32487826991,
+  "source_sealed_evidence_commit": "pending-existing-v216-sealed-bot-evidence",
+  "validated_development_base": "8f69213bda48583d94f5c9128ecb5cd6f6832d63",
+  "total_failures": 13,
+  "failure_groups": [
+    {"group":"clarification-vi-recall","count":1,"case_ids":["V216-S00-13"],"expected":"input:clarification-required","actual":"input:self-lived","cause":"complete-context + remaining own-action + closure paraphrase not fully mapped"},
+    {"group":"third-party-relational-recall","count":3,"case_ids":["V216-S03-01","V216-S03-07","V216-S03-13"],"expected":"input:third-party-only","actual":"input:self-lived","cause":"secret/unspoken belief + no outward behaviour basis paraphrases not fully mapped"},
+    {"group":"prediction-vi-recall","count":1,"case_ids":["V216-S04-13"],"expected":"input:prediction","actual":"input:self-lived","cause":"stated future boundary + desired closing outcome paraphrase not fully mapped"},
+    {"group":"freeze-en-recall","count":2,"case_ids":["V216-S05-01","V216-S05-07"],"expected":"freeze","actual":"none","cause":"reversible low-stakes opening move + alternatives expansion + never-started trial paraphrase not fully mapped"},
+    {"group":"slow-bounded-review-recall","count":3,"case_ids":["V216-S07-01","V216-S07-07","V216-S07-13"],"expected":"slow","actual":"none","cause":"limited interval + one review pass + finished/closed process paraphrase not fully mapped"},
+    {"group":"sequence-en-recall","count":2,"case_ids":["V216-S08-01","V216-S08-07"],"expected":"slow sequence=true","actual":"none sequence=false","cause":"near action + backed away + same judgement + no new facts paraphrase not fully mapped"},
+    {"group":"neutral-vi-containment","count":1,"case_ids":["V216-S09-13"],"expected":"neutral self-lived","actual":"ignore","cause":"retained final agency + completed action + did not reopen issue paraphrase not fully mapped, allowing inherited ignore cue to win"}
+  ],
+  "diagnostic_layer": "ENGINE_LOGIC_EVIDENCE_EXTRACTION",
+  "expected_contracts_changed": false,
+  "gold_changed": false,
+  "taxonomy_changed": false,
+  "route_precedence_changed": false,
+  "sealed_v216_rerun": false
+}
