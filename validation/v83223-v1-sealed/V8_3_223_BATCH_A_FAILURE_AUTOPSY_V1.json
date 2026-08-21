@@ -1,0 +1,31 @@
+{
+  "candidate": "V8.3.223",
+  "source_run_id": "32521148386",
+  "failure_layer": "ENGINE LOGIC",
+  "failure_class": "semantic generalization / compositional recall gaps after precedence repair",
+  "batch_a": {"total":30,"passed":11,"failed":19,"consumed":true},
+  "batch_b": {"executed":false,"status":"SKIPPED"},
+  "mechanism_groups": [
+    {"group":"clarification","failures":1,"languages":["EN"]},
+    {"group":"decision-request","failures":2,"languages":["EN","VI"]},
+    {"group":"hypothetical","failures":2,"languages":["EN","VI"]},
+    {"group":"third-party-only","failures":2,"languages":["EN","VI"]},
+    {"group":"prediction","failures":0,"note":"3/3 preserved"},
+    {"group":"freeze","failures":2,"languages":["EN","VI"]},
+    {"group":"ignore","failures":3,"languages":["EN","VI"]},
+    {"group":"slow","failures":3,"languages":["EN","VI"]},
+    {"group":"sequence","failures":3,"languages":["EN","VI"]},
+    {"group":"neutral-completion","failures":1,"languages":["EN"]}
+  ],
+  "INPUT": "fresh V8.3.223 sealed Batch A, 30 independent cases",
+  "EXPECTED": "30/30 exact route/family/sequence agreement",
+  "ACTUAL": "11/30 PASS, 19 FAIL under QCEvidenceExtractorV5AA -> QCSemanticCoreV100",
+  "CAUSE": "V100 precedence ordering is correct, but V5AA compositional cue vocabulary is still too narrow for unseen paraphrases in nine mechanism families. Prediction generalized correctly.",
+  "FIX": "open V8.3.224 from exact V8.3.223 DEVELOPMENT SHA and add a bounded compositional-recall layer only; preserve V5X through V100 and all expected/gold contracts",
+  "RETEST": "historical immutable + V216 + V219 + V221 + V222 + full frozen V223 A 30 cases; require 19/19 failures repaired and 11/11 prior passes preserved before fresh sealed validation",
+  "semantic_failure": true,
+  "v223_batch_a_rerun": false,
+  "v223_batch_b_executed": false,
+  "production_authorized": false,
+  "step_111_authorized": false
+}
