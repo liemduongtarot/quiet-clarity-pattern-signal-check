@@ -1,0 +1,27 @@
+{
+  "candidate": "V8.3.218",
+  "phase": "bounded-runner-materialization-recovery",
+  "base_development_authority_sha": "456a88d01b671f0cb92a0be31f4d34d68f60d135",
+  "semantic_authority": "QCEvidenceExtractorV5X -> QCSemanticCoreV97",
+  "change_scope": "validation-runner materialization only",
+  "checks": {
+    "semantic_unchanged_qc-evidence-extractor-v5x-v217-relational-recall.js": true,
+    "semantic_unchanged_psc-v83217-v216-v97-relational-recall.js": true,
+    "archive_exists": true,
+    "base_loader_list_nonempty": true,
+    "materialized_public_tree_exists": true,
+    "all_base_public_loader_files_materialized": true,
+    "psc_v3_materialized": true,
+    "v97_tail_files_present": true
+  },
+  "missing_public_files": [],
+  "missing_tail_files": [],
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "v217_batch_a_rerun": false,
+  "v217_batch_b_rerun": false,
+  "expected_gold_changed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "pass": true
+}
