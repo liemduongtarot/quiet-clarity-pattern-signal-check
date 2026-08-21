@@ -1,0 +1,34 @@
+name: V8.3.225 DEVELOPMENT checkpoint
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83225-development-checkpoint.yml
+permissions:
+  contents: read
+jobs:
+  checkpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 96955e1cf7538912104700e8dd6307ac4e67cb73
+      - name: Build checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir V8_3_225_DEVELOPMENT_CHECKPOINT
+          cp validation/V8_3_225_DEVELOPMENT_AUTHORITY_V1.json V8_3_225_DEVELOPMENT_CHECKPOINT/
+          cp validation/V8_3_225_V102_REGRESSION_RECEIPT.json V8_3_225_DEVELOPMENT_CHECKPOINT/
+          cp validation/qc-evidence-extractor-v5ac-v225-residual-composition.js V8_3_225_DEVELOPMENT_CHECKPOINT/
+          cp validation/psc-v83225-v224-v102-residual-composition.js V8_3_225_DEVELOPMENT_CHECKPOINT/
+          (cd V8_3_225_DEVELOPMENT_CHECKPOINT && sha256sum * > SHA256_MANIFEST.txt)
+          zip -r PSC_V8_3_225_DEVELOPMENT_CHECKPOINT.zip V8_3_225_DEVELOPMENT_CHECKPOINT
+          sha256sum PSC_V8_3_225_DEVELOPMENT_CHECKPOINT.zip > PSC_V8_3_225_DEVELOPMENT_CHECKPOINT_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_225_DEVELOPMENT_CHECKPOINT
+          path: |
+            PSC_V8_3_225_DEVELOPMENT_CHECKPOINT.zip
+            PSC_V8_3_225_DEVELOPMENT_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
