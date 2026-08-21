@@ -1,0 +1,506 @@
+{
+  "authority": "V8.3.213 development regression of frozen V8.3.212 sealed-A first-run carrier",
+  "total": 30,
+  "passed": 30,
+  "failed": 0,
+  "results": [
+    {
+      "case_id": "V212-S00-01",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The chronology reaches its closing point; the missing fact is the concrete move that actually came from me. The practical meeting detail had already been agreed."
+    },
+    {
+      "case_id": "V212-S00-09",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Một ghi chú sinh hoạt thường ngày đã được chia sẻ. Có thể dựng lại câu chuyện từ đầu tới cuối ngoại trừ việc chính tôi đã làm gì tại điểm dừng."
+    },
+    {
+      "case_id": "V212-S00-17",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Chi tiết hành chính thường lệ đã được ghi lại. Dòng thời gian đã tới điểm khép lại; phần còn thiếu là nước đi quan sát được thực sự đến từ tôi. Phần thực tế đó không tự trả lời cơ chế phản ứng."
+    },
+    {
+      "case_id": "V212-S01-13",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Dùng phán đoán của bạn để chọn bước tiếp theo cho tôi thay vì đưa khung để tôi tự quyết. Chi tiết gặp mặt thực tế đã được thống nhất."
+    },
+    {
+      "case_id": "V212-S01-03",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A routine household note had already been shared. Use your judgement to choose my next step rather than giving me a framework for deciding it myself."
+    },
+    {
+      "case_id": "V212-S01-16",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Tôi muốn bạn chốt quyết định thay tôi, không phải chỉ hỗ trợ so sánh các lựa chọn. Rota đã được gửi từ trước."
+    },
+    {
+      "case_id": "V212-S02-13",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Đây là test prose được cố ý bịa ra và không liên quan tới lịch sử sống của tôi. Một tin nhắn lịch hẹn thông thường đã nằm trong thread."
+    },
+    {
+      "case_id": "V212-S02-08",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The interview date was already entered in the calendar. This is deliberately fabricated test prose and is unrelated to my lived history. The practical background does not answer the mechanism itself."
+    },
+    {
+      "case_id": "V212-S02-04",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "This paragraph is a made-up stress test for the system, not a description of anything I have lived through. The ordinary shift note was already available."
+    },
+    {
+      "case_id": "V212-S03-07",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Tell me the supervisor’s concealed view without any behavioural evidence showing what that view is. A routine message about timing was already in the thread."
+    },
+    {
+      "case_id": "V212-S03-08",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A routine application reference had already been filed. Tell me what my manager privately believes even though nothing observable in what they said or did provides a basis for it. The practical background does not answer the mechanism itself."
+    },
+    {
+      "case_id": "V212-S03-11",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Một mã tham chiếu thông thường đã có sẵn. Xác định đánh giá riêng của người kia khi record hiện có không chứa dấu hiệu quan sát nào về nó. Phần thực tế đó không tự trả lời cơ chế phản ứng."
+    },
+    {
+      "case_id": "V212-S04-08",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The ordinary role details were already available. Before the upcoming deadline, is the final outcome going to turn out in my favour? The practical background does not answer the mechanism itself."
+    },
+    {
+      "case_id": "V212-S04-03",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A routine household note had already been shared. Before the upcoming deadline, is the final outcome going to turn out in my favour?"
+    },
+    {
+      "case_id": "V212-S04-10",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Tới mốc tương lai tiếp theo, chuyện này có khép lại theo hướng tích cực cho tôi không? Ghi chú ca làm thông thường đã có sẵn."
+    },
+    {
+      "case_id": "V212-S05-13",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "Hành động có thể quay lại với chi phí thấp; tôi mở rộng tập lựa chọn thay vì thực hiện bước đầu. Một tin nhắn lịch hẹn thông thường đã nằm trong thread."
+    },
+    {
+      "case_id": "V212-S05-10",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "Có đường lui rất rõ khỏi thử nghiệm, nhưng tôi tiếp tục tăng option và không bắt tay vào. Rota đã được gửi từ trước."
+    },
+    {
+      "case_id": "V212-S05-05",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "The ordinary administrative detail was already recorded. There was a clear way back from the trial, yet I continued expanding options and did not begin. The practical background does not answer the mechanism itself."
+    },
+    {
+      "case_id": "V212-S06-12",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "Ghi chú tài khoản thường ngày đã có sẵn. Tôi để yêu cầu chính chưa giải quyết và làm mình bận với việc bên lề không xử lý được nó."
+    },
+    {
+      "case_id": "V212-S06-03",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "The practical family logistics were already in the group chat. The core matter required direct action from me, yet I turned toward secondary details and did not respond."
+    },
+    {
+      "case_id": "V212-S06-10",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "Trách nhiệm chính vẫn đang chờ tôi, nhưng tôi chuyển sang hoạt động kém quan trọng hơn thay vì xử lý. Một mã task thường lệ đã có trên hệ thống."
+    },
+    {
+      "case_id": "V212-S07-00",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "A standard payment reference sat separately in the paperwork. My response came after a delay; I made one verification and did not return to the matter afterwards."
+    },
+    {
+      "case_id": "V212-S07-14",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "Ngày phỏng vấn đã được ghi sẵn trong lịch. Có thêm thời gian trước phản hồi; tôi kiểm một lần rồi xem quá trình đã kết thúc. Phần thực tế đó không tự trả lời cơ chế phản ứng."
+    },
+    {
+      "case_id": "V212-S07-10",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "Tôi mất lâu hơn thường lệ mới trả lời, kiểm dữ kiện một lần rồi để vấn đề đóng lại. Ghi chú ca làm thông thường đã có sẵn."
+    },
+    {
+      "case_id": "V212-S08-00",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "The ordinary account note was already available. I approached execution, stepped back, and cycled through the same judgement without receiving fresh information."
+    },
+    {
+      "case_id": "V212-S08-08",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "The interview date was already entered in the calendar. I kept nearing action then backing off, returning to the same logic despite unchanged inputs. The practical background does not answer the mechanism itself."
+    },
+    {
+      "case_id": "V212-S08-10",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "Tôi đến gần bước làm, rút ra rồi xem lại đúng reasoning cũ dù evidence không thay đổi. Rota đã được gửi từ trước."
+    },
+    {
+      "case_id": "V212-S09-06",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A standard payment reference sat separately in the paperwork. The call remained mine; I finished what I selected and stopped reviewing the issue once completed."
+    },
+    {
+      "case_id": "V212-S09-14",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Chi tiết vai trò thường lệ đã có sẵn. Phán đoán cuối vẫn thuộc về tôi; tôi thực hiện bước đó rồi xem vấn đề đã kết thúc. Phần thực tế đó không tự trả lời cơ chế phản ứng."
+    },
+    {
+      "case_id": "V212-S09-11",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Một mã tham chiếu thông thường đã có sẵn. Tôi giữ quyền sở hữu lựa chọn, thực hiện nó rồi đi tiếp khi hành động hoàn tất. Phần thực tế đó không tự trả lời cơ chế phản ứng."
+    }
+  ]
+}
