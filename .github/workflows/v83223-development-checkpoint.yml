@@ -1,0 +1,44 @@
+name: V8.3.223 DEVELOPMENT Checkpoint
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  checkpoint:
+    if: github.event.head_commit.message == 'Build V8.3.223 DEVELOPMENT checkpoint'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 857e98039a6d603fdcae2ec90f471ffd0bbabbb8
+          fetch-depth: 0
+      - name: Build checkpoint
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import pathlib,zipfile,hashlib
+          root=pathlib.Path('.')
+          names=[
+            'validation/V8_3_223_DEVELOPMENT_AUTHORITY_V1.json',
+            'validation/V8_3_223_V100_REGRESSION_RECEIPT.json',
+            'validation/V8_3_223_V100_REGRESSION_R2_DIAGNOSTIC.json',
+            'validation/qc-evidence-extractor-v5aa-v223-precedence-generalization.js',
+            'validation/psc-v83223-v222-v100-precedence-generalization.js'
+          ]
+          files=[root/n for n in names]
+          for p in files: assert p.exists(), p
+          z=root/'PSC_V8_3_223_DEVELOPMENT_CHECKPOINT.zip'
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in files:q.write(p,p.name)
+          h=hashlib.sha256(z.read_bytes()).hexdigest()
+          (root/'PSC_V8_3_223_DEVELOPMENT_CHECKPOINT_SHA256.txt').write_text(f'{h}  {z.name}\n')
+          print(h)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_223_DEVELOPMENT_CHECKPOINT
+          if-no-files-found: error
+          path: |
+            PSC_V8_3_223_DEVELOPMENT_CHECKPOINT.zip
+            PSC_V8_3_223_DEVELOPMENT_CHECKPOINT_SHA256.txt
