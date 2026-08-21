@@ -1,93 +1,53 @@
-name: V8.3.213 Main-Hosted Preseal V1R
+name: V8.3.213 Frozen Transport Verification
 on:
   push:
     branches: [main]
 permissions:
   contents: write
 jobs:
-  preseal:
-    if: github.event.head_commit.message == 'Run V8.3.213 main-hosted preseal V1R'
+  transport:
+    if: github.event.head_commit.message == 'Verify V8.3.213 frozen transport'
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
           ref: v83213-v1-sealed-validation
           fetch-depth: 1
-      - name: Materialize prior-only contamination references
-        run: |
-          set -euo pipefail
-          rm -rf validation/v83213-preseal-refs
-          mkdir -p validation/v83213-preseal-refs
-          for v in 201 202 203 204 205 206 207 208 209; do
-            s=${v#20}
-            branch=v8320${s}-v1-sealed-validation
-            git fetch --depth=1 origin refs/heads/${branch}:refs/remotes/origin/${branch}
-            root=validation/v8320${s}-v1-sealed
-            if git cat-file -e origin/${branch}:${root}/V8_3_${v}_PRESEAL_CANDIDATE_BANK_V1.json 2>/dev/null; then
-              git show origin/${branch}:${root}/V8_3_${v}_PRESEAL_CANDIDATE_BANK_V1.json > validation/v83213-preseal-refs/V8_3_${v}_SEALED_BANK.json
-            else
-              git show origin/${branch}:${root}/V8_3_${v}_SEALED_FIXTURE_V1.json > validation/v83213-preseal-refs/V8_3_${v}_SEALED_FIXTURE.json
-            fi
-          done
-          git fetch --depth=1 origin refs/heads/v83210-v1-sealed-validation:refs/remotes/origin/v83210-v1-sealed-validation
-          if git cat-file -e origin/v83210-v1-sealed-validation:validation/v83210-v1-sealed/V8_3_210_PRESEAL_CANDIDATE_BANK_V1.json 2>/dev/null; then
-            git show origin/v83210-v1-sealed-validation:validation/v83210-v1-sealed/V8_3_210_PRESEAL_CANDIDATE_BANK_V1.json > validation/v83213-preseal-refs/V8_3_210_SEALED_BANK.json
-          else
-            git show origin/v83210-v1-sealed-validation:validation/v83210-v1-sealed/V8_3_210_SEALED_FIXTURE_V1.json > validation/v83213-preseal-refs/V8_3_210_SEALED_FIXTURE.json
-          fi
-          git fetch --depth=1 origin 6d82282b620f03e397368a6d973b566d8055d2eb
-          rm -rf /tmp/v211-r4-preseal; mkdir -p /tmp/v211-r4-preseal/validation/v83211-r4-frozen
-          git show 6d82282b620f03e397368a6d973b566d8055d2eb:validation/v83211-r4-frozen/generate-r4-carrier.py > /tmp/v211-r4-preseal/validation/v83211-r4-frozen/generate-r4-carrier.py
-          (cd /tmp/v211-r4-preseal && python validation/v83211-r4-frozen/generate-r4-carrier.py)
-          for f in /tmp/v211-r4-preseal/validation/v83211-r4-runtime/*.json; do cp "$f" validation/v83213-preseal-refs/V211_$(basename "$f"); done
-          python validation/v83211-generalization-600-generator-v1r.py
-          cp validation/V8_3_211_DEVELOPMENT_GENERALIZATION_600_V1.json validation/v83213-preseal-refs/V8_3_211_DEV_600.json
-          git fetch --depth=1 origin refs/heads/v83212-v1-sealed-validation:refs/remotes/origin/v83212-v1-sealed-validation
-          git show origin/v83212-v1-sealed-validation:validation/v83212-v1-sealed/V8_3_212_PRESEAL_CANDIDATE_BANK_V1.json > validation/v83213-preseal-refs/V8_3_212_SEALED_BANK.json
-          git show origin/v83212-v1-sealed-validation:validation/v83212-v1-sealed/V8_3_212_SEALED_FIXTURE_V1.json > validation/v83213-preseal-refs/V8_3_212_SEALED_FIXTURE.json
-          python validation/v83212-generalization-800-generator.py
-          cp validation/V8_3_212_DEVELOPMENT_GENERALIZATION_800_V1.json validation/v83213-preseal-refs/V8_3_212_DEV_800.json
-          test "$(find validation/v83213-preseal-refs -name '*.json' | wc -l)" -ge 13
-      - name: Construct and audit fresh V213 sealed bank
-        run: python validation/v83213-sealed-v1-generator.py
-      - name: Verify and package preseal authority
+      - name: Verify exact frozen authority without semantic runtime
         run: |
           python - <<'PY'
-          import json,pathlib,hashlib,zipfile,os,shutil
+          import json,hashlib,pathlib,os
           root=pathlib.Path('validation/v83213-v1-sealed')
+          names={
+            'candidate_bank':'V8_3_213_PRESEAL_CANDIDATE_BANK_V1.json',
+            'selection':'V8_3_213_SEALED_SELECTION_V1.json',
+            'fixture':'V8_3_213_SEALED_FIXTURE_V1.json',
+            'independent_gold':'V8_3_213_INDEPENDENT_GOLD_V1.json',
+            'membership':'V8_3_213_SEALED_MEMBERSHIP_V1.json',
+            'preseal_audit':'V8_3_213_PRESEAL_DIVERSITY_AUDIT_V1.json'}
           auth=json.loads((root/'V8_3_213_SEALED_AUTHORITY_V1.json').read_text())
-          audit=json.loads((root/'V8_3_213_PRESEAL_DIVERSITY_AUDIT_V1.json').read_text())
+          pre=json.loads((root/'V8_3_213_PRESEAL_RUN_RECEIPT.json').read_text())
           assert auth['validated_development_head_sha']=='70808836f6cfb09a5428685e0bfdc336afe4181f'
           assert auth['semantic_authority']=='QCSemanticCoreV93'
-          assert auth['candidate_bank_count']==180 and auth['selected_count']==60 and auth['batch_a_count']==30 and auth['batch_b_count']==30
-          assert audit['pass'] and audit['internal_max_similarity']<.75
-          assert audit['external_cases_at_or_above_0_75']==0 and audit['exact_external_duplicates']==0 and audit['semantic_fingerprint_exact_duplicates']==0
-          assert not audit['runtime_executed_during_bank_or_selection'] and not audit['semantic_authority_loaded_during_bank_or_selection'] and not audit['selection_uses_runtime_output']
-          receipt={'candidate':'V8.3.213','phase':'preseal-v1r','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'workflow_head_sha':os.environ['GITHUB_SHA'],'sealed_head_checked_out':os.popen('git rev-parse HEAD').read().strip(),'validated_development_head_sha':auth['validated_development_head_sha'],'semantic_authority':'QCSemanticCoreV93','candidate_count':180,'selected_count':60,'batch_a_count':30,'batch_b_count':30,'internal_max_similarity':audit['internal_max_similarity'],'external_max_similarity':audit['external_max_similarity'],'external_reference_surfaces':audit['external_reference_surfaces'],'semantic_fingerprint_exact_duplicates':audit['semantic_fingerprint_exact_duplicates'],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'selection_uses_runtime_output':False,'batch_a_executed':False,'batch_b_executed':False,'v212_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False,'conclusion':'success'}
-          (root/'V8_3_213_PRESEAL_RUN_RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
-          st=pathlib.Path('V8_3_213_PRESEAL_CHECKPOINT'); shutil.rmtree(st,ignore_errors=True); st.mkdir()
-          for p in root.iterdir():
-            if p.is_file(): shutil.copy2(p,st/p.name)
-          def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
-          (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
-          z=pathlib.Path('PSC_V8_3_213_PRESEAL_CHECKPOINT.zip')
-          if z.exists(): z.unlink()
-          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
-            for p in sorted(st.iterdir()): q.write(p,p.name)
-          pathlib.Path('PSC_V8_3_213_PRESEAL_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          assert auth['candidate_bank_count']==180 and auth['selected_count']==60
+          assert auth['batch_a_count']==30 and auth['batch_b_count']==30
+          assert auth['v212_sealed_rerun'] is False and auth['step_111_authorized'] is False and auth['production_authorized'] is False
+          assert pre['conclusion']=='success'
+          assert pre['semantic_runtime_executed'] is False and pre['semantic_authority_loaded'] is False and pre['selection_uses_runtime_output'] is False
+          assert pre['batch_a_executed'] is False and pre['batch_b_executed'] is False
+          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          observed={}
+          for k,n in names.items():
+            o=json.loads((root/n).read_text()); observed[k]=hashlib.sha256(canon(o)).hexdigest(); assert observed[k]==auth['hashes'][k],(k,observed[k],auth['hashes'][k])
+          receipt={'authority':'V8.3.213 FROZEN TRANSPORT VERIFICATION','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'workflow_head_sha':os.environ['GITHUB_SHA'],'sealed_head_verified':os.popen('git rev-parse HEAD').read().strip(),'validated_development_head_sha':auth['validated_development_head_sha'],'semantic_authority':'QCSemanticCoreV93','observed_hashes':observed,'hashes_match':True,'candidate_count':180,'selected_count':60,'batch_a_count':30,'batch_b_count':30,'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'v212_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False,'conclusion':'success'}
+          (root/'V8_3_213_TRANSPORT_VERIFICATION_V1.json').write_text(json.dumps(receipt,indent=2)+'\n')
           print(json.dumps(receipt,indent=2))
           PY
-      - name: Freeze V213 preseal authority
+      - name: Commit transport verification metadata only
         run: |
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/v83213-v1-sealed
-          git commit -m 'Freeze V8.3.213 V1 preseal authority'
+          git add -- validation/v83213-v1-sealed/V8_3_213_TRANSPORT_VERIFICATION_V1.json
+          git commit -m 'Record V8.3.213 frozen transport verification'
           git push origin HEAD:v83213-v1-sealed-validation
-      - uses: actions/upload-artifact@v4
-        with:
-          name: PSC_V8_3_213_PRESEAL_CHECKPOINT
-          path: |
-            PSC_V8_3_213_PRESEAL_CHECKPOINT.zip
-            PSC_V8_3_213_PRESEAL_CHECKPOINT_SHA256.txt
