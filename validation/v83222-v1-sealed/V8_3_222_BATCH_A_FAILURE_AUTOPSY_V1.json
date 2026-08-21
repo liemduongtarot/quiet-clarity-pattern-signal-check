@@ -1,0 +1,30 @@
+{
+  "candidate": "V8.3.222",
+  "run_id": "32517403255",
+  "classification": "ENGINE LOGIC",
+  "INPUT": "Fresh V8.3.222 sealed Batch A, 30 independently selected cases under exact DEVELOPMENT SHA 8fd91bfd1e9abdc25b9af12a9494b8e2f14e9f16 and QCEvidenceExtractorV5Z -> QCSemanticCoreV99.",
+  "EXPECTED": "30/30 exact route/family/sequence match against frozen independent gold.",
+  "ACTUAL": "11/30 PASS, 19 FAIL. Failures: clarification EN 2, hypothetical EN/VI 3, third-party EN 2, prediction VI 1, freeze EN/VI 3, ignore EN 2, slow EN/VI 3, sequence VI 1, neutral EN 2. Decision 3/3 and several previously repaired variants remain preserved.",
+  "CAUSE": "V99 compositional repair materially improved prediction/ignore/sequence on demonstrated V221 forms but its cue lexicon and precedence remain incomplete across fresh paraphrases. Earlier parent routes also still contaminate clarification/hypothetical/third/neutral and freeze variants. This is a semantic generalization and precedence gap, not a runner or sealed construction failure.",
+  "FIX": "Open V8.3.223 from exact V8.3.222 DEVELOPMENT authority and add one bounded additive extractor/core layer. Generalize evidence composition for the demonstrated route and family mechanisms using conjunctive concepts, and apply explicit precedence: non-lived hypothetical / delegated decision / prediction / third-party / clarification before self-lived families; neutral-completion before ignore/slow/freeze; sequence before slow. Preserve V5X/V97, V5Y/V98 and V5Z/V99 unchanged. Do not alter expected/gold.",
+  "RETEST": "Freeze all 30 V8.3.222 A cases as immutable DEVELOPMENT regression: repair all 19 failures and preserve all 11 passes. Also preserve historical 1470/1470, V216 30/30, V219 30/30 and V221 30/30 before any fresh V8.3.223 sealed cycle.",
+  "mechanism_groups": [
+    {"group":"clarification-generalization","count":2,"cases":["V222-S00-01","V222-S00-07"]},
+    {"group":"hypothetical-generalization-precedence","count":3,"cases":["V222-S02-01","V222-S02-07","V222-S02-15"]},
+    {"group":"third-party-generalization","count":2,"cases":["V222-S03-01","V222-S03-07"]},
+    {"group":"prediction-vi-generalization","count":1,"cases":["V222-S04-15"]},
+    {"group":"freeze-generalization","count":3,"cases":["V222-S05-01","V222-S05-07","V222-S05-15"]},
+    {"group":"ignore-en-generalization-precedence","count":2,"cases":["V222-S06-01","V222-S06-07"]},
+    {"group":"slow-generalization-precedence","count":3,"cases":["V222-S07-01","V222-S07-07","V222-S07-15"]},
+    {"group":"sequence-vi-generalization-precedence","count":1,"cases":["V222-S08-15"]},
+    {"group":"neutral-completion-precedence","count":2,"cases":["V222-S09-01","V222-S09-07"]}
+  ],
+  "batch_a_attempt_consumed": true,
+  "batch_b_skipped": true,
+  "never_rerun_batch_a": true,
+  "never_run_batch_b": true,
+  "semantic_failure": true,
+  "v221_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
