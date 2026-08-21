@@ -1,22 +1,22 @@
 {
   "authority": "V8.3.214 DEVELOPMENT regression of frozen V8.3.213 sealed-A first run",
   "total": 30,
-  "passed": 28,
-  "failed": 2,
+  "passed": 30,
+  "failed": 0,
   "results": [
     {
       "case_id": "V213-S00-07",
       "mechanism": "clarification",
       "language": "EN",
       "domain": "relationship",
-      "pass": false,
+      "pass": true,
       "expected": {
         "route": "input:clarification-required",
         "families": [],
         "sequence": false
       },
       "actual": {
-        "route": "input:self-lived",
+        "route": "input:clarification-required",
         "families": [],
         "sequence": false
       },
@@ -27,14 +27,14 @@
       "mechanism": "clarification",
       "language": "VI",
       "domain": "family",
-      "pass": false,
+      "pass": true,
       "expected": {
         "route": "input:clarification-required",
         "families": [],
         "sequence": false
       },
       "actual": {
-        "route": "input:hypothetical-or-example",
+        "route": "input:clarification-required",
         "families": [],
         "sequence": false
       },
