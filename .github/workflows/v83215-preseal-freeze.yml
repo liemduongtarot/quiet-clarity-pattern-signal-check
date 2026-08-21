@@ -1,4 +1,4 @@
-name: V8.3.215 Dedicated Preseal Freeze R9
+name: V8.3.215 Dedicated Preseal Freeze R10
 on:
   push:
     branches: [main]
@@ -6,7 +6,7 @@ permissions:
   contents: write
 jobs:
   preseal:
-    if: github.event.head_commit.message == 'Execute V8.3.215 preseal freeze R9'
+    if: github.event.head_commit.message == 'Execute V8.3.215 preseal freeze R10'
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -14,10 +14,10 @@ jobs:
         with:
           ref: v83215-v1-sealed-validation
           fetch-depth: 1
-      - name: Construct audit freeze R9
+      - name: Construct audit freeze R10
         id: preseal
         continue-on-error: true
-        run: python validation/v83215-v1-sealed/v83215-preseal-freeze-r9.py
+        run: python validation/v83215-v1-sealed/v83215-preseal-freeze-r10.py
       - name: Commit frozen evidence
         if: always()
         run: |
@@ -26,12 +26,12 @@ jobs:
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add -- validation/v83215-v1-sealed/V8_3_215_*.json
-          git diff --cached --quiet || git commit -m 'Record V8.3.215 frozen preseal authority R9'
+          git diff --cached --quiet || git commit -m 'Record V8.3.215 frozen preseal authority R10'
           git push origin HEAD:v83215-v1-sealed-validation
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: PSC_V8_3_215_V1_PRESEAL_CHECKPOINT_R9
+          name: PSC_V8_3_215_V1_PRESEAL_CHECKPOINT_R10
           if-no-files-found: error
           path: |
             PSC_V8_3_215_V1_PRESEAL_CHECKPOINT.zip
