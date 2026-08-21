@@ -1,0 +1,19 @@
+{
+  "candidate": "V8.3.213",
+  "phase": "preseal-diagnostic",
+  "run_id": 32471346768,
+  "run_attempt": 1,
+  "workflow_head_sha": "66d760d5769cb20b537d724835fe7eabbb6205a8",
+  "refs_step": "failure",
+  "bank_step": "failure",
+  "reference_file_count": 0,
+  "audit": null,
+  "captured_tail": "Traceback (most recent call last):\n  File \"/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83213-sealed-v1-generator.py\", line 274, in <module>\n    assert refs,'no contamination references materialized'\n           ^^^^\nAssertionError: no contamination references materialized\n",
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "v212_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
