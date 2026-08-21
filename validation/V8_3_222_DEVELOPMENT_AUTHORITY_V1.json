@@ -1,0 +1,21 @@
+{
+  "candidate": "V8.3.222",
+  "development": "PASS",
+  "base_development_authority_sha": "0e17e6d62edf8334ea75ba70b4f28f2746dd8436",
+  "semantic_authority": "QCEvidenceExtractorV5Z -> QCSemanticCoreV99",
+  "parent_semantic_authority": "QCEvidenceExtractorV5Y -> QCSemanticCoreV98",
+  "v5x_v97_unchanged": true,
+  "v5y_v98_unchanged": true,
+  "repair_scope": "prediction/ignore/slow/sequence compositional generalization only",
+  "regression_receipt": "V8_3_222_V99_REGRESSION_RECEIPT.json",
+  "immutable_historical_regression": "1470/1470 PASS",
+  "v216_frozen_a_regression": "30/30 PASS",
+  "v219_frozen_a_regression": "30/30 PASS",
+  "v221_frozen_a_regression": "30/30 PASS",
+  "v221_previous_failures_repaired": 12,
+  "v221_previous_passes_preserved": 18,
+  "expected_gold_changed": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
