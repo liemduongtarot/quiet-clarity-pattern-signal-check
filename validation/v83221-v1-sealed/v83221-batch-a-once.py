@@ -1,0 +1,77 @@
+import json,hashlib,pathlib,subprocess,shutil,os,zipfile,ast
+REPO=pathlib.Path.cwd();TARGET='0e17e6d62edf8334ea75ba70b4f28f2746dd8436';SEM='QCEvidenceExtractorV5Y -> QCSemanticCoreV98'
+SEALED=REPO/'validation/v83221-v1-sealed';WORK=pathlib.Path('/tmp/v83221-batch-a-authority')
+ATTEMPT=SEALED/'V8_3_221_BATCH_A_ATTEMPT_MARKER.json';FIRST=SEALED/'V8_3_221_SEALED_FIRST_RUN_MARKER.json';RESULT=SEALED/'V8_3_221_BATCH_A_RESULT_V1.json';STATUS=SEALED/'V8_3_221_BATCH_A_STATUS_V1.json'
+def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+def sha_obj(o):return hashlib.sha256(canon(o)).hexdigest()
+def fsha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def sh(*a,cwd=None):return subprocess.run(list(a),cwd=cwd,text=True,check=True)
+def write_status(**kw):
+ base={'candidate':'V8.3.221','phase':'sealed-batch-a-first-run','run_id':os.environ.get('GITHUB_RUN_ID'),'run_attempt':os.environ.get('GITHUB_RUN_ATTEMPT'),'validated_development_head_sha':TARGET,'semantic_authority':SEM,'batch_b_executed':False,'v217_sealed_rerun':False,'v218_sealed_rerun':False,'v219_sealed_rerun':False,'v220_sealed_rerun':False,'v221_batch_a_rerun':False,'step_111_authorized':False,'production_authorized':False};base.update(kw);STATUS.write_text(json.dumps(base,indent=2)+'\n');return base
+def checkpoint():
+ st=REPO/'V8_3_221_BATCH_A_CHECKPOINT';shutil.rmtree(st,ignore_errors=True);st.mkdir()
+ names=['V8_3_221_BATCH_A_RESULT_V1.json','V8_3_221_BATCH_A_STATUS_V1.json','V8_3_221_BATCH_A_ATTEMPT_MARKER.json','V8_3_221_SEALED_FIRST_RUN_MARKER.json','V8_3_221_SEALED_AUTHORITY_V1.json','V8_3_221_PRESEAL_DIVERSITY_AUDIT_V1.json','V8_3_221_SEALED_SELECTION_V1.json','V8_3_221_SEALED_FIXTURE_V1.json','V8_3_221_INDEPENDENT_GOLD_V1.json','V8_3_221_SEALED_MEMBERSHIP_V1.json','V8_3_221_TRANSPORT_VERIFICATION_V1.json','V8_3_221_STATIC_SEALED_PREFLIGHT_V1.json']
+ for n in names:
+  p=SEALED/n
+  if p.exists():shutil.copy2(p,st/p.name)
+ (st/'SHA256_MANIFEST.txt').write_text(''.join(f'{fsha(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+ z=REPO/'PSC_V8_3_221_V1_BATCH_A_CHECKPOINT.zip'
+ if z.exists():z.unlink()
+ with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+  for p in sorted(st.iterdir()):q.write(p,p.name)
+ (REPO/'PSC_V8_3_221_V1_BATCH_A_CHECKPOINT_SHA256.txt').write_text(f'{fsha(z)}  {z.name}\n')
+status=None
+try:
+ if not ATTEMPT.exists() or not FIRST.exists():raise RuntimeError('durable V8.3.221 Batch A reservation missing')
+ if RESULT.exists():raise RuntimeError('V8.3.221 Batch A result already exists; refusing rerun')
+ att=json.loads(ATTEMPT.read_text());first=json.loads(FIRST.read_text())
+ assert att['candidate']=='V8.3.221' and att['batch']=='A' and att['validated_development_head_sha']==TARGET
+ assert first['candidate']=='V8.3.221' and first['reserved_batch']=='A' and first['validated_development_head_sha']==TARGET
+ A=json.loads((SEALED/'V8_3_221_SEALED_AUTHORITY_V1.json').read_text());audit=json.loads((SEALED/'V8_3_221_PRESEAL_DIVERSITY_AUDIT_V1.json').read_text());selection=json.loads((SEALED/'V8_3_221_SEALED_SELECTION_V1.json').read_text());fixture=json.loads((SEALED/'V8_3_221_SEALED_FIXTURE_V1.json').read_text());gold=json.loads((SEALED/'V8_3_221_INDEPENDENT_GOLD_V1.json').read_text());membership=json.loads((SEALED/'V8_3_221_SEALED_MEMBERSHIP_V1.json').read_text());tr=json.loads((SEALED/'V8_3_221_TRANSPORT_VERIFICATION_V1.json').read_text());pf=json.loads((SEALED/'V8_3_221_STATIC_SEALED_PREFLIGHT_V1.json').read_text())
+ # Corrected V8.3.221 schema contract: no stale semantic_base_sha assumption.
+ assert A['validated_development_head_sha']==TARGET and A['semantic_authority']==SEM and A['preseal_pass'] is True and tr['pass'] is True and pf['pass'] is True
+ checks={'candidate_bank':json.loads((SEALED/'V8_3_221_PRESEAL_CANDIDATE_BANK_V1.json').read_text()),'selection':selection,'fixture':fixture,'independent_gold':gold,'membership':membership,'preseal_audit':audit}
+ for k,o in checks.items():assert sha_obj(o)==A['hashes'][k],k
+ assert len(selection['batch_a'])==30 and len(selection['batch_b'])==30 and set(selection['batch_a']).isdisjoint(selection['batch_b'])
+ assert {x['case_id'] for x in membership['cases'] if x['batch']=='A'}==set(selection['batch_a'])
+ sh('git','fetch','--depth=1','origin',TARGET)
+ if WORK.exists():shutil.rmtree(WORK)
+ sh('git','worktree','add','--detach',str(WORK),TARGET)
+ assert subprocess.check_output(['git','-C',str(WORK),'rev-parse','HEAD'],text=True).strip()==TARGET
+ archive=WORK/'PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip';assert archive.exists()
+ with zipfile.ZipFile(archive) as z:z.extractall(WORK)
+ assert (WORK/'PSC_V8_3_138_DEV/public/psc-v3.js').exists()
+ VAL=WORK/'validation';runtime=VAL/'v83221-v1-sealed-runtime';runtime.mkdir(exist_ok=True)
+ for fn in ['V8_3_221_SEALED_SELECTION_V1.json','V8_3_221_SEALED_FIXTURE_V1.json','V8_3_221_INDEPENDENT_GOLD_V1.json']:shutil.copy2(SEALED/fn,runtime/fn)
+ # Reuse the exact proven V98 DEVELOPMENT extension list mechanically.
+ tree=ast.parse((VAL/'v83220-v98-regression-orchestrator.py').read_text());EXT=None
+ for node in ast.walk(tree):
+  if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='ext' for t in node.targets):
+   EXT=ast.literal_eval(node.value);break
+ assert EXT and EXT[-2:]==['qc-evidence-extractor-v5y-v220-bounded-recall.js','psc-v83220-v219-v98-bounded-recall.js']
+ base=(VAL/'run-v83196-full-regression-sweep-v2.cjs').read_text();needle="'psc-v83196-v195-v1-hypothetical-preservation-repair.js'];";assert needle in base
+ replacement="'psc-v83196-v195-v1-hypothetical-preservation-repair.js',"+','.join(repr(x) for x in EXT)+'];';base=base.replace(needle,replacement,1)
+ marker="const files=fs.readdirSync('validation')";assert marker in base;prefix=base.split(marker)[0]
+ runner=runtime/'run-v83221-batch-a-once.cjs'
+ tail=r'''
+if(!s.QCSemanticCoreV65R)throw Error('QCSemanticCoreV65R missing');
+if(!s.QCEvidenceExtractorV5Y)throw Error('QCEvidenceExtractorV5Y missing');
+if(!s.QCSemanticCoreV98)throw Error('QCSemanticCoreV98 missing');
+const root='validation/v83221-v1-sealed-runtime';
+const F=JSON.parse(fs.readFileSync(root+'/V8_3_221_SEALED_FIXTURE_V1.json','utf8'));
+const S=JSON.parse(fs.readFileSync(root+'/V8_3_221_SEALED_SELECTION_V1.json','utf8'));
+const G=JSON.parse(fs.readFileSync(root+'/V8_3_221_INDEPENDENT_GOLD_V1.json','utf8'));
+const gold=new Map(G.cases.map(x=>[x.case_id,x.expected]));const ids=new Set(S.batch_a),cases=F.cases.filter(c=>ids.has(c.case_id));if(cases.length!==30)throw Error('Batch A cardinality '+cases.length);
+let passed=0;const results=[];for(const c of cases){const r=s.QCSemanticCoreV98.analyze(c.surface,c.domain);const a={route:r.input_route.id,families:[...(r.families||[])].sort(),sequence:!!r.sequence};const ge=gold.get(c.case_id);if(!ge)throw Error('missing gold '+c.case_id);const e={route:ge.route,families:[...(ge.families||[])].sort(),sequence:!!ge.sequence};const ok=JSON.stringify(a)===JSON.stringify(e);if(ok)passed++;results.push({case_id:c.case_id,category:c.category,language:c.language,domain:c.domain,pass:ok,expected:e,actual:a,surface:c.surface});}
+const out={authority:'V8.3.221 V1 SEALED BATCH A FIRST RUN',run_id:process.env.GITHUB_RUN_ID,run_attempt:process.env.GITHUB_RUN_ATTEMPT,validated_development_head_sha:'0e17e6d62edf8334ea75ba70b4f28f2746dd8436',semantic_authority:'QCEvidenceExtractorV5Y -> QCSemanticCoreV98',total:cases.length,passed,failed:cases.length-passed,results};fs.writeFileSync('V8_3_221_BATCH_A_RESULT_V1.json',JSON.stringify(out,null,2));console.log('V8.3.221 Batch A',passed+'/'+cases.length);if(passed!==cases.length)process.exit(1);
+'''
+ runner.write_text(prefix+tail);cp=subprocess.run(['node',str(runner.relative_to(WORK))],cwd=WORK,text=True);src=WORK/'V8_3_221_BATCH_A_RESULT_V1.json'
+ if src.exists():shutil.copy2(src,RESULT)
+ a=json.loads(RESULT.read_text()) if RESULT.exists() else None
+ if a is None: status=write_status(batch_a_attempt_consumed=True,batch_a_executed=False,batch_a_passed=None,batch_a_failed=None,semantic_runtime_executed=False,failure_layer='VALIDATION RUNNER / INFRASTRUCTURE',exact_error='semantic runner produced no result',frozen_on_batch_a_failure=True,conclusion='failure')
+ else: status=write_status(batch_a_attempt_consumed=True,batch_a_executed=True,batch_a_passed=a['passed'],batch_a_failed=a['failed'],semantic_runtime_executed=True,semantic_failure=bool(a['failed']),frozen_on_batch_a_failure=bool(a['failed']),conclusion='success' if a['passed']==30 and a['failed']==0 else 'failure')
+except Exception as e:
+ status=write_status(batch_a_attempt_consumed=True,batch_a_executed=False,batch_a_passed=None,batch_a_failed=None,semantic_runtime_executed=False,semantic_failure=False,failure_layer='VALIDATION RUNNER / INFRASTRUCTURE',exact_error=f'{type(e).__name__}: {e}',frozen_on_batch_a_failure=True,conclusion='failure')
+finally:
+ checkpoint()
+print(json.dumps(status));raise SystemExit(0 if status and status['conclusion']=='success' else 1)
