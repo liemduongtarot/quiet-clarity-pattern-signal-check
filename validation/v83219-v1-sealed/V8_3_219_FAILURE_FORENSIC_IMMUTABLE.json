@@ -1,0 +1,27 @@
+{
+  "candidate": "V8.3.219",
+  "status": "FROZEN",
+  "batch_a_run_id": "32511573350",
+  "batch_a_total": 30,
+  "batch_a_passed": 15,
+  "batch_a_failed": 15,
+  "batch_a_attempt_consumed": true,
+  "batch_b_executed": false,
+  "batch_b_skipped": true,
+  "failure_layer": "SEMANTIC CLASSIFICATION",
+  "semantic_authority": "QCEvidenceExtractorV5X -> QCSemanticCoreV97",
+  "mechanism_groups": [
+    {"group":"VI route recall","cases":["V219-S00-13","V219-S01-13","V219-S04-13"]},
+    {"group":"EN hypothetical recall/precedence","cases":["V219-S02-01","V219-S02-07"]},
+    {"group":"freeze VI recall","cases":["V219-S05-13"]},
+    {"group":"ignore recall/contamination","cases":["V219-S06-01","V219-S06-07","V219-S06-13"]},
+    {"group":"slow and sequence recall","cases":["V219-S07-01","V219-S07-07","V219-S07-13","V219-S08-01","V219-S08-07"]},
+    {"group":"neutral VI completion precedence","cases":["V219-S09-13"]}
+  ],
+  "v219_batch_a_rerun_authorized": false,
+  "v219_batch_b_rerun_authorized": false,
+  "v217_sealed_rerun": false,
+  "v218_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
