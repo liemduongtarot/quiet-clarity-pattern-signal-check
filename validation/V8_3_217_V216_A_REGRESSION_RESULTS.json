@@ -1,0 +1,596 @@
+{
+  "authority": "V8.3.217 DEVELOPMENT regression of frozen V8.3.216 sealed-A first run",
+  "total": 30,
+  "passed": 30,
+  "failed": 0,
+  "results": [
+    {
+      "case_id": "V216-S00-01",
+      "mechanism": "clarification",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The reception desk retained a room-allocation worksheet. A laminated access card remained with facilities. Everything external is specified; the unresolved gap is the concrete act I personally supplied before closure. The stored note fixes logistics, not the response mechanism."
+    },
+    {
+      "case_id": "V216-S00-07",
+      "mechanism": "clarification",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The mailroom indexed correspondence under a routing slip. A folder tab marked the quarterly archive. Everything external is specified; the unresolved gap is the concrete act I personally supplied before closure. The archive detail does not answer the mechanism question."
+    },
+    {
+      "case_id": "V216-S00-13",
+      "mechanism": "clarification",
+      "language": "VI",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Bàn duty lưu bản in roster nhân sự. Inventory tủ liệt kê vị trí kệ storage. Toàn bộ bối cảnh thực tế đã có; khoảng trống còn lại là hành động cụ thể của tôi trước khi sự việc khép lại. Dấu vết filing chỉ là background hành chính."
+    },
+    {
+      "case_id": "V216-S01-01",
+      "mechanism": "decision",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "This background item only anchors chronology. Make the selection for me so your judgement determines the route I take, not merely the framework I use. The courier manifest was signed at dispatch. A shared-house calendar note remained on the kitchen board."
+    },
+    {
+      "case_id": "V216-S01-07",
+      "mechanism": "decision",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Routine documentation supplies location context only. Make the selection for me so your judgement determines the route I take, not merely the framework I use. A timestamp label was printed by records control. A document pouch was archived after monthly reconciliation."
+    },
+    {
+      "case_id": "V216-S01-13",
+      "mechanism": "decision",
+      "language": "VI",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Chi tiết lưu trữ chỉ cho biết record nằm ở đâu. Hãy đưa ra lựa chọn thay tôi để phán đoán của bạn quyết định con đường tôi đi, không chỉ cung cấp khung suy nghĩ. Số extension bàn làm việc có trên directory nội bộ. Accounts gắn cover sheet remittance vào packet."
+    },
+    {
+      "case_id": "V216-S02-01",
+      "mechanism": "hypothetical",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "This passage was invented solely as evaluation material and is not drawn from any event I actually experienced. Records control filed a retention label with the archive box. The procedural record is separate from the behaviour being classified. A scanner queue logged the document count."
+    },
+    {
+      "case_id": "V216-S02-07",
+      "mechanism": "hypothetical",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "This passage was invented solely as evaluation material and is not drawn from any event I actually experienced. An intake checklist was placed in the recruitment cabinet. The operational note does not establish the response itself. A barcode sheet accompanied the intake packet."
+    },
+    {
+      "case_id": "V216-S02-13",
+      "mechanism": "hypothetical",
+      "language": "VI",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Đoạn này được bịa riêng để làm dữ liệu đánh giá và không lấy từ bất kỳ chuyện nào tôi thực sự trải qua. Nhân viên booking giữ cover note lịch hẹn tại reception. Giấy tờ đó mô tả thủ tục chứ không phải evidence hành vi. Checklist vật tư được reception ký nháy."
+    },
+    {
+      "case_id": "V216-S03-01",
+      "mechanism": "third",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The mailroom indexed correspondence under a routing slip. A cabinet inventory listed the storage shelf. I am asking what someone else secretly believes while providing no outward behaviour that could establish it. The archive detail does not answer the mechanism question."
+    },
+    {
+      "case_id": "V216-S03-07",
+      "mechanism": "third",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The duty desk stored a printed staffing roster. A separate ledger index was closed for the period. I am asking what someone else secretly believes while providing no outward behaviour that could establish it. The filing trace is administrative background only."
+    },
+    {
+      "case_id": "V216-S03-13",
+      "mechanism": "third",
+      "language": "VI",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Quầy tiếp tân giữ một worksheet phân phòng. Một folder tab đánh dấu archive theo quý. Tôi đang hỏi người khác âm thầm tin gì trong khi không đưa ra hành vi bên ngoài nào có thể làm căn cứ. Ghi chú lưu trữ chỉ cố định logistics, không quyết định cơ chế phản ứng."
+    },
+    {
+      "case_id": "V216-S04-01",
+      "mechanism": "prediction",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Routine documentation supplies location context only. When the stated future boundary arrives, will this conclude with the outcome I want? A desk extension appeared on the internal directory. A document pouch was archived after monthly reconciliation."
+    },
+    {
+      "case_id": "V216-S04-07",
+      "mechanism": "prediction",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The filing detail only identifies where the record sits. When the stated future boundary arrives, will this conclude with the outcome I want? A laminated access card remained with facilities. Accounts attached a remittance cover sheet to the packet."
+    },
+    {
+      "case_id": "V216-S04-13",
+      "mechanism": "prediction",
+      "language": "VI",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Mục bối cảnh này chỉ neo dòng thời gian. Khi ranh giới tương lai đã nêu tới, việc này có khép lại bằng kết quả tôi muốn không? Records control in một nhãn timestamp. Một ghi chú lịch nhà chung vẫn nằm trên bảng bếp."
+    },
+    {
+      "case_id": "V216-S05-01",
+      "mechanism": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "A reversible low-stakes opening move was available, yet I kept expanding alternatives and never started the trial. An intake checklist was placed in the recruitment cabinet. The operational note does not establish the response itself. A supplies checklist was initialled by reception."
+    },
+    {
+      "case_id": "V216-S05-07",
+      "mechanism": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "A reversible low-stakes opening move was available, yet I kept expanding alternatives and never started the trial. Booking staff kept an appointment cover note in reception. That paperwork describes administration rather than behavioural evidence. The courier manifest was signed at dispatch."
+    },
+    {
+      "case_id": "V216-S05-13",
+      "mechanism": "freeze",
+      "language": "VI",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "Có một nước đi mở đầu ít rủi ro và dễ đảo ngược, nhưng tôi cứ mở rộng phương án rồi không bắt đầu phép thử. Records control lưu nhãn retention cùng hộp archive. Record thủ tục tách biệt với hành vi đang được phân loại. Một barcode sheet đi cùng intake packet."
+    },
+    {
+      "case_id": "V216-S06-01",
+      "mechanism": "ignore",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "The duty desk stored a printed staffing roster. A folder tab marked the quarterly archive. A consequential request remained mine to answer; I redirected attention to side activity and left the central duty open. The filing trace is administrative background only."
+    },
+    {
+      "case_id": "V216-S06-07",
+      "mechanism": "ignore",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "The reception desk retained a room-allocation worksheet. A scanner queue logged the document count. A consequential request remained mine to answer; I redirected attention to side activity and left the central duty open. The stored note fixes logistics, not the response mechanism."
+    },
+    {
+      "case_id": "V216-S06-13",
+      "mechanism": "ignore",
+      "language": "VI",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "Mailroom lập chỉ mục thư từ dưới routing slip. Một ledger index riêng đã đóng cho kỳ đó. Một yêu cầu có hệ quả vẫn do tôi phải trả lời; tôi dồn chú ý vào hoạt động phụ và để trách nhiệm trung tâm còn mở. Chi tiết archive không tự trả lời câu hỏi cơ chế."
+    },
+    {
+      "case_id": "V216-S07-01",
+      "mechanism": "slow",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "The filing detail only identifies where the record sits. I used one limited interval before answering, made one review pass, and then treated the matter as finished. A timestamp label was printed by records control. Accounts attached a remittance cover sheet to the packet."
+    },
+    {
+      "case_id": "V216-S07-07",
+      "mechanism": "slow",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "This background item only anchors chronology. I used one limited interval before answering, made one review pass, and then treated the matter as finished. A cabinet inventory listed the storage shelf. A shared-house calendar note remained on the kitchen board."
+    },
+    {
+      "case_id": "V216-S07-13",
+      "mechanism": "slow",
+      "language": "VI",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "Tài liệu thường lệ chỉ cung cấp context định vị. Tôi dùng một khoảng thời gian giới hạn trước khi đáp, review một pass và sau đó xem việc này đã kết thúc. Một thẻ access ép nhựa vẫn ở bộ phận facilities. Một túi hồ sơ được lưu sau kỳ đối soát tháng."
+    },
+    {
+      "case_id": "V216-S08-01",
+      "mechanism": "sequence",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "I moved near taking action, backed away, then returned to the same judgement even though no new facts appeared. Booking staff kept an appointment cover note in reception. That paperwork describes administration rather than behavioural evidence. A barcode sheet accompanied the intake packet."
+    },
+    {
+      "case_id": "V216-S08-07",
+      "mechanism": "sequence",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "I moved near taking action, backed away, then returned to the same judgement even though no new facts appeared. Records control filed a retention label with the archive box. The procedural record is separate from the behaviour being classified. A desk extension appeared on the internal directory."
+    },
+    {
+      "case_id": "V216-S08-13",
+      "mechanism": "sequence",
+      "language": "VI",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "Tôi tiến gần tới hành động rồi lùi lại, sau đó quay về cùng phán đoán dù không xuất hiện facts mới. Checklist tiếp nhận được đặt trong tủ tuyển dụng. Ghi chú vận hành không xác lập bản thân phản ứng. Courier manifest đã được ký lúc dispatch."
+    },
+    {
+      "case_id": "V216-S09-01",
+      "mechanism": "neutral",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The reception desk retained a room-allocation worksheet. A separate ledger index was closed for the period. The final choice remained mine; I carried the action through and did not reopen the issue afterward. The stored note fixes logistics, not the response mechanism."
+    },
+    {
+      "case_id": "V216-S09-07",
+      "mechanism": "neutral",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The mailroom indexed correspondence under a routing slip. A supplies checklist was initialled by reception. The final choice remained mine; I carried the action through and did not reopen the issue afterward. The archive detail does not answer the mechanism question."
+    },
+    {
+      "case_id": "V216-S09-13",
+      "mechanism": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Bàn duty lưu bản in roster nhân sự. Scanner queue ghi lại số lượng tài liệu. Quyền chốt cuối vẫn thuộc về tôi; tôi làm xong hành động và không mở lại chuyện đó sau đó. Dấu vết filing chỉ là background hành chính."
+    }
+  ]
+}
