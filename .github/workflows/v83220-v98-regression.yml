@@ -6,7 +6,7 @@ permissions:
   contents: write
 jobs:
   regression:
-    if: github.event.head_commit.message == 'Run V8.3.220 V98 bounded regression'
+    if: github.event.head_commit.message == 'Run V8.3.220 V98 bounded regression R2'
     runs-on: ubuntu-latest
     timeout-minutes: 55
     steps:
@@ -28,7 +28,7 @@ jobs:
           test -f validation/V8_3_220_V98_REGRESSION_RECEIPT.json
           python - <<'PY'
           import pathlib,zipfile,hashlib
-          r=pathlib.Path('.');files=[r/'validation/V8_3_220_V98_REGRESSION_RECEIPT.json',r/'validation/V8_3_220_V219_A_IMMUTABLE_REGRESSION.json']
+          r=pathlib.Path('.');files=[r/'validation/V8_3_220_V98_REGRESSION_RECEIPT.json',r/'validation/V8_3_220_V219_A_IMMUTABLE_CARRIER.json']
           for n in ['V8_3_220_V98_REGRESSION_RESULTS.json','V8_3_220_V219_A_REGRESSION_RESULTS.json']:
             p=r/n
             if p.exists():files.append(p)
@@ -39,16 +39,16 @@ jobs:
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/V8_3_220_V98_REGRESSION_RECEIPT.json validation/V8_3_220_V219_A_IMMUTABLE_REGRESSION.json
+          git add -- validation/V8_3_220_V98_REGRESSION_RECEIPT.json validation/V8_3_220_V219_A_IMMUTABLE_CARRIER.json
           for f in V8_3_220_V98_REGRESSION_RESULTS.json V8_3_220_V219_A_REGRESSION_RESULTS.json; do
             if [ -f "$f" ]; then cp "$f" validation/; git add "validation/$f"; fi
           done
-          git diff --cached --quiet || git commit -m 'Record V8.3.220 V98 regression evidence'
+          git diff --cached --quiet || git commit -m 'Record V8.3.220 V98 regression R2 evidence'
           git push origin HEAD:v83220-v1-validation
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: PSC_V8_3_220_V98_REGRESSION_CHECKPOINT
+          name: PSC_V8_3_220_V98_REGRESSION_CHECKPOINT_R2
           if-no-files-found: error
           path: |
             PSC_V8_3_220_V98_REGRESSION_CHECKPOINT.zip
