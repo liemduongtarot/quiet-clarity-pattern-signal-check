@@ -1,12 +1,12 @@
-name: V8.3.214 Preseal Diagnostic R2
+name: V8.3.214 Fresh Preseal R2 Freeze
 on:
   push:
     branches: [main]
 permissions:
   contents: write
 jobs:
-  diagnostic:
-    if: github.event.head_commit.message == 'Run V8.3.214 preseal diagnostic R2'
+  preseal:
+    if: github.event.head_commit.message == 'Run V8.3.214 fresh preseal R2 freeze'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
@@ -15,8 +15,6 @@ jobs:
           ref: v83214-v1-sealed-validation
           fetch-depth: 1
       - name: Materialize prior references
-        id: refs
-        continue-on-error: true
         run: |
           set -euo pipefail
           rm -rf validation/v83214-preseal-refs
@@ -42,31 +40,43 @@ jobs:
           git fetch --depth=1 origin refs/heads/v83213-v1-sealed-validation:refs/remotes/origin/v83213-v1-sealed-validation
           git show origin/v83213-v1-sealed-validation:validation/v83213-v1-sealed/V8_3_213_PRESEAL_CANDIDATE_BANK_V1.json > validation/v83214-preseal-refs/V8_3_213_SEALED_BANK.json
           git show origin/v83213-v1-sealed-validation:validation/v83213-v1-sealed/V8_3_213_SEALED_FIXTURE_V1.json > validation/v83214-preseal-refs/V8_3_213_SEALED_FIXTURE.json
-      - name: Run R2 construction with captured output
-        id: bank
-        continue-on-error: true
-        run: |
-          set +e
-          python validation/v83214-sealed-v1-generator-r2.py >/tmp/v214-preseal.out 2>&1
-          rc=$?
-          cat /tmp/v214-preseal.out
-          exit $rc
-      - name: Record diagnostic evidence
-        if: always()
+      - name: Construct and audit fresh R2 bank
+        run: python validation/v83214-sealed-v1-generator-r2.py
+      - name: Verify and package frozen preseal
         run: |
           python - <<'PY'
-          import json,pathlib,os
-          root=pathlib.Path('validation/v83214-v1-sealed'); p=root/'V8_3_214_PRESEAL_DIVERSITY_AUDIT_V1.json'
-          audit=json.loads(p.read_text()) if p.exists() else None
-          log=pathlib.Path('/tmp/v214-preseal.out').read_text(errors='replace')[-12000:] if pathlib.Path('/tmp/v214-preseal.out').exists() else ''
-          r={'candidate':'V8.3.214','phase':'preseal-diagnostic-r2','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'refs_step':'${{ steps.refs.outcome }}','bank_step':'${{ steps.bank.outcome }}','reference_file_count':len(list(pathlib.Path('validation/v83214-preseal-refs').glob('*.json'))),'audit':audit,'captured_tail':log,'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'v213_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
-          (root/'V8_3_214_PRESEAL_DIAGNOSTIC_R2_RECEIPT.json').write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n')
+          import json,pathlib,hashlib,zipfile,shutil,os
+          root=pathlib.Path('validation/v83214-v1-sealed')
+          auth=json.loads((root/'V8_3_214_SEALED_AUTHORITY_V1.json').read_text())
+          audit=json.loads((root/'V8_3_214_PRESEAL_DIVERSITY_AUDIT_V1.json').read_text())
+          assert auth['validated_development_head_sha']=='4725f8a613048e755fef6c10398d83305abd136f'
+          assert auth['semantic_authority']=='QCSemanticCoreV94R'
+          assert auth['candidate_bank_count']==180 and auth['selected_count']==60 and auth['batch_a_count']==30 and auth['batch_b_count']==30
+          assert audit['pass'] and audit['internal_max_similarity']<.75 and audit['external_cases_at_or_above_0_75']==0 and audit['exact_external_duplicates']==0 and audit['semantic_fingerprint_exact_duplicates']==0
+          assert not audit['runtime_executed_during_bank_or_selection'] and not audit['semantic_authority_loaded_during_bank_or_selection'] and not audit['selection_uses_runtime_output']
+          r={'candidate':'V8.3.214','phase':'preseal-v1-r2-freeze','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'workflow_head_sha':os.environ['GITHUB_SHA'],'sealed_head_checked_out':os.popen('git rev-parse HEAD').read().strip(),'validated_development_head_sha':auth['validated_development_head_sha'],'semantic_authority':'QCSemanticCoreV94R','candidate_count':180,'selected_count':60,'batch_a_count':30,'batch_b_count':30,'internal_max_similarity':audit['internal_max_similarity'],'external_max_similarity':audit['external_max_similarity'],'external_reference_surfaces':audit['external_reference_surfaces'],'semantic_fingerprint_exact_duplicates':audit['semantic_fingerprint_exact_duplicates'],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'selection_uses_runtime_output':False,'batch_a_executed':False,'batch_b_executed':False,'v213_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False,'conclusion':'success'}
+          (root/'V8_3_214_PRESEAL_RUN_RECEIPT.json').write_text(json.dumps(r,indent=2)+'\n')
+          stage=pathlib.Path('V8_3_214_PRESEAL_CHECKPOINT');stage.mkdir(exist_ok=True)
+          for p in root.iterdir():
+            if p.is_file(): shutil.copy2(p,stage/p.name)
+          def sha(p): return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          (stage/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(stage.iterdir()) if p.is_file()))
+          z=pathlib.Path('PSC_V8_3_214_PRESEAL_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in sorted(stage.iterdir()): q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_214_PRESEAL_CHECKPOINT_SHA256.txt').write_text(f'{sha(z)}  {z.name}\n')
+          print(json.dumps(r,indent=2))
           PY
+      - name: Freeze V8.3.214 preseal authority
+        run: |
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/v83214-v1-sealed/V8_3_214_PRESEAL_DIAGNOSTIC_R2_RECEIPT.json
-          git commit -m 'Record V8.3.214 preseal R2 diagnostic evidence'
+          git add -- validation/v83214-v1-sealed
+          git commit -m 'Freeze V8.3.214 V1 preseal authority'
           git push origin HEAD:v83214-v1-sealed-validation
-      - name: Enforce diagnostic outcome
-        if: always()
-        run: test '${{ steps.refs.outcome }}' = 'success' -a '${{ steps.bank.outcome }}' = 'success'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_214_PRESEAL_CHECKPOINT
+          path: |
+            PSC_V8_3_214_PRESEAL_CHECKPOINT.zip
+            PSC_V8_3_214_PRESEAL_CHECKPOINT_SHA256.txt
