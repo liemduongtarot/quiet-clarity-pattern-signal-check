@@ -1,0 +1,23 @@
+{
+  "candidate": "V8.3.220",
+  "development": "PASS",
+  "parent_development_authority_sha": "27a338cb88b054a05f61daa6c902ed8537574eba",
+  "semantic_base_sha": "456a88d01b671f0cb92a0be31f4d34d68f60d135",
+  "semantic_authority": "QCEvidenceExtractorV5Y -> QCSemanticCoreV98",
+  "v5x_v97_modified": false,
+  "repair_scope": "bounded additive semantic recall for exact frozen V8.3.219 failure mechanisms",
+  "immutable_regression_total": 1470,
+  "immutable_regression_passed": 1470,
+  "v216_frozen_a_total": 30,
+  "v216_frozen_a_passed": 30,
+  "v219_frozen_a_total": 30,
+  "v219_frozen_a_passed": 30,
+  "v219_previous_failures_repaired": 15,
+  "v219_previous_passes_preserved": 15,
+  "v217_sealed_rerun": false,
+  "v218_sealed_rerun": false,
+  "v219_sealed_rerun": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
