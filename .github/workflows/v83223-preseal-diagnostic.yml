@@ -1,0 +1,44 @@
+name: V8.3.223 PRESEAL Diagnostic
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  diag:
+    if: github.event.head_commit.message == 'Diagnose V8.3.223 PRESEAL'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83223-v1-sealed-validation
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Run observable construction
+        id: p
+        continue-on-error: true
+        run: |
+          set +e
+          python validation/v83223-v1-sealed/v83223-preseal-freeze.py > /tmp/v223-preseal.log 2>&1
+          rc=$?
+          cat /tmp/v223-preseal.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit $rc
+      - name: Freeze diagnostic
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,json,os
+          log=pathlib.Path('/tmp/v223-preseal.log').read_text(errors='replace') if pathlib.Path('/tmp/v223-preseal.log').exists() else ''
+          d={'candidate':'V8.3.223','phase':'preseal-construction-diagnostic','outcome':os.environ['OUTCOME'],'exit_code':os.environ.get('RC'),'log_tail':log[-12000:],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False}
+          p=pathlib.Path('validation/v83223-v1-sealed/V8_3_223_PRESEAL_DIAGNOSTIC.json');p.write_text(json.dumps(d,indent=2)+'\n')
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83223-v1-sealed/V8_3_223_PRESEAL_DIAGNOSTIC.json
+          git diff --cached --quiet || git commit -m 'Record V8.3.223 preseal diagnostic'
+          git push origin HEAD:v83223-v1-sealed-validation
+        env:
+          OUTCOME: ${{ steps.p.outcome }}
+          RC: ${{ steps.p.outputs.rc }}
