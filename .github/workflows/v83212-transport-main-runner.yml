@@ -1,54 +1,41 @@
-name: V8.3.215 V95 Final Development
+name: V8.3.215 Preseal Freeze
 on:
   push:
     branches: [main]
 permissions:
   contents: write
 jobs:
-  final:
-    if: github.event.head_commit.message == 'Run V8.3.215 V95 final development'
+  preseal:
+    if: github.event.head_commit.message == 'Run V8.3.215 fresh preseal freeze'
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v83215-v1-validation
+          ref: v83215-v1-sealed-validation
           fetch-depth: 1
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-      - name: Run remaining V95 development gates
-        id: orchestrator
+      - name: Construct, audit and freeze fresh V8.3.215 preseal authority
+        id: preseal
         continue-on-error: true
-        run: python validation/v83215-v95-final-development-orchestrator.py
-      - name: Record final-development evidence
+        run: python validation/v83215-v1-sealed/v83215-preseal-freeze.py
+      - name: Record frozen preseal evidence
         if: always()
         run: |
-          python - <<'PY'
-          import json,pathlib,os
-          def load(p):
-            q=pathlib.Path(p); return json.loads(q.read_text()) if q.exists() else None
-          existing=load('validation/V8_3_215_V95_FINAL_DEVELOPMENT_RUN_RECEIPT.json')
-          reg=load('validation/V8_3_215_V95_REGRESSION_EVIDENCE_RECEIPT.json')
-          gen=load('V8_3_212_DEVELOPMENT_GENERALIZATION_800_RESULTS_V1.json')
-          br=load('V8_3_215_V95_FINAL_BROWSER_E2E_RESULTS.json')
-          r=existing or {'candidate':'V8.3.215','phase':'v95-final-development','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.popen('git rev-parse HEAD').read().strip(),'semantic_authority':'QCSemanticCoreV95','regression':None if reg is None else {'carrier':reg.get('v214_frozen_a_regression_passed'),'immutable':reg.get('immutable_regression_passed')},'generalization':None if gen is None else {'total':gen.get('total'),'classification_passed':gen.get('classification_passed'),'pass':gen.get('pass')},'browser':None if br is None else {'total':br.get('total'),'passed':br.get('passed')},'status':'completed','conclusion':'success' if '${{ steps.orchestrator.outcome }}'=='success' else 'failure','v214_sealed_rerun':False,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False}
-          pathlib.Path('validation/V8_3_215_V95_FINAL_DEVELOPMENT_EVIDENCE_RECEIPT.json').write_text(json.dumps(r,indent=2)+'\n')
-          PY
+          set -euo pipefail
+          test -f validation/v83215-v1-sealed/V8_3_215_PRESEAL_RUN_RECEIPT.json
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/V8_3_215_V95_FINAL_DEVELOPMENT_EVIDENCE_RECEIPT.json
-          if [ -f validation/V8_3_215_V95_FINAL_DEVELOPMENT_RUN_RECEIPT.json ]; then git add -- validation/V8_3_215_V95_FINAL_DEVELOPMENT_RUN_RECEIPT.json; fi
-          git diff --cached --quiet || git commit -m 'Record V8.3.215 V95 final development evidence'
-          git push origin HEAD:v83215-v1-validation
+          git add -- validation/v83215-v1-sealed/V8_3_215_*.json
+          git diff --cached --quiet || git commit -m 'Record V8.3.215 frozen preseal authority'
+          git push origin HEAD:v83215-v1-sealed-validation
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: PSC_V8_3_215_V95_DEVELOPMENT_VALIDATION_CHECKPOINT
-          if-no-files-found: ignore
+          name: PSC_V8_3_215_V1_PRESEAL_CHECKPOINT
+          if-no-files-found: error
           path: |
-            PSC_V8_3_215_V95_DEVELOPMENT_VALIDATION_CHECKPOINT.zip
-            PSC_V8_3_215_V95_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt
-      - name: Enforce outcome
+            PSC_V8_3_215_V1_PRESEAL_CHECKPOINT.zip
+            PSC_V8_3_215_V1_PRESEAL_CHECKPOINT_SHA256.txt
+      - name: Enforce preseal outcome
         if: always()
-        run: test '${{ steps.orchestrator.outcome }}' = 'success'
+        run: test '${{ steps.preseal.outcome }}' = 'success'
