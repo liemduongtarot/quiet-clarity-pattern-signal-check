@@ -1,0 +1,21 @@
+{
+  "candidate": "V8.3.221",
+  "internal_max_similarity": 0.527273,
+  "internal_max_pair": [
+    "V221-S04-16",
+    "V221-S08-14"
+  ],
+  "external_max_similarity": 0.509091,
+  "external_max_pair": [
+    "V221-S00-10",
+    "V219-S08-13"
+  ],
+  "external_cases_at_or_above_0_75": 0,
+  "exact_external_duplicates": 0,
+  "semantic_fingerprint_exact_duplicates": 0,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "selection_uses_runtime_output": false,
+  "v220_pool_reused": false,
+  "v219_pool_reused": false
+}

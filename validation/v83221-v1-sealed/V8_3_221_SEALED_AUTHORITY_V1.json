@@ -1,0 +1,21 @@
+{
+  "authority": "V8.3.221 V1 SEALED AUTHORITY",
+  "validated_development_head_sha": "0e17e6d62edf8334ea75ba70b4f28f2746dd8436",
+  "semantic_authority": "QCEvidenceExtractorV5Y -> QCSemanticCoreV98",
+  "hash_contract": "canonical-json-sort-keys-compact",
+  "hashes": {
+    "candidate_bank": "cd1ae306a8cf881929d3ac1bd9bef828981cae4b76b227be221e8eb59c4de2c6",
+    "selection": "b4476118c355907c1566047a56361f4f4c60629f3d4f7cc9fe6ba9bbfee6714c",
+    "fixture": "8f0c5ac8ed487fbba4e36bbcfa2d46fc21d32a3e8618416a90f336c6f65f0cbe",
+    "independent_gold": "a09f110e1542a2cfebd2256be96103879eeaf1fe9e303bd1243395c2b7d099d8",
+    "membership": "05e2e67e04ab0b091d475e62a09cddbe176c9fab110874af6c689eecad86fba3",
+    "preseal_audit": "941d6393e4ceefda1a65f7f055d174adbacc5a1ccaee81c8fad878728391a404"
+  },
+  "preseal_pass": true,
+  "v217_sealed_rerun": false,
+  "v218_sealed_rerun": false,
+  "v219_sealed_rerun": false,
+  "v220_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
