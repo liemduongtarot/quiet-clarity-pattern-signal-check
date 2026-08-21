@@ -25,7 +25,7 @@ try:
  phase='development-challenge-refs'
  run('python validation/v83211-generalization-600-generator-v1r.py');shutil.copy2(VAL/'V8_3_211_DEVELOPMENT_GENERALIZATION_600_V1.json',REF/'V8_3_211_DEV_600.json');run('python validation/v83212-generalization-800-generator.py');shutil.copy2(VAL/'V8_3_212_DEVELOPMENT_GENERALIZATION_800_V1.json',REF/'V8_3_212_DEV_800.json')
  phase='construct-bank'
- shutil.rmtree(OUT,ignore_errors=True);run('python validation/v83212-sealed-v1-generator.py')
+ shutil.rmtree(OUT,ignore_errors=True);run('python validation/v83212-sealed-v1-generator-v1r.py')
  phase='verify-authority'
  a=json.loads((OUT/'V8_3_212_PRESEAL_DIVERSITY_AUDIT_V1.json').read_text());u=json.loads((OUT/'V8_3_212_SEALED_AUTHORITY_V1.json').read_text());assert a['pass'] and a['candidate_count']==180 and a['selected_count']==60 and a['internal_max_similarity']<.75 and a['external_cases_at_or_above_0_75']==0 and a['exact_external_duplicates']==0;assert not a['runtime_executed_during_bank_or_selection'] and not a['semantic_authority_loaded_during_bank_or_selection'] and not a['selection_uses_runtime_output'];assert u['validated_development_head_sha']==state['validated_development_head_sha'] and u['semantic_authority']=='QCSemanticCoreV92'
  receipt('success','complete')
