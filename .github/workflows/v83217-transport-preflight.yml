@@ -6,7 +6,7 @@ permissions:
   contents: write
 jobs:
   verify:
-    if: github.event.head_commit.message == 'Run V8.3.217 transport and static preflight'
+    if: github.event.head_commit.message == 'Run V8.3.217 transport and static preflight R2'
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -16,16 +16,33 @@ jobs:
           fetch-depth: 0
       - name: Transport-only verification
         id: transport
+        continue-on-error: true
         run: python validation/v83217-v1-sealed/v83217-transport-only.py
       - name: Static sealed preflight
         id: preflight
+        if: always()
+        continue-on-error: true
         run: python validation/v83217-v1-sealed/v83217-static-sealed-preflight.py
-      - name: Build checkpoint
+      - name: Record observable outcomes
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,pathlib,os
+          o=pathlib.Path('validation/v83217-v1-sealed')
+          d={'candidate':'V8.3.217','phase':'transport-static-preflight-r2-observable','transport_outcome':os.environ['TRANSPORT'],'preflight_outcome':os.environ['PREFLIGHT'],'semantic_runtime_executed':False,'semantic_authority_loaded':False}
+          d['pass']=d['transport_outcome']=='success' and d['preflight_outcome']=='success'
+          (o/'V8_3_217_TRANSPORT_PREFLIGHT_RUN_RECEIPT.json').write_text(json.dumps(d,indent=2)+'\n')
+          PY
+        env:
+          TRANSPORT: ${{ steps.transport.outcome }}
+          PREFLIGHT: ${{ steps.preflight.outcome }}
+      - name: Build checkpoint if clean
+        if: steps.transport.outcome == 'success' && steps.preflight.outcome == 'success'
         run: |
           python - <<'PY'
           import hashlib,zipfile,pathlib
           root=pathlib.Path('.'); o=root/'validation/v83217-v1-sealed'
-          files=['V8_3_217_SEALED_AUTHORITY_V1.json','V8_3_217_TRANSPORT_VERIFICATION_V1.json','V8_3_217_STATIC_SEALED_PREFLIGHT_V1.json','V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1_SHA256.txt']
+          files=['V8_3_217_SEALED_AUTHORITY_V1.json','V8_3_217_TRANSPORT_VERIFICATION_V1.json','V8_3_217_STATIC_SEALED_PREFLIGHT_V1.json','V8_3_217_TRANSPORT_PREFLIGHT_RUN_RECEIPT.json','V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1_SHA256.txt']
           z=root/'PSC_V8_3_217_V1_TRANSPORT_PREFLIGHT_CHECKPOINT.zip'
           with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
             for n in files:q.write(o/n,n)
@@ -33,19 +50,27 @@ jobs:
           (root/'PSC_V8_3_217_V1_TRANSPORT_PREFLIGHT_CHECKPOINT_SHA256.txt').write_text(h+'  '+z.name+'\n')
           PY
       - name: Freeze verification evidence
+        if: always()
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/v83217-v1-sealed/V8_3_217_TRANSPORT_VERIFICATION_V1.json validation/v83217-v1-sealed/V8_3_217_STATIC_SEALED_PREFLIGHT_V1.json validation/v83217-v1-sealed/V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1.zip validation/v83217-v1-sealed/V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1_SHA256.txt
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.217 transport and static preflight evidence'
+          git add -- validation/v83217-v1-sealed/V8_3_217_TRANSPORT_PREFLIGHT_RUN_RECEIPT.json
+          for f in V8_3_217_TRANSPORT_VERIFICATION_V1.json V8_3_217_STATIC_SEALED_PREFLIGHT_V1.json V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1.zip V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1_SHA256.txt; do
+            test ! -f "validation/v83217-v1-sealed/$f" || git add -- "validation/v83217-v1-sealed/$f"
+          done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.217 transport and static preflight R2 evidence'
           git push origin HEAD:v83217-v1-sealed-validation
       - uses: actions/upload-artifact@v4
+        if: steps.transport.outcome == 'success' && steps.preflight.outcome == 'success'
         with:
-          name: PSC_V8_3_217_V1_TRANSPORT_PREFLIGHT_CHECKPOINT
+          name: PSC_V8_3_217_V1_TRANSPORT_PREFLIGHT_CHECKPOINT_R2
           if-no-files-found: error
           path: |
             PSC_V8_3_217_V1_TRANSPORT_CHECKPOINT.zip
             PSC_V8_3_217_V1_TRANSPORT_CHECKPOINT_SHA256.txt
             PSC_V8_3_217_V1_TRANSPORT_PREFLIGHT_CHECKPOINT.zip
             PSC_V8_3_217_V1_TRANSPORT_PREFLIGHT_CHECKPOINT_SHA256.txt
+      - name: Enforce
+        if: always()
+        run: test '${{ steps.transport.outcome }}' = 'success' && test '${{ steps.preflight.outcome }}' = 'success'
