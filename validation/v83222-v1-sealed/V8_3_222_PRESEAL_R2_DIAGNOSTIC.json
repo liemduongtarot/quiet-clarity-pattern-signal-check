@@ -1,0 +1,12 @@
+{
+  "candidate": "V8.3.222",
+  "phase": "preseal-r2-diagnostic",
+  "outcome": "failure",
+  "exit_code": "1",
+  "log_tail": "fatal: path 'validation/v832219-v1-sealed/V8_3_219_PRESEAL_CANDIDATE_BANK_V1.json' does not exist in 'origin/v83219-v1-sealed-validation'\nTraceback (most recent call last):\n  File \"/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83222-v1-sealed/v83222-preseal-freeze-r2.py\", line 7, in <module>\n    exec(compile(src,'v83222-preseal-freeze-r2.py','exec'))\n  File \"v83222-preseal-freeze-r2.py\", line 48, in <module>\n  File \"/usr/lib/python3.12/subprocess.py\", line 466, in check_output\n    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['git', 'show', 'origin/v83219-v1-sealed-validation:validation/v832219-v1-sealed/V8_3_219_PRESEAL_CANDIDATE_BANK_V1.json']' returned non-zero exit status 128.\n",
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "v221_sealed_rerun": false
+}
