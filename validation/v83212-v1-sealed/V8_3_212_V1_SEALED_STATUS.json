@@ -1,0 +1,19 @@
+{
+  "candidate": "V8.3.212",
+  "phase": "sealed-validation-v1",
+  "run_id": "32464070764",
+  "run_attempt": "1",
+  "validated_development_head_sha": "840cfd3aeea515a335a97615fbc321ebf0e1ce11",
+  "semantic_authority": "QCSemanticCoreV92",
+  "transport_passed": true,
+  "batch_a_executed": true,
+  "batch_a_passed": 21,
+  "batch_a_failed": 9,
+  "batch_b_executed": false,
+  "batch_b_passed": null,
+  "batch_b_failed": null,
+  "frozen_on_batch_a_failure": true,
+  "v211_r4_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
