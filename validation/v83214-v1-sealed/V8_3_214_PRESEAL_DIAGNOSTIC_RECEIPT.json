@@ -1,0 +1,18 @@
+{
+  "candidate": "V8.3.214",
+  "phase": "preseal-diagnostic",
+  "run_id": 32475306935,
+  "run_attempt": 1,
+  "refs_step": "success",
+  "bank_step": "failure",
+  "reference_file_count": 18,
+  "audit": null,
+  "captured_tail": "Traceback (most recent call last):\n  File \"/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83214-sealed-v1-generator.py\", line 162, in <module>\n    assert imax<.75 and over==0 and exact==0 and fp_exact==0,(imax,emax,over,exact,fp_exact,ipair,epair)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: (0.8620689655172413, 0.5925925925925926, 0, 0, 0, ('V214-S03-12', 'V214-S03-15'), ('V214-S07-02', 'My reply came only after a delay; I performed one verification and closed the matter without another pass.'))\n",
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "v213_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
