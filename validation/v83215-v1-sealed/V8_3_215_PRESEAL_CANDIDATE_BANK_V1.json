@@ -130,7 +130,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại. Một túi courier giữ bản sao giấy tờ địa điểm. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Một bìa kho màu đồng lưu giấy tờ đối soát theo quý. Lịch gặp đã có sẵn.",
+      "surface": "Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại. Một túi courier niêm phong giữ bản sao sơ đồ địa điểm, phiếu bàn giao quầy lễ tân và biên nhận vận chuyển nội bộ. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Một bìa kho màu đồng lưu giấy tờ đối soát theo quý. Lịch gặp đã có sẵn.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -178,7 +178,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "career",
-      "surface": "Một thùng storage ghi tháng retention. Chi tiết thủ tục chỉ định vị record. Mã hành chính đã có. Một bìa kho màu đồng lưu giấy tờ đối soát theo quý. Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại.",
+      "surface": "Một thùng storage lưu nhãn chu kỳ retention, danh mục vị trí kệ, biên bản kiểm kê và phiếu chuyển kho định kỳ. Chi tiết thủ tục chỉ định vị record. Mã hành chính đã có. Một bìa kho màu đồng lưu giấy tờ đối soát theo quý. Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -346,7 +346,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "other",
-      "surface": "Một túi courier giữ bản sao giấy tờ địa điểm. Fact logistics tách biệt với phản ứng đang đo. Lịch gặp đã có sẵn. Bộ phận địa điểm giữ sheet phân phòng ép nhựa cạnh quầy tiếp tân. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc.",
+      "surface": "Một túi courier niêm phong giữ bản sao sơ đồ địa điểm, phiếu bàn giao quầy lễ tân và biên nhận vận chuyển nội bộ. Fact logistics tách biệt với phản ứng đang đo. Lịch gặp đã có sẵn. Bộ phận địa điểm giữ sheet phân phòng ép nhựa cạnh quầy tiếp tân. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -394,7 +394,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "family",
-      "surface": "Bộ phận địa điểm giữ sheet phân phòng ép nhựa cạnh quầy tiếp tân. Mã hành chính đã có. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc. Một thùng storage ghi tháng retention. Marker hành chính không quyết định cơ chế.",
+      "surface": "Bộ phận địa điểm giữ sheet phân phòng ép nhựa cạnh quầy tiếp tân. Mã hành chính đã có. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc. Một thùng storage lưu nhãn chu kỳ retention, danh mục vị trí kệ, biên bản kiểm kê và phiếu chuyển kho định kỳ. Marker hành chính không quyết định cơ chế.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -562,7 +562,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "money",
-      "surface": "Thủ tục tuyển dụng lưu trang bìa barcode trong tủ hồ sơ tiếp nhận. Lịch gặp đã có sẵn. Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi. Một túi courier giữ bản sao giấy tờ địa điểm. Chi tiết thủ tục chỉ định vị record.",
+      "surface": "Thủ tục tuyển dụng lưu trang bìa barcode trong tủ hồ sơ tiếp nhận. Lịch gặp đã có sẵn. Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi. Một túi courier niêm phong giữ bản sao sơ đồ địa điểm, phiếu bàn giao quầy lễ tân và biên nhận vận chuyển nội bộ. Chi tiết thủ tục chỉ định vị record.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -610,7 +610,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi. Một thùng storage ghi tháng retention. Mã lưu trữ chỉ neo dòng thời gian. Thủ tục tuyển dụng lưu trang bìa barcode trong tủ hồ sơ tiếp nhận. Mã hành chính đã có.",
+      "surface": "Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi. Một thùng storage lưu nhãn chu kỳ retention, danh mục vị trí kệ, biên bản kiểm kê và phiếu chuyển kho định kỳ. Mã lưu trữ chỉ neo dòng thời gian. Thủ tục tuyển dụng lưu trang bìa barcode trong tủ hồ sơ tiếp nhận. Mã hành chính đã có.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -778,7 +778,7 @@
       "category": "third",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó. Một túi courier giữ bản sao giấy tờ địa điểm. Marker hành chính không quyết định cơ chế. Giấy tờ household dùng ghi chú lịch bếp cho việc chung. Lịch gặp đã có sẵn.",
+      "surface": "Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó. Một túi courier niêm phong giữ bản sao sơ đồ địa điểm, phiếu bàn giao quầy lễ tân và biên nhận vận chuyển nội bộ. Marker hành chính không quyết định cơ chế. Giấy tờ household dùng ghi chú lịch bếp cho việc chung. Lịch gặp đã có sẵn.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -826,7 +826,7 @@
       "category": "third",
       "language": "VI",
       "domain": "other",
-      "surface": "Một thùng storage ghi tháng retention. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Mã hành chính đã có. Giấy tờ household dùng ghi chú lịch bếp cho việc chung. Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó.",
+      "surface": "Một thùng storage lưu nhãn chu kỳ retention, danh mục vị trí kệ, biên bản kiểm kê và phiếu chuyển kho định kỳ. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Mã hành chính đã có. Giấy tờ household dùng ghi chú lịch bếp cho việc chung. Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -994,7 +994,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "career",
-      "surface": "Một túi courier giữ bản sao giấy tờ địa điểm. Mã lưu trữ chỉ neo dòng thời gian. Lịch gặp đã có sẵn. Vận hành nhân sự giữ bản in roster cạnh bảng phân ca. Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không?",
+      "surface": "Một túi courier niêm phong giữ bản sao sơ đồ địa điểm, phiếu bàn giao quầy lễ tân và biên nhận vận chuyển nội bộ. Mã lưu trữ chỉ neo dòng thời gian. Lịch gặp đã có sẵn. Vận hành nhân sự giữ bản in roster cạnh bảng phân ca. Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không?",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1042,7 +1042,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "money",
-      "surface": "Vận hành nhân sự giữ bản in roster cạnh bảng phân ca. Mã hành chính đã có. Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không? Một thùng storage ghi tháng retention. Fact logistics tách biệt với phản ứng đang đo.",
+      "surface": "Vận hành nhân sự giữ bản in roster cạnh bảng phân ca. Mã hành chính đã có. Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không? Một thùng storage lưu nhãn chu kỳ retention, danh mục vị trí kệ, biên bản kiểm kê và phiếu chuyển kho định kỳ. Fact logistics tách biệt với phản ứng đang đo.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1230,7 +1230,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "family",
-      "surface": "Kiểm soát records gắn nhãn retention-folder trong kho dài hạn. Lịch gặp đã có sẵn. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Một túi courier giữ bản sao giấy tờ địa điểm. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "surface": "Kiểm soát records gắn nhãn retention-folder trong kho dài hạn. Lịch gặp đã có sẵn. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Một túi courier niêm phong giữ bản sao sơ đồ địa điểm, phiếu bàn giao quầy lễ tân và biên nhận vận chuyển nội bộ. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1286,7 +1286,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Một thùng storage ghi tháng retention. Chi tiết thủ tục chỉ định vị record. Kiểm soát records gắn nhãn retention-folder trong kho dài hạn. Mã hành chính đã có.",
+      "surface": "Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Một thùng storage lưu nhãn chu kỳ retention, danh mục vị trí kệ, biên bản kiểm kê và phiếu chuyển kho định kỳ. Chi tiết thủ tục chỉ định vị record. Kiểm soát records gắn nhãn retention-folder trong kho dài hạn. Mã hành chính đã có.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1482,7 +1482,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời. Một túi courier giữ bản sao giấy tờ địa điểm. Fact logistics tách biệt với phản ứng đang đo. Nhân viên accounts ghim phiếu remittance vào packet thanh toán. Lịch gặp đã có sẵn.",
+      "surface": "Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời. Một túi courier niêm phong giữ bản sao sơ đồ địa điểm, phiếu bàn giao quầy lễ tân và biên nhận vận chuyển nội bộ. Fact logistics tách biệt với phản ứng đang đo. Nhân viên accounts ghim phiếu remittance vào packet thanh toán. Lịch gặp đã có sẵn.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1538,7 +1538,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "career",
-      "surface": "Một thùng storage ghi tháng retention. Marker hành chính không quyết định cơ chế. Mã hành chính đã có. Nhân viên accounts ghim phiếu remittance vào packet thanh toán. Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời.",
+      "surface": "Một thùng storage lưu nhãn chu kỳ retention, danh mục vị trí kệ, biên bản kiểm kê và phiếu chuyển kho định kỳ. Marker hành chính không quyết định cơ chế. Mã hành chính đã có. Nhân viên accounts ghim phiếu remittance vào packet thanh toán. Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1734,7 +1734,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "other",
-      "surface": "Một túi courier giữ bản sao giấy tờ địa điểm. Chi tiết thủ tục chỉ định vị record. Lịch gặp đã có sẵn. Bộ phận communications lập chỉ mục thư từ bằng sheet định tuyến mailbox. Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review.",
+      "surface": "Một túi courier niêm phong giữ bản sao sơ đồ địa điểm, phiếu bàn giao quầy lễ tân và biên nhận vận chuyển nội bộ. Chi tiết thủ tục chỉ định vị record. Lịch gặp đã có sẵn. Bộ phận communications lập chỉ mục thư từ bằng sheet định tuyến mailbox. Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1790,7 +1790,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "family",
-      "surface": "Bộ phận communications lập chỉ mục thư từ bằng sheet định tuyến mailbox. Mã hành chính đã có. Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review. Một thùng storage ghi tháng retention. Mã lưu trữ chỉ neo dòng thời gian.",
+      "surface": "Bộ phận communications lập chỉ mục thư từ bằng sheet định tuyến mailbox. Mã hành chính đã có. Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review. Một thùng storage lưu nhãn chu kỳ retention, danh mục vị trí kệ, biên bản kiểm kê và phiếu chuyển kho định kỳ. Mã lưu trữ chỉ neo dòng thời gian.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1986,7 +1986,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "money",
-      "surface": "Nhân viên booking giữ cover note đặt chỗ trong binder lịch hẹn. Lịch gặp đã có sẵn. Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi. Một túi courier giữ bản sao giấy tờ địa điểm. Marker hành chính không quyết định cơ chế.",
+      "surface": "Nhân viên booking giữ cover note đặt chỗ trong binder lịch hẹn. Lịch gặp đã có sẵn. Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi. Một túi courier niêm phong giữ bản sao sơ đồ địa điểm, phiếu bàn giao quầy lễ tân và biên nhận vận chuyển nội bộ. Marker hành chính không quyết định cơ chế.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2042,7 +2042,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi. Một thùng storage ghi tháng retention. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Nhân viên booking giữ cover note đặt chỗ trong binder lịch hẹn. Mã hành chính đã có.",
+      "surface": "Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi. Một thùng storage lưu nhãn chu kỳ retention, danh mục vị trí kệ, biên bản kiểm kê và phiếu chuyển kho định kỳ. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Nhân viên booking giữ cover note đặt chỗ trong binder lịch hẹn. Mã hành chính đã có.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2218,7 +2218,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở. Một túi courier giữ bản sao giấy tờ địa điểm. Mã lưu trữ chỉ neo dòng thời gian. Giấy tờ hoàn tất mang dấu closure trong khay lưu trữ. Lịch gặp đã có sẵn.",
+      "surface": "Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở. Một túi courier niêm phong giữ bản sao sơ đồ địa điểm, phiếu bàn giao quầy lễ tân và biên nhận vận chuyển nội bộ. Mã lưu trữ chỉ neo dòng thời gian. Giấy tờ hoàn tất mang dấu closure trong khay lưu trữ. Lịch gặp đã có sẵn.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2266,7 +2266,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "other",
-      "surface": "Một thùng storage ghi tháng retention. Fact logistics tách biệt với phản ứng đang đo. Mã hành chính đã có. Giấy tờ hoàn tất mang dấu closure trong khay lưu trữ. Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở.",
+      "surface": "Một thùng storage lưu nhãn chu kỳ retention, danh mục vị trí kệ, biên bản kiểm kê và phiếu chuyển kho định kỳ. Fact logistics tách biệt với phản ứng đang đo. Mã hành chính đã có. Giấy tờ hoàn tất mang dấu closure trong khay lưu trữ. Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
