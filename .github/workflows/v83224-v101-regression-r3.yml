@@ -1,0 +1,66 @@
+name: V8.3.224 V101 Self-Contained Regression R3
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  regression:
+    if: github.event.head_commit.message == 'Run V8.3.224 V101 self-contained regression R3'
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83224-v1-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Execute observable R3
+        id: reg
+        continue-on-error: true
+        run: |
+          set +e
+          python validation/v83224-v101-regression-orchestrator.py > /tmp/v224-r3.log 2>&1
+          rc=$?
+          cat /tmp/v224-r3.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit $rc
+      - name: Freeze R3 evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,json,os
+          log=pathlib.Path('/tmp/v224-r3.log').read_text(errors='replace') if pathlib.Path('/tmp/v224-r3.log').exists() else ''
+          d={'candidate':'V8.3.224','phase':'v101-regression-r3','outcome':os.environ['OUTCOME'],'exit_code':os.environ.get('RC'),'log_tail':log[-16000:],'sealed_validation_executed':False,'v223_sealed_rerun':False}
+          pathlib.Path('validation/V8_3_224_V101_REGRESSION_R3_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_224_V101_REGRESSION_R3_DIAGNOSTIC.json
+          for f in validation/V8_3_224_V101_REGRESSION_RECEIPT.json validation/V8_3_224_V223_A_FROZEN_CARRIER.json; do test ! -f "$f" || git add "$f"; done
+          for f in V8_3_224_V219_A_REGRESSION_RESULTS.json V8_3_224_V221_A_REGRESSION_RESULTS.json V8_3_224_V222_A_REGRESSION_RESULTS.json V8_3_224_V223_A_REGRESSION_RESULTS.json; do test ! -f "$f" || { cp "$f" validation/; git add "validation/$f"; }; done
+          git diff --cached --quiet || git commit -m 'Record V8.3.224 V101 regression R3 evidence'
+          git push origin HEAD:v83224-v1-validation
+        env:
+          OUTCOME: ${{ steps.reg.outcome }}
+          RC: ${{ steps.reg.outputs.rc }}
+      - name: Build R3 checkpoint
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,zipfile,hashlib
+          files=list(pathlib.Path('validation').glob('V8_3_224_V101_*'))+list(pathlib.Path('validation').glob('V8_3_224_V2*_A_REGRESSION_RESULTS.json'))
+          z=pathlib.Path('PSC_V8_3_224_V101_R3_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in files:q.write(p,p.name)
+          pathlib.Path('PSC_V8_3_224_V101_R3_CHECKPOINT_SHA256.txt').write_text(hashlib.sha256(z.read_bytes()).hexdigest()+'  '+z.name+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_224_V101_R3_CHECKPOINT
+          if-no-files-found: error
+          path: |
+            PSC_V8_3_224_V101_R3_CHECKPOINT.zip
+            PSC_V8_3_224_V101_R3_CHECKPOINT_SHA256.txt
