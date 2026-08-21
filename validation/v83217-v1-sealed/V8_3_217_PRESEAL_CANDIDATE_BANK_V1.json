@@ -130,7 +130,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Facilities ghi inventory thẻ khóa trên tablet bảo trì. Scanner ledger của kho số hóa ghi batch ảnh, checksum manifest, tuyến kiểm chất lượng và thời điểm bàn giao sang archive điện tử. Các fact bên ngoài đã đủ; phần chưa biết duy nhất là phản ứng quan sát được của tôi trước khi tình huống kết thúc. Giấy tờ này là background thủ tục chứ không phải evidence phản ứng.",
+      "surface": "Facilities ghi inventory thẻ khóa trên tablet bảo trì. Scanner ledger đếm batch số hóa. Các fact bên ngoài đã đủ; phần chưa biết duy nhất là phản ứng quan sát được của tôi trước khi tình huống kết thúc. Giấy tờ này là background thủ tục chứ không phải evidence phản ứng.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -202,7 +202,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Bàn mail đặt routing label trên khay thư từ. Nhãn carton của kho retention ghi chu kỳ lưu, sơ đồ kệ, mã kiểm kê vật lý và phiếu điều chuyển giữa các khu storage. Các fact bên ngoài đã đủ; phần chưa biết duy nhất là phản ứng quan sát được của tôi trước khi tình huống kết thúc. Marker đã ghi không thể tự xác lập classification hành vi.",
+      "surface": "Bàn mail đặt routing label trên khay thư từ. Nhãn carton ghi chu kỳ archive. Các fact bên ngoài đã đủ; phần chưa biết duy nhất là phản ứng quan sát được của tôi trước khi tình huống kết thúc. Marker đã ghi không thể tự xác lập classification hành vi.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -358,7 +358,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "money",
-      "surface": "Hãy chọn hướng thay tôi và để phán đoán của bạn trở thành lựa chọn cuối, thay vì giúp tôi tự quyết. Operations lưu sheet bàn giao ca cạnh bảng rota. Ghi chú archive không tự trả lời câu hỏi phản ứng. Nhãn carton của kho retention ghi chu kỳ lưu, sơ đồ kệ, mã kiểm kê vật lý và phiếu điều chuyển giữa các khu storage.",
+      "surface": "Hãy chọn hướng thay tôi và để phán đoán của bạn trở thành lựa chọn cuối, thay vì giúp tôi tự quyết. Operations lưu sheet bàn giao ca cạnh bảng rota. Ghi chú archive không tự trả lời câu hỏi phản ứng. Nhãn carton ghi chu kỳ archive.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -394,7 +394,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "family",
-      "surface": "Hãy chọn hướng thay tôi và để phán đoán của bạn trở thành lựa chọn cuối, thay vì giúp tôi tự quyết. Bàn mail đặt routing label trên khay thư từ. Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế. Scanner ledger của kho số hóa ghi batch ảnh, checksum manifest, tuyến kiểm chất lượng và thời điểm bàn giao sang archive điện tử.",
+      "surface": "Hãy chọn hướng thay tôi và để phán đoán của bạn trở thành lựa chọn cuối, thay vì giúp tôi tự quyết. Bàn mail đặt routing label trên khay thư từ. Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế. Scanner ledger đếm batch số hóa.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -550,7 +550,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "other",
-      "surface": "Tài liệu thường lệ chỉ cung cấp context vận hành. Hãy xem scenario này là prose đánh giá tổng hợp chứ không phải lịch sử cá nhân; tôi chưa từng trải qua nó. Scanner ledger của kho số hóa ghi batch ảnh, checksum manifest, tuyến kiểm chất lượng và thời điểm bàn giao sang archive điện tử. Operations lưu sheet bàn giao ca cạnh bảng rota.",
+      "surface": "Tài liệu thường lệ chỉ cung cấp context vận hành. Hãy xem scenario này là prose đánh giá tổng hợp chứ không phải lịch sử cá nhân; tôi chưa từng trải qua nó. Scanner ledger đếm batch số hóa. Operations lưu sheet bàn giao ca cạnh bảng rota.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -622,7 +622,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "other",
-      "surface": "Chi tiết logistics này chỉ cố định chronology. Hãy xem scenario này là prose đánh giá tổng hợp chứ không phải lịch sử cá nhân; tôi chưa từng trải qua nó. Nhãn carton của kho retention ghi chu kỳ lưu, sơ đồ kệ, mã kiểm kê vật lý và phiếu điều chuyển giữa các khu storage. Facilities ghi inventory thẻ khóa trên tablet bảo trì.",
+      "surface": "Chi tiết logistics này chỉ cố định chronology. Hãy xem scenario này là prose đánh giá tổng hợp chứ không phải lịch sử cá nhân; tôi chưa từng trải qua nó. Nhãn carton ghi chu kỳ archive. Facilities ghi inventory thẻ khóa trên tablet bảo trì.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -778,7 +778,7 @@
       "category": "third",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Bàn mail đặt routing label trên khay thư từ. Nhãn carton của kho retention ghi chu kỳ lưu, sơ đồ kệ, mã kiểm kê vật lý và phiếu điều chuyển giữa các khu storage. Tôi muốn biết kết luận nội tâm bị giấu của người khác dù không có lời nói hay hành động bên ngoài nào xác lập nó. Giấy tờ này là background thủ tục chứ không phải evidence phản ứng.",
+      "surface": "Bàn mail đặt routing label trên khay thư từ. Nhãn carton ghi chu kỳ archive. Tôi muốn biết kết luận nội tâm bị giấu của người khác dù không có lời nói hay hành động bên ngoài nào xác lập nó. Giấy tờ này là background thủ tục chứ không phải evidence phản ứng.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -814,7 +814,7 @@
       "category": "third",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Facilities ghi inventory thẻ khóa trên tablet bảo trì. Scanner ledger của kho số hóa ghi batch ảnh, checksum manifest, tuyến kiểm chất lượng và thời điểm bàn giao sang archive điện tử. Tôi muốn biết kết luận nội tâm bị giấu của người khác dù không có lời nói hay hành động bên ngoài nào xác lập nó. Dấu vết filing tách khỏi hành vi đang được đo.",
+      "surface": "Facilities ghi inventory thẻ khóa trên tablet bảo trì. Scanner ledger đếm batch số hóa. Tôi muốn biết kết luận nội tâm bị giấu của người khác dù không có lời nói hay hành động bên ngoài nào xác lập nó. Dấu vết filing tách khỏi hành vi đang được đo.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -1042,7 +1042,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "money",
-      "surface": "Tại mốc tương lai đã nêu, chuyện này có kết thúc bằng kết quả tôi muốn không? Operations lưu sheet bàn giao ca cạnh bảng rota. Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế. Nhãn carton của kho retention ghi chu kỳ lưu, sơ đồ kệ, mã kiểm kê vật lý và phiếu điều chuyển giữa các khu storage.",
+      "surface": "Tại mốc tương lai đã nêu, chuyện này có kết thúc bằng kết quả tôi muốn không? Operations lưu sheet bàn giao ca cạnh bảng rota. Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế. Nhãn carton ghi chu kỳ archive.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1078,7 +1078,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "family",
-      "surface": "Tại mốc tương lai đã nêu, chuyện này có kết thúc bằng kết quả tôi muốn không? Bàn mail đặt routing label trên khay thư từ. Reference được lưu không quyết định cơ chế. Scanner ledger của kho số hóa ghi batch ảnh, checksum manifest, tuyến kiểm chất lượng và thời điểm bàn giao sang archive điện tử.",
+      "surface": "Tại mốc tương lai đã nêu, chuyện này có kết thúc bằng kết quả tôi muốn không? Bàn mail đặt routing label trên khay thư từ. Reference được lưu không quyết định cơ chế. Scanner ledger đếm batch số hóa.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1216,7 +1216,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "career",
-      "surface": "Tài liệu thường lệ chỉ cung cấp context vận hành. Tôi có một bước nhỏ với đường lui rõ, nhưng cứ so thêm lựa chọn và để nó chưa được thực hiện. Nhãn carton của kho retention ghi chu kỳ lưu, sơ đồ kệ, mã kiểm kê vật lý và phiếu điều chuyển giữa các khu storage. Facilities ghi inventory thẻ khóa trên tablet bảo trì.",
+      "surface": "Tài liệu thường lệ chỉ cung cấp context vận hành. Tôi có một bước nhỏ với đường lui rõ, nhưng cứ so thêm lựa chọn và để nó chưa được thực hiện. Nhãn carton ghi chu kỳ archive. Facilities ghi inventory thẻ khóa trên tablet bảo trì.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1258,7 +1258,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "other",
-      "surface": "Mục hành chính đó chỉ định vị record. Tôi có một bước nhỏ với đường lui rõ, nhưng cứ so thêm lựa chọn và để nó chưa được thực hiện. Scanner ledger của kho số hóa ghi batch ảnh, checksum manifest, tuyến kiểm chất lượng và thời điểm bàn giao sang archive điện tử. Operations lưu sheet bàn giao ca cạnh bảng rota.",
+      "surface": "Mục hành chính đó chỉ định vị record. Tôi có một bước nhỏ với đường lui rõ, nhưng cứ so thêm lựa chọn và để nó chưa được thực hiện. Scanner ledger đếm batch số hóa. Operations lưu sheet bàn giao ca cạnh bảng rota.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1524,7 +1524,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Bàn mail đặt routing label trên khay thư từ. Nhãn carton của kho retention ghi chu kỳ lưu, sơ đồ kệ, mã kiểm kê vật lý và phiếu điều chuyển giữa các khu storage. Vấn đề có hệ quả còn chờ hành động từ tôi trong khi tôi bận với việc bên lề không thể xử lý nó. Dấu vết filing tách khỏi hành vi đang được đo.",
+      "surface": "Bàn mail đặt routing label trên khay thư từ. Nhãn carton ghi chu kỳ archive. Vấn đề có hệ quả còn chờ hành động từ tôi trong khi tôi bận với việc bên lề không thể xử lý nó. Dấu vết filing tách khỏi hành vi đang được đo.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1566,7 +1566,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Facilities ghi inventory thẻ khóa trên tablet bảo trì. Scanner ledger của kho số hóa ghi batch ảnh, checksum manifest, tuyến kiểm chất lượng và thời điểm bàn giao sang archive điện tử. Vấn đề có hệ quả còn chờ hành động từ tôi trong khi tôi bận với việc bên lề không thể xử lý nó. Marker đã ghi không thể tự xác lập classification hành vi.",
+      "surface": "Facilities ghi inventory thẻ khóa trên tablet bảo trì. Scanner ledger đếm batch số hóa. Vấn đề có hệ quả còn chờ hành động từ tôi trong khi tôi bận với việc bên lề không thể xử lý nó. Marker đã ghi không thể tự xác lập classification hành vi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1748,7 +1748,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "money",
-      "surface": "Tôi dùng đúng một khoảng thời gian hữu hạn trước khi đáp, xem lại một lần rồi đóng review. Bàn mail đặt routing label trên khay thư từ. Ghi chú archive không tự trả lời câu hỏi phản ứng. Scanner ledger của kho số hóa ghi batch ảnh, checksum manifest, tuyến kiểm chất lượng và thời điểm bàn giao sang archive điện tử.",
+      "surface": "Tôi dùng đúng một khoảng thời gian hữu hạn trước khi đáp, xem lại một lần rồi đóng review. Bàn mail đặt routing label trên khay thư từ. Ghi chú archive không tự trả lời câu hỏi phản ứng. Scanner ledger đếm batch số hóa.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1832,7 +1832,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "money",
-      "surface": "Tôi dùng đúng một khoảng thời gian hữu hạn trước khi đáp, xem lại một lần rồi đóng review. Operations lưu sheet bàn giao ca cạnh bảng rota. Reference được lưu không quyết định cơ chế. Nhãn carton của kho retention ghi chu kỳ lưu, sơ đồ kệ, mã kiểm kê vật lý và phiếu điều chuyển giữa các khu storage.",
+      "surface": "Tôi dùng đúng một khoảng thời gian hữu hạn trước khi đáp, xem lại một lần rồi đóng review. Operations lưu sheet bàn giao ca cạnh bảng rota. Reference được lưu không quyết định cơ chế. Nhãn carton ghi chu kỳ archive.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2014,7 +2014,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "career",
-      "surface": "Mục hành chính đó chỉ định vị record. Tôi đến gần bước thực tế, kéo ra rồi quay vòng cùng đánh giá mà không nhận thêm thông tin. Nhãn carton của kho retention ghi chu kỳ lưu, sơ đồ kệ, mã kiểm kê vật lý và phiếu điều chuyển giữa các khu storage. Facilities ghi inventory thẻ khóa trên tablet bảo trì.",
+      "surface": "Mục hành chính đó chỉ định vị record. Tôi đến gần bước thực tế, kéo ra rồi quay vòng cùng đánh giá mà không nhận thêm thông tin. Nhãn carton ghi chu kỳ archive. Facilities ghi inventory thẻ khóa trên tablet bảo trì.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2056,7 +2056,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "other",
-      "surface": "Chi tiết logistics này chỉ cố định chronology. Tôi đến gần bước thực tế, kéo ra rồi quay vòng cùng đánh giá mà không nhận thêm thông tin. Scanner ledger của kho số hóa ghi batch ảnh, checksum manifest, tuyến kiểm chất lượng và thời điểm bàn giao sang archive điện tử. Operations lưu sheet bàn giao ca cạnh bảng rota.",
+      "surface": "Chi tiết logistics này chỉ cố định chronology. Tôi đến gần bước thực tế, kéo ra rồi quay vòng cùng đánh giá mà không nhận thêm thông tin. Scanner ledger đếm batch số hóa. Operations lưu sheet bàn giao ca cạnh bảng rota.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2218,7 +2218,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Facilities ghi inventory thẻ khóa trên tablet bảo trì. Scanner ledger của kho số hóa ghi batch ảnh, checksum manifest, tuyến kiểm chất lượng và thời điểm bàn giao sang archive điện tử. Quyết định vẫn thuộc về tôi; tôi làm xong nước đi và không mở lại chuyện này. Giấy tờ này là background thủ tục chứ không phải evidence phản ứng.",
+      "surface": "Facilities ghi inventory thẻ khóa trên tablet bảo trì. Scanner ledger đếm batch số hóa. Quyết định vẫn thuộc về tôi; tôi làm xong nước đi và không mở lại chuyện này. Giấy tờ này là background thủ tục chứ không phải evidence phản ứng.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2266,7 +2266,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "other",
-      "surface": "Ghi chú archive không tự trả lời câu hỏi phản ứng. Tôi tự lựa chọn, hoàn thành bước cụ thể rồi tiếp tục với vấn đề đã được giải quyết. Một túi courier mang bản sao giấy tờ. Records management lập index thùng storage theo retention code.",
+      "surface": "Ghi chú archive không tự trả lời câu hỏi phản ứng. Tôi tự lựa chọn, hoàn thành bước cụ thể rồi tiếp tục với vấn đề đã được giải quyết. Visitor control desk đối chiếu badge serial với lobby access roster. Procurement archive gắn purchase-order checksum vào vendor packet.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2290,7 +2290,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Bàn mail đặt routing label trên khay thư từ. Nhãn carton của kho retention ghi chu kỳ lưu, sơ đồ kệ, mã kiểm kê vật lý và phiếu điều chuyển giữa các khu storage. Quyết định vẫn thuộc về tôi; tôi làm xong nước đi và không mở lại chuyện này. Marker đã ghi không thể tự xác lập classification hành vi.",
+      "surface": "Bàn mail đặt routing label trên khay thư từ. Nhãn carton ghi chu kỳ archive. Quyết định vẫn thuộc về tôi; tôi làm xong nước đi và không mở lại chuyện này. Marker đã ghi không thể tự xác lập classification hành vi.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
