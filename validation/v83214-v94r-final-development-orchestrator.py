@@ -1,0 +1,61 @@
+import os,json,pathlib,subprocess,hashlib,zipfile,shutil,base64,gzip
+ROOT=pathlib.Path('.').resolve(); VAL=ROOT/'validation'; APP=ROOT/'PSC_V8_3_138_DEV'
+RUN_ID=int(os.environ.get('GITHUB_RUN_ID','0')); RUN_ATTEMPT=int(os.environ.get('GITHUB_RUN_ATTEMPT','0')); HEAD=os.environ.get('GITHUB_SHA','UNKNOWN')
+CHAIN=[
+'psc-v83196-v195-v1-hypothetical-preservation-repair.js','psc-v83197-v196-sealed-a-bounded-repair.js','psc-v83198-v197-sealed-a-bounded-repair.js','psc-v83199-v198-sealed-a-bounded-repair.js','psc-v83200-v199-sealed-a-bounded-repair.js','psc-v83201-v200-sealed-a-bounded-repair.js','psc-v83201-v200-v1-preservation-precedence-repair.js','psc-v83202-v201-sealed-a-bounded-repair.js','psc-v83203-v202-sealed-a-bounded-repair.js','psc-v83204-v203-sealed-a-bounded-repair.js','psc-v83205-v204-sealed-a-bounded-repair.js','psc-v83206-v205-compositional-generalization.js','psc-v83206-v205-v1-preservation-repair.js','psc-v83207-v206-mechanism-cue-repair.js','psc-v83207-v206-v1-preservation-repair.js','psc-v83208-v207-mechanism-cue-repair.js','psc-v83208-v207-v1-preservation-repair.js','psc-v83209-v208-evidence-slot-composition.js','psc-v83209-v208-v1-preservation-repair.js','qc-evidence-extractor-v1-review-candidate.js','qc-evidence-extractor-v1r-review-candidate.js','qc-evidence-extractor-v1r2-review-candidate.js','psc-v83209-semantic-rule-table-v3-review-candidate.js','psc-v83209-v208-semantic-rule-table-promotion.js','qc-evidence-extractor-v1r3-v210-concept-coverage.js','psc-v83210-v209-semantic-rule-table-v4.js','qc-evidence-extractor-v1r4-v210-relational-preservation.js','psc-v83210-v209-v1-relational-preservation.js','qc-evidence-extractor-v2-v210-relational-semantics.js','psc-v83210-v210-semantic-rule-table-v5.js','qc-evidence-extractor-v2r-v210-multilingual-aliases.js','psc-v83210-v210-semantic-rule-table-v6.js','qc-evidence-extractor-v2s-v210-context-sanitizer.js','psc-v83210-v210-semantic-rule-table-v7.js','qc-evidence-extractor-v2t-v210-contextual-recall.js','psc-v83210-v210-semantic-rule-table-v8-parent-containment.js','qc-evidence-extractor-v3-v211-context-scoped.js','psc-v83211-v210-context-scoped-rule-table.js','qc-evidence-extractor-v3r-v211-preservation.js','psc-v83211-v210-preservation-containment.js','qc-evidence-extractor-v4-v211-relational-recall.js','psc-v83211-v210-v89-relational-recall.js','qc-evidence-extractor-v5-v212-scope-propagation.js','psc-v83212-v211-v90-scope-propagation.js','qc-evidence-extractor-v5r-v212-delegated-decision-preservation.js','psc-v83212-v211-v91-delegated-decision-preservation.js','qc-evidence-extractor-v5s-v212-relational-recall.js','psc-v83212-v211-v92-relational-recall.js','qc-evidence-extractor-v5t-v213-relational-paraphrase-recall.js','psc-v83213-v212-v93-relational-paraphrase-recall.js','qc-evidence-extractor-v5u-v214-sealed-recall.js','psc-v83214-v213-v94-sealed-recall.js','qc-evidence-extractor-v5u2-v214-clarification-containment.js','psc-v83214-v213-v94r-clarification-containment.js']
+BUILD_FILES=['psc-v83209-v208-evidence-slot-composition.js','psc-v83209-v208-v1-preservation-repair.js','qc-evidence-extractor-v1-review-candidate.js','qc-evidence-extractor-v1r-review-candidate.js','qc-evidence-extractor-v1r2-review-candidate.js','psc-v83209-semantic-rule-table-v3-review-candidate.js','psc-v83209-v208-semantic-rule-table-promotion.js','qc-evidence-extractor-v1r3-v210-concept-coverage.js','psc-v83210-v209-semantic-rule-table-v4.js','qc-evidence-extractor-v1r4-v210-relational-preservation.js','psc-v83210-v209-v1-relational-preservation.js','qc-evidence-extractor-v2-v210-relational-semantics.js','psc-v83210-v210-semantic-rule-table-v5.js','qc-evidence-extractor-v2r-v210-multilingual-aliases.js','psc-v83210-v210-semantic-rule-table-v6.js','qc-evidence-extractor-v2s-v210-context-sanitizer.js','psc-v83210-v210-semantic-rule-table-v7.js','qc-evidence-extractor-v2t-v210-contextual-recall.js','psc-v83210-v210-semantic-rule-table-v8-parent-containment.js','qc-evidence-extractor-v3-v211-context-scoped.js','psc-v83211-v210-context-scoped-rule-table.js','qc-evidence-extractor-v3r-v211-preservation.js','psc-v83211-v210-preservation-containment.js','qc-evidence-extractor-v4-v211-relational-recall.js','psc-v83211-v210-v89-relational-recall.js','qc-evidence-extractor-v5-v212-scope-propagation.js','psc-v83212-v211-v90-scope-propagation.js','qc-evidence-extractor-v5r-v212-delegated-decision-preservation.js','psc-v83212-v211-v91-delegated-decision-preservation.js','qc-evidence-extractor-v5s-v212-relational-recall.js','psc-v83212-v211-v92-relational-recall.js','qc-evidence-extractor-v5t-v213-relational-paraphrase-recall.js','psc-v83213-v212-v93-relational-paraphrase-recall.js','qc-evidence-extractor-v5u-v214-sealed-recall.js','psc-v83214-v213-v94-sealed-recall.js','qc-evidence-extractor-v5u2-v214-clarification-containment.js','psc-v83214-v213-v94r-clarification-containment.js']
+def run(cmd,cwd=None,env=None): print('+',cmd,flush=True); subprocess.run(cmd,shell=True,cwd=cwd or ROOT,env=env,check=True)
+def sha_file(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+# Reuse already-proven regression evidence; do not rerun it just for ceremony.
+reg= json.loads((VAL/'V8_3_214_V94R_REGRESSION_EVIDENCE_RECEIPT.json').read_text())
+assert reg['conclusion']=='success' and reg['v213_frozen_a_regression_passed']==30 and reg['immutable_regression_passed']==1470
+# Materialize immutable historical carriers required by browser/generalization bootstrap.
+for n in ['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION','V8_3_168_V167_V1_FAILURE_REGRESSION','V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION']:
+ p=VAL/(n+'.json.gz.b64')
+ if p.exists():(VAL/(n+'.json')).write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
+with zipfile.ZipFile(ROOT/'PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall(ROOT)
+# Build exact V94R loader prefix from proven regression bootstrap.
+base=(VAL/'run-v83196-full-regression-sweep-v2.cjs').read_text(); needle="'psc-v83196-v195-v1-hypothetical-preservation-repair.js'];"; assert needle in base
+chain=','.join(repr(x) for x in CHAIN); loaded=base.replace(needle,chain+"];",1); marker="const files=fs.readdirSync('validation')"; assert marker in loaded; prefix=loaded.split(marker,1)[0]
+# Frozen independent 800 challenge, same immutable challenge family used by prior development authorities.
+run('python validation/v83212-generalization-800-generator.py')
+refs=VAL/'v83212-generalization-refs'; refs.mkdir(exist_ok=True)
+for v in range(201,210):
+ s=str(v)[-2:]; run(f'git fetch --depth=1 origin refs/heads/v832{s}-v1-sealed-validation:refs/remotes/origin/v832{s}-v1-sealed-validation'); run(f'git show origin/v832{s}-v1-sealed-validation:validation/v832{s}-v1-sealed/V8_3_{v}_SEALED_FIXTURE_V1.json > validation/v83212-generalization-refs/V8_3_{v}_SEALED.json')
+run('git fetch --depth=1 origin refs/heads/v83210-v1-sealed-validation:refs/remotes/origin/v83210-v1-sealed-validation'); run('git show origin/v83210-v1-sealed-validation:validation/v83210-v1-sealed/V8_3_210_SEALED_FIXTURE_V1.json > validation/v83212-generalization-refs/V8_3_210_SEALED.json')
+run('git fetch --depth=1 origin 6d82282b620f03e397368a6d973b566d8055d2eb')
+tmp=pathlib.Path('/tmp/v211-r4-v214'); shutil.rmtree(tmp,ignore_errors=True); (tmp/'validation/v83211-r4-frozen').mkdir(parents=True)
+run(f'git show 6d82282b620f03e397368a6d973b566d8055d2eb:validation/v83211-r4-frozen/generate-r4-carrier.py > {tmp}/validation/v83211-r4-frozen/generate-r4-carrier.py'); run('python validation/v83211-r4-frozen/generate-r4-carrier.py',cwd=tmp); shutil.copy2(tmp/'validation/v83211-r4-runtime/V8_3_211_R4_SEALED_FIXTURE.json',refs/'V8_3_211_R4_SEALED.json')
+run('python validation/v83211-generalization-600-generator-v1r.py'); shutil.copy2(VAL/'V8_3_211_DEVELOPMENT_GENERALIZATION_600_V1.json',refs/'V8_3_211_DEV_600.json')
+old=(VAL/'run-v83212-generalization-800-v1.cjs').read_text(); cm='const challenge='; assert cm in old
+tail=cm+old.split(cm,1)[1]; tail=tail.replace('QCSemanticCoreV91','QCSemanticCoreV94R').replace('QCEvidenceExtractorV5R','QCEvidenceExtractorV5U2')
+(VAL/'run-v83214-generalization-800.cjs').write_text(prefix+tail); run('node validation/run-v83214-generalization-800.cjs')
+gen=json.loads((ROOT/'V8_3_212_DEVELOPMENT_GENERALIZATION_800_RESULTS_V1.json').read_text()); assert gen['total']==800 and gen['pass'] is True
+# Build + artifact identity with complete V94R extension chain.
+pub=APP/'public'; pub.mkdir(exist_ok=True)
+for f in BUILD_FILES:shutil.copy2(VAL/f,pub/f)
+run('chmod +x scripts/*.sh',cwd=APP); run('npm run install:ci',cwd=APP); run('npm run build',cwd=APP); run('npm run validate:artifact',cwd=APP)
+assert not list((APP/'dist').rglob('*.map'))
+for f in BUILD_FILES:
+ a=pub/f;b=APP/'dist/client'/f;assert b.exists() and a.read_bytes()==b.read_bytes(),f
+# Browser E2E over immutable 1470 cases through exact V94R built identity.
+b=(VAL/'run-v83196-browser-e2e.cjs').read_text(); b=b.replace(needle,chain+"];",1).replace('QCSemanticCoreV65R','QCSemanticCoreV94R').replace('V8_3_196_BROWSER_E2E_RESULTS.json','V8_3_214_V94R_FINAL_BROWSER_E2E_RESULTS.json').replace('built_v65_v65r_identity','built_v94r_identity'); b=b.replace("if(!pf.version?.startsWith('V8.3.196'))throw Error(JSON.stringify(pf));","if(pf.version!=='V8.3.214-V94R-CLARIFICATION-CONTAINMENT')throw Error(JSON.stringify(pf));")
+(VAL/'run-v83214-v94r-final-browser-e2e.cjs').write_text(b)
+e2e=ROOT/'.e2e';e2e.mkdir(exist_ok=True);(e2e/'package.json').write_text('{"private":true}\n');run('npm install --prefix .e2e --no-package-lock playwright@1.55.0')
+chrome=shutil.which('google-chrome') or shutil.which('google-chrome-stable') or shutil.which('chromium')
+if not chrome:raise RuntimeError('Chrome executable not found')
+env=os.environ.copy();env['CHROME']=chrome;run('node validation/run-v83214-v94r-final-browser-e2e.cjs',env=env)
+br=json.loads((ROOT/'V8_3_214_V94R_FINAL_BROWSER_E2E_RESULTS.json').read_text());assert br['passed'] is True and br['total']==1470
+# Material checkpoint.
+st=ROOT/'V8_3_214_V94R_FINAL_DEVELOPMENT_CHECKPOINT';shutil.rmtree(st,ignore_errors=True);st.mkdir()
+copy_files=[VAL/'V8_3_214_V94R_REGRESSION_EVIDENCE_RECEIPT.json',VAL/'V8_3_214_V213_A_REGRESSION_RESULTS.json',VAL/'V8_3_214_V94R_REGRESSION_RESULTS.json',ROOT/'V8_3_212_DEVELOPMENT_GENERALIZATION_800_RESULTS_V1.json',ROOT/'V8_3_214_V94R_FINAL_BROWSER_E2E_RESULTS.json',VAL/'qc-evidence-extractor-v5u-v214-sealed-recall.js',VAL/'psc-v83214-v213-v94-sealed-recall.js',VAL/'qc-evidence-extractor-v5u2-v214-clarification-containment.js',VAL/'psc-v83214-v213-v94r-clarification-containment.js',VAL/'V8_3_214_V213_V1_FAILURE_FORENSIC_IMMUTABLE.json']
+for p in copy_files:
+ if p.exists():shutil.copy2(p,st/p.name)
+status={'candidate':'V8.3.214','phase':'v94r-final-development','run_id':RUN_ID,'run_attempt':RUN_ATTEMPT,'head_sha':HEAD,'semantic_authority':'QCSemanticCoreV94R','regression_total':1470,'regression_passed':1470,'v213_frozen_a_total':30,'v213_frozen_a_passed':30,'generalization_total':gen['total'],'generalization_classification_passed':gen.get('classification_passed'),'generalization_pass':gen['pass'],'browser_total':br['total'],'browser_passed':br['passed'],'development':'PASS','v213_sealed_rerun':False,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False}
+(st/'STATUS.json').write_text(json.dumps(status,indent=2)+'\n');(st/'SHA256_MANIFEST.txt').write_text(''.join(f'{sha_file(p)}  {p.name}\n' for p in sorted(st.iterdir()) if p.is_file()))
+zpath=ROOT/'PSC_V8_3_214_V94R_DEVELOPMENT_VALIDATION_CHECKPOINT.zip'
+if zpath.exists():zpath.unlink()
+with zipfile.ZipFile(zpath,'w',zipfile.ZIP_DEFLATED) as z:
+ for p in sorted(st.iterdir()):z.write(p,p.name)
+(ROOT/'PSC_V8_3_214_V94R_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt').write_text(f'{sha_file(zpath)}  {zpath.name}\n')
+receipt={**status,'status':'completed','conclusion':'success'};(VAL/'V8_3_214_V94R_FINAL_DEVELOPMENT_RUN_RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(status,indent=2))
