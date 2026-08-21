@@ -39,6 +39,7 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add validation/V8_3_224_V101_REGRESSION_DIAGNOSTIC.json
           for f in validation/V8_3_224_V101_REGRESSION_RECEIPT.json validation/V8_3_224_V223_A_FROZEN_CARRIER.json; do test ! -f "$f" || git add "$f"; done
+          if [ -f V8_3_224_V223_A_REGRESSION_RESULTS.json ]; then cp V8_3_224_V223_A_REGRESSION_RESULTS.json validation/; git add validation/V8_3_224_V223_A_REGRESSION_RESULTS.json; fi
           git diff --cached --quiet || git commit -m 'Record V8.3.224 V101 regression diagnostic'
           git push origin HEAD:v83224-v1-validation
         env:
