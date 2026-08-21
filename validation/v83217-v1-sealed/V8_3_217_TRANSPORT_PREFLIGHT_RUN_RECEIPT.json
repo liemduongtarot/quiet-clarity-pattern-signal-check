@@ -1,9 +1,9 @@
 {
   "candidate": "V8.3.217",
-  "phase": "transport-static-preflight-r3-observable",
-  "transport_outcome": "failure",
-  "preflight_outcome": "failure",
+  "phase": "transport-static-preflight-r4-canonical-hash",
+  "transport_outcome": "success",
+  "preflight_outcome": "success",
   "semantic_runtime_executed": false,
   "semantic_authority_loaded": false,
-  "pass": false
+  "pass": true
 }
