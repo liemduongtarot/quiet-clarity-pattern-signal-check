@@ -1,0 +1,73 @@
+name: V8.3.225 V102 DEVELOPMENT regression
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83225-v102-development-regression.yml
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83225-v1-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run V8.3.225 V102 regression
+        id: reg
+        shell: bash
+        run: |
+          set +e
+          python validation/v83225-v102-regression-orchestrator.py > /tmp/v225.log 2>&1
+          rc=$?
+          cat /tmp/v225.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path('/tmp/v225.log')
+          text=p.read_text(errors='replace') if p.exists() else ''
+          d={'candidate':'V8.3.225','phase':'v102-development-regression-diagnostic','outcome':'success' if os.environ.get('RC')=='0' else 'failure','exit_code':os.environ.get('RC'),'log_tail':text[-14000:],'sealed_validation_executed':False,'v224_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_225_V102_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
+          PY
+          exit 0
+        env:
+          RC: ${{ steps.reg.outputs.rc }}
+      - name: Freeze DEVELOPMENT evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_225_V102_REGRESSION_DIAGNOSTIC.json
+          test ! -f validation/V8_3_225_V102_REGRESSION_RECEIPT.json || git add validation/V8_3_225_V102_REGRESSION_RECEIPT.json
+          test ! -f validation/V8_3_225_V102_PARENT_PRESERVATION_RECEIPT.json || git add validation/V8_3_225_V102_PARENT_PRESERVATION_RECEIPT.json
+          test ! -f validation/V8_3_225_V224_A_FROZEN_CARRIER.json || git add validation/V8_3_225_V224_A_FROZEN_CARRIER.json
+          git diff --cached --quiet || git commit -m 'Record V8.3.225 V102 DEVELOPMENT regression evidence'
+          git push origin HEAD:v83225-v1-validation
+      - name: Build checkpoint
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf V8_3_225_DEVELOPMENT_REGRESSION_CHECKPOINT
+          mkdir V8_3_225_DEVELOPMENT_REGRESSION_CHECKPOINT
+          for f in validation/V8_3_225_V102_REGRESSION_DIAGNOSTIC.json validation/V8_3_225_V102_REGRESSION_RECEIPT.json validation/V8_3_225_V102_PARENT_PRESERVATION_RECEIPT.json validation/qc-evidence-extractor-v5ac-v225-residual-composition.js validation/psc-v83225-v224-v102-residual-composition.js; do test ! -f "$f" || cp "$f" V8_3_225_DEVELOPMENT_REGRESSION_CHECKPOINT/; done
+          (cd V8_3_225_DEVELOPMENT_REGRESSION_CHECKPOINT && sha256sum * > SHA256_MANIFEST.txt)
+          zip -r PSC_V8_3_225_DEVELOPMENT_REGRESSION_CHECKPOINT.zip V8_3_225_DEVELOPMENT_REGRESSION_CHECKPOINT
+          sha256sum PSC_V8_3_225_DEVELOPMENT_REGRESSION_CHECKPOINT.zip > PSC_V8_3_225_DEVELOPMENT_REGRESSION_CHECKPOINT_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_225_DEVELOPMENT_REGRESSION_CHECKPOINT
+          path: |
+            PSC_V8_3_225_DEVELOPMENT_REGRESSION_CHECKPOINT.zip
+            PSC_V8_3_225_DEVELOPMENT_REGRESSION_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce regression outcome
+        shell: bash
+        run: test '${{ steps.reg.outputs.rc }}' = '0'
