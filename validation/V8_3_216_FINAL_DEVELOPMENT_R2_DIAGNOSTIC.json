@@ -1,0 +1,19 @@
+{
+  "authority": "V8.3.216 FINAL DEVELOPMENT R2 DIAGNOSTIC ONLY",
+  "trigger_sha": "9f1e7583432696a7e86b676bf46f3bc23ffdae58",
+  "semantic_runtime_executed_by_diagnostic": false,
+  "matches": [
+    {
+      "conclusion": "success",
+      "createdAt": "2026-08-21T12:58:02Z",
+      "databaseId": 32484439346,
+      "displayTitle": "Run V8.3.216 V96 final development",
+      "event": "push",
+      "headSha": "9f1e7583432696a7e86b676bf46f3bc23ffdae58",
+      "status": "completed",
+      "updatedAt": "2026-08-21T12:59:57Z",
+      "workflowName": "V8.3.216 V96 Final Development"
+    }
+  ],
+  "match_count": 1
+}
