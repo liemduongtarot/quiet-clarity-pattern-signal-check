@@ -1,0 +1,2313 @@
+{
+  "authority": "V8.3.217 V1 PRESEAL CANDIDATE BANK",
+  "seed": 8321741,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "selection_uses_runtime_output": false,
+  "cases": [
+    {
+      "case_id": "V217-S00-00",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The event record is otherwise complete, but the concrete action I myself took at the closing point is still absent. A payroll archive retained a quarterly control sheet. That administrative item only locates the record. A blue binder tab marked the filing month.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-01",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Facilities logged a key-card inventory on a maintenance tablet. A scanner ledger counted the digitisation batch. All external facts are accounted for; what remains unknown is my own observable response before the episode ended. The paperwork is procedural background rather than response evidence.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-02",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The stored reference does not determine the mechanism. The situation can be reconstructed fully except for the visible behaviour that came from me at closure. A desk lanyard listed the staffing extension. Recruitment stored an intake barcode inside a candidate folder.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-03",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "family",
+      "surface": "The event record is otherwise complete, but the concrete action I myself took at the closing point is still absent. A shared-flat noticeboard held a utilities rotation note. This logistics detail only fixes chronology. A remittance envelope held the duplicate receipt.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-04",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Operations filed a shift handover sheet beside the rota board. A reception binder listed the visitor desk code. All external facts are accounted for; what remains unknown is my own observable response before the episode ended. The filing trace is separate from the behaviour being measured.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-05",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The archive note does not answer the response question. The situation can be reconstructed fully except for the visible behaviour that came from me at closure. A courier pouch carried duplicate paperwork. Records management indexed a storage carton under a retention code.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-06",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The event record is otherwise complete, but the concrete action I myself took at the closing point is still absent. Finance clipped a settlement stub to the reconciliation packet. Routine documentation provides operational context only. A magnetic calendar strip showed the household week.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-07",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The mail desk placed a routing label on the correspondence tray. A carton label recorded the archive cycle. All external facts are accounted for; what remains unknown is my own observable response before the episode ended. The recorded marker cannot establish the behavioural classification.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-08",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "That external detail remains outside the mechanism itself. The situation can be reconstructed fully except for the visible behaviour that came from me at closure. A mail tray separated incoming notices. Reception kept a booking checklist beside the visitor register.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-09",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Record sự việc đã đầy đủ ở các phần khác, nhưng hành động cụ thể do chính tôi làm tại điểm khép lại vẫn còn thiếu. Kho payroll giữ một control sheet theo quý. Mục hành chính đó chỉ định vị record. Một tab binder xanh đánh dấu tháng filing.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-10",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Facilities ghi inventory thẻ khóa trên tablet bảo trì. Scanner ledger đếm batch số hóa. Các fact bên ngoài đã đủ; phần chưa biết duy nhất là phản ứng quan sát được của tôi trước khi tình huống kết thúc. Giấy tờ này là background thủ tục chứ không phải evidence phản ứng.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-11",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Reference được lưu không quyết định cơ chế. Có thể dựng lại toàn bộ diễn biến ngoại trừ hành vi nhìn thấy được đến từ tôi ở lúc đóng lại. Thẻ lanyard bàn ghi extension staffing. Recruitment lưu barcode tiếp nhận trong folder ứng viên.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-12",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Record sự việc đã đầy đủ ở các phần khác, nhưng hành động cụ thể do chính tôi làm tại điểm khép lại vẫn còn thiếu. Bảng noticeboard nhà chung giữ ghi chú luân phiên utilities. Chi tiết logistics này chỉ cố định chronology. Phong bì remittance giữ receipt bản sao.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-13",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Operations lưu sheet bàn giao ca cạnh bảng rota. Binder reception ghi mã visitor desk. Các fact bên ngoài đã đủ; phần chưa biết duy nhất là phản ứng quan sát được của tôi trước khi tình huống kết thúc. Dấu vết filing tách khỏi hành vi đang được đo.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-14",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Ghi chú archive không tự trả lời câu hỏi phản ứng. Có thể dựng lại toàn bộ diễn biến ngoại trừ hành vi nhìn thấy được đến từ tôi ở lúc đóng lại. Một túi courier mang bản sao giấy tờ. Records management lập index thùng storage theo retention code.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-15",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Record sự việc đã đầy đủ ở các phần khác, nhưng hành động cụ thể do chính tôi làm tại điểm khép lại vẫn còn thiếu. Finance ghim settlement stub vào packet đối soát. Tài liệu thường lệ chỉ cung cấp context vận hành. Một dải lịch nam châm cho biết tuần household.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-16",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Bàn mail đặt routing label trên khay thư từ. Nhãn carton ghi chu kỳ archive. Các fact bên ngoài đã đủ; phần chưa biết duy nhất là phản ứng quan sát được của tôi trước khi tình huống kết thúc. Marker đã ghi không thể tự xác lập classification hành vi.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S00-17",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế. Có thể dựng lại toàn bộ diễn biến ngoại trừ hành vi nhìn thấy được đến từ tôi ở lúc đóng lại. Khay mail tách notice đi vào. Reception giữ checklist booking cạnh visitor register.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-00",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Recruitment stored an intake barcode inside a candidate folder. A courier pouch carried duplicate paperwork. Take the deciding role here: tell me which option to follow so your choice replaces my own final call. This logistics detail only fixes chronology.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-01",
+      "category": "decision",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The filing trace is separate from the behaviour being measured. I want you to make the choice for me, not merely give me a method for reaching my own decision. A magnetic calendar strip showed the household week. A shared-flat noticeboard held a utilities rotation note.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-02",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Choose the route on my behalf and make your judgement the final selection instead of helping me make it myself. Operations filed a shift handover sheet beside the rota board. The archive note does not answer the response question. A carton label recorded the archive cycle.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-03",
+      "category": "decision",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Records management indexed a storage carton under a retention code. A mail tray separated incoming notices. Take the deciding role here: tell me which option to follow so your choice replaces my own final call. Routine documentation provides operational context only.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-04",
+      "category": "decision",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The recorded marker cannot establish the behavioural classification. I want you to make the choice for me, not merely give me a method for reaching my own decision. A blue binder tab marked the filing month. Finance clipped a settlement stub to the reconciliation packet.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-05",
+      "category": "decision",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Choose the route on my behalf and make your judgement the final selection instead of helping me make it myself. The mail desk placed a routing label on the correspondence tray. That external detail remains outside the mechanism itself. A scanner ledger counted the digitisation batch.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-06",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Reception kept a booking checklist beside the visitor register. A desk lanyard listed the staffing extension. Take the deciding role here: tell me which option to follow so your choice replaces my own final call. That administrative item only locates the record.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-07",
+      "category": "decision",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The paperwork is procedural background rather than response evidence. I want you to make the choice for me, not merely give me a method for reaching my own decision. A remittance envelope held the duplicate receipt. A payroll archive retained a quarterly control sheet.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-08",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Choose the route on my behalf and make your judgement the final selection instead of helping me make it myself. Facilities logged a key-card inventory on a maintenance tablet. The stored reference does not determine the mechanism. A reception binder listed the visitor desk code.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-09",
+      "category": "decision",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Recruitment lưu barcode tiếp nhận trong folder ứng viên. Một túi courier mang bản sao giấy tờ. Nhận vai trò quyết định ở đây: nói tôi phải theo phương án nào để lựa chọn của bạn thay quyền chốt của tôi. Chi tiết logistics này chỉ cố định chronology.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-10",
+      "category": "decision",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Dấu vết filing tách khỏi hành vi đang được đo. Tôi muốn bạn quyết định thay, không chỉ đưa phương pháp để tôi tự đi đến kết luận. Một dải lịch nam châm cho biết tuần household. Bảng noticeboard nhà chung giữ ghi chú luân phiên utilities.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-11",
+      "category": "decision",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Hãy chọn hướng thay tôi và để phán đoán của bạn trở thành lựa chọn cuối, thay vì giúp tôi tự quyết. Operations lưu sheet bàn giao ca cạnh bảng rota. Ghi chú archive không tự trả lời câu hỏi phản ứng. Nhãn carton ghi chu kỳ archive.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-12",
+      "category": "decision",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Records management lập index thùng storage theo retention code. Khay mail tách notice đi vào. Nhận vai trò quyết định ở đây: nói tôi phải theo phương án nào để lựa chọn của bạn thay quyền chốt của tôi. Tài liệu thường lệ chỉ cung cấp context vận hành.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-13",
+      "category": "decision",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Marker đã ghi không thể tự xác lập classification hành vi. Tôi muốn bạn quyết định thay, không chỉ đưa phương pháp để tôi tự đi đến kết luận. Một tab binder xanh đánh dấu tháng filing. Finance ghim settlement stub vào packet đối soát.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-14",
+      "category": "decision",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Hãy chọn hướng thay tôi và để phán đoán của bạn trở thành lựa chọn cuối, thay vì giúp tôi tự quyết. Bàn mail đặt routing label trên khay thư từ. Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế. Scanner ledger đếm batch số hóa.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-15",
+      "category": "decision",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Reception giữ checklist booking cạnh visitor register. Thẻ lanyard bàn ghi extension staffing. Nhận vai trò quyết định ở đây: nói tôi phải theo phương án nào để lựa chọn của bạn thay quyền chốt của tôi. Mục hành chính đó chỉ định vị record.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-16",
+      "category": "decision",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Giấy tờ này là background thủ tục chứ không phải evidence phản ứng. Tôi muốn bạn quyết định thay, không chỉ đưa phương pháp để tôi tự đi đến kết luận. Phong bì remittance giữ receipt bản sao. Kho payroll giữ một control sheet theo quý.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S01-17",
+      "category": "decision",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Hãy chọn hướng thay tôi và để phán đoán của bạn trở thành lựa chọn cuối, thay vì giúp tôi tự quyết. Facilities ghi inventory thẻ khóa trên tablet bảo trì. Reference được lưu không quyết định cơ chế. Binder reception ghi mã visitor desk.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-00",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "surface": "Routine documentation provides operational context only. Treat this scenario as synthetic evaluation prose rather than personal history; I did not experience it. A scanner ledger counted the digitisation batch. Operations filed a shift handover sheet beside the rota board.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-01",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "family",
+      "surface": "This is deliberately invented validation text and does not describe anything that happened in my real life. Records management indexed a storage carton under a retention code. The recorded marker cannot establish the behavioural classification. A desk lanyard listed the staffing extension.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-02",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Finance clipped a settlement stub to the reconciliation packet. A remittance envelope held the duplicate receipt. The paragraph is fabricated test material, explicitly unrelated to any lived episode of mine. That external detail remains outside the mechanism itself.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-03",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "other",
+      "surface": "That administrative item only locates the record. Treat this scenario as synthetic evaluation prose rather than personal history; I did not experience it. A reception binder listed the visitor desk code. The mail desk placed a routing label on the correspondence tray.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-04",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "money",
+      "surface": "This is deliberately invented validation text and does not describe anything that happened in my real life. Reception kept a booking checklist beside the visitor register. The paperwork is procedural background rather than response evidence. A courier pouch carried duplicate paperwork.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-05",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A payroll archive retained a quarterly control sheet. A magnetic calendar strip showed the household week. The paragraph is fabricated test material, explicitly unrelated to any lived episode of mine. The stored reference does not determine the mechanism.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-06",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "surface": "This logistics detail only fixes chronology. Treat this scenario as synthetic evaluation prose rather than personal history; I did not experience it. A carton label recorded the archive cycle. Facilities logged a key-card inventory on a maintenance tablet.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-07",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "family",
+      "surface": "This is deliberately invented validation text and does not describe anything that happened in my real life. Recruitment stored an intake barcode inside a candidate folder. The filing trace is separate from the behaviour being measured. A mail tray separated incoming notices.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-08",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "A shared-flat noticeboard held a utilities rotation note. A blue binder tab marked the filing month. The paragraph is fabricated test material, explicitly unrelated to any lived episode of mine. The archive note does not answer the response question.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-09",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Tài liệu thường lệ chỉ cung cấp context vận hành. Hãy xem scenario này là prose đánh giá tổng hợp chứ không phải lịch sử cá nhân; tôi chưa từng trải qua nó. Scanner ledger đếm batch số hóa. Operations lưu sheet bàn giao ca cạnh bảng rota.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-10",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Đây là text validation được cố ý bịa và không mô tả chuyện nào thật sự xảy ra trong đời tôi. Records management lập index thùng storage theo retention code. Marker đã ghi không thể tự xác lập classification hành vi. Thẻ lanyard bàn ghi extension staffing.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-11",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Finance ghim settlement stub vào packet đối soát. Phong bì remittance giữ receipt bản sao. Đoạn này là dữ liệu test hư cấu, được tách rõ khỏi bất kỳ trải nghiệm sống nào của tôi. Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-12",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Mục hành chính đó chỉ định vị record. Hãy xem scenario này là prose đánh giá tổng hợp chứ không phải lịch sử cá nhân; tôi chưa từng trải qua nó. Binder reception ghi mã visitor desk. Bàn mail đặt routing label trên khay thư từ.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-13",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Đây là text validation được cố ý bịa và không mô tả chuyện nào thật sự xảy ra trong đời tôi. Reception giữ checklist booking cạnh visitor register. Giấy tờ này là background thủ tục chứ không phải evidence phản ứng. Một túi courier mang bản sao giấy tờ.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-14",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Kho payroll giữ một control sheet theo quý. Một dải lịch nam châm cho biết tuần household. Đoạn này là dữ liệu test hư cấu, được tách rõ khỏi bất kỳ trải nghiệm sống nào của tôi. Reference được lưu không quyết định cơ chế.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-15",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Chi tiết logistics này chỉ cố định chronology. Hãy xem scenario này là prose đánh giá tổng hợp chứ không phải lịch sử cá nhân; tôi chưa từng trải qua nó. Nhãn carton ghi chu kỳ archive. Facilities ghi inventory thẻ khóa trên tablet bảo trì.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-16",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Đây là text validation được cố ý bịa và không mô tả chuyện nào thật sự xảy ra trong đời tôi. Recruitment lưu barcode tiếp nhận trong folder ứng viên. Dấu vết filing tách khỏi hành vi đang được đo. Khay mail tách notice đi vào.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S02-17",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Bảng noticeboard nhà chung giữ ghi chú luân phiên utilities. Một tab binder xanh đánh dấu tháng filing. Đoạn này là dữ liệu test hư cấu, được tách rõ khỏi bất kỳ trải nghiệm sống nào của tôi. Ghi chú archive không tự trả lời câu hỏi phản ứng.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-00",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Tell me the private belief of the other person even though nothing observable in their conduct provides evidence for it. Finance clipped a settlement stub to the reconciliation packet. That administrative item only locates the record. A magnetic calendar strip showed the household week.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-01",
+      "category": "third",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "The mail desk placed a routing label on the correspondence tray. A carton label recorded the archive cycle. I want the other person’s hidden mental conclusion despite having no outward words or actions that establish it. The paperwork is procedural background rather than response evidence.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-02",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The stored reference does not determine the mechanism. Infer what somebody else secretly thinks when no visible behaviour gives a basis for that internal state. A mail tray separated incoming notices. Reception kept a booking checklist beside the visitor register.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-03",
+      "category": "third",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Tell me the private belief of the other person even though nothing observable in their conduct provides evidence for it. A payroll archive retained a quarterly control sheet. This logistics detail only fixes chronology. A blue binder tab marked the filing month.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-04",
+      "category": "third",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Facilities logged a key-card inventory on a maintenance tablet. A scanner ledger counted the digitisation batch. I want the other person’s hidden mental conclusion despite having no outward words or actions that establish it. The filing trace is separate from the behaviour being measured.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-05",
+      "category": "third",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The archive note does not answer the response question. Infer what somebody else secretly thinks when no visible behaviour gives a basis for that internal state. A desk lanyard listed the staffing extension. Recruitment stored an intake barcode inside a candidate folder.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-06",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Tell me the private belief of the other person even though nothing observable in their conduct provides evidence for it. A shared-flat noticeboard held a utilities rotation note. Routine documentation provides operational context only. A remittance envelope held the duplicate receipt.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-07",
+      "category": "third",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Operations filed a shift handover sheet beside the rota board. A reception binder listed the visitor desk code. I want the other person’s hidden mental conclusion despite having no outward words or actions that establish it. The recorded marker cannot establish the behavioural classification.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-08",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "surface": "That external detail remains outside the mechanism itself. Infer what somebody else secretly thinks when no visible behaviour gives a basis for that internal state. A courier pouch carried duplicate paperwork. Records management indexed a storage carton under a retention code.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-09",
+      "category": "third",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Hãy nói niềm tin riêng của người kia dù không có hành vi quan sát được nào của họ làm evidence cho điều đó. Finance ghim settlement stub vào packet đối soát. Mục hành chính đó chỉ định vị record. Một dải lịch nam châm cho biết tuần household.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-10",
+      "category": "third",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Bàn mail đặt routing label trên khay thư từ. Nhãn carton ghi chu kỳ archive. Tôi muốn biết kết luận nội tâm bị giấu của người khác dù không có lời nói hay hành động bên ngoài nào xác lập nó. Giấy tờ này là background thủ tục chứ không phải evidence phản ứng.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-11",
+      "category": "third",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Reference được lưu không quyết định cơ chế. Hãy suy ra người khác âm thầm nghĩ gì khi không có biểu hiện nhìn thấy được nào tạo căn cứ cho trạng thái đó. Khay mail tách notice đi vào. Reception giữ checklist booking cạnh visitor register.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-12",
+      "category": "third",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Hãy nói niềm tin riêng của người kia dù không có hành vi quan sát được nào của họ làm evidence cho điều đó. Kho payroll giữ một control sheet theo quý. Chi tiết logistics này chỉ cố định chronology. Một tab binder xanh đánh dấu tháng filing.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-13",
+      "category": "third",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Facilities ghi inventory thẻ khóa trên tablet bảo trì. Scanner ledger đếm batch số hóa. Tôi muốn biết kết luận nội tâm bị giấu của người khác dù không có lời nói hay hành động bên ngoài nào xác lập nó. Dấu vết filing tách khỏi hành vi đang được đo.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-14",
+      "category": "third",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Ghi chú archive không tự trả lời câu hỏi phản ứng. Hãy suy ra người khác âm thầm nghĩ gì khi không có biểu hiện nhìn thấy được nào tạo căn cứ cho trạng thái đó. Thẻ lanyard bàn ghi extension staffing. Recruitment lưu barcode tiếp nhận trong folder ứng viên.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-15",
+      "category": "third",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Hãy nói niềm tin riêng của người kia dù không có hành vi quan sát được nào của họ làm evidence cho điều đó. Bảng noticeboard nhà chung giữ ghi chú luân phiên utilities. Tài liệu thường lệ chỉ cung cấp context vận hành. Phong bì remittance giữ receipt bản sao.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-16",
+      "category": "third",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Operations lưu sheet bàn giao ca cạnh bảng rota. Binder reception ghi mã visitor desk. Tôi muốn biết kết luận nội tâm bị giấu của người khác dù không có lời nói hay hành động bên ngoài nào xác lập nó. Marker đã ghi không thể tự xác lập classification hành vi.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S03-17",
+      "category": "third",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế. Hãy suy ra người khác âm thầm nghĩ gì khi không có biểu hiện nhìn thấy được nào tạo căn cứ cho trạng thái đó. Một túi courier mang bản sao giấy tờ. Records management lập index thùng storage theo retention code.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-00",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Reception kept a booking checklist beside the visitor register. A desk lanyard listed the staffing extension. When the next defined future milestone arrives, is the eventual outcome going to favour me? This logistics detail only fixes chronology.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-01",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The filing trace is separate from the behaviour being measured. Looking ahead to the specified future point, will the matter close in the direction I am hoping for? A remittance envelope held the duplicate receipt. A payroll archive retained a quarterly control sheet.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-02",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "surface": "At the stated future cutoff, will this end with the result I want? Facilities logged a key-card inventory on a maintenance tablet. The archive note does not answer the response question. A reception binder listed the visitor desk code.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-03",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Recruitment stored an intake barcode inside a candidate folder. A courier pouch carried duplicate paperwork. When the next defined future milestone arrives, is the eventual outcome going to favour me? Routine documentation provides operational context only.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-04",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The recorded marker cannot establish the behavioural classification. Looking ahead to the specified future point, will the matter close in the direction I am hoping for? A magnetic calendar strip showed the household week. A shared-flat noticeboard held a utilities rotation note.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-05",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "family",
+      "surface": "At the stated future cutoff, will this end with the result I want? Operations filed a shift handover sheet beside the rota board. That external detail remains outside the mechanism itself. A carton label recorded the archive cycle.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-06",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Records management indexed a storage carton under a retention code. A mail tray separated incoming notices. When the next defined future milestone arrives, is the eventual outcome going to favour me? That administrative item only locates the record.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-07",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The paperwork is procedural background rather than response evidence. Looking ahead to the specified future point, will the matter close in the direction I am hoping for? A blue binder tab marked the filing month. Finance clipped a settlement stub to the reconciliation packet.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-08",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "surface": "At the stated future cutoff, will this end with the result I want? The mail desk placed a routing label on the correspondence tray. The stored reference does not determine the mechanism. A scanner ledger counted the digitisation batch.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-09",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Reception giữ checklist booking cạnh visitor register. Thẻ lanyard bàn ghi extension staffing. Khi milestone tương lai được xác định tiếp theo tới, outcome cuối có đi theo hướng có lợi cho tôi không? Chi tiết logistics này chỉ cố định chronology.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-10",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Dấu vết filing tách khỏi hành vi đang được đo. Nhìn tới điểm tương lai cụ thể đã chỉ ra, việc này có khép lại theo hướng tôi đang mong không? Phong bì remittance giữ receipt bản sao. Kho payroll giữ một control sheet theo quý.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-11",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Tại mốc tương lai đã nêu, chuyện này có kết thúc bằng kết quả tôi muốn không? Facilities ghi inventory thẻ khóa trên tablet bảo trì. Ghi chú archive không tự trả lời câu hỏi phản ứng. Binder reception ghi mã visitor desk.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-12",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Recruitment lưu barcode tiếp nhận trong folder ứng viên. Một túi courier mang bản sao giấy tờ. Khi milestone tương lai được xác định tiếp theo tới, outcome cuối có đi theo hướng có lợi cho tôi không? Tài liệu thường lệ chỉ cung cấp context vận hành.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-13",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Marker đã ghi không thể tự xác lập classification hành vi. Nhìn tới điểm tương lai cụ thể đã chỉ ra, việc này có khép lại theo hướng tôi đang mong không? Một dải lịch nam châm cho biết tuần household. Bảng noticeboard nhà chung giữ ghi chú luân phiên utilities.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-14",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tại mốc tương lai đã nêu, chuyện này có kết thúc bằng kết quả tôi muốn không? Operations lưu sheet bàn giao ca cạnh bảng rota. Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế. Nhãn carton ghi chu kỳ archive.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-15",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Records management lập index thùng storage theo retention code. Khay mail tách notice đi vào. Khi milestone tương lai được xác định tiếp theo tới, outcome cuối có đi theo hướng có lợi cho tôi không? Mục hành chính đó chỉ định vị record.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-16",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Giấy tờ này là background thủ tục chứ không phải evidence phản ứng. Nhìn tới điểm tương lai cụ thể đã chỉ ra, việc này có khép lại theo hướng tôi đang mong không? Một tab binder xanh đánh dấu tháng filing. Finance ghim settlement stub vào packet đối soát.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S04-17",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Tại mốc tương lai đã nêu, chuyện này có kết thúc bằng kết quả tôi muốn không? Bàn mail đặt routing label trên khay thư từ. Reference được lưu không quyết định cơ chế. Scanner ledger đếm batch số hóa.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-00",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "surface": "Routine documentation provides operational context only. I had a small action with a clear way back, yet I kept comparing more choices and left it untouched. A carton label recorded the archive cycle. Facilities logged a key-card inventory on a maintenance tablet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-01",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "money",
+      "surface": "A low-commitment reversible starter action was available, but I kept adding alternatives and never began it. Recruitment stored an intake barcode inside a candidate folder. The recorded marker cannot establish the behavioural classification. A mail tray separated incoming notices.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-02",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A shared-flat noticeboard held a utilities rotation note. A blue binder tab marked the filing month. There was an easy-to-reverse first move; instead of starting, I widened the option set again. That external detail remains outside the mechanism itself.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-03",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "career",
+      "surface": "That administrative item only locates the record. I had a small action with a clear way back, yet I kept comparing more choices and left it untouched. A scanner ledger counted the digitisation batch. Operations filed a shift handover sheet beside the rota board.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-04",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "family",
+      "surface": "A low-commitment reversible starter action was available, but I kept adding alternatives and never began it. Records management indexed a storage carton under a retention code. The paperwork is procedural background rather than response evidence. A desk lanyard listed the staffing extension.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-05",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Finance clipped a settlement stub to the reconciliation packet. A remittance envelope held the duplicate receipt. There was an easy-to-reverse first move; instead of starting, I widened the option set again. The stored reference does not determine the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-06",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "surface": "This logistics detail only fixes chronology. I had a small action with a clear way back, yet I kept comparing more choices and left it untouched. A reception binder listed the visitor desk code. The mail desk placed a routing label on the correspondence tray.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-07",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "money",
+      "surface": "A low-commitment reversible starter action was available, but I kept adding alternatives and never began it. Reception kept a booking checklist beside the visitor register. The filing trace is separate from the behaviour being measured. A courier pouch carried duplicate paperwork.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-08",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A payroll archive retained a quarterly control sheet. A magnetic calendar strip showed the household week. There was an easy-to-reverse first move; instead of starting, I widened the option set again. The archive note does not answer the response question.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-09",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Tài liệu thường lệ chỉ cung cấp context vận hành. Tôi có một bước nhỏ với đường lui rõ, nhưng cứ so thêm lựa chọn và để nó chưa được thực hiện. Nhãn carton ghi chu kỳ archive. Facilities ghi inventory thẻ khóa trên tablet bảo trì.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-10",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Có một hành động mở đầu ít cam kết và dễ đảo ngược, nhưng tôi cứ thêm phương án rồi không bắt đầu. Recruitment lưu barcode tiếp nhận trong folder ứng viên. Marker đã ghi không thể tự xác lập classification hành vi. Khay mail tách notice đi vào.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-11",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Bảng noticeboard nhà chung giữ ghi chú luân phiên utilities. Một tab binder xanh đánh dấu tháng filing. Một nước đi đầu có thể quay lại dễ dàng đã sẵn; thay vì làm, tôi lại mở rộng tập option. Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-12",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Mục hành chính đó chỉ định vị record. Tôi có một bước nhỏ với đường lui rõ, nhưng cứ so thêm lựa chọn và để nó chưa được thực hiện. Scanner ledger đếm batch số hóa. Operations lưu sheet bàn giao ca cạnh bảng rota.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-13",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Có một hành động mở đầu ít cam kết và dễ đảo ngược, nhưng tôi cứ thêm phương án rồi không bắt đầu. Records management lập index thùng storage theo retention code. Giấy tờ này là background thủ tục chứ không phải evidence phản ứng. Thẻ lanyard bàn ghi extension staffing.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-14",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Finance ghim settlement stub vào packet đối soát. Phong bì remittance giữ receipt bản sao. Một nước đi đầu có thể quay lại dễ dàng đã sẵn; thay vì làm, tôi lại mở rộng tập option. Reference được lưu không quyết định cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-15",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Chi tiết logistics này chỉ cố định chronology. Tôi có một bước nhỏ với đường lui rõ, nhưng cứ so thêm lựa chọn và để nó chưa được thực hiện. Binder reception ghi mã visitor desk. Bàn mail đặt routing label trên khay thư từ.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-16",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Có một hành động mở đầu ít cam kết và dễ đảo ngược, nhưng tôi cứ thêm phương án rồi không bắt đầu. Reception giữ checklist booking cạnh visitor register. Dấu vết filing tách khỏi hành vi đang được đo. Một túi courier mang bản sao giấy tờ.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S05-17",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Kho payroll giữ một control sheet theo quý. Một dải lịch nam châm cho biết tuần household. Một nước đi đầu có thể quay lại dễ dàng đã sẵn; thay vì làm, tôi lại mở rộng tập option. Ghi chú archive không tự trả lời câu hỏi phản ứng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-00",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The central obligation still required my answer, but I diverted effort into secondary activity and left the main duty unresolved. A shared-flat noticeboard held a utilities rotation note. That administrative item only locates the record. A remittance envelope held the duplicate receipt.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-01",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Operations filed a shift handover sheet beside the rota board. A reception binder listed the visitor desk code. The consequential issue was waiting for action from me while I occupied myself with peripheral work that could not settle it. The paperwork is procedural background rather than response evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-02",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The stored reference does not determine the mechanism. My response was still needed on the core matter, yet I shifted attention to side tasks and kept the primary responsibility open. A courier pouch carried duplicate paperwork. Records management indexed a storage carton under a retention code.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-03",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "family",
+      "surface": "The central obligation still required my answer, but I diverted effort into secondary activity and left the main duty unresolved. Finance clipped a settlement stub to the reconciliation packet. This logistics detail only fixes chronology. A magnetic calendar strip showed the household week.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-04",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "The mail desk placed a routing label on the correspondence tray. A carton label recorded the archive cycle. The consequential issue was waiting for action from me while I occupied myself with peripheral work that could not settle it. The filing trace is separate from the behaviour being measured.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-05",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The archive note does not answer the response question. My response was still needed on the core matter, yet I shifted attention to side tasks and kept the primary responsibility open. A mail tray separated incoming notices. Reception kept a booking checklist beside the visitor register.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-06",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The central obligation still required my answer, but I diverted effort into secondary activity and left the main duty unresolved. A payroll archive retained a quarterly control sheet. Routine documentation provides operational context only. A blue binder tab marked the filing month.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-07",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Facilities logged a key-card inventory on a maintenance tablet. A scanner ledger counted the digitisation batch. The consequential issue was waiting for action from me while I occupied myself with peripheral work that could not settle it. The recorded marker cannot establish the behavioural classification.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-08",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "That external detail remains outside the mechanism itself. My response was still needed on the core matter, yet I shifted attention to side tasks and kept the primary responsibility open. A desk lanyard listed the staffing extension. Recruitment stored an intake barcode inside a candidate folder.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-09",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Nghĩa vụ trung tâm vẫn cần câu trả lời của tôi, nhưng tôi chuyển sức sang hoạt động thứ yếu và để việc chính chưa giải quyết. Bảng noticeboard nhà chung giữ ghi chú luân phiên utilities. Mục hành chính đó chỉ định vị record. Phong bì remittance giữ receipt bản sao.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-10",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Operations lưu sheet bàn giao ca cạnh bảng rota. Binder reception ghi mã visitor desk. Vấn đề có hệ quả còn chờ hành động từ tôi trong khi tôi bận với việc bên lề không thể xử lý nó. Giấy tờ này là background thủ tục chứ không phải evidence phản ứng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-11",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Reference được lưu không quyết định cơ chế. Phần cốt lõi vẫn cần phản hồi của tôi, vậy mà tôi dồn chú ý vào task phụ và để trách nhiệm chính còn mở. Một túi courier mang bản sao giấy tờ. Records management lập index thùng storage theo retention code.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-12",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Nghĩa vụ trung tâm vẫn cần câu trả lời của tôi, nhưng tôi chuyển sức sang hoạt động thứ yếu và để việc chính chưa giải quyết. Finance ghim settlement stub vào packet đối soát. Chi tiết logistics này chỉ cố định chronology. Một dải lịch nam châm cho biết tuần household.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-13",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Bàn mail đặt routing label trên khay thư từ. Nhãn carton ghi chu kỳ archive. Vấn đề có hệ quả còn chờ hành động từ tôi trong khi tôi bận với việc bên lề không thể xử lý nó. Dấu vết filing tách khỏi hành vi đang được đo.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-14",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Ghi chú archive không tự trả lời câu hỏi phản ứng. Phần cốt lõi vẫn cần phản hồi của tôi, vậy mà tôi dồn chú ý vào task phụ và để trách nhiệm chính còn mở. Khay mail tách notice đi vào. Reception giữ checklist booking cạnh visitor register.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-15",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Nghĩa vụ trung tâm vẫn cần câu trả lời của tôi, nhưng tôi chuyển sức sang hoạt động thứ yếu và để việc chính chưa giải quyết. Kho payroll giữ một control sheet theo quý. Tài liệu thường lệ chỉ cung cấp context vận hành. Một tab binder xanh đánh dấu tháng filing.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-16",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Facilities ghi inventory thẻ khóa trên tablet bảo trì. Scanner ledger đếm batch số hóa. Vấn đề có hệ quả còn chờ hành động từ tôi trong khi tôi bận với việc bên lề không thể xử lý nó. Marker đã ghi không thể tự xác lập classification hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S06-17",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế. Phần cốt lõi vẫn cần phản hồi của tôi, vậy mà tôi dồn chú ý vào task phụ và để trách nhiệm chính còn mở. Thẻ lanyard bàn ghi extension staffing. Recruitment lưu barcode tiếp nhận trong folder ứng viên.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-00",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Records management indexed a storage carton under a retention code. A mail tray separated incoming notices. There was one finite delay before my response; I checked once and treated the process as finished. This logistics detail only fixes chronology.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-01",
+      "category": "slow",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The filing trace is separate from the behaviour being measured. I allowed a limited pause, made one review pass, then considered the matter complete. A blue binder tab marked the filing month. Finance clipped a settlement stub to the reconciliation packet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-02",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I took one bounded interval before answering, reviewed the point a single time, and then closed the review. The mail desk placed a routing label on the correspondence tray. The archive note does not answer the response question. A scanner ledger counted the digitisation batch.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-03",
+      "category": "slow",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Reception kept a booking checklist beside the visitor register. A desk lanyard listed the staffing extension. There was one finite delay before my response; I checked once and treated the process as finished. Routine documentation provides operational context only.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-04",
+      "category": "slow",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The recorded marker cannot establish the behavioural classification. I allowed a limited pause, made one review pass, then considered the matter complete. A remittance envelope held the duplicate receipt. A payroll archive retained a quarterly control sheet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-05",
+      "category": "slow",
+      "language": "EN",
+      "domain": "money",
+      "surface": "I took one bounded interval before answering, reviewed the point a single time, and then closed the review. Facilities logged a key-card inventory on a maintenance tablet. That external detail remains outside the mechanism itself. A reception binder listed the visitor desk code.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-06",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Recruitment stored an intake barcode inside a candidate folder. A courier pouch carried duplicate paperwork. There was one finite delay before my response; I checked once and treated the process as finished. That administrative item only locates the record.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-07",
+      "category": "slow",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The paperwork is procedural background rather than response evidence. I allowed a limited pause, made one review pass, then considered the matter complete. A magnetic calendar strip showed the household week. A shared-flat noticeboard held a utilities rotation note.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-08",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I took one bounded interval before answering, reviewed the point a single time, and then closed the review. Operations filed a shift handover sheet beside the rota board. The stored reference does not determine the mechanism. A carton label recorded the archive cycle.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-09",
+      "category": "slow",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Records management lập index thùng storage theo retention code. Khay mail tách notice đi vào. Có một độ trễ giới hạn trước phản hồi; tôi kiểm một lượt duy nhất và xem quá trình đã xong. Chi tiết logistics này chỉ cố định chronology.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-10",
+      "category": "slow",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Dấu vết filing tách khỏi hành vi đang được đo. Tôi cho mình một khoảng dừng có giới hạn, review một pass rồi coi vấn đề hoàn tất. Một tab binder xanh đánh dấu tháng filing. Finance ghim settlement stub vào packet đối soát.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-11",
+      "category": "slow",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tôi dùng đúng một khoảng thời gian hữu hạn trước khi đáp, xem lại một lần rồi đóng review. Bàn mail đặt routing label trên khay thư từ. Ghi chú archive không tự trả lời câu hỏi phản ứng. Scanner ledger đếm batch số hóa.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-12",
+      "category": "slow",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Reception giữ checklist booking cạnh visitor register. Thẻ lanyard bàn ghi extension staffing. Có một độ trễ giới hạn trước phản hồi; tôi kiểm một lượt duy nhất và xem quá trình đã xong. Tài liệu thường lệ chỉ cung cấp context vận hành.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-13",
+      "category": "slow",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Marker đã ghi không thể tự xác lập classification hành vi. Tôi cho mình một khoảng dừng có giới hạn, review một pass rồi coi vấn đề hoàn tất. Phong bì remittance giữ receipt bản sao. Kho payroll giữ một control sheet theo quý.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-14",
+      "category": "slow",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Tôi dùng đúng một khoảng thời gian hữu hạn trước khi đáp, xem lại một lần rồi đóng review. Facilities ghi inventory thẻ khóa trên tablet bảo trì. Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế. Binder reception ghi mã visitor desk.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-15",
+      "category": "slow",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Recruitment lưu barcode tiếp nhận trong folder ứng viên. Một túi courier mang bản sao giấy tờ. Có một độ trễ giới hạn trước phản hồi; tôi kiểm một lượt duy nhất và xem quá trình đã xong. Mục hành chính đó chỉ định vị record.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-16",
+      "category": "slow",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Giấy tờ này là background thủ tục chứ không phải evidence phản ứng. Tôi cho mình một khoảng dừng có giới hạn, review một pass rồi coi vấn đề hoàn tất. Một dải lịch nam châm cho biết tuần household. Bảng noticeboard nhà chung giữ ghi chú luân phiên utilities.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S07-17",
+      "category": "slow",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tôi dùng đúng một khoảng thời gian hữu hạn trước khi đáp, xem lại một lần rồi đóng review. Operations lưu sheet bàn giao ca cạnh bảng rota. Reference được lưu không quyết định cơ chế. Nhãn carton ghi chu kỳ archive.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S08-00",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "surface": "Routine documentation provides operational context only. I neared the practical step, retreated, then cycled through the same assessment without receiving new information. A reception binder listed the visitor desk code. The mail desk placed a routing label on the correspondence tray.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-01",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I moved close to acting, pulled away, and returned to the same judgement although no new facts had appeared. Reception kept a booking checklist beside the visitor register. The recorded marker cannot establish the behavioural classification. A courier pouch carried duplicate paperwork.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-02",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "A payroll archive retained a quarterly control sheet. A magnetic calendar strip showed the household week. I approached execution then backed off; afterward I repeated the same reasoning with unchanged evidence. That external detail remains outside the mechanism itself.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-03",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "other",
+      "surface": "That administrative item only locates the record. I neared the practical step, retreated, then cycled through the same assessment without receiving new information. A carton label recorded the archive cycle. Facilities logged a key-card inventory on a maintenance tablet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-04",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "money",
+      "surface": "I moved close to acting, pulled away, and returned to the same judgement although no new facts had appeared. Recruitment stored an intake barcode inside a candidate folder. The paperwork is procedural background rather than response evidence. A mail tray separated incoming notices.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-05",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A shared-flat noticeboard held a utilities rotation note. A blue binder tab marked the filing month. I approached execution then backed off; afterward I repeated the same reasoning with unchanged evidence. The stored reference does not determine the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-06",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "surface": "This logistics detail only fixes chronology. I neared the practical step, retreated, then cycled through the same assessment without receiving new information. A scanner ledger counted the digitisation batch. Operations filed a shift handover sheet beside the rota board.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-07",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I moved close to acting, pulled away, and returned to the same judgement although no new facts had appeared. Records management indexed a storage carton under a retention code. The filing trace is separate from the behaviour being measured. A desk lanyard listed the staffing extension.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-08",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Finance clipped a settlement stub to the reconciliation packet. A remittance envelope held the duplicate receipt. I approached execution then backed off; afterward I repeated the same reasoning with unchanged evidence. The archive note does not answer the response question.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-09",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Tài liệu thường lệ chỉ cung cấp context vận hành. Tôi đến gần bước thực tế, kéo ra rồi quay vòng cùng đánh giá mà không nhận thêm thông tin. Binder reception ghi mã visitor desk. Bàn mail đặt routing label trên khay thư từ.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-10",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tôi tiến sát tới hành động, rút lại rồi quay về cùng phán đoán dù không có fact mới. Reception giữ checklist booking cạnh visitor register. Marker đã ghi không thể tự xác lập classification hành vi. Một túi courier mang bản sao giấy tờ.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-11",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Kho payroll giữ một control sheet theo quý. Một dải lịch nam châm cho biết tuần household. Tôi tiếp cận execution rồi lùi ra; sau đó lặp lại cùng reasoning khi evidence không đổi. Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-12",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Mục hành chính đó chỉ định vị record. Tôi đến gần bước thực tế, kéo ra rồi quay vòng cùng đánh giá mà không nhận thêm thông tin. Nhãn carton ghi chu kỳ archive. Facilities ghi inventory thẻ khóa trên tablet bảo trì.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-13",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Tôi tiến sát tới hành động, rút lại rồi quay về cùng phán đoán dù không có fact mới. Recruitment lưu barcode tiếp nhận trong folder ứng viên. Giấy tờ này là background thủ tục chứ không phải evidence phản ứng. Khay mail tách notice đi vào.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-14",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Bảng noticeboard nhà chung giữ ghi chú luân phiên utilities. Một tab binder xanh đánh dấu tháng filing. Tôi tiếp cận execution rồi lùi ra; sau đó lặp lại cùng reasoning khi evidence không đổi. Reference được lưu không quyết định cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-15",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Chi tiết logistics này chỉ cố định chronology. Tôi đến gần bước thực tế, kéo ra rồi quay vòng cùng đánh giá mà không nhận thêm thông tin. Scanner ledger đếm batch số hóa. Operations lưu sheet bàn giao ca cạnh bảng rota.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-16",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tôi tiến sát tới hành động, rút lại rồi quay về cùng phán đoán dù không có fact mới. Records management lập index thùng storage theo retention code. Dấu vết filing tách khỏi hành vi đang được đo. Thẻ lanyard bàn ghi extension staffing.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S08-17",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Finance ghim settlement stub vào packet đối soát. Phong bì remittance giữ receipt bản sao. Tôi tiếp cận execution rồi lùi ra; sau đó lặp lại cùng reasoning khi evidence không đổi. Ghi chú archive không tự trả lời câu hỏi phản ứng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V217-S09-00",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I kept final agency, completed the practical action, and left the issue closed afterward. A payroll archive retained a quarterly control sheet. That administrative item only locates the record. A blue binder tab marked the filing month.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-01",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Facilities logged a key-card inventory on a maintenance tablet. A scanner ledger counted the digitisation batch. The decision remained mine; I carried the move through and did not reopen the matter. The paperwork is procedural background rather than response evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-02",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The stored reference does not determine the mechanism. I chose for myself, finished the concrete step, and moved on with the issue settled. A desk lanyard listed the staffing extension. Recruitment stored an intake barcode inside a candidate folder.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-03",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "money",
+      "surface": "I kept final agency, completed the practical action, and left the issue closed afterward. A shared-flat noticeboard held a utilities rotation note. This logistics detail only fixes chronology. A remittance envelope held the duplicate receipt.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-04",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Operations filed a shift handover sheet beside the rota board. A reception binder listed the visitor desk code. The decision remained mine; I carried the move through and did not reopen the matter. The filing trace is separate from the behaviour being measured.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-05",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The archive note does not answer the response question. I chose for myself, finished the concrete step, and moved on with the issue settled. A courier pouch carried duplicate paperwork. Records management indexed a storage carton under a retention code.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-06",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I kept final agency, completed the practical action, and left the issue closed afterward. Finance clipped a settlement stub to the reconciliation packet. Routine documentation provides operational context only. A magnetic calendar strip showed the household week.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-07",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "The mail desk placed a routing label on the correspondence tray. A carton label recorded the archive cycle. The decision remained mine; I carried the move through and did not reopen the matter. The recorded marker cannot establish the behavioural classification.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-08",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "surface": "That external detail remains outside the mechanism itself. I chose for myself, finished the concrete step, and moved on with the issue settled. A mail tray separated incoming notices. Reception kept a booking checklist beside the visitor register.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-09",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tôi giữ quyền chốt cuối, hoàn tất hành động thực tế và để vấn đề đóng lại sau đó. Kho payroll giữ một control sheet theo quý. Mục hành chính đó chỉ định vị record. Một tab binder xanh đánh dấu tháng filing.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-10",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Facilities ghi inventory thẻ khóa trên tablet bảo trì. Scanner ledger đếm batch số hóa. Quyết định vẫn thuộc về tôi; tôi làm xong nước đi và không mở lại chuyện này. Giấy tờ này là background thủ tục chứ không phải evidence phản ứng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-11",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Reference được lưu không quyết định cơ chế. Tôi tự lựa chọn, hoàn thành bước cụ thể rồi tiếp tục với vấn đề đã được giải quyết. Thẻ lanyard bàn ghi extension staffing. Recruitment lưu barcode tiếp nhận trong folder ứng viên.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-12",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Tôi giữ quyền chốt cuối, hoàn tất hành động thực tế và để vấn đề đóng lại sau đó. Bảng noticeboard nhà chung giữ ghi chú luân phiên utilities. Chi tiết logistics này chỉ cố định chronology. Phong bì remittance giữ receipt bản sao.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-13",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Operations lưu sheet bàn giao ca cạnh bảng rota. Binder reception ghi mã visitor desk. Quyết định vẫn thuộc về tôi; tôi làm xong nước đi và không mở lại chuyện này. Dấu vết filing tách khỏi hành vi đang được đo.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-14",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Ghi chú archive không tự trả lời câu hỏi phản ứng. Tôi tự lựa chọn, hoàn thành bước cụ thể rồi tiếp tục với vấn đề đã được giải quyết. Một túi courier mang bản sao giấy tờ. Records management lập index thùng storage theo retention code.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-15",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tôi giữ quyền chốt cuối, hoàn tất hành động thực tế và để vấn đề đóng lại sau đó. Finance ghim settlement stub vào packet đối soát. Tài liệu thường lệ chỉ cung cấp context vận hành. Một dải lịch nam châm cho biết tuần household.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-16",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Bàn mail đặt routing label trên khay thư từ. Nhãn carton ghi chu kỳ archive. Quyết định vẫn thuộc về tôi; tôi làm xong nước đi và không mở lại chuyện này. Marker đã ghi không thể tự xác lập classification hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V217-S09-17",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Chi tiết bên ngoài đó nằm ngoài bản thân cơ chế. Tôi tự lựa chọn, hoàn thành bước cụ thể rồi tiếp tục với vấn đề đã được giải quyết. Khay mail tách notice đi vào. Reception giữ checklist booking cạnh visitor register.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
