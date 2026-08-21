@@ -1,4 +1,4 @@
-name: V8.3.212 Generalization 800 V2
+name: V8.3.212 Generalization 800 V3 V92
 on:
   push:
     branches: [v83212-v1-validation]
@@ -6,7 +6,7 @@ permissions:
   contents: write
 jobs:
   challenge:
-    if: github.event.head_commit.message == 'Run V8.3.212 generalization 800 V2'
+    if: github.event.head_commit.message == 'Run V8.3.212 generalization 800 V3 V92'
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -23,7 +23,7 @@ jobs:
             p=pathlib.Path('validation/'+n+'.json.gz.b64');pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
           with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
           PY
-      - name: Generate fresh 800-case challenge
+      - name: Generate frozen 800-case challenge
         run: python validation/v83212-generalization-800-generator.py
       - name: Materialize prior-only contamination references
         run: |
@@ -38,9 +38,9 @@ jobs:
           cp /tmp/v211-r4-ref/validation/v83211-r4-runtime/V8_3_211_R4_SEALED_FIXTURE.json validation/v83212-generalization-refs/V8_3_211_R4_SEALED.json
           python validation/v83211-generalization-600-generator-v1r.py
           cp validation/V8_3_211_DEVELOPMENT_GENERALIZATION_600_V1.json validation/v83212-generalization-refs/V8_3_211_DEV_600.json
-      - name: Build V91 runner from proven regression bootstrap
+      - name: Build V92 runner from proven regression bootstrap
         run: python validation/v83212-build-generalization-800-v2-runner.py
-      - name: Run V91 800-case generalization audit
+      - name: Run V92 800-case generalization audit
         id: audit
         continue-on-error: true
         run: node validation/run-v83212-generalization-800-v2.cjs
@@ -50,13 +50,13 @@ jobs:
           python - <<'PY'
           import json,pathlib,os
           p=pathlib.Path('V8_3_212_DEVELOPMENT_GENERALIZATION_800_RESULTS_V1.json');r=json.loads(p.read_text()) if p.exists() else None
-          receipt={'candidate':'V8.3.212','phase':'generalization-800-v2','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'semantic_authority':'QCSemanticCoreV91','total':r.get('total') if r else None,'classification_passed':r.get('classification_passed') if r else None,'evidence_passed':r.get('evidence_passed') if r else None,'pass':r.get('pass') if r else False,'independence':r.get('independence') if r else None,'failure_attribution':r.get('failure_attribution') if r else None,'v211_r4_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
-          pathlib.Path('validation/V8_3_212_GENERALIZATION_800_V2_RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
+          receipt={'candidate':'V8.3.212','phase':'generalization-800-v3-v92','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'semantic_authority':'QCSemanticCoreV92','total':r.get('total') if r else None,'classification_passed':r.get('classification_passed') if r else None,'evidence_passed':r.get('evidence_passed') if r else None,'pass':r.get('pass') if r else False,'independence':r.get('independence') if r else None,'failure_attribution':r.get('failure_attribution') if r else None,'by_mechanism':r.get('by_mechanism') if r else None,'by_language':r.get('by_language') if r else None,'v211_r4_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_212_GENERALIZATION_800_V3_V92_RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/V8_3_212_GENERALIZATION_800_V2_RECEIPT.json
-          git commit -m 'Record V8.3.212 generalization 800 V2 evidence'
+          git add -- validation/V8_3_212_GENERALIZATION_800_V3_V92_RECEIPT.json
+          git commit -m 'Record V8.3.212 generalization 800 V3 V92 evidence'
           git push
       - name: Enforce challenge gate
         if: always()
