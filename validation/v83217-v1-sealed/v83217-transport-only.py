@@ -1,72 +1,47 @@
-import hashlib, json, pathlib, zipfile, io
-
-ROOT=pathlib.Path('.')
-OUT=ROOT/'validation/v83217-v1-sealed'
-AUTH=OUT/'V8_3_217_SEALED_AUTHORITY_V1.json'
-FILES={
- 'candidate_bank':'V8_3_217_PRESEAL_CANDIDATE_BANK_V1.json',
- 'selection':'V8_3_217_SEALED_SELECTION_V1.json',
- 'fixture':'V8_3_217_SEALED_FIXTURE_V1.json',
- 'independent_gold':'V8_3_217_INDEPENDENT_GOLD_V1.json',
- 'membership':'V8_3_217_SEALED_MEMBERSHIP_V1.json',
- 'preseal_audit':'V8_3_217_PRESEAL_DIVERSITY_AUDIT_V1.json',
-}
-
-def sha(b): return hashlib.sha256(b).hexdigest()
-auth=json.loads(AUTH.read_text())
-assert auth['validated_development_head_sha']=='456a88d01b671f0cb92a0be31f4d34d68f60d135'
-assert auth['preseal_pass'] is True
-verified={}
-payload={}
-for key,name in FILES.items():
- p=OUT/name
- b=p.read_bytes(); payload[name]=b
- got=sha(b); exp=auth['hashes'][key]
- assert got==exp,(key,got,exp)
- verified[key]=got
-
-# Transport bundle contains only immutable frozen inputs/authority; no runtime JS.
-buf=io.BytesIO()
-with zipfile.ZipFile(buf,'w',zipfile.ZIP_DEFLATED) as z:
- for name,b in payload.items(): z.writestr(name,b)
- z.writestr('V8_3_217_SEALED_AUTHORITY_V1.json',AUTH.read_bytes())
-bundle=buf.getvalue()
-bundle_path=OUT/'V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1.zip'
-bundle_path.write_bytes(bundle)
-bundle_sha=sha(bundle)
-(OUT/'V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1_SHA256.txt').write_text(bundle_sha+'  '+bundle_path.name+'\n')
-
-# Verify intact bundle and fail-closed corruption/type behavior without semantic execution.
-with zipfile.ZipFile(io.BytesIO(bundle),'r') as z:
- assert z.testzip() is None
- names=set(z.namelist())
- assert names==set(payload)|{'V8_3_217_SEALED_AUTHORITY_V1.json'}
- for key,name in FILES.items(): assert sha(z.read(name))==auth['hashes'][key]
-
-def accepted_as_frozen_json(blob,expected):
- try:
-  json.loads(blob.decode('utf-8'))
- except Exception:
-  return False
- return sha(blob)==expected
-wrong_type_rejected=not accepted_as_frozen_json(b'not-json',auth['hashes']['fixture'])
-random_binary_rejected=not accepted_as_frozen_json(bytes(range(32)),auth['hashes']['fixture'])
-newline_modified_rejected=not accepted_as_frozen_json(payload[FILES['fixture']]+b'\n',auth['hashes']['fixture'])
-assert wrong_type_rejected and random_binary_rejected and newline_modified_rejected
-
-result={
- 'candidate':'V8.3.217','phase':'transport-only','validated_development_head_sha':auth['validated_development_head_sha'],
- 'frozen_hashes':verified,'bundle_sha256':bundle_sha,'zip_integrity':True,'bundle_content_pure':True,
- 'wrong_type_rejected':wrong_type_rejected,'random_binary_rejected':random_binary_rejected,
- 'newline_modified_rejected':newline_modified_rejected,'semantic_runtime_executed':False,
- 'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'pass':True,
-}
-res=OUT/'V8_3_217_TRANSPORT_VERIFICATION_V1.json'
-res.write_text(json.dumps(result,indent=2)+'\n')
-# Dedicated transport checkpoint.
-cp=ROOT/'PSC_V8_3_217_V1_TRANSPORT_CHECKPOINT.zip'
-with zipfile.ZipFile(cp,'w',zipfile.ZIP_DEFLATED) as z:
- z.write(res,res.name); z.write(bundle_path,bundle_path.name); z.write(OUT/'V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1_SHA256.txt','V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1_SHA256.txt'); z.write(AUTH,AUTH.name)
-cp_sha=sha(cp.read_bytes())
-(ROOT/'PSC_V8_3_217_V1_TRANSPORT_CHECKPOINT_SHA256.txt').write_text(cp_sha+'  '+cp.name+'\n')
-print(json.dumps(result))
+import hashlib,json,pathlib,zipfile,io,traceback
+ROOT=pathlib.Path('.'); OUT=ROOT/'validation/v83217-v1-sealed'; AUTH=OUT/'V8_3_217_SEALED_AUTHORITY_V1.json'
+FILES={'candidate_bank':'V8_3_217_PRESEAL_CANDIDATE_BANK_V1.json','selection':'V8_3_217_SEALED_SELECTION_V1.json','fixture':'V8_3_217_SEALED_FIXTURE_V1.json','independent_gold':'V8_3_217_INDEPENDENT_GOLD_V1.json','membership':'V8_3_217_SEALED_MEMBERSHIP_V1.json','preseal_audit':'V8_3_217_PRESEAL_DIVERSITY_AUDIT_V1.json'}
+sha=lambda b:hashlib.sha256(b).hexdigest()
+result={'candidate':'V8.3.217','phase':'transport-only-r3-observable','semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'checks':{},'errors':[],'pass':False}
+try:
+ auth=json.loads(AUTH.read_text()); result['validated_development_head_sha']=auth.get('validated_development_head_sha')
+ result['checks']['development_sha']=auth.get('validated_development_head_sha')=='456a88d01b671f0cb92a0be31f4d34d68f60d135'
+ result['checks']['preseal_pass']=auth.get('preseal_pass') is True
+ payload={}; verified={}; hash_details={}
+ for key,name in FILES.items():
+  p=OUT/name; exists=p.exists(); detail={'file':name,'exists':exists,'expected':auth['hashes'].get(key)}
+  if exists:
+   b=p.read_bytes(); payload[name]=b; detail['actual']=sha(b); detail['match']=detail['actual']==detail['expected']
+  else: detail['actual']=None; detail['match']=False
+  hash_details[key]=detail
+ result['hash_details']=hash_details; result['checks']['all_frozen_files_exist']=all(x['exists'] for x in hash_details.values()); result['checks']['all_frozen_hashes_match']=all(x['match'] for x in hash_details.values())
+ if not all(result['checks'].values()): raise AssertionError('frozen authority/hash prerequisite failed')
+ for key,d in hash_details.items(): verified[key]=d['actual']
+ buf=io.BytesIO()
+ with zipfile.ZipFile(buf,'w',zipfile.ZIP_DEFLATED) as z:
+  for name,b in payload.items(): z.writestr(name,b)
+  z.writestr(AUTH.name,AUTH.read_bytes())
+ bundle=buf.getvalue(); bundle_path=OUT/'V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1.zip'; bundle_path.write_bytes(bundle); bundle_sha=sha(bundle)
+ (OUT/'V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1_SHA256.txt').write_text(bundle_sha+'  '+bundle_path.name+'\n')
+ with zipfile.ZipFile(io.BytesIO(bundle),'r') as z:
+  zip_ok=z.testzip() is None; names_ok=set(z.namelist())==set(payload)|{AUTH.name}; content_ok=all(sha(z.read(name))==auth['hashes'][key] for key,name in FILES.items())
+ def accepted(blob,expected):
+  try:json.loads(blob.decode('utf-8'))
+  except Exception:return False
+  return sha(blob)==expected
+ wrong=not accepted(b'not-json',auth['hashes']['fixture']); random=not accepted(bytes(range(32)),auth['hashes']['fixture']); newline=not accepted(payload[FILES['fixture']]+b'\n',auth['hashes']['fixture'])
+ result.update({'frozen_hashes':verified,'bundle_sha256':bundle_sha,'zip_integrity':zip_ok,'bundle_content_pure':names_ok and content_ok,'wrong_type_rejected':wrong,'random_binary_rejected':random,'newline_modified_rejected':newline})
+ result['checks'].update({'zip_integrity':zip_ok,'bundle_content_pure':names_ok and content_ok,'wrong_type_rejected':wrong,'random_binary_rejected':random,'newline_modified_rejected':newline})
+ result['pass']=all(result['checks'].values())
+ if result['pass']:
+  cp=ROOT/'PSC_V8_3_217_V1_TRANSPORT_CHECKPOINT.zip'
+  res_tmp=OUT/'V8_3_217_TRANSPORT_VERIFICATION_V1.json'; res_tmp.write_text(json.dumps(result,indent=2)+'\n')
+  with zipfile.ZipFile(cp,'w',zipfile.ZIP_DEFLATED) as z:
+   z.write(res_tmp,res_tmp.name);z.write(bundle_path,bundle_path.name);z.write(OUT/'V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1_SHA256.txt','V8_3_217_FROZEN_TRANSPORT_BUNDLE_V1_SHA256.txt');z.write(AUTH,AUTH.name)
+  (ROOT/'PSC_V8_3_217_V1_TRANSPORT_CHECKPOINT_SHA256.txt').write_text(sha(cp.read_bytes())+'  '+cp.name+'\n')
+except Exception as e:
+ result['errors'].append(type(e).__name__+': '+str(e)); result['trace_tail']=traceback.format_exc().splitlines()[-4:]
+finally:
+ (OUT/'V8_3_217_TRANSPORT_VERIFICATION_V1.json').write_text(json.dumps(result,indent=2)+'\n')
+ print(json.dumps(result))
+if not result['pass']: raise SystemExit(1)
