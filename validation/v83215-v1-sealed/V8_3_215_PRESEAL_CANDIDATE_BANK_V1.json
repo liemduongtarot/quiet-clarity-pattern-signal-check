@@ -142,7 +142,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "other",
-      "surface": "Một batch scanner ghi số trang tiếp nhận. Marker hành chính không quyết định cơ chế. Marker hồ sơ đã được ghi. Một bìa kho màu đồng lưu giấy tờ đối soát theo quý. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
+      "surface": "Một batch scanner ghi số trang tiếp nhận, trạng thái kiểm ảnh, mã hàng đợi số hóa và phiếu bàn giao tài liệu sang kho điện tử. Marker hành chính không quyết định cơ chế. Marker hồ sơ đã được ghi. Một bìa kho màu đồng lưu giấy tờ đối soát theo quý. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -214,7 +214,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "other",
-      "surface": "Một binder reception ghi số bàn booking. Fact logistics tách biệt với phản ứng đang đo. Chi tiết booking đã lưu. Một bìa kho màu đồng lưu giấy tờ đối soát theo quý. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
+      "surface": "Một binder reception ghi số bàn booking, danh mục thiết bị quầy, tuyến chuyển cuộc gọi và lịch kiểm tra vật tư vận hành. Fact logistics tách biệt với phản ứng đang đo. Chi tiết booking đã lưu. Một bìa kho màu đồng lưu giấy tờ đối soát theo quý. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -358,7 +358,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "money",
-      "surface": "Bộ phận địa điểm giữ sheet phân phòng ép nhựa cạnh quầy tiếp tân. Marker hồ sơ đã được ghi. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Một batch scanner ghi số trang tiếp nhận. Mã lưu trữ chỉ neo dòng thời gian.",
+      "surface": "Bộ phận địa điểm giữ sheet phân phòng ép nhựa cạnh quầy tiếp tân. Marker hồ sơ đã được ghi. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Một batch scanner ghi số trang tiếp nhận, trạng thái kiểm ảnh, mã hàng đợi số hóa và phiếu bàn giao tài liệu sang kho điện tử. Mã lưu trữ chỉ neo dòng thời gian.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -430,7 +430,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "money",
-      "surface": "Bộ phận địa điểm giữ sheet phân phòng ép nhựa cạnh quầy tiếp tân. Chi tiết booking đã lưu. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Một binder reception ghi số bàn booking. Chi tiết thủ tục chỉ định vị record.",
+      "surface": "Bộ phận địa điểm giữ sheet phân phòng ép nhựa cạnh quầy tiếp tân. Chi tiết booking đã lưu. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Một binder reception ghi số bàn booking, danh mục thiết bị quầy, tuyến chuyển cuộc gọi và lịch kiểm tra vật tư vận hành. Chi tiết thủ tục chỉ định vị record.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -574,7 +574,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Một batch scanner ghi số trang tiếp nhận. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Thủ tục tuyển dụng lưu trang bìa barcode trong tủ hồ sơ tiếp nhận. Marker hồ sơ đã được ghi.",
+      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Một batch scanner ghi số trang tiếp nhận, trạng thái kiểm ảnh, mã hàng đợi số hóa và phiếu bàn giao tài liệu sang kho điện tử. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Thủ tục tuyển dụng lưu trang bìa barcode trong tủ hồ sơ tiếp nhận. Marker hồ sơ đã được ghi.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -646,7 +646,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Một binder reception ghi số bàn booking. Marker hành chính không quyết định cơ chế. Thủ tục tuyển dụng lưu trang bìa barcode trong tủ hồ sơ tiếp nhận. Chi tiết booking đã lưu.",
+      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Một binder reception ghi số bàn booking, danh mục thiết bị quầy, tuyến chuyển cuộc gọi và lịch kiểm tra vật tư vận hành. Marker hành chính không quyết định cơ chế. Thủ tục tuyển dụng lưu trang bìa barcode trong tủ hồ sơ tiếp nhận. Chi tiết booking đã lưu.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -790,7 +790,7 @@
       "category": "third",
       "language": "VI",
       "domain": "career",
-      "surface": "Một batch scanner ghi số trang tiếp nhận. Fact logistics tách biệt với phản ứng đang đo. Marker hồ sơ đã được ghi. Giấy tờ household dùng ghi chú lịch bếp cho việc chung. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
+      "surface": "Một batch scanner ghi số trang tiếp nhận, trạng thái kiểm ảnh, mã hàng đợi số hóa và phiếu bàn giao tài liệu sang kho điện tử. Fact logistics tách biệt với phản ứng đang đo. Marker hồ sơ đã được ghi. Giấy tờ household dùng ghi chú lịch bếp cho việc chung. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -862,7 +862,7 @@
       "category": "third",
       "language": "VI",
       "domain": "career",
-      "surface": "Một binder reception ghi số bàn booking. Mã lưu trữ chỉ neo dòng thời gian. Chi tiết booking đã lưu. Giấy tờ household dùng ghi chú lịch bếp cho việc chung. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
+      "surface": "Một binder reception ghi số bàn booking, danh mục thiết bị quầy, tuyến chuyển cuộc gọi và lịch kiểm tra vật tư vận hành. Mã lưu trữ chỉ neo dòng thời gian. Chi tiết booking đã lưu. Giấy tờ household dùng ghi chú lịch bếp cho việc chung. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -1006,7 +1006,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "family",
-      "surface": "Vận hành nhân sự giữ bản in roster cạnh bảng phân ca. Marker hồ sơ đã được ghi. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Một batch scanner ghi số trang tiếp nhận. Chi tiết thủ tục chỉ định vị record.",
+      "surface": "Vận hành nhân sự giữ bản in roster cạnh bảng phân ca. Marker hồ sơ đã được ghi. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Một batch scanner ghi số trang tiếp nhận, trạng thái kiểm ảnh, mã hàng đợi số hóa và phiếu bàn giao tài liệu sang kho điện tử. Chi tiết thủ tục chỉ định vị record.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1078,7 +1078,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "family",
-      "surface": "Vận hành nhân sự giữ bản in roster cạnh bảng phân ca. Chi tiết booking đã lưu. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Một binder reception ghi số bàn booking. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "surface": "Vận hành nhân sự giữ bản in roster cạnh bảng phân ca. Chi tiết booking đã lưu. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Một binder reception ghi số bàn booking, danh mục thiết bị quầy, tuyến chuyển cuộc gọi và lịch kiểm tra vật tư vận hành. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1244,7 +1244,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Một batch scanner ghi số trang tiếp nhận. Marker hành chính không quyết định cơ chế. Kiểm soát records gắn nhãn retention-folder trong kho dài hạn. Marker hồ sơ đã được ghi.",
+      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Một batch scanner ghi số trang tiếp nhận, trạng thái kiểm ảnh, mã hàng đợi số hóa và phiếu bàn giao tài liệu sang kho điện tử. Marker hành chính không quyết định cơ chế. Kiểm soát records gắn nhãn retention-folder trong kho dài hạn. Marker hồ sơ đã được ghi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1328,7 +1328,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Một binder reception ghi số bàn booking. Fact logistics tách biệt với phản ứng đang đo. Kiểm soát records gắn nhãn retention-folder trong kho dài hạn. Chi tiết booking đã lưu.",
+      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Một binder reception ghi số bàn booking, danh mục thiết bị quầy, tuyến chuyển cuộc gọi và lịch kiểm tra vật tư vận hành. Fact logistics tách biệt với phản ứng đang đo. Kiểm soát records gắn nhãn retention-folder trong kho dài hạn. Chi tiết booking đã lưu.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1496,7 +1496,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "other",
-      "surface": "Một batch scanner ghi số trang tiếp nhận. Mã lưu trữ chỉ neo dòng thời gian. Marker hồ sơ đã được ghi. Nhân viên accounts ghim phiếu remittance vào packet thanh toán. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
+      "surface": "Một batch scanner ghi số trang tiếp nhận, trạng thái kiểm ảnh, mã hàng đợi số hóa và phiếu bàn giao tài liệu sang kho điện tử. Mã lưu trữ chỉ neo dòng thời gian. Marker hồ sơ đã được ghi. Nhân viên accounts ghim phiếu remittance vào packet thanh toán. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1580,7 +1580,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "other",
-      "surface": "Một binder reception ghi số bàn booking. Chi tiết thủ tục chỉ định vị record. Chi tiết booking đã lưu. Nhân viên accounts ghim phiếu remittance vào packet thanh toán. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
+      "surface": "Một binder reception ghi số bàn booking, danh mục thiết bị quầy, tuyến chuyển cuộc gọi và lịch kiểm tra vật tư vận hành. Chi tiết thủ tục chỉ định vị record. Chi tiết booking đã lưu. Nhân viên accounts ghim phiếu remittance vào packet thanh toán. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1748,7 +1748,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "money",
-      "surface": "Bộ phận communications lập chỉ mục thư từ bằng sheet định tuyến mailbox. Marker hồ sơ đã được ghi. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Một batch scanner ghi số trang tiếp nhận. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "surface": "Bộ phận communications lập chỉ mục thư từ bằng sheet định tuyến mailbox. Marker hồ sơ đã được ghi. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Một batch scanner ghi số trang tiếp nhận, trạng thái kiểm ảnh, mã hàng đợi số hóa và phiếu bàn giao tài liệu sang kho điện tử. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1832,7 +1832,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "money",
-      "surface": "Bộ phận communications lập chỉ mục thư từ bằng sheet định tuyến mailbox. Chi tiết booking đã lưu. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Một binder reception ghi số bàn booking. Marker hành chính không quyết định cơ chế.",
+      "surface": "Bộ phận communications lập chỉ mục thư từ bằng sheet định tuyến mailbox. Chi tiết booking đã lưu. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Một binder reception ghi số bàn booking, danh mục thiết bị quầy, tuyến chuyển cuộc gọi và lịch kiểm tra vật tư vận hành. Marker hành chính không quyết định cơ chế.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2000,7 +2000,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Một batch scanner ghi số trang tiếp nhận. Fact logistics tách biệt với phản ứng đang đo. Nhân viên booking giữ cover note đặt chỗ trong binder lịch hẹn. Marker hồ sơ đã được ghi.",
+      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Một batch scanner ghi số trang tiếp nhận, trạng thái kiểm ảnh, mã hàng đợi số hóa và phiếu bàn giao tài liệu sang kho điện tử. Fact logistics tách biệt với phản ứng đang đo. Nhân viên booking giữ cover note đặt chỗ trong binder lịch hẹn. Marker hồ sơ đã được ghi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2084,7 +2084,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Một binder reception ghi số bàn booking. Mã lưu trữ chỉ neo dòng thời gian. Nhân viên booking giữ cover note đặt chỗ trong binder lịch hẹn. Chi tiết booking đã lưu.",
+      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Một binder reception ghi số bàn booking, danh mục thiết bị quầy, tuyến chuyển cuộc gọi và lịch kiểm tra vật tư vận hành. Mã lưu trữ chỉ neo dòng thời gian. Nhân viên booking giữ cover note đặt chỗ trong binder lịch hẹn. Chi tiết booking đã lưu.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2230,7 +2230,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "career",
-      "surface": "Một batch scanner ghi số trang tiếp nhận. Chi tiết thủ tục chỉ định vị record. Marker hồ sơ đã được ghi. Giấy tờ hoàn tất mang dấu closure trong khay lưu trữ. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
+      "surface": "Một batch scanner ghi số trang tiếp nhận, trạng thái kiểm ảnh, mã hàng đợi số hóa và phiếu bàn giao tài liệu sang kho điện tử. Chi tiết thủ tục chỉ định vị record. Marker hồ sơ đã được ghi. Giấy tờ hoàn tất mang dấu closure trong khay lưu trữ. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2302,7 +2302,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "career",
-      "surface": "Một binder reception ghi số bàn booking. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Chi tiết booking đã lưu. Giấy tờ hoàn tất mang dấu closure trong khay lưu trữ. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
+      "surface": "Một binder reception ghi số bàn booking, danh mục thiết bị quầy, tuyến chuyển cuộc gọi và lịch kiểm tra vật tư vận hành. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Chi tiết booking đã lưu. Giấy tờ hoàn tất mang dấu closure trong khay lưu trữ. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
