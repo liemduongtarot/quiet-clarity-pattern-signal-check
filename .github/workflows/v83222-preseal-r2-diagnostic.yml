@@ -1,0 +1,44 @@
+name: V8.3.222 Preseal R2 Diagnostic
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  diag:
+    if: github.event.head_commit.message == 'Diagnose V8.3.222 preseal R2'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83222-v1-sealed-validation
+          fetch-depth: 0
+      - name: Run observable R2
+        id: run
+        continue-on-error: true
+        run: |
+          set +e
+          python validation/v83222-v1-sealed/v83222-preseal-freeze-r2.py > /tmp/v222r2.log 2>&1
+          rc=$?
+          cat /tmp/v222r2.log
+          echo "exit_code=$rc" >> "$GITHUB_OUTPUT"
+          exit $rc
+      - name: Freeze diagnostic
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          log=pathlib.Path('/tmp/v222r2.log').read_text(errors='replace') if pathlib.Path('/tmp/v222r2.log').exists() else ''
+          d={'candidate':'V8.3.222','phase':'preseal-r2-diagnostic','outcome':os.environ['OUTCOME'],'exit_code':os.environ.get('EXIT_CODE'),'log_tail':log[-18000:],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'v221_sealed_rerun':False}
+          pathlib.Path('validation/v83222-v1-sealed/V8_3_222_PRESEAL_R2_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/v83222-v1-sealed/V8_3_222_PRESEAL_R2_DIAGNOSTIC.json
+          for f in validation/v83222-v1-sealed/V8_3_222_*.json; do test ! -f "$f" || git add -- "$f"; done
+          git diff --cached --quiet || git commit -m 'Record V8.3.222 preseal R2 diagnostic evidence'
+          git push origin HEAD:v83222-v1-sealed-validation
+        env:
+          OUTCOME: ${{ steps.run.outcome }}
+          EXIT_CODE: ${{ steps.run.outputs.exit_code }}
