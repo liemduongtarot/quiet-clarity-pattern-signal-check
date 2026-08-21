@@ -1,0 +1,19 @@
+{
+  "authority": "V8.3.216 REGRESSION TRIGGER DIAGNOSTIC ONLY",
+  "trigger_sha": "bf4aa56c0e6347a661803df67a28e8eb7d094865",
+  "semantic_runtime_executed_by_diagnostic": false,
+  "matches": [
+    {
+      "conclusion": "success",
+      "createdAt": "2026-08-21T12:52:33Z",
+      "databaseId": 32483991614,
+      "displayTitle": "Run V8.3.216 V96 bounded regression",
+      "event": "push",
+      "headSha": "bf4aa56c0e6347a661803df67a28e8eb7d094865",
+      "status": "completed",
+      "updatedAt": "2026-08-21T12:53:13Z",
+      "workflowName": "V8.3.216 V96 Regression"
+    }
+  ],
+  "match_count": 1
+}
