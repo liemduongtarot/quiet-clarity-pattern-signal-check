@@ -1,0 +1,30 @@
+name: V8.3.212 Actions Probe
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'Probe V8.3.212 actions executor'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Write probe receipt
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path('validation/V8_3_212_ACTIONS_PROBE_RECEIPT.json')
+          p.write_text(json.dumps({'run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'semantic_runtime_executed':False,'sealed_batch_a_executed':False,'sealed_batch_b_executed':False},indent=2)+'\n')
+          PY
+      - name: Commit probe receipt
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/V8_3_212_ACTIONS_PROBE_RECEIPT.json
+          git commit -m 'Record V8.3.212 actions probe receipt'
+          git push origin HEAD:main
