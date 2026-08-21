@@ -1,69 +1,32 @@
-name: V8.3.212 V92 Browser E2E 1470 Proven
+name: V8.3.212 V92 Final Development
 on:
   push:
     branches: [v83212-v1-validation]
 permissions:
   contents: write
 jobs:
-  browser:
-    if: github.event.head_commit.message == 'Run V8.3.212 V92 Browser E2E 1470 proven'
+  final:
+    if: github.event.head_commit.message == 'Run V8.3.212 V92 final development'
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with: {fetch-depth: 1}
       - uses: actions/setup-node@v4
         with: {node-version: '24'}
-      - name: Materialize immutable historical authorities
+      - name: Run integrated final-development orchestrator
+        run: python validation/v83212-v92-final-development-orchestrator.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_212_V92_DEVELOPMENT_VALIDATION_CHECKPOINT
+          path: |
+            PSC_V8_3_212_V92_DEVELOPMENT_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_212_V92_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt
+      - name: Record final-development receipt
         run: |
-          python - <<'PY'
-          import pathlib,base64,gzip,zipfile
-          names=['V8_3_172_V171_V1_FAILURE_REGRESSION','V8_3_172_V171_V1_PREVIOUS_PASS_REGRESSION','V8_3_171_V170_V1_FAILURE_REGRESSION','V8_3_171_V170_V1_PREVIOUS_PASS_REGRESSION','V8_3_169_V168_V1_FAILURE_REGRESSION','V8_3_169_V168_V1_PREVIOUS_PASS_REGRESSION','V8_3_168_V167_V1_FAILURE_REGRESSION','V8_3_168_V167_V1_PREVIOUS_PASS_REGRESSION']
-          for n in names:
-            p=pathlib.Path('validation/'+n+'.json.gz.b64');pathlib.Path('validation/'+n+'.json').write_bytes(gzip.decompress(base64.b64decode(p.read_text().strip())))
-          with zipfile.ZipFile('PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip') as z:z.extractall('.')
-          PY
-      - name: Build V92 Browser runner
-        run: |
-          python - <<'PY'
-          import pathlib
-          chain="'psc-v83196-v195-v1-hypothetical-preservation-repair.js','psc-v83197-v196-sealed-a-bounded-repair.js','psc-v83198-v197-sealed-a-bounded-repair.js','psc-v83199-v198-sealed-a-bounded-repair.js','psc-v83200-v199-sealed-a-bounded-repair.js','psc-v83201-v200-sealed-a-bounded-repair.js','psc-v83201-v200-v1-preservation-precedence-repair.js','psc-v83202-v201-sealed-a-bounded-repair.js','psc-v83203-v202-sealed-a-bounded-repair.js','psc-v83204-v203-sealed-a-bounded-repair.js','psc-v83205-v204-sealed-a-bounded-repair.js','psc-v83206-v205-compositional-generalization.js','psc-v83206-v205-v1-preservation-repair.js','psc-v83207-v206-mechanism-cue-repair.js','psc-v83207-v206-v1-preservation-repair.js','psc-v83208-v207-mechanism-cue-repair.js','psc-v83208-v207-v1-preservation-repair.js','psc-v83209-v208-evidence-slot-composition.js','psc-v83209-v208-v1-preservation-repair.js','qc-evidence-extractor-v1-review-candidate.js','qc-evidence-extractor-v1r-review-candidate.js','qc-evidence-extractor-v1r2-review-candidate.js','psc-v83209-semantic-rule-table-v3-review-candidate.js','psc-v83209-v208-semantic-rule-table-promotion.js','qc-evidence-extractor-v1r3-v210-concept-coverage.js','psc-v83210-v209-semantic-rule-table-v4.js','qc-evidence-extractor-v1r4-v210-relational-preservation.js','psc-v83210-v209-v1-relational-preservation.js','qc-evidence-extractor-v2-v210-relational-semantics.js','psc-v83210-v210-semantic-rule-table-v5.js','qc-evidence-extractor-v2r-v210-multilingual-aliases.js','psc-v83210-v210-semantic-rule-table-v6.js','qc-evidence-extractor-v2s-v210-context-sanitizer.js','psc-v83210-v210-semantic-rule-table-v7.js','qc-evidence-extractor-v2t-v210-contextual-recall.js','psc-v83210-v210-semantic-rule-table-v8-parent-containment.js','qc-evidence-extractor-v3-v211-context-scoped.js','psc-v83211-v210-context-scoped-rule-table.js','qc-evidence-extractor-v3r-v211-preservation.js','psc-v83211-v210-preservation-containment.js','qc-evidence-extractor-v4-v211-relational-recall.js','psc-v83211-v210-v89-relational-recall.js','qc-evidence-extractor-v5-v212-scope-propagation.js','psc-v83212-v211-v90-scope-propagation.js','qc-evidence-extractor-v5r-v212-delegated-decision-preservation.js','psc-v83212-v211-v91-delegated-decision-preservation.js','qc-evidence-extractor-v5s-v212-relational-recall.js','psc-v83212-v211-v92-relational-recall.js'"
-          b=pathlib.Path('validation/run-v83196-browser-e2e.cjs').read_text()
-          b=b.replace("'psc-v83196-v195-v1-hypothetical-preservation-repair.js'];",chain+"];")
-          b=b.replace('QCSemanticCoreV65R','QCSemanticCoreV92').replace('V8_3_196_BROWSER_E2E_RESULTS.json','V8_3_212_V92_BROWSER_E2E_RESULTS.json').replace('built_v65_v65r_identity','built_v92_identity')
-          b=b.replace("if(!pf.version?.startsWith('V8.3.196'))throw Error(JSON.stringify(pf));","if(pf.version!=='V8.3.212-V92-RELATIONAL-RECALL')throw Error(JSON.stringify(pf));")
-          pathlib.Path('validation/run-v83212-v92-browser-e2e.cjs').write_text(b)
-          PY
-      - name: Install Playwright browser harness
-        run: |
-          mkdir -p .e2e; printf '{"private":true}\n' > .e2e/package.json
-          npm install --prefix .e2e --no-package-lock playwright@1.55.0
-          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)"; test -n "$CHROME"; echo "CHROME=$CHROME" >> "$GITHUB_ENV"
-      - name: Browser E2E all 1470 immutable cases
-        id: browser
-        continue-on-error: true
-        run: node validation/run-v83212-v92-browser-e2e.cjs
-      - name: Record Browser E2E receipt
-        if: always()
-        run: |
-          python - <<'PY'
-          import json,pathlib,os
-          p=pathlib.Path('V8_3_212_V92_BROWSER_E2E_RESULTS.json');r=json.loads(p.read_text()) if p.exists() else None
-          receipt={'candidate':'V8.3.212','phase':'v92-browser-e2e','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'semantic_authority':'QCSemanticCoreV92','browser_total':r.get('total') if r else None,'browser_passed':r.get('passed') if r else None,'preflight':r.get('preflight') if r else None,'v211_r4_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
-          pathlib.Path('validation/V8_3_212_V92_BROWSER_E2E_RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
-          PY
+          test -f validation/V8_3_212_V92_FINAL_DEVELOPMENT_RUN_RECEIPT.json
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/V8_3_212_V92_BROWSER_E2E_RECEIPT.json
-          git commit -m 'Record V8.3.212 V92 Browser E2E evidence'
+          git add -- validation/V8_3_212_V92_FINAL_DEVELOPMENT_RUN_RECEIPT.json
+          git commit -m 'Record V8.3.212 V92 final development receipt'
           git push
-      - name: Enforce Browser E2E gate
-        if: always()
-        run: |
-          python - <<'PY'
-          import json,pathlib,sys
-          p=pathlib.Path('V8_3_212_V92_BROWSER_E2E_RESULTS.json')
-          if not p.exists():sys.exit(1)
-          r=json.loads(p.read_text())
-          if r.get('passed') is not True or r.get('total')!=1470:sys.exit(1)
-          PY
