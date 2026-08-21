@@ -1,0 +1,28 @@
+{
+  "candidate": "V8.3.219",
+  "phase": "bounded-development-loader-chain-validation",
+  "base_development_authority_sha": "9d946d3ddf8b98c2b3f80e1b5b849b12415381c2",
+  "semantic_base_sha": "456a88d01b671f0cb92a0be31f4d34d68f60d135",
+  "semantic_authority": "QCEvidenceExtractorV5X -> QCSemanticCoreV97",
+  "repair_scope": "sealed-runner loader-chain materialization/append logic only",
+  "checks": {
+    "public_tree_materialized": true,
+    "psc_v3_exists": true,
+    "v196_tail_preserved": true,
+    "qcs_semantic_core_v65r_available_before_v197_plus": true,
+    "v197_plus_exact_order": true,
+    "final_tail_v5x_to_v97_exact": true,
+    "v5x_available": true,
+    "v97_available": true,
+    "semantic_sources_byte_identical": true,
+    "sealed_fixture_or_gold_used": false,
+    "v217_sealed_rerun": false,
+    "v218_sealed_rerun": false,
+    "expected_gold_changed": false
+  },
+  "semantic_case_execution": false,
+  "sealed_run_consumed": false,
+  "pass": true,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
