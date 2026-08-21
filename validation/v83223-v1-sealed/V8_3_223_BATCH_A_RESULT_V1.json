@@ -1,0 +1,584 @@
+{
+  "authority": "V8.3.223 V1 SEALED BATCH A FIRST RUN",
+  "run_id": "32521148386",
+  "run_attempt": "1",
+  "validated_development_head_sha": "857e98039a6d603fdcae2ec90f471ffd0bbabbb8",
+  "semantic_authority": "QCEvidenceExtractorV5AA -> QCSemanticCoreV100",
+  "total": 30,
+  "passed": 11,
+  "failed": 19,
+  "results": [
+    {
+      "case_id": "V223-S00-01",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The event is real and the surrounding facts are available, but my own observable closing action is not stated. A puppet studio recorded control rods and fabric cases on rack sheets. The filing detail belongs to logistics rather than behavioural evidence."
+    },
+    {
+      "case_id": "V223-S00-05",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A photo classroom logged filter wallets and cable straps by drawer. The filing detail belongs to logistics rather than behavioural evidence. Everything material about the episode is known except the last action I myself took."
+    },
+    {
+      "case_id": "V223-S00-14",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Photo classroom ghi filter wallet và cable strap theo drawer. Administrative marker đó không tạo behavioural signal. Mọi phần quan trọng của episode đều rõ ngoại trừ hành động cuối do chính tôi làm."
+    },
+    {
+      "case_id": "V223-S01-01",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A community laundry logged basket tags and detergent keys on station cards. That inventory note cannot determine the semantic classification. Make the final choice for me and tell me which option I must take."
+    },
+    {
+      "case_id": "V223-S01-05",
+      "category": "decision",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "That inventory note cannot determine the semantic classification. Take over the final choice and give me the option that should become mine. A marine workshop indexed rope tags and shackle bins by locker."
+    },
+    {
+      "case_id": "V223-S01-14",
+      "category": "decision",
+      "language": "VI",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Equipment reference vẫn nằm ngoài mechanism đang được đo. Nhận lấy final choice và đưa option sẽ trở thành lựa chọn của tôi. Marine workshop lập index rope tag và shackle bin theo locker."
+    },
+    {
+      "case_id": "V223-S02-01",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The physical record adds context only, not evidence of the response. This is fabricated validation text and does not describe anything that happened to me. A small ferry office indexed ticket rolls and gate paddles by cabinet."
+    },
+    {
+      "case_id": "V223-S02-05",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "money",
+      "pass": false,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Nothing in this example is a real event of mine. A puppet studio recorded control rods and fabric cases on rack sheets. The physical record adds context only, not evidence of the response."
+    },
+    {
+      "case_id": "V223-S02-14",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Không điều gì trong ví dụ này là event thật của tôi. Puppet studio ghi control rod và fabric case trên rack sheet. Storage record đó chỉ là context và không xác lập response mechanism."
+    },
+    {
+      "case_id": "V223-S03-01",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Infer the other person’s private conclusion even though nothing observable from them establishes it. A cartography room indexed map weights and sleeve boxes by drawer. That administrative marker does not create a behavioural signal."
+    },
+    {
+      "case_id": "V223-S03-05",
+      "category": "third",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A community laundry logged basket tags and detergent keys on station cards. That administrative marker does not create a behavioural signal. I want their concealed thought even though nothing they did or said supports the inference."
+    },
+    {
+      "case_id": "V223-S03-14",
+      "category": "third",
+      "language": "VI",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Community laundry ghi basket tag và detergent key trên station card. Filing detail thuộc logistics chứ không phải behavioural evidence. Tôi muốn concealed thought của họ dù không điều họ làm hay nói support inference."
+    },
+    {
+      "case_id": "V223-S04-01",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A bicycle archive logged route boards and repair pouches by cabinet. The equipment reference remains external to the mechanism being measured. At the future date I named, will I have the outcome I want?"
+    },
+    {
+      "case_id": "V223-S04-05",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The equipment reference remains external to the mechanism being measured. Will I get the result I want by the future milestone I gave? A small ferry office indexed ticket rolls and gate paddles by cabinet."
+    },
+    {
+      "case_id": "V223-S04-14",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Inventory note đó không thể quyết semantic classification. Tôi có nhận result mình muốn trước future milestone đã đưa không? Small ferry office lập index ticket roll và gate paddle theo cabinet."
+    },
+    {
+      "case_id": "V223-S05-01",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "That storage record is contextual and does not establish the response mechanism. A small reversible first step was available, but I kept expanding alternatives and never began. A rehearsal depot indexed music folders and stand clips by rack."
+    },
+    {
+      "case_id": "V223-S05-05",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The opening action carried little commitment, yet option expansion stopped me from initiating it. A cartography room indexed map weights and sleeve boxes by drawer. That storage record is contextual and does not establish the response mechanism."
+    },
+    {
+      "case_id": "V223-S05-14",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "money",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Opening action cần ít commitment, nhưng option expansion khiến tôi không initiate. Phòng cartography lập index map weight và sleeve box theo drawer. Physical record chỉ thêm context chứ không thêm evidence của response."
+    },
+    {
+      "case_id": "V223-S06-01",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "The main issue still needed my response, but I redirected myself into side tasks that could not resolve it. A repair café tracked tool cards and parts trays by station. The filing detail belongs to logistics rather than behavioural evidence."
+    },
+    {
+      "case_id": "V223-S06-05",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A bicycle archive logged route boards and repair pouches by cabinet. The filing detail belongs to logistics rather than behavioural evidence. Something important still required action from me, yet I occupied myself elsewhere."
+    },
+    {
+      "case_id": "V223-S06-14",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Bicycle archive ghi route board và repair pouch theo cabinet. Administrative marker đó không tạo behavioural signal. Có chuyện quan trọng vẫn cần action từ tôi, vậy mà tôi bận ở chỗ khác."
+    },
+    {
+      "case_id": "V223-S07-01",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A seed-testing lab tracked sample envelopes and moisture tins by shelf. That inventory note cannot determine the semantic classification. I paused within one defined limit, reviewed once, answered, and then closed the matter."
+    },
+    {
+      "case_id": "V223-S07-05",
+      "category": "slow",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "That inventory note cannot determine the semantic classification. Before answering I allowed one limited pause and one review, then closed the issue. A rehearsal depot indexed music folders and stand clips by rack."
+    },
+    {
+      "case_id": "V223-S07-14",
+      "category": "slow",
+      "language": "VI",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Equipment reference vẫn nằm ngoài mechanism đang được đo. Trước khi trả lời tôi cho phép một limited pause và một review, rồi đóng issue. Rehearsal depot lập index music folder và stand clip theo rack."
+    },
+    {
+      "case_id": "V223-S08-01",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The physical record adds context only, not evidence of the response. I moved close to acting, pulled back, and returned to the same judgement without new facts. A telescope workshop indexed lens caps and tripod plates by drawer."
+    },
+    {
+      "case_id": "V223-S08-05",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "money",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "I got near doing it, stepped away, and cycled back to the identical judgement without new information. A repair café tracked tool cards and parts trays by station. The physical record adds context only, not evidence of the response."
+    },
+    {
+      "case_id": "V223-S08-14",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Tôi tới gần việc làm nó, bước ra rồi cycle về judgement giống hệt khi không có information mới. Repair café theo dõi tool card và parts tray theo station. Storage record đó chỉ là context và không xác lập response mechanism."
+    },
+    {
+      "case_id": "V223-S09-01",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I kept the decision as mine, completed the action, and left the matter closed afterward. A garden lab tracked pot labels and irrigation keys by bench. That administrative marker does not create a behavioural signal."
+    },
+    {
+      "case_id": "V223-S09-05",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "A seed-testing lab tracked sample envelopes and moisture tins by shelf. That administrative marker does not create a behavioural signal. Ownership of the choice stayed with me through completion, after which I left it closed."
+    },
+    {
+      "case_id": "V223-S09-14",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Seed-testing lab theo dõi sample envelope và moisture tin theo shelf. Filing detail thuộc logistics chứ không phải behavioural evidence. Ownership của choice ở tôi suốt completion, sau đó tôi để nó closed."
+    }
+  ]
+}
