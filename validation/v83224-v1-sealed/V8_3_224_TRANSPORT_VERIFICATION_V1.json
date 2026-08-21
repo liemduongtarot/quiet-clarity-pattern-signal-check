@@ -1,0 +1,21 @@
+{
+  "candidate": "V8.3.224",
+  "phase": "transport-only",
+  "validated_development_head_sha": "93340ec0488207f31a48c82e7b916ff709f700ab",
+  "frozen_canonical_hashes_match": {
+    "candidate_bank": true,
+    "selection": true,
+    "fixture": true,
+    "independent_gold": true,
+    "membership": true,
+    "preseal_audit": true
+  },
+  "zip_integrity": true,
+  "bundle_purity": true,
+  "bundle_sha256": "47e034b19e6c5155d637a147bb54aefba5fa148037cb95d037ca5efbcdad8250",
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "pass": true
+}
