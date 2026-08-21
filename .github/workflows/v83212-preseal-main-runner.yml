@@ -6,7 +6,7 @@ permissions:
   contents: write
 jobs:
   preseal:
-    if: github.event.head_commit.message == 'Run V8.3.212 fresh preseal via main'
+    if: startsWith(github.event.head_commit.message, 'Run V8.3.212 fresh preseal via main')
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
