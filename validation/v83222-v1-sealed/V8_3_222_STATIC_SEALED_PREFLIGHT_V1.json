@@ -1,0 +1,28 @@
+{
+  "candidate": "V8.3.222",
+  "phase": "static-sealed-preflight",
+  "validated_development_head_sha": "8fd91bfd1e9abdc25b9af12a9494b8e2f14e9f16",
+  "loader_chain": "QCEvidenceExtractorV5Z -> QCSemanticCoreV99",
+  "loader_chain_static_verified": true,
+  "semantic_files_byte_identical_to_v222_dev": true,
+  "v5x_v97_byte_identical_to_parent": true,
+  "frozen_canonical_hashes_match": {
+    "candidate_bank": true,
+    "selection": true,
+    "fixture": true,
+    "independent_gold": true,
+    "membership": true,
+    "preseal_audit": true
+  },
+  "transport_pass": true,
+  "development_authority_pass": true,
+  "zero_failure_development_predicate": true,
+  "first_run_marker_absent": true,
+  "prior_batch_a_execution_absent": true,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "v219_sealed_rerun": false,
+  "v220_sealed_rerun": false,
+  "v221_sealed_rerun": false,
+  "pass": true
+}
