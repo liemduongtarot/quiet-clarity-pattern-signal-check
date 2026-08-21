@@ -1,0 +1,22 @@
+{
+  "authority": "V8.3.212 V1 SEALED AUTHORITY",
+  "candidate": "V8.3.212",
+  "validated_development_head_sha": "840cfd3aeea515a335a97615fbc321ebf0e1ce11",
+  "development_checkpoint_sha256": "8b6a4d70abb6b963eb38d2f4e6cbfdd16b13638b45fd3f5fbd726fbdb509c512",
+  "semantic_authority": "QCSemanticCoreV92",
+  "candidate_bank_count": 180,
+  "selected_count": 60,
+  "batch_a_count": 30,
+  "batch_b_count": 30,
+  "v211_r4_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "hashes": {
+    "candidate_bank": "a6fb550ee843c6cf00d17c83bab8d14f78196663c8c176fda48d30905c482c6e",
+    "selection": "a198d2561ff15766ebdaf09fa083a7965fe4121be6714524628cfaf119692379",
+    "fixture": "f6e0a7584e6b78a8867f6048567a565075bc0e603c7cc565cd839832d66f871b",
+    "independent_gold": "6fbf1c9f6b699029ecbd749cb0e3443c827eb779a58c5daccb7ef3d87a3bb4fd",
+    "membership": "51cb8f5a78cd31dde95e1db274d5c5cbab921043ef4c80b877f1d1aaa40d7b97",
+    "preseal_audit": "61e5da142f1384bded58183ac6f946620420f4e1c6a6ece74021d761e1c156c1"
+  }
+}

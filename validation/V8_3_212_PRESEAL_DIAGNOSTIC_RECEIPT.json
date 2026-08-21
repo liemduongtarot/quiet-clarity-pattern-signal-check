@@ -1,9 +1,9 @@
 {
   "candidate": "V8.3.212",
   "phase": "preseal-v1-diagnostic",
-  "run_id": 32452079770,
+  "run_id": 32452205948,
   "run_attempt": 1,
-  "head_sha": "b8da1c3110079f23f65861c136c414619f4c172a",
+  "head_sha": "3f8a2ff63173cebdaf3dc83fb90ce7eb1a894c6f",
   "validated_development_head_sha": "840cfd3aeea515a335a97615fbc321ebf0e1ce11",
   "semantic_authority": "QCSemanticCoreV92",
   "semantic_runtime_executed": false,
@@ -12,7 +12,12 @@
   "v211_r4_sealed_rerun": false,
   "step_111_authorized": false,
   "production_authorized": false,
-  "conclusion": "failure",
-  "failed_phase": "construct-bank",
-  "error": "CalledProcessError: Command 'python validation/v83212-sealed-v1-generator.py' returned non-zero exit status 1."
+  "conclusion": "success",
+  "failed_phase": null,
+  "error": null,
+  "candidate_count": 180,
+  "selected_count": 60,
+  "internal_max_similarity": 0.675,
+  "external_max_similarity": 0.5,
+  "external_reference_surfaces": 2060
 }
