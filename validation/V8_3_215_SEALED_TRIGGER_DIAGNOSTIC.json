@@ -1,0 +1,21 @@
+{
+  "authority": "V8.3.215 SEALED TRIGGER DIAGNOSTIC ONLY",
+  "trigger_sha": "b06496538f0b61c034d29eb5c37e9358cf5099b9",
+  "semantic_runtime_executed_by_diagnostic": false,
+  "batch_a_executed_by_diagnostic": false,
+  "batch_b_executed_by_diagnostic": false,
+  "matches": [
+    {
+      "conclusion": "failure",
+      "createdAt": "2026-08-21T12:21:01Z",
+      "databaseId": 32481461060,
+      "displayTitle": "Run V8.3.215 V1 semantic one-shot",
+      "event": "push",
+      "headSha": "b06496538f0b61c034d29eb5c37e9358cf5099b9",
+      "status": "completed",
+      "updatedAt": "2026-08-21T12:21:10Z",
+      "workflowName": "V8.3.215 Protected Sealed One-Shot"
+    }
+  ],
+  "match_count": 1
+}
