@@ -1,0 +1,46 @@
+{
+  "candidate_count": 180,
+  "selected_count": 60,
+  "language_counts": {
+    "EN": 90,
+    "VI": 90
+  },
+  "mechanism_counts": {
+    "clarification": 18,
+    "decision": 18,
+    "hypothetical": 18,
+    "third": 18,
+    "prediction": 18,
+    "freeze": 18,
+    "ignore": 18,
+    "slow": 18,
+    "sequence": 18,
+    "neutral": 18
+  },
+  "domain_counts": {
+    "money": 30,
+    "relationship": 30,
+    "career": 30,
+    "family": 30,
+    "workplace": 30,
+    "other": 30
+  },
+  "internal_max_similarity": 0.5106382978723404,
+  "internal_max_pair": [
+    "V213-S00-14",
+    "V213-S09-17"
+  ],
+  "external_reference_surfaces": 3080,
+  "external_max_similarity": 0.6060606060606061,
+  "external_max_pair": [
+    "V213-S07-17",
+    "Chi tiết lịch thông thường đã được chốt. Có thêm thời gian trước phản hồi; tôi kiểm một lần rồi xem quá trình đã kết thúc."
+  ],
+  "external_cases_at_or_above_0_75": 0,
+  "exact_external_duplicates": 0,
+  "semantic_fingerprint_exact_duplicates": 0,
+  "runtime_executed_during_bank_or_selection": false,
+  "semantic_authority_loaded_during_bank_or_selection": false,
+  "selection_uses_runtime_output": false,
+  "pass": true
+}
