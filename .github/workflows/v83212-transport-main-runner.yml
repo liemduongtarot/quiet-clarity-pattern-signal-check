@@ -1,44 +1,45 @@
-name: V8.3.214 Frozen Transport Verification
+name: V8.3.214 V1 Semantic One-Shot
 on:
   push:
     branches: [main]
 permissions:
   contents: write
 jobs:
-  transport:
-    if: github.event.head_commit.message == 'Verify V8.3.214 frozen transport'
+  sealed:
+    if: github.event.head_commit.message == 'Run V8.3.214 V1 semantic one-shot'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
           ref: v83214-v1-sealed-validation
           fetch-depth: 1
-      - name: Verify exact frozen authority without semantic runtime
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Execute protected V8.3.214 V1 semantic first run
+        id: one_shot
+        continue-on-error: true
+        run: python validation/v83214-v1-sealed/v83214-v1-one-shot.py
+      - name: Record immutable first-run evidence
+        if: always()
         run: |
-          python - <<'PY'
-          import json,hashlib,pathlib,os
-          root=pathlib.Path('validation/v83214-v1-sealed')
-          names={'candidate_bank':'V8_3_214_PRESEAL_CANDIDATE_BANK_V1.json','selection':'V8_3_214_SEALED_SELECTION_V1.json','fixture':'V8_3_214_SEALED_FIXTURE_V1.json','independent_gold':'V8_3_214_INDEPENDENT_GOLD_V1.json','membership':'V8_3_214_SEALED_MEMBERSHIP_V1.json','preseal_audit':'V8_3_214_PRESEAL_DIVERSITY_AUDIT_V1.json'}
-          auth=json.loads((root/'V8_3_214_SEALED_AUTHORITY_V1.json').read_text())
-          pre=json.loads((root/'V8_3_214_PRESEAL_RUN_RECEIPT.json').read_text())
-          assert auth['validated_development_head_sha']=='4725f8a613048e755fef6c10398d83305abd136f'
-          assert auth['semantic_authority']=='QCSemanticCoreV94R'
-          assert auth['candidate_bank_count']==180 and auth['selected_count']==60 and auth['batch_a_count']==30 and auth['batch_b_count']==30
-          assert pre['conclusion']=='success' and pre['semantic_runtime_executed'] is False and pre['semantic_authority_loaded'] is False and pre['selection_uses_runtime_output'] is False
-          assert pre['batch_a_executed'] is False and pre['batch_b_executed'] is False
-          def canon(o): return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
-          observed={}
-          for k,n in names.items():
-            o=json.loads((root/n).read_text()); observed[k]=hashlib.sha256(canon(o)).hexdigest(); assert observed[k]==auth['hashes'][k],(k,observed[k],auth['hashes'][k])
-          receipt={'authority':'V8.3.214 FROZEN TRANSPORT VERIFICATION','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'workflow_head_sha':os.environ['GITHUB_SHA'],'sealed_head_verified':os.popen('git rev-parse HEAD').read().strip(),'validated_development_head_sha':auth['validated_development_head_sha'],'semantic_authority':'QCSemanticCoreV94R','observed_hashes':observed,'hashes_match':True,'candidate_count':180,'selected_count':60,'batch_a_count':30,'batch_b_count':30,'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'v213_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False,'conclusion':'success'}
-          (root/'V8_3_214_TRANSPORT_VERIFICATION_V1.json').write_text(json.dumps(receipt,indent=2)+'\n')
-          print(json.dumps(receipt,indent=2))
-          PY
-      - name: Commit transport verification metadata only
-        run: |
+          set -euo pipefail
+          test -f validation/V8_3_214_V1_SEMANTIC_FIRST_RUN_EXECUTED.json
+          test -f validation/v83214-v1-sealed/V8_3_214_V1_SEALED_RUN_RECEIPT.json
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/v83214-v1-sealed/V8_3_214_TRANSPORT_VERIFICATION_V1.json
-          git commit -m 'Record V8.3.214 frozen transport verification'
+          git add -- validation/V8_3_214_V1_SEMANTIC_FIRST_RUN_EXECUTED.json validation/v83214-v1-sealed
+          git diff --cached --quiet || git commit -m 'Record V8.3.214 V1 sealed first-run evidence'
           git push origin HEAD:v83214-v1-sealed-validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_214_V1_SEALED_VALIDATION_CHECKPOINT
+          if-no-files-found: error
+          path: |
+            PSC_V8_3_214_V1_SEALED_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_214_V1_SEALED_VALIDATION_CHECKPOINT_SHA256.txt
+      - name: Enforce sealed outcome
+        if: always()
+        run: test '${{ steps.one_shot.outcome }}' = 'success'
