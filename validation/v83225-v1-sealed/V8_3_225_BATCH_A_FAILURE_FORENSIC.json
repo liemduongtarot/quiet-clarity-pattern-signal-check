@@ -1,0 +1,23 @@
+{
+  "candidate": "V8.3.225",
+  "run_id": "32528483885",
+  "validated_development_head_sha": "96955e1cf7538912104700e8dd6307ac4e67cb73",
+  "semantic_authority": "QCEvidenceExtractorV5AC -> QCSemanticCoreV102",
+  "batch_a": {"total":30,"passed":19,"failed":11,"consumed":true},
+  "batch_b": {"executed":false,"status":"SKIPPED"},
+  "failure_layer": "ENGINE LOGIC",
+  "failure_class": "residual compositional recall / scoped-evidence loss and precedence contamination",
+  "failure_distribution": {"clarification":1,"decision":1,"hypothetical":0,"third_party":2,"prediction":0,"freeze":2,"ignore":2,"slow":2,"sequence":1,"neutral":0},
+  "preserved": {"hypothetical":"3/3","prediction":"3/3","neutral":"3/3"},
+  "autopsy": {
+    "input":"11 frozen V8.3.225 Batch A first-run failures",
+    "expected":"category-contract route/family/sequence from independent gold",
+    "actual":"false self-lived/clarification/decision/freeze/ignore or missing family/sequence on decisive compositional cues",
+    "cause":"decisive mechanism cues are present in the full surface but are not consistently retained or composed after inherited scoping/sanitization; contextual logistics then contaminate parent classification",
+    "fix":"additive full-input compositional witness layer only; preserve V5X through V102 and all expected/gold contracts",
+    "retest":"historical 1470 + V216 + frozen V219/V221/V222/V223/V224/V225 A, preserving all previous passes"
+  },
+  "v225_batch_a_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
