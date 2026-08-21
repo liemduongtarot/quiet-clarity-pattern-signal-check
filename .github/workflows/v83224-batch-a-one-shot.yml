@@ -1,0 +1,53 @@
+name: V8.3.224 Protected Batch A One-Shot
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  batch-a:
+    if: github.event.head_commit.message == 'Run V8.3.224 Batch A exactly once'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: v83224-v1-sealed-validation, fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Persist immutable A reservation
+        run: |
+          set -euo pipefail
+          test ! -e validation/v83224-v1-sealed/V8_3_224_BATCH_A_ATTEMPT_MARKER.json
+          test ! -e validation/v83224-v1-sealed/V8_3_224_SEALED_FIRST_RUN_MARKER.json
+          test ! -e validation/v83224-v1-sealed/V8_3_224_BATCH_A_RESULT_V1.json
+          python - <<'PY'
+          import json,os,pathlib
+          o=pathlib.Path('validation/v83224-v1-sealed');pf=json.loads((o/'V8_3_224_STATIC_SEALED_PREFLIGHT_V1.json').read_text());tr=json.loads((o/'V8_3_224_TRANSPORT_VERIFICATION_V1.json').read_text());assert pf['pass'] and tr['pass'] and pf['first_run_marker_absent'] and pf['prior_batch_a_execution_absent']
+          c={'candidate':'V8.3.224','run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ.get('GITHUB_RUN_ATTEMPT'),'validated_development_head_sha':'93340ec0488207f31a48c82e7b916ff709f700ab','semantic_authority':'QCEvidenceExtractorV5AB -> QCSemanticCoreV101','reserved_before_semantic_execution':True,'semantic_runtime_executed':False,'v219_sealed_rerun':False,'v220_sealed_rerun':False,'v221_sealed_rerun':False,'v222_sealed_rerun':False,'v223_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False};a=dict(c);a.update({'phase':'sealed-batch-a-attempt-reservation','batch':'A'});f=dict(c);f.update({'phase':'sealed-first-run-reservation','reserved_batch':'A'});(o/'V8_3_224_BATCH_A_ATTEMPT_MARKER.json').write_text(json.dumps(a,indent=2)+'\n');(o/'V8_3_224_SEALED_FIRST_RUN_MARKER.json').write_text(json.dumps(f,indent=2)+'\n')
+          PY
+          git config user.name github-actions;git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83224-v1-sealed/V8_3_224_BATCH_A_ATTEMPT_MARKER.json validation/v83224-v1-sealed/V8_3_224_SEALED_FIRST_RUN_MARKER.json
+          git commit -m 'Reserve V8.3.224 sealed Batch A first run';git push origin HEAD:v83224-v1-sealed-validation
+      - name: Execute A exactly once
+        id: a
+        continue-on-error: true
+        run: python validation/v83224-v1-sealed/v83224-batch-a-once.py
+      - name: Freeze A evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          test -f validation/v83224-v1-sealed/V8_3_224_BATCH_A_STATUS_V1.json
+          git config user.name github-actions;git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83224-v1-sealed/V8_3_224_BATCH_A_STATUS_V1.json validation/v83224-v1-sealed/V8_3_224_BATCH_A_ATTEMPT_MARKER.json validation/v83224-v1-sealed/V8_3_224_SEALED_FIRST_RUN_MARKER.json
+          test ! -f validation/v83224-v1-sealed/V8_3_224_BATCH_A_RESULT_V1.json || git add validation/v83224-v1-sealed/V8_3_224_BATCH_A_RESULT_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.224 Batch A first-run evidence';git push origin HEAD:v83224-v1-sealed-validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_224_V1_BATCH_A_CHECKPOINT
+          path: |
+            PSC_V8_3_224_V1_BATCH_A_CHECKPOINT.zip
+            PSC_V8_3_224_V1_BATCH_A_CHECKPOINT_SHA256.txt
+      - name: Enforce
+        if: always()
+        run: test '${{ steps.a.outcome }}' = 'success'
