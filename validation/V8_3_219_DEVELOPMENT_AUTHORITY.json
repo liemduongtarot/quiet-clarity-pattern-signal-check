@@ -1,0 +1,15 @@
+{
+  "candidate": "V8.3.219",
+  "development": "PASS",
+  "recovery_scope": "sealed-runner loader-chain materialization/append logic only",
+  "parent_development_authority_sha": "9d946d3ddf8b98c2b3f80e1b5b849b12415381c2",
+  "semantic_base_sha": "456a88d01b671f0cb92a0be31f4d34d68f60d135",
+  "semantic_authority": "QCEvidenceExtractorV5X -> QCSemanticCoreV97",
+  "semantic_change": false,
+  "bounded_loader_recovery_pass": true,
+  "expected_gold_changed": false,
+  "v217_sealed_rerun": false,
+  "v218_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
