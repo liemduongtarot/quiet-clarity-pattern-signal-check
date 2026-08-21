@@ -1,0 +1,46 @@
+name: V8.3.218 Transport + Static Sealed Preflight
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Run V8.3.218 transport and static preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83218-v1-sealed-validation
+          fetch-depth: 0
+      - name: Transport-only verification
+        run: python validation/v83218-v1-sealed/v83218-transport-only.py
+      - name: Static sealed preflight
+        run: python validation/v83218-v1-sealed/v83218-static-sealed-preflight.py
+      - name: Build checkpoint
+        run: |
+          python - <<'PY'
+          import pathlib,zipfile,hashlib
+          r=pathlib.Path('.');o=r/'validation/v83218-v1-sealed';z=r/'PSC_V8_3_218_V1_TRANSPORT_PREFLIGHT_CHECKPOINT.zip'
+          names=['V8_3_218_SEALED_AUTHORITY_V1.json','V8_3_218_TRANSPORT_VERIFICATION_V1.json','V8_3_218_STATIC_SEALED_PREFLIGHT_V1.json','V8_3_218_FROZEN_TRANSPORT_BUNDLE_V1_SHA256.txt']
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for n in names:q.write(o/n,n)
+          h=hashlib.sha256(z.read_bytes()).hexdigest();(r/'PSC_V8_3_218_V1_TRANSPORT_PREFLIGHT_CHECKPOINT_SHA256.txt').write_text(h+'  '+z.name+'\n')
+          PY
+      - name: Freeze verification evidence
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/v83218-v1-sealed/V8_3_218_TRANSPORT_VERIFICATION_V1.json validation/v83218-v1-sealed/V8_3_218_STATIC_SEALED_PREFLIGHT_V1.json validation/v83218-v1-sealed/V8_3_218_FROZEN_TRANSPORT_BUNDLE_V1.zip validation/v83218-v1-sealed/V8_3_218_FROZEN_TRANSPORT_BUNDLE_V1_SHA256.txt
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.218 transport and static preflight evidence'
+          git push origin HEAD:v83218-v1-sealed-validation
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_218_V1_TRANSPORT_PREFLIGHT_CHECKPOINT
+          path: |
+            PSC_V8_3_218_V1_TRANSPORT_CHECKPOINT.zip
+            PSC_V8_3_218_V1_TRANSPORT_CHECKPOINT_SHA256.txt
+            PSC_V8_3_218_V1_TRANSPORT_PREFLIGHT_CHECKPOINT.zip
+            PSC_V8_3_218_V1_TRANSPORT_PREFLIGHT_CHECKPOINT_SHA256.txt
