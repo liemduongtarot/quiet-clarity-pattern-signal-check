@@ -1,0 +1,125 @@
+{
+  "candidate": "V8.3.212",
+  "phase": "generalization-800-v3-v92",
+  "run_id": 32450831347,
+  "run_attempt": 1,
+  "head_sha": "499253696b512ad2bad9419bbe69babff2d1f615",
+  "semantic_authority": "QCSemanticCoreV92",
+  "total": 800,
+  "classification_passed": 790,
+  "evidence_passed": 792,
+  "pass": true,
+  "independence": {
+    "reference_surfaces": 1260,
+    "max_jaccard_similarity": 0.5909090909090909,
+    "cases_at_or_above_0_75": 0,
+    "max_pair": {
+      "case_id": "V212-G02-50",
+      "reference": "T\u00f4i t\u1ea1o \u0111o\u1ea1n n\u00e0y ch\u1ec9 l\u00e0m d\u1eef li\u1ec7u test; n\u00f3 kh\u00f4ng m\u00f4 t\u1ea3 tr\u1ea3i nghi\u1ec7m th\u1eadt c\u1ee7a t\u00f4i.",
+      "similarity": 0.5909090909090909
+    }
+  },
+  "failure_attribution": {
+    "pass": 790,
+    "extraction_failure": 8,
+    "classification_or_precedence_failure": 2
+  },
+  "by_mechanism": {
+    "clarification": {
+      "total": 80,
+      "evidence_pass": 72,
+      "class_pass": 72,
+      "evidence_rate": 0.9,
+      "classification_rate": 0.9
+    },
+    "decision": {
+      "total": 80,
+      "evidence_pass": 80,
+      "class_pass": 80,
+      "evidence_rate": 1,
+      "classification_rate": 1
+    },
+    "hypothetical": {
+      "total": 80,
+      "evidence_pass": 80,
+      "class_pass": 80,
+      "evidence_rate": 1,
+      "classification_rate": 1
+    },
+    "third": {
+      "total": 80,
+      "evidence_pass": 80,
+      "class_pass": 80,
+      "evidence_rate": 1,
+      "classification_rate": 1
+    },
+    "prediction": {
+      "total": 80,
+      "evidence_pass": 80,
+      "class_pass": 80,
+      "evidence_rate": 1,
+      "classification_rate": 1
+    },
+    "freeze": {
+      "total": 80,
+      "evidence_pass": 80,
+      "class_pass": 80,
+      "evidence_rate": 1,
+      "classification_rate": 1
+    },
+    "ignore": {
+      "total": 80,
+      "evidence_pass": 80,
+      "class_pass": 80,
+      "evidence_rate": 1,
+      "classification_rate": 1
+    },
+    "slow": {
+      "total": 80,
+      "evidence_pass": 80,
+      "class_pass": 80,
+      "evidence_rate": 1,
+      "classification_rate": 1
+    },
+    "sequence": {
+      "total": 80,
+      "evidence_pass": 80,
+      "class_pass": 80,
+      "evidence_rate": 1,
+      "classification_rate": 1
+    },
+    "neutral": {
+      "total": 80,
+      "evidence_pass": 80,
+      "class_pass": 78,
+      "evidence_rate": 1,
+      "classification_rate": 0.975
+    }
+  },
+  "by_language": {
+    "EN": {
+      "total": 320,
+      "evidence_pass": 320,
+      "class_pass": 320,
+      "evidence_rate": 1,
+      "classification_rate": 1
+    },
+    "VI": {
+      "total": 320,
+      "evidence_pass": 312,
+      "class_pass": 310,
+      "evidence_rate": 0.975,
+      "classification_rate": 0.96875
+    },
+    "MIX": {
+      "total": 160,
+      "evidence_pass": 160,
+      "class_pass": 160,
+      "evidence_rate": 1,
+      "classification_rate": 1
+    }
+  },
+  "v211_r4_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
