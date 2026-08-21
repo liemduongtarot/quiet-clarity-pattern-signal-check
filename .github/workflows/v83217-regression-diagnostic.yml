@@ -1,0 +1,35 @@
+name: V8.3.217 Regression Trigger Diagnostic
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  diagnose:
+    if: github.event.head_commit.message == 'Diagnose V8.3.217 regression trigger only'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83217-v1-validation
+          fetch-depth: 1
+      - name: Inspect workflow metadata only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,subprocess,pathlib
+          trigger='6950894cc8835dd783fc7b030c1a7d314e8d4c8f'
+          raw=subprocess.check_output(['gh','run','list','--repo','liemduongtarot/quiet-clarity-pattern-signal-check','--workflow','v83217-v97-regression.yml','--limit','20','--json','databaseId,headSha,status,conclusion,event,createdAt,updatedAt,displayTitle,workflowName'],text=True)
+          runs=json.loads(raw); matches=[r for r in runs if r.get('headSha')==trigger]
+          out={'authority':'V8.3.217 REGRESSION TRIGGER DIAGNOSTIC ONLY','trigger_sha':trigger,'semantic_runtime_executed_by_diagnostic':False,'matches':matches,'match_count':len(matches)}
+          pathlib.Path('validation/V8_3_217_REGRESSION_TRIGGER_DIAGNOSTIC.json').write_text(json.dumps(out,indent=2)+'\n')
+          PY
+      - name: Commit diagnostic metadata only
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/V8_3_217_REGRESSION_TRIGGER_DIAGNOSTIC.json
+          git diff --cached --quiet || git commit -m 'Record V8.3.217 regression trigger diagnostic'
+          git push origin HEAD:v83217-v1-validation
