@@ -1,53 +1,59 @@
-name: V8.3.213 Frozen Transport Verification
+name: V8.3.213 V1 Semantic One-Shot
 on:
   push:
     branches: [main]
 permissions:
   contents: write
 jobs:
-  transport:
-    if: github.event.head_commit.message == 'Verify V8.3.213 frozen transport'
+  sealed:
+    if: github.event.head_commit.message == 'Run V8.3.213 V1 semantic one-shot'
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
         with:
           ref: v83213-v1-sealed-validation
           fetch-depth: 1
-      - name: Verify exact frozen authority without semantic runtime
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Execute pinned V8.3.213 V1 semantic one-shot
+        id: sealed
+        continue-on-error: true
+        run: python validation/v83213-v1-sealed/v83213-v1-one-shot.py
+      - name: Ensure immutable receipt exists
+        if: always()
         run: |
           python - <<'PY'
-          import json,hashlib,pathlib,os
-          root=pathlib.Path('validation/v83213-v1-sealed')
-          names={
-            'candidate_bank':'V8_3_213_PRESEAL_CANDIDATE_BANK_V1.json',
-            'selection':'V8_3_213_SEALED_SELECTION_V1.json',
-            'fixture':'V8_3_213_SEALED_FIXTURE_V1.json',
-            'independent_gold':'V8_3_213_INDEPENDENT_GOLD_V1.json',
-            'membership':'V8_3_213_SEALED_MEMBERSHIP_V1.json',
-            'preseal_audit':'V8_3_213_PRESEAL_DIVERSITY_AUDIT_V1.json'}
-          auth=json.loads((root/'V8_3_213_SEALED_AUTHORITY_V1.json').read_text())
-          pre=json.loads((root/'V8_3_213_PRESEAL_RUN_RECEIPT.json').read_text())
-          assert auth['validated_development_head_sha']=='70808836f6cfb09a5428685e0bfdc336afe4181f'
-          assert auth['semantic_authority']=='QCSemanticCoreV93'
-          assert auth['candidate_bank_count']==180 and auth['selected_count']==60
-          assert auth['batch_a_count']==30 and auth['batch_b_count']==30
-          assert auth['v212_sealed_rerun'] is False and auth['step_111_authorized'] is False and auth['production_authorized'] is False
-          assert pre['conclusion']=='success'
-          assert pre['semantic_runtime_executed'] is False and pre['semantic_authority_loaded'] is False and pre['selection_uses_runtime_output'] is False
-          assert pre['batch_a_executed'] is False and pre['batch_b_executed'] is False
-          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
-          observed={}
-          for k,n in names.items():
-            o=json.loads((root/n).read_text()); observed[k]=hashlib.sha256(canon(o)).hexdigest(); assert observed[k]==auth['hashes'][k],(k,observed[k],auth['hashes'][k])
-          receipt={'authority':'V8.3.213 FROZEN TRANSPORT VERIFICATION','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'workflow_head_sha':os.environ['GITHUB_SHA'],'sealed_head_verified':os.popen('git rev-parse HEAD').read().strip(),'validated_development_head_sha':auth['validated_development_head_sha'],'semantic_authority':'QCSemanticCoreV93','observed_hashes':observed,'hashes_match':True,'candidate_count':180,'selected_count':60,'batch_a_count':30,'batch_b_count':30,'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'v212_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False,'conclusion':'success'}
-          (root/'V8_3_213_TRANSPORT_VERIFICATION_V1.json').write_text(json.dumps(receipt,indent=2)+'\n')
-          print(json.dumps(receipt,indent=2))
+          import json,pathlib,os
+          p=pathlib.Path('validation/v83213-v1-sealed/V8_3_213_V1_SEALED_RUN_RECEIPT.json')
+          if not p.exists():
+            p.write_text(json.dumps({'candidate':'V8.3.213','phase':'sealed-validation-v1','run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ['GITHUB_RUN_ATTEMPT'],'status':'completed','conclusion':'presemantic-plumbing-failure','transport_passed':True,'batch_a_executed':False,'batch_a_passed':None,'batch_a_failed':None,'batch_b_executed':False,'batch_b_passed':None,'batch_b_failed':None,'sealed_trigger_repeated':False,'v212_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
           PY
-      - name: Commit transport verification metadata only
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_213_V1_SEALED_VALIDATION_CHECKPOINT
+          path: |
+            PSC_V8_3_213_V1_SEALED_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_213_V1_SEALED_VALIDATION_CHECKPOINT_SHA256.txt
+          if-no-files-found: warn
+      - name: Record V8.3.213 V1 first-run evidence
+        if: always()
         run: |
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/v83213-v1-sealed/V8_3_213_TRANSPORT_VERIFICATION_V1.json
-          git commit -m 'Record V8.3.213 frozen transport verification'
+          git add -- validation/v83213-v1-sealed/V8_3_213_V1_SEALED_RUN_RECEIPT.json
+          if [ -f validation/V8_3_213_V1_SEMANTIC_FIRST_RUN_EXECUTED.json ]; then git add -- validation/V8_3_213_V1_SEMANTIC_FIRST_RUN_EXECUTED.json; fi
+          if [ -f validation/v83213-v1-sealed/V8_3_213_V1_BATCH_A_FIRST_RUN_RESULTS.json ]; then git add -- validation/v83213-v1-sealed/V8_3_213_V1_BATCH_A_FIRST_RUN_RESULTS.json; fi
+          if [ -f validation/v83213-v1-sealed/V8_3_213_V1_BATCH_B_FIRST_RUN_RESULTS.json ]; then git add -- validation/v83213-v1-sealed/V8_3_213_V1_BATCH_B_FIRST_RUN_RESULTS.json; fi
+          if [ -f validation/v83213-v1-sealed/V8_3_213_V1_SEALED_STATUS.json ]; then git add -- validation/v83213-v1-sealed/V8_3_213_V1_SEALED_STATUS.json; fi
+          git diff --cached --quiet || git commit -m 'Record V8.3.213 V1 sealed first-run evidence'
           git push origin HEAD:v83213-v1-sealed-validation
+      - name: Enforce sealed outcome
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,pathlib,sys
+          r=json.loads(pathlib.Path('validation/v83213-v1-sealed/V8_3_213_V1_SEALED_RUN_RECEIPT.json').read_text())
+          if r.get('conclusion')!='success': sys.exit(1)
+          PY
