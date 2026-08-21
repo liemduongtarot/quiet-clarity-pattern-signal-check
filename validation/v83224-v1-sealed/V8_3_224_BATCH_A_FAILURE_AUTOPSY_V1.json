@@ -1,0 +1,18 @@
+{
+  "candidate":"V8.3.224",
+  "source_run_id":"32522731191",
+  "failure_layer":"ENGINE LOGIC",
+  "failure_class":"semantic compositional generalization and precedence gaps",
+  "batch_a":{"total":30,"passed":15,"failed":15,"consumed":true},
+  "batch_b":{"executed":false,"status":"SKIPPED"},
+  "mechanism_groups":{"clarification":2,"decision-request":2,"hypothetical":1,"third-party-only":2,"prediction":0,"freeze":3,"ignore":0,"slow":1,"sequence":2,"neutral-completion":2},
+  "INPUT":"fresh V8.3.224 sealed Batch A, 30 independent cases",
+  "EXPECTED":"30/30 exact route/family/sequence agreement",
+  "ACTUAL":"15/30 PASS, 15 FAIL under QCEvidenceExtractorV5AB -> QCSemanticCoreV101",
+  "CAUSE":"unseen compositional paraphrases remain outside V101 evidence vocabulary; strong neutral/slow signals also need precedence over inherited contamination",
+  "FIX":"open V8.3.225 from exact V8.3.224 DEVELOPMENT authority and add bounded V5AC/V102 compositional recall only; preserve all prior layers and expected/gold contracts",
+  "RETEST":"historical 1470 plus V216/V219/V221/V222/V223/V224 frozen A; require V224 30/30 with 15/15 failures repaired and 15/15 passes preserved",
+  "v224_batch_a_rerun":false,
+  "production_authorized":false,
+  "step_111_authorized":false
+}
