@@ -1,0 +1,52 @@
+name: V8.3.212 Frozen Transport Verification
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  transport:
+    if: github.event.head_commit.message == 'Verify V8.3.212 frozen transport'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83212-v1-sealed-validation
+          fetch-depth: 1
+      - name: Verify exact frozen authority without semantic runtime
+        run: |
+          python - <<'PY'
+          import json,hashlib,pathlib,os
+          root=pathlib.Path('validation/v83212-v1-sealed')
+          names={
+            'candidate_bank':'V8_3_212_PRESEAL_CANDIDATE_BANK_V1.json',
+            'selection':'V8_3_212_SEALED_SELECTION_V1.json',
+            'fixture':'V8_3_212_SEALED_FIXTURE_V1.json',
+            'independent_gold':'V8_3_212_INDEPENDENT_GOLD_V1.json',
+            'membership':'V8_3_212_SEALED_MEMBERSHIP_V1.json',
+            'preseal_audit':'V8_3_212_PRESEAL_DIVERSITY_AUDIT_V1.json'}
+          auth=json.loads((root/'V8_3_212_SEALED_AUTHORITY_V1.json').read_text())
+          pre=json.loads((root/'V8_3_212_PRESEAL_RUN_RECEIPT.json').read_text())
+          assert auth['validated_development_head_sha']=='840cfd3aeea515a335a97615fbc321ebf0e1ce11'
+          assert auth['semantic_authority']=='QCSemanticCoreV92'
+          assert auth['candidate_bank_count']==180 and auth['selected_count']==60
+          assert auth['batch_a_count']==30 and auth['batch_b_count']==30
+          assert not auth['v211_r4_sealed_rerun'] and not auth['step_111_authorized'] and not auth['production_authorized']
+          assert pre['conclusion']=='success' and pre['semantic_runtime_executed'] is False and pre['semantic_authority_loaded'] is False and pre['selection_uses_runtime_output'] is False
+          assert pre['batch_a_executed'] is False and pre['batch_b_executed'] is False
+          def canon(o): return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+          observed={}
+          for k,n in names.items():
+            o=json.loads((root/n).read_text()); observed[k]=hashlib.sha256(canon(o)).hexdigest(); assert observed[k]==auth['hashes'][k],(k,observed[k],auth['hashes'][k])
+          receipt={'authority':'V8.3.212 FROZEN TRANSPORT VERIFICATION','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'workflow_head_sha':os.environ['GITHUB_SHA'],'sealed_head_verified':os.popen('git rev-parse HEAD').read().strip(),'validated_development_head_sha':auth['validated_development_head_sha'],'semantic_authority':'QCSemanticCoreV92','observed_hashes':observed,'hashes_match':True,'candidate_count':180,'selected_count':60,'batch_a_count':30,'batch_b_count':30,'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'v211_r4_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False,'conclusion':'success'}
+          (root/'V8_3_212_TRANSPORT_VERIFICATION_V1.json').write_text(json.dumps(receipt,indent=2)+'\n')
+          print(json.dumps(receipt,indent=2))
+          PY
+      - name: Commit transport verification metadata only
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/v83212-v1-sealed/V8_3_212_TRANSPORT_VERIFICATION_V1.json
+          git commit -m 'Record V8.3.212 frozen transport verification'
+          git push origin HEAD:v83212-v1-sealed-validation
