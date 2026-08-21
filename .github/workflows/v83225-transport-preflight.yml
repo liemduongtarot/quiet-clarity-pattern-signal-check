@@ -1,0 +1,66 @@
+name: V8.3.225 transport and static preflight
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83225-transport-preflight.yml
+permissions:
+  contents: write
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83225-v1-sealed-validation
+          fetch-depth: 0
+      - name: Run transport and preflight
+        id: run
+        shell: bash
+        run: |
+          set +e
+          python validation/v83225-v1-sealed/v83225-transport-preflight.py > /tmp/v225-preflight.log 2>&1
+          rc=$?
+          cat /tmp/v225-preflight.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          RC="$rc" python - <<'PY'
+          import json,os,pathlib
+          text=pathlib.Path('/tmp/v225-preflight.log').read_text(errors='replace')
+          rc=os.environ['RC']
+          d={'candidate':'V8.3.225','phase':'transport-static-preflight-diagnostic','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-14000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False}
+          pathlib.Path('validation/v83225-v1-sealed/V8_3_225_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
+          PY
+          exit 0
+      - name: Freeze transport/preflight evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83225-v1-sealed/V8_3_225_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json
+          test ! -f validation/v83225-v1-sealed/V8_3_225_TRANSPORT_VERIFICATION_V1.json || git add validation/v83225-v1-sealed/V8_3_225_TRANSPORT_VERIFICATION_V1.json
+          test ! -f validation/v83225-v1-sealed/V8_3_225_STATIC_SEALED_PREFLIGHT_V1.json || git add validation/v83225-v1-sealed/V8_3_225_STATIC_SEALED_PREFLIGHT_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.225 transport and static preflight evidence'
+          git push origin HEAD:v83225-v1-sealed-validation
+      - name: Build checkpoint
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir V8_3_225_TRANSPORT_PREFLIGHT_CHECKPOINT
+          for f in validation/v83225-v1-sealed/V8_3_225_TRANSPORT* validation/v83225-v1-sealed/V8_3_225_STATIC_SEALED_PREFLIGHT_V1.json validation/v83225-v1-sealed/V8_3_225_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || cp "$f" V8_3_225_TRANSPORT_PREFLIGHT_CHECKPOINT/; done
+          (cd V8_3_225_TRANSPORT_PREFLIGHT_CHECKPOINT && sha256sum * > SHA256_MANIFEST.txt)
+          zip -r PSC_V8_3_225_TRANSPORT_PREFLIGHT_CHECKPOINT.zip V8_3_225_TRANSPORT_PREFLIGHT_CHECKPOINT
+          sha256sum PSC_V8_3_225_TRANSPORT_PREFLIGHT_CHECKPOINT.zip > PSC_V8_3_225_TRANSPORT_PREFLIGHT_CHECKPOINT_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_225_TRANSPORT_PREFLIGHT_CHECKPOINT
+          path: |
+            PSC_V8_3_225_TRANSPORT_PREFLIGHT_CHECKPOINT.zip
+            PSC_V8_3_225_TRANSPORT_PREFLIGHT_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce outcome
+        shell: bash
+        run: test '${{ steps.run.outputs.rc }}' = '0'
