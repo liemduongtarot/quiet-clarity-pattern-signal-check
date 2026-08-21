@@ -1,0 +1,30 @@
+{
+  "candidate": "V8.3.223",
+  "phase": "transport-only",
+  "validated_development_head_sha": "857e98039a6d603fdcae2ec90f471ffd0bbabbb8",
+  "frozen_canonical_hashes_match": {
+    "candidate_bank": true,
+    "selection": true,
+    "fixture": true,
+    "independent_gold": true,
+    "membership": true,
+    "preseal_audit": true
+  },
+  "zip_integrity": true,
+  "bundle_purity": true,
+  "raw_file_hashes": {
+    "V8_3_223_SEALED_AUTHORITY_V1.json": "10599506d9c6b9a04fdab60ae3d805f0bd1871f718bed22224b53b15d2261395",
+    "V8_3_223_PRESEAL_DIVERSITY_AUDIT_V1.json": "e708566abd3685addb08c157d09d4b6348a33e89096b09860d0928f764c7225a",
+    "V8_3_223_SEALED_FIXTURE_V1.json": "bef9824fbf1376067597455fbbe1413c478ee01d867f8bbfb2ac54ecd8bdfca9",
+    "V8_3_223_SEALED_MEMBERSHIP_V1.json": "4f8d3cbd390c92e3fff4f86af789fa81ff0db98aceabb38544adf3e9854e5808",
+    "V8_3_223_PRESEAL_CANDIDATE_BANK_V1.json": "ecc4d4dd04bb6bb22ccaca24e8453dc9918aa7b5905943db25dd6e4e5c4e4c02",
+    "V8_3_223_SEALED_SELECTION_V1.json": "5e0789833fc9b4605d723f34e2f55383b751dda95c2fb67549bd65e2413b54fe",
+    "V8_3_223_INDEPENDENT_GOLD_V1.json": "1a8366a8bd69f812a6a891673086f11bc685e1d2586ed839a14f5d8fd6d4fa06"
+  },
+  "bundle_sha256": "5fffb5e528c9a6a0ebe4c6eb36bbcaa466ff571db6d178fa9e18a2dd13e57389",
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "pass": true
+}
