@@ -1,0 +1,22 @@
+{
+  "candidate": "V8.3.213",
+  "phase": "v93-regression-diagnostic",
+  "run_id": "32464580650",
+  "run_attempt": "1",
+  "head_sha": "8a4b718639b8582bf75e3a62436abb32ddee7357",
+  "immutable_regression": {
+    "total": 1470,
+    "passed": 1470,
+    "failed": 0
+  },
+  "v212_frozen_a_regression": {
+    "total": 30,
+    "passed": 30,
+    "failed": 0
+  },
+  "orchestrator_outcome": "success",
+  "v212_sealed_rerun": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
