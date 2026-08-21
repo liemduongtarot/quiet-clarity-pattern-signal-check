@@ -1,14 +1,14 @@
-name: V8.3.215 V95 Regression Main Runner
+name: V8.3.215 V95 Final Development
 on:
   push:
     branches: [main]
 permissions:
   contents: write
 jobs:
-  regression:
-    if: github.event.head_commit.message == 'Run V8.3.215 V95 regression via main'
+  final:
+    if: github.event.head_commit.message == 'Run V8.3.215 V95 final development'
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:
@@ -17,30 +17,38 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Run frozen V214 carrier then immutable regression
+      - name: Run remaining V95 development gates
         id: orchestrator
         continue-on-error: true
-        run: python validation/v83215-v95-regression-orchestrator.py
-      - name: Record V95 regression evidence
+        run: python validation/v83215-v95-final-development-orchestrator.py
+      - name: Record final-development evidence
         if: always()
         run: |
           python - <<'PY'
           import json,pathlib,os
           def load(p):
             q=pathlib.Path(p); return json.loads(q.read_text()) if q.exists() else None
-          existing=load('validation/V8_3_215_V95_REGRESSION_V1_RECEIPT.json')
-          ar=load('V8_3_215_V214_A_REGRESSION_RESULTS.json'); rr=load('V8_3_215_V95_REGRESSION_RESULTS.json')
-          r=existing or {'candidate':'V8.3.215','phase':'v95-regression-v1-main','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.popen('git rev-parse HEAD').read().strip(),'semantic_authority':'QCSemanticCoreV95','v214_frozen_a_regression':None if ar is None else {'total':ar.get('total'),'passed':ar.get('passed'),'failed':ar.get('failed')},'immutable_regression':None if rr is None else {'total':rr.get('total'),'passed':rr.get('passed'),'failed':rr.get('failed')},'status':'completed','conclusion':'success' if '${{ steps.orchestrator.outcome }}'=='success' else 'failure','v214_sealed_rerun':False,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False}
-          pathlib.Path('validation/V8_3_215_V95_REGRESSION_EVIDENCE_RECEIPT.json').write_text(json.dumps(r,indent=2)+'\n')
+          existing=load('validation/V8_3_215_V95_FINAL_DEVELOPMENT_RUN_RECEIPT.json')
+          reg=load('validation/V8_3_215_V95_REGRESSION_EVIDENCE_RECEIPT.json')
+          gen=load('V8_3_212_DEVELOPMENT_GENERALIZATION_800_RESULTS_V1.json')
+          br=load('V8_3_215_V95_FINAL_BROWSER_E2E_RESULTS.json')
+          r=existing or {'candidate':'V8.3.215','phase':'v95-final-development','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.popen('git rev-parse HEAD').read().strip(),'semantic_authority':'QCSemanticCoreV95','regression':None if reg is None else {'carrier':reg.get('v214_frozen_a_regression_passed'),'immutable':reg.get('immutable_regression_passed')},'generalization':None if gen is None else {'total':gen.get('total'),'classification_passed':gen.get('classification_passed'),'pass':gen.get('pass')},'browser':None if br is None else {'total':br.get('total'),'passed':br.get('passed')},'status':'completed','conclusion':'success' if '${{ steps.orchestrator.outcome }}'=='success' else 'failure','v214_sealed_rerun':False,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_215_V95_FINAL_DEVELOPMENT_EVIDENCE_RECEIPT.json').write_text(json.dumps(r,indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/V8_3_215_V95_REGRESSION_EVIDENCE_RECEIPT.json
-          if [ -f validation/V8_3_215_V95_REGRESSION_V1_RECEIPT.json ]; then git add -- validation/V8_3_215_V95_REGRESSION_V1_RECEIPT.json; fi
-          if [ -f V8_3_215_V214_A_REGRESSION_RESULTS.json ]; then cp V8_3_215_V214_A_REGRESSION_RESULTS.json validation/ && git add validation/V8_3_215_V214_A_REGRESSION_RESULTS.json; fi
-          if [ -f V8_3_215_V95_REGRESSION_RESULTS.json ]; then cp V8_3_215_V95_REGRESSION_RESULTS.json validation/ && git add validation/V8_3_215_V95_REGRESSION_RESULTS.json; fi
-          git diff --cached --quiet || git commit -m 'Record V8.3.215 V95 regression evidence'
+          git add -- validation/V8_3_215_V95_FINAL_DEVELOPMENT_EVIDENCE_RECEIPT.json
+          if [ -f validation/V8_3_215_V95_FINAL_DEVELOPMENT_RUN_RECEIPT.json ]; then git add -- validation/V8_3_215_V95_FINAL_DEVELOPMENT_RUN_RECEIPT.json; fi
+          git diff --cached --quiet || git commit -m 'Record V8.3.215 V95 final development evidence'
           git push origin HEAD:v83215-v1-validation
-      - name: Enforce regression outcome
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_215_V95_DEVELOPMENT_VALIDATION_CHECKPOINT
+          if-no-files-found: ignore
+          path: |
+            PSC_V8_3_215_V95_DEVELOPMENT_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_215_V95_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt
+      - name: Enforce outcome
         if: always()
         run: test '${{ steps.orchestrator.outcome }}' = 'success'
