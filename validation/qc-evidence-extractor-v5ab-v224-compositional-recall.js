@@ -7,7 +7,6 @@ const any=(d,a)=>a.some(x=>d.includes(x));
 function scopeRaw(raw){return parent.scopeRaw(raw);}
 function extract(raw){
  const scoped=scopeRaw(raw),d=fold(scoped),o={...parent.extract(scoped)};
- // Route generalization: extend evidence phrases, not sealed sentence identity.
  const clarContext=any(d,['everything material about the episode is known','all material facts are known','mọi phần quan trọng của episode đều rõ','moi phan quan trong cua episode deu ro']);
  const clarMissing=any(d,['last action i myself took','my own final action','hanh dong cuoi do chinh toi lam','hanh dong cuoi do chinh toi thuc hien']);
  if(clarContext&&clarMissing){o.v224_clarification=true;o.action_missing=true;o.self_owned_action=true;o.context_otherwise_complete=true;}
@@ -20,7 +19,6 @@ function extract(raw){
  const thirdHidden=any(d,['concealed thought','hidden thought','secret thought','concealed belief','concealed conclusion','concealed thought cua ho','hidden thought cua ho']);
  const thirdNoEvidence=any(d,['nothing they did or said supports the inference','no action or statement supports','khong dieu ho lam hay noi support inference','khong co action hay statement support']);
  if(thirdHidden&&thirdNoEvidence){o.v224_third=true;o.third_party_only=true;}
- // Self-lived mechanism generalization.
  const lowCommit=any(d,['opening action carried little commitment','low commitment','starter move had little commitment','opening action can it commitment','starter move it commitment']);
  const optExpand=any(d,['option expansion','expanding alternatives','widening alternatives','adding possibilities','mo rong alternative','noi option','tao them possibility']);
  const notInitiated=any(d,['stopped me from initiating','never initiated','did not initiate','khong initiate','khong bat dau','chua start']);
@@ -30,7 +28,7 @@ function extract(raw){
  const elsewhere=any(d,['side tasks','side work','peripheral work','occupied myself elsewhere','busiest myself elsewhere','task phu','side task','ban o cho khac','bận ở chỗ khác','ban o cho khac']);
  if(important&&stillNeed&&elsewhere){o.v224_ignore=true;o.central_responsibility=true;o.response_omitted=true;o.attention_diverted=true;o.peripheral_activity=true;}
  const bounded=any(d,['one defined limit','finite delay','bounded pause','limited pause','fixed boundary','single limited delay','mot gioi han da dinh','finite delay','bounded pause','limited pause','boundary ro']);
- const reviewOnce=any(d,['reviewed once','review once','one review','checked once','one check','review mot lan','check mot lan']);
+ const reviewOnce=any(d,['reviewed once','review once','one review','checked once','one check','review mot lan','check mot lan','mot review']);
  const answeredClosed=any(d,['answered and then closed','responded and closed','answered and did not reopen','response roi dong','tra loi roi dong','response va khong mo lai']);
  const beforeAnswer=any(d,['before answering','before i answered','truoc khi tra loi','truoc khi toi tra loi']);
  const closedAfter=any(d,['then closed the issue','closed the issue','closed the matter','treated the matter as closed','roi dong issue','dong issue','dong matter','de matter dong']);
