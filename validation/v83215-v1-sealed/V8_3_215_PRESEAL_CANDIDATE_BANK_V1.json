@@ -10,7 +10,7 @@
       "category": "clarification",
       "language": "EN",
       "domain": "money",
-      "surface": "Ledger reference already filed. The external story is complete, but it never states the observable action I personally took at closure. This procedural detail only locates the record.",
+      "surface": "Ledger reference already filed. The external story is complete, but it never states the observable action I personally took at closure. This procedural detail only locates the record. The archive label comes from monthly reconciliation.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -22,7 +22,7 @@
       "category": "clarification",
       "language": "EN",
       "domain": "relationship",
-      "surface": "Context and chronology are settled; only my own concrete response at the ending point is missing. Routine paperwork is background, not behavioural evidence. Meeting schedule already stored.",
+      "surface": "Context and chronology are settled; only my own concrete response at the ending point is missing. The calendar key belongs to venue coordination. Routine paperwork is background, not behavioural evidence. Meeting schedule already stored.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -34,7 +34,7 @@
       "category": "clarification",
       "language": "EN",
       "domain": "career",
-      "surface": "The admin marker does not decide the mechanism. Application marker already logged. The external story is complete, but it never states the observable action I personally took at closure.",
+      "surface": "The admin marker does not decide the mechanism. Application marker already logged. The tracker code comes from intake administration. The external story is complete, but it never states the observable action I personally took at closure.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -46,7 +46,7 @@
       "category": "clarification",
       "language": "EN",
       "domain": "family",
-      "surface": "Household logistics already recorded. Context and chronology are settled; only my own concrete response at the ending point is missing. That logistics fact is separate from the measured response.",
+      "surface": "Household logistics already recorded. Context and chronology are settled; only my own concrete response at the ending point is missing. That logistics fact is separate from the measured response. The household tag belongs to shared planning.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -58,7 +58,7 @@
       "category": "clarification",
       "language": "EN",
       "domain": "workplace",
-      "surface": "The external story is complete, but it never states the observable action I personally took at closure. The stored reference only anchors chronology. Rota identifier already present.",
+      "surface": "The external story is complete, but it never states the observable action I personally took at closure. The rota note comes from staffing operations. The stored reference only anchors chronology. Rota identifier already present.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -70,7 +70,7 @@
       "category": "clarification",
       "language": "EN",
       "domain": "other",
-      "surface": "This procedural detail only locates the record. Admin reference already saved. Context and chronology are settled; only my own concrete response at the ending point is missing.",
+      "surface": "This procedural detail only locates the record. Admin reference already saved. The filing key belongs to ordinary record control. Context and chronology are settled; only my own concrete response at the ending point is missing.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -82,7 +82,7 @@
       "category": "clarification",
       "language": "EN",
       "domain": "money",
-      "surface": "Invoice marker already present. The external story is complete, but it never states the observable action I personally took at closure. Routine paperwork is background, not behavioural evidence.",
+      "surface": "Invoice marker already present. The external story is complete, but it never states the observable action I personally took at closure. Routine paperwork is background, not behavioural evidence. The invoice token comes from accounts processing.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -94,7 +94,7 @@
       "category": "clarification",
       "language": "EN",
       "domain": "relationship",
-      "surface": "Context and chronology are settled; only my own concrete response at the ending point is missing. The admin marker does not decide the mechanism. Thread timestamp already recorded.",
+      "surface": "Context and chronology are settled; only my own concrete response at the ending point is missing. The thread marker comes from communication indexing. The admin marker does not decide the mechanism. Thread timestamp already recorded.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -106,7 +106,7 @@
       "category": "clarification",
       "language": "EN",
       "domain": "career",
-      "surface": "That logistics fact is separate from the measured response. Booking detail already filed. The external story is complete, but it never states the observable action I personally took at closure.",
+      "surface": "That logistics fact is separate from the measured response. Booking detail already filed. The booking code belongs to appointment administration. The external story is complete, but it never states the observable action I personally took at closure.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -118,7 +118,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "family",
-      "surface": "Mã ledger đã được lưu. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc. Chi tiết thủ tục chỉ định vị record.",
+      "surface": "Mã ledger đã được lưu. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc. Chi tiết thủ tục chỉ định vị record. Nhãn lưu trữ đến từ đối soát định kỳ.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -130,7 +130,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Lịch gặp đã có sẵn.",
+      "surface": "Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại. Khóa lịch thuộc phần phối hợp địa điểm. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Lịch gặp đã có sẵn.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -142,7 +142,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "other",
-      "surface": "Marker hành chính không quyết định cơ chế. Marker hồ sơ đã được ghi. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
+      "surface": "Marker hành chính không quyết định cơ chế. Marker hồ sơ đã được ghi. Mã tracker đến từ thủ tục tiếp nhận. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -154,7 +154,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "money",
-      "surface": "Ghi chú sinh hoạt đã có. Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại. Fact logistics tách biệt với phản ứng đang đo.",
+      "surface": "Ghi chú sinh hoạt đã có. Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại. Fact logistics tách biệt với phản ứng đang đo. Tag sinh hoạt thuộc phần lập kế hoạch chung.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -166,7 +166,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc. Mã lưu trữ chỉ neo dòng thời gian. Định danh rota đã lưu.",
+      "surface": "Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc. Ghi chú rota đến từ vận hành nhân sự. Mã lưu trữ chỉ neo dòng thời gian. Định danh rota đã lưu.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -178,7 +178,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "career",
-      "surface": "Chi tiết thủ tục chỉ định vị record. Mã hành chính đã có. Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại.",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Mã hành chính đã có. Khóa hồ sơ thuộc kiểm soát record thông thường. Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -190,7 +190,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "family",
-      "surface": "Marker invoice đã có. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "surface": "Marker invoice đã có. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Token invoice đến từ xử lý kế toán.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -202,7 +202,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại. Marker hành chính không quyết định cơ chế. Timestamp thread đã ghi.",
+      "surface": "Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại. Marker thread đến từ lập chỉ mục liên lạc. Marker hành chính không quyết định cơ chế. Timestamp thread đã ghi.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -214,7 +214,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "other",
-      "surface": "Fact logistics tách biệt với phản ứng đang đo. Chi tiết booking đã lưu. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
+      "surface": "Fact logistics tách biệt với phản ứng đang đo. Chi tiết booking đã lưu. Mã booking thuộc thủ tục đặt lịch. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -226,7 +226,7 @@
       "category": "decision",
       "language": "EN",
       "domain": "relationship",
-      "surface": "I am transferring the choice itself: select the course I should take instead of helping me decide. The admin marker does not decide the mechanism. Ledger reference already filed.",
+      "surface": "I am transferring the choice itself: select the course I should take instead of helping me decide. The archive label comes from monthly reconciliation. The admin marker does not decide the mechanism. Ledger reference already filed.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -238,7 +238,7 @@
       "category": "decision",
       "language": "EN",
       "domain": "career",
-      "surface": "That logistics fact is separate from the measured response. Meeting schedule already stored. Choose my next move for me so your selection replaces my final call rather than merely guiding it.",
+      "surface": "That logistics fact is separate from the measured response. Meeting schedule already stored. The calendar key belongs to venue coordination. Choose my next move for me so your selection replaces my final call rather than merely guiding it.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -250,7 +250,7 @@
       "category": "decision",
       "language": "EN",
       "domain": "family",
-      "surface": "Application marker already logged. I am transferring the choice itself: select the course I should take instead of helping me decide. The stored reference only anchors chronology.",
+      "surface": "Application marker already logged. I am transferring the choice itself: select the course I should take instead of helping me decide. The stored reference only anchors chronology. The tracker code comes from intake administration.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -262,7 +262,7 @@
       "category": "decision",
       "language": "EN",
       "domain": "workplace",
-      "surface": "Choose my next move for me so your selection replaces my final call rather than merely guiding it. This procedural detail only locates the record. Household logistics already recorded.",
+      "surface": "Choose my next move for me so your selection replaces my final call rather than merely guiding it. The household tag belongs to shared planning. This procedural detail only locates the record. Household logistics already recorded.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -274,7 +274,7 @@
       "category": "decision",
       "language": "EN",
       "domain": "other",
-      "surface": "Routine paperwork is background, not behavioural evidence. Rota identifier already present. I am transferring the choice itself: select the course I should take instead of helping me decide.",
+      "surface": "Routine paperwork is background, not behavioural evidence. Rota identifier already present. The rota note comes from staffing operations. I am transferring the choice itself: select the course I should take instead of helping me decide.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -286,7 +286,7 @@
       "category": "decision",
       "language": "EN",
       "domain": "money",
-      "surface": "Admin reference already saved. Choose my next move for me so your selection replaces my final call rather than merely guiding it. The admin marker does not decide the mechanism.",
+      "surface": "Admin reference already saved. Choose my next move for me so your selection replaces my final call rather than merely guiding it. The admin marker does not decide the mechanism. The filing key belongs to ordinary record control.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -298,7 +298,7 @@
       "category": "decision",
       "language": "EN",
       "domain": "relationship",
-      "surface": "I am transferring the choice itself: select the course I should take instead of helping me decide. That logistics fact is separate from the measured response. Invoice marker already present.",
+      "surface": "I am transferring the choice itself: select the course I should take instead of helping me decide. The invoice token comes from accounts processing. That logistics fact is separate from the measured response. Invoice marker already present.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -310,7 +310,7 @@
       "category": "decision",
       "language": "EN",
       "domain": "career",
-      "surface": "The stored reference only anchors chronology. Thread timestamp already recorded. Choose my next move for me so your selection replaces my final call rather than merely guiding it.",
+      "surface": "The stored reference only anchors chronology. Thread timestamp already recorded. The thread marker comes from communication indexing. Choose my next move for me so your selection replaces my final call rather than merely guiding it.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -322,7 +322,7 @@
       "category": "decision",
       "language": "EN",
       "domain": "family",
-      "surface": "Booking detail already filed. I am transferring the choice itself: select the course I should take instead of helping me decide. This procedural detail only locates the record.",
+      "surface": "Booking detail already filed. I am transferring the choice itself: select the course I should take instead of helping me decide. This procedural detail only locates the record. The booking code belongs to appointment administration.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -334,7 +334,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Marker hành chính không quyết định cơ chế. Mã ledger đã được lưu.",
+      "surface": "Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Nhãn lưu trữ đến từ đối soát định kỳ. Marker hành chính không quyết định cơ chế. Mã ledger đã được lưu.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -346,7 +346,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "other",
-      "surface": "Fact logistics tách biệt với phản ứng đang đo. Lịch gặp đã có sẵn. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc.",
+      "surface": "Fact logistics tách biệt với phản ứng đang đo. Lịch gặp đã có sẵn. Khóa lịch thuộc phần phối hợp địa điểm. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -358,7 +358,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "money",
-      "surface": "Marker hồ sơ đã được ghi. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Mã lưu trữ chỉ neo dòng thời gian.",
+      "surface": "Marker hồ sơ đã được ghi. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Mã lưu trữ chỉ neo dòng thời gian. Mã tracker đến từ thủ tục tiếp nhận.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -370,7 +370,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc. Chi tiết thủ tục chỉ định vị record. Ghi chú sinh hoạt đã có.",
+      "surface": "Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc. Tag sinh hoạt thuộc phần lập kế hoạch chung. Chi tiết thủ tục chỉ định vị record. Ghi chú sinh hoạt đã có.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -382,7 +382,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "career",
-      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Định danh rota đã lưu. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết.",
+      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Định danh rota đã lưu. Ghi chú rota đến từ vận hành nhân sự. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -394,7 +394,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "family",
-      "surface": "Mã hành chính đã có. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc. Marker hành chính không quyết định cơ chế.",
+      "surface": "Mã hành chính đã có. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc. Marker hành chính không quyết định cơ chế. Khóa hồ sơ thuộc kiểm soát record thông thường.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -406,7 +406,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Fact logistics tách biệt với phản ứng đang đo. Marker invoice đã có.",
+      "surface": "Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Token invoice đến từ xử lý kế toán. Fact logistics tách biệt với phản ứng đang đo. Marker invoice đã có.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -418,7 +418,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "other",
-      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Timestamp thread đã ghi. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc.",
+      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Timestamp thread đã ghi. Marker thread đến từ lập chỉ mục liên lạc. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -430,7 +430,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "money",
-      "surface": "Chi tiết booking đã lưu. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Chi tiết thủ tục chỉ định vị record.",
+      "surface": "Chi tiết booking đã lưu. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Chi tiết thủ tục chỉ định vị record. Mã booking thuộc thủ tục đặt lịch.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -442,7 +442,7 @@
       "category": "hypothetical",
       "language": "EN",
       "domain": "career",
-      "surface": "The stored reference only anchors chronology. Ledger reference already filed. This is fabricated evaluation prose, not an episode I have actually lived through.",
+      "surface": "The stored reference only anchors chronology. Ledger reference already filed. The archive label comes from monthly reconciliation. This is fabricated evaluation prose, not an episode I have actually lived through.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -454,7 +454,7 @@
       "category": "hypothetical",
       "language": "EN",
       "domain": "family",
-      "surface": "Meeting schedule already stored. The example is synthetic test material and does not come from my real-life history. This procedural detail only locates the record.",
+      "surface": "Meeting schedule already stored. The example is synthetic test material and does not come from my real-life history. This procedural detail only locates the record. The calendar key belongs to venue coordination.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -466,7 +466,7 @@
       "category": "hypothetical",
       "language": "EN",
       "domain": "workplace",
-      "surface": "This is fabricated evaluation prose, not an episode I have actually lived through. Routine paperwork is background, not behavioural evidence. Application marker already logged.",
+      "surface": "This is fabricated evaluation prose, not an episode I have actually lived through. The tracker code comes from intake administration. Routine paperwork is background, not behavioural evidence. Application marker already logged.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -478,7 +478,7 @@
       "category": "hypothetical",
       "language": "EN",
       "domain": "other",
-      "surface": "The admin marker does not decide the mechanism. Household logistics already recorded. The example is synthetic test material and does not come from my real-life history.",
+      "surface": "The admin marker does not decide the mechanism. Household logistics already recorded. The household tag belongs to shared planning. The example is synthetic test material and does not come from my real-life history.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -490,7 +490,7 @@
       "category": "hypothetical",
       "language": "EN",
       "domain": "money",
-      "surface": "Rota identifier already present. This is fabricated evaluation prose, not an episode I have actually lived through. That logistics fact is separate from the measured response.",
+      "surface": "Rota identifier already present. This is fabricated evaluation prose, not an episode I have actually lived through. That logistics fact is separate from the measured response. The rota note comes from staffing operations.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -502,7 +502,7 @@
       "category": "hypothetical",
       "language": "EN",
       "domain": "relationship",
-      "surface": "The example is synthetic test material and does not come from my real-life history. The stored reference only anchors chronology. Admin reference already saved.",
+      "surface": "The example is synthetic test material and does not come from my real-life history. The filing key belongs to ordinary record control. The stored reference only anchors chronology. Admin reference already saved.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -514,7 +514,7 @@
       "category": "hypothetical",
       "language": "EN",
       "domain": "career",
-      "surface": "This procedural detail only locates the record. Invoice marker already present. This is fabricated evaluation prose, not an episode I have actually lived through.",
+      "surface": "This procedural detail only locates the record. Invoice marker already present. The invoice token comes from accounts processing. This is fabricated evaluation prose, not an episode I have actually lived through.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -526,7 +526,7 @@
       "category": "hypothetical",
       "language": "EN",
       "domain": "family",
-      "surface": "Thread timestamp already recorded. The example is synthetic test material and does not come from my real-life history. Routine paperwork is background, not behavioural evidence.",
+      "surface": "Thread timestamp already recorded. The example is synthetic test material and does not come from my real-life history. Routine paperwork is background, not behavioural evidence. The thread marker comes from communication indexing.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -538,7 +538,7 @@
       "category": "hypothetical",
       "language": "EN",
       "domain": "workplace",
-      "surface": "This is fabricated evaluation prose, not an episode I have actually lived through. The admin marker does not decide the mechanism. Booking detail already filed.",
+      "surface": "This is fabricated evaluation prose, not an episode I have actually lived through. The booking code belongs to appointment administration. The admin marker does not decide the mechanism. Booking detail already filed.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -550,7 +550,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "other",
-      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Mã ledger đã được lưu. Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua.",
+      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Mã ledger đã được lưu. Nhãn lưu trữ đến từ đối soát định kỳ. Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -562,7 +562,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "money",
-      "surface": "Lịch gặp đã có sẵn. Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi. Chi tiết thủ tục chỉ định vị record.",
+      "surface": "Lịch gặp đã có sẵn. Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi. Chi tiết thủ tục chỉ định vị record. Khóa lịch thuộc phần phối hợp địa điểm.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -574,7 +574,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Marker hồ sơ đã được ghi.",
+      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Mã tracker đến từ thủ tục tiếp nhận. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Marker hồ sơ đã được ghi.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -586,7 +586,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "career",
-      "surface": "Marker hành chính không quyết định cơ chế. Ghi chú sinh hoạt đã có. Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi.",
+      "surface": "Marker hành chính không quyết định cơ chế. Ghi chú sinh hoạt đã có. Tag sinh hoạt thuộc phần lập kế hoạch chung. Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -598,7 +598,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "family",
-      "surface": "Định danh rota đã lưu. Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Fact logistics tách biệt với phản ứng đang đo.",
+      "surface": "Định danh rota đã lưu. Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Fact logistics tách biệt với phản ứng đang đo. Ghi chú rota đến từ vận hành nhân sự.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -610,7 +610,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi. Mã lưu trữ chỉ neo dòng thời gian. Mã hành chính đã có.",
+      "surface": "Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi. Khóa hồ sơ thuộc kiểm soát record thông thường. Mã lưu trữ chỉ neo dòng thời gian. Mã hành chính đã có.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -622,7 +622,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "other",
-      "surface": "Chi tiết thủ tục chỉ định vị record. Marker invoice đã có. Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua.",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Marker invoice đã có. Token invoice đến từ xử lý kế toán. Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -634,7 +634,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "money",
-      "surface": "Timestamp thread đã ghi. Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "surface": "Timestamp thread đã ghi. Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Marker thread đến từ lập chỉ mục liên lạc.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -646,7 +646,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Marker hành chính không quyết định cơ chế. Chi tiết booking đã lưu.",
+      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Mã booking thuộc thủ tục đặt lịch. Marker hành chính không quyết định cơ chế. Chi tiết booking đã lưu.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -658,7 +658,7 @@
       "category": "third",
       "language": "EN",
       "domain": "family",
-      "surface": "Ledger reference already filed. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion. Routine paperwork is background, not behavioural evidence.",
+      "surface": "Ledger reference already filed. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion. Routine paperwork is background, not behavioural evidence. The archive label comes from monthly reconciliation.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -670,7 +670,7 @@
       "category": "third",
       "language": "EN",
       "domain": "workplace",
-      "surface": "I am asking for someone else’s private view with nothing visible in what they said or did to ground it. The admin marker does not decide the mechanism. Meeting schedule already stored.",
+      "surface": "I am asking for someone else’s private view with nothing visible in what they said or did to ground it. The calendar key belongs to venue coordination. The admin marker does not decide the mechanism. Meeting schedule already stored.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -682,7 +682,7 @@
       "category": "third",
       "language": "EN",
       "domain": "other",
-      "surface": "That logistics fact is separate from the measured response. Application marker already logged. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion.",
+      "surface": "That logistics fact is separate from the measured response. Application marker already logged. The tracker code comes from intake administration. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -694,7 +694,7 @@
       "category": "third",
       "language": "EN",
       "domain": "money",
-      "surface": "Household logistics already recorded. I am asking for someone else’s private view with nothing visible in what they said or did to ground it. The stored reference only anchors chronology.",
+      "surface": "Household logistics already recorded. I am asking for someone else’s private view with nothing visible in what they said or did to ground it. The stored reference only anchors chronology. The household tag belongs to shared planning.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -706,7 +706,7 @@
       "category": "third",
       "language": "EN",
       "domain": "relationship",
-      "surface": "Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion. This procedural detail only locates the record. Rota identifier already present.",
+      "surface": "Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion. The rota note comes from staffing operations. This procedural detail only locates the record. Rota identifier already present.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -718,7 +718,7 @@
       "category": "third",
       "language": "EN",
       "domain": "career",
-      "surface": "Routine paperwork is background, not behavioural evidence. Admin reference already saved. I am asking for someone else’s private view with nothing visible in what they said or did to ground it.",
+      "surface": "Routine paperwork is background, not behavioural evidence. Admin reference already saved. The filing key belongs to ordinary record control. I am asking for someone else’s private view with nothing visible in what they said or did to ground it.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -730,7 +730,7 @@
       "category": "third",
       "language": "EN",
       "domain": "family",
-      "surface": "Invoice marker already present. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion. The admin marker does not decide the mechanism.",
+      "surface": "Invoice marker already present. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion. The admin marker does not decide the mechanism. The invoice token comes from accounts processing.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -742,7 +742,7 @@
       "category": "third",
       "language": "EN",
       "domain": "workplace",
-      "surface": "I am asking for someone else’s private view with nothing visible in what they said or did to ground it. That logistics fact is separate from the measured response. Thread timestamp already recorded.",
+      "surface": "I am asking for someone else’s private view with nothing visible in what they said or did to ground it. The thread marker comes from communication indexing. That logistics fact is separate from the measured response. Thread timestamp already recorded.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -754,7 +754,7 @@
       "category": "third",
       "language": "EN",
       "domain": "other",
-      "surface": "The stored reference only anchors chronology. Booking detail already filed. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion.",
+      "surface": "The stored reference only anchors chronology. Booking detail already filed. The booking code belongs to appointment administration. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -766,7 +766,7 @@
       "category": "third",
       "language": "VI",
       "domain": "money",
-      "surface": "Mã ledger đã được lưu. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "surface": "Mã ledger đã được lưu. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Nhãn lưu trữ đến từ đối soát định kỳ.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -778,7 +778,7 @@
       "category": "third",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó. Marker hành chính không quyết định cơ chế. Lịch gặp đã có sẵn.",
+      "surface": "Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó. Khóa lịch thuộc phần phối hợp địa điểm. Marker hành chính không quyết định cơ chế. Lịch gặp đã có sẵn.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -790,7 +790,7 @@
       "category": "third",
       "language": "VI",
       "domain": "career",
-      "surface": "Fact logistics tách biệt với phản ứng đang đo. Marker hồ sơ đã được ghi. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
+      "surface": "Fact logistics tách biệt với phản ứng đang đo. Marker hồ sơ đã được ghi. Mã tracker đến từ thủ tục tiếp nhận. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -802,7 +802,7 @@
       "category": "third",
       "language": "VI",
       "domain": "family",
-      "surface": "Ghi chú sinh hoạt đã có. Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó. Mã lưu trữ chỉ neo dòng thời gian.",
+      "surface": "Ghi chú sinh hoạt đã có. Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó. Mã lưu trữ chỉ neo dòng thời gian. Tag sinh hoạt thuộc phần lập kế hoạch chung.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -814,7 +814,7 @@
       "category": "third",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ. Chi tiết thủ tục chỉ định vị record. Định danh rota đã lưu.",
+      "surface": "Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ. Ghi chú rota đến từ vận hành nhân sự. Chi tiết thủ tục chỉ định vị record. Định danh rota đã lưu.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -826,7 +826,7 @@
       "category": "third",
       "language": "VI",
       "domain": "other",
-      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Mã hành chính đã có. Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó.",
+      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Mã hành chính đã có. Khóa hồ sơ thuộc kiểm soát record thông thường. Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -838,7 +838,7 @@
       "category": "third",
       "language": "VI",
       "domain": "money",
-      "surface": "Marker invoice đã có. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ. Marker hành chính không quyết định cơ chế.",
+      "surface": "Marker invoice đã có. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ. Marker hành chính không quyết định cơ chế. Token invoice đến từ xử lý kế toán.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -850,7 +850,7 @@
       "category": "third",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó. Fact logistics tách biệt với phản ứng đang đo. Timestamp thread đã ghi.",
+      "surface": "Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó. Marker thread đến từ lập chỉ mục liên lạc. Fact logistics tách biệt với phản ứng đang đo. Timestamp thread đã ghi.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -862,7 +862,7 @@
       "category": "third",
       "language": "VI",
       "domain": "career",
-      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Chi tiết booking đã lưu. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
+      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Chi tiết booking đã lưu. Mã booking thuộc thủ tục đặt lịch. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -874,7 +874,7 @@
       "category": "prediction",
       "language": "EN",
       "domain": "workplace",
-      "surface": "At the next defined future checkpoint, will this finish with the result I want? That logistics fact is separate from the measured response. Ledger reference already filed.",
+      "surface": "At the next defined future checkpoint, will this finish with the result I want? The archive label comes from monthly reconciliation. That logistics fact is separate from the measured response. Ledger reference already filed.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -886,7 +886,7 @@
       "category": "prediction",
       "language": "EN",
       "domain": "other",
-      "surface": "The stored reference only anchors chronology. Meeting schedule already stored. At a specified future horizon, is the eventual outcome going to resolve in my favour?",
+      "surface": "The stored reference only anchors chronology. Meeting schedule already stored. The calendar key belongs to venue coordination. At a specified future horizon, is the eventual outcome going to resolve in my favour?",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -898,7 +898,7 @@
       "category": "prediction",
       "language": "EN",
       "domain": "money",
-      "surface": "Application marker already logged. At the next defined future checkpoint, will this finish with the result I want? This procedural detail only locates the record.",
+      "surface": "Application marker already logged. At the next defined future checkpoint, will this finish with the result I want? This procedural detail only locates the record. The tracker code comes from intake administration.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -910,7 +910,7 @@
       "category": "prediction",
       "language": "EN",
       "domain": "relationship",
-      "surface": "At a specified future horizon, is the eventual outcome going to resolve in my favour? Routine paperwork is background, not behavioural evidence. Household logistics already recorded.",
+      "surface": "At a specified future horizon, is the eventual outcome going to resolve in my favour? The household tag belongs to shared planning. Routine paperwork is background, not behavioural evidence. Household logistics already recorded.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -922,7 +922,7 @@
       "category": "prediction",
       "language": "EN",
       "domain": "career",
-      "surface": "The admin marker does not decide the mechanism. Rota identifier already present. At the next defined future checkpoint, will this finish with the result I want?",
+      "surface": "The admin marker does not decide the mechanism. Rota identifier already present. The rota note comes from staffing operations. At the next defined future checkpoint, will this finish with the result I want?",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -934,7 +934,7 @@
       "category": "prediction",
       "language": "EN",
       "domain": "family",
-      "surface": "Admin reference already saved. At a specified future horizon, is the eventual outcome going to resolve in my favour? That logistics fact is separate from the measured response.",
+      "surface": "Admin reference already saved. At a specified future horizon, is the eventual outcome going to resolve in my favour? That logistics fact is separate from the measured response. The filing key belongs to ordinary record control.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -946,7 +946,7 @@
       "category": "prediction",
       "language": "EN",
       "domain": "workplace",
-      "surface": "At the next defined future checkpoint, will this finish with the result I want? The stored reference only anchors chronology. Invoice marker already present.",
+      "surface": "At the next defined future checkpoint, will this finish with the result I want? The invoice token comes from accounts processing. The stored reference only anchors chronology. Invoice marker already present.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -958,7 +958,7 @@
       "category": "prediction",
       "language": "EN",
       "domain": "other",
-      "surface": "This procedural detail only locates the record. Thread timestamp already recorded. At a specified future horizon, is the eventual outcome going to resolve in my favour?",
+      "surface": "This procedural detail only locates the record. Thread timestamp already recorded. The thread marker comes from communication indexing. At a specified future horizon, is the eventual outcome going to resolve in my favour?",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -970,7 +970,7 @@
       "category": "prediction",
       "language": "EN",
       "domain": "money",
-      "surface": "Booking detail already filed. At the next defined future checkpoint, will this finish with the result I want? Routine paperwork is background, not behavioural evidence.",
+      "surface": "Booking detail already filed. At the next defined future checkpoint, will this finish with the result I want? Routine paperwork is background, not behavioural evidence. The booking code belongs to appointment administration.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -982,7 +982,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Fact logistics tách biệt với phản ứng đang đo. Mã ledger đã được lưu.",
+      "surface": "Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Nhãn lưu trữ đến từ đối soát định kỳ. Fact logistics tách biệt với phản ứng đang đo. Mã ledger đã được lưu.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -994,7 +994,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "career",
-      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Lịch gặp đã có sẵn. Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không?",
+      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Lịch gặp đã có sẵn. Khóa lịch thuộc phần phối hợp địa điểm. Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không?",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1006,7 +1006,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "family",
-      "surface": "Marker hồ sơ đã được ghi. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Chi tiết thủ tục chỉ định vị record.",
+      "surface": "Marker hồ sơ đã được ghi. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Chi tiết thủ tục chỉ định vị record. Mã tracker đến từ thủ tục tiếp nhận.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1018,7 +1018,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không? Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Ghi chú sinh hoạt đã có.",
+      "surface": "Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không? Tag sinh hoạt thuộc phần lập kế hoạch chung. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Ghi chú sinh hoạt đã có.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1030,7 +1030,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "other",
-      "surface": "Marker hành chính không quyết định cơ chế. Định danh rota đã lưu. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không?",
+      "surface": "Marker hành chính không quyết định cơ chế. Định danh rota đã lưu. Ghi chú rota đến từ vận hành nhân sự. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không?",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1042,7 +1042,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "money",
-      "surface": "Mã hành chính đã có. Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không? Fact logistics tách biệt với phản ứng đang đo.",
+      "surface": "Mã hành chính đã có. Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không? Fact logistics tách biệt với phản ứng đang đo. Khóa hồ sơ thuộc kiểm soát record thông thường.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1054,7 +1054,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Mã lưu trữ chỉ neo dòng thời gian. Marker invoice đã có.",
+      "surface": "Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Token invoice đến từ xử lý kế toán. Mã lưu trữ chỉ neo dòng thời gian. Marker invoice đã có.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1066,7 +1066,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "career",
-      "surface": "Chi tiết thủ tục chỉ định vị record. Timestamp thread đã ghi. Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không?",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Timestamp thread đã ghi. Marker thread đến từ lập chỉ mục liên lạc. Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không?",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1078,7 +1078,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "family",
-      "surface": "Chi tiết booking đã lưu. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "surface": "Chi tiết booking đã lưu. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Mã booking thuộc thủ tục đặt lịch.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1090,7 +1090,7 @@
       "category": "freeze",
       "language": "EN",
       "domain": "other",
-      "surface": "This procedural detail only locates the record. Ledger reference already filed. A low-cost reversible first step was available, but I expanded alternatives instead of starting it.",
+      "surface": "This procedural detail only locates the record. Ledger reference already filed. The archive label comes from monthly reconciliation. A low-cost reversible first step was available, but I expanded alternatives instead of starting it.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1104,7 +1104,7 @@
       "category": "freeze",
       "language": "EN",
       "domain": "money",
-      "surface": "Meeting schedule already stored. An easy-exit trial was available; I added more options and left the reversible opening move unstarted. Routine paperwork is background, not behavioural evidence.",
+      "surface": "Meeting schedule already stored. An easy-exit trial was available; I added more options and left the reversible opening move unstarted. Routine paperwork is background, not behavioural evidence. The calendar key belongs to venue coordination.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1118,7 +1118,7 @@
       "category": "freeze",
       "language": "EN",
       "domain": "relationship",
-      "surface": "A low-cost reversible first step was available, but I expanded alternatives instead of starting it. The admin marker does not decide the mechanism. Application marker already logged.",
+      "surface": "A low-cost reversible first step was available, but I expanded alternatives instead of starting it. The tracker code comes from intake administration. The admin marker does not decide the mechanism. Application marker already logged.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1132,7 +1132,7 @@
       "category": "freeze",
       "language": "EN",
       "domain": "career",
-      "surface": "That logistics fact is separate from the measured response. Household logistics already recorded. An easy-exit trial was available; I added more options and left the reversible opening move unstarted.",
+      "surface": "That logistics fact is separate from the measured response. Household logistics already recorded. The household tag belongs to shared planning. An easy-exit trial was available; I added more options and left the reversible opening move unstarted.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1146,7 +1146,7 @@
       "category": "freeze",
       "language": "EN",
       "domain": "family",
-      "surface": "Rota identifier already present. A low-cost reversible first step was available, but I expanded alternatives instead of starting it. The stored reference only anchors chronology.",
+      "surface": "Rota identifier already present. A low-cost reversible first step was available, but I expanded alternatives instead of starting it. The stored reference only anchors chronology. The rota note comes from staffing operations.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1160,7 +1160,7 @@
       "category": "freeze",
       "language": "EN",
       "domain": "workplace",
-      "surface": "An easy-exit trial was available; I added more options and left the reversible opening move unstarted. This procedural detail only locates the record. Admin reference already saved.",
+      "surface": "An easy-exit trial was available; I added more options and left the reversible opening move unstarted. The filing key belongs to ordinary record control. This procedural detail only locates the record. Admin reference already saved.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1174,7 +1174,7 @@
       "category": "freeze",
       "language": "EN",
       "domain": "other",
-      "surface": "Routine paperwork is background, not behavioural evidence. Invoice marker already present. A low-cost reversible first step was available, but I expanded alternatives instead of starting it.",
+      "surface": "Routine paperwork is background, not behavioural evidence. Invoice marker already present. The invoice token comes from accounts processing. A low-cost reversible first step was available, but I expanded alternatives instead of starting it.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1188,7 +1188,7 @@
       "category": "freeze",
       "language": "EN",
       "domain": "money",
-      "surface": "Thread timestamp already recorded. An easy-exit trial was available; I added more options and left the reversible opening move unstarted. The admin marker does not decide the mechanism.",
+      "surface": "Thread timestamp already recorded. An easy-exit trial was available; I added more options and left the reversible opening move unstarted. The admin marker does not decide the mechanism. The thread marker comes from communication indexing.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1202,7 +1202,7 @@
       "category": "freeze",
       "language": "EN",
       "domain": "relationship",
-      "surface": "A low-cost reversible first step was available, but I expanded alternatives instead of starting it. That logistics fact is separate from the measured response. Booking detail already filed.",
+      "surface": "A low-cost reversible first step was available, but I expanded alternatives instead of starting it. The booking code belongs to appointment administration. That logistics fact is separate from the measured response. Booking detail already filed.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1216,7 +1216,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "career",
-      "surface": "Chi tiết thủ tục chỉ định vị record. Mã ledger đã được lưu. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu.",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Mã ledger đã được lưu. Nhãn lưu trữ đến từ đối soát định kỳ. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1230,7 +1230,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "family",
-      "surface": "Lịch gặp đã có sẵn. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "surface": "Lịch gặp đã có sẵn. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Khóa lịch thuộc phần phối hợp địa điểm.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1244,7 +1244,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Marker hành chính không quyết định cơ chế. Marker hồ sơ đã được ghi.",
+      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Mã tracker đến từ thủ tục tiếp nhận. Marker hành chính không quyết định cơ chế. Marker hồ sơ đã được ghi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1258,7 +1258,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "other",
-      "surface": "Fact logistics tách biệt với phản ứng đang đo. Ghi chú sinh hoạt đã có. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động.",
+      "surface": "Fact logistics tách biệt với phản ứng đang đo. Ghi chú sinh hoạt đã có. Tag sinh hoạt thuộc phần lập kế hoạch chung. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1272,7 +1272,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "money",
-      "surface": "Định danh rota đã lưu. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Mã lưu trữ chỉ neo dòng thời gian.",
+      "surface": "Định danh rota đã lưu. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Mã lưu trữ chỉ neo dòng thời gian. Ghi chú rota đến từ vận hành nhân sự.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1286,7 +1286,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Chi tiết thủ tục chỉ định vị record. Mã hành chính đã có.",
+      "surface": "Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Khóa hồ sơ thuộc kiểm soát record thông thường. Chi tiết thủ tục chỉ định vị record. Mã hành chính đã có.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1300,7 +1300,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "career",
-      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Marker invoice đã có. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu.",
+      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Marker invoice đã có. Token invoice đến từ xử lý kế toán. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1314,7 +1314,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "family",
-      "surface": "Timestamp thread đã ghi. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Marker hành chính không quyết định cơ chế.",
+      "surface": "Timestamp thread đã ghi. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Marker hành chính không quyết định cơ chế. Marker thread đến từ lập chỉ mục liên lạc.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1328,7 +1328,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Fact logistics tách biệt với phản ứng đang đo. Chi tiết booking đã lưu.",
+      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Mã booking thuộc thủ tục đặt lịch. Fact logistics tách biệt với phản ứng đang đo. Chi tiết booking đã lưu.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1342,7 +1342,7 @@
       "category": "ignore",
       "language": "EN",
       "domain": "money",
-      "surface": "Ledger reference already filed. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it. The admin marker does not decide the mechanism.",
+      "surface": "Ledger reference already filed. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it. The admin marker does not decide the mechanism. The archive label comes from monthly reconciliation.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1356,7 +1356,7 @@
       "category": "ignore",
       "language": "EN",
       "domain": "relationship",
-      "surface": "The main request was waiting on me; I shifted attention to side work and left the core responsibility unanswered. That logistics fact is separate from the measured response. Meeting schedule already stored.",
+      "surface": "The main request was waiting on me; I shifted attention to side work and left the core responsibility unanswered. The calendar key belongs to venue coordination. That logistics fact is separate from the measured response. Meeting schedule already stored.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1370,7 +1370,7 @@
       "category": "ignore",
       "language": "EN",
       "domain": "career",
-      "surface": "The stored reference only anchors chronology. Application marker already logged. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it.",
+      "surface": "The stored reference only anchors chronology. Application marker already logged. The tracker code comes from intake administration. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1384,7 +1384,7 @@
       "category": "ignore",
       "language": "EN",
       "domain": "family",
-      "surface": "Household logistics already recorded. The main request was waiting on me; I shifted attention to side work and left the core responsibility unanswered. This procedural detail only locates the record.",
+      "surface": "Household logistics already recorded. The main request was waiting on me; I shifted attention to side work and left the core responsibility unanswered. This procedural detail only locates the record. The household tag belongs to shared planning.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1398,7 +1398,7 @@
       "category": "ignore",
       "language": "EN",
       "domain": "workplace",
-      "surface": "The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it. Routine paperwork is background, not behavioural evidence. Rota identifier already present.",
+      "surface": "The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it. The rota note comes from staffing operations. Routine paperwork is background, not behavioural evidence. Rota identifier already present.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1412,7 +1412,7 @@
       "category": "ignore",
       "language": "EN",
       "domain": "other",
-      "surface": "The admin marker does not decide the mechanism. Admin reference already saved. The main request was waiting on me; I shifted attention to side work and left the core responsibility unanswered.",
+      "surface": "The admin marker does not decide the mechanism. Admin reference already saved. The filing key belongs to ordinary record control. The main request was waiting on me; I shifted attention to side work and left the core responsibility unanswered.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1426,7 +1426,7 @@
       "category": "ignore",
       "language": "EN",
       "domain": "money",
-      "surface": "Invoice marker already present. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it. That logistics fact is separate from the measured response.",
+      "surface": "Invoice marker already present. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it. That logistics fact is separate from the measured response. The invoice token comes from accounts processing.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1440,7 +1440,7 @@
       "category": "ignore",
       "language": "EN",
       "domain": "relationship",
-      "surface": "The main request was waiting on me; I shifted attention to side work and left the core responsibility unanswered. The stored reference only anchors chronology. Thread timestamp already recorded.",
+      "surface": "The main request was waiting on me; I shifted attention to side work and left the core responsibility unanswered. The thread marker comes from communication indexing. The stored reference only anchors chronology. Thread timestamp already recorded.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1454,7 +1454,7 @@
       "category": "ignore",
       "language": "EN",
       "domain": "career",
-      "surface": "This procedural detail only locates the record. Booking detail already filed. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it.",
+      "surface": "This procedural detail only locates the record. Booking detail already filed. The booking code belongs to appointment administration. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1468,7 +1468,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "family",
-      "surface": "Mã ledger đã được lưu. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính. Marker hành chính không quyết định cơ chế.",
+      "surface": "Mã ledger đã được lưu. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính. Marker hành chính không quyết định cơ chế. Nhãn lưu trữ đến từ đối soát định kỳ.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1482,7 +1482,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời. Fact logistics tách biệt với phản ứng đang đo. Lịch gặp đã có sẵn.",
+      "surface": "Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời. Khóa lịch thuộc phần phối hợp địa điểm. Fact logistics tách biệt với phản ứng đang đo. Lịch gặp đã có sẵn.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1496,7 +1496,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "other",
-      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Marker hồ sơ đã được ghi. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
+      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Marker hồ sơ đã được ghi. Mã tracker đến từ thủ tục tiếp nhận. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1510,7 +1510,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "money",
-      "surface": "Ghi chú sinh hoạt đã có. Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời. Chi tiết thủ tục chỉ định vị record.",
+      "surface": "Ghi chú sinh hoạt đã có. Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời. Chi tiết thủ tục chỉ định vị record. Tag sinh hoạt thuộc phần lập kế hoạch chung.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1524,7 +1524,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Định danh rota đã lưu.",
+      "surface": "Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính. Ghi chú rota đến từ vận hành nhân sự. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Định danh rota đã lưu.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1538,7 +1538,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "career",
-      "surface": "Marker hành chính không quyết định cơ chế. Mã hành chính đã có. Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời.",
+      "surface": "Marker hành chính không quyết định cơ chế. Mã hành chính đã có. Khóa hồ sơ thuộc kiểm soát record thông thường. Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1552,7 +1552,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "family",
-      "surface": "Marker invoice đã có. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính. Fact logistics tách biệt với phản ứng đang đo.",
+      "surface": "Marker invoice đã có. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính. Fact logistics tách biệt với phản ứng đang đo. Token invoice đến từ xử lý kế toán.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1566,7 +1566,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời. Mã lưu trữ chỉ neo dòng thời gian. Timestamp thread đã ghi.",
+      "surface": "Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời. Marker thread đến từ lập chỉ mục liên lạc. Mã lưu trữ chỉ neo dòng thời gian. Timestamp thread đã ghi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1580,7 +1580,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "other",
-      "surface": "Chi tiết thủ tục chỉ định vị record. Chi tiết booking đã lưu. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Chi tiết booking đã lưu. Mã booking thuộc thủ tục đặt lịch. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1594,7 +1594,7 @@
       "category": "slow",
       "language": "EN",
       "domain": "relationship",
-      "surface": "There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. The stored reference only anchors chronology. Ledger reference already filed.",
+      "surface": "There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. The archive label comes from monthly reconciliation. The stored reference only anchors chronology. Ledger reference already filed.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1608,7 +1608,7 @@
       "category": "slow",
       "language": "EN",
       "domain": "career",
-      "surface": "This procedural detail only locates the record. Meeting schedule already stored. I took one finite extra interval before answering, checked the issue once, and then closed the review.",
+      "surface": "This procedural detail only locates the record. Meeting schedule already stored. The calendar key belongs to venue coordination. I took one finite extra interval before answering, checked the issue once, and then closed the review.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1622,7 +1622,7 @@
       "category": "slow",
       "language": "EN",
       "domain": "family",
-      "surface": "Application marker already logged. There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. Routine paperwork is background, not behavioural evidence.",
+      "surface": "Application marker already logged. There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. Routine paperwork is background, not behavioural evidence. The tracker code comes from intake administration.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1636,7 +1636,7 @@
       "category": "slow",
       "language": "EN",
       "domain": "workplace",
-      "surface": "I took one finite extra interval before answering, checked the issue once, and then closed the review. The admin marker does not decide the mechanism. Household logistics already recorded.",
+      "surface": "I took one finite extra interval before answering, checked the issue once, and then closed the review. The household tag belongs to shared planning. The admin marker does not decide the mechanism. Household logistics already recorded.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1650,7 +1650,7 @@
       "category": "slow",
       "language": "EN",
       "domain": "other",
-      "surface": "That logistics fact is separate from the measured response. Rota identifier already present. There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete.",
+      "surface": "That logistics fact is separate from the measured response. Rota identifier already present. The rota note comes from staffing operations. There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1664,7 +1664,7 @@
       "category": "slow",
       "language": "EN",
       "domain": "money",
-      "surface": "Admin reference already saved. I took one finite extra interval before answering, checked the issue once, and then closed the review. The stored reference only anchors chronology.",
+      "surface": "Admin reference already saved. I took one finite extra interval before answering, checked the issue once, and then closed the review. The stored reference only anchors chronology. The filing key belongs to ordinary record control.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1678,7 +1678,7 @@
       "category": "slow",
       "language": "EN",
       "domain": "relationship",
-      "surface": "There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. This procedural detail only locates the record. Invoice marker already present.",
+      "surface": "There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. The invoice token comes from accounts processing. This procedural detail only locates the record. Invoice marker already present.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1692,7 +1692,7 @@
       "category": "slow",
       "language": "EN",
       "domain": "career",
-      "surface": "Routine paperwork is background, not behavioural evidence. Thread timestamp already recorded. I took one finite extra interval before answering, checked the issue once, and then closed the review.",
+      "surface": "Routine paperwork is background, not behavioural evidence. Thread timestamp already recorded. The thread marker comes from communication indexing. I took one finite extra interval before answering, checked the issue once, and then closed the review.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1706,7 +1706,7 @@
       "category": "slow",
       "language": "EN",
       "domain": "family",
-      "surface": "Booking detail already filed. There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. The admin marker does not decide the mechanism.",
+      "surface": "Booking detail already filed. There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. The admin marker does not decide the mechanism. The booking code belongs to appointment administration.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1720,7 +1720,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Mã lưu trữ chỉ neo dòng thời gian. Mã ledger đã được lưu.",
+      "surface": "Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Nhãn lưu trữ đến từ đối soát định kỳ. Mã lưu trữ chỉ neo dòng thời gian. Mã ledger đã được lưu.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1734,7 +1734,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "other",
-      "surface": "Chi tiết thủ tục chỉ định vị record. Lịch gặp đã có sẵn. Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review.",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Lịch gặp đã có sẵn. Khóa lịch thuộc phần phối hợp địa điểm. Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1748,7 +1748,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "money",
-      "surface": "Marker hồ sơ đã được ghi. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "surface": "Marker hồ sơ đã được ghi. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Mã tracker đến từ thủ tục tiếp nhận.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1762,7 +1762,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review. Marker hành chính không quyết định cơ chế. Ghi chú sinh hoạt đã có.",
+      "surface": "Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review. Tag sinh hoạt thuộc phần lập kế hoạch chung. Marker hành chính không quyết định cơ chế. Ghi chú sinh hoạt đã có.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1776,7 +1776,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "career",
-      "surface": "Fact logistics tách biệt với phản ứng đang đo. Định danh rota đã lưu. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất.",
+      "surface": "Fact logistics tách biệt với phản ứng đang đo. Định danh rota đã lưu. Ghi chú rota đến từ vận hành nhân sự. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1790,7 +1790,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "family",
-      "surface": "Mã hành chính đã có. Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review. Mã lưu trữ chỉ neo dòng thời gian.",
+      "surface": "Mã hành chính đã có. Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review. Mã lưu trữ chỉ neo dòng thời gian. Khóa hồ sơ thuộc kiểm soát record thông thường.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1804,7 +1804,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Chi tiết thủ tục chỉ định vị record. Marker invoice đã có.",
+      "surface": "Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Token invoice đến từ xử lý kế toán. Chi tiết thủ tục chỉ định vị record. Marker invoice đã có.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1818,7 +1818,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "other",
-      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Timestamp thread đã ghi. Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review.",
+      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Timestamp thread đã ghi. Marker thread đến từ lập chỉ mục liên lạc. Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1832,7 +1832,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "money",
-      "surface": "Chi tiết booking đã lưu. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Marker hành chính không quyết định cơ chế.",
+      "surface": "Chi tiết booking đã lưu. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Marker hành chính không quyết định cơ chế. Mã booking thuộc thủ tục đặt lịch.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1846,7 +1846,7 @@
       "category": "sequence",
       "language": "EN",
       "domain": "career",
-      "surface": "Routine paperwork is background, not behavioural evidence. Ledger reference already filed. I moved close to execution, pulled back, then revisited the same judgement despite no new information.",
+      "surface": "Routine paperwork is background, not behavioural evidence. Ledger reference already filed. The archive label comes from monthly reconciliation. I moved close to execution, pulled back, then revisited the same judgement despite no new information.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1860,7 +1860,7 @@
       "category": "sequence",
       "language": "EN",
       "domain": "family",
-      "surface": "Meeting schedule already stored. I approached action and retreated; afterward I returned to the same reasoning while the facts stayed unchanged. The admin marker does not decide the mechanism.",
+      "surface": "Meeting schedule already stored. I approached action and retreated; afterward I returned to the same reasoning while the facts stayed unchanged. The admin marker does not decide the mechanism. The calendar key belongs to venue coordination.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1874,7 +1874,7 @@
       "category": "sequence",
       "language": "EN",
       "domain": "workplace",
-      "surface": "I moved close to execution, pulled back, then revisited the same judgement despite no new information. That logistics fact is separate from the measured response. Application marker already logged.",
+      "surface": "I moved close to execution, pulled back, then revisited the same judgement despite no new information. The tracker code comes from intake administration. That logistics fact is separate from the measured response. Application marker already logged.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1888,7 +1888,7 @@
       "category": "sequence",
       "language": "EN",
       "domain": "other",
-      "surface": "The stored reference only anchors chronology. Household logistics already recorded. I approached action and retreated; afterward I returned to the same reasoning while the facts stayed unchanged.",
+      "surface": "The stored reference only anchors chronology. Household logistics already recorded. The household tag belongs to shared planning. I approached action and retreated; afterward I returned to the same reasoning while the facts stayed unchanged.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1902,7 +1902,7 @@
       "category": "sequence",
       "language": "EN",
       "domain": "money",
-      "surface": "Rota identifier already present. I moved close to execution, pulled back, then revisited the same judgement despite no new information. This procedural detail only locates the record.",
+      "surface": "Rota identifier already present. I moved close to execution, pulled back, then revisited the same judgement despite no new information. This procedural detail only locates the record. The rota note comes from staffing operations.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1916,7 +1916,7 @@
       "category": "sequence",
       "language": "EN",
       "domain": "relationship",
-      "surface": "I approached action and retreated; afterward I returned to the same reasoning while the facts stayed unchanged. Routine paperwork is background, not behavioural evidence. Admin reference already saved.",
+      "surface": "I approached action and retreated; afterward I returned to the same reasoning while the facts stayed unchanged. The filing key belongs to ordinary record control. Routine paperwork is background, not behavioural evidence. Admin reference already saved.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1930,7 +1930,7 @@
       "category": "sequence",
       "language": "EN",
       "domain": "career",
-      "surface": "The admin marker does not decide the mechanism. Invoice marker already present. I moved close to execution, pulled back, then revisited the same judgement despite no new information.",
+      "surface": "The admin marker does not decide the mechanism. Invoice marker already present. The invoice token comes from accounts processing. I moved close to execution, pulled back, then revisited the same judgement despite no new information.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1944,7 +1944,7 @@
       "category": "sequence",
       "language": "EN",
       "domain": "family",
-      "surface": "Thread timestamp already recorded. I approached action and retreated; afterward I returned to the same reasoning while the facts stayed unchanged. That logistics fact is separate from the measured response.",
+      "surface": "Thread timestamp already recorded. I approached action and retreated; afterward I returned to the same reasoning while the facts stayed unchanged. That logistics fact is separate from the measured response. The thread marker comes from communication indexing.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1958,7 +1958,7 @@
       "category": "sequence",
       "language": "EN",
       "domain": "workplace",
-      "surface": "I moved close to execution, pulled back, then revisited the same judgement despite no new information. The stored reference only anchors chronology. Booking detail already filed.",
+      "surface": "I moved close to execution, pulled back, then revisited the same judgement despite no new information. The booking code belongs to appointment administration. The stored reference only anchors chronology. Booking detail already filed.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1972,7 +1972,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "other",
-      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Mã ledger đã được lưu. Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới.",
+      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Mã ledger đã được lưu. Nhãn lưu trữ đến từ đối soát định kỳ. Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1986,7 +1986,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "money",
-      "surface": "Lịch gặp đã có sẵn. Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi. Marker hành chính không quyết định cơ chế.",
+      "surface": "Lịch gặp đã có sẵn. Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi. Marker hành chính không quyết định cơ chế. Khóa lịch thuộc phần phối hợp địa điểm.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2000,7 +2000,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Fact logistics tách biệt với phản ứng đang đo. Marker hồ sơ đã được ghi.",
+      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Mã tracker đến từ thủ tục tiếp nhận. Fact logistics tách biệt với phản ứng đang đo. Marker hồ sơ đã được ghi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2014,7 +2014,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "career",
-      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Ghi chú sinh hoạt đã có. Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi.",
+      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Ghi chú sinh hoạt đã có. Tag sinh hoạt thuộc phần lập kế hoạch chung. Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2028,7 +2028,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "family",
-      "surface": "Định danh rota đã lưu. Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Chi tiết thủ tục chỉ định vị record.",
+      "surface": "Định danh rota đã lưu. Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Chi tiết thủ tục chỉ định vị record. Ghi chú rota đến từ vận hành nhân sự.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2042,7 +2042,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Mã hành chính đã có.",
+      "surface": "Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi. Khóa hồ sơ thuộc kiểm soát record thông thường. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Mã hành chính đã có.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2056,7 +2056,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "other",
-      "surface": "Marker hành chính không quyết định cơ chế. Marker invoice đã có. Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới.",
+      "surface": "Marker hành chính không quyết định cơ chế. Marker invoice đã có. Token invoice đến từ xử lý kế toán. Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2070,7 +2070,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "money",
-      "surface": "Timestamp thread đã ghi. Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi. Fact logistics tách biệt với phản ứng đang đo.",
+      "surface": "Timestamp thread đã ghi. Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi. Fact logistics tách biệt với phản ứng đang đo. Marker thread đến từ lập chỉ mục liên lạc.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2084,7 +2084,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Mã lưu trữ chỉ neo dòng thời gian. Chi tiết booking đã lưu.",
+      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Mã booking thuộc thủ tục đặt lịch. Mã lưu trữ chỉ neo dòng thời gian. Chi tiết booking đã lưu.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2098,7 +2098,7 @@
       "category": "neutral",
       "language": "EN",
       "domain": "family",
-      "surface": "Ledger reference already filed. I made the choice myself, completed the practical action, and then left the matter closed. That logistics fact is separate from the measured response.",
+      "surface": "Ledger reference already filed. I made the choice myself, completed the practical action, and then left the matter closed. That logistics fact is separate from the measured response. The archive label comes from monthly reconciliation.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2110,7 +2110,7 @@
       "category": "neutral",
       "language": "EN",
       "domain": "workplace",
-      "surface": "I retained the final decision, carried the step through, and did not keep the issue open afterward. The stored reference only anchors chronology. Meeting schedule already stored.",
+      "surface": "I retained the final decision, carried the step through, and did not keep the issue open afterward. The calendar key belongs to venue coordination. The stored reference only anchors chronology. Meeting schedule already stored.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2122,7 +2122,7 @@
       "category": "neutral",
       "language": "EN",
       "domain": "other",
-      "surface": "This procedural detail only locates the record. Application marker already logged. I made the choice myself, completed the practical action, and then left the matter closed.",
+      "surface": "This procedural detail only locates the record. Application marker already logged. The tracker code comes from intake administration. I made the choice myself, completed the practical action, and then left the matter closed.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2134,7 +2134,7 @@
       "category": "neutral",
       "language": "EN",
       "domain": "money",
-      "surface": "Household logistics already recorded. I retained the final decision, carried the step through, and did not keep the issue open afterward. Routine paperwork is background, not behavioural evidence.",
+      "surface": "Household logistics already recorded. I retained the final decision, carried the step through, and did not keep the issue open afterward. Routine paperwork is background, not behavioural evidence. The household tag belongs to shared planning.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2146,7 +2146,7 @@
       "category": "neutral",
       "language": "EN",
       "domain": "relationship",
-      "surface": "I made the choice myself, completed the practical action, and then left the matter closed. The admin marker does not decide the mechanism. Rota identifier already present.",
+      "surface": "I made the choice myself, completed the practical action, and then left the matter closed. The rota note comes from staffing operations. The admin marker does not decide the mechanism. Rota identifier already present.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2158,7 +2158,7 @@
       "category": "neutral",
       "language": "EN",
       "domain": "career",
-      "surface": "That logistics fact is separate from the measured response. Admin reference already saved. I retained the final decision, carried the step through, and did not keep the issue open afterward.",
+      "surface": "That logistics fact is separate from the measured response. Admin reference already saved. The filing key belongs to ordinary record control. I retained the final decision, carried the step through, and did not keep the issue open afterward.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2170,7 +2170,7 @@
       "category": "neutral",
       "language": "EN",
       "domain": "family",
-      "surface": "Invoice marker already present. I made the choice myself, completed the practical action, and then left the matter closed. The stored reference only anchors chronology.",
+      "surface": "Invoice marker already present. I made the choice myself, completed the practical action, and then left the matter closed. The stored reference only anchors chronology. The invoice token comes from accounts processing.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2182,7 +2182,7 @@
       "category": "neutral",
       "language": "EN",
       "domain": "workplace",
-      "surface": "I retained the final decision, carried the step through, and did not keep the issue open afterward. This procedural detail only locates the record. Thread timestamp already recorded.",
+      "surface": "I retained the final decision, carried the step through, and did not keep the issue open afterward. The thread marker comes from communication indexing. This procedural detail only locates the record. Thread timestamp already recorded.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2194,7 +2194,7 @@
       "category": "neutral",
       "language": "EN",
       "domain": "other",
-      "surface": "Routine paperwork is background, not behavioural evidence. Booking detail already filed. I made the choice myself, completed the practical action, and then left the matter closed.",
+      "surface": "Routine paperwork is background, not behavioural evidence. Booking detail already filed. The booking code belongs to appointment administration. I made the choice myself, completed the practical action, and then left the matter closed.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2206,7 +2206,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "money",
-      "surface": "Mã ledger đã được lưu. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại. Fact logistics tách biệt với phản ứng đang đo.",
+      "surface": "Mã ledger đã được lưu. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại. Fact logistics tách biệt với phản ứng đang đo. Nhãn lưu trữ đến từ đối soát định kỳ.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2218,7 +2218,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở. Mã lưu trữ chỉ neo dòng thời gian. Lịch gặp đã có sẵn.",
+      "surface": "Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở. Khóa lịch thuộc phần phối hợp địa điểm. Mã lưu trữ chỉ neo dòng thời gian. Lịch gặp đã có sẵn.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2230,7 +2230,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "career",
-      "surface": "Chi tiết thủ tục chỉ định vị record. Marker hồ sơ đã được ghi. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Marker hồ sơ đã được ghi. Mã tracker đến từ thủ tục tiếp nhận. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2242,7 +2242,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "family",
-      "surface": "Ghi chú sinh hoạt đã có. Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "surface": "Ghi chú sinh hoạt đã có. Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Tag sinh hoạt thuộc phần lập kế hoạch chung.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2254,7 +2254,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại. Marker hành chính không quyết định cơ chế. Định danh rota đã lưu.",
+      "surface": "Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại. Ghi chú rota đến từ vận hành nhân sự. Marker hành chính không quyết định cơ chế. Định danh rota đã lưu.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2266,7 +2266,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "other",
-      "surface": "Fact logistics tách biệt với phản ứng đang đo. Mã hành chính đã có. Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở.",
+      "surface": "Fact logistics tách biệt với phản ứng đang đo. Mã hành chính đã có. Khóa hồ sơ thuộc kiểm soát record thông thường. Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2278,7 +2278,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "money",
-      "surface": "Marker invoice đã có. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại. Mã lưu trữ chỉ neo dòng thời gian.",
+      "surface": "Marker invoice đã có. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại. Mã lưu trữ chỉ neo dòng thời gian. Token invoice đến từ xử lý kế toán.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2290,7 +2290,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở. Chi tiết thủ tục chỉ định vị record. Timestamp thread đã ghi.",
+      "surface": "Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở. Marker thread đến từ lập chỉ mục liên lạc. Chi tiết thủ tục chỉ định vị record. Timestamp thread đã ghi.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2302,7 +2302,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "career",
-      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Chi tiết booking đã lưu. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
+      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Chi tiết booking đã lưu. Mã booking thuộc thủ tục đặt lịch. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
