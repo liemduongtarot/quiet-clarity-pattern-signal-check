@@ -1,0 +1,69 @@
+{
+  "candidate": "V8.3.217",
+  "phase": "transport-only-r3-observable",
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "checks": {
+    "development_sha": true,
+    "preseal_pass": true,
+    "all_frozen_files_exist": true,
+    "all_frozen_hashes_match": false
+  },
+  "errors": [
+    "AssertionError: frozen authority/hash prerequisite failed"
+  ],
+  "pass": false,
+  "validated_development_head_sha": "456a88d01b671f0cb92a0be31f4d34d68f60d135",
+  "hash_details": {
+    "candidate_bank": {
+      "file": "V8_3_217_PRESEAL_CANDIDATE_BANK_V1.json",
+      "exists": true,
+      "expected": "a12f827da1c7e91befc65b94152676e1f96f9bf2d42893bd67ffaf613c54b54f",
+      "actual": "d76fbbf61c346d51981b8ca4eec1c31f46d8e7c2b724e91f11a42657ff4218f4",
+      "match": false
+    },
+    "selection": {
+      "file": "V8_3_217_SEALED_SELECTION_V1.json",
+      "exists": true,
+      "expected": "5a3e6d9dbfe191ee756fc318dbf94b6745420180c133aaa41068074e844a6a89",
+      "actual": "e55003d470794b029ce6ca396543aa089ec640556df03a34afde6ee67f1cd82e",
+      "match": false
+    },
+    "fixture": {
+      "file": "V8_3_217_SEALED_FIXTURE_V1.json",
+      "exists": true,
+      "expected": "17401f1cb05eb745f52a78a3075a3e3ed6229ee8e2c7500303133cc0cd64c206",
+      "actual": "cf3bfbb1e1656d87d252abba00313e6150b604285e4e27cc2f24aeff23b8c4c2",
+      "match": false
+    },
+    "independent_gold": {
+      "file": "V8_3_217_INDEPENDENT_GOLD_V1.json",
+      "exists": true,
+      "expected": "ac511928b97f0879bf16c0f43eeeb439d6e768a6a479ddf45e2fbea3c641c559",
+      "actual": "992e72d5890e539a38403cbe3bc9ee558de45ea2c4e6e485014460ac27222a4a",
+      "match": false
+    },
+    "membership": {
+      "file": "V8_3_217_SEALED_MEMBERSHIP_V1.json",
+      "exists": true,
+      "expected": "0488f96165f556707b1a54381ba6d5910422c645acdd85e35c83af89af38cca9",
+      "actual": "f0dfb33a1739ffc4289bf631073fc1678b9301ae0b20d42f8268ca6de247336e",
+      "match": false
+    },
+    "preseal_audit": {
+      "file": "V8_3_217_PRESEAL_DIVERSITY_AUDIT_V1.json",
+      "exists": true,
+      "expected": "d9361652a1d209285c45f3eae48606c94207163380751012ebb2e492df599c3d",
+      "actual": "1c94ea3792305144c79f2e76891ee32bd83d12d6699b8746e07c1906005ae3a0",
+      "match": false
+    }
+  },
+  "trace_tail": [
+    "  File \"/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83217-v1-sealed/v83217-transport-only.py\", line 18, in <module>",
+    "    if not all(result['checks'].values()): raise AssertionError('frozen authority/hash prerequisite failed')",
+    "                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "AssertionError: frozen authority/hash prerequisite failed"
+  ]
+}
