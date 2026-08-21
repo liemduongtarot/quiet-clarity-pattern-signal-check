@@ -1,4 +1,4 @@
-name: V8.3.212 Fresh Preseal Via Proven Executor
+name: V8.3.212 Preseal Diagnostic Proven
 on:
   push:
     branches: [v83212-v1-validation]
@@ -6,51 +6,25 @@ permissions:
   contents: write
 jobs:
   preseal:
-    if: github.event.head_commit.message == 'Run V8.3.212 fresh preseal via proven executor'
+    if: github.event.head_commit.message == 'Run V8.3.212 preseal diagnostic proven'
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with: {fetch-depth: 1}
-      - name: Fetch sealed generator authority
-        run: |
-          git fetch --depth=1 origin 343887012d73d8ae3710acb9f07b82637452f63b
-          git show 343887012d73d8ae3710acb9f07b82637452f63b:validation/v83212-sealed-v1-generator.py > validation/v83212-sealed-v1-generator.py
-      - name: Materialize prior-only contamination references
-        run: |
-          rm -rf validation/v83212-preseal-refs; mkdir -p validation/v83212-preseal-refs
-          for v in 201 202 203 204 205 206 207 208 209; do s=${v#20}; git fetch --depth=1 origin refs/heads/v8320${s}-v1-sealed-validation:refs/remotes/origin/v8320${s}-v1-sealed-validation; git show origin/v8320${s}-v1-sealed-validation:validation/v8320${s}-v1-sealed/V8_3_${v}_SEALED_FIXTURE_V1.json > validation/v83212-preseal-refs/V8_3_${v}_SEALED.json; done
-          git fetch --depth=1 origin refs/heads/v83210-v1-sealed-validation:refs/remotes/origin/v83210-v1-sealed-validation
-          git show origin/v83210-v1-sealed-validation:validation/v83210-v1-sealed/V8_3_210_SEALED_FIXTURE_V1.json > validation/v83212-preseal-refs/V8_3_210_SEALED.json
-          git fetch --depth=1 origin 6d82282b620f03e397368a6d973b566d8055d2eb
-          rm -rf /tmp/v211-r4-preseal; mkdir -p /tmp/v211-r4-preseal/validation/v83211-r4-frozen
-          git show 6d82282b620f03e397368a6d973b566d8055d2eb:validation/v83211-r4-frozen/generate-r4-carrier.py > /tmp/v211-r4-preseal/validation/v83211-r4-frozen/generate-r4-carrier.py
-          (cd /tmp/v211-r4-preseal && python validation/v83211-r4-frozen/generate-r4-carrier.py)
-          cp /tmp/v211-r4-preseal/validation/v83211-r4-runtime/V8_3_211_R4_SEALED_FIXTURE.json validation/v83212-preseal-refs/V8_3_211_R4_SEALED.json
-          python validation/v83211-generalization-600-generator-v1r.py
-          cp validation/V8_3_211_DEVELOPMENT_GENERALIZATION_600_V1.json validation/v83212-preseal-refs/V8_3_211_DEV_600.json
-          python validation/v83212-generalization-800-generator.py
-          cp validation/V8_3_212_DEVELOPMENT_GENERALIZATION_800_V1.json validation/v83212-preseal-refs/V8_3_212_DEV_800.json
-      - name: Construct and audit fresh V212 sealed bank
-        run: python validation/v83212-sealed-v1-generator.py
-      - name: Verify preseal authority is runtime-free
-        run: |
-          python - <<'PY'
-          import json,pathlib,os
-          r=pathlib.Path('validation/v83212-v1-sealed')
-          a=json.loads((r/'V8_3_212_PRESEAL_DIVERSITY_AUDIT_V1.json').read_text());u=json.loads((r/'V8_3_212_SEALED_AUTHORITY_V1.json').read_text())
-          assert a['pass'] and a['candidate_count']==180 and a['selected_count']==60
-          assert a['internal_max_similarity']<.75 and a['external_cases_at_or_above_0_75']==0 and a['exact_external_duplicates']==0
-          assert not a['runtime_executed_during_bank_or_selection'] and not a['semantic_authority_loaded_during_bank_or_selection'] and not a['selection_uses_runtime_output']
-          assert u['validated_development_head_sha']=='840cfd3aeea515a335a97615fbc321ebf0e1ce11' and u['semantic_authority']=='QCSemanticCoreV92'
-          receipt={'candidate':'V8.3.212','phase':'preseal-v1','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'validated_development_head_sha':u['validated_development_head_sha'],'semantic_authority':'QCSemanticCoreV92','candidate_count':180,'selected_count':60,'internal_max_similarity':a['internal_max_similarity'],'external_max_similarity':a['external_max_similarity'],'external_reference_surfaces':a['external_reference_surfaces'],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'selection_uses_runtime_output':False,'v211_r4_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False,'conclusion':'success'}
-          (r/'V8_3_212_PRESEAL_RUN_RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
-          print(receipt)
-          PY
-      - name: Freeze preseal carrier on proven branch
+      - name: Run deterministic preseal diagnostic orchestrator
+        id: preseal
+        continue-on-error: true
+        run: python validation/v83212-preseal-v1-orchestrator.py
+      - name: Freeze preseal carrier if constructed
+        if: always()
         run: |
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/v83212-v1-sealed
-          git commit -m 'Freeze V8.3.212 V1 preseal carrier'
+          git add -- validation/V8_3_212_PRESEAL_DIAGNOSTIC_RECEIPT.json
+          if [ -d validation/v83212-v1-sealed ]; then git add -- validation/v83212-v1-sealed; fi
+          git commit -m 'Record V8.3.212 preseal diagnostic and carrier'
           git push
+      - name: Enforce preseal success
+        if: always()
+        run: test '${{ steps.preseal.outcome }}' = 'success'
