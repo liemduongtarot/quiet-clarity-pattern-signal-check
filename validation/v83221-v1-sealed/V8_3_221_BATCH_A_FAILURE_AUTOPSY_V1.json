@@ -1,0 +1,25 @@
+{
+  "candidate": "V8.3.221",
+  "run_id": "32516406088",
+  "classification": "ENGINE LOGIC",
+  "INPUT": "Fresh V8.3.221 sealed Batch A, 30 independently selected cases under exact DEVELOPMENT SHA 0e17e6d62edf8334ea75ba70b4f28f2746dd8436 and QCEvidenceExtractorV5Y -> QCSemanticCoreV98.",
+  "EXPECTED": "30/30 exact route/family/sequence match against frozen independent gold.",
+  "ACTUAL": "18/30 PASS, 12 FAIL. Failures are confined to four mechanism groups: prediction 3/3 failed, ignore 3/3 failed, slow 3/3 failed, sequence 3/3 failed. Clarification, decision, hypothetical, third-party, freeze and neutral all preserved 3/3 in Batch A.",
+  "CAUSE": "V98 only contains bounded aliases for the exact V8.3.219 failure phrasings. The fresh V8.3.221 paraphrases fall outside those aliases, exposing incomplete generalization in four mechanisms. Prediction paraphrases fall through to self-lived/freeze; ignore paraphrases lose the ignore family; bounded slow paraphrases map to fast or no family; sequence paraphrases lose slow/sequence and two EN cases are misrouted as hypothetical.",
+  "FIX": "Open V8.3.222 from exact V8.3.221 DEVELOPMENT authority and add a bounded additive extractor/core layer that generalizes only the four demonstrated mechanisms using compositional evidence cues rather than exact sentence aliases. Preserve V5X/V97 and V5Y/V98 unchanged. Do not modify expected/gold.",
+  "RETEST": "Freeze all 30 V8.3.221 Batch A cases as immutable DEVELOPMENT regression: repair all 12 failures and preserve all 18 passes. Also retain historical 1470/1470, V216 30/30 and V219 30/30 preservation gates before any fresh V8.3.222 sealed cycle.",
+  "mechanism_groups": [
+    {"group":"prediction-generalization","cases":["V221-S04-02","V221-S04-08","V221-S04-14"],"expected":"input:prediction","actual":"input:self-lived; EN/VI may spuriously add freeze"},
+    {"group":"ignore-generalization","cases":["V221-S06-02","V221-S06-08","V221-S06-14"],"expected":"families=[ignore]","actual":"families=[]"},
+    {"group":"slow-generalization","cases":["V221-S07-02","V221-S07-08","V221-S07-14"],"expected":"families=[slow], sequence=false","actual":"fast or []"},
+    {"group":"sequence-generalization-and-route-precedence","cases":["V221-S08-02","V221-S08-08","V221-S08-14"],"expected":"input:self-lived, families=[slow], sequence=true","actual":"EN hypothetical misroute / VI family+sequence missing"}
+  ],
+  "batch_a_attempt_consumed": true,
+  "batch_b_skipped": true,
+  "never_rerun_batch_a": true,
+  "never_run_batch_b": true,
+  "semantic_failure": true,
+  "v220_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
