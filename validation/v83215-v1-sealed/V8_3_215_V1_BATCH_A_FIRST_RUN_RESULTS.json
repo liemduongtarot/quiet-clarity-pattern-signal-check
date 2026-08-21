@@ -1,0 +1,592 @@
+{
+  "authority": "V8.3.215 V1 SEALED BATCH A FIRST RUN",
+  "run_id": "32483537064",
+  "run_attempt": "1",
+  "total": 30,
+  "passed": 23,
+  "failed": 7,
+  "results": [
+    {
+      "case_id": "V215-S00-00",
+      "mechanism": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A copper archive sleeve stores quarterly reconciliation paperwork. Ledger reference already filed. The external story is complete, but it never states the observable action I personally took at closure. A blue tab marks the physical folder shelf. This procedural detail only locates the record."
+    },
+    {
+      "case_id": "V215-S00-06",
+      "mechanism": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A copper archive sleeve stores quarterly reconciliation paperwork. Invoice marker already present. The external story is complete, but it never states the observable action I personally took at closure. A cash-office envelope holds the remittance copy. Routine paperwork is background, not behavioural evidence."
+    },
+    {
+      "case_id": "V215-S00-12",
+      "mechanism": "clarification",
+      "language": "VI",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Một bìa kho màu đồng lưu giấy tờ đối soát theo quý. Ghi chú sinh hoạt đã có. Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại. Một nam châm tủ lạnh đánh dấu tháng trên lịch household. Fact logistics tách biệt với phản ứng đang đo."
+    },
+    {
+      "case_id": "V215-S01-00",
+      "mechanism": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I am transferring the choice itself: select the course I should take instead of helping me decide. A blue tab marks the physical folder shelf. The admin marker does not decide the mechanism. Venue coordinators keep a laminated room-allocation sheet beside reception. Ledger reference already filed."
+    },
+    {
+      "case_id": "V215-S01-06",
+      "mechanism": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I am transferring the choice itself: select the course I should take instead of helping me decide. A cash-office envelope holds the remittance copy. That logistics fact is separate from the measured response. Venue coordinators keep a laminated room-allocation sheet beside reception. Invoice marker already present."
+    },
+    {
+      "case_id": "V215-S01-12",
+      "mechanism": "decision",
+      "language": "VI",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc. Một nam châm tủ lạnh đánh dấu tháng trên lịch household. Chi tiết thủ tục chỉ định vị record. Bộ phận địa điểm giữ sheet phân phòng ép nhựa cạnh quầy tiếp tân. Ghi chú sinh hoạt đã có."
+    },
+    {
+      "case_id": "V215-S02-00",
+      "mechanism": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A blue tab marks the physical folder shelf. The stored reference only anchors chronology. Ledger reference already filed. Recruitment administration files a barcode cover page in the intake cabinet. This is fabricated evaluation prose, not an episode I have actually lived through."
+    },
+    {
+      "case_id": "V215-S02-06",
+      "mechanism": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A cash-office envelope holds the remittance copy. This procedural detail only locates the record. Invoice marker already present. Recruitment administration files a barcode cover page in the intake cabinet. This is fabricated evaluation prose, not an episode I have actually lived through."
+    },
+    {
+      "case_id": "V215-S02-12",
+      "mechanism": "hypothetical",
+      "language": "VI",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Một nam châm tủ lạnh đánh dấu tháng trên lịch household. Marker hành chính không quyết định cơ chế. Ghi chú sinh hoạt đã có. Thủ tục tuyển dụng lưu trang bìa barcode trong tủ hồ sơ tiếp nhận. Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi."
+    },
+    {
+      "case_id": "V215-S03-00",
+      "mechanism": "third",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Household paperwork uses a pantry-calendar note for shared errands. Ledger reference already filed. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion. A blue tab marks the physical folder shelf. Routine paperwork is background, not behavioural evidence."
+    },
+    {
+      "case_id": "V215-S03-06",
+      "mechanism": "third",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Household paperwork uses a pantry-calendar note for shared errands. Invoice marker already present. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion. A cash-office envelope holds the remittance copy. The admin marker does not decide the mechanism."
+    },
+    {
+      "case_id": "V215-S03-12",
+      "mechanism": "third",
+      "language": "VI",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Giấy tờ household dùng ghi chú lịch bếp cho việc chung. Ghi chú sinh hoạt đã có. Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó. Một nam châm tủ lạnh đánh dấu tháng trên lịch household. Mã lưu trữ chỉ neo dòng thời gian."
+    },
+    {
+      "case_id": "V215-S04-00",
+      "mechanism": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "At the next defined future checkpoint, will this finish with the result I want? A blue tab marks the physical folder shelf. That logistics fact is separate from the measured response. Staffing operations retain a roster printout beside the duty board. Ledger reference already filed."
+    },
+    {
+      "case_id": "V215-S04-06",
+      "mechanism": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "At the next defined future checkpoint, will this finish with the result I want? A cash-office envelope holds the remittance copy. The stored reference only anchors chronology. Staffing operations retain a roster printout beside the duty board. Invoice marker already present."
+    },
+    {
+      "case_id": "V215-S04-12",
+      "mechanism": "prediction",
+      "language": "VI",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không? Một nam châm tủ lạnh đánh dấu tháng trên lịch household. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Vận hành nhân sự giữ bản in roster cạnh bảng phân ca. Ghi chú sinh hoạt đã có."
+    },
+    {
+      "case_id": "V215-S05-00",
+      "mechanism": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "A blue tab marks the physical folder shelf. This procedural detail only locates the record. Ledger reference already filed. Records control assigns a retention-folder label inside long-term storage. A low-cost reversible first step was available, but I expanded alternatives instead of starting it."
+    },
+    {
+      "case_id": "V215-S05-06",
+      "mechanism": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "A cash-office envelope holds the remittance copy. Routine paperwork is background, not behavioural evidence. Invoice marker already present. Records control assigns a retention-folder label inside long-term storage. A low-cost reversible first step was available, but I expanded alternatives instead of starting it."
+    },
+    {
+      "case_id": "V215-S05-12",
+      "mechanism": "freeze",
+      "language": "VI",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Một nam châm tủ lạnh đánh dấu tháng trên lịch household. Fact logistics tách biệt với phản ứng đang đo. Ghi chú sinh hoạt đã có. Kiểm soát records gắn nhãn retention-folder trong kho dài hạn. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động."
+    },
+    {
+      "case_id": "V215-S06-00",
+      "mechanism": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "Accounts clerks staple a remittance slip to the payment packet. Ledger reference already filed. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it. A blue tab marks the physical folder shelf. The admin marker does not decide the mechanism."
+    },
+    {
+      "case_id": "V215-S06-06",
+      "mechanism": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "Accounts clerks staple a remittance slip to the payment packet. Invoice marker already present. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it. A cash-office envelope holds the remittance copy. That logistics fact is separate from the measured response."
+    },
+    {
+      "case_id": "V215-S06-12",
+      "mechanism": "ignore",
+      "language": "VI",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "Nhân viên accounts ghim phiếu remittance vào packet thanh toán. Ghi chú sinh hoạt đã có. Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời. Một nam châm tủ lạnh đánh dấu tháng trên lịch household. Chi tiết thủ tục chỉ định vị record."
+    },
+    {
+      "case_id": "V215-S07-00",
+      "mechanism": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. A blue tab marks the physical folder shelf. The stored reference only anchors chronology. Communications administration indexes correspondence under a mailbox routing sheet. Ledger reference already filed."
+    },
+    {
+      "case_id": "V215-S07-06",
+      "mechanism": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. A cash-office envelope holds the remittance copy. This procedural detail only locates the record. Communications administration indexes correspondence under a mailbox routing sheet. Invoice marker already present."
+    },
+    {
+      "case_id": "V215-S07-12",
+      "mechanism": "slow",
+      "language": "VI",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review. Một nam châm tủ lạnh đánh dấu tháng trên lịch household. Marker hành chính không quyết định cơ chế. Bộ phận communications lập chỉ mục thư từ bằng sheet định tuyến mailbox. Ghi chú sinh hoạt đã có."
+    },
+    {
+      "case_id": "V215-S08-00",
+      "mechanism": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "A blue tab marks the physical folder shelf. Routine paperwork is background, not behavioural evidence. Ledger reference already filed. Booking staff maintain a reservation cover note inside the appointment binder. I moved close to execution, pulled back, then revisited the same judgement despite no new information."
+    },
+    {
+      "case_id": "V215-S08-06",
+      "mechanism": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "A cash-office envelope holds the remittance copy. The admin marker does not decide the mechanism. Invoice marker already present. Booking staff maintain a reservation cover note inside the appointment binder. I moved close to execution, pulled back, then revisited the same judgement despite no new information."
+    },
+    {
+      "case_id": "V215-S08-12",
+      "mechanism": "sequence",
+      "language": "VI",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Một nam châm tủ lạnh đánh dấu tháng trên lịch household. Mã lưu trữ chỉ neo dòng thời gian. Ghi chú sinh hoạt đã có. Nhân viên booking giữ cover note đặt chỗ trong binder lịch hẹn. Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi."
+    },
+    {
+      "case_id": "V215-S09-00",
+      "mechanism": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Completion paperwork carries a closure stamp in the archive tray. Ledger reference already filed. I made the choice myself, completed the practical action, and then left the matter closed. A blue tab marks the physical folder shelf. That logistics fact is separate from the measured response."
+    },
+    {
+      "case_id": "V215-S09-06",
+      "mechanism": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Completion paperwork carries a closure stamp in the archive tray. Invoice marker already present. I made the choice myself, completed the practical action, and then left the matter closed. A cash-office envelope holds the remittance copy. The stored reference only anchors chronology."
+    },
+    {
+      "case_id": "V215-S09-12",
+      "mechanism": "neutral",
+      "language": "VI",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Giấy tờ hoàn tất mang dấu closure trong khay lưu trữ. Ghi chú sinh hoạt đã có. Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở. Một nam châm tủ lạnh đánh dấu tháng trên lịch household. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi."
+    }
+  ]
+}
