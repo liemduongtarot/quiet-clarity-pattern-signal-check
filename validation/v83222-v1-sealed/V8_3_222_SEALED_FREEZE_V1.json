@@ -1,0 +1,20 @@
+{
+  "candidate": "V8.3.222",
+  "state": "FROZEN",
+  "run_id": "32517403255",
+  "validated_development_head_sha": "8fd91bfd1e9abdc25b9af12a9494b8e2f14e9f16",
+  "semantic_authority": "QCEvidenceExtractorV5Z -> QCSemanticCoreV99",
+  "batch_a_attempt_consumed": true,
+  "batch_a_passed": 11,
+  "batch_a_failed": 19,
+  "batch_b": "SKIPPED_AND_FORBIDDEN",
+  "semantic_failure": true,
+  "failure_layer": "ENGINE LOGIC",
+  "never_rerun_batch_a": true,
+  "never_run_batch_b": true,
+  "v219_sealed_rerun": false,
+  "v220_sealed_rerun": false,
+  "v221_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
