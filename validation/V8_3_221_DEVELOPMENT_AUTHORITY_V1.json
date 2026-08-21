@@ -1,0 +1,16 @@
+{
+  "candidate": "V8.3.221",
+  "development": "PASS",
+  "base_development_authority_sha": "06ac0e51c958f5c64dcb97f91d66b122d3048bf8",
+  "semantic_authority": "QCEvidenceExtractorV5Y -> QCSemanticCoreV98",
+  "semantic_change_from_v8_3_220": false,
+  "repair_scope": "validation runner adapter/schema contract only",
+  "bounded_recovery_receipt": "V8_3_221_BOUNDED_RUNNER_SCHEMA_RECOVERY_RECEIPT.json",
+  "immutable_historical_regression": "1470/1470 PASS",
+  "v216_frozen_a_regression": "30/30 PASS",
+  "v219_frozen_a_regression": "30/30 PASS",
+  "v220_sealed_rerun": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
