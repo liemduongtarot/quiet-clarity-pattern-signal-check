@@ -20,8 +20,8 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
-          import json,os,subprocess,pathlib
-          trigger='b06496538f0b61c034d29eb5c37e9358cf5099b9'
+          import json,subprocess,pathlib
+          trigger='96e037e07a862afc3eadd3cda69d5b58f2b811d4'
           cmd=['gh','run','list','--repo','liemduongtarot/quiet-clarity-pattern-signal-check','--workflow','v83215-sealed-one-shot.yml','--limit','20','--json','databaseId,headSha,status,conclusion,event,createdAt,updatedAt,displayTitle,workflowName']
           raw=subprocess.check_output(cmd,text=True)
           runs=json.loads(raw)
