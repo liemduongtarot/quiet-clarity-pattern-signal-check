@@ -142,7 +142,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "other",
-      "surface": "Thủ tục tiếp nhận duy trì một annotation lưu file chỉ để xử lý record. Marker hồ sơ đã được ghi. Marker hành chính không quyết định cơ chế. Một worksheet đối soát nằm trong folder tài chính riêng. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
+      "surface": "Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Marker hồ sơ đã được ghi. Marker hành chính không quyết định cơ chế. Một worksheet đối soát nằm trong folder tài chính riêng. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -214,7 +214,7 @@
       "category": "clarification",
       "language": "VI",
       "domain": "other",
-      "surface": "Thủ tục đặt lịch giữ một ghi chú booking cho phối hợp hành chính. Chi tiết booking đã lưu. Fact logistics tách biệt với phản ứng đang đo. Một worksheet đối soát nằm trong folder tài chính riêng. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
+      "surface": "Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Chi tiết booking đã lưu. Fact logistics tách biệt với phản ứng đang đo. Một worksheet đối soát nằm trong folder tài chính riêng. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
       "expected": {
         "route": "input:clarification-required",
         "families": [],
@@ -358,7 +358,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "money",
-      "surface": "Marker hồ sơ đã được ghi. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Thủ tục tiếp nhận duy trì một annotation lưu file chỉ để xử lý record. Một sheet địa điểm do bộ phận lịch trình quản lý. Mã lưu trữ chỉ neo dòng thời gian.",
+      "surface": "Marker hồ sơ đã được ghi. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Một sheet địa điểm do bộ phận lịch trình quản lý. Mã lưu trữ chỉ neo dòng thời gian.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -430,7 +430,7 @@
       "category": "decision",
       "language": "VI",
       "domain": "money",
-      "surface": "Chi tiết booking đã lưu. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Thủ tục đặt lịch giữ một ghi chú booking cho phối hợp hành chính. Một sheet địa điểm do bộ phận lịch trình quản lý. Chi tiết thủ tục chỉ định vị record.",
+      "surface": "Chi tiết booking đã lưu. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Một sheet địa điểm do bộ phận lịch trình quản lý. Chi tiết thủ tục chỉ định vị record.",
       "expected": {
         "route": "input:decision-request",
         "families": [],
@@ -574,7 +574,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Trang bìa tiếp nhận ứng viên thuộc thủ tục tuyển dụng. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Thủ tục tiếp nhận duy trì một annotation lưu file chỉ để xử lý record. Marker hồ sơ đã được ghi.",
+      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Trang bìa tiếp nhận ứng viên thuộc thủ tục tuyển dụng. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Marker hồ sơ đã được ghi.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -646,7 +646,7 @@
       "category": "hypothetical",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Trang bìa tiếp nhận ứng viên thuộc thủ tục tuyển dụng. Marker hành chính không quyết định cơ chế. Thủ tục đặt lịch giữ một ghi chú booking cho phối hợp hành chính. Chi tiết booking đã lưu.",
+      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Trang bìa tiếp nhận ứng viên thuộc thủ tục tuyển dụng. Marker hành chính không quyết định cơ chế. Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Chi tiết booking đã lưu.",
       "expected": {
         "route": "input:hypothetical-or-example",
         "families": [],
@@ -790,7 +790,7 @@
       "category": "third",
       "language": "VI",
       "domain": "career",
-      "surface": "Thủ tục tiếp nhận duy trì một annotation lưu file chỉ để xử lý record. Marker hồ sơ đã được ghi. Fact logistics tách biệt với phản ứng đang đo. Sheet lập kế hoạch sinh hoạt nằm cùng giấy tờ household. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
+      "surface": "Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Marker hồ sơ đã được ghi. Fact logistics tách biệt với phản ứng đang đo. Sheet lập kế hoạch sinh hoạt nằm cùng giấy tờ household. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -862,7 +862,7 @@
       "category": "third",
       "language": "VI",
       "domain": "career",
-      "surface": "Thủ tục đặt lịch giữ một ghi chú booking cho phối hợp hành chính. Chi tiết booking đã lưu. Mã lưu trữ chỉ neo dòng thời gian. Sheet lập kế hoạch sinh hoạt nằm cùng giấy tờ household. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
+      "surface": "Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Chi tiết booking đã lưu. Mã lưu trữ chỉ neo dòng thời gian. Sheet lập kế hoạch sinh hoạt nằm cùng giấy tờ household. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
       "expected": {
         "route": "input:third-party-only",
         "families": [],
@@ -1006,7 +1006,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "family",
-      "surface": "Marker hồ sơ đã được ghi. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Thủ tục tiếp nhận duy trì một annotation lưu file chỉ để xử lý record. Trang phân bổ nhân sự thuộc vận hành workforce. Chi tiết thủ tục chỉ định vị record.",
+      "surface": "Marker hồ sơ đã được ghi. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Trang phân bổ nhân sự thuộc vận hành workforce. Chi tiết thủ tục chỉ định vị record.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1078,7 +1078,7 @@
       "category": "prediction",
       "language": "VI",
       "domain": "family",
-      "surface": "Chi tiết booking đã lưu. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Thủ tục đặt lịch giữ một ghi chú booking cho phối hợp hành chính. Trang phân bổ nhân sự thuộc vận hành workforce. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "surface": "Chi tiết booking đã lưu. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Trang phân bổ nhân sự thuộc vận hành workforce. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
       "expected": {
         "route": "input:prediction",
         "families": [],
@@ -1244,7 +1244,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Bìa lưu hồ sơ chung do bộ phận records quản lý. Marker hành chính không quyết định cơ chế. Thủ tục tiếp nhận duy trì một annotation lưu file chỉ để xử lý record. Marker hồ sơ đã được ghi.",
+      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Bìa lưu hồ sơ chung do bộ phận records quản lý. Marker hành chính không quyết định cơ chế. Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Marker hồ sơ đã được ghi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1328,7 +1328,7 @@
       "category": "freeze",
       "language": "VI",
       "domain": "workplace",
-      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Bìa lưu hồ sơ chung do bộ phận records quản lý. Fact logistics tách biệt với phản ứng đang đo. Thủ tục đặt lịch giữ một ghi chú booking cho phối hợp hành chính. Chi tiết booking đã lưu.",
+      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Bìa lưu hồ sơ chung do bộ phận records quản lý. Fact logistics tách biệt với phản ứng đang đo. Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Chi tiết booking đã lưu.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1496,7 +1496,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "other",
-      "surface": "Thủ tục tiếp nhận duy trì một annotation lưu file chỉ để xử lý record. Marker hồ sơ đã được ghi. Mã lưu trữ chỉ neo dòng thời gian. Sheet hỗ trợ thanh toán thuộc vận hành accounts. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
+      "surface": "Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Marker hồ sơ đã được ghi. Mã lưu trữ chỉ neo dòng thời gian. Sheet hỗ trợ thanh toán thuộc vận hành accounts. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1580,7 +1580,7 @@
       "category": "ignore",
       "language": "VI",
       "domain": "other",
-      "surface": "Thủ tục đặt lịch giữ một ghi chú booking cho phối hợp hành chính. Chi tiết booking đã lưu. Chi tiết thủ tục chỉ định vị record. Sheet hỗ trợ thanh toán thuộc vận hành accounts. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
+      "surface": "Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Chi tiết booking đã lưu. Chi tiết thủ tục chỉ định vị record. Sheet hỗ trợ thanh toán thuộc vận hành accounts. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1748,7 +1748,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "money",
-      "surface": "Marker hồ sơ đã được ghi. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Thủ tục tiếp nhận duy trì một annotation lưu file chỉ để xử lý record. Trang chỉ mục thư từ thuộc thủ tục communications. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "surface": "Marker hồ sơ đã được ghi. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Trang chỉ mục thư từ thuộc thủ tục communications. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -1832,7 +1832,7 @@
       "category": "slow",
       "language": "VI",
       "domain": "money",
-      "surface": "Chi tiết booking đã lưu. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Thủ tục đặt lịch giữ một ghi chú booking cho phối hợp hành chính. Trang chỉ mục thư từ thuộc thủ tục communications. Marker hành chính không quyết định cơ chế.",
+      "surface": "Chi tiết booking đã lưu. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Trang chỉ mục thư từ thuộc thủ tục communications. Marker hành chính không quyết định cơ chế.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2000,7 +2000,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Bìa lịch hẹn thuộc vận hành booking. Fact logistics tách biệt với phản ứng đang đo. Thủ tục tiếp nhận duy trì một annotation lưu file chỉ để xử lý record. Marker hồ sơ đã được ghi.",
+      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Bìa lịch hẹn thuộc vận hành booking. Fact logistics tách biệt với phản ứng đang đo. Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Marker hồ sơ đã được ghi.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2084,7 +2084,7 @@
       "category": "sequence",
       "language": "VI",
       "domain": "relationship",
-      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Bìa lịch hẹn thuộc vận hành booking. Mã lưu trữ chỉ neo dòng thời gian. Thủ tục đặt lịch giữ một ghi chú booking cho phối hợp hành chính. Chi tiết booking đã lưu.",
+      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Bìa lịch hẹn thuộc vận hành booking. Mã lưu trữ chỉ neo dòng thời gian. Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Chi tiết booking đã lưu.",
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -2230,7 +2230,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "career",
-      "surface": "Thủ tục tiếp nhận duy trì một annotation lưu file chỉ để xử lý record. Marker hồ sơ đã được ghi. Chi tiết thủ tục chỉ định vị record. Checklist đóng việc nằm cùng giấy tờ hoàn tất thường lệ. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
+      "surface": "Thủ tục tiếp nhận duy trì một annotation lưu file riêng cho kiểm kê hồ sơ, phân luồng tài liệu và bàn giao hành chính nội bộ. Marker hồ sơ đã được ghi. Chi tiết thủ tục chỉ định vị record. Checklist đóng việc nằm cùng giấy tờ hoàn tất thường lệ. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
@@ -2302,7 +2302,7 @@
       "category": "neutral",
       "language": "VI",
       "domain": "career",
-      "surface": "Thủ tục đặt lịch giữ một ghi chú booking cho phối hợp hành chính. Chi tiết booking đã lưu. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Checklist đóng việc nằm cùng giấy tờ hoàn tất thường lệ. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
+      "surface": "Thủ tục đặt lịch giữ một ghi chú booking dành cho xác nhận phòng, phối hợp người tham dự và đối chiếu lịch vận hành. Chi tiết booking đã lưu. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Checklist đóng việc nằm cùng giấy tờ hoàn tất thường lệ. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
       "expected": {
         "route": "input:self-lived",
         "families": [],
