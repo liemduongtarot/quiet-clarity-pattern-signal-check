@@ -21,7 +21,7 @@ jobs:
         id: run
         shell: bash
         run: |
-          # V8.3.226 DEVELOPMENT regression R2 plumbing trigger; semantics unchanged
+          # V8.3.226 DEVELOPMENT regression R3 self-contained harness; semantics unchanged
           set +e
           python validation/v83226-v103-regression-orchestrator.py > /tmp/v226.log 2>&1
           rc=$?
@@ -30,7 +30,7 @@ jobs:
           RC="$rc" python - <<'PY'
           import json,os,pathlib
           text=pathlib.Path('/tmp/v226.log').read_text(errors='replace');rc=os.environ['RC']
-          d={'candidate':'V8.3.226','phase':'v103-development-regression-diagnostic-r2','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-14000:],'sealed_validation_executed':False,'v225_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          d={'candidate':'V8.3.226','phase':'v103-development-regression-diagnostic-r3','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-14000:],'sealed_validation_executed':False,'v225_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
           pathlib.Path('validation/V8_3_226_V103_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
           PY
           exit 0
@@ -42,7 +42,7 @@ jobs:
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add validation/V8_3_226_V103_REGRESSION_DIAGNOSTIC.json
-          for f in validation/V8_3_226_V103_REGRESSION_RECEIPT.json validation/V8_3_226_V103_PARENT_PRESERVATION_RECEIPT.json validation/V8_3_226_V225_A_FROZEN_CARRIER.json; do test ! -f "$f" || git add "$f"; done
+          for f in validation/V8_3_226_V103_REGRESSION_RECEIPT.json validation/V8_3_226_V103_BASE_REGRESSION_RECEIPT.json validation/V8_3_226_V225_A_FROZEN_CARRIER.json validation/V8_3_226_V224_A_FROZEN_CARRIER.json validation/V8_3_226_V223_A_FROZEN_CARRIER.json validation/V8_3_226_V222_A_FROZEN_CARRIER.json validation/V8_3_226_V221_A_FROZEN_CARRIER.json validation/V8_3_226_V219_A_FROZEN_CARRIER.json; do test ! -f "$f" || git add "$f"; done
           git diff --cached --quiet || git commit -m 'Record V8.3.226 V103 DEVELOPMENT regression evidence'
           git push origin HEAD:v83226-v1-validation
       - name: Checkpoint
@@ -51,7 +51,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir V8_3_226_DEVELOPMENT_REGRESSION_CHECKPOINT
-          for f in validation/V8_3_226_V103_REGRESSION_DIAGNOSTIC.json validation/V8_3_226_V103_REGRESSION_RECEIPT.json validation/V8_3_226_V103_PARENT_PRESERVATION_RECEIPT.json validation/qc-evidence-extractor-v5ad-v226-full-input-witness.js validation/psc-v83226-v225-v103-full-input-witness.js; do test ! -f "$f" || cp "$f" V8_3_226_DEVELOPMENT_REGRESSION_CHECKPOINT/; done
+          for f in validation/V8_3_226_V103_REGRESSION_DIAGNOSTIC.json validation/V8_3_226_V103_REGRESSION_RECEIPT.json validation/V8_3_226_V103_BASE_REGRESSION_RECEIPT.json validation/qc-evidence-extractor-v5ad-v226-full-input-witness.js validation/psc-v83226-v225-v103-full-input-witness.js; do test ! -f "$f" || cp "$f" V8_3_226_DEVELOPMENT_REGRESSION_CHECKPOINT/; done
           (cd V8_3_226_DEVELOPMENT_REGRESSION_CHECKPOINT && sha256sum * > SHA256_MANIFEST.txt)
           zip -r PSC_V8_3_226_DEVELOPMENT_REGRESSION_CHECKPOINT.zip V8_3_226_DEVELOPMENT_REGRESSION_CHECKPOINT
           sha256sum PSC_V8_3_226_DEVELOPMENT_REGRESSION_CHECKPOINT.zip > PSC_V8_3_226_DEVELOPMENT_REGRESSION_CHECKPOINT_SHA256.txt
