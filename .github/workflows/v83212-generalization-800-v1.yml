@@ -1,12 +1,12 @@
-name: V8.3.213 V93 Final Development
+name: V8.3.214 V94R Final Development
 on:
   push:
-    branches: [v83213-v1-validation]
+    branches: [v83214-v1-validation]
 permissions:
   contents: write
 jobs:
   final:
-    if: github.event.head_commit.message == 'Run V8.3.213 V93 final development'
+    if: github.event.head_commit.message == 'Run V8.3.214 V94R final development'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -14,52 +14,36 @@ jobs:
         with: {fetch-depth: 1}
       - uses: actions/setup-node@v4
         with: {node-version: '24'}
-      - name: Run integrated V93 final-development orchestrator
+      - name: Run integrated V94R final-development gates
         id: orchestrator
         continue-on-error: true
-        run: python validation/v83213-v93-final-development-orchestrator.py
+        run: python validation/v83214-v94r-final-development-orchestrator.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: PSC_V8_3_213_V93_DEVELOPMENT_VALIDATION_CHECKPOINT
+          name: PSC_V8_3_214_V94R_DEVELOPMENT_VALIDATION_CHECKPOINT
           if-no-files-found: ignore
           path: |
-            PSC_V8_3_213_V93_DEVELOPMENT_VALIDATION_CHECKPOINT.zip
-            PSC_V8_3_213_V93_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt
+            PSC_V8_3_214_V94R_DEVELOPMENT_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_214_V94R_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt
       - name: Record final-development evidence
         if: always()
         run: |
           python - <<'PY'
           import json,pathlib,os
-          def load(path):
-            p=pathlib.Path(path)
-            return json.loads(p.read_text()) if p.exists() else None
-          existing=load('validation/V8_3_213_V93_FINAL_DEVELOPMENT_RUN_RECEIPT.json')
-          rr=load('V8_3_213_V93_FINAL_REGRESSION_RESULTS.json')
-          ar=load('V8_3_213_V212_A_FINAL_REGRESSION_RESULTS.json')
-          gen=load('V8_3_212_DEVELOPMENT_GENERALIZATION_800_RESULTS_V1.json')
-          br=load('V8_3_213_V93_FINAL_BROWSER_E2E_RESULTS.json')
-          r=existing or {
-            'candidate':'V8.3.213','phase':'v93-final-development',
-            'run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),
-            'head_sha':os.environ['GITHUB_SHA'],'semantic_authority':'QCSemanticCoreV93',
-            'regression':None if rr is None else {'total':rr.get('total'),'passed':rr.get('passed'),'failed':rr.get('failed')},
-            'v212_frozen_a_regression':None if ar is None else {'total':ar.get('total'),'passed':ar.get('passed'),'failed':ar.get('failed')},
-            'generalization':None if gen is None else {'total':gen.get('total'),'classification_passed':gen.get('classification_passed'),'pass':gen.get('pass')},
-            'browser':None if br is None else {'total':br.get('total'),'passed':br.get('passed')},
-            'checkpoint_exists':pathlib.Path('PSC_V8_3_213_V93_DEVELOPMENT_VALIDATION_CHECKPOINT.zip').exists(),
-            'status':'completed','conclusion':'success' if '${{ steps.orchestrator.outcome }}'=='success' else 'failure',
-            'v212_sealed_rerun':False,'sealed_validation_executed':False,
-            'step_111_authorized':False,'production_authorized':False
-          }
-          pathlib.Path('validation/V8_3_213_V93_FINAL_DEVELOPMENT_EVIDENCE_RECEIPT.json').write_text(json.dumps(r,indent=2)+'\n')
+          def load(p):
+            q=pathlib.Path(p);return json.loads(q.read_text()) if q.exists() else None
+          existing=load('validation/V8_3_214_V94R_FINAL_DEVELOPMENT_RUN_RECEIPT.json')
+          gen=load('V8_3_212_DEVELOPMENT_GENERALIZATION_800_RESULTS_V1.json');br=load('V8_3_214_V94R_FINAL_BROWSER_E2E_RESULTS.json')
+          r=existing or {'candidate':'V8.3.214','phase':'v94r-final-development','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'semantic_authority':'QCSemanticCoreV94R','regression_reused_from_run':32472069030,'generalization':None if gen is None else {'total':gen.get('total'),'classification_passed':gen.get('classification_passed'),'pass':gen.get('pass')},'browser':None if br is None else {'total':br.get('total'),'passed':br.get('passed')},'checkpoint_exists':pathlib.Path('PSC_V8_3_214_V94R_DEVELOPMENT_VALIDATION_CHECKPOINT.zip').exists(),'status':'completed','conclusion':'success' if '${{ steps.orchestrator.outcome }}'=='success' else 'failure','v213_sealed_rerun':False,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_214_V94R_FINAL_DEVELOPMENT_EVIDENCE_RECEIPT.json').write_text(json.dumps(r,indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/V8_3_213_V93_FINAL_DEVELOPMENT_EVIDENCE_RECEIPT.json
-          if [ -f validation/V8_3_213_V93_FINAL_DEVELOPMENT_RUN_RECEIPT.json ]; then git add -- validation/V8_3_213_V93_FINAL_DEVELOPMENT_RUN_RECEIPT.json; fi
-          git diff --cached --quiet || git commit -m 'Record V8.3.213 V93 final development evidence'
+          git add -- validation/V8_3_214_V94R_FINAL_DEVELOPMENT_EVIDENCE_RECEIPT.json
+          if [ -f validation/V8_3_214_V94R_FINAL_DEVELOPMENT_RUN_RECEIPT.json ]; then git add -- validation/V8_3_214_V94R_FINAL_DEVELOPMENT_RUN_RECEIPT.json; fi
+          git diff --cached --quiet || git commit -m 'Record V8.3.214 V94R final development evidence'
           git push
-      - name: Enforce orchestrator success
+      - name: Enforce final-development outcome
         if: always()
         run: test '${{ steps.orchestrator.outcome }}' = 'success'
