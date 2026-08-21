@@ -1,0 +1,22 @@
+{
+  "candidate": "V8.3.218",
+  "phase": "development-authority",
+  "development": "PASS",
+  "semantic_base_sha": "456a88d01b671f0cb92a0be31f4d34d68f60d135",
+  "semantic_authority": "QCEvidenceExtractorV5X -> QCSemanticCoreV97",
+  "semantic_change_from_v8_3_217": false,
+  "validation_infrastructure_change_only": true,
+  "bounded_recovery_receipt": "validation/V8_3_218_BOUNDED_RECOVERY_RECEIPT.json",
+  "bounded_recovery_pass": true,
+  "inherited_v8_3_217_development_regression": "1470/1470 PASS",
+  "inherited_v8_3_217_v216_frozen_a_regression": "30/30 PASS",
+  "inherited_v8_3_217_generalization": "PASS",
+  "inherited_v8_3_217_browser": "PASS",
+  "v8_3_217_development_gates_rerun": false,
+  "v8_3_217_sealed_batch_a_rerun": false,
+  "v8_3_217_sealed_batch_b_rerun": false,
+  "expected_gold_changed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "next_gate": "fresh V8.3.218 sealed validation construction"
+}
