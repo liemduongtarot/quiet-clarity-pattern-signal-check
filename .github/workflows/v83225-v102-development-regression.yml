@@ -26,16 +26,15 @@ jobs:
           rc=$?
           cat /tmp/v225.log
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-          python - <<'PY'
+          RC="$rc" python - <<'PY'
           import json,os,pathlib
           p=pathlib.Path('/tmp/v225.log')
           text=p.read_text(errors='replace') if p.exists() else ''
-          d={'candidate':'V8.3.225','phase':'v102-development-regression-diagnostic','outcome':'success' if os.environ.get('RC')=='0' else 'failure','exit_code':os.environ.get('RC'),'log_tail':text[-14000:],'sealed_validation_executed':False,'v224_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          rc=os.environ.get('RC','')
+          d={'candidate':'V8.3.225','phase':'v102-development-regression-diagnostic','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-14000:],'sealed_validation_executed':False,'v224_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
           pathlib.Path('validation/V8_3_225_V102_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
           PY
           exit 0
-        env:
-          RC: ${{ steps.reg.outputs.rc }}
       - name: Freeze DEVELOPMENT evidence
         if: always()
         shell: bash
