@@ -1,4 +1,4 @@
-name: V8.3.212 V92 Final Development Proven
+name: V8.3.212 V92 Final Development Diagnostic
 on:
   push:
     branches: [v83212-v1-validation]
@@ -6,7 +6,7 @@ permissions:
   contents: write
 jobs:
   final:
-    if: github.event.head_commit.message == 'Run V8.3.212 V92 final development proven'
+    if: github.event.head_commit.message == 'Run V8.3.212 V92 final development diagnostic'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -15,18 +15,32 @@ jobs:
       - uses: actions/setup-node@v4
         with: {node-version: '24'}
       - name: Run integrated final-development orchestrator
+        id: orchestrator
+        continue-on-error: true
         run: python validation/v83212-v92-final-development-orchestrator.py
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: PSC_V8_3_212_V92_DEVELOPMENT_VALIDATION_CHECKPOINT
+          name: PSC_V8_3_212_V92_DEVELOPMENT_VALIDATION_CHECKPOINT_DIAGNOSTIC
+          if-no-files-found: ignore
           path: |
             PSC_V8_3_212_V92_DEVELOPMENT_VALIDATION_CHECKPOINT.zip
             PSC_V8_3_212_V92_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt
-      - name: Record final-development receipt
+      - name: Record final-development diagnostic receipt
+        if: always()
         run: |
-          test -f validation/V8_3_212_V92_FINAL_DEVELOPMENT_RUN_RECEIPT.json
+          python - <<'PY'
+          import json,pathlib,os
+          p=pathlib.Path('validation/V8_3_212_V92_FINAL_DEVELOPMENT_RUN_RECEIPT.json')
+          existing=json.loads(p.read_text()) if p.exists() else None
+          r=existing or {'candidate':'V8.3.212','phase':'v92-final-development','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'semantic_authority':'QCSemanticCoreV92','status':'completed','conclusion':'incomplete','regression_result_exists':pathlib.Path('V8_3_212_V92_FINAL_REGRESSION_RESULTS.json').exists(),'generalization_result_exists':pathlib.Path('V8_3_212_DEVELOPMENT_GENERALIZATION_800_RESULTS_V1.json').exists(),'browser_result_exists':pathlib.Path('V8_3_212_V92_FINAL_BROWSER_E2E_RESULTS.json').exists(),'checkpoint_exists':pathlib.Path('PSC_V8_3_212_V92_DEVELOPMENT_VALIDATION_CHECKPOINT.zip').exists(),'v211_r4_sealed_rerun':False,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_212_V92_FINAL_DEVELOPMENT_DIAGNOSTIC_RECEIPT.json').write_text(json.dumps(r,indent=2)+'\n')
+          PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/V8_3_212_V92_FINAL_DEVELOPMENT_RUN_RECEIPT.json
-          git commit -m 'Record V8.3.212 V92 final development receipt'
+          git add -- validation/V8_3_212_V92_FINAL_DEVELOPMENT_DIAGNOSTIC_RECEIPT.json
+          git commit -m 'Record V8.3.212 V92 final development diagnostic receipt'
           git push
+      - name: Enforce orchestrator success
+        if: always()
+        run: test '${{ steps.orchestrator.outcome }}' = 'success'
