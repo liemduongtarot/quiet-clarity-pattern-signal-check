@@ -1,0 +1,46 @@
+name: V8.3.224 V101 Regression Diagnostic
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  diag:
+    if: github.event.head_commit.message == 'Diagnose V8.3.224 V101 regression'
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83224-v1-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Run observable regression
+        id: reg
+        continue-on-error: true
+        run: |
+          set +e
+          python validation/v83224-v101-regression-orchestrator.py > /tmp/v224.log 2>&1
+          rc=$?
+          cat /tmp/v224.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit $rc
+      - name: Freeze diagnostic
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,json,os
+          log=pathlib.Path('/tmp/v224.log').read_text(errors='replace') if pathlib.Path('/tmp/v224.log').exists() else ''
+          d={'candidate':'V8.3.224','phase':'v101-regression-diagnostic','outcome':os.environ['OUTCOME'],'exit_code':os.environ.get('RC'),'log_tail':log[-14000:],'sealed_validation_executed':False,'v223_sealed_rerun':False}
+          pathlib.Path('validation/V8_3_224_V101_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_224_V101_REGRESSION_DIAGNOSTIC.json
+          for f in validation/V8_3_224_V101_REGRESSION_RECEIPT.json validation/V8_3_224_V223_A_FROZEN_CARRIER.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Record V8.3.224 V101 regression diagnostic'
+          git push origin HEAD:v83224-v1-validation
+        env:
+          OUTCOME: ${{ steps.reg.outcome }}
+          RC: ${{ steps.reg.outputs.rc }}
