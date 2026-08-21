@@ -1,0 +1,37 @@
+name: V8.3.217 V97 Regression
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  regression:
+    if: github.event.head_commit.message == 'Run V8.3.217 V97 bounded regression'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83217-v1-validation
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Frozen V216 carrier then immutable regression
+        id: reg
+        continue-on-error: true
+        run: python validation/v83217-v97-regression-orchestrator.py
+      - name: Commit regression evidence
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          for f in validation/V8_3_217_V97_REGRESSION_V1_RECEIPT.json V8_3_217_V216_A_REGRESSION_RESULTS.json V8_3_217_V97_REGRESSION_RESULTS.json; do
+            if [ -f "$f" ]; then
+              if [[ "$f" != validation/* ]]; then cp "$f" validation/; git add "validation/$(basename "$f")"; else git add "$f"; fi
+            fi
+          done
+          git diff --cached --quiet || git commit -m 'Record V8.3.217 V97 regression evidence'
+          git push origin HEAD:v83217-v1-validation
+      - name: Enforce
+        if: always()
+        run: test '${{ steps.reg.outcome }}' = 'success'
