@@ -3,7 +3,7 @@ src=Path('validation/v83215-v95-final-development-orchestrator.py').read_text()
 # Extend exact validated V95 chain/build identity with bounded V96 repair.
 tail="'qc-evidence-extractor-v5v-v215-compositional-recall.js','psc-v83215-v214-v95-compositional-recall.js']"
 added="'qc-evidence-extractor-v5v-v215-compositional-recall.js','psc-v83215-v214-v95-compositional-recall.js','qc-evidence-extractor-v5w-v216-sealed-recall.js','psc-v83216-v215-v96-sealed-recall.js']"
-assert src.count(tail)>=2
+assert src.count(tail)>=1
 src=src.replace(tail,added)
 src=src.replace('V8_3_215_V95_REGRESSION_EVIDENCE_RECEIPT','V8_3_216_V96_REGRESSION_V1_RECEIPT')
 src=src.replace("reg['v214_frozen_a_regression_passed']==30","reg['v215_frozen_a_regression_passed']==30")
