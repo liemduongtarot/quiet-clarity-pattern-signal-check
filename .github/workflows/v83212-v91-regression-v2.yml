@@ -1,52 +1,42 @@
-name: V8.3.213 V93 Regression Recovery
+name: V8.3.214 V94 Regression V1
 on:
   push:
-    branches: [v83213-v1-validation]
+    branches: [v83214-v1-validation]
 permissions:
   contents: write
 jobs:
   regression:
-    if: github.event.head_commit.message == 'Run V8.3.213 V93 regression recovery'
+    if: github.event.head_commit.message == 'Run V8.3.214 V94 regression V1'
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
         with: {fetch-depth: 1}
       - uses: actions/setup-node@v4
         with: {node-version: '24'}
-      - name: Run V93 regression orchestrator
+      - name: Run bounded then immutable regression
         id: orchestrator
         continue-on-error: true
-        run: python validation/v83213-v93-regression-orchestrator.py
-      - name: Record diagnostic receipt and available results
+        run: python validation/v83214-v94-regression-orchestrator.py
+      - name: Record V94 regression evidence
         if: always()
         run: |
           python - <<'PY'
           import json,pathlib,os
-          def load(path):
-            p=pathlib.Path(path)
-            return json.loads(p.read_text()) if p.exists() else None
-          rr=load('V8_3_213_V93_REGRESSION_RESULTS.json')
-          ar=load('V8_3_213_V212_A_REGRESSION_RESULTS.json')
-          existing=load('validation/V8_3_213_V93_REGRESSION_V1_RECEIPT.json')
-          r=existing or {
-            'candidate':'V8.3.213','phase':'v93-regression-recovery',
-            'run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),
-            'head_sha':os.environ['GITHUB_SHA'],'semantic_authority':'QCSemanticCoreV93',
-            'immutable_regression':None if rr is None else {'total':rr.get('total'),'passed':rr.get('passed'),'failed':rr.get('failed')},
-            'v212_frozen_a_regression':None if ar is None else {'total':ar.get('total'),'passed':ar.get('passed'),'failed':ar.get('failed')},
-            'status':'completed','conclusion':'success' if '${{ steps.orchestrator.outcome }}'=='success' else 'failure',
-            'v212_sealed_rerun':False,'sealed_validation_executed':False,
-            'step_111_authorized':False,'production_authorized':False
-          }
-          pathlib.Path('validation/V8_3_213_V93_REGRESSION_RECOVERY_RECEIPT.json').write_text(json.dumps(r,indent=2)+'\n')
+          def load(p):
+            q=pathlib.Path(p); return json.loads(q.read_text()) if q.exists() else None
+          existing=load('validation/V8_3_214_V94_REGRESSION_V1_RECEIPT.json')
+          ar=load('V8_3_214_V213_A_REGRESSION_RESULTS.json'); rr=load('V8_3_214_V94_REGRESSION_RESULTS.json')
+          r=existing or {'candidate':'V8.3.214','phase':'v94-regression-v1','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'semantic_authority':'QCSemanticCoreV94','v213_frozen_a_regression':None if ar is None else {'total':ar.get('total'),'passed':ar.get('passed'),'failed':ar.get('failed')},'immutable_regression':None if rr is None else {'total':rr.get('total'),'passed':rr.get('passed'),'failed':rr.get('failed')},'status':'completed','conclusion':'success' if '${{ steps.orchestrator.outcome }}'=='success' else 'failure','v213_sealed_rerun':False,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_214_V94_REGRESSION_EVIDENCE_RECEIPT.json').write_text(json.dumps(r,indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/V8_3_213_V93_REGRESSION_RECOVERY_RECEIPT.json
-          if [ -f V8_3_213_V93_REGRESSION_RESULTS.json ]; then cp V8_3_213_V93_REGRESSION_RESULTS.json validation/ && git add validation/V8_3_213_V93_REGRESSION_RESULTS.json; fi
-          if [ -f V8_3_213_V212_A_REGRESSION_RESULTS.json ]; then cp V8_3_213_V212_A_REGRESSION_RESULTS.json validation/ && git add validation/V8_3_213_V212_A_REGRESSION_RESULTS.json; fi
-          git diff --cached --quiet || git commit -m 'Record V8.3.213 V93 regression recovery evidence'
+          git add -- validation/V8_3_214_V94_REGRESSION_EVIDENCE_RECEIPT.json
+          if [ -f validation/V8_3_214_V94_REGRESSION_V1_RECEIPT.json ]; then git add -- validation/V8_3_214_V94_REGRESSION_V1_RECEIPT.json; fi
+          if [ -f V8_3_214_V213_A_REGRESSION_RESULTS.json ]; then cp V8_3_214_V213_A_REGRESSION_RESULTS.json validation/ && git add validation/V8_3_214_V213_A_REGRESSION_RESULTS.json; fi
+          if [ -f V8_3_214_V94_REGRESSION_RESULTS.json ]; then cp V8_3_214_V94_REGRESSION_RESULTS.json validation/ && git add validation/V8_3_214_V94_REGRESSION_RESULTS.json; fi
+          git diff --cached --quiet || git commit -m 'Record V8.3.214 V94 regression evidence'
           git push
       - name: Enforce regression outcome
         if: always()
