@@ -1,0 +1,24 @@
+{
+  "candidate": "V8.3.221",
+  "phase": "bounded-runner-schema-recovery",
+  "base_development_authority_sha": "06ac0e51c958f5c64dcb97f91d66b122d3048bf8",
+  "semantic_base_sha": "456a88d01b671f0cb92a0be31f4d34d68f60d135",
+  "semantic_authority": "QCEvidenceExtractorV5Y -> QCSemanticCoreV98",
+  "repair_scope": "validation runner adapter/schema contract only",
+  "checks": {
+    "v220_failure_reproduced_from_frozen_evidence": true,
+    "v220_authority_semantic_base_sha_absent": true,
+    "corrected_schema_contract_uses_present_fields_only": true,
+    "v5x_v97_byte_identical": true,
+    "v5y_v98_byte_identical_to_v220_dev": true,
+    "immutable_historical_1470_1470": true,
+    "v216_frozen_a_30_30": true,
+    "v219_frozen_a_30_30": true,
+    "v220_sealed_rerun": false,
+    "expected_gold_changed": false
+  },
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "pass": true
+}
