@@ -1,0 +1,30 @@
+{
+  "authority": "V8.3.213 FROZEN TRANSPORT VERIFICATION",
+  "run_id": 32471518971,
+  "run_attempt": 1,
+  "workflow_head_sha": "13fd58cc416c065d1b992b68ef079ed5d7a8274a",
+  "sealed_head_verified": "eea5b079fc0a40e3dc7faadae6b433bef03bcd1c",
+  "validated_development_head_sha": "70808836f6cfb09a5428685e0bfdc336afe4181f",
+  "semantic_authority": "QCSemanticCoreV93",
+  "observed_hashes": {
+    "candidate_bank": "af9dcb8ae3785d997fc5c68698362035d1b1a22da543fa4570a38cd2c9b41979",
+    "selection": "f1f1025f8f8f0fe1e799dddac12cded5f02f064accf01586193c6a19e2344a87",
+    "fixture": "4ba3176dbcefc010fc8196937d6e1f92b86ec3bb03be1d30f0ef026ed0e3eafd",
+    "independent_gold": "1a064fd7b824c959e7a5b2596f4178c3646e8445ae95c46010623f68929f061f",
+    "membership": "8086b2350fc7e1aeb001983b3b688b808b246f9a626c06bdfc801bdb9ecea9f7",
+    "preseal_audit": "83e09c763313169d9e90a3d05755bbe32e6fa83611fadf462cb54d66b99d17c5"
+  },
+  "hashes_match": true,
+  "candidate_count": 180,
+  "selected_count": 60,
+  "batch_a_count": 30,
+  "batch_b_count": 30,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "v212_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "success"
+}
