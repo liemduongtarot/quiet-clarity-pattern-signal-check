@@ -1,0 +1,33 @@
+name: V8.3.224 DEVELOPMENT Checkpoint
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  checkpoint:
+    if: github.event.head_commit.message == 'Build V8.3.224 DEVELOPMENT checkpoint'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 93340ec0488207f31a48c82e7b916ff709f700ab
+          fetch-depth: 0
+      - name: Build checkpoint
+        run: |
+          python - <<'PY'
+          import pathlib,zipfile,hashlib
+          names=['validation/V8_3_224_DEVELOPMENT_AUTHORITY_V1.json','validation/V8_3_224_V101_REGRESSION_RECEIPT.json','validation/V8_3_224_V101_REGRESSION_R4_DIAGNOSTIC.json','validation/qc-evidence-extractor-v5ab-v224-compositional-recall.js','validation/psc-v83224-v223-v101-compositional-recall.js']
+          files=[pathlib.Path(n) for n in names]
+          for p in files: assert p.exists(),p
+          z=pathlib.Path('PSC_V8_3_224_DEVELOPMENT_CHECKPOINT.zip')
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in files:q.write(p,p.name)
+          h=hashlib.sha256(z.read_bytes()).hexdigest();pathlib.Path('PSC_V8_3_224_DEVELOPMENT_CHECKPOINT_SHA256.txt').write_text(f'{h}  {z.name}\n');print(h)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_224_DEVELOPMENT_CHECKPOINT
+          path: |
+            PSC_V8_3_224_DEVELOPMENT_CHECKPOINT.zip
+            PSC_V8_3_224_DEVELOPMENT_CHECKPOINT_SHA256.txt
