@@ -1,0 +1,22 @@
+{
+  "candidate": "V8.3.212",
+  "phase": "v92-final-development",
+  "run_id": 32451447977,
+  "run_attempt": 1,
+  "head_sha": "840cfd3aeea515a335a97615fbc321ebf0e1ce11",
+  "semantic_authority": "QCSemanticCoreV92",
+  "regression_total": 1470,
+  "regression_passed": 1470,
+  "generalization_total": 800,
+  "generalization_passed": 790,
+  "generalization_pass": true,
+  "browser_total": 1470,
+  "browser_passed": true,
+  "development": "PASS",
+  "v211_r4_sealed_rerun": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "status": "completed",
+  "conclusion": "success"
+}
