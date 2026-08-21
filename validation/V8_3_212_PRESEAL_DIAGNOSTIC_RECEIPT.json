@@ -1,0 +1,18 @@
+{
+  "candidate": "V8.3.212",
+  "phase": "preseal-v1-diagnostic",
+  "run_id": 32452079770,
+  "run_attempt": 1,
+  "head_sha": "b8da1c3110079f23f65861c136c414619f4c172a",
+  "validated_development_head_sha": "840cfd3aeea515a335a97615fbc321ebf0e1ce11",
+  "semantic_authority": "QCSemanticCoreV92",
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "selection_uses_runtime_output": false,
+  "v211_r4_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "failure",
+  "failed_phase": "construct-bank",
+  "error": "CalledProcessError: Command 'python validation/v83212-sealed-v1-generator.py' returned non-zero exit status 1."
+}
