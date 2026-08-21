@@ -1,0 +1,40 @@
+{
+  "candidate": "V8.3.215 DEVELOPMENT",
+  "source_failed_candidate": "V8.3.214",
+  "source_sealed_run_id": 32476569138,
+  "source_sealed_evidence_commit": "3d38673a8d074f72af9b05b7ad2733c182d47505",
+  "development_base_sha": "4725f8a613048e755fef6c10398d83305abd136f",
+  "batch_a_total": 30,
+  "batch_a_passed": 12,
+  "batch_a_failed": 18,
+  "batch_b_executed": false,
+  "failure_cases": [
+    "V214-S00-14",
+    "V214-S01-17",
+    "V214-S01-13",
+    "V214-S01-03",
+    "V214-S02-09",
+    "V214-S03-00",
+    "V214-S03-03",
+    "V214-S04-11",
+    "V214-S04-00",
+    "V214-S05-01",
+    "V214-S07-17",
+    "V214-S07-01",
+    "V214-S07-08",
+    "V214-S08-14",
+    "V214-S08-15",
+    "V214-S08-04",
+    "V214-S09-02",
+    "V214-S09-04"
+  ],
+  "mechanism_groups": {
+    "route_relational_recall": ["V214-S00-14","V214-S01-17","V214-S01-13","V214-S01-03","V214-S02-09","V214-S03-00","V214-S03-03","V214-S04-11","V214-S04-00"],
+    "family_relational_recall": ["V214-S05-01","V214-S07-17","V214-S07-01","V214-S07-08","V214-S08-14","V214-S08-15","V214-S08-04"],
+    "neutral_containment": ["V214-S09-02","V214-S09-04"]
+  },
+  "primary_layer": "ENGINE LOGIC / EVIDENCE EXTRACTION",
+  "expected_contract_changed": false,
+  "gold_changed": false,
+  "v214_sealed_rerun_permitted": false
+}
