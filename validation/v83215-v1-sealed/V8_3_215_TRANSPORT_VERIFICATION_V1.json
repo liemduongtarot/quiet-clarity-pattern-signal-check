@@ -1,0 +1,27 @@
+{
+  "authority": "V8.3.215 FROZEN TRANSPORT VERIFICATION",
+  "run_id": 32481394989,
+  "validated_development_head_sha": "e0ee7b03ad0dcdc616b242f6df810f4211e08baa",
+  "semantic_authority": "QCSemanticCoreV95",
+  "observed_hashes": {
+    "candidate_bank": "7234f7ffc6c9aff80663075e069080128f13824bd867c07c2ebf27ab88480052",
+    "selection": "b9f9c3ccf0c3ab9369a49ca815ad99ce1feba1f81b5b9865071adc7f0b483d1c",
+    "fixture": "d14ca28c4ba911da123f2ea33ac69f5a4c9711de0f501f0e7fa46ed171d8ae8a",
+    "independent_gold": "3a5516cc5c1e7762fc421fe56f287c7544b62fdc7098922768aaed563c581602",
+    "membership": "18e17082cb4a8f3cfea3d0841f5f08258e6deccd12a853a6ec36e5e5eb9f2001",
+    "preseal_audit": "6244f2d8426c670bdb16c14c56677f0d4de65663944b122f84b87ff0c486bae3"
+  },
+  "hashes_match": true,
+  "candidate_count": 180,
+  "selected_count": 60,
+  "batch_a_count": 30,
+  "batch_b_count": 30,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "v214_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "success"
+}
