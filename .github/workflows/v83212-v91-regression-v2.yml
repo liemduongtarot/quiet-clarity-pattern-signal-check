@@ -1,46 +1,53 @@
-name: V8.3.212 V92 Final Development Diagnostic
+name: V8.3.213 V93 Regression Recovery
 on:
   push:
-    branches: [v83212-v1-validation]
+    branches: [v83213-v1-validation]
 permissions:
   contents: write
 jobs:
-  final:
-    if: github.event.head_commit.message == 'Run V8.3.212 V92 final development diagnostic'
+  regression:
+    if: github.event.head_commit.message == 'Run V8.3.213 V93 regression recovery'
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with: {fetch-depth: 1}
       - uses: actions/setup-node@v4
         with: {node-version: '24'}
-      - name: Run integrated final-development orchestrator
+      - name: Run V93 regression orchestrator
         id: orchestrator
         continue-on-error: true
-        run: python validation/v83212-v92-final-development-orchestrator.py
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: PSC_V8_3_212_V92_DEVELOPMENT_VALIDATION_CHECKPOINT_DIAGNOSTIC
-          if-no-files-found: ignore
-          path: |
-            PSC_V8_3_212_V92_DEVELOPMENT_VALIDATION_CHECKPOINT.zip
-            PSC_V8_3_212_V92_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt
-      - name: Record final-development diagnostic receipt
+        run: python validation/v83213-v93-regression-orchestrator.py
+      - name: Record diagnostic receipt and available results
         if: always()
         run: |
           python - <<'PY'
           import json,pathlib,os
-          p=pathlib.Path('validation/V8_3_212_V92_FINAL_DEVELOPMENT_RUN_RECEIPT.json')
-          existing=json.loads(p.read_text()) if p.exists() else None
-          r=existing or {'candidate':'V8.3.212','phase':'v92-final-development','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'head_sha':os.environ['GITHUB_SHA'],'semantic_authority':'QCSemanticCoreV92','status':'completed','conclusion':'incomplete','regression_result_exists':pathlib.Path('V8_3_212_V92_FINAL_REGRESSION_RESULTS.json').exists(),'generalization_result_exists':pathlib.Path('V8_3_212_DEVELOPMENT_GENERALIZATION_800_RESULTS_V1.json').exists(),'browser_result_exists':pathlib.Path('V8_3_212_V92_FINAL_BROWSER_E2E_RESULTS.json').exists(),'checkpoint_exists':pathlib.Path('PSC_V8_3_212_V92_DEVELOPMENT_VALIDATION_CHECKPOINT.zip').exists(),'v211_r4_sealed_rerun':False,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False}
-          pathlib.Path('validation/V8_3_212_V92_FINAL_DEVELOPMENT_DIAGNOSTIC_RECEIPT.json').write_text(json.dumps(r,indent=2)+'\n')
+          def load(path):
+            p=pathlib.Path(path)
+            return json.loads(p.read_text()) if p.exists() else None
+          rr=load('V8_3_213_V93_REGRESSION_RESULTS.json')
+          ar=load('V8_3_213_V212_A_REGRESSION_RESULTS.json')
+          existing=load('validation/V8_3_213_V93_REGRESSION_V1_RECEIPT.json')
+          r=existing or {
+            'candidate':'V8.3.213','phase':'v93-regression-recovery',
+            'run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),
+            'head_sha':os.environ['GITHUB_SHA'],'semantic_authority':'QCSemanticCoreV93',
+            'immutable_regression':None if rr is None else {'total':rr.get('total'),'passed':rr.get('passed'),'failed':rr.get('failed')},
+            'v212_frozen_a_regression':None if ar is None else {'total':ar.get('total'),'passed':ar.get('passed'),'failed':ar.get('failed')},
+            'status':'completed','conclusion':'success' if '${{ steps.orchestrator.outcome }}'=='success' else 'failure',
+            'v212_sealed_rerun':False,'sealed_validation_executed':False,
+            'step_111_authorized':False,'production_authorized':False
+          }
+          pathlib.Path('validation/V8_3_213_V93_REGRESSION_RECOVERY_RECEIPT.json').write_text(json.dumps(r,indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/V8_3_212_V92_FINAL_DEVELOPMENT_DIAGNOSTIC_RECEIPT.json
-          git commit -m 'Record V8.3.212 V92 final development diagnostic receipt'
+          git add -- validation/V8_3_213_V93_REGRESSION_RECOVERY_RECEIPT.json
+          if [ -f V8_3_213_V93_REGRESSION_RESULTS.json ]; then cp V8_3_213_V93_REGRESSION_RESULTS.json validation/ && git add validation/V8_3_213_V93_REGRESSION_RESULTS.json; fi
+          if [ -f V8_3_213_V212_A_REGRESSION_RESULTS.json ]; then cp V8_3_213_V212_A_REGRESSION_RESULTS.json validation/ && git add validation/V8_3_213_V212_A_REGRESSION_RESULTS.json; fi
+          git diff --cached --quiet || git commit -m 'Record V8.3.213 V93 regression recovery evidence'
           git push
-      - name: Enforce orchestrator success
+      - name: Enforce regression outcome
         if: always()
         run: test '${{ steps.orchestrator.outcome }}' = 'success'
