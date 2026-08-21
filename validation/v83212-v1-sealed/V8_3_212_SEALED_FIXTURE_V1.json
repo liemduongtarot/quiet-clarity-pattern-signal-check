@@ -1,0 +1,773 @@
+{
+  "authority": "V8.3.212 V1 SEALED FIXTURE",
+  "cases": [
+    {
+      "case_id": "V212-S00-06",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "surface": "A standard payment reference sat separately in the paperwork. The chronology reaches its closing point; the missing fact is the concrete move that actually came from me.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S00-01",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The chronology reaches its closing point; the missing fact is the concrete move that actually came from me. The practical meeting detail had already been agreed.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S00-14",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Chi tiết vai trò thường lệ đã có sẵn. Có thể dựng lại câu chuyện từ đầu tới cuối ngoại trừ việc chính tôi đã làm gì tại điểm dừng. Phần thực tế đó không tự trả lời cơ chế phản ứng.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S00-09",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Một ghi chú sinh hoạt thường ngày đã được chia sẻ. Có thể dựng lại câu chuyện từ đầu tới cuối ngoại trừ việc chính tôi đã làm gì tại điểm dừng.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S00-16",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi nắm được toàn bộ diễn biến xung quanh, nhưng record vẫn không nói phản ứng cụ thể do chính tôi đưa ra trước khi việc kết thúc. Ghi chú ca làm thông thường đã có sẵn.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S00-17",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Chi tiết hành chính thường lệ đã được ghi lại. Dòng thời gian đã tới điểm khép lại; phần còn thiếu là nước đi quan sát được thực sự đến từ tôi. Phần thực tế đó không tự trả lời cơ chế phản ứng.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S01-06",
+      "category": "decision",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The ordinary account note was already available. Select the course I should follow for me so your judgement replaces the decision I would otherwise make.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S01-13",
+      "category": "decision",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Dùng phán đoán của bạn để chọn bước tiếp theo cho tôi thay vì đưa khung để tôi tự quyết. Chi tiết gặp mặt thực tế đã được thống nhất.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S01-02",
+      "category": "decision",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A routine application reference had already been filed. Take the choice out of my hands and tell me which route I should adopt as the answer. The practical background does not answer the mechanism itself.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S01-03",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "surface": "A routine household note had already been shared. Use your judgement to choose my next step rather than giving me a framework for deciding it myself.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S01-16",
+      "category": "decision",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi muốn bạn chốt quyết định thay tôi, không phải chỉ hỗ trợ so sánh các lựa chọn. Rota đã được gửi từ trước.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S01-17",
+      "category": "decision",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Ghi chú cuộc hẹn đã được lưu. Hãy chọn hướng tôi nên đi nhân danh tôi để phán đoán của bạn thay thế quyền chọn cuối của tôi. Phần thực tế đó không tự trả lời cơ chế phản ứng.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S02-06",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The routine balance notice had already been filed. I wrote these details to test classification rather than to report a genuine experience of mine.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S02-13",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Đây là test prose được cố ý bịa ra và không liên quan tới lịch sử sống của tôi. Một tin nhắn lịch hẹn thông thường đã nằm trong thread.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S02-08",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The interview date was already entered in the calendar. This is deliberately fabricated test prose and is unrelated to my lived history. The practical background does not answer the mechanism itself.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S02-15",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Một ghi chú sinh hoạt thường ngày đã được chia sẻ. Tôi dựng ví dụ này chỉ để đánh giá công cụ; không nên hiểu nó là lịch sử tự truyện của tôi.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S02-04",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "This paragraph is a made-up stress test for the system, not a description of anything I have lived through. The ordinary shift note was already available.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S02-05",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The ordinary administrative detail was already recorded. I constructed this example only for evaluation; it should not be treated as autobiographical history. The practical background does not answer the mechanism itself.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S03-12",
+      "category": "third",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Ghi chú tài khoản thường ngày đã có sẵn. Nói quan điểm bị giấu của quản lý mà không có bằng chứng hành vi cho thấy quan điểm đó là gì.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S03-07",
+      "category": "third",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Tell me the supervisor’s concealed view without any behavioural evidence showing what that view is. A routine message about timing was already in the thread.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S03-08",
+      "category": "third",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A routine application reference had already been filed. Tell me what my manager privately believes even though nothing observable in what they said or did provides a basis for it. The practical background does not answer the mechanism itself.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S03-03",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "surface": "The practical family logistics were already in the group chat. Tell me what my manager privately believes even though nothing observable in what they said or did provides a basis for it.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S03-10",
+      "category": "third",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi muốn biết ý định chưa nói của khách hàng dù không có hành động hay phát biểu nhìn thấy nào hỗ trợ suy luận. Một mã task thường lệ đã có trên hệ thống.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S03-11",
+      "category": "third",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một mã tham chiếu thông thường đã có sẵn. Xác định đánh giá riêng của người kia khi record hiện có không chứa dấu hiệu quan sát nào về nó. Phần thực tế đó không tự trả lời cơ chế phản ứng.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S04-06",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The ordinary account note was already available. Before this future window closes, is the outcome likely to resolve the way I want?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S04-07",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Over the next month, will this situation end with the result I am hoping for? The ordinary logistics note was already settled.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S04-08",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The ordinary role details were already available. Before the upcoming deadline, is the final outcome going to turn out in my favour? The practical background does not answer the mechanism itself.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S04-03",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "family",
+      "surface": "A routine household note had already been shared. Before the upcoming deadline, is the final outcome going to turn out in my favour?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S04-10",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tới mốc tương lai tiếp theo, chuyện này có khép lại theo hướng tích cực cho tôi không? Ghi chú ca làm thông thường đã có sẵn.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S04-05",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A routine reference number was already available. By the next stated horizon, does this conclude positively for me? The practical background does not answer the mechanism itself.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S05-12",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Một mã thanh toán thông thường nằm riêng trong hồ sơ. Tôi có một bước thử ít cam kết, vậy mà cứ so thêm khả năng thay vì bắt đầu.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S05-13",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Hành động có thể quay lại với chi phí thấp; tôi mở rộng tập lựa chọn thay vì thực hiện bước đầu. Một tin nhắn lịch hẹn thông thường đã nằm trong thread.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S05-08",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The interview date was already entered in the calendar. The step was reversible and cheap to retreat from; I widened the option set rather than initiate it. The practical background does not answer the mechanism itself.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S05-15",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Một ghi chú sinh hoạt thường ngày đã được chia sẻ. Có đường lui rất rõ khỏi thử nghiệm, nhưng tôi tiếp tục tăng option và không bắt tay vào.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S05-10",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Có đường lui rất rõ khỏi thử nghiệm, nhưng tôi tiếp tục tăng option và không bắt tay vào. Rota đã được gửi từ trước.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S05-05",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The ordinary administrative detail was already recorded. There was a clear way back from the trial, yet I continued expanding options and did not begin. The practical background does not answer the mechanism itself.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S06-12",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Ghi chú tài khoản thường ngày đã có sẵn. Tôi để yêu cầu chính chưa giải quyết và làm mình bận với việc bên lề không xử lý được nó.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S06-01",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "An important responsibility was waiting for my response while I redirected attention into lower-impact work. The practical meeting detail had already been agreed.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S06-08",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A routine application reference had already been filed. The core matter required direct action from me, yet I turned toward secondary details and did not respond. The practical background does not answer the mechanism itself.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S06-03",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "family",
+      "surface": "The practical family logistics were already in the group chat. The core matter required direct action from me, yet I turned toward secondary details and did not respond.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S06-10",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Trách nhiệm chính vẫn đang chờ tôi, nhưng tôi chuyển sang hoạt động kém quan trọng hơn thay vì xử lý. Một mã task thường lệ đã có trên hệ thống.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S06-05",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The appointment note had already been filed. The main responsibility was still waiting on me, but I diverted into less important activity instead of dealing with it. The practical background does not answer the mechanism itself.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S07-00",
+      "category": "slow",
+      "language": "EN",
+      "domain": "money",
+      "surface": "A standard payment reference sat separately in the paperwork. My response came after a delay; I made one verification and did not return to the matter afterwards.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S07-01",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "I paused longer than normal before answering, reviewed it a single time, and then moved on. A routine message about timing was already in the thread.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S07-14",
+      "category": "slow",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Ngày phỏng vấn đã được ghi sẵn trong lịch. Có thêm thời gian trước phản hồi; tôi kiểm một lần rồi xem quá trình đã kết thúc. Phần thực tế đó không tự trả lời cơ chế phản ứng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S07-09",
+      "category": "slow",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Chi tiết lịch thông thường đã được chốt. Có thêm thời gian trước phản hồi; tôi kiểm một lần rồi xem quá trình đã kết thúc.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S07-10",
+      "category": "slow",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi mất lâu hơn thường lệ mới trả lời, kiểm dữ kiện một lần rồi để vấn đề đóng lại. Ghi chú ca làm thông thường đã có sẵn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S07-17",
+      "category": "slow",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Ghi chú cuộc hẹn đã được lưu. Tôi dừng lâu hơn bình thường trước khi đáp, review đúng một lần rồi đi tiếp. Phần thực tế đó không tự trả lời cơ chế phản ứng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S08-00",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The ordinary account note was already available. I approached execution, stepped back, and cycled through the same judgement without receiving fresh information.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V212-S08-07",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "I advanced toward implementation and pulled away more than once, repeating the same assessment with no new evidence. The practical meeting detail had already been agreed.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V212-S08-08",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The interview date was already entered in the calendar. I kept nearing action then backing off, returning to the same logic despite unchanged inputs. The practical background does not answer the mechanism itself.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V212-S08-03",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "family",
+      "surface": "The ordinary scheduling detail was already settled. I kept nearing action then backing off, returning to the same logic despite unchanged inputs.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V212-S08-10",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi đến gần bước làm, rút ra rồi xem lại đúng reasoning cũ dù evidence không thay đổi. Rota đã được gửi từ trước.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V212-S08-05",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The ordinary administrative detail was already recorded. I got close to acting, withdrew, then revisited the identical reasoning even though the evidence had not changed. The practical background does not answer the mechanism itself.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V212-S09-06",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "money",
+      "surface": "A standard payment reference sat separately in the paperwork. The call remained mine; I finished what I selected and stopped reviewing the issue once completed.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S09-01",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The call remained mine; I finished what I selected and stopped reviewing the issue once completed. The practical meeting detail had already been agreed.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S09-14",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Chi tiết vai trò thường lệ đã có sẵn. Phán đoán cuối vẫn thuộc về tôi; tôi thực hiện bước đó rồi xem vấn đề đã kết thúc. Phần thực tế đó không tự trả lời cơ chế phản ứng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S09-09",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Một ghi chú sinh hoạt thường ngày đã được chia sẻ. Phán đoán cuối vẫn thuộc về tôi; tôi thực hiện bước đó rồi xem vấn đề đã kết thúc.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S09-10",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi tự chọn độc lập, làm tới nơi và không mở lại quyết định sau đó. Một mã task thường lệ đã có trên hệ thống.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V212-S09-11",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một mã tham chiếu thông thường đã có sẵn. Tôi giữ quyền sở hữu lựa chọn, thực hiện nó rồi đi tiếp khi hành động hoàn tất. Phần thực tế đó không tự trả lời cơ chế phản ứng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
