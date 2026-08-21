@@ -1,0 +1,19 @@
+{
+  "candidate": "V8.3.218",
+  "status": "FROZEN",
+  "batch_a_run_id": "32506746316",
+  "batch_a_attempt_consumed": true,
+  "batch_a_semantic_cases_executed": 0,
+  "batch_b_executed": false,
+  "batch_b_skipped": true,
+  "semantic_authority_loaded": false,
+  "failure_layer": "SEALED RUNNER / LOADER-CHAIN CONSTRUCTION ONLY",
+  "exact_error": "Error: V8.3.197 requires V8.3.196 V65R",
+  "root_cause": "The sealed runner replaced the existing psc-v83196-v195-v1-hypothetical-preservation-repair.js chain tail instead of preserving it and appending the V197+ extension after it, so QCSemanticCoreV65R was absent when V197 loaded.",
+  "semantic_failure": false,
+  "v217_sealed_rerun": false,
+  "v218_batch_a_rerun_authorized": false,
+  "v218_batch_b_rerun_authorized": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
