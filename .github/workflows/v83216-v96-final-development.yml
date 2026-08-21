@@ -1,0 +1,41 @@
+name: V8.3.216 V96 Final Development
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  final:
+    if: github.event.head_commit.message == 'Run V8.3.216 V96 final development'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83216-v1-validation
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Run remaining V96 development gates
+        id: final
+        continue-on-error: true
+        run: python validation/v83216-v96-final-development-orchestrator.py
+      - name: Record final-development evidence
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          if [ -f validation/V8_3_216_V96_FINAL_DEVELOPMENT_RUN_RECEIPT.json ]; then git add validation/V8_3_216_V96_FINAL_DEVELOPMENT_RUN_RECEIPT.json; fi
+          git diff --cached --quiet || git commit -m 'Record V8.3.216 V96 final development evidence'
+          git push origin HEAD:v83216-v1-validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_216_V96_DEVELOPMENT_VALIDATION_CHECKPOINT
+          if-no-files-found: ignore
+          path: |
+            PSC_V8_3_216_V96_DEVELOPMENT_VALIDATION_CHECKPOINT.zip
+            PSC_V8_3_216_V96_DEVELOPMENT_VALIDATION_CHECKPOINT_SHA256.txt
+      - name: Enforce
+        if: always()
+        run: test '${{ steps.final.outcome }}' = 'success'
