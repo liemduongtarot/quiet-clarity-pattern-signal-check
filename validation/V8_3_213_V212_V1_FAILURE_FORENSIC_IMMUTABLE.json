@@ -1,0 +1,129 @@
+{
+  "authority": "V8.3.213 immutable forensic from V8.3.212 V1 sealed Batch A first run",
+  "source_run_id": "32464070764",
+  "source_run_attempt": "1",
+  "source_candidate": "V8.3.212",
+  "source_semantic_authority": "QCSemanticCoreV92",
+  "source_validated_development_head_sha": "840cfd3aeea515a335a97615fbc321ebf0e1ce11",
+  "source_batch_a_total": 30,
+  "source_batch_a_passed": 21,
+  "source_batch_a_failed": 9,
+  "source_batch_b_executed": false,
+  "source_candidate_frozen": true,
+  "expected_contracts_mutable": false,
+  "failures": [
+    {
+      "case_id": "V212-S01-03",
+      "mechanism": "decision",
+      "language": "EN",
+      "domain": "family",
+      "input": "A routine household note had already been shared. Use your judgement to choose my next step rather than giving me a framework for deciding it myself.",
+      "expected": {"route":"input:decision-request","families":[],"sequence":false},
+      "actual": {"route":"input:third-party-only","families":[],"sequence":false},
+      "cause_layer": "ENGINE LOGIC / EVIDENCE EXTRACTION",
+      "cause": "delegated-decision selector and agency-transfer evidence are present, but choice-object recall does not cover 'my next step'; V92 therefore cannot assert decision-request and parent fallback wins",
+      "repair_scope": "choice-object relational recall only"
+    },
+    {
+      "case_id": "V212-S02-13",
+      "mechanism": "hypothetical",
+      "language": "VI",
+      "domain": "relationship",
+      "input": "Đây là test prose được cố ý bịa ra và không liên quan tới lịch sử sống của tôi. Một tin nhắn lịch hẹn thông thường đã nằm trong thread.",
+      "expected": {"route":"input:hypothetical-or-example","families":[],"sequence":false},
+      "actual": {"route":"input:self-lived","families":[],"sequence":false},
+      "cause_layer": "ENGINE LOGIC / EVIDENCE EXTRACTION",
+      "cause": "constructed-input evidence is present, but non-lived recall misses 'không liên quan tới lịch sử sống của tôi'",
+      "repair_scope": "non-lived explicit paraphrase recall only"
+    },
+    {
+      "case_id": "V212-S03-07",
+      "mechanism": "third",
+      "language": "EN",
+      "domain": "relationship",
+      "input": "Tell me the supervisor’s concealed view without any behavioural evidence showing what that view is. A routine message about timing was already in the thread.",
+      "expected": {"route":"input:third-party-only","families":[],"sequence":false},
+      "actual": {"route":"input:self-lived","families":[],"sequence":false},
+      "cause_layer": "ENGINE LOGIC / EVIDENCE EXTRACTION",
+      "cause": "third-party subject, hidden-state and no-observable-basis aliases do not cover 'the supervisor', 'concealed view', and 'without any behavioural evidence'",
+      "repair_scope": "third-party relational alias recall only"
+    },
+    {
+      "case_id": "V212-S03-08",
+      "mechanism": "third",
+      "language": "EN",
+      "domain": "career",
+      "input": "A routine application reference had already been filed. Tell me what my manager privately believes even though nothing observable in what they said or did provides a basis for it. The practical background does not answer the mechanism itself.",
+      "expected": {"route":"input:third-party-only","families":[],"sequence":false},
+      "actual": {"route":"input:decision-request","families":[],"sequence":false},
+      "cause_layer": "ENGINE LOGIC / EVIDENCE EXTRACTION",
+      "cause": "third-party subject and hidden-state recall miss 'my manager' and 'privately believes'; no-basis evidence alone is insufficient, so parent decision routing wins",
+      "repair_scope": "third-party relational alias recall only"
+    },
+    {
+      "case_id": "V212-S04-10",
+      "mechanism": "prediction",
+      "language": "VI",
+      "domain": "workplace",
+      "input": "Tới mốc tương lai tiếp theo, chuyện này có khép lại theo hướng tích cực cho tôi không? Ghi chú ca làm thông thường đã có sẵn.",
+      "expected": {"route":"input:prediction","families":[],"sequence":false},
+      "actual": {"route":"input:self-lived","families":[],"sequence":false},
+      "cause_layer": "ENGINE LOGIC / EVIDENCE EXTRACTION",
+      "cause": "future-horizon, outcome and prospective aliases miss 'mốc tương lai tiếp theo' plus 'khép lại theo hướng tích cực'",
+      "repair_scope": "prediction relational paraphrase recall only"
+    },
+    {
+      "case_id": "V212-S05-10",
+      "mechanism": "freeze",
+      "language": "VI",
+      "domain": "workplace",
+      "input": "Có đường lui rất rõ khỏi thử nghiệm, nhưng tôi tiếp tục tăng option và không bắt tay vào. Rota đã được gửi từ trước.",
+      "expected": {"route":"input:self-lived","families":["freeze"],"sequence":false},
+      "actual": {"route":"input:third-party-only","families":[],"sequence":false},
+      "cause_layer": "ENGINE LOGIC / EVIDENCE EXTRACTION",
+      "cause": "freeze evidence misses reversible 'đường lui', option-expansion 'tăng option', and non-start 'không bắt tay vào' paraphrases",
+      "repair_scope": "freeze family relational paraphrase recall only"
+    },
+    {
+      "case_id": "V212-S07-14",
+      "mechanism": "slow",
+      "language": "VI",
+      "domain": "career",
+      "input": "Ngày phỏng vấn đã được ghi sẵn trong lịch. Có thêm thời gian trước phản hồi; tôi kiểm một lần rồi xem quá trình đã kết thúc. Phần thực tế đó không tự trả lời cơ chế phản ứng.",
+      "expected": {"route":"input:self-lived","families":["slow"],"sequence":false},
+      "actual": {"route":"input:self-lived","families":[],"sequence":false},
+      "cause_layer": "ENGINE LOGIC / EVIDENCE EXTRACTION",
+      "cause": "single-review and closure evidence are present, but bounded-delay recall misses 'có thêm thời gian trước phản hồi'",
+      "repair_scope": "slow bounded-delay paraphrase recall only"
+    },
+    {
+      "case_id": "V212-S08-08",
+      "mechanism": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "input": "The interview date was already entered in the calendar. I kept nearing action then backing off, returning to the same logic despite unchanged inputs. The practical background does not answer the mechanism itself.",
+      "expected": {"route":"input:self-lived","families":["slow"],"sequence":true},
+      "actual": {"route":"input:self-lived","families":[],"sequence":false},
+      "cause_layer": "ENGINE LOGIC / EVIDENCE EXTRACTION",
+      "cause": "sequence recall misses 'nearing action', 'backing off' and 'same logic' variants even though return and unchanged-input evidence are present",
+      "repair_scope": "sequence relational paraphrase recall only"
+    },
+    {
+      "case_id": "V212-S08-10",
+      "mechanism": "sequence",
+      "language": "VI",
+      "domain": "workplace",
+      "input": "Tôi đến gần bước làm, rút ra rồi xem lại đúng reasoning cũ dù evidence không thay đổi. Rota đã được gửi từ trước.",
+      "expected": {"route":"input:self-lived","families":["slow"],"sequence":true},
+      "actual": {"route":"input:self-lived","families":[],"sequence":false},
+      "cause_layer": "ENGINE LOGIC / EVIDENCE EXTRACTION",
+      "cause": "sequence recall misses approach 'đến gần bước làm' and repetition/same-reasoning 'xem lại đúng reasoning cũ'; retreat and unchanged-evidence evidence alone do not satisfy V92 sequence gate",
+      "repair_scope": "sequence relational paraphrase recall only"
+    }
+  ],
+  "mechanism_groups": [
+    {"group":"route-relational-recall","case_ids":["V212-S01-03","V212-S02-13","V212-S03-07","V212-S03-08","V212-S04-10"],"count":5},
+    {"group":"family-relational-recall","case_ids":["V212-S05-10","V212-S07-14","V212-S08-08","V212-S08-10"],"count":4}
+  ],
+  "repair_constraint": "bounded evidence-recall extension only; preserve V92 taxonomy, route precedence, family semantics, sequence gate, expected/gold contracts and all prior passed behaviour"
+}
