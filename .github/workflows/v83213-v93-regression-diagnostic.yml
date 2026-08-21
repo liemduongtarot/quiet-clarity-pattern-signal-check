@@ -1,0 +1,49 @@
+name: V8.3.213 V93 Regression Diagnostic
+on:
+  push:
+    branches: [v83213-v1-validation]
+permissions:
+  contents: write
+jobs:
+  diagnostic:
+    if: github.event.head_commit.message == 'Run V8.3.213 V93 regression diagnostic'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Execute regression orchestrator
+        id: run
+        continue-on-error: true
+        run: python validation/v83213-v93-regression-orchestrator.py
+      - name: Write diagnostic receipt
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,pathlib,os
+          def load(p):
+            q=pathlib.Path(p)
+            return json.loads(q.read_text()) if q.exists() else None
+          rr=load('V8_3_213_V93_REGRESSION_RESULTS.json')
+          ar=load('V8_3_213_V212_A_REGRESSION_RESULTS.json')
+          p=pathlib.Path('validation/V8_3_213_V93_REGRESSION_DIAGNOSTIC_RECEIPT.json')
+          p.write_text(json.dumps({
+            'candidate':'V8.3.213','phase':'v93-regression-diagnostic',
+            'run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ['GITHUB_RUN_ATTEMPT'],
+            'head_sha':os.environ['GITHUB_SHA'],
+            'immutable_regression': None if rr is None else {'total':rr.get('total'),'passed':rr.get('passed'),'failed':rr.get('failed')},
+            'v212_frozen_a_regression': None if ar is None else {'total':ar.get('total'),'passed':ar.get('passed'),'failed':ar.get('failed')},
+            'orchestrator_outcome':'${{ steps.run.outcome }}',
+            'v212_sealed_rerun':False,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False
+          },indent=2)+'\n')
+          PY
+      - name: Record diagnostic evidence
+        if: always()
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_213_V93_REGRESSION_DIAGNOSTIC_RECEIPT.json
+          git diff --cached --quiet || git commit -m 'Record V8.3.213 V93 regression diagnostic'
+          git push
