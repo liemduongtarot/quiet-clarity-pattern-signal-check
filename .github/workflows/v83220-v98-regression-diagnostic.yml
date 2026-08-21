@@ -6,7 +6,7 @@ permissions:
   contents: write
 jobs:
   diag:
-    if: github.event.head_commit.message == 'Diagnose V8.3.220 V98 regression'
+    if: github.event.head_commit.message == 'Diagnose V8.3.220 V98 regression R2'
     runs-on: ubuntu-latest
     timeout-minutes: 55
     steps:
@@ -26,20 +26,22 @@ jobs:
           cat /tmp/v220-reg.log
           echo "exit_code=$rc" >> "$GITHUB_OUTPUT"
           exit $rc
-      - name: Freeze diagnostic
+      - name: Freeze diagnostic and exact residual result
         if: always()
         run: |
           python - <<'PY'
-          import json,os,pathlib
+          import json,os,pathlib,shutil
           log=pathlib.Path('/tmp/v220-reg.log').read_text(errors='replace') if pathlib.Path('/tmp/v220-reg.log').exists() else ''
-          d={'candidate':'V8.3.220','phase':'v98-regression-diagnostic','outcome':os.environ['OUTCOME'],'exit_code':os.environ.get('EXIT_CODE'),'log_tail':log[-12000:],'sealed_validation_executed':False,'v219_sealed_rerun':False}
-          pathlib.Path('validation/V8_3_220_V98_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
+          d={'candidate':'V8.3.220','phase':'v98-regression-diagnostic-r2','outcome':os.environ['OUTCOME'],'exit_code':os.environ.get('EXIT_CODE'),'log_tail':log[-12000:],'sealed_validation_executed':False,'v219_sealed_rerun':False}
+          pathlib.Path('validation/V8_3_220_V98_REGRESSION_DIAGNOSTIC_R2.json').write_text(json.dumps(d,indent=2)+'\n')
+          p=pathlib.Path('V8_3_220_V219_A_REGRESSION_RESULTS.json')
+          if p.exists(): shutil.copy2(p,pathlib.Path('validation')/p.name)
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/V8_3_220_V98_REGRESSION_DIAGNOSTIC.json
-          for f in validation/V8_3_220_V98_REGRESSION_RECEIPT.json validation/V8_3_220_V219_A_IMMUTABLE_REGRESSION.json; do test ! -f "$f" || git add -- "$f"; done
-          git diff --cached --quiet || git commit -m 'Record V8.3.220 V98 regression diagnostic'
+          git add -- validation/V8_3_220_V98_REGRESSION_DIAGNOSTIC_R2.json
+          for f in validation/V8_3_220_V98_REGRESSION_RECEIPT.json validation/V8_3_220_V219_A_IMMUTABLE_REGRESSION.json validation/V8_3_220_V219_A_REGRESSION_RESULTS.json; do test ! -f "$f" || git add -- "$f"; done
+          git diff --cached --quiet || git commit -m 'Record V8.3.220 V98 regression diagnostic R2'
           git push origin HEAD:v83220-v1-validation
         env:
           OUTCOME: ${{ steps.reg.outcome }}
