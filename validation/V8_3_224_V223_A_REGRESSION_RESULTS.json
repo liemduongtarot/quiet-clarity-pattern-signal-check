@@ -1,8 +1,8 @@
 {
   "authority": "V8.3.224 V101 regression of frozen V8.3.223 A",
   "total": 30,
-  "passed": 28,
-  "failed": 2,
+  "passed": 29,
+  "failed": 1,
   "results": [
     {
       "case_id": "V223-S00-01",
@@ -410,7 +410,7 @@
       "case_id": "V223-S07-05",
       "category": "slow",
       "language": "EN",
-      "pass": false,
+      "pass": true,
       "expected": {
         "route": "input:self-lived",
         "families": [
@@ -420,7 +420,9 @@
       },
       "actual": {
         "route": "input:self-lived",
-        "families": [],
+        "families": [
+          "slow"
+        ],
         "sequence": false
       },
       "source_first_run_pass": false

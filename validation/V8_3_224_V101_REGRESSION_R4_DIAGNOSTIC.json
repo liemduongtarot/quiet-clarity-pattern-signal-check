@@ -1,0 +1,9 @@
+{
+  "candidate": "V8.3.224",
+  "phase": "v101-regression-r4",
+  "outcome": "failure",
+  "exit_code": "1",
+  "log_tail": "+ git fetch --depth=1 origin bec1b3a2f752a71a7628d50cd2d92aaaa7967fcd\nFrom https://github.com/liemduongtarot/quiet-clarity-pattern-signal-check\n * branch            bec1b3a2f752a71a7628d50cd2d92aaaa7967fcd -> FETCH_HEAD\n+ git show bec1b3a2f752a71a7628d50cd2d92aaaa7967fcd:validation/v83216-v1-sealed/V8_3_216_V1_BATCH_A_FIRST_RUN_RESULTS.json > /home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/V8_3_217_V216_V1_BATCH_A_REGRESSION.json\n+ node validation/run-v83214-v213-a-regression.cjs\n30/30\n+ node validation/run-v83214-v94-regression.cjs\nTOTAL 1470 PASS 1470 FAIL 0\nV219 A 30/30\nV221 A 30/30\nV222 A 30/30\nV223 A 29/30\n{\n  \"candidate\": \"V8.3.224\",\n  \"phase\": \"v101-regression-base\",\n  \"run_id\": 32521974326,\n  \"run_attempt\": 1,\n  \"head_sha\": \"476ee7dfeab39c5e7fb29f47af08e3e1c0e51919\",\n  \"semantic_authority\": \"QCSemanticCoreV101\",\n  \"v216_frozen_a_regression_total\": 30,\n  \"v216_frozen_a_regression_passed\": 30,\n  \"immutable_regression_total\": 1470,\n  \"immutable_regression_passed\": 1470,\n  \"v216_sealed_rerun\": false,\n  \"sealed_validation_executed\": false,\n  \"step_111_authorized\": false,\n  \"production_authorized\": false,\n  \"status\": \"completed\",\n  \"conclusion\": \"success\"\n}\nTraceback (most recent call last):\n  File \"/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83224-v101-regression-orchestrator.py\", line 35, in <module>\n    ''';runner.write_text(prefix+tail);cp=subprocess.run(['node',str(runner)],text=True);assert cp.returncode==0\n                                                                                                ^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "sealed_validation_executed": false,
+  "v223_sealed_rerun": false
+}
