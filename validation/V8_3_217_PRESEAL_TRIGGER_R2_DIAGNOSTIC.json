@@ -1,0 +1,19 @@
+{
+  "authority": "V8.3.217 PRESEAL TRIGGER R2 DIAGNOSTIC ONLY",
+  "trigger_sha": "6d66907071e422343512800cea9217295a2be526",
+  "semantic_runtime_executed_by_diagnostic": false,
+  "matches": [
+    {
+      "conclusion": "failure",
+      "createdAt": "2026-08-21T13:54:38Z",
+      "databaseId": 32489323231,
+      "displayTitle": "Run V8.3.217 fresh preseal freeze R2",
+      "event": "push",
+      "headSha": "6d66907071e422343512800cea9217295a2be526",
+      "status": "completed",
+      "updatedAt": "2026-08-21T13:55:12Z",
+      "workflowName": "V8.3.217 Fresh Preseal Freeze R2"
+    }
+  ],
+  "match_count": 1
+}
