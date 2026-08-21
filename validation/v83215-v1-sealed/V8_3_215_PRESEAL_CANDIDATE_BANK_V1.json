@@ -1,0 +1,2313 @@
+{
+  "authority": "V8.3.215 V1 PRESEAL CANDIDATE BANK",
+  "seed": 8321529,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "selection_uses_runtime_output": false,
+  "cases": [
+    {
+      "case_id": "V215-S00-00",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Ledger reference already filed. The external story is complete, but it never states the observable action I personally took at closure. This procedural detail only locates the record.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-01",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Context and chronology are settled; only my own concrete response at the ending point is missing. Routine paperwork is background, not behavioural evidence. Meeting schedule already stored.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-02",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The admin marker does not decide the mechanism. Application marker already logged. The external story is complete, but it never states the observable action I personally took at closure.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-03",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Household logistics already recorded. Context and chronology are settled; only my own concrete response at the ending point is missing. That logistics fact is separate from the measured response.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-04",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "The external story is complete, but it never states the observable action I personally took at closure. The stored reference only anchors chronology. Rota identifier already present.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-05",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "other",
+      "surface": "This procedural detail only locates the record. Admin reference already saved. Context and chronology are settled; only my own concrete response at the ending point is missing.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-06",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Invoice marker already present. The external story is complete, but it never states the observable action I personally took at closure. Routine paperwork is background, not behavioural evidence.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-07",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Context and chronology are settled; only my own concrete response at the ending point is missing. The admin marker does not decide the mechanism. Thread timestamp already recorded.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-08",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "That logistics fact is separate from the measured response. Booking detail already filed. The external story is complete, but it never states the observable action I personally took at closure.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-09",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Mã ledger đã được lưu. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc. Chi tiết thủ tục chỉ định vị record.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-10",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Lịch gặp đã có sẵn.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-11",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Marker hành chính không quyết định cơ chế. Marker hồ sơ đã được ghi. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-12",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Ghi chú sinh hoạt đã có. Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại. Fact logistics tách biệt với phản ứng đang đo.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-13",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc. Mã lưu trữ chỉ neo dòng thời gian. Định danh rota đã lưu.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-14",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Mã hành chính đã có. Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-15",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Marker invoice đã có. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-16",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Dòng thời gian đã rõ; phần duy nhất còn thiếu là phản ứng cụ thể của tôi trước lúc sự việc khép lại. Marker hành chính không quyết định cơ chế. Timestamp thread đã ghi.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S00-17",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Fact logistics tách biệt với phản ứng đang đo. Chi tiết booking đã lưu. Bối cảnh bên ngoài đã đầy đủ nhưng record không nêu hành động quan sát được nào do chính tôi thực hiện ở điểm kết thúc.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-00",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "I am transferring the choice itself: select the course I should take instead of helping me decide. The admin marker does not decide the mechanism. Ledger reference already filed.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-01",
+      "category": "decision",
+      "language": "EN",
+      "domain": "career",
+      "surface": "That logistics fact is separate from the measured response. Meeting schedule already stored. Choose my next move for me so your selection replaces my final call rather than merely guiding it.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-02",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Application marker already logged. I am transferring the choice itself: select the course I should take instead of helping me decide. The stored reference only anchors chronology.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-03",
+      "category": "decision",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Choose my next move for me so your selection replaces my final call rather than merely guiding it. This procedural detail only locates the record. Household logistics already recorded.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-04",
+      "category": "decision",
+      "language": "EN",
+      "domain": "other",
+      "surface": "Routine paperwork is background, not behavioural evidence. Rota identifier already present. I am transferring the choice itself: select the course I should take instead of helping me decide.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-05",
+      "category": "decision",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Admin reference already saved. Choose my next move for me so your selection replaces my final call rather than merely guiding it. The admin marker does not decide the mechanism.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-06",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "I am transferring the choice itself: select the course I should take instead of helping me decide. That logistics fact is separate from the measured response. Invoice marker already present.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-07",
+      "category": "decision",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The stored reference only anchors chronology. Thread timestamp already recorded. Choose my next move for me so your selection replaces my final call rather than merely guiding it.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-08",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Booking detail already filed. I am transferring the choice itself: select the course I should take instead of helping me decide. This procedural detail only locates the record.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-09",
+      "category": "decision",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Marker hành chính không quyết định cơ chế. Mã ledger đã được lưu.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-10",
+      "category": "decision",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Fact logistics tách biệt với phản ứng đang đo. Lịch gặp đã có sẵn. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-11",
+      "category": "decision",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Marker hồ sơ đã được ghi. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Mã lưu trữ chỉ neo dòng thời gian.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-12",
+      "category": "decision",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc. Chi tiết thủ tục chỉ định vị record. Ghi chú sinh hoạt đã có.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-13",
+      "category": "decision",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Định danh rota đã lưu. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-14",
+      "category": "decision",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Mã hành chính đã có. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc. Marker hành chính không quyết định cơ chế.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-15",
+      "category": "decision",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Fact logistics tách biệt với phản ứng đang đo. Marker invoice đã có.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-16",
+      "category": "decision",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Timestamp thread đã ghi. Hãy chốt bước tiếp theo cho tôi để lựa chọn của bạn thay quyết định cuối của tôi, không chỉ đưa khung cân nhắc.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S01-17",
+      "category": "decision",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Chi tiết booking đã lưu. Tôi đang giao chính quyền lựa chọn: hãy chọn hướng tôi phải đi thay vì chỉ giúp tôi tự quyết. Chi tiết thủ tục chỉ định vị record.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-00",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The stored reference only anchors chronology. Ledger reference already filed. This is fabricated evaluation prose, not an episode I have actually lived through.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-01",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Meeting schedule already stored. The example is synthetic test material and does not come from my real-life history. This procedural detail only locates the record.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-02",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "This is fabricated evaluation prose, not an episode I have actually lived through. Routine paperwork is background, not behavioural evidence. Application marker already logged.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-03",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The admin marker does not decide the mechanism. Household logistics already recorded. The example is synthetic test material and does not come from my real-life history.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-04",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Rota identifier already present. This is fabricated evaluation prose, not an episode I have actually lived through. That logistics fact is separate from the measured response.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-05",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The example is synthetic test material and does not come from my real-life history. The stored reference only anchors chronology. Admin reference already saved.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-06",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "surface": "This procedural detail only locates the record. Invoice marker already present. This is fabricated evaluation prose, not an episode I have actually lived through.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-07",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Thread timestamp already recorded. The example is synthetic test material and does not come from my real-life history. Routine paperwork is background, not behavioural evidence.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-08",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "This is fabricated evaluation prose, not an episode I have actually lived through. The admin marker does not decide the mechanism. Booking detail already filed.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-09",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Mã ledger đã được lưu. Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-10",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Lịch gặp đã có sẵn. Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi. Chi tiết thủ tục chỉ định vị record.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-11",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Marker hồ sơ đã được ghi.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-12",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Marker hành chính không quyết định cơ chế. Ghi chú sinh hoạt đã có. Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-13",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Định danh rota đã lưu. Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Fact logistics tách biệt với phản ứng đang đo.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-14",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi. Mã lưu trữ chỉ neo dòng thời gian. Mã hành chính đã có.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-15",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Marker invoice đã có. Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-16",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Timestamp thread đã ghi. Ví dụ này là tình huống hư cấu dùng để test, không phải chuyện thật trong lịch sử sống của tôi. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S02-17",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Đây là prose được bịa để đánh giá hệ thống, không lấy từ trải nghiệm nào tôi thực sự đã sống qua. Marker hành chính không quyết định cơ chế. Chi tiết booking đã lưu.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-00",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Ledger reference already filed. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion. Routine paperwork is background, not behavioural evidence.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-01",
+      "category": "third",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I am asking for someone else’s private view with nothing visible in what they said or did to ground it. The admin marker does not decide the mechanism. Meeting schedule already stored.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-02",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "surface": "That logistics fact is separate from the measured response. Application marker already logged. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-03",
+      "category": "third",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Household logistics already recorded. I am asking for someone else’s private view with nothing visible in what they said or did to ground it. The stored reference only anchors chronology.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-04",
+      "category": "third",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion. This procedural detail only locates the record. Rota identifier already present.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-05",
+      "category": "third",
+      "language": "EN",
+      "domain": "career",
+      "surface": "Routine paperwork is background, not behavioural evidence. Admin reference already saved. I am asking for someone else’s private view with nothing visible in what they said or did to ground it.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-06",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Invoice marker already present. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion. The admin marker does not decide the mechanism.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-07",
+      "category": "third",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I am asking for someone else’s private view with nothing visible in what they said or did to ground it. That logistics fact is separate from the measured response. Thread timestamp already recorded.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-08",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The stored reference only anchors chronology. Booking detail already filed. Infer another person’s unspoken belief even though no observable conduct or statement supports that hidden conclusion.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-09",
+      "category": "third",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Mã ledger đã được lưu. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-10",
+      "category": "third",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó. Marker hành chính không quyết định cơ chế. Lịch gặp đã có sẵn.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-11",
+      "category": "third",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Fact logistics tách biệt với phản ứng đang đo. Marker hồ sơ đã được ghi. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-12",
+      "category": "third",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Ghi chú sinh hoạt đã có. Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó. Mã lưu trữ chỉ neo dòng thời gian.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-13",
+      "category": "third",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ. Chi tiết thủ tục chỉ định vị record. Định danh rota đã lưu.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-14",
+      "category": "third",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Mã hành chính đã có. Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-15",
+      "category": "third",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Marker invoice đã có. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ. Marker hành chính không quyết định cơ chế.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-16",
+      "category": "third",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Tôi hỏi về quan điểm riêng chưa bộc lộ của bên thứ ba, trong khi không có dấu hiệu bên ngoài chứng minh nó. Fact logistics tách biệt với phản ứng đang đo. Timestamp thread đã ghi.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S03-17",
+      "category": "third",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Chi tiết booking đã lưu. Hãy suy ra niềm tin chưa nói của người khác dù không có hành vi hay lời nói quan sát được nào làm căn cứ.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-00",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "At the next defined future checkpoint, will this finish with the result I want? That logistics fact is separate from the measured response. Ledger reference already filed.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-01",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The stored reference only anchors chronology. Meeting schedule already stored. At a specified future horizon, is the eventual outcome going to resolve in my favour?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-02",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Application marker already logged. At the next defined future checkpoint, will this finish with the result I want? This procedural detail only locates the record.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-03",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "At a specified future horizon, is the eventual outcome going to resolve in my favour? Routine paperwork is background, not behavioural evidence. Household logistics already recorded.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-04",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The admin marker does not decide the mechanism. Rota identifier already present. At the next defined future checkpoint, will this finish with the result I want?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-05",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Admin reference already saved. At a specified future horizon, is the eventual outcome going to resolve in my favour? That logistics fact is separate from the measured response.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-06",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "At the next defined future checkpoint, will this finish with the result I want? The stored reference only anchors chronology. Invoice marker already present.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-07",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "other",
+      "surface": "This procedural detail only locates the record. Thread timestamp already recorded. At a specified future horizon, is the eventual outcome going to resolve in my favour?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-08",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Booking detail already filed. At the next defined future checkpoint, will this finish with the result I want? Routine paperwork is background, not behavioural evidence.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-09",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Fact logistics tách biệt với phản ứng đang đo. Mã ledger đã được lưu.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-10",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Lịch gặp đã có sẵn. Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-11",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Marker hồ sơ đã được ghi. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Chi tiết thủ tục chỉ định vị record.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-12",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không? Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Ghi chú sinh hoạt đã có.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-13",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Marker hành chính không quyết định cơ chế. Định danh rota đã lưu. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-14",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Mã hành chính đã có. Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không? Fact logistics tách biệt với phản ứng đang đo.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-15",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Mã lưu trữ chỉ neo dòng thời gian. Marker invoice đã có.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-16",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Timestamp thread đã ghi. Nhìn tới một mốc tương lai cụ thể, outcome cuối có giải quyết theo hướng có lợi cho tôi không?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S04-17",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Chi tiết booking đã lưu. Tại checkpoint tương lai đã xác định tiếp theo, chuyện này có kết thúc với kết quả tôi muốn không? Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-00",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "surface": "This procedural detail only locates the record. Ledger reference already filed. A low-cost reversible first step was available, but I expanded alternatives instead of starting it.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-01",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Meeting schedule already stored. An easy-exit trial was available; I added more options and left the reversible opening move unstarted. Routine paperwork is background, not behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-02",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A low-cost reversible first step was available, but I expanded alternatives instead of starting it. The admin marker does not decide the mechanism. Application marker already logged.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-03",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "career",
+      "surface": "That logistics fact is separate from the measured response. Household logistics already recorded. An easy-exit trial was available; I added more options and left the reversible opening move unstarted.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-04",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Rota identifier already present. A low-cost reversible first step was available, but I expanded alternatives instead of starting it. The stored reference only anchors chronology.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-05",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "An easy-exit trial was available; I added more options and left the reversible opening move unstarted. This procedural detail only locates the record. Admin reference already saved.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-06",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "surface": "Routine paperwork is background, not behavioural evidence. Invoice marker already present. A low-cost reversible first step was available, but I expanded alternatives instead of starting it.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-07",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Thread timestamp already recorded. An easy-exit trial was available; I added more options and left the reversible opening move unstarted. The admin marker does not decide the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-08",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A low-cost reversible first step was available, but I expanded alternatives instead of starting it. That logistics fact is separate from the measured response. Booking detail already filed.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-09",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Mã ledger đã được lưu. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-10",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Lịch gặp đã có sẵn. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-11",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Marker hành chính không quyết định cơ chế. Marker hồ sơ đã được ghi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-12",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Fact logistics tách biệt với phản ứng đang đo. Ghi chú sinh hoạt đã có. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-13",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Định danh rota đã lưu. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Mã lưu trữ chỉ neo dòng thời gian.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-14",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Chi tiết thủ tục chỉ định vị record. Mã hành chính đã có.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-15",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Marker invoice đã có. Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-16",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Timestamp thread đã ghi. Có một phép thử dễ thoát và có thể đảo ngược; tôi thêm option rồi để bước mở đầu chưa khởi động. Marker hành chính không quyết định cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S05-17",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi có bước đầu rủi ro thấp và có thể quay lại dễ dàng, nhưng lại mở rộng phương án thay vì bắt đầu. Fact logistics tách biệt với phản ứng đang đo. Chi tiết booking đã lưu.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-00",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Ledger reference already filed. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it. The admin marker does not decide the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-01",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The main request was waiting on me; I shifted attention to side work and left the core responsibility unanswered. That logistics fact is separate from the measured response. Meeting schedule already stored.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-02",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The stored reference only anchors chronology. Application marker already logged. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-03",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Household logistics already recorded. The main request was waiting on me; I shifted attention to side work and left the core responsibility unanswered. This procedural detail only locates the record.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-04",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it. Routine paperwork is background, not behavioural evidence. Rota identifier already present.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-05",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The admin marker does not decide the mechanism. Admin reference already saved. The main request was waiting on me; I shifted attention to side work and left the core responsibility unanswered.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-06",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Invoice marker already present. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it. That logistics fact is separate from the measured response.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-07",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The main request was waiting on me; I shifted attention to side work and left the core responsibility unanswered. The stored reference only anchors chronology. Thread timestamp already recorded.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-08",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "This procedural detail only locates the record. Booking detail already filed. The central obligation still needed my response, but I redirected effort into peripheral tasks that could not resolve it.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-09",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Mã ledger đã được lưu. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính. Marker hành chính không quyết định cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-10",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời. Fact logistics tách biệt với phản ứng đang đo. Lịch gặp đã có sẵn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-11",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Marker hồ sơ đã được ghi. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-12",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Ghi chú sinh hoạt đã có. Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời. Chi tiết thủ tục chỉ định vị record.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-13",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Định danh rota đã lưu.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-14",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Marker hành chính không quyết định cơ chế. Mã hành chính đã có. Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-15",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Marker invoice đã có. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính. Fact logistics tách biệt với phản ứng đang đo.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-16",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Yêu cầu cốt lõi còn chờ tôi xử lý; tôi dồn chú ý vào việc phụ và để trách nhiệm chính chưa được trả lời. Mã lưu trữ chỉ neo dòng thời gian. Timestamp thread đã ghi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S06-17",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Chi tiết booking đã lưu. Nghĩa vụ trung tâm vẫn cần phản hồi từ tôi, nhưng tôi chuyển công sức sang việc bên lề không thể giải quyết phần chính.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-00",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. The stored reference only anchors chronology. Ledger reference already filed.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-01",
+      "category": "slow",
+      "language": "EN",
+      "domain": "career",
+      "surface": "This procedural detail only locates the record. Meeting schedule already stored. I took one finite extra interval before answering, checked the issue once, and then closed the review.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-02",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Application marker already logged. There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. Routine paperwork is background, not behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-03",
+      "category": "slow",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I took one finite extra interval before answering, checked the issue once, and then closed the review. The admin marker does not decide the mechanism. Household logistics already recorded.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-04",
+      "category": "slow",
+      "language": "EN",
+      "domain": "other",
+      "surface": "That logistics fact is separate from the measured response. Rota identifier already present. There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-05",
+      "category": "slow",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Admin reference already saved. I took one finite extra interval before answering, checked the issue once, and then closed the review. The stored reference only anchors chronology.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-06",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. This procedural detail only locates the record. Invoice marker already present.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-07",
+      "category": "slow",
+      "language": "EN",
+      "domain": "career",
+      "surface": "Routine paperwork is background, not behavioural evidence. Thread timestamp already recorded. I took one finite extra interval before answering, checked the issue once, and then closed the review.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-08",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Booking detail already filed. There was one bounded pause before I replied; I reviewed the point once and then treated the process as complete. The admin marker does not decide the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-09",
+      "category": "slow",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Mã lưu trữ chỉ neo dòng thời gian. Mã ledger đã được lưu.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-10",
+      "category": "slow",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Lịch gặp đã có sẵn. Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-11",
+      "category": "slow",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Marker hồ sơ đã được ghi. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-12",
+      "category": "slow",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review. Marker hành chính không quyết định cơ chế. Ghi chú sinh hoạt đã có.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-13",
+      "category": "slow",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Fact logistics tách biệt với phản ứng đang đo. Định danh rota đã lưu. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-14",
+      "category": "slow",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Mã hành chính đã có. Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review. Mã lưu trữ chỉ neo dòng thời gian.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-15",
+      "category": "slow",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Chi tiết thủ tục chỉ định vị record. Marker invoice đã có.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-16",
+      "category": "slow",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Timestamp thread đã ghi. Tôi dùng thêm một khoảng thời gian có giới hạn trước phản hồi, kiểm một lần và sau đó đóng review.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S07-17",
+      "category": "slow",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Chi tiết booking đã lưu. Tôi có một khoảng dừng hữu hạn trước khi trả lời; review đúng một lượt rồi xem quá trình đã hoàn tất. Marker hành chính không quyết định cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S08-00",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "surface": "Routine paperwork is background, not behavioural evidence. Ledger reference already filed. I moved close to execution, pulled back, then revisited the same judgement despite no new information.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-01",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Meeting schedule already stored. I approached action and retreated; afterward I returned to the same reasoning while the facts stayed unchanged. The admin marker does not decide the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-02",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I moved close to execution, pulled back, then revisited the same judgement despite no new information. That logistics fact is separate from the measured response. Application marker already logged.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-03",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The stored reference only anchors chronology. Household logistics already recorded. I approached action and retreated; afterward I returned to the same reasoning while the facts stayed unchanged.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-04",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Rota identifier already present. I moved close to execution, pulled back, then revisited the same judgement despite no new information. This procedural detail only locates the record.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-05",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "I approached action and retreated; afterward I returned to the same reasoning while the facts stayed unchanged. Routine paperwork is background, not behavioural evidence. Admin reference already saved.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-06",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The admin marker does not decide the mechanism. Invoice marker already present. I moved close to execution, pulled back, then revisited the same judgement despite no new information.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-07",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Thread timestamp already recorded. I approached action and retreated; afterward I returned to the same reasoning while the facts stayed unchanged. That logistics fact is separate from the measured response.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-08",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I moved close to execution, pulled back, then revisited the same judgement despite no new information. The stored reference only anchors chronology. Booking detail already filed.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-09",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Mã ledger đã được lưu. Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-10",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Lịch gặp đã có sẵn. Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi. Marker hành chính không quyết định cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-11",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Fact logistics tách biệt với phản ứng đang đo. Marker hồ sơ đã được ghi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-12",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Mã lưu trữ chỉ neo dòng thời gian. Ghi chú sinh hoạt đã có. Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-13",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Định danh rota đã lưu. Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Chi tiết thủ tục chỉ định vị record.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-14",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Mã hành chính đã có.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-15",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Marker hành chính không quyết định cơ chế. Marker invoice đã có. Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-16",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Timestamp thread đã ghi. Tôi đến gần execution rồi lùi ra; sau đó xem lại reasoning cũ trong khi dữ kiện không thay đổi. Fact logistics tách biệt với phản ứng đang đo.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S08-17",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Tôi tiến sát tới lúc thực hiện rồi rút lại, sau đó quay về cùng phán đoán dù không có thông tin mới. Mã lưu trữ chỉ neo dòng thời gian. Chi tiết booking đã lưu.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V215-S09-00",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Ledger reference already filed. I made the choice myself, completed the practical action, and then left the matter closed. That logistics fact is separate from the measured response.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-01",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I retained the final decision, carried the step through, and did not keep the issue open afterward. The stored reference only anchors chronology. Meeting schedule already stored.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-02",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "surface": "This procedural detail only locates the record. Application marker already logged. I made the choice myself, completed the practical action, and then left the matter closed.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-03",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Household logistics already recorded. I retained the final decision, carried the step through, and did not keep the issue open afterward. Routine paperwork is background, not behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-04",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "I made the choice myself, completed the practical action, and then left the matter closed. The admin marker does not decide the mechanism. Rota identifier already present.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-05",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "career",
+      "surface": "That logistics fact is separate from the measured response. Admin reference already saved. I retained the final decision, carried the step through, and did not keep the issue open afterward.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-06",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Invoice marker already present. I made the choice myself, completed the practical action, and then left the matter closed. The stored reference only anchors chronology.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-07",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I retained the final decision, carried the step through, and did not keep the issue open afterward. This procedural detail only locates the record. Thread timestamp already recorded.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-08",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "surface": "Routine paperwork is background, not behavioural evidence. Booking detail already filed. I made the choice myself, completed the practical action, and then left the matter closed.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-09",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Mã ledger đã được lưu. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại. Fact logistics tách biệt với phản ứng đang đo.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-10",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở. Mã lưu trữ chỉ neo dòng thời gian. Lịch gặp đã có sẵn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-11",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Chi tiết thủ tục chỉ định vị record. Marker hồ sơ đã được ghi. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-12",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Ghi chú sinh hoạt đã có. Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở. Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-13",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại. Marker hành chính không quyết định cơ chế. Định danh rota đã lưu.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-14",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Fact logistics tách biệt với phản ứng đang đo. Mã hành chính đã có. Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-15",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Marker invoice đã có. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại. Mã lưu trữ chỉ neo dòng thời gian.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-16",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Tôi giữ quyền quyết định cuối, làm xong nước đi và không tiếp tục để chuyện đó mở. Chi tiết thủ tục chỉ định vị record. Timestamp thread đã ghi.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V215-S09-17",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Giấy tờ thường lệ chỉ là bối cảnh, không phải evidence hành vi. Chi tiết booking đã lưu. Tôi tự đưa ra lựa chọn, thực hiện hành động đến hoàn tất rồi để vấn đề khép lại.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}

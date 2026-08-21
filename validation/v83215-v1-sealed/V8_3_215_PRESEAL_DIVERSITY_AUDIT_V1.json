@@ -1,0 +1,21 @@
+{
+  "authority": "V8.3.215 V1 PRESEAL DIVERSITY AUDIT",
+  "candidate_count": 180,
+  "selected_count": 60,
+  "batch_a_count": 30,
+  "batch_b_count": 30,
+  "internal_max_similarity": 0.8125,
+  "internal_max_pair": [
+    "V215-S06-09",
+    "V215-S06-11"
+  ],
+  "external_reference_surface_count": 2220,
+  "external_max_similarity": 0.733333,
+  "external_cases_at_or_above_0_75": 0,
+  "exact_external_duplicates": 0,
+  "semantic_fingerprint_exact_duplicates": 0,
+  "runtime_executed_during_bank_or_selection": false,
+  "semantic_authority_loaded_during_bank_or_selection": false,
+  "selection_uses_runtime_output": false,
+  "pass": false
+}
