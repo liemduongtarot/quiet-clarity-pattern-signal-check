@@ -1,0 +1,58 @@
+name: V8.3.220 V98 Bounded Regression
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  regression:
+    if: github.event.head_commit.message == 'Run V8.3.220 V98 bounded regression'
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83220-v1-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run V98 bounded + immutable regression
+        id: reg
+        continue-on-error: true
+        run: python validation/v83220-v98-regression-orchestrator.py
+      - name: Freeze regression evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          test -f validation/V8_3_220_V98_REGRESSION_RECEIPT.json
+          python - <<'PY'
+          import pathlib,zipfile,hashlib
+          r=pathlib.Path('.');files=[r/'validation/V8_3_220_V98_REGRESSION_RECEIPT.json',r/'validation/V8_3_220_V219_A_IMMUTABLE_REGRESSION.json']
+          for n in ['V8_3_220_V98_REGRESSION_RESULTS.json','V8_3_220_V219_A_REGRESSION_RESULTS.json']:
+            p=r/n
+            if p.exists():files.append(p)
+          z=r/'PSC_V8_3_220_V98_REGRESSION_CHECKPOINT.zip'
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in files:q.write(p,p.name)
+          (r/'PSC_V8_3_220_V98_REGRESSION_CHECKPOINT_SHA256.txt').write_text(hashlib.sha256(z.read_bytes()).hexdigest()+'  '+z.name+'\n')
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- validation/V8_3_220_V98_REGRESSION_RECEIPT.json validation/V8_3_220_V219_A_IMMUTABLE_REGRESSION.json
+          for f in V8_3_220_V98_REGRESSION_RESULTS.json V8_3_220_V219_A_REGRESSION_RESULTS.json; do
+            if [ -f "$f" ]; then cp "$f" validation/; git add "validation/$f"; fi
+          done
+          git diff --cached --quiet || git commit -m 'Record V8.3.220 V98 regression evidence'
+          git push origin HEAD:v83220-v1-validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_220_V98_REGRESSION_CHECKPOINT
+          if-no-files-found: error
+          path: |
+            PSC_V8_3_220_V98_REGRESSION_CHECKPOINT.zip
+            PSC_V8_3_220_V98_REGRESSION_CHECKPOINT_SHA256.txt
+      - name: Enforce
+        if: always()
+        run: test '${{ steps.reg.outcome }}' = 'success'
