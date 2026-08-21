@@ -1,0 +1,21 @@
+{
+  "authority": "V8.3.214 V1 SEALED AUTHORITY",
+  "candidate": "V8.3.214",
+  "validated_development_head_sha": "4725f8a613048e755fef6c10398d83305abd136f",
+  "semantic_authority": "QCSemanticCoreV94R",
+  "candidate_bank_count": 180,
+  "selected_count": 60,
+  "batch_a_count": 30,
+  "batch_b_count": 30,
+  "v213_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "hashes": {
+    "candidate_bank": "1e6affa97f3d3943d898547fa65f1699d38cf7f2241a38b9015275afa93713b6",
+    "selection": "c7452b1d5786c855a9a9e64200a8fbd9ecf8d8e150c2bb37d9dc567418d39ad1",
+    "fixture": "82d54d4df0a7b44342790699bebe6dd07b2a42e5285fac38b83d11f7ec0b5322",
+    "independent_gold": "93bd160423152e843c6b7dc2718257f4a08219b04ce188a387ccb3163815d4f4",
+    "membership": "eb88872c909b8b3f9d20b83dc403d5f04f882c4ee5f46f640ec37a5c29b3b871",
+    "preseal_audit": "93b57b99ef2b47298395a4b04a68775186515a07fdcaaff59fb98bbf5964db83"
+  }
+}

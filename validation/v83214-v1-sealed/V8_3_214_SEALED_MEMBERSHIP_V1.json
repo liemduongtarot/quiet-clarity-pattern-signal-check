@@ -1,0 +1,367 @@
+{
+  "authority": "V8.3.214 V1 SEALED MEMBERSHIP",
+  "batch_a": [
+    {
+      "case_id": "V214-S00-12",
+      "category": "clarification",
+      "domain": "money",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S00-14",
+      "category": "clarification",
+      "domain": "career",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S00-10",
+      "category": "clarification",
+      "domain": "workplace",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S01-13",
+      "category": "decision",
+      "domain": "family",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S01-17",
+      "category": "decision",
+      "domain": "relationship",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S01-03",
+      "category": "decision",
+      "domain": "other",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S02-05",
+      "category": "hypothetical",
+      "domain": "family",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S02-09",
+      "category": "hypothetical",
+      "domain": "relationship",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S02-00",
+      "category": "hypothetical",
+      "domain": "workplace",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S03-03",
+      "category": "third",
+      "domain": "family",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S03-10",
+      "category": "third",
+      "domain": "workplace",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S03-00",
+      "category": "third",
+      "domain": "money",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S04-11",
+      "category": "prediction",
+      "domain": "relationship",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S04-00",
+      "category": "prediction",
+      "domain": "career",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S04-04",
+      "category": "prediction",
+      "domain": "money",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S05-14",
+      "category": "freeze",
+      "domain": "money",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S05-15",
+      "category": "freeze",
+      "domain": "relationship",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S05-01",
+      "category": "freeze",
+      "domain": "other",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S06-02",
+      "category": "ignore",
+      "domain": "career",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S06-05",
+      "category": "ignore",
+      "domain": "other",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S06-16",
+      "category": "ignore",
+      "domain": "workplace",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S07-17",
+      "category": "slow",
+      "domain": "relationship",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S07-01",
+      "category": "slow",
+      "domain": "family",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S07-08",
+      "category": "slow",
+      "domain": "workplace",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S08-15",
+      "category": "sequence",
+      "domain": "relationship",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S08-04",
+      "category": "sequence",
+      "domain": "career",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S08-14",
+      "category": "sequence",
+      "domain": "money",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S09-04",
+      "category": "neutral",
+      "domain": "workplace",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S09-02",
+      "category": "neutral",
+      "domain": "career",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S09-11",
+      "category": "neutral",
+      "domain": "other",
+      "language": "VI"
+    }
+  ],
+  "batch_b": [
+    {
+      "case_id": "V214-S00-17",
+      "category": "clarification",
+      "domain": "other",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S00-09",
+      "category": "clarification",
+      "domain": "family",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S00-01",
+      "category": "clarification",
+      "domain": "relationship",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S01-12",
+      "category": "decision",
+      "domain": "career",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S01-02",
+      "category": "decision",
+      "domain": "workplace",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S01-16",
+      "category": "decision",
+      "domain": "money",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S02-01",
+      "category": "hypothetical",
+      "domain": "other",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S02-16",
+      "category": "hypothetical",
+      "domain": "career",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S02-14",
+      "category": "hypothetical",
+      "domain": "money",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S03-02",
+      "category": "third",
+      "domain": "career",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S03-01",
+      "category": "third",
+      "domain": "relationship",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S03-17",
+      "category": "third",
+      "domain": "other",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S04-07",
+      "category": "prediction",
+      "domain": "family",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S04-03",
+      "category": "prediction",
+      "domain": "other",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S04-02",
+      "category": "prediction",
+      "domain": "workplace",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S05-04",
+      "category": "freeze",
+      "domain": "career",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S05-12",
+      "category": "freeze",
+      "domain": "workplace",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S05-05",
+      "category": "freeze",
+      "domain": "family",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S06-09",
+      "category": "ignore",
+      "domain": "family",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S06-01",
+      "category": "ignore",
+      "domain": "relationship",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S06-06",
+      "category": "ignore",
+      "domain": "money",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S07-10",
+      "category": "slow",
+      "domain": "money",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S07-03",
+      "category": "slow",
+      "domain": "other",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S07-00",
+      "category": "slow",
+      "domain": "career",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S08-12",
+      "category": "sequence",
+      "domain": "workplace",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S08-07",
+      "category": "sequence",
+      "domain": "other",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S08-11",
+      "category": "sequence",
+      "domain": "family",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S09-13",
+      "category": "neutral",
+      "domain": "relationship",
+      "language": "VI"
+    },
+    {
+      "case_id": "V214-S09-00",
+      "category": "neutral",
+      "domain": "money",
+      "language": "EN"
+    },
+    {
+      "case_id": "V214-S09-03",
+      "category": "neutral",
+      "domain": "family",
+      "language": "EN"
+    }
+  ]
+}

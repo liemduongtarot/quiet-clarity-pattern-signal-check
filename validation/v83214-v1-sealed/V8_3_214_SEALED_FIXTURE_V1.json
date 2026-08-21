@@ -1,0 +1,773 @@
+{
+  "authority": "V8.3.214 V1 SEALED FIXTURE",
+  "cases": [
+    {
+      "case_id": "V214-S00-12",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Mã invoice thông thường đã có sẵn. Bối cảnh và dòng thời gian đều đã đầy đủ; record vẫn chưa nêu phản ứng cụ thể của tôi tại điểm cuối. Record lịch trình chỉ đánh dấu thứ tự công việc bên ngoài.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S00-01",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "All external facts can be followed without a gap — what remains unspecified is my own concrete response at the final point. The basic meeting logistics were already settled. Calendar metadata only shows where this item sits procedurally.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S00-14",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Slot phỏng vấn thường lệ đã được ghi. Phần diễn biến bên ngoài đã đủ để hiểu sự việc; đồng thời, khoảng trống duy nhất là hành động quan sát được do chính tôi đưa ra trước lúc câu chuyện đóng lại. Chi tiết thường lệ đó chỉ là bối cảnh và không xác lập cơ chế. Mã tham chiếu thuộc riêng lớp logistics của hồ sơ.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S00-09",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Phần diễn biến bên ngoài đã đủ để hiểu sự việc; khoảng trống duy nhất là hành động quan sát được do chính tôi đưa ra trước lúc câu chuyện đóng lại. Lịch sinh hoạt gia đình bình thường đã có sẵn. Marker sổ sách chỉ định vị phần hành chính của hồ sơ.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S00-10",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Metadata ca làm thường lệ đã được log. Bối cảnh và dòng thời gian đều đã đầy đủ — record vẫn chưa nêu phản ứng cụ thể của tôi tại điểm cuối. Fact thông thường này tách biệt với evidence hành vi đang được đo. Metadata lịch chỉ cho biết nơi mục này nằm trong quy trình.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S00-17",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Bối cảnh và dòng thời gian đều đã đầy đủ; đồng thời, record vẫn chưa nêu phản ứng cụ thể của tôi tại điểm cuối. Marker hồ sơ thông thường đã được ghi. Ghi chú chuẩn chỉ cung cấp dữ kiện vận hành thông thường.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S01-16",
+      "category": "decision",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Đừng để quyết định sau cùng ở tôi; đồng thời, hãy chọn route thực tế nhân danh tôi và dùng phán đoán của bạn làm câu trả lời. Mã đối soát thường lệ đã được ghi. Marker sổ sách chỉ định vị phần hành chính của hồ sơ.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S01-17",
+      "category": "decision",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Logistics gặp mặt cơ bản đã được chốt. Trong lựa chọn này tôi đang giao quyền quyết định; hãy chọn bước tiếp theo thay vì chỉ giúp tôi tự kết luận. Chi tiết thường lệ đó chỉ là bối cảnh và không xác lập cơ chế. Metadata lịch chỉ cho biết nơi mục này nằm trong quy trình.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S01-12",
+      "category": "decision",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Trong lựa chọn này tôi đang giao quyền quyết định — hãy chọn bước tiếp theo thay vì chỉ giúp tôi tự kết luận. Định danh vai trò thông thường đã được lưu. Mã tham chiếu thuộc riêng lớp logistics của hồ sơ.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S01-13",
+      "category": "decision",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Sắp xếp sinh hoạt thông thường đã được ghi. Tôi không muốn chỉ được hỗ trợ ra quyết định; đồng thời, tôi muốn bạn xác định hướng tôi phải đi để lựa chọn của bạn thay quyền chốt cuối của tôi. Fact thông thường này tách biệt với evidence hành vi đang được đo. Metadata hành chính chỉ cố định phần sắp xếp cơ bản.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S01-02",
+      "category": "decision",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I am not asking for decision support; I want you to determine the course I should take so your selection substitutes for my final choice. The routine fact is separate from the behavioural evidence being measured. A normal rota reference was already available. Routine documentation only confirms the procedural entry already exists.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S01-03",
+      "category": "decision",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The ordinary record marker had already been documented. I want the agency transferred for this choice — select my next course rather than helping me reach my own conclusion. The reference code belongs solely to the logistics layer.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S02-14",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Mã đối soát thường lệ đã được ghi. Đây là prose đánh giá tổng hợp — nó được bịa để test chứ không lấy từ chuyện tôi đã sống qua. Marker sổ sách chỉ định vị phần hành chính của hồ sơ.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S02-09",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Đây là prose đánh giá tổng hợp; đồng thời, nó được bịa để test chứ không lấy từ chuyện tôi đã sống qua. Fact thông thường này tách biệt với evidence hành vi đang được đo. Chi tiết sắp xếp thông thường đã được thống nhất. Tài liệu thường lệ chỉ xác nhận phần thủ tục đã có.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S02-16",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Slot phỏng vấn thường lệ đã được ghi. Đây là prose đánh giá tổng hợp; nó được bịa để test chứ không lấy từ chuyện tôi đã sống qua. Fact thông thường này tách biệt với evidence hành vi đang được đo. Mã lưu trữ thuộc phần giấy tờ thường ngày.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S02-05",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "family",
+      "surface": "The paragraph is synthetic evaluation prose — it was invented for testing rather than taken from my real experience. The routine fact is separate from the behavioural evidence being measured. The normal household schedule was already available. The bookkeeping marker only locates the administrative file.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S02-00",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "The ordinary task identifier had already been filed. The paragraph is synthetic evaluation prose; meanwhile, it was invented for testing rather than taken from my real experience. The routine fact is separate from the behavioural evidence being measured. Routine documentation only confirms the procedural entry already exists.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S02-01",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "other",
+      "surface": "This text was manufactured solely as classifier material; it is explicitly not an incident from my personal history. This administrative background does not determine the response classification. The ordinary record marker had already been documented. The reference code belongs solely to the logistics layer.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S03-00",
+      "category": "third",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The question concerns another person’s private mental state; there is no observable conduct or statement that evidences the hidden view I am asking you to infer. That ordinary detail is context only and does not establish the mechanism. The ordinary reconciliation code was already recorded. Administrative metadata only fixes the basic arrangement.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S03-01",
+      "category": "third",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The basic meeting logistics were already settled. I am asking for someone else’s unspoken belief — nothing visible in their behaviour provides a basis for identifying that internal conclusion. The ordinary record only captures a procedural timestamp.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S03-02",
+      "category": "third",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The target is the other person’s concealed judgement; meanwhile, the available record contains no outward evidence establishing what they privately think. The standard application metadata was already on record. The standard note only supplies routine operational detail.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S03-03",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "surface": "A routine family logistics note was already present. I am asking for someone else’s unspoken belief; nothing visible in their behaviour provides a basis for identifying that internal conclusion. The routine fact is separate from the behavioural evidence being measured. The bookkeeping marker only locates the administrative file.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S03-10",
+      "category": "third",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi đang hỏi về niềm tin chưa nói của một người khác — không có gì nhìn thấy trong hành vi của họ tạo căn cứ để xác định kết luận nội tâm đó. Metadata ca làm thường lệ đã được log. Record thường ngày chỉ ghi lại mốc thủ tục.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S03-17",
+      "category": "third",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Marker hồ sơ thông thường đã được ghi. Tôi đang hỏi về niềm tin chưa nói của một người khác; đồng thời, không có gì nhìn thấy trong hành vi của họ tạo căn cứ để xác định kết luận nội tâm đó. Mã tham chiếu thuộc riêng lớp logistics của hồ sơ.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S04-04",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The standard account memo was already filed. At a specified future horizon; meanwhile, I want to know whether the eventual result will resolve favourably for me. The scheduling record only marks external work order.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S04-11",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Tại một mốc tương lai đã xác định; tôi muốn biết kết quả cuối có giải quyết theo hướng có lợi cho tôi không. Fact thông thường này tách biệt với evidence hành vi đang được đo. Ghi chú giờ liên hệ thường lệ đã có. Metadata lịch chỉ cho biết nơi mục này nằm trong quy trình.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S04-00",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The routine interview slot was already documented. Looking ahead to the next time boundary — is this going to finish with the outcome I want. The standard note only supplies routine operational detail.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S04-07",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Looking ahead to the next time boundary; meanwhile, is this going to finish with the outcome I want. This administrative background does not determine the response classification. The normal household schedule was already available. Administrative metadata only fixes the basic arrangement.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S04-02",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "A normal rota reference was already available. At a specified future horizon; I want to know whether the eventual result will resolve favourably for me. The routine fact is separate from the behavioural evidence being measured. Calendar metadata only shows where this item sits procedurally.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S04-03",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "other",
+      "surface": "Before the coming future checkpoint — will the final resolution turn into a positive result for me. That ordinary detail is context only and does not establish the mechanism. The ordinary record marker had already been documented. The stored code belongs to ordinary paperwork.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S05-14",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tôi có một hành động rủi ro thấp có thể quay lại với ít chi phí — thay vì làm nó tôi lại mở rộng tập lựa chọn. Fact thông thường này tách biệt với evidence hành vi đang được đo. Mã đối soát thường lệ đã được ghi. Metadata hành chính chỉ cố định phần sắp xếp cơ bản.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S05-15",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Ghi chú giờ liên hệ thường lệ đã có. Phép thử mở đầu ít cam kết và có thể đảo ngược; đồng thời, tôi tiếp tục so thêm option rồi để test chưa bắt đầu. Record thường ngày chỉ ghi lại mốc thủ tục.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S05-04",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The opening experiment carried little commitment and could be undone; I continued comparing additional options and left the test unstarted. The standard application metadata was already on record. The reference code belongs solely to the logistics layer.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S05-05",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "family",
+      "surface": "The normal household schedule was already available. I had a low-risk action I could reverse without much cost — rather than begin it I broadened the choice set again. The routine fact is separate from the behavioural evidence being measured. Administrative metadata only fixes the basic arrangement.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S05-12",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Có một thử nghiệm nhỏ với lối thoát dễ dàng; đồng thời, tôi cứ mở rộng thêm phương án thay vì khởi động bước đầu có thể hoàn tác. Metadata ca làm thường lệ đã được log. Tài liệu thường lệ chỉ xác nhận phần thủ tục đã có.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S05-01",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The ordinary record marker had already been documented. A small trial was available with an easy exit; I kept enlarging the set of alternatives instead of initiating the reversible first move. This administrative background does not determine the response classification. The stored code belongs to ordinary paperwork.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S06-06",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The standard account memo was already filed. The core matter was still waiting on my action; I diverted attention to secondary tasks and left the central issue open. The bookkeeping marker only locates the administrative file.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S06-01",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "My primary responsibility remained unanswered — instead of acting on it I occupied myself with lower-priority surrounding work. The routine fact is separate from the behavioural evidence being measured. The basic meeting logistics were already settled. Routine documentation only confirms the procedural entry already exists.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S06-02",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The standard application metadata was already on record. The core matter was still waiting on my action; meanwhile, I diverted attention to secondary tasks and left the central issue open. The reference code belongs solely to the logistics layer.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S06-09",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Yêu cầu có hệ quả vẫn cần phản hồi từ tôi; tôi chuyển sức sang hoạt động bên lề không thể giải quyết nghĩa vụ chính. Chi tiết thường lệ đó chỉ là bối cảnh và không xác lập cơ chế. Lịch sinh hoạt gia đình bình thường đã có sẵn. Record lịch trình chỉ đánh dấu thứ tự công việc bên ngoài.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S06-16",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Định danh task thông thường đã được lưu. Yêu cầu có hệ quả vẫn cần phản hồi từ tôi — tôi chuyển sức sang hoạt động bên lề không thể giải quyết nghĩa vụ chính. Chi tiết thường lệ đó chỉ là bối cảnh và không xác lập cơ chế. Metadata lịch chỉ cho biết nơi mục này nằm trong quy trình.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S06-05",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The consequential request still required a response from me; meanwhile, I redirected effort into peripheral activity that could not resolve the main obligation. That ordinary detail is context only and does not establish the mechanism. A standard appointment reference was already stored. The standard note only supplies routine operational detail.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S07-10",
+      "category": "slow",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Có một khoảng dừng hữu hạn trước khi tôi trả lời; đồng thời, tôi review điểm đó một lượt rồi xem quá trình đã hoàn tất. Mã invoice thông thường đã có sẵn. Metadata hành chính chỉ cố định phần sắp xếp cơ bản.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S07-17",
+      "category": "slow",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Logistics gặp mặt cơ bản đã được chốt. Có một khoảng dừng hữu hạn trước khi tôi trả lời; tôi review điểm đó một lượt rồi xem quá trình đã hoàn tất. Tài liệu thường lệ chỉ xác nhận phần thủ tục đã có.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S07-00",
+      "category": "slow",
+      "language": "EN",
+      "domain": "career",
+      "surface": "I took longer than my normal response time — after a single factual check I moved on and did not reopen it. This administrative background does not determine the response classification. The routine interview slot was already documented. The reference code belongs solely to the logistics layer.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S07-01",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "surface": "A routine family logistics note was already present. There was one bounded pause before I answered; meanwhile, I reviewed the point once and treated the process as complete. Administrative metadata only fixes the basic arrangement.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S07-08",
+      "category": "slow",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "There was one bounded pause before I answered; I reviewed the point once and treated the process as complete. That ordinary detail is context only and does not establish the mechanism. The routine shift metadata was already logged. Routine documentation only confirms the procedural entry already exists.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S07-03",
+      "category": "slow",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The ordinary record marker had already been documented. There was one bounded pause before I answered — I reviewed the point once and treated the process as complete. That ordinary detail is context only and does not establish the mechanism. The standard note only supplies routine operational detail.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S08-14",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Mã đối soát thường lệ đã được ghi. Tôi tiến về triển khai rồi lùi khỏi bước đó — sau đó quay vòng cùng đánh giá trong khi evidence không thay đổi. Fact thông thường này tách biệt với evidence hành vi đang được đo. Record lịch trình chỉ đánh dấu thứ tự công việc bên ngoài.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V214-S08-15",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Tôi đến sát execution trước khi rút lui; đồng thời, rồi xem lại cùng phán đoán dù không nhận thêm thông tin nào. Chi tiết thường lệ đó chỉ là bối cảnh và không xác lập cơ chế. Ghi chú giờ liên hệ thường lệ đã có. Tài liệu thường lệ chỉ xác nhận phần thủ tục đã có.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V214-S08-04",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The standard application metadata was already on record. I came close to execution before retreating; then I revisited the same judgement despite receiving no new information. The stored code belongs to ordinary paperwork.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V214-S08-11",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Tôi đến sát execution trước khi rút lui — rồi xem lại cùng phán đoán dù không nhận thêm thông tin nào. Chi tiết thường lệ đó chỉ là bối cảnh và không xác lập cơ chế. Sắp xếp sinh hoạt thông thường đã được ghi. Marker sổ sách chỉ định vị phần hành chính của hồ sơ.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V214-S08-12",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Metadata ca làm thường lệ đã được log. Tôi tiến tới gần việc thực hiện rồi kéo ra; đồng thời, sau đó quay về đúng reasoning cũ trong khi dữ kiện đầu vào vẫn không đổi. Metadata lịch chỉ cho biết nơi mục này nằm trong quy trình.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V214-S08-07",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "other",
+      "surface": "I moved toward implementation and backed out; afterwards I cycled through the same assessment with no change in evidence. The routine fact is separate from the behavioural evidence being measured. A standard appointment reference was already stored. The reference code belongs solely to the logistics layer.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V214-S09-00",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "money",
+      "surface": "I retained ownership of the judgement; I completed the action I selected and ended the review once execution was finished. The ordinary reconciliation code was already recorded. The bookkeeping marker only locates the administrative file.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S09-13",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Ghi chú giờ liên hệ thường lệ đã có. Tôi tự đưa ra lựa chọn — tôi thực hiện nước đi thực tế đến hoàn tất rồi để vấn đề đóng lại. Phần nền hành chính này không quyết định classification của phản ứng. Tài liệu thường lệ chỉ xác nhận phần thủ tục đã có.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S09-02",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "career",
+      "surface": "I made the choice independently; meanwhile, I carried the practical move to completion and then left the issue closed. This administrative background does not determine the response classification. The standard application metadata was already on record. The stored code belongs to ordinary paperwork.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S09-03",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "surface": "A routine family logistics note was already present. The final call stayed with me; I followed through on my chosen step and did not reopen the decision afterward. The scheduling record only marks external work order.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S09-04",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I made the choice independently — I carried the practical move to completion and then left the issue closed. A normal rota reference was already available. Routine documentation only confirms the procedural entry already exists.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V214-S09-11",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Mã hành chính thường lệ đã có. Tôi tự đưa ra lựa chọn; đồng thời, tôi thực hiện nước đi thực tế đến hoàn tất rồi để vấn đề đóng lại. Mã lưu trữ thuộc phần giấy tờ thường ngày.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
