@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: v83212-v1-sealed-validation
-          fetch-depth: 1
+          fetch-depth: 20
       - name: Verify exact sealed-prep lineage
         run: |
           test "$(git merge-base --is-ancestor 840cfd3aeea515a335a97615fbc321ebf0e1ce11 HEAD; echo $?)" = "0"
