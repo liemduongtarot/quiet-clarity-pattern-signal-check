@@ -1,4 +1,4 @@
-name: V8.3.214 Preseal Diagnostic
+name: V8.3.214 Preseal Diagnostic R1
 on:
   push:
     branches: [main]
@@ -6,7 +6,7 @@ permissions:
   contents: write
 jobs:
   diagnostic:
-    if: github.event.head_commit.message == 'Run V8.3.214 preseal diagnostic'
+    if: github.event.head_commit.message == 'Run V8.3.214 preseal diagnostic R1'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
@@ -42,12 +42,12 @@ jobs:
           git fetch --depth=1 origin refs/heads/v83213-v1-sealed-validation:refs/remotes/origin/v83213-v1-sealed-validation
           git show origin/v83213-v1-sealed-validation:validation/v83213-v1-sealed/V8_3_213_PRESEAL_CANDIDATE_BANK_V1.json > validation/v83214-preseal-refs/V8_3_213_SEALED_BANK.json
           git show origin/v83213-v1-sealed-validation:validation/v83213-v1-sealed/V8_3_213_SEALED_FIXTURE_V1.json > validation/v83214-preseal-refs/V8_3_213_SEALED_FIXTURE.json
-      - name: Run construction with captured output
+      - name: Run R1 construction with captured output
         id: bank
         continue-on-error: true
         run: |
           set +e
-          python validation/v83214-sealed-v1-generator.py >/tmp/v214-preseal.out 2>&1
+          python validation/v83214-sealed-v1-generator-r1.py >/tmp/v214-preseal.out 2>&1
           rc=$?
           cat /tmp/v214-preseal.out
           exit $rc
@@ -59,13 +59,13 @@ jobs:
           root=pathlib.Path('validation/v83214-v1-sealed'); p=root/'V8_3_214_PRESEAL_DIVERSITY_AUDIT_V1.json'
           audit=json.loads(p.read_text()) if p.exists() else None
           log=pathlib.Path('/tmp/v214-preseal.out').read_text(errors='replace')[-12000:] if pathlib.Path('/tmp/v214-preseal.out').exists() else ''
-          r={'candidate':'V8.3.214','phase':'preseal-diagnostic','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'refs_step':'${{ steps.refs.outcome }}','bank_step':'${{ steps.bank.outcome }}','reference_file_count':len(list(pathlib.Path('validation/v83214-preseal-refs').glob('*.json'))),'audit':audit,'captured_tail':log,'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'v213_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
-          (root/'V8_3_214_PRESEAL_DIAGNOSTIC_RECEIPT.json').write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n')
+          r={'candidate':'V8.3.214','phase':'preseal-diagnostic-r1','run_id':int(os.environ['GITHUB_RUN_ID']),'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),'refs_step':'${{ steps.refs.outcome }}','bank_step':'${{ steps.bank.outcome }}','reference_file_count':len(list(pathlib.Path('validation/v83214-preseal-refs').glob('*.json'))),'audit':audit,'captured_tail':log,'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'v213_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          (root/'V8_3_214_PRESEAL_DIAGNOSTIC_R1_RECEIPT.json').write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- validation/v83214-v1-sealed/V8_3_214_PRESEAL_DIAGNOSTIC_RECEIPT.json
-          git commit -m 'Record V8.3.214 preseal diagnostic evidence'
+          git add -- validation/v83214-v1-sealed/V8_3_214_PRESEAL_DIAGNOSTIC_R1_RECEIPT.json
+          git commit -m 'Record V8.3.214 preseal R1 diagnostic evidence'
           git push origin HEAD:v83214-v1-sealed-validation
       - name: Enforce diagnostic outcome
         if: always()
