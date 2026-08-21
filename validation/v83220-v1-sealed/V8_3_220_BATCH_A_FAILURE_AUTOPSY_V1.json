@@ -1,0 +1,18 @@
+{
+  "candidate": "V8.3.220",
+  "run_id": "32513028571",
+  "classification": "VALIDATION RUNNER / INFRASTRUCTURE",
+  "INPUT": "Protected V8.3.220 Batch A first-run reservation persisted on exact DEVELOPMENT authority 06ac0e51c958f5c64dcb97f91d66b122d3048bf8 with frozen V8.3.220 sealed authority and V5Y -> V98 semantic chain.",
+  "EXPECTED": "Runner validates frozen authority, materializes exact DEVELOPMENT worktree, loads QCEvidenceExtractorV5Y -> QCSemanticCoreV98, executes exactly 30 Batch A cases, writes result/status/checkpoint, and never reruns A.",
+  "ACTUAL": "After durable reservation, the adapted V8.3.220 runner aborted before materialization and before semantic runtime with KeyError: 'semantic_base_sha'. No Batch A semantic case was evaluated; result/status/checkpoint were not produced by the original run.",
+  "CAUSE": "The V8.3.220 one-shot runner mechanically adapted the V8.3.219 authority assertion A['semantic_base_sha']==SEM, but V8_3_220_SEALED_AUTHORITY_V1.json intentionally contains validated_development_head_sha, semantic_authority, hash_contract and hashes, and does not contain semantic_base_sha. The adapter inherited a stale schema assumption from the V8.3.219 runner instead of validating against the actual V8.3.220 sealed authority schema.",
+  "FIX": "Open V8.3.221 DEVELOPMENT from exact V8.3.220 DEVELOPMENT SHA. Repair only the runner adapter/schema contract: validate exact DEVELOPMENT SHA and exact V5Y -> V98 authority using fields actually present in V8.3.220 authority, preserve archive materialization and correct loader append chain, and add a DEVELOPMENT-only runner smoke proving schema validation reaches the pre-semantic loader boundary without any sealed data execution.",
+  "RETEST": "In V8.3.221 DEVELOPMENT, prove runner schema validation, archive/public materialization, V65R-through-V98 loader order, V5X/V97 byte identity, no expected/gold changes, no V8.3.220 sealed rerun, then preserve all current semantic regressions before starting a completely fresh V8.3.221 sealed cycle.",
+  "semantic_failure": false,
+  "semantic_cases_executed": 0,
+  "batch_a_attempt_consumed": true,
+  "batch_b_skipped": true,
+  "v220_batch_a_rerun_forbidden": true,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
