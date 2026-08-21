@@ -1,37 +1,38 @@
-name: V8.3.216 V96 Regression
+name: V8.3.216 Proven Diagnostic Slot
 on:
   push:
     branches: [main]
 permissions:
   contents: write
+  actions: read
 jobs:
-  regression:
-    if: github.event.head_commit.message == 'Run V8.3.216 V96 bounded regression'
+  diagnostic:
+    if: github.event.head_commit.message == 'Probe V8.3.216 final development R2 only'
     runs-on: ubuntu-latest
-    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
         with:
           ref: v83216-v1-validation
           fetch-depth: 1
-      - uses: actions/setup-node@v4
-        with: {node-version: '24'}
-      - name: Frozen V215 carrier then immutable regression
-        id: reg
-        continue-on-error: true
-        run: python validation/v83216-v96-regression-orchestrator.py
-      - name: Commit regression evidence
-        if: always()
+      - name: Inspect existing final-development R2 run metadata only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,subprocess,pathlib
+          trigger='9f1e7583432696a7e86b676bf46f3bc23ffdae58'
+          cmd=['gh','run','list','--repo','liemduongtarot/quiet-clarity-pattern-signal-check','--workflow','v83216-v96-final-development.yml','--limit','20','--json','databaseId,headSha,status,conclusion,event,createdAt,updatedAt,displayTitle,workflowName']
+          runs=json.loads(subprocess.check_output(cmd,text=True))
+          matches=[r for r in runs if r.get('headSha')==trigger]
+          out={'authority':'V8.3.216 FINAL DEVELOPMENT R2 DIAGNOSTIC ONLY','trigger_sha':trigger,'semantic_runtime_executed_by_diagnostic':False,'matches':matches,'match_count':len(matches)}
+          pathlib.Path('validation/V8_3_216_FINAL_DEVELOPMENT_R2_DIAGNOSTIC.json').write_text(json.dumps(out,indent=2)+'\n')
+          print(json.dumps(out,indent=2))
+          PY
+      - name: Commit diagnostic metadata only
         run: |
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          for f in validation/V8_3_216_V96_REGRESSION_V1_RECEIPT.json V8_3_216_V215_A_REGRESSION_RESULTS.json V8_3_216_V96_REGRESSION_RESULTS.json; do
-            if [ -f "$f" ]; then
-              if [[ "$f" != validation/* ]]; then cp "$f" validation/; git add "validation/$(basename "$f")"; else git add "$f"; fi
-            fi
-          done
-          git diff --cached --quiet || git commit -m 'Record V8.3.216 V96 regression evidence'
+          git add -- validation/V8_3_216_FINAL_DEVELOPMENT_R2_DIAGNOSTIC.json
+          git diff --cached --quiet || git commit -m 'Record V8.3.216 final development R2 diagnostic'
           git push origin HEAD:v83216-v1-validation
-      - name: Enforce
-        if: always()
-        run: test '${{ steps.reg.outcome }}' = 'success'
