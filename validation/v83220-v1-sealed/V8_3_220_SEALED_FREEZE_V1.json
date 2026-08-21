@@ -1,0 +1,22 @@
+{
+  "candidate": "V8.3.220",
+  "state": "FROZEN",
+  "reason": "Consumed Batch A attempt failed in validation runner infrastructure before semantic execution.",
+  "run_id": "32513028571",
+  "validated_development_head_sha": "06ac0e51c958f5c64dcb97f91d66b122d3048bf8",
+  "semantic_authority": "QCEvidenceExtractorV5Y -> QCSemanticCoreV98",
+  "batch_a_attempt_consumed": true,
+  "batch_a_semantic_cases_executed": 0,
+  "batch_a_result_created": false,
+  "batch_b": "SKIPPED_AND_FORBIDDEN",
+  "semantic_failure": false,
+  "failure_layer": "VALIDATION RUNNER / INFRASTRUCTURE",
+  "exact_error": "KeyError: 'semantic_base_sha'",
+  "never_rerun_batch_a": true,
+  "never_run_batch_b": true,
+  "v217_sealed_rerun": false,
+  "v218_sealed_rerun": false,
+  "v219_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
