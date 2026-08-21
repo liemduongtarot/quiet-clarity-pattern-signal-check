@@ -32,7 +32,9 @@ function extract(raw){
  const bounded=any(d,['one defined limit','finite delay','bounded pause','limited pause','fixed boundary','single limited delay','mot gioi han da dinh','finite delay','bounded pause','limited pause','boundary ro']);
  const reviewOnce=any(d,['reviewed once','review once','one review','checked once','one check','review mot lan','check mot lan']);
  const answeredClosed=any(d,['answered and then closed','responded and closed','answered and did not reopen','response roi dong','tra loi roi dong','response va khong mo lai']);
- if(bounded&&reviewOnce&&answeredClosed){o.v224_slow=true;o.bounded_delay=true;o.single_review=true;o.closure_present=true;}
+ const beforeAnswer=any(d,['before answering','before i answered','truoc khi tra loi','truoc khi toi tra loi']);
+ const closedAfter=any(d,['then closed the issue','closed the issue','closed the matter','treated the matter as closed','roi dong issue','dong issue','dong matter','de matter dong']);
+ if(bounded&&reviewOnce&&(answeredClosed||(beforeAnswer&&closedAfter))){o.v224_slow=true;o.bounded_delay=true;o.single_review=true;o.closure_present=true;}
  const approach=any(d,['moved close to acting','got near doing it','came close to acting','moved toward execution','tien gan action','toi gan viec lam no','gan act']);
  const retreat=any(d,['pulled back','stepped away','withdrew','retreated','pull back','buoc ra','withdraw']);
  const repeatSame=any(d,['returned to the same judgement','cycled back to the identical judgement','same conclusion','same judgement','quay lai cung judgement','cycle ve judgement giong het','cung conclusion']);
