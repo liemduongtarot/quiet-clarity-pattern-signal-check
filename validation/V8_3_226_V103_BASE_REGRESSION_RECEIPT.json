@@ -1,0 +1,18 @@
+{
+  "candidate": "V8.3.226",
+  "phase": "v103-regression-base",
+  "run_id": 32529014252,
+  "run_attempt": 1,
+  "head_sha": "242cd29cc9278a78b8fc04b75437c3c83ecfbe21",
+  "semantic_authority": "QCSemanticCoreV103",
+  "v216_frozen_a_regression_total": 30,
+  "v216_frozen_a_regression_passed": 30,
+  "immutable_regression_total": 1470,
+  "immutable_regression_passed": 1470,
+  "v216_sealed_rerun": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "status": "completed",
+  "conclusion": "success"
+}
