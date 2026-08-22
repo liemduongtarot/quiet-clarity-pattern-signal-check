@@ -1,0 +1,269 @@
+{
+  "candidate": "V8.3.236",
+  "phase": "FROZEN_SEALED_AUTOPSY",
+  "batch_a_run_id": "32578057233",
+  "validated_development_head_sha": "fac7c5e35c928c5b0dfe33b28b584af876ac0bf1",
+  "semantic_authority": "QCEvidenceExtractorV5AL -> QCSemanticCoreV111",
+  "batch_a_total": 30,
+  "batch_a_passed": 22,
+  "batch_a_failed": 8,
+  "batch_a_attempt_consumed": true,
+  "batch_a_rerun_forbidden": true,
+  "batch_b_skipped": true,
+  "batch_b_rerun_forbidden": true,
+  "failure_layer": "ENGINE LOGIC",
+  "failure_class": "GENERALIZATION / COMPOSITIONAL RECALL / PRECEDENCE",
+  "failure_distribution": {
+    "decision": 1,
+    "hypothetical": 2,
+    "ignore": 1,
+    "neutral": 2,
+    "sequence": 2
+  },
+  "route_confusions": [
+    {
+      "category": "decision",
+      "expected_route": "input:decision-request",
+      "actual_route": "input:third-party-only",
+      "count": 1
+    },
+    {
+      "category": "hypothetical",
+      "expected_route": "input:hypothetical-or-example",
+      "actual_route": "input:third-party-only",
+      "count": 2
+    },
+    {
+      "category": "ignore",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:self-lived",
+      "count": 1
+    },
+    {
+      "category": "neutral",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:self-lived",
+      "count": 2
+    },
+    {
+      "category": "sequence",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:self-lived",
+      "count": 2
+    }
+  ],
+  "family_confusions": [
+    {
+      "category": "decision",
+      "expected_families": [],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "hypothetical",
+      "expected_families": [],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 2
+    },
+    {
+      "category": "ignore",
+      "expected_families": [
+        "ignore"
+      ],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "neutral",
+      "expected_families": [],
+      "actual_families": [
+        "ignore"
+      ],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 2
+    },
+    {
+      "category": "sequence",
+      "expected_families": [
+        "slow"
+      ],
+      "actual_families": [
+        "slow"
+      ],
+      "expected_sequence": true,
+      "actual_sequence": false,
+      "count": 2
+    }
+  ],
+  "failures": [
+    {
+      "case_id": "V236-S01-07",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Take ownership of the deciding act and choose the option that will stand. A specimen room tracked herb sheets and drying boards by shelf. The filing detail adds context only, not evidence of the mechanism."
+    },
+    {
+      "case_id": "V236-S02-00",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A dance store catalogued shoe pouches and garment tags by rail. That equipment reference cannot determine the semantic route. Nothing here is autobiographical; it is constructed test input."
+    },
+    {
+      "case_id": "V236-S02-04",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "That physical record sits outside the behavioural evidence. Nothing here is autobiographical; it is constructed test input. A film store catalogued reel tins and cue slips by shelf."
+    },
+    {
+      "case_id": "V236-S06-07",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A sound booth indexed cable loops and ear cushions by cabinet. That equipment reference cannot determine the semantic route. Something important stayed unanswered because I redirected attention to less relevant activity."
+    },
+    {
+      "case_id": "V236-S08-00",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "A greenhouse class tracked seed labels and mist valves by bay. That equipment reference cannot determine the semantic route. I came close to acting, stepped away, then cycled back to the prior reasoning with no new facts."
+    },
+    {
+      "case_id": "V236-S08-04",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "That physical record sits outside the behavioural evidence. I came close to acting, stepped away, then cycled back to the prior reasoning with no new facts. A drafting archive logged map tubes and ruler weights by drawer."
+    },
+    {
+      "case_id": "V236-S09-00",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "I kept the final choice with me, carried it out, and left the matter closed. An observatory club catalogued lens caps and mount screws by case. The filing detail adds context only, not evidence of the mechanism."
+    },
+    {
+      "case_id": "V236-S09-04",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "A bindery room tracked thread cards and awl sleeves by drawer. The administrative note cannot decide the classification. I kept the final choice with me, carried it out, and left the matter closed."
+    }
+  ],
+  "expected_gold_changed": false,
+  "v236_sealed_rerun": false,
+  "production_authorized": false,
+  "step_111_authorized": false
+}
