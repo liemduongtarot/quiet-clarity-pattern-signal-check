@@ -1,0 +1,10 @@
+{
+  "candidate": "V8.3.228",
+  "phase": "transport-static-preflight-diagnostic",
+  "outcome": "failure",
+  "exit_code": "1",
+  "log_tail": "fatal: path 'validation/V8_3_228_V104_REGRESSION_RECEIPT.json' does not exist in '2d5725e4b12f532ca9b710083e55e21efdb6c686'\nTraceback (most recent call last):\n  File \"/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83228-v1-sealed/v83228-transport-preflight.py\", line 13, in <module>\n    exec(compile(src,'v83228-transport-preflight-adapted.py','exec'))\n  File \"v83228-transport-preflight-adapted.py\", line 10, in <module>\n  File \"v83228-transport-preflight-adapted.py\", line 6, in show\n  File \"/usr/lib/python3.12/subprocess.py\", line 466, in check_output\n    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['git', 'show', '2d5725e4b12f532ca9b710083e55e21efdb6c686:validation/V8_3_228_V104_REGRESSION_RECEIPT.json']' returned non-zero exit status 128.\n",
+  "semantic_runtime_executed": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false
+}
