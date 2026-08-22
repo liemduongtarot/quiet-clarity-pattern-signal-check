@@ -1,0 +1,20 @@
+{
+  "candidate": "V8.3.246",
+  "phase": "frozen-batch-a-infrastructure-autopsy",
+  "run_id": "32597352557",
+  "validated_development_head_sha": "00bcd4681a61ef1ab0b229eb90af9e74102dc649",
+  "semantic_authority": "QCEvidenceExtractorV5AT -> QCSemanticCoreV119",
+  "batch_a_attempt_consumed": true,
+  "batch_a_executed": false,
+  "semantic_runtime_executed": false,
+  "semantic_failure": false,
+  "batch_b_executed": false,
+  "v246_batch_a_rerun": false,
+  "failure_layer": "VALIDATION RUNNER / INFRASTRUCTURE",
+  "exact_error": "ENOENT: no such file or directory, open 'validation/psc-v83246-v244-v118-residuals.js'",
+  "root_cause": "Mechanical global version replacement corrupted the inherited V118 parent semantic filename. The canonical parent file remains validation/psc-v83245-v244-v118-residuals.js; the runner incorrectly requested validation/psc-v83246-v244-v118-residuals.js before semantic runtime could load.",
+  "required_recovery": "Open next version from exact V8.3.246 DEVELOPMENT authority and repair runner/loader transport only. Do not alter V5AT/V119 or expected/gold contracts.",
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "frozen-infrastructure-only-failure"
+}
