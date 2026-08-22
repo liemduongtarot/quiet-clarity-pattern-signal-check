@@ -1,0 +1,17 @@
+{
+  "candidate": "V8.3.228",
+  "validated_development_head_sha": "2d5725e4b12f532ca9b710083e55e21efdb6c686",
+  "semantic_authority": "QCEvidenceExtractorV5AF -> QCSemanticCoreV105",
+  "preseal_pass": true,
+  "hashes": {
+    "candidate_bank": "4def236137e41620a19a23d7f5468173a27e2ce4d2908206dda08761252e9185",
+    "selection": "d5a24d7f842b1e7609bff6f5ddc5781ced6c2f2e23a7e0cbade300d4c19df29b",
+    "fixture": "eea5cf7ab57e8df0bf02f47f6a14a9be4d6a6b0320231a2b8ab2772bd89e7e19",
+    "independent_gold": "9434ab126dcb3ecfe17799322caaee7093abb5129acb29c279a59c8d6f2598dc",
+    "membership": "b0c9cd650f3a3402486332b82144873fcdc8cc527e33f557a55d3bcbfc068a31",
+    "preseal_audit": "094457a6f84ce06e859306ebcf5749b5a1f1f5d26485b4f0682438413ac1a18b"
+  },
+  "semantic_runtime_executed": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false
+}
