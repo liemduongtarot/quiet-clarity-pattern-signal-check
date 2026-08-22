@@ -1,5 +1,5 @@
-name: V8.3.246 construction-only PRESEAL R2
-# trigger-v246-preseal-r2
+name: V8.3.246 materialize self-contained sealed runner
+# trigger-v246-runner-materialize-1
 on:
   push:
     branches: [main]
@@ -15,32 +15,47 @@ jobs:
         with:
           ref: v83246-v1-sealed-validation
           fetch-depth: 0
-      - name: Run V8.3.246 fresh construction PRESEAL
-        id: run
+      - name: Materialize V246 runner from V245 mechanical carrier
         shell: bash
         run: |
-          set +e
-          python validation/v83246-v1-sealed/v83246-preseal-freeze.py > /tmp/v246-preseal-r2.log 2>&1
-          rc=$?
-          set -e
-          cat /tmp/v246-preseal-r2.log
-          RC="$rc" python - <<'PY'
-          import json,os,pathlib
-          text=pathlib.Path('/tmp/v246-preseal-r2.log').read_text(errors='replace')
-          o=pathlib.Path('validation/v83246-v1-sealed')
-          (o/'V8_3_246_PRESEAL_R2_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.246','phase':'preseal-r2-fresh-bank','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ['RC']),'log_tail':text[-24000:],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'expected_gold_changed':False},indent=2)+'\n')
+          set -euo pipefail
+          git fetch origin v83245-v1-sealed-validation:refs/remotes/origin/v83245-v1-sealed-validation
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess,hashlib,json
+          src=subprocess.check_output(['git','show','origin/v83245-v1-sealed-validation:validation/v83245-batch-a-self-contained.py'],text=True)
+          src=src.replace("TARGET='2015436433bede4e454739efe2ebae4807f800af'","TARGET='00bcd4681a61ef1ab0b229eb90af9e74102dc649'",1)
+          src=src.replace("SEM='QCEvidenceExtractorV5AS -> QCSemanticCoreV118'","SEM='QCEvidenceExtractorV5AT -> QCSemanticCoreV119'",1)
+          src=src.replace('v83245','v83246').replace('V8_3_245','V8_3_246').replace('V8.3.245','V8.3.246')
+          src=src.replace('v244_sealed_rerun','v245_sealed_rerun').replace('v245_batch_a_rerun','v246_batch_a_rerun')
+          old="pf['exact_v5as_path']=='validation/qc-evidence-extractor-v5as-v245-v244-residuals.js' and pf['exact_v118_path']=='validation/psc-v83245-v244-v118-residuals.js'"
+          new="pf['exact_v5at_path']=='validation/qc-evidence-extractor-v5at-v246-v245-residuals.js' and pf['exact_v119_path']=='validation/psc-v83246-v245-v119-residuals.js'"
+          if old not in src: raise SystemExit('preflight anchor missing')
+          src=src.replace(old,new,1)
+          oldchain="'qc-evidence-extractor-v5as-v245-v244-residuals.js','psc-v83245-v244-v118-residuals.js']"
+          newchain="'qc-evidence-extractor-v5as-v245-v244-residuals.js','psc-v83245-v244-v118-residuals.js','qc-evidence-extractor-v5at-v246-v245-residuals.js','psc-v83246-v245-v119-residuals.js']"
+          if oldchain not in src: raise SystemExit('loader-chain anchor missing')
+          src=src.replace(oldchain,newchain,1)
+          src=src.replace('QCEvidenceExtractorV5AS','QCEvidenceExtractorV5AT').replace('QCSemanticCoreV118','QCSemanticCoreV119')
+          # Correct result metadata inherited from the older mechanical carrier.
+          src=src.replace("validated_development_head_sha:'885608fce9e70a8818d1ebda23c786a81005a2fe'","validated_development_head_sha:'00bcd4681a61ef1ab0b229eb90af9e74102dc649'",1)
+          src=src.replace("console.log('V244 A'","console.log('V246 A'")
+          out=Path('validation/v83246-batch-a-self-contained.py');out.write_text(src);compile(src,str(out),'exec')
+          forbidden=['validation/v83245-v1-sealed-runtime','run-v83245-batch-a.cjs','V8_3_245_BATCH_A_RESULT_V1.json',"TARGET='2015436433bede4e454739efe2ebae4807f800af'","validated_development_head_sha:'885608fce9e70a8818d1ebda23c786a81005a2fe'",'QCSemanticCoreV118.analyze']
+          leftovers=[x for x in forbidden if x in src]
+          if leftovers: raise SystemExit('stale literals: '+repr(leftovers))
+          required=['00bcd4681a61ef1ab0b229eb90af9e74102dc649','QCEvidenceExtractorV5AT -> QCSemanticCoreV119','validation/v83246-v1-sealed-runtime','run-v83246-batch-a.cjs','V8_3_246_BATCH_A_RESULT_V1.json','QCSemanticCoreV119.analyze']
+          miss=[x for x in required if x not in src]
+          if miss: raise SystemExit('missing required literals: '+repr(miss))
+          d={'candidate':'V8.3.246','phase':'sealed-runner-materialization','validated_development_head_sha':'00bcd4681a61ef1ab0b229eb90af9e74102dc649','semantic_authority':'QCEvidenceExtractorV5AT -> QCSemanticCoreV119','runner_sha256':hashlib.sha256(src.encode()).hexdigest(),'self_contained':True,'semantic_runtime_executed':False,'expected_gold_changed':False,'v245_sealed_rerun':False,'pass':True}
+          Path('validation/v83246-v1-sealed/V8_3_246_RUNNER_MATERIALIZATION_V1.json').write_text(json.dumps(d,indent=2)+'\n')
           PY
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze V246 PRESEAL R2 evidence
-        if: always()
+      - name: Freeze V246 runner evidence
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83246-v1-sealed/V8_3_246_PRESEAL_R2_DIAGNOSTIC.json
-          for f in validation/v83246-v1-sealed/V8_3_246_PRESEAL_RUN_RECEIPT.json validation/v83246-v1-sealed/V8_3_246_PRESEAL_CANDIDATE_BANK_V1.json validation/v83246-v1-sealed/V8_3_246_SEALED_SELECTION_V1.json validation/v83246-v1-sealed/V8_3_246_SEALED_FIXTURE_V1.json validation/v83246-v1-sealed/V8_3_246_INDEPENDENT_GOLD_V1.json validation/v83246-v1-sealed/V8_3_246_SEALED_MEMBERSHIP_V1.json validation/v83246-v1-sealed/V8_3_246_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83246-v1-sealed/V8_3_246_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.246 PRESEAL R2 fresh bank evidence'
+          git add validation/v83246-batch-a-self-contained.py validation/v83246-v1-sealed/V8_3_246_RUNNER_MATERIALIZATION_V1.json
+          git commit -m 'Materialize V8.3.246 self-contained sealed runner'
           git push origin HEAD:v83246-v1-sealed-validation
-      - name: Enforce PRESEAL R2
-        run: test '${{ steps.run.outputs.rc }}' = '0'
