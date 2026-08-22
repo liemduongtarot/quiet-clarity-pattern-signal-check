@@ -1,6 +1,6 @@
 {
   "candidate": "V8.3.231",
-  "phase": "preseal-construction-diagnostic",
+  "phase": "preseal-construction-diagnostic-r2",
   "outcome": "success",
   "exit_code": "0",
   "log_tail": "{\"candidate\": \"V8.3.231\", \"phase\": \"preseal-freeze-v1\", \"validated_development_head_sha\": \"8be235fe1d00396dc43de3ac82990f4255bb73a7\", \"semantic_authority\": \"QCEvidenceExtractorV5AH -> QCSemanticCoreV107\", \"candidate_count\": 180, \"selected_count\": 60, \"batch_a_count\": 30, \"batch_b_count\": 30, \"internal_max_similarity\": 0.68, \"internal_max_pair\": [\"V231-S00-00\", \"V231-S00-06\"], \"external_max_similarity\": 0.625, \"external_cases_at_or_above_0_75\": 0, \"exact_external_duplicates\": 0, \"semantic_fingerprint_exact_duplicates\": 0, \"semantic_runtime_executed\": false, \"semantic_authority_loaded\": false, \"selection_uses_runtime_output\": false, \"batch_a_executed\": false, \"batch_b_executed\": false, \"conclusion\": \"success\"}\n",
