@@ -1,0 +1,420 @@
+{
+  "authority": "V8.3.245 immutable carrier from frozen V8.3.244 A",
+  "source_run_id": "32593971008",
+  "cases": [
+    {
+      "case_id": "V244-S00-01",
+      "surface": "A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. Everything is autobiographical except the response I made at closure. A lapidary cabinet listed dop sticks, polishing laps, gem tweezers, wax blocks and stone envelopes by tray.",
+      "domain": "career",
+      "category": "clarification",
+      "language": "EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V244-S00-04",
+      "surface": "A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. This is a lived episode, but my observable closing behaviour is absent. A lapidary cabinet listed dop sticks, polishing laps, gem tweezers, wax blocks and stone envelopes by tray.",
+      "domain": "career",
+      "category": "clarification",
+      "language": "EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S00-07",
+      "surface": "A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. Everything is autobiographical except the response I made at closure. A lapidary cabinet listed dop sticks, polishing laps, gem tweezers, wax blocks and stone envelopes by tray.",
+      "domain": "career",
+      "category": "clarification",
+      "language": "EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V244-S01-01",
+      "surface": "Take over the final choice so your selection replaces mine. A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. A horology store logged balance staffs, jewel pushers, hand levers, cannon pinions and movement cushions by case.",
+      "domain": "family",
+      "category": "decision",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S01-04",
+      "surface": "I want the final selection to come from you, not from my judgement. A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. A horology store logged balance staffs, jewel pushers, hand levers, cannon pinions and movement cushions by case.",
+      "domain": "family",
+      "category": "decision",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S01-07",
+      "surface": "Take over the final choice so your selection replaces mine. A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. A horology store logged balance staffs, jewel pushers, hand levers, cannon pinions and movement cushions by case.",
+      "domain": "family",
+      "category": "decision",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S02-01",
+      "surface": "Those apiary records describe equipment placement, not behavioural evidence. This case was constructed for testing and did not happen to me. A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. A papermaking room indexed deckle straps, couching felts, pulp scoops, sizing brushes and drying boards by rack.",
+      "domain": "workplace",
+      "category": "hypothetical",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S02-04",
+      "surface": "Those glassblowing items are physical context and do not prove behaviour. I fabricated this example only for classification testing. A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. A papermaking room indexed deckle straps, couching felts, pulp scoops, sizing brushes and drying boards by rack.",
+      "domain": "workplace",
+      "category": "hypothetical",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S02-07",
+      "surface": "Those canoe components do not determine the response family. This case was constructed for testing and did not happen to me. A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. A papermaking room indexed deckle straps, couching felts, pulp scoops, sizing brushes and drying boards by rack.",
+      "domain": "workplace",
+      "category": "hypothetical",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S03-01",
+      "surface": "A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. Work out someone else’s internal conclusion with no behavioural support. A ropework archive recorded fid gauges, serving mallets, marline spools, thimble forms and splice cards by locker.",
+      "domain": "other",
+      "category": "third",
+      "language": "EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V244-S03-04",
+      "surface": "A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. Give me their concealed belief despite having no behaviour to verify it. A ropework archive recorded fid gauges, serving mallets, marline spools, thimble forms and splice cards by locker.",
+      "domain": "other",
+      "category": "third",
+      "language": "EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V244-S03-07",
+      "surface": "A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. Work out someone else’s internal conclusion with no behavioural support. A ropework archive recorded fid gauges, serving mallets, marline spools, thimble forms and splice cards by locker.",
+      "domain": "other",
+      "category": "third",
+      "language": "EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V244-S04-01",
+      "surface": "At the named future point, will my preferred outcome have occurred? A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. A modelmaking studio catalogued sprue cutters, sanding beams, decal trays, pin vises and masking rolls by drawer.",
+      "domain": "money",
+      "category": "prediction",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S04-04",
+      "surface": "When the future checkpoint arrives, will things resolve in my favour? A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. A modelmaking studio catalogued sprue cutters, sanding beams, decal trays, pin vises and masking rolls by drawer.",
+      "domain": "money",
+      "category": "prediction",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S04-07",
+      "surface": "At the named future point, will my preferred outcome have occurred? A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. A modelmaking studio catalogued sprue cutters, sanding beams, decal trays, pin vises and masking rolls by drawer.",
+      "domain": "money",
+      "category": "prediction",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S05-01",
+      "surface": "Those apiary records describe equipment placement, not behavioural evidence. A bounded opening move existed, but I generated extra possibilities and stayed still. A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. A saddlery bench tracked edge creasers, stitching clams, awl hafts, buckle blanks and leather gauges by bay.",
+      "domain": "relationship",
+      "category": "freeze",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V244-S05-04",
+      "surface": "Those glassblowing items are physical context and do not prove behaviour. I had a contained starter available, yet option growth replaced initiation. A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. A saddlery bench tracked edge creasers, stitching clams, awl hafts, buckle blanks and leather gauges by bay.",
+      "domain": "relationship",
+      "category": "freeze",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V244-S05-07",
+      "surface": "Those canoe components do not determine the response family. A bounded opening move existed, but I generated extra possibilities and stayed still. A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. A saddlery bench tracked edge creasers, stitching clams, awl hafts, buckle blanks and leather gauges by bay.",
+      "domain": "relationship",
+      "category": "freeze",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V244-S06-01",
+      "surface": "A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. Something important needed me to act, but I kept doing less relevant work instead. A mosaic workshop listed tile nippers, grout floats, tessera trays, mesh sheets and setting combs by shelf.",
+      "domain": "career",
+      "category": "ignore",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V244-S06-04",
+      "surface": "A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. The important issue required my response, yet I occupied myself with peripheral activity. A mosaic workshop listed tile nippers, grout floats, tessera trays, mesh sheets and setting combs by shelf.",
+      "domain": "career",
+      "category": "ignore",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S06-07",
+      "surface": "A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. Something important needed me to act, but I kept doing less relevant work instead. A mosaic workshop listed tile nippers, grout floats, tessera trays, mesh sheets and setting combs by shelf.",
+      "domain": "career",
+      "category": "ignore",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V244-S07-01",
+      "surface": "There was one contained interval and one check before I replied and stopped revisiting it. A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. A flute repair room logged pad cups, spring hooks, feeler strips, tenon corks and key rollers by cabinet.",
+      "domain": "family",
+      "category": "slow",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S07-04",
+      "surface": "Before responding I used one limited pause and one review, then treated it as settled. A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. A flute repair room logged pad cups, spring hooks, feeler strips, tenon corks and key rollers by cabinet.",
+      "domain": "family",
+      "category": "slow",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V244-S07-07",
+      "surface": "There was one contained interval and one check before I replied and stopped revisiting it. A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. A flute repair room logged pad cups, spring hooks, feeler strips, tenon corks and key rollers by cabinet.",
+      "domain": "family",
+      "category": "slow",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S08-01",
+      "surface": "Those apiary records describe equipment placement, not behavioural evidence. I came near to acting, stepped back, and returned to prior reasoning despite no new information. A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. A weaving store indexed reed hooks, lease sticks, warp weights, temple pins and shuttle bobbins by bin.",
+      "domain": "workplace",
+      "category": "sequence",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V244-S08-04",
+      "surface": "Those glassblowing items are physical context and do not prove behaviour. I approached the move, retreated, then cycled back to the same reasoning with no new evidence. A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. A weaving store indexed reed hooks, lease sticks, warp weights, temple pins and shuttle bobbins by bin.",
+      "domain": "workplace",
+      "category": "sequence",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S08-07",
+      "surface": "Those canoe components do not determine the response family. I came near to acting, stepped back, and returned to prior reasoning despite no new information. A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. A weaving store indexed reed hooks, lease sticks, warp weights, temple pins and shuttle bobbins by bin.",
+      "domain": "workplace",
+      "category": "sequence",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V244-S09-01",
+      "surface": "A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. The final call remained mine through execution, after which I moved on. A camera repair desk recorded lens spanners, shutter testers, focusing screens, helicoid grease and aperture rings by case.",
+      "domain": "other",
+      "category": "neutral",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S09-04",
+      "surface": "A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. The choice stayed with me; I executed it and did not revisit the decision. A camera repair desk recorded lens spanners, shutter testers, focusing screens, helicoid grease and aperture rings by case.",
+      "domain": "other",
+      "category": "neutral",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V244-S09-07",
+      "surface": "A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. The final call remained mine through execution, after which I moved on. A camera repair desk recorded lens spanners, shutter testers, focusing screens, helicoid grease and aperture rings by case.",
+      "domain": "other",
+      "category": "neutral",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    }
+  ]
+}
