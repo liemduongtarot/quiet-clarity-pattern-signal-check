@@ -1,0 +1,43 @@
+{
+  "candidate": "V8.3.233",
+  "phase": "runner-plumbing-recovery",
+  "base_development_sha": "7731574dd6db5d4c257dc088f5e791b1e980d5be",
+  "semantic_authority": "QCEvidenceExtractorV5AI -> QCSemanticCoreV108",
+  "semantic_change_from_v232": false,
+  "frozen_v232_failure_reproduced": true,
+  "failure_layer": "VALIDATION RUNNER / INFRASTRUCTURE",
+  "v232_batch_a_rerun": false,
+  "v232_semantic_runtime_executed": false,
+  "semantic_parent_identity": {
+    "validation/qc-evidence-extractor-v5ai-v232-residual-isolated-generalization.js": true,
+    "validation/psc-v83232-v231-v108-residual-isolated-generalization.js": true
+  },
+  "immutable_regression": "1470/1470",
+  "v216_frozen_a": "30/30",
+  "prior_frozen_a_regressions": {
+    "219": "30/30",
+    "221": "30/30",
+    "222": "30/30",
+    "223": "30/30",
+    "224": "30/30",
+    "225": "30/30",
+    "226": "30/30",
+    "227": "30/30",
+    "229": "30/30",
+    "230": "30/30",
+    "231": "30/30"
+  },
+  "runner_contract": {
+    "version_root": "validation/v83233-v1-sealed-runtime",
+    "fixture": "V8_3_233_SEALED_FIXTURE_V1.json",
+    "selection": "V8_3_233_SEALED_SELECTION_V1.json",
+    "gold": "V8_3_233_INDEPENDENT_GOLD_V1.json",
+    "single_source_of_truth_for_runtime_root": true,
+    "adapter_from_parent_runner_forbidden": true
+  },
+  "expected_gold_changed": false,
+  "sealed_validation_executed": false,
+  "production_authorized": false,
+  "step_111_authorized": false,
+  "conclusion": "success"
+}
