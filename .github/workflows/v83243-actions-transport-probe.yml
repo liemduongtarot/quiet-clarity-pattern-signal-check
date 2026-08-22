@@ -1,5 +1,5 @@
 name: V8.3.246 materialize self-contained sealed runner
-# trigger-v246-runner-materialize-3-instrumented
+# trigger-v246-runner-materialize-4-order-fix
 on:
   push:
     branches: [main]
@@ -15,17 +15,7 @@ jobs:
         with:
           ref: v83246-v1-sealed-validation
           fetch-depth: 0
-      - name: Persist runner materialization start marker
-        shell: bash
-        run: |
-          set -euo pipefail
-          printf '{"candidate":"V8.3.246","phase":"runner-materialization-start","run_id":"%s","semantic_runtime_executed":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83246-v1-sealed/V8_3_246_RUNNER_MATERIALIZATION_START.json
-          git config user.name github-actions
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83246-v1-sealed/V8_3_246_RUNNER_MATERIALIZATION_START.json
-          git commit -m 'Record V8.3.246 runner materialization start'
-          git push origin HEAD:v83246-v1-sealed-validation
-      - name: Materialize V246 runner from V245 mechanical carrier
+      - name: Materialize V246 runner with bounded mechanical transform
         shell: bash
         run: |
           set -euo pipefail
@@ -36,8 +26,7 @@ jobs:
           src=subprocess.check_output(['git','show','origin/v83245-v1-sealed-validation:validation/v83245-batch-a-self-contained.py'],text=True)
           src=src.replace("TARGET='2015436433bede4e454739efe2ebae4807f800af'","TARGET='00bcd4681a61ef1ab0b229eb90af9e74102dc649'",1)
           src=src.replace("SEM='QCEvidenceExtractorV5AS -> QCSemanticCoreV118'","SEM='QCEvidenceExtractorV5AT -> QCSemanticCoreV119'",1)
-          src=src.replace('v83245','v83246').replace('V8_3_245','V8_3_246').replace('V8.3.245','V8.3.246')
-          src=src.replace('v244_sealed_rerun','v245_sealed_rerun').replace('v245_batch_a_rerun','v246_batch_a_rerun')
+          # Replace anchors while the V245 literals are still present.
           old="pf['exact_v5as_path']=='validation/qc-evidence-extractor-v5as-v245-v244-residuals.js' and pf['exact_v118_path']=='validation/psc-v83245-v244-v118-residuals.js'"
           new="pf['exact_v5at_path']=='validation/qc-evidence-extractor-v5at-v246-v245-residuals.js' and pf['exact_v119_path']=='validation/psc-v83246-v245-v119-residuals.js'"
           if old not in src: raise SystemExit('preflight anchor missing')
@@ -46,6 +35,8 @@ jobs:
           newchain="'qc-evidence-extractor-v5as-v245-v244-residuals.js','psc-v83245-v244-v118-residuals.js','qc-evidence-extractor-v5at-v246-v245-residuals.js','psc-v83246-v245-v119-residuals.js']"
           if oldchain not in src: raise SystemExit('loader-chain anchor missing')
           src=src.replace(oldchain,newchain,1)
+          src=src.replace('v83245','v83246').replace('V8_3_245','V8_3_246').replace('V8.3.245','V8.3.246')
+          src=src.replace('v244_sealed_rerun','v245_sealed_rerun').replace('v245_batch_a_rerun','v246_batch_a_rerun')
           src=src.replace('QCEvidenceExtractorV5AS','QCEvidenceExtractorV5AT').replace('QCSemanticCoreV118','QCSemanticCoreV119')
           src=src.replace("validated_development_head_sha:'885608fce9e70a8818d1ebda23c786a81005a2fe'","validated_development_head_sha:'00bcd4681a61ef1ab0b229eb90af9e74102dc649'",1)
           src=src.replace("console.log('V244 A'","console.log('V246 A'")
@@ -65,6 +56,6 @@ jobs:
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83246-batch-a-self-contained.py validation/v83246-v1-sealed/V8_3_246_RUNNER_MATERIALIZATION_START.json validation/v83246-v1-sealed/V8_3_246_RUNNER_MATERIALIZATION_V1.json
+          git add validation/v83246-batch-a-self-contained.py validation/v83246-v1-sealed/V8_3_246_RUNNER_MATERIALIZATION_V1.json
           git commit -m 'Materialize V8.3.246 self-contained sealed runner'
           git push origin HEAD:v83246-v1-sealed-validation
