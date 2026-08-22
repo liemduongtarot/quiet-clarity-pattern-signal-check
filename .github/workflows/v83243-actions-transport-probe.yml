@@ -1,5 +1,5 @@
-name: V8.3.244 PRESEAL metric diagnostic via proven transport
-# trigger-v244-preseal-metrics-2
+name: V8.3.244 PRESEAL internal-pair diagnostic via proven transport
+# trigger-v244-internal-pairs-1
 on:
   push:
     branches: [main]
@@ -15,32 +15,35 @@ jobs:
         with:
           ref: v83244-v1-sealed-validation
           fetch-depth: 0
-      - name: Run construction-only PRESEAL metric diagnostic
+      - name: Enumerate internal PRESEAL collisions only
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           from pathlib import Path
           src=Path('validation/v83244-v1-sealed/v83244-preseal-freeze.py').read_text()
-          src=src.replace("if q>=.75:high+=1", "if q>=.75:\n   high+=1\n   print('HIGHPAIR',round(q,9),x['case_id'],y.get('case_id'),flush=True)", 1)
+          old="if q>internal[0]:internal=(q,(x['case_id'],y['case_id']))"
+          new="if q>=.75: print('INTERNALHIGH',round(q,9),x['case_id'],y['case_id'],flush=True)\n  if q>internal[0]:internal=(q,(x['case_id'],y['case_id']))"
+          if old not in src: raise SystemExit('internal anchor missing')
+          src=src.replace(old,new,1)
           needle="assert internal[0]<.75 and external[0]<.75 and high==0 and exact==0 and fpdup==0"
           src=src.replace(needle,"print('PRESEAL_METRICS', {'internal':internal,'external':external,'high':high,'exact':exact,'fpdup':fpdup}, flush=True)\n"+needle,1)
-          Path('/tmp/v83244-preseal-metric.py').write_text(src)
+          Path('/tmp/v83244-preseal-internal.py').write_text(src)
           PY
           set +e
-          python /tmp/v83244-preseal-metric.py > /tmp/v244-preseal-metrics.log 2>&1
+          python /tmp/v83244-preseal-internal.py > /tmp/v244-internal.log 2>&1
           rc=$?
           set -e
-          cat /tmp/v244-preseal-metrics.log
-          cp /tmp/v244-preseal-metrics.log validation/v83244-v1-sealed/V8_3_244_PRESEAL_METRIC_DIAGNOSTIC.log
-          printf '{"candidate":"V8.3.244","phase":"preseal-metric-diagnostic","run_id":"%s","rc":%s,"semantic_runtime_executed":false,"gold_expected_changed":false}\n' "$GITHUB_RUN_ID" "$rc" > validation/v83244-v1-sealed/V8_3_244_PRESEAL_METRIC_DIAGNOSTIC.json
-      - name: Freeze metric evidence
+          cat /tmp/v244-internal.log
+          cp /tmp/v244-internal.log validation/v83244-v1-sealed/V8_3_244_PRESEAL_INTERNAL_PAIR_DIAGNOSTIC.log
+          printf '{"candidate":"V8.3.244","phase":"preseal-internal-pair-diagnostic","run_id":"%s","rc":%s,"semantic_runtime_executed":false,"gold_expected_changed":false}\n' "$GITHUB_RUN_ID" "$rc" > validation/v83244-v1-sealed/V8_3_244_PRESEAL_INTERNAL_PAIR_DIAGNOSTIC.json
+      - name: Freeze internal-pair evidence
         if: always()
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83244-v1-sealed/V8_3_244_PRESEAL_METRIC_DIAGNOSTIC.log validation/v83244-v1-sealed/V8_3_244_PRESEAL_METRIC_DIAGNOSTIC.json
-          git diff --cached --quiet || git commit -m 'Record V8.3.244 PRESEAL metric diagnostic'
+          git add validation/v83244-v1-sealed/V8_3_244_PRESEAL_INTERNAL_PAIR_DIAGNOSTIC.log validation/v83244-v1-sealed/V8_3_244_PRESEAL_INTERNAL_PAIR_DIAGNOSTIC.json
+          git diff --cached --quiet || git commit -m 'Record V8.3.244 PRESEAL internal-pair diagnostic'
           git push origin HEAD:v83244-v1-sealed-validation
