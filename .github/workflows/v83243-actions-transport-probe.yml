@@ -1,5 +1,5 @@
-name: V8.3.246 transport/static preflight
-# trigger-v246-static-preflight-1
+name: V8.3.247 runner-only DEVELOPMENT recovery
+# trigger-v247-runner-recovery-1
 on:
   push:
     branches: [main]
@@ -13,35 +13,69 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v83246-v1-sealed-validation
+          ref: v83247-v1-validation
           fetch-depth: 0
-      - name: Run V8.3.246 transport/static preflight
-        id: run
+      - name: Materialize corrected V247 runner only
         shell: bash
         run: |
-          set +e
-          python validation/v83246-v1-sealed/v83246-transport-preflight.py > /tmp/v246-preflight.log 2>&1
-          rc=$?
-          set -e
-          cat /tmp/v246-preflight.log
-          RC="$rc" python - <<'PY'
-          import json,os,pathlib
-          text=pathlib.Path('/tmp/v246-preflight.log').read_text(errors='replace')
-          o=pathlib.Path('validation/v83246-v1-sealed')
-          (o/'V8_3_246_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.246','phase':'transport-static-preflight-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ['RC']),'log_tail':text[-24000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False},indent=2)+'\n')
+          set -euo pipefail
+          git fetch origin v83246-v1-sealed-validation:refs/remotes/origin/v83246-v1-sealed-validation
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess,hashlib,json
+          src=subprocess.check_output(['git','show','origin/v83246-v1-sealed-validation:validation/v83246-batch-a-self-contained.py'],text=True)
+          # Correct the proven V246 infrastructure defect first.
+          bad='validation/psc-v83246-v244-v118-residuals.js'
+          good='validation/psc-v83245-v244-v118-residuals.js'
+          if bad not in src: raise SystemExit('proven bad parent loader path missing')
+          src=src.replace(bad,good,1)
+          # Move only runner/runtime/evidence namespace to V247. Semantic filenames stay V5AS/V118 + V5AT/V119.
+          pairs={
+            "SEALED=REPO/'validation/v83246-v1-sealed'":"SEALED=REPO/'validation/v83247-v1-sealed'",
+            "WORK=pathlib.Path('/tmp/v83246-batch-a-authority')":"WORK=pathlib.Path('/tmp/v83247-batch-a-authority')",
+            "ROOT='validation/v83246-v1-sealed-runtime'":"ROOT='validation/v83247-v1-sealed-runtime'",
+            "run-v83246-batch-a.cjs":"run-v83247-batch-a.cjs",
+            "const root='validation/v83246-v1-sealed-runtime'":"const root='validation/v83247-v1-sealed-runtime'",
+            "candidate':'V8.3.246'":"candidate':'V8.3.247'",
+            "authority:'V8.3.246 V1 SEALED BATCH A FIRST RUN'":"authority:'V8.3.247 V1 SEALED BATCH A FIRST RUN'",
+            "console.log('V246 A'":"console.log('V247 A'",
+            "v246_batch_a_rerun":"v247_batch_a_rerun",
+            "PSC_V8_3_246_V1_BATCH_A_CHECKPOINT":"PSC_V8_3_247_V1_BATCH_A_CHECKPOINT",
+            "V8_3_246_BATCH_A":"V8_3_247_BATCH_A",
+            "V8_3_246_SEALED_FIRST_RUN_MARKER":"V8_3_247_SEALED_FIRST_RUN_MARKER",
+            "V8_3_246_SEALED_AUTHORITY_V1":"V8_3_247_SEALED_AUTHORITY_V1",
+            "V8_3_246_PRESEAL_DIVERSITY_AUDIT_V1":"V8_3_247_PRESEAL_DIVERSITY_AUDIT_V1",
+            "V8_3_246_SEALED_SELECTION_V1":"V8_3_247_SEALED_SELECTION_V1",
+            "V8_3_246_SEALED_FIXTURE_V1":"V8_3_247_SEALED_FIXTURE_V1",
+            "V8_3_246_INDEPENDENT_GOLD_V1":"V8_3_247_INDEPENDENT_GOLD_V1",
+            "V8_3_246_SEALED_MEMBERSHIP_V1":"V8_3_247_SEALED_MEMBERSHIP_V1",
+            "V8_3_246_TRANSPORT_VERIFICATION_V1":"V8_3_247_TRANSPORT_VERIFICATION_V1",
+            "V8_3_246_STATIC_SEALED_PREFLIGHT_V1":"V8_3_247_STATIC_SEALED_PREFLIGHT_V1"
+          }
+          for old,new in pairs.items(): src=src.replace(old,new)
+          # Exact semantic chain is immutable; assert it rather than renaming it.
+          required_sem=[
+            'qc-evidence-extractor-v5as-v245-v244-residuals.js',
+            'psc-v83245-v244-v118-residuals.js',
+            'qc-evidence-extractor-v5at-v246-v245-residuals.js',
+            'psc-v83246-v245-v119-residuals.js'
+          ]
+          for x in required_sem:
+              if src.count(x)!=1: raise SystemExit('semantic loader chain defect '+x+' count='+str(src.count(x)))
+          forbidden=['psc-v83246-v244-v118-residuals.js','validation/v83246-v1-sealed-runtime','run-v83246-batch-a.cjs','V8_3_246_BATCH_A_RESULT_V1.json']
+          leftovers=[x for x in forbidden if x in src]
+          if leftovers: raise SystemExit('V247 runner stale literals '+repr(leftovers))
+          compile(src,'validation/v83247-batch-a-self-contained.py','exec')
+          p=Path('validation/v83247-batch-a-self-contained.py');p.write_text(src)
+          receipt={'candidate':'V8.3.247','phase':'runner-only-development-recovery','parent_development_sha':'00bcd4681a61ef1ab0b229eb90af9e74102dc649','semantic_authority':'QCEvidenceExtractorV5AT -> QCSemanticCoreV119','semantic_change':False,'expected_gold_changed':False,'source_failure':'V8.3.246 infrastructure-only loader filename corruption before semantic runtime','correct_parent_v118_path':good,'child_v119_path':'validation/psc-v83246-v245-v119-residuals.js','runner_sha256':hashlib.sha256(src.encode()).hexdigest(),'self_contained':True,'pass':True,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False}
+          Path('validation/V8_3_247_RUNNER_RECOVERY_V1.json').write_text(json.dumps(receipt,indent=2)+'\n')
           PY
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze V246 preflight evidence
-        if: always()
+      - name: Freeze V247 runner-only DEVELOPMENT evidence
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83246-v1-sealed/V8_3_246_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json
-          test ! -f validation/v83246-v1-sealed/V8_3_246_TRANSPORT_VERIFICATION_V1.json || git add validation/v83246-v1-sealed/V8_3_246_TRANSPORT_VERIFICATION_V1.json
-          test ! -f validation/v83246-v1-sealed/V8_3_246_STATIC_SEALED_PREFLIGHT_V1.json || git add validation/v83246-v1-sealed/V8_3_246_STATIC_SEALED_PREFLIGHT_V1.json
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.246 transport/static preflight evidence'
-          git push origin HEAD:v83246-v1-sealed-validation
-      - name: Enforce preflight outcome
-        run: test '${{ steps.run.outputs.rc }}' = '0'
+          git add validation/v83247-batch-a-self-contained.py validation/V8_3_247_RUNNER_RECOVERY_V1.json
+          git commit -m 'Freeze V8.3.247 runner-only recovery evidence'
+          git push origin HEAD:v83247-v1-validation
