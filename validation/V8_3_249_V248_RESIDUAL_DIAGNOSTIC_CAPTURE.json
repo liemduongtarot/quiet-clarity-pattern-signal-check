@@ -1,0 +1,8 @@
+{
+  "candidate": "V8.3.249",
+  "run_id": "32601949169",
+  "rc": 1,
+  "log": "node:fs:484\n    return binding.readFileUtf8(path, stringToFlags(options.flag));\n                   ^\n\nError: ENOENT: no such file or directory, open 'PSC_V8_3_138_DEV/public/psc-v3.js'\n    at Object.readFileSync (node:fs:484:20)\n    at Object.<anonymous> (/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/run-v83249-v248-residual-diagnostic.cjs:5:40)\n    at Module._compile (node:internal/modules/cjs/loader:1872:14)\n    at Object..js (node:internal/modules/cjs/loader:2003:10)\n    at Module.load (node:internal/modules/cjs/loader:1594:32)\n    at Module._load (node:internal/modules/cjs/loader:1396:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47 {\n  errno: -2,\n  code: 'ENOENT',\n  syscall: 'open',\n  path: 'PSC_V8_3_138_DEV/public/psc-v3.js'\n}\n\nNode.js v24.19.0\nTraceback (most recent call last):\n  File \"/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83249-v120-v248-residual-diagnostic.py\", line 18, in <module>\n    subprocess.run(['node',str(runner)],check=True)\n  File \"/usr/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['node', 'validation/run-v83249-v248-residual-diagnostic.cjs']' returned non-zero exit status 1.\n",
+  "sealed_validation_executed": false,
+  "expected_gold_changed": false
+}
