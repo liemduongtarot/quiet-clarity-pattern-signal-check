@@ -1,5 +1,5 @@
 import json,hashlib,pathlib,subprocess,zipfile,tempfile,shutil
-R=pathlib.Path('.');O=R/'validation/v83244-v1-sealed';BASE='885608fce9e70a8818d1ebda23c786a81005a2fe';DEV='184cb1253121307b72f66462ec7196625623635c';SEM='QCEvidenceExtractorV5AR -> QCSemanticCoreV117'
+R=pathlib.Path('.');O=R/'validation/v83244-v1-sealed';BASE='885608fce9e70a8818d1ebda23c786a81005a2fe';DEV='a2af4854bd53a7c57aef835bc073366ebfdfa7b9';SEM='QCEvidenceExtractorV5AR -> QCSemanticCoreV117'
 def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
 def ho(o):return hashlib.sha256(canon(o)).hexdigest()
 def hb(b):return hashlib.sha256(b).hexdigest()
@@ -8,9 +8,9 @@ a=json.loads((O/'V8_3_244_SEALED_AUTHORITY_V1.json').read_text());rec=json.loads
 assert a['recovery_development_head_sha']==DEV and a['base_exact_development_sha']==BASE and a['semantic_authority']==SEM and a['preseal_pass'] is True and rec['conclusion']=='success'
 files={'candidate_bank':'V8_3_244_PRESEAL_CANDIDATE_BANK_V1.json','selection':'V8_3_244_SEALED_SELECTION_V1.json','fixture':'V8_3_244_SEALED_FIXTURE_V1.json','independent_gold':'V8_3_244_INDEPENDENT_GOLD_V1.json','membership':'V8_3_244_SEALED_MEMBERSHIP_V1.json','preseal_audit':'V8_3_244_PRESEAL_DIVERSITY_AUDIT_V1.json'}
 hash_match={k:ho(json.loads((O/n).read_text()))==a['hashes'][k] for k,n in files.items()};assert all(hash_match.values())
-base_reg=json.loads(show(BASE,'validation/V8_3_243_V117_REGRESSION_RECEIPT.json'));dev244=json.loads(show(DEV,'validation/V8_3_244_DEVELOPMENT_AUTHORITY_V1.json'));mat=json.loads(show(DEV,'validation/V8_3_244_RUNNER_MATERIALIZATION_V1.json'))
+base_reg=json.loads(show(BASE,'validation/V8_3_243_V117_REGRESSION_RECEIPT.json'));dev244=json.loads(show(DEV,'validation/V8_3_244_DEVELOPMENT_AUTHORITY_V1.json'));mat=json.loads(show(DEV,'validation/V8_3_244_RUNNER_REPAIR_V2.json'))
 assert base_reg['conclusion']=='success' and base_reg['immutable_regression_passed']==1470 and base_reg['expected_gold_changed'] is False
-assert dev244['semantic_change'] is False and dev244['expected_gold_changed'] is False and mat['pass'] is True and mat['self_contained'] is True
+assert dev244['semantic_change'] is False and dev244['expected_gold_changed'] is False and mat['pass'] is True and mat['self_contained'] is True and mat['semantic_change'] is False and mat['expected_gold_changed'] is False
 semfiles=['validation/qc-evidence-extractor-v5ar-v243-v242-residuals.js','validation/psc-v83243-v242-v117-residuals.js'];identity={p:hb(pathlib.Path(p).read_bytes())==hb(show(BASE,p)) for p in semfiles};assert all(identity.values())
 runner='validation/v83244-batch-a-self-contained.py';runner_identity=hb(pathlib.Path(runner).read_bytes())==hb(show(DEV,runner));assert runner_identity and hb(pathlib.Path(runner).read_bytes())==mat['runner_sha256']
 archive=R/'PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip';assert archive.exists();tmp=pathlib.Path(tempfile.mkdtemp(prefix='v83244-transport-'))

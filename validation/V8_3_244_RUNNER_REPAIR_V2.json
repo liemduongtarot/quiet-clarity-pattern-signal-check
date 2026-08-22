@@ -1,0 +1,18 @@
+{
+  "candidate": "V8.3.244",
+  "phase": "runner-surgical-repair-v2",
+  "base_exact_development_sha": "885608fce9e8288119f79318b39646e2feb00f",
+  "semantic_authority": "QCEvidenceExtractorV5AR -> QCSemanticCoreV117",
+  "runner_sha256": "302f4f0e80a88568e5fedd58b095be618504e963ce8956808ed0ec5c2a98520f",
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "repair_scope": [
+    "authority-key",
+    "runtime-root",
+    "result-sha",
+    "runner-filename",
+    "diagnostic-labels"
+  ],
+  "self_contained": true,
+  "pass": true
+}

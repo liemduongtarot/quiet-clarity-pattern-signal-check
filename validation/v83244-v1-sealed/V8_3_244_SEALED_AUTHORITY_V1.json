@@ -1,8 +1,8 @@
 {
   "candidate": "V8.3.244",
   "phase": "SEALED_AUTHORITY_PRE_BATCH_A",
-  "recovery_development_head_sha": "184cb1253121307b72f66462ec7196625623635c",
-  "base_exact_development_sha": "885608fce9e70a8818d1ebda23c786a81005a2fe",
+  "recovery_development_head_sha": "a2af4854bd53a7c57aef835bc073366ebfdfa7b9",
+  "base_exact_development_sha": "885608fce9e8288119f79318b39646e2feb00f",
   "semantic_authority": "QCEvidenceExtractorV5AR -> QCSemanticCoreV117",
   "semantic_change": false,
   "runner_materialized": true,
@@ -20,5 +20,6 @@
   "semantic_runtime_executed": false,
   "semantic_authority_loaded": false,
   "step_111_authorized": false,
-  "production_authorized": false
+  "production_authorized": false,
+  "runner_repair_v2_pass": true
 }
