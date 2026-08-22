@@ -1,0 +1,37 @@
+{
+  "candidate": "V8.3.240",
+  "phase": "static-sealed-preflight",
+  "validated_development_head_sha": "11a6b7da05b9ed48bdee76c789c17b83c575152d",
+  "loader_chain": "QCEvidenceExtractorV5AO -> QCSemanticCoreV114",
+  "loader_chain_static_verified": true,
+  "semantic_files_byte_identical_to_v240_dev": true,
+  "parent_layers_byte_identical": true,
+  "exact_v5ao_path": "validation/qc-evidence-extractor-v5ao-v239-v238-residuals.js",
+  "exact_v114_path": "validation/psc-v83239-v238-v114-v238-residuals.js",
+  "frozen_canonical_hashes_match": {
+    "candidate_bank": true,
+    "selection": true,
+    "fixture": true,
+    "independent_gold": true,
+    "membership": true,
+    "preseal_audit": true
+  },
+  "transport_pass": true,
+  "zero_failure_development_predicate": true,
+  "runner_runtime_root_contract": {
+    "version_root": "validation/v83240-v1-sealed-runtime",
+    "fixture": "V8_3_240_SEALED_FIXTURE_V1.json",
+    "selection": "V8_3_240_SEALED_SELECTION_V1.json",
+    "gold": "V8_3_240_INDEPENDENT_GOLD_V1.json",
+    "single_source_of_truth_for_runtime_root": true,
+    "adapter_from_parent_runner_forbidden": true
+  },
+  "first_run_marker_absent": true,
+  "batch_a_attempt_marker_absent": true,
+  "prior_batch_a_execution_absent": true,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "v239_batch_a_rerun": false,
+  "v239_semantic_runtime_executed": false,
+  "pass": true
+}
