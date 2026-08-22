@@ -1,0 +1,19 @@
+{
+  "candidate": "V8.3.248",
+  "phase": "DEVELOPMENT_AUTHORITY_FROZEN",
+  "parent_recovery_development_sha": "2253e333f2b319e122e2bfdf06ddbdd330ff7408",
+  "base_exact_development_sha": "00bcd4681a61ef1ab0b229eb90af9e74102dc649",
+  "semantic_authority": "QCEvidenceExtractorV5AT -> QCSemanticCoreV119",
+  "semantic_change": false,
+  "runner_recovery_pass": true,
+  "runner_recovery_receipt": "validation/V8_3_248_RUNNER_RECOVERY_V1.json",
+  "regression_authority": "validation/V8_3_246_V119_REGRESSION_RECEIPT.json@00bcd4681a61ef1ab0b229eb90af9e74102dc649",
+  "immutable_regression_passed": 1470,
+  "v245_previous_failures_repaired": 3,
+  "v245_previous_passes_preserved": 27,
+  "expected_gold_changed": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "frozen-development-authority"
+}
