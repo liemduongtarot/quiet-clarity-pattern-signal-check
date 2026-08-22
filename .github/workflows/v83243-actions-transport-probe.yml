@@ -1,5 +1,5 @@
-name: V8.3.247 PRESEAL metric diagnostic
-# trigger-v247-preseal-metrics-1
+name: V8.3.247 PRESEAL metric diagnostic instrumented
+# trigger-v247-preseal-metrics-2
 on:
   push:
     branches: [main]
@@ -15,6 +15,16 @@ jobs:
         with:
           ref: v83247-v1-sealed-validation
           fetch-depth: 0
+      - name: Persist metric diagnostic start
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '{"candidate":"V8.3.247","phase":"preseal-metric-diagnostic-start","run_id":"%s","semantic_runtime_executed":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83247-v1-sealed/V8_3_247_PRESEAL_METRIC_DIAGNOSTIC_START.json
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83247-v1-sealed/V8_3_247_PRESEAL_METRIC_DIAGNOSTIC_START.json
+          git commit -m 'Record V8.3.247 PRESEAL metric diagnostic start'
+          git push origin HEAD:v83247-v1-sealed-validation
       - name: Diagnose PRESEAL metrics without semantic runtime
         shell: bash
         run: |
