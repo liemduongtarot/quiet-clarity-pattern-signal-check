@@ -21,6 +21,7 @@ jobs:
         id: run
         shell: bash
         run: |
+          # actual R4 trigger after narrowed agency-transfer witness
           set +e
           python validation/v83231-v107-regression-orchestrator.py > /tmp/v231-r4.log 2>&1
           rc=$?
