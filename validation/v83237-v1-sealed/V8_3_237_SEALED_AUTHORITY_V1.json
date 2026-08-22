@@ -1,0 +1,21 @@
+{
+  "candidate": "V8.3.237",
+  "phase": "SEALED_AUTHORITY_PRE_BATCH_A",
+  "validated_development_head_sha": "b4eb9e00fffcfea5dcd73406f1e1216810002cd2",
+  "semantic_authority": "QCEvidenceExtractorV5AM -> QCSemanticCoreV112",
+  "preseal_pass": true,
+  "hashes": {
+    "candidate_bank": "0b6b55273009e0f8160ad7b3e4d442f6523fdddd50eb95bcf349f984e2d08d53",
+    "selection": "a704ed20ce2ad6d91cb61f48e607672e6f53a5d90445b48c34bfbbe4c904d524",
+    "fixture": "02c123b38fac80717cf8120b4ed975b9bac9ab425fe74452d07e4e2f15ada133",
+    "independent_gold": "021f5b073e6e7495a87c09ccd662e2e9140c0c1065f3f4c78849144028382962",
+    "membership": "afae2ea4a0b09a9457f82f9fe32b8f85ffd6066c8c8afd0546e4dddcc643e896",
+    "preseal_audit": "6a2a4d861ac484218356d4c454a68698544a965f6284706b5d5bfb5f5aa90f4b"
+  },
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}

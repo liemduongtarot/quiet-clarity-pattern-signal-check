@@ -1,0 +1,11 @@
+{
+  "candidate": "V8.3.237",
+  "phase": "preseal-construction-diagnostic",
+  "outcome": "success",
+  "exit_code": "0",
+  "log_tail": "{\"candidate\": \"V8.3.237\", \"phase\": \"preseal-freeze-v1\", \"validated_development_head_sha\": \"b4eb9e00fffcfea5dcd73406f1e1216810002cd2\", \"semantic_authority\": \"QCEvidenceExtractorV5AM -> QCSemanticCoreV112\", \"candidate_count\": 180, \"selected_count\": 60, \"batch_a_count\": 30, \"batch_b_count\": 30, \"internal_max_similarity\": 0.666667, \"internal_max_pair\": [\"V237-S00-10\", \"V237-S00-16\"], \"external_max_similarity\": 0.533333, \"external_cases_at_or_above_0_75\": 0, \"exact_external_duplicates\": 0, \"semantic_fingerprint_exact_duplicates\": 0, \"semantic_runtime_executed\": false, \"semantic_authority_loaded\": false, \"selection_uses_runtime_output\": false, \"batch_a_executed\": false, \"batch_b_executed\": false, \"conclusion\": \"success\"}\n",
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false
+}
