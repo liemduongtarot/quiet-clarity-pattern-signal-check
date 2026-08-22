@@ -1,0 +1,13 @@
+{
+  "candidate": "V8.3.250",
+  "phase": "transport-verification",
+  "validated_development_head_sha": "514cbcb34fbe336033c8f8858a53415371137973",
+  "base_exact_development_sha": "e1dd5fdb3286e88a1394051a01b414ddc131d4d9",
+  "semantic_authority": "QCEvidenceExtractorV5AV -> QCSemanticCoreV121",
+  "public_runtime_materialized": true,
+  "self_contained_runner_verified": true,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "v249_batch_a_rerun": false,
+  "pass": true
+}

@@ -1,0 +1,59 @@
+{
+  "candidate": "V8.3.250",
+  "phase": "static-sealed-preflight",
+  "validated_development_head_sha": "514cbcb34fbe336033c8f8858a53415371137973",
+  "base_exact_development_sha": "e1dd5fdb3286e88a1394051a01b414ddc131d4d9",
+  "loader_chain": "QCEvidenceExtractorV5AV -> QCSemanticCoreV121",
+  "loader_chain_static_verified": true,
+  "child_semantic_files_byte_identical_to_frozen_development": true,
+  "parent_layers_byte_identical_to_base_and_frozen_development": true,
+  "self_contained_runner_hash_verified": true,
+  "runner_stale_literal_scan": {
+    "V8_3_249_PRESEAL_CANDIDATE_BANK_V1.json": false,
+    "validation/v83249-v1-sealed-runtime": false,
+    "run-v83249-batch-a.cjs": false,
+    "V8_3_249_BATCH_A_RESULT_V1.json": false,
+    "QCSemanticCoreV120.analyze": false,
+    "SEM='QCEvidenceExtractorV5AU -> QCSemanticCoreV120'": false,
+    "psc-v83246-v244-v118-residuals.js": false
+  },
+  "runner_required_literal_scan": {
+    "V8_3_250_PRESEAL_CANDIDATE_BANK_V1.json": true,
+    "validation/v83250-v1-sealed-runtime": true,
+    "run-v83250-batch-a.cjs": true,
+    "V8_3_250_BATCH_A_RESULT_V1.json": true,
+    "A['validated_development_head_sha']==TARGET": true,
+    "qc-evidence-extractor-v5av-v250-v249-residuals.js": true,
+    "psc-v83250-v249-v121-residuals.js": true,
+    "QCSemanticCoreV121.analyze": true,
+    "QCEvidenceExtractorV5AV -> QCSemanticCoreV121": true,
+    "514cbcb34fbe336033c8f8858a53415371137973": true
+  },
+  "exact_v5av_path": "validation/qc-evidence-extractor-v5av-v250-v249-residuals.js",
+  "exact_v121_path": "validation/psc-v83250-v249-v121-residuals.js",
+  "exact_runner_path": "validation/v83250-batch-a-self-contained.py",
+  "frozen_canonical_hashes_match": {
+    "candidate_bank": true,
+    "selection": true,
+    "fixture": true,
+    "independent_gold": true,
+    "membership": true,
+    "preseal_audit": true
+  },
+  "transport_pass": true,
+  "zero_failure_development_predicate": true,
+  "runner_runtime_root_contract": {
+    "version_root": "validation/v83250-v1-sealed-runtime",
+    "fixture": "V8_3_250_SEALED_FIXTURE_V1.json",
+    "selection": "V8_3_250_SEALED_SELECTION_V1.json",
+    "gold": "V8_3_250_INDEPENDENT_GOLD_V1.json",
+    "single_source_of_truth_for_runtime_root": true
+  },
+  "first_run_marker_absent": true,
+  "batch_a_attempt_marker_absent": true,
+  "prior_batch_a_execution_absent": true,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "v249_batch_a_rerun": false,
+  "pass": true
+}
