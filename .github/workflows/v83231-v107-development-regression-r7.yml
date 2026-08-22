@@ -21,6 +21,7 @@ jobs:
         id: run
         shell: bash
         run: |
+          # first actual R7 run after final sequence residual repair
           set +e
           python validation/v83231-v107-regression-orchestrator.py > /tmp/v231-r7.log 2>&1
           rc=$?
