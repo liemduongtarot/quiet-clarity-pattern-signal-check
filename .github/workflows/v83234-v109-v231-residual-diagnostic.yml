@@ -1,0 +1,43 @@
+name: V8.3.234 V109 V231 residual diagnostic
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83234-v109-v231-residual-diagnostic.yml
+permissions:
+  contents: write
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83234-v1-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run residual diagnostic
+        id: run
+        shell: bash
+        run: |
+          set +e
+          python validation/v83234-v109-v231-residual-diagnostic.py > /tmp/v234-v231.log 2>&1
+          rc=$?
+          cat /tmp/v234-v231.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Freeze evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          test ! -f validation/V8_3_234_V109_V231_REGRESSION_FAILURE.json || git add validation/V8_3_234_V109_V231_REGRESSION_FAILURE.json
+          test ! -f validation/V8_3_234_V231_A_V109_DIAGNOSTIC_RESULTS.json || git add validation/V8_3_234_V231_A_V109_DIAGNOSTIC_RESULTS.json
+          git diff --cached --quiet || git commit -m 'Record V8.3.234 V109 V231 residual diagnostic evidence'
+          git push origin HEAD:v83234-v1-validation
+      - name: Enforce diagnostic
+        shell: bash
+        run: test '${{ steps.run.outputs.rc }}' = '0'
