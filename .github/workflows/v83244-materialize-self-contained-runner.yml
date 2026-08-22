@@ -1,0 +1,65 @@
+name: V8.3.244 materialize self-contained sealed runner
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83244-materialize-self-contained-runner.yml
+permissions:
+  contents: write
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83244-v1-validation
+          fetch-depth: 0
+      - name: Materialize runner from frozen mechanical parent
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin v83242-v1-sealed-validation:refs/remotes/origin/v83242-v1-sealed-validation
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess
+          src=subprocess.check_output(['git','show','origin/v83242-v1-sealed-validation:validation/v83242-v1-sealed/v83242-batch-a-once.py'],text=True)
+          src=src.replace("TARGET='79645f8973c9e8288119f79318b39646e2feb00f'","TARGET='885608fce9e70a8818d1ebda23c786a81005a2fe'",1)
+          src=src.replace("SEM='QCEvidenceExtractorV5AQ -> QCSemanticCoreV116'","SEM='QCEvidenceExtractorV5AR -> QCSemanticCoreV117'",1)
+          src=src.replace("SEALED=REPO/'validation/v83242-v1-sealed';WORK=pathlib.Path('/tmp/v83242-batch-a-authority');ROOT='validation/v83242-v1-sealed-runtime'","SEALED=REPO/'validation/v83244-v1-sealed';WORK=pathlib.Path('/tmp/v83244-batch-a-authority');ROOT='validation/v83244-v1-sealed-runtime'",1)
+          src=src.replace('V8_3_242','V8_3_244')
+          src=src.replace('V8.3.242','V8.3.244')
+          src=src.replace('v241_sealed_rerun','v243_sealed_rerun')
+          src=src.replace('v242_batch_a_rerun','v244_batch_a_rerun')
+          old="pf['exact_v5aq_path']=='validation/qc-evidence-extractor-v5aq-v242-v241-residuals.js' and pf['exact_v116_path']=='validation/psc-v83242-v241-v116-residuals.js'"
+          new="pf['exact_v5ar_path']=='validation/qc-evidence-extractor-v5ar-v243-v242-residuals.js' and pf['exact_v117_path']=='validation/psc-v83243-v242-v117-residuals.js'"
+          if old not in src: raise SystemExit('preflight anchor missing')
+          src=src.replace(old,new,1)
+          oldchain="'qc-evidence-extractor-v5aq-v242-v241-residuals.js','psc-v83242-v241-v116-residuals.js']"
+          newchain="'qc-evidence-extractor-v5aq-v242-v241-residuals.js','psc-v83242-v241-v116-residuals.js','qc-evidence-extractor-v5ar-v243-v242-residuals.js','psc-v83243-v242-v117-residuals.js']"
+          if oldchain not in src: raise SystemExit('runtime chain anchor missing')
+          src=src.replace(oldchain,newchain,1)
+          src=src.replace('QCEvidenceExtractorV5AQ','QCEvidenceExtractorV5AR')
+          src=src.replace('QCSemanticCoreV116','QCSemanticCoreV117')
+          src=src.replace("console.log('V242 A'","console.log('V244 A'")
+          out=Path('validation/v83244-batch-a-self-contained.py')
+          out.write_text(src)
+          compile(src,str(out),'exec')
+          assert 'validation/v83242-v1-sealed/v83242-batch-a-once.py' not in src
+          assert "SEALED=REPO/'validation/v83244-v1-sealed'" in src
+          assert "QCEvidenceExtractorV5AR -> QCSemanticCoreV117" in src
+          PY
+      - name: Freeze runner-development evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,hashlib,pathlib
+          p=pathlib.Path('validation/v83244-batch-a-self-contained.py')
+          d={'candidate':'V8.3.244','phase':'runner-materialization-development','base_exact_development_sha':'885608fce9e70a8818d1ebda23c786a81005a2fe','semantic_authority':'QCEvidenceExtractorV5AR -> QCSemanticCoreV117','runner_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'self_contained':True,'semantic_runtime_executed':False,'expected_gold_changed':False,'v243_batch_a_rerun':False,'pass':True}
+          pathlib.Path('validation/V8_3_244_RUNNER_MATERIALIZATION_V1.json').write_text(json.dumps(d,indent=2)+'\n')
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83244-batch-a-self-contained.py validation/V8_3_244_RUNNER_MATERIALIZATION_V1.json
+          git commit -m 'Materialize V8.3.244 self-contained Batch A runner'
+          git push origin HEAD:v83244-v1-validation
