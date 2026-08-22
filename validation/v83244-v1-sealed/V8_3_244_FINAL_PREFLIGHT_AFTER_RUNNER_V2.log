@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83244-v1-sealed/v83244-transport-preflight.py", line 8, in <module>
+    assert a['recovery_development_head_sha']==DEV and a['base_exact_development_sha']==BASE and a['semantic_authority']==SEM and a['preseal_pass'] is True and rec['conclusion']=='success'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
