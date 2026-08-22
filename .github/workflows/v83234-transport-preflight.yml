@@ -18,6 +18,7 @@ jobs:
         id: run
         shell: bash
         run: |
+          # first actual V8.3.234 transport/static preflight
           set +e
           python validation/v83234-v1-sealed/v83234-transport-preflight.py > /tmp/v234-preflight.log 2>&1
           rc=$?
