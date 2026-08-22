@@ -10,12 +10,12 @@ function extract(raw){
  const self=any(d,[' i ',' my ',' me ','toi ','cua toi','chinh toi']);
  const real=any(d,['real event','real situation','lived situation','lived episode','happened to me','this happened to me','event is not hypothetical','event itself is real','event that happened','chuyen nay xay ra','event that i lived']);
  const closing=any(d,['ending','endpoint','closing point','closure','concluded','conclude','completion','final response','last concrete','last observable','immediately before','ngay truoc','final point']);
- const missing=any(d,['not in the account','not been provided','not provided','not stated','remains absent','remains unspecified','except the','apart from','missing fact','have not stated','chua co','chua duoc','chua neu','con absent']);
+ const missing=any(d,['not in the account','not been provided','not provided','not stated','not the behaviour','not the behavior','remains absent','remains unspecified','except the','apart from','missing fact','have not stated','chua co','chua duoc','chua neu','con absent']);
  if(self&&closing&&missing&&(real||any(d,['circumstances are concrete','sequence is known','everything around','context is known','surrounding']))){o.v230_clarification=true;o.context_otherwise_complete=true;o.action_missing=true;o.self_owned_action=true;}
  const decide=any(d,['choose','decide','selection','select','pick','final call','final choice','judgement','judgment','route i should take','chon','quyet','final option']);
  const transfer=any(d,['for me','on my behalf','your call','your decision','your judgement','your judgment','substitutes for mine','rather than by me','instead of leaving decision ownership with me','take over','giao final call','thay toi','cua ban']);
  const finality=any(d,['final','become my decision','become my final option','actual decision','choice itself','route itself','outcome of the choice']);
- if(decide&&transfer&&finality){o.v230_decision=true;o.delegated_decision=true;o.agency_transfer_explicit=true;}
+ if(decide&&transfer&&(finality||d.includes('substitutes for mine'))){o.v230_decision=true;o.delegated_decision=true;o.agency_transfer_explicit=true;}
  const fictional=any(d,['made-up','made up','artificial test','constructed practice','constructed test','fictional','invented for validation','synthetic test','evaluation text','assessment material','practice case','test input','bịa','constructed']);
  const nonlived=any(d,['not autobiographical','unrelated to any event i lived','does not report something that happened to me','nothing here is a personal event','rather than evidence from my life','no real experience behind it','not a personal event','not from my life','khong co personal event','khong lien quan event']);
  if(fictional&&nonlived){o.v230_hypothetical=true;o.hypothetical_only=true;o.not_self_lived=true;}
