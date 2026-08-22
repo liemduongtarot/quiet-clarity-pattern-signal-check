@@ -1,0 +1,73 @@
+name: V8.3.233 sealed Batch A one-shot
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83233-batch-a-one-shot.yml
+permissions:
+  contents: write
+jobs:
+  batch-a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83233-v1-sealed-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Persist immutable Batch A reservation before semantic execution
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e validation/v83233-v1-sealed/V8_3_233_BATCH_A_ATTEMPT_MARKER.json
+          test ! -e validation/v83233-v1-sealed/V8_3_233_SEALED_FIRST_RUN_MARKER.json
+          test ! -e validation/v83233-v1-sealed/V8_3_233_BATCH_A_RESULT_V1.json
+          python - <<'PY'
+          import json,os,pathlib
+          o=pathlib.Path('validation/v83233-v1-sealed')
+          pf=json.loads((o/'V8_3_233_STATIC_SEALED_PREFLIGHT_V1.json').read_text())
+          assert pf['pass'] is True and pf['candidate']=='V8.3.233' and pf['first_run_marker_absent'] is True and pf['batch_a_attempt_marker_absent'] is True and pf['prior_batch_a_execution_absent'] is True
+          assert pf['runner_runtime_root_contract']['version_root']=='validation/v83233-v1-sealed-runtime'
+          common={'candidate':'V8.3.233','run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ.get('GITHUB_RUN_ATTEMPT'),'validated_development_head_sha':'8f85efc8b8383420c65a50724d2512693302dbcb','semantic_authority':'QCEvidenceExtractorV5AI -> QCSemanticCoreV108','reserved_before_semantic_execution':True,'semantic_runtime_executed':False,'v219_sealed_rerun':False,'v220_sealed_rerun':False,'v221_sealed_rerun':False,'v222_sealed_rerun':False,'v223_sealed_rerun':False,'v224_sealed_rerun':False,'v225_sealed_rerun':False,'v226_sealed_rerun':False,'v227_sealed_rerun':False,'v228_sealed_rerun':False,'v229_sealed_rerun':False,'v230_sealed_rerun':False,'v231_sealed_rerun':False,'v232_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          a=dict(common);a.update({'phase':'sealed-batch-a-attempt-reservation','batch':'A'});f=dict(common);f.update({'phase':'sealed-first-run-reservation','reserved_batch':'A'})
+          (o/'V8_3_233_BATCH_A_ATTEMPT_MARKER.json').write_text(json.dumps(a,indent=2)+'\n');(o/'V8_3_233_SEALED_FIRST_RUN_MARKER.json').write_text(json.dumps(f,indent=2)+'\n')
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83233-v1-sealed/V8_3_233_BATCH_A_ATTEMPT_MARKER.json validation/v83233-v1-sealed/V8_3_233_SEALED_FIRST_RUN_MARKER.json
+          git commit -m 'Reserve V8.3.233 sealed Batch A first run'
+          git push origin HEAD:v83233-v1-sealed-validation
+      - name: Execute V8.3.233 Batch A exactly once
+        id: execute
+        shell: bash
+        run: |
+          set +e
+          python validation/v83233-v1-sealed/v83233-batch-a-once.py
+          rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Freeze Batch A evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          test -f validation/v83233-v1-sealed/V8_3_233_BATCH_A_STATUS_V1.json
+          git add validation/v83233-v1-sealed/V8_3_233_BATCH_A_STATUS_V1.json
+          test ! -f validation/v83233-v1-sealed/V8_3_233_BATCH_A_RESULT_V1.json || git add validation/v83233-v1-sealed/V8_3_233_BATCH_A_RESULT_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.233 Batch A first-run evidence'
+          git push origin HEAD:v83233-v1-sealed-validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_233_V1_BATCH_A_CHECKPOINT
+          path: |
+            PSC_V8_3_233_V1_BATCH_A_CHECKPOINT.zip
+            PSC_V8_3_233_V1_BATCH_A_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce Batch A outcome
+        shell: bash
+        run: test '${{ steps.execute.outputs.rc }}' = '0'
