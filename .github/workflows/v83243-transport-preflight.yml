@@ -1,0 +1,44 @@
+name: V8.3.243 transport and static preflight
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83243-transport-preflight.yml
+permissions:
+  contents: write
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83243-v1-sealed-validation
+          fetch-depth: 0
+      - name: Run transport/static preflight
+        id: run
+        shell: bash
+        run: |
+          set +e
+          python validation/v83243-v1-sealed/v83243-transport-preflight.py > /tmp/v243-preflight.log 2>&1
+          rc=$?
+          cat /tmp/v243-preflight.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          RC="$rc" python - <<'PY'
+          import json,os,pathlib
+          text=pathlib.Path('/tmp/v243-preflight.log').read_text(errors='replace');rc=os.environ['RC']
+          pathlib.Path('validation/v83243-v1-sealed/V8_3_243_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.243','phase':'transport-static-preflight-diagnostic','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-24000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False},indent=2)+'\n')
+          PY
+          exit 0
+      - name: Freeze evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83243-v1-sealed/V8_3_243_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json
+          test ! -f validation/v83243-v1-sealed/V8_3_243_TRANSPORT_VERIFICATION_V1.json || git add validation/v83243-v1-sealed/V8_3_243_TRANSPORT_VERIFICATION_V1.json
+          test ! -f validation/v83243-v1-sealed/V8_3_243_STATIC_SEALED_PREFLIGHT_V1.json || git add validation/v83243-v1-sealed/V8_3_243_STATIC_SEALED_PREFLIGHT_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.243 transport/static preflight evidence'
+          git push origin HEAD:v83243-v1-sealed-validation
+      - name: Enforce outcome
+        run: test '${{ steps.run.outputs.rc }}' = '0'
