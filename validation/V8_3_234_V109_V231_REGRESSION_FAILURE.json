@@ -1,0 +1,28 @@
+{
+  "candidate": "V8.3.234",
+  "semantic_authority": "QCEvidenceExtractorV5AJ -> QCSemanticCoreV109",
+  "v231_total": 30,
+  "v231_passed": 29,
+  "v231_failed": 1,
+  "failure": {
+    "case_id": "V231-S03-04",
+    "category": "third",
+    "language": "EN",
+    "source_first_run_pass": false,
+    "pass": false,
+    "expected": {
+      "route": "input:third-party-only",
+      "families": [],
+      "sequence": false
+    },
+    "actual": {
+      "route": "input:clarification-required",
+      "families": [],
+      "sequence": false
+    },
+    "surface": "The filing reference adds setting only, not response evidence. Give me someone else’s internal belief when there is no behavioural evidence from them. A climbing room tracked rope markers and belay cards by wall."
+  },
+  "sealed_validation_executed": false,
+  "v231_sealed_rerun": false,
+  "v233_sealed_rerun": false
+}
