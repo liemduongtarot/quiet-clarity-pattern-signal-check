@@ -1,0 +1,36 @@
+{
+  "candidate": "V8.3.242",
+  "phase": "static-sealed-preflight",
+  "validated_development_head_sha": "79645f8973c9e8288119f79318b39646e2feb00f",
+  "loader_chain": "QCEvidenceExtractorV5AQ -> QCSemanticCoreV116",
+  "loader_chain_static_verified": true,
+  "semantic_files_byte_identical_to_v242_dev": true,
+  "parent_layers_byte_identical": true,
+  "exact_v5aq_path": "validation/qc-evidence-extractor-v5aq-v242-v241-residuals.js",
+  "exact_v116_path": "validation/psc-v83242-v241-v116-residuals.js",
+  "frozen_canonical_hashes_match": {
+    "candidate_bank": true,
+    "selection": true,
+    "fixture": true,
+    "independent_gold": true,
+    "membership": true,
+    "preseal_audit": true
+  },
+  "transport_pass": true,
+  "zero_failure_development_predicate": true,
+  "runner_runtime_root_contract": {
+    "version_root": "validation/v83242-v1-sealed-runtime",
+    "fixture": "V8_3_242_SEALED_FIXTURE_V1.json",
+    "selection": "V8_3_242_SEALED_SELECTION_V1.json",
+    "gold": "V8_3_242_INDEPENDENT_GOLD_V1.json",
+    "single_source_of_truth_for_runtime_root": true,
+    "adapter_from_parent_runner_forbidden": true
+  },
+  "first_run_marker_absent": true,
+  "batch_a_attempt_marker_absent": true,
+  "prior_batch_a_execution_absent": true,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "v241_sealed_rerun": false,
+  "pass": true
+}
