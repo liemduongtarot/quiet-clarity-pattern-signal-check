@@ -1,0 +1,6 @@
+PRESEAL_METRICS {'internal': (0.8372093023255814, ('V244-S00-17', 'V244-S05-17')), 'external': (0.4339622641509434, ('V244-S08-06', 'V235-S08-01')), 'high': 0, 'exact': 0, 'fpdup': 0}
+Traceback (most recent call last):
+  File "/tmp/v83244-preseal-metric.py", line 69, in <module>
+    assert internal[0]<.75 and external[0]<.75 and high==0 and exact==0 and fpdup==0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
