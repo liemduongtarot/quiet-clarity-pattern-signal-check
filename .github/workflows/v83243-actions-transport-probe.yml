@@ -1,5 +1,5 @@
-name: V8.3.245 construction-only PRESEAL instrumented
-# trigger-v245-preseal-instrumented-1
+name: V8.3.245 materialize self-contained sealed runner
+# trigger-v245-runner-materialize-1
 on:
   push:
     branches: [main]
@@ -15,43 +15,46 @@ jobs:
         with:
           ref: v83245-v1-sealed-validation
           fetch-depth: 0
-      - name: Persist PRESEAL start marker
+      - name: Materialize runner from V244 repaired mechanical carrier
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p validation/v83245-v1-sealed
-          printf '{"candidate":"V8.3.245","phase":"preseal-start","run_id":"%s","semantic_runtime_executed":false,"semantic_authority_loaded":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83245-v1-sealed/V8_3_245_PRESEAL_START.json
-          git config user.name github-actions
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83245-v1-sealed/V8_3_245_PRESEAL_START.json
-          git commit -m 'Record V8.3.245 PRESEAL start'
-          git push origin HEAD:v83245-v1-sealed-validation
-      - name: Run exact construction-only PRESEAL
-        id: run
-        shell: bash
-        run: |
-          set +e
-          python validation/v83245-v1-sealed/v83245-preseal-freeze.py > /tmp/v245-preseal.log 2>&1
-          rc=$?
-          set -e
-          cat /tmp/v245-preseal.log
-          RC="$rc" python - <<'PY'
-          import json,os,pathlib
-          text=pathlib.Path('/tmp/v245-preseal.log').read_text(errors='replace')
-          o=pathlib.Path('validation/v83245-v1-sealed')
-          (o/'V8_3_245_PRESEAL_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.245','phase':'preseal-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ['RC']),'log_tail':text[-24000:],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'expected_gold_changed':False},indent=2)+'\n')
+          git fetch origin v83244-v1-sealed-validation:refs/remotes/origin/v83244-v1-sealed-validation
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess,hashlib,json
+          src=subprocess.check_output(['git','show','origin/v83244-v1-sealed-validation:validation/v83244-batch-a-self-contained.py'],text=True)
+          src=src.replace("TARGET='885608fce9e70a8818d1ebda23c786a81005a2fe'","TARGET='2015436433bede4e454739efe2ebae4807f800af'",1)
+          src=src.replace("SEM='QCEvidenceExtractorV5AR -> QCSemanticCoreV117'","SEM='QCEvidenceExtractorV5AS -> QCSemanticCoreV118'",1)
+          src=src.replace('v83244','v83245').replace('V8_3_244','V8_3_245').replace('V8.3.244','V8.3.245')
+          src=src.replace('v243_sealed_rerun','v244_sealed_rerun').replace('v244_batch_a_rerun','v245_batch_a_rerun')
+          old="A['base_exact_development_sha']==TARGET"
+          if old not in src: raise SystemExit('authority anchor missing')
+          src=src.replace(old,"A['validated_development_head_sha']==TARGET",1)
+          src=src.replace("pf['exact_v5ar_path']=='validation/qc-evidence-extractor-v5ar-v243-v242-residuals.js' and pf['exact_v117_path']=='validation/psc-v83243-v242-v117-residuals.js'","pf['exact_v5as_path']=='validation/qc-evidence-extractor-v5as-v245-v244-residuals.js' and pf['exact_v118_path']=='validation/psc-v83245-v244-v118-residuals.js'",1)
+          oldchain="'qc-evidence-extractor-v5ar-v243-v242-residuals.js','psc-v83243-v242-v117-residuals.js']"
+          newchain="'qc-evidence-extractor-v5ar-v243-v242-residuals.js','psc-v83243-v242-v117-residuals.js','qc-evidence-extractor-v5as-v245-v244-residuals.js','psc-v83245-v244-v118-residuals.js']"
+          if oldchain not in src: raise SystemExit('loader-chain anchor missing')
+          src=src.replace(oldchain,newchain,1)
+          src=src.replace('QCEvidenceExtractorV5AR','QCEvidenceExtractorV5AS').replace('QCSemanticCoreV117','QCSemanticCoreV118')
+          out=Path('validation/v83245-batch-a-self-contained.py')
+          out.write_text(src)
+          compile(src,str(out),'exec')
+          forbidden=['validation/v83244','V8_3_244','V8.3.244',"TARGET='885608fce9e70a8818d1ebda23c786a81005a2fe'",'QCEvidenceExtractorV5AR -> QCSemanticCoreV117',"run-v83244-batch-a.cjs","const root='validation/v83244"]
+          leftovers=[x for x in forbidden if x in src]
+          if leftovers: raise SystemExit('stale literals: '+repr(leftovers))
+          required=['2015436433bede4e454739efe2ebae4807f800af','QCEvidenceExtractorV5AS -> QCSemanticCoreV118',"validation/v83245-v1-sealed-runtime","run-v83245-batch-a.cjs","QCSemanticCoreV118.analyze","V8_3_245_BATCH_A_RESULT_V1.json"]
+          miss=[x for x in required if x not in src]
+          if miss: raise SystemExit('missing required literals: '+repr(miss))
+          d={'candidate':'V8.3.245','phase':'sealed-runner-materialization','validated_development_head_sha':'2015436433bede4e454739efe2ebae4807f800af','semantic_authority':'QCEvidenceExtractorV5AS -> QCSemanticCoreV118','runner_sha256':hashlib.sha256(src.encode()).hexdigest(),'self_contained':True,'semantic_runtime_executed':False,'expected_gold_changed':False,'v244_sealed_rerun':False,'pass':True}
+          Path('validation/v83245-v1-sealed/V8_3_245_RUNNER_MATERIALIZATION_V1.json').write_text(json.dumps(d,indent=2)+'\n')
           PY
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze PRESEAL evidence
-        if: always()
+      - name: Freeze runner evidence
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83245-v1-sealed/V8_3_245_PRESEAL_DIAGNOSTIC.json
-          for f in validation/v83245-v1-sealed/V8_3_245_PRESEAL_RUN_RECEIPT.json validation/v83245-v1-sealed/V8_3_245_PRESEAL_CANDIDATE_BANK_V1.json validation/v83245-v1-sealed/V8_3_245_SEALED_SELECTION_V1.json validation/v83245-v1-sealed/V8_3_245_SEALED_FIXTURE_V1.json validation/v83245-v1-sealed/V8_3_245_INDEPENDENT_GOLD_V1.json validation/v83245-v1-sealed/V8_3_245_SEALED_MEMBERSHIP_V1.json validation/v83245-v1-sealed/V8_3_245_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83245-v1-sealed/V8_3_245_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.245 PRESEAL evidence'
+          git add validation/v83245-batch-a-self-contained.py validation/v83245-v1-sealed/V8_3_245_RUNNER_MATERIALIZATION_V1.json
+          git commit -m 'Materialize V8.3.245 self-contained sealed runner'
           git push origin HEAD:v83245-v1-sealed-validation
-      - name: Enforce PRESEAL outcome
-        run: test '${{ steps.run.outputs.rc }}' = '0'
