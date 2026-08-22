@@ -1,0 +1,281 @@
+{
+  "candidate": "V8.3.241",
+  "phase": "FROZEN_SEALED_AUTOPSY",
+  "batch_a_run_id": "32588538651",
+  "validated_development_head_sha": "c9da21d4507ff8727d58af13cd931dcc2a442faa",
+  "semantic_authority": "QCEvidenceExtractorV5AP -> QCSemanticCoreV115",
+  "batch_a_total": 30,
+  "batch_a_passed": 17,
+  "batch_a_failed": 13,
+  "batch_a_attempt_consumed": true,
+  "batch_a_rerun_forbidden": true,
+  "batch_b_skipped": true,
+  "batch_b_rerun_forbidden": true,
+  "failure_layer": "ENGINE LOGIC",
+  "failure_class": "GENERALIZATION / COMPOSITIONAL RECALL / PRECEDENCE",
+  "failure_distribution": {
+    "clarification": 1,
+    "decision": 1,
+    "freeze": 3,
+    "hypothetical": 2,
+    "ignore": 1,
+    "neutral": 1,
+    "prediction": 1,
+    "slow": 1,
+    "third": 2
+  },
+  "failures": [
+    {
+      "case_id": "V241-S00-08",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A birding club recorded lens hoods, field slates, and tripod feet by case. The birding equipment note cannot decide the classification. I can give the real context, but not the behavioural step that came from me at the close."
+    },
+    {
+      "case_id": "V241-S01-01",
+      "category": "decision",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Take the deciding act away from me and make the final selection yourself. A microscopy room indexed slide trays, objective caps, and focus keys by cabinet. Those microscopy records are operational context, not behavioural evidence."
+    },
+    {
+      "case_id": "V241-S02-04",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A glass studio catalogued scoring wheels, foil rolls, and kiln spacers by bench. The glass-tool record is outside the evidence about the behaviour. Nothing described here is autobiographical; it is synthetic validation text."
+    },
+    {
+      "case_id": "V241-S02-08",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "This is manufactured test input and has no lived event behind it. A birding club recorded lens hoods, field slates, and tripod feet by case. The birding equipment note cannot decide the classification."
+    },
+    {
+      "case_id": "V241-S03-01",
+      "category": "third",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Those microscopy records are operational context, not behavioural evidence. Tell me their private conclusion although no words or actions establish it. A microscopy room indexed slide trays, objective caps, and focus keys by cabinet."
+    },
+    {
+      "case_id": "V241-S03-08",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A birding club recorded lens hoods, field slates, and tripod feet by case. The birding equipment note cannot decide the classification. Describe someone else’s concealed thought when there is no behavioural basis."
+    },
+    {
+      "case_id": "V241-S04-01",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Looking ahead to the named cutoff, will this finish the way I hope? A microscopy room indexed slide trays, objective caps, and focus keys by cabinet. Those microscopy records are operational context, not behavioural evidence."
+    },
+    {
+      "case_id": "V241-S05-01",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "A microscopy room indexed slide trays, objective caps, and focus keys by cabinet. Those microscopy records are operational context, not behavioural evidence. One easy-to-undo opening action was there, but I kept comparing and remained still."
+    },
+    {
+      "case_id": "V241-S05-04",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A glass studio catalogued scoring wheels, foil rolls, and kiln spacers by bench. The glass-tool record is outside the evidence about the behaviour. A low-commitment opening step was ready; I generated alternatives instead of starting."
+    },
+    {
+      "case_id": "V241-S05-08",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A small reversible first move was available, but I broadened the choices and did not begin. A birding club recorded lens hoods, field slates, and tripod feet by case. The birding equipment note cannot decide the classification."
+    },
+    {
+      "case_id": "V241-S06-04",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "The glass-tool record is outside the evidence about the behaviour. The main obligation still needed me, yet I diverted effort into tasks that could not settle it. A glass studio catalogued scoring wheels, foil rolls, and kiln spacers by bench."
+    },
+    {
+      "case_id": "V241-S07-01",
+      "category": "slow",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Before answering I used one contained interval, checked once, then ended the review. A microscopy room indexed slide trays, objective caps, and focus keys by cabinet. Those microscopy records are operational context, not behavioural evidence."
+    },
+    {
+      "case_id": "V241-S09-08",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A birding club recorded lens hoods, field slates, and tripod feet by case. The birding equipment note cannot decide the classification. The decision stayed mine through completion; afterward I did not reopen it."
+    }
+  ],
+  "expected_gold_changed": false,
+  "v241_sealed_rerun": false,
+  "production_authorized": false,
+  "step_111_authorized": false
+}
