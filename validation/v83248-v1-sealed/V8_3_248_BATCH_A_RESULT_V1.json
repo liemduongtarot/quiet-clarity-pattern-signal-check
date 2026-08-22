@@ -1,0 +1,598 @@
+{
+  "authority": "V8.3.248 V1 SEALED BATCH A FIRST RUN",
+  "run_id": "32600622564",
+  "run_attempt": "1",
+  "validated_development_head_sha": "00bcd4681a61ef1ab0b229eb90af9e74102dc649",
+  "semantic_authority": "QCEvidenceExtractorV5AT -> QCSemanticCoreV119",
+  "total": 30,
+  "passed": 22,
+  "failed": 8,
+  "results": [
+    {
+      "case_id": "V248-S00-01",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A sailmaking loft indexed palm guards, seam rubbers, bolt ropes, eyelet dies and pattern chalk by rack. Those sailmaking materials supply setting only, not behavioural evidence. A marine-chart cabinet separately stored parallel rulers, sounding leads, chart weights, dividers and tide tables; these objects do not supply a missing closing action. The situation is mine and real; the missing piece is my own closing action. A navigation school separately inventoried plotting triangles, compass roses, dividers, parallel rules and chart clips; that teaching stock does not supply a missing final action. A separate shelf register recorded fibre pads, enamel tags, cotton cords, steel rulers, wax blocks and paper seals by bay; the register carries no behavioural evidence. A seismology teaching cabinet separately stored geophone leads, timing crystals, survey pegs, waveform cards, damping pads, cable reels, level bubbles and station labels; this unrelated inventory cannot supply the missing closing behaviour. A separate crate note also recorded cotton webbing, alloy rings, cork sheets, glass vials, brass pins, fibre pads, kraft tags and wax seals by compartment; none of these objects supplies behavioural evidence. A remote acoustics archive additionally indexed anechoic wedges, impedance tubes, reference couplers, octave filters, calibration pistons, phase charts, response plots, signal attenuators, isolation mounts, probe microphones, frequency cards and damping blocks; these unrelated records remain inert to the measured behaviour. A separate drawer schedule listed brass ferrules, bamboo pegs, wool pads, steel rings, kraft labels, glass vials, linen loops, paper seals, alloy hooks, cotton wraps, cork tabs and wooden cards by compartment; the schedule contains no behavioural proof."
+    },
+    {
+      "case_id": "V248-S00-10",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Vật liệu sailmaking chỉ cung cấp setting chứ không phải behavioural evidence. Một tủ marine-chart phụ chỉ chứa object và không cung cấp closing action còn thiếu. Sự việc thực tế đã rõ, còn bước cụ thể cuối cùng của tôi thì chưa được cung cấp. Một loft sailmaking ghi palm guard, seam rubber, bolt rope, eyelet die và pattern chalk theo rack. Một lớp navigation phụ ghi plotting triangle, compass rose, divider, parallel rule và chart clip; inventory đó không cung cấp final action còn thiếu. Một shelf register phụ ghi fibre pad, enamel tag, cotton cord, steel ruler, wax block và paper seal theo bay; register này không mang behavioural evidence. A seismology teaching cabinet separately stored geophone leads, timing crystals, survey pegs, waveform cards, damping pads, cable reels, level bubbles and station labels; this unrelated inventory cannot supply the missing closing behaviour. A separate accession ledger also listed cellulose tabs, copper washers, linen loops, graphite marks, ceramic spacers, steel clips, paper sleeves and wooden rulers under a different catalogue; this ledger is inert background only. A remote acoustics archive additionally indexed anechoic wedges, impedance tubes, reference couplers, octave filters, calibration pistons, phase charts, response plots, signal attenuators, isolation mounts, probe microphones, frequency cards and damping blocks; these unrelated records remain inert to the measured behaviour. A separate accession bundle listed zirconia spacers, nickel clips, cotton cords, maple gauges, cellulose bands, bronze tabs, linen envelopes, silicone washers, graphite markers, vellum flags, cork sleeves and ceramic rulers under a distinct storage code; this is scenery only."
+    },
+    {
+      "case_id": "V248-S00-04",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The real event is clear, while my last concrete move remains unspecified. A reed-instrument archive indexed mandrels, plaque gauges, thread spools, cork strips and scrape knives by cabinet. The reed archive describes maintenance materials and cannot establish the mechanism. A marine-chart cabinet separately stored parallel rulers, sounding leads, chart weights, dividers and tide tables; these objects do not supply a missing closing action. A navigation school separately inventoried plotting triangles, compass roses, dividers, parallel rules and chart clips; that teaching stock does not supply a missing final action. A separate rack ledger listed copper rings, linen wraps, steel hooks, card markers, rubber bulbs and wooden spacers by row; the ledger remains inert context. A seismology teaching cabinet separately stored geophone leads, timing crystals, survey pegs, waveform cards, damping pads, cable reels, level bubbles and station labels; this unrelated inventory cannot supply the missing closing behaviour. A separate equipment card also logged paper bands, alloy clips, cotton wraps, cork guards, linen tags, steel rulers, ceramic blocks and wax markers by station; the card does not prove any response mechanism. A remote acoustics archive additionally indexed anechoic wedges, impedance tubes, reference couplers, octave filters, calibration pistons, phase charts, response plots, signal attenuators, isolation mounts, probe microphones, frequency cards and damping blocks; these unrelated records remain inert to the measured behaviour. A separate bench ticket listed cellulose cards, nickel loops, bamboo gauges, cotton ties, linen wraps, paper tags, bronze rings, glass caps, ceramic spacers, steel clips, cork strips and oak markers by station; these objects do not prove a mechanism."
+    },
+    {
+      "case_id": "V248-S01-01",
+      "category": "decision",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A typesetting desk separately held composing sticks, spacing leads, quoin keys, galley clips and chase cards; none of these objects assigns deciding authority. Make the final choice on my behalf rather than leaving the deciding call with me. A sailmaking loft indexed palm guards, seam rubbers, bolt ropes, eyelet dies and pattern chalk by rack. Those sailmaking materials supply setting only, not behavioural evidence. A metal-type archive separately stored em spaces, composing rules, chase wedges, galley tags and locking keys; those items cannot assign deciding authority. A separate shelf register recorded fibre pads, enamel tags, cotton cords, steel rulers, wax blocks and paper seals by bay; the register carries no behavioural evidence. A letterpress maintenance bay separately indexed roller bearers, quoins, furniture blocks, type-high gauges, wash-up tins, feed-board clips, frisket cords and chase labels; these items cannot take over the final deciding role. A separate crate note also recorded cotton webbing, alloy rings, cork sheets, glass vials, brass pins, fibre pads, kraft tags and wax seals by compartment; none of these objects supplies behavioural evidence. A printmaking chemistry cupboard additionally catalogued plate grounds, solvent clocks, etching trays, registration punches, roller durometers, wash bottles, blotting felts, scraper handles, acid-resistant tapes, grain screens, proof tags and drying racks; none of this stock assigns the final choice. A separate drawer schedule listed brass ferrules, bamboo pegs, wool pads, steel rings, kraft labels, glass vials, linen loops, paper seals, alloy hooks, cotton wraps, cork tabs and wooden cards by compartment; the schedule contains no behavioural proof."
+    },
+    {
+      "case_id": "V248-S01-10",
+      "category": "decision",
+      "language": "VI",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Tôi muốn bạn thay vai trò quyết định của tôi bằng cách chọn option cuối cùng. Một loft sailmaking ghi palm guard, seam rubber, bolt rope, eyelet die và pattern chalk theo rack. Vật liệu sailmaking chỉ cung cấp setting chứ không phải behavioural evidence. Một bàn typesetting phụ chỉ chứa object và không giao deciding authority. Một archive metal-type phụ ghi em space, composing rule, chase wedge, galley tag và locking key; các object đó không giao deciding authority. Một shelf register phụ ghi fibre pad, enamel tag, cotton cord, steel ruler, wax block và paper seal theo bay; register này không mang behavioural evidence. A letterpress maintenance bay separately indexed roller bearers, quoins, furniture blocks, type-high gauges, wash-up tins, feed-board clips, frisket cords and chase labels; these items cannot take over the final deciding role. A separate accession ledger also listed cellulose tabs, copper washers, linen loops, graphite marks, ceramic spacers, steel clips, paper sleeves and wooden rulers under a different catalogue; this ledger is inert background only. A printmaking chemistry cupboard additionally catalogued plate grounds, solvent clocks, etching trays, registration punches, roller durometers, wash bottles, blotting felts, scraper handles, acid-resistant tapes, grain screens, proof tags and drying racks; none of this stock assigns the final choice. A separate accession bundle listed zirconia spacers, nickel clips, cotton cords, maple gauges, cellulose bands, bronze tabs, linen envelopes, silicone washers, graphite markers, vellum flags, cork sleeves and ceramic rulers under a distinct storage code; this is scenery only."
+    },
+    {
+      "case_id": "V248-S01-04",
+      "category": "decision",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The reed archive describes maintenance materials and cannot establish the mechanism. A typesetting desk separately held composing sticks, spacing leads, quoin keys, galley clips and chase cards; none of these objects assigns deciding authority. Replace my deciding role by choosing the option I should ultimately take. A reed-instrument archive indexed mandrels, plaque gauges, thread spools, cork strips and scrape knives by cabinet. A metal-type archive separately stored em spaces, composing rules, chase wedges, galley tags and locking keys; those items cannot assign deciding authority. A separate rack ledger listed copper rings, linen wraps, steel hooks, card markers, rubber bulbs and wooden spacers by row; the ledger remains inert context. A letterpress maintenance bay separately indexed roller bearers, quoins, furniture blocks, type-high gauges, wash-up tins, feed-board clips, frisket cords and chase labels; these items cannot take over the final deciding role. A separate equipment card also logged paper bands, alloy clips, cotton wraps, cork guards, linen tags, steel rulers, ceramic blocks and wax markers by station; the card does not prove any response mechanism. A printmaking chemistry cupboard additionally catalogued plate grounds, solvent clocks, etching trays, registration punches, roller durometers, wash bottles, blotting felts, scraper handles, acid-resistant tapes, grain screens, proof tags and drying racks; none of this stock assigns the final choice. A separate bench ticket listed cellulose cards, nickel loops, bamboo gauges, cotton ties, linen wraps, paper tags, bronze rings, glass caps, ceramic spacers, steel clips, cork strips and oak markers by station; these objects do not prove a mechanism."
+    },
+    {
+      "case_id": "V248-S02-01",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A sailmaking loft indexed palm guards, seam rubbers, bolt ropes, eyelet dies and pattern chalk by rack. Those sailmaking materials supply setting only, not behavioural evidence. A ceramics classroom separately listed bat pins, rib tools, sponge blocks, glaze tests and kiln cards; that list cannot turn fictional material into lived evidence. The described event is fictional validation content rather than a real situation I lived. A paper-marbling room separately listed alum brushes, rake combs, pigment cups, drying boards and blotter sheets; that inventory cannot turn fictional material into lived experience. A separate shelf register recorded fibre pads, enamel tags, cotton cords, steel rulers, wax blocks and paper seals by bay; the register carries no behavioural evidence. A dye-sample archive separately catalogued mordant spoons, fibre swatches, rinse cards, pH strips, drying clips, sample jars, glass rods and batch tags; that material record cannot convert a constructed example into lived evidence. A separate crate note also recorded cotton webbing, alloy rings, cork sheets, glass vials, brass pins, fibre pads, kraft tags and wax seals by compartment; none of these objects supplies behavioural evidence. A historical textile laboratory additionally stored mordant swatches, fibre microscopes, colour strips, wash-fastness cards, spindle samples, weave counters, yarn gauges, dye spoons, sample envelopes, pH papers, drying grids and batch notebooks; these materials cannot transform invented input into lived evidence. A separate drawer schedule listed brass ferrules, bamboo pegs, wool pads, steel rings, kraft labels, glass vials, linen loops, paper seals, alloy hooks, cotton wraps, cork tabs and wooden cards by compartment; the schedule contains no behavioural proof."
+    },
+    {
+      "case_id": "V248-S02-10",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Vật liệu sailmaking chỉ cung cấp setting chứ không phải behavioural evidence. Một lớp ceramics phụ chỉ ghi inventory và không biến fictional material thành lived evidence. Không phần nào ở đây xảy ra với tôi; case này chỉ là ví dụ classification. Một loft sailmaking ghi palm guard, seam rubber, bolt rope, eyelet die và pattern chalk theo rack. Một phòng paper-marbling phụ ghi alum brush, rake comb, pigment cup, drying board và blotter sheet; inventory đó không biến fictional material thành lived experience. Một shelf register phụ ghi fibre pad, enamel tag, cotton cord, steel ruler, wax block và paper seal theo bay; register này không mang behavioural evidence. A dye-sample archive separately catalogued mordant spoons, fibre swatches, rinse cards, pH strips, drying clips, sample jars, glass rods and batch tags; that material record cannot convert a constructed example into lived evidence. A separate accession ledger also listed cellulose tabs, copper washers, linen loops, graphite marks, ceramic spacers, steel clips, paper sleeves and wooden rulers under a different catalogue; this ledger is inert background only. A historical textile laboratory additionally stored mordant swatches, fibre microscopes, colour strips, wash-fastness cards, spindle samples, weave counters, yarn gauges, dye spoons, sample envelopes, pH papers, drying grids and batch notebooks; these materials cannot transform invented input into lived evidence. A separate accession bundle listed zirconia spacers, nickel clips, cotton cords, maple gauges, cellulose bands, bronze tabs, linen envelopes, silicone washers, graphite markers, vellum flags, cork sleeves and ceramic rulers under a distinct storage code; this is scenery only."
+    },
+    {
+      "case_id": "V248-S02-04",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Nothing here happened to me; the case exists only as a classification example. A reed-instrument archive indexed mandrels, plaque gauges, thread spools, cork strips and scrape knives by cabinet. The reed archive describes maintenance materials and cannot establish the mechanism. A ceramics classroom separately listed bat pins, rib tools, sponge blocks, glaze tests and kiln cards; that list cannot turn fictional material into lived evidence. A paper-marbling room separately listed alum brushes, rake combs, pigment cups, drying boards and blotter sheets; that inventory cannot turn fictional material into lived experience. A separate rack ledger listed copper rings, linen wraps, steel hooks, card markers, rubber bulbs and wooden spacers by row; the ledger remains inert context. A dye-sample archive separately catalogued mordant spoons, fibre swatches, rinse cards, pH strips, drying clips, sample jars, glass rods and batch tags; that material record cannot convert a constructed example into lived evidence. A separate equipment card also logged paper bands, alloy clips, cotton wraps, cork guards, linen tags, steel rulers, ceramic blocks and wax markers by station; the card does not prove any response mechanism. A historical textile laboratory additionally stored mordant swatches, fibre microscopes, colour strips, wash-fastness cards, spindle samples, weave counters, yarn gauges, dye spoons, sample envelopes, pH papers, drying grids and batch notebooks; these materials cannot transform invented input into lived evidence. A separate bench ticket listed cellulose cards, nickel loops, bamboo gauges, cotton ties, linen wraps, paper tags, bronze rings, glass caps, ceramic spacers, steel clips, cork strips and oak markers by station; these objects do not prove a mechanism."
+    },
+    {
+      "case_id": "V248-S03-01",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A textile-conservation case separately stored acid-free tissue, mounting thread, humidity strips, cotton gloves and sample labels; those materials cannot reveal another person’s hidden mind. Give me the unseen conclusion in someone else’s mind with no observable support. A sailmaking loft indexed palm guards, seam rubbers, bolt ropes, eyelet dies and pattern chalk by rack. Those sailmaking materials supply setting only, not behavioural evidence. A costume-conservation cabinet separately held muslin wraps, acid-free tags, stitch samples, humidity cards and cotton gloves; none of these materials reveals another person’s private conclusion. A separate shelf register recorded fibre pads, enamel tags, cotton cords, steel rulers, wax blocks and paper seals by bay; the register carries no behavioural evidence. A map-conservation vault separately listed linen hinges, wheat-paste pots, blotter packs, humidity tabs, polyester sleeves, repair tissues, bone folders and light-meter cards; these materials cannot reveal another person’s concealed belief. A separate crate note also recorded cotton webbing, alloy rings, cork sheets, glass vials, brass pins, fibre pads, kraft tags and wax seals by compartment; none of these objects supplies behavioural evidence. A manuscript climate vault additionally recorded silica packets, humidity loggers, light dosimeters, archival boards, repair tissues, polyester corners, linen hinges, box labels, preservation pencils, cotton gloves, blotter folders and shelf monitors; none reveals another person’s hidden mental state. A separate drawer schedule listed brass ferrules, bamboo pegs, wool pads, steel rings, kraft labels, glass vials, linen loops, paper seals, alloy hooks, cotton wraps, cork tabs and wooden cards by compartment; the schedule contains no behavioural proof."
+    },
+    {
+      "case_id": "V248-S03-10",
+      "category": "third",
+      "language": "VI",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Hãy nói private belief của họ dù không có lời nói hay hành động quan sát được để verify. Một loft sailmaking ghi palm guard, seam rubber, bolt rope, eyelet die và pattern chalk theo rack. Vật liệu sailmaking chỉ cung cấp setting chứ không phải behavioural evidence. Một case textile-conservation phụ không thể reveal hidden mind của người khác. Một tủ costume-conservation phụ ghi muslin wrap, acid-free tag, stitch sample, humidity card và cotton glove; các material đó không reveal private conclusion của người khác. Một shelf register phụ ghi fibre pad, enamel tag, cotton cord, steel ruler, wax block và paper seal theo bay; register này không mang behavioural evidence. A map-conservation vault separately listed linen hinges, wheat-paste pots, blotter packs, humidity tabs, polyester sleeves, repair tissues, bone folders and light-meter cards; these materials cannot reveal another person’s concealed belief. A separate accession ledger also listed cellulose tabs, copper washers, linen loops, graphite marks, ceramic spacers, steel clips, paper sleeves and wooden rulers under a different catalogue; this ledger is inert background only. A manuscript climate vault additionally recorded silica packets, humidity loggers, light dosimeters, archival boards, repair tissues, polyester corners, linen hinges, box labels, preservation pencils, cotton gloves, blotter folders and shelf monitors; none reveals another person’s hidden mental state. A separate accession bundle listed zirconia spacers, nickel clips, cotton cords, maple gauges, cellulose bands, bronze tabs, linen envelopes, silicone washers, graphite markers, vellum flags, cork sleeves and ceramic rulers under a distinct storage code; this is scenery only."
+    },
+    {
+      "case_id": "V248-S03-04",
+      "category": "third",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The reed archive describes maintenance materials and cannot establish the mechanism. A textile-conservation case separately stored acid-free tissue, mounting thread, humidity strips, cotton gloves and sample labels; those materials cannot reveal another person’s hidden mind. Tell me their private belief despite having no observable words or actions to verify it. A reed-instrument archive indexed mandrels, plaque gauges, thread spools, cork strips and scrape knives by cabinet. A costume-conservation cabinet separately held muslin wraps, acid-free tags, stitch samples, humidity cards and cotton gloves; none of these materials reveals another person’s private conclusion. A separate rack ledger listed copper rings, linen wraps, steel hooks, card markers, rubber bulbs and wooden spacers by row; the ledger remains inert context. A map-conservation vault separately listed linen hinges, wheat-paste pots, blotter packs, humidity tabs, polyester sleeves, repair tissues, bone folders and light-meter cards; these materials cannot reveal another person’s concealed belief. A separate equipment card also logged paper bands, alloy clips, cotton wraps, cork guards, linen tags, steel rulers, ceramic blocks and wax markers by station; the card does not prove any response mechanism. A manuscript climate vault additionally recorded silica packets, humidity loggers, light dosimeters, archival boards, repair tissues, polyester corners, linen hinges, box labels, preservation pencils, cotton gloves, blotter folders and shelf monitors; none reveals another person’s hidden mental state. A separate bench ticket listed cellulose cards, nickel loops, bamboo gauges, cotton ties, linen wraps, paper tags, bronze rings, glass caps, ceramic spacers, steel clips, cork strips and oak markers by station; these objects do not prove a mechanism."
+    },
+    {
+      "case_id": "V248-S04-01",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A sailmaking loft indexed palm guards, seam rubbers, bolt ropes, eyelet dies and pattern chalk by rack. Those sailmaking materials supply setting only, not behavioural evidence. A weather-observation shelf separately logged cloud charts, thermometer sleeves, rain cards, wind ribbons and pressure sheets; these records do not answer a future outcome. Looking ahead to that deadline, will the situation end in my favour? A weather-station storeroom separately logged Stevenson screens, wind cups, rain cylinders, pressure charts and calibration slips; these records cannot answer a future-outcome question. A separate shelf register recorded fibre pads, enamel tags, cotton cords, steel rulers, wax blocks and paper seals by bay; the register carries no behavioural evidence. A hydrology station separately logged staff gauges, current-meter cups, rainfall sheets, sample bottles, calibration weights, field slates, flow charts and marker flags; none of these records answers a future-outcome request. A separate crate note also recorded cotton webbing, alloy rings, cork sheets, glass vials, brass pins, fibre pads, kraft tags and wax seals by compartment; none of these objects supplies behavioural evidence. A watershed modelling room additionally logged flume scales, sediment sieves, hydrograph sheets, tracer bottles, staff readers, current rotors, catchment maps, sampling poles, turbidity tubes, gauge cards, rainfall drums and calibration floats; these records cannot determine a future outcome. A separate drawer schedule listed brass ferrules, bamboo pegs, wool pads, steel rings, kraft labels, glass vials, linen loops, paper seals, alloy hooks, cotton wraps, cork tabs and wooden cards by compartment; the schedule contains no behavioural proof."
+    },
+    {
+      "case_id": "V248-S04-10",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Vật liệu sailmaking chỉ cung cấp setting chứ không phải behavioural evidence. Một kệ weather-observation phụ không trả lời future outcome. Đến ngày tương lai đó, outcome tôi muốn có xảy ra rồi không? Một loft sailmaking ghi palm guard, seam rubber, bolt rope, eyelet die và pattern chalk theo rack. Một kho weather-station phụ ghi Stevenson screen, wind cup, rain cylinder, pressure chart và calibration slip; các record đó không trả lời future-outcome question. Một shelf register phụ ghi fibre pad, enamel tag, cotton cord, steel ruler, wax block và paper seal theo bay; register này không mang behavioural evidence. A hydrology station separately logged staff gauges, current-meter cups, rainfall sheets, sample bottles, calibration weights, field slates, flow charts and marker flags; none of these records answers a future-outcome request. A separate accession ledger also listed cellulose tabs, copper washers, linen loops, graphite marks, ceramic spacers, steel clips, paper sleeves and wooden rulers under a different catalogue; this ledger is inert background only. A watershed modelling room additionally logged flume scales, sediment sieves, hydrograph sheets, tracer bottles, staff readers, current rotors, catchment maps, sampling poles, turbidity tubes, gauge cards, rainfall drums and calibration floats; these records cannot determine a future outcome. A separate accession bundle listed zirconia spacers, nickel clips, cotton cords, maple gauges, cellulose bands, bronze tabs, linen envelopes, silicone washers, graphite markers, vellum flags, cork sleeves and ceramic rulers under a distinct storage code; this is scenery only."
+    },
+    {
+      "case_id": "V248-S04-04",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "By that future date, will the outcome I want already have happened? A reed-instrument archive indexed mandrels, plaque gauges, thread spools, cork strips and scrape knives by cabinet. The reed archive describes maintenance materials and cannot establish the mechanism. A weather-observation shelf separately logged cloud charts, thermometer sleeves, rain cards, wind ribbons and pressure sheets; these records do not answer a future outcome. A weather-station storeroom separately logged Stevenson screens, wind cups, rain cylinders, pressure charts and calibration slips; these records cannot answer a future-outcome question. A separate rack ledger listed copper rings, linen wraps, steel hooks, card markers, rubber bulbs and wooden spacers by row; the ledger remains inert context. A hydrology station separately logged staff gauges, current-meter cups, rainfall sheets, sample bottles, calibration weights, field slates, flow charts and marker flags; none of these records answers a future-outcome request. A separate equipment card also logged paper bands, alloy clips, cotton wraps, cork guards, linen tags, steel rulers, ceramic blocks and wax markers by station; the card does not prove any response mechanism. A watershed modelling room additionally logged flume scales, sediment sieves, hydrograph sheets, tracer bottles, staff readers, current rotors, catchment maps, sampling poles, turbidity tubes, gauge cards, rainfall drums and calibration floats; these records cannot determine a future outcome. A separate bench ticket listed cellulose cards, nickel loops, bamboo gauges, cotton ties, linen wraps, paper tags, bronze rings, glass caps, ceramic spacers, steel clips, cork strips and oak markers by station; these objects do not prove a mechanism."
+    },
+    {
+      "case_id": "V248-S05-01",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A leather-pattern bench separately held scratch awls, edge gauges, strap templates, punch boards and buckle samples; these tools do not create or remove a stalled start. An easy opening step existed, but additional comparison replaced beginning. A sailmaking loft indexed palm guards, seam rubbers, bolt ropes, eyelet dies and pattern chalk by rack. Those sailmaking materials supply setting only, not behavioural evidence. A book-repair bench separately held lifting knives, linen tapes, bone folders, paste brushes and pressing boards; these tools do not create or remove a stalled first move. A separate shelf register recorded fibre pads, enamel tags, cotton cords, steel rulers, wax blocks and paper seals by bay; the register carries no behavioural evidence. A leather-tool library separately stored edge bevelers, stitching groovers, mauls, creasing wheels, strap cutters, wax cakes, buckle gauges and awl handles; these tools do not create or remove the stalled opening action. A separate crate note also recorded cotton webbing, alloy rings, cork sheets, glass vials, brass pins, fibre pads, kraft tags and wax seals by compartment; none of these objects supplies behavioural evidence. A conservation leather studio additionally indexed paring knives, edge irons, stitching ponies, spacer wheels, awl blades, thread wax, strap templates, buckle blanks, crease gauges, skiving boards, punch mats and mallet faces; these tools do not create or remove a stalled opening move. A separate drawer schedule listed brass ferrules, bamboo pegs, wool pads, steel rings, kraft labels, glass vials, linen loops, paper seals, alloy hooks, cotton wraps, cork tabs and wooden cards by compartment; the schedule contains no behavioural proof."
+    },
+    {
+      "case_id": "V248-S05-10",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "fast",
+          "freeze"
+        ],
+        "sequence": true
+      },
+      "surface": "Có initial move an toàn, nhưng option-building thay cho initiation và tôi vẫn đứng tại chỗ. Một loft sailmaking ghi palm guard, seam rubber, bolt rope, eyelet die và pattern chalk theo rack. Vật liệu sailmaking chỉ cung cấp setting chứ không phải behavioural evidence. Một bench leather-pattern phụ không tạo hay xoá stalled start. Một bench book-repair phụ ghi lifting knife, linen tape, bone folder, paste brush và pressing board; các tool đó không tạo hay xoá stalled first move. Một shelf register phụ ghi fibre pad, enamel tag, cotton cord, steel ruler, wax block và paper seal theo bay; register này không mang behavioural evidence. A leather-tool library separately stored edge bevelers, stitching groovers, mauls, creasing wheels, strap cutters, wax cakes, buckle gauges and awl handles; these tools do not create or remove the stalled opening action. A separate accession ledger also listed cellulose tabs, copper washers, linen loops, graphite marks, ceramic spacers, steel clips, paper sleeves and wooden rulers under a different catalogue; this ledger is inert background only. A conservation leather studio additionally indexed paring knives, edge irons, stitching ponies, spacer wheels, awl blades, thread wax, strap templates, buckle blanks, crease gauges, skiving boards, punch mats and mallet faces; these tools do not create or remove a stalled opening move. A separate accession bundle listed zirconia spacers, nickel clips, cotton cords, maple gauges, cellulose bands, bronze tabs, linen envelopes, silicone washers, graphite markers, vellum flags, cork sleeves and ceramic rulers under a distinct storage code; this is scenery only."
+    },
+    {
+      "case_id": "V248-S05-04",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "fast",
+          "freeze"
+        ],
+        "sequence": true
+      },
+      "surface": "The reed archive describes maintenance materials and cannot establish the mechanism. A leather-pattern bench separately held scratch awls, edge gauges, strap templates, punch boards and buckle samples; these tools do not create or remove a stalled start. There was a safe initial move, yet option-building displaced initiation and I stayed put. A reed-instrument archive indexed mandrels, plaque gauges, thread spools, cork strips and scrape knives by cabinet. A book-repair bench separately held lifting knives, linen tapes, bone folders, paste brushes and pressing boards; these tools do not create or remove a stalled first move. A separate rack ledger listed copper rings, linen wraps, steel hooks, card markers, rubber bulbs and wooden spacers by row; the ledger remains inert context. A leather-tool library separately stored edge bevelers, stitching groovers, mauls, creasing wheels, strap cutters, wax cakes, buckle gauges and awl handles; these tools do not create or remove the stalled opening action. A separate equipment card also logged paper bands, alloy clips, cotton wraps, cork guards, linen tags, steel rulers, ceramic blocks and wax markers by station; the card does not prove any response mechanism. A conservation leather studio additionally indexed paring knives, edge irons, stitching ponies, spacer wheels, awl blades, thread wax, strap templates, buckle blanks, crease gauges, skiving boards, punch mats and mallet faces; these tools do not create or remove a stalled opening move. A separate bench ticket listed cellulose cards, nickel loops, bamboo gauges, cotton ties, linen wraps, paper tags, bronze rings, glass caps, ceramic spacers, steel clips, cork strips and oak markers by station; these objects do not prove a mechanism."
+    },
+    {
+      "case_id": "V248-S06-01",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "A sailmaking loft indexed palm guards, seam rubbers, bolt ropes, eyelet dies and pattern chalk by rack. Those sailmaking materials supply setting only, not behavioural evidence. A mosaic archive separately indexed tessera trays, grout cards, mesh rolls, nipper guards and colour keys; this inventory cannot resolve an unattended central matter. An important obligation needed my response while I kept busy with tasks that could not resolve it. A tile-survey archive separately indexed grout cards, glaze chips, spacer trays, mesh samples and nipper guards; that stock cannot resolve a central task left unattended. A separate shelf register recorded fibre pads, enamel tags, cotton cords, steel rulers, wax blocks and paper seals by bay; the register carries no behavioural evidence. A masonry survey locker separately indexed pointing keys, mortar cards, joint gauges, sample bags, line pins, brush heads, crack rulers and site tags; that equipment cannot resolve the central obligation left unattended. A separate crate note also recorded cotton webbing, alloy rings, cork sheets, glass vials, brass pins, fibre pads, kraft tags and wax seals by compartment; none of these objects supplies behavioural evidence. A building-materials archive additionally stored mortar prisms, joint profiles, crack monitors, survey tapes, pointing samples, line blocks, masonry brushes, core sleeves, site notebooks, sample tins, depth gauges and condition tags; this equipment cannot resolve an unattended central obligation. A separate drawer schedule listed brass ferrules, bamboo pegs, wool pads, steel rings, kraft labels, glass vials, linen loops, paper seals, alloy hooks, cotton wraps, cork tabs and wooden cards by compartment; the schedule contains no behavioural proof."
+    },
+    {
+      "case_id": "V248-S06-10",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "money",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "fast"
+        ],
+        "sequence": false
+      },
+      "surface": "Vật liệu sailmaking chỉ cung cấp setting chứ không phải behavioural evidence. Một archive mosaic phụ không giải quyết central matter bị bỏ lại. Tôi để primary responsibility mở trong khi làm những việc ít liên quan hơn. Một loft sailmaking ghi palm guard, seam rubber, bolt rope, eyelet die và pattern chalk theo rack. Một archive tile-survey phụ ghi grout card, glaze chip, spacer tray, mesh sample và nipper guard; inventory đó không giải quyết central task bị bỏ lại. Một shelf register phụ ghi fibre pad, enamel tag, cotton cord, steel ruler, wax block và paper seal theo bay; register này không mang behavioural evidence. A masonry survey locker separately indexed pointing keys, mortar cards, joint gauges, sample bags, line pins, brush heads, crack rulers and site tags; that equipment cannot resolve the central obligation left unattended. A separate accession ledger also listed cellulose tabs, copper washers, linen loops, graphite marks, ceramic spacers, steel clips, paper sleeves and wooden rulers under a different catalogue; this ledger is inert background only. A building-materials archive additionally stored mortar prisms, joint profiles, crack monitors, survey tapes, pointing samples, line blocks, masonry brushes, core sleeves, site notebooks, sample tins, depth gauges and condition tags; this equipment cannot resolve an unattended central obligation. A separate accession bundle listed zirconia spacers, nickel clips, cotton cords, maple gauges, cellulose bands, bronze tabs, linen envelopes, silicone washers, graphite markers, vellum flags, cork sleeves and ceramic rulers under a distinct storage code; this is scenery only."
+    },
+    {
+      "case_id": "V248-S06-04",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "I left the primary responsibility open while working on less relevant things. A reed-instrument archive indexed mandrels, plaque gauges, thread spools, cork strips and scrape knives by cabinet. The reed archive describes maintenance materials and cannot establish the mechanism. A mosaic archive separately indexed tessera trays, grout cards, mesh rolls, nipper guards and colour keys; this inventory cannot resolve an unattended central matter. A tile-survey archive separately indexed grout cards, glaze chips, spacer trays, mesh samples and nipper guards; that stock cannot resolve a central task left unattended. A separate rack ledger listed copper rings, linen wraps, steel hooks, card markers, rubber bulbs and wooden spacers by row; the ledger remains inert context. A masonry survey locker separately indexed pointing keys, mortar cards, joint gauges, sample bags, line pins, brush heads, crack rulers and site tags; that equipment cannot resolve the central obligation left unattended. A separate equipment card also logged paper bands, alloy clips, cotton wraps, cork guards, linen tags, steel rulers, ceramic blocks and wax markers by station; the card does not prove any response mechanism. A building-materials archive additionally stored mortar prisms, joint profiles, crack monitors, survey tapes, pointing samples, line blocks, masonry brushes, core sleeves, site notebooks, sample tins, depth gauges and condition tags; this equipment cannot resolve an unattended central obligation. A separate bench ticket listed cellulose cards, nickel loops, bamboo gauges, cotton ties, linen wraps, paper tags, bronze rings, glass caps, ceramic spacers, steel clips, cork strips and oak markers by station; these objects do not prove a mechanism."
+    },
+    {
+      "case_id": "V248-S07-01",
+      "category": "slow",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "A flute-service drawer separately stored pad papers, spring hooks, cork gauges, key rollers and bore cloths; these objects do not alter a bounded pause-and-close response. I paused once within a fixed limit, checked once, responded, and then left the matter closed. A sailmaking loft indexed palm guards, seam rubbers, bolt ropes, eyelet dies and pattern chalk by rack. Those sailmaking materials supply setting only, not behavioural evidence. A clarinet-service drawer separately stored pad papers, spring hooks, cork strips, bore swabs and key rollers; these objects do not alter a bounded pause-review-close response. A separate shelf register recorded fibre pads, enamel tags, cotton cords, steel rulers, wax blocks and paper seals by bay; the register carries no behavioural evidence. A bassoon-service cabinet separately held mandrels, pad cups, spring hooks, bore swabs, cork strips, key rollers, feeler papers and thread spools; this maintenance stock does not alter the bounded pause-review-close response. A separate crate note also recorded cotton webbing, alloy rings, cork sheets, glass vials, brass pins, fibre pads, kraft tags and wax seals by compartment; none of these objects supplies behavioural evidence. A double-reed research cabinet additionally held plaque gauges, reed knives, mandrels, thread bobbins, drying racks, measuring wires, shaper tips, cork strips, spring hooks, pad cups, bore gauges and humidity cards; these objects do not alter a bounded pause-review-close sequence. A separate drawer schedule listed brass ferrules, bamboo pegs, wool pads, steel rings, kraft labels, glass vials, linen loops, paper seals, alloy hooks, cotton wraps, cork tabs and wooden cards by compartment; the schedule contains no behavioural proof."
+    },
+    {
+      "case_id": "V248-S07-10",
+      "category": "slow",
+      "language": "VI",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "Trước khi trả lời tôi dùng một interval giới hạn, review một lần rồi xem chuyện kết thúc. Một loft sailmaking ghi palm guard, seam rubber, bolt rope, eyelet die và pattern chalk theo rack. Vật liệu sailmaking chỉ cung cấp setting chứ không phải behavioural evidence. Một drawer flute-service phụ không đổi bounded pause-and-close response. Một drawer clarinet-service phụ ghi pad paper, spring hook, cork strip, bore swab và key roller; các object đó không đổi bounded pause-review-close response. Một shelf register phụ ghi fibre pad, enamel tag, cotton cord, steel ruler, wax block và paper seal theo bay; register này không mang behavioural evidence. A bassoon-service cabinet separately held mandrels, pad cups, spring hooks, bore swabs, cork strips, key rollers, feeler papers and thread spools; this maintenance stock does not alter the bounded pause-review-close response. A separate accession ledger also listed cellulose tabs, copper washers, linen loops, graphite marks, ceramic spacers, steel clips, paper sleeves and wooden rulers under a different catalogue; this ledger is inert background only. A double-reed research cabinet additionally held plaque gauges, reed knives, mandrels, thread bobbins, drying racks, measuring wires, shaper tips, cork strips, spring hooks, pad cups, bore gauges and humidity cards; these objects do not alter a bounded pause-review-close sequence. A separate accession bundle listed zirconia spacers, nickel clips, cotton cords, maple gauges, cellulose bands, bronze tabs, linen envelopes, silicone washers, graphite markers, vellum flags, cork sleeves and ceramic rulers under a distinct storage code; this is scenery only."
+    },
+    {
+      "case_id": "V248-S07-04",
+      "category": "slow",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "The reed archive describes maintenance materials and cannot establish the mechanism. A flute-service drawer separately stored pad papers, spring hooks, cork gauges, key rollers and bore cloths; these objects do not alter a bounded pause-and-close response. Before answering I took one bounded interval, reviewed once, then treated the matter as finished. A reed-instrument archive indexed mandrels, plaque gauges, thread spools, cork strips and scrape knives by cabinet. A clarinet-service drawer separately stored pad papers, spring hooks, cork strips, bore swabs and key rollers; these objects do not alter a bounded pause-review-close response. A separate rack ledger listed copper rings, linen wraps, steel hooks, card markers, rubber bulbs and wooden spacers by row; the ledger remains inert context. A bassoon-service cabinet separately held mandrels, pad cups, spring hooks, bore swabs, cork strips, key rollers, feeler papers and thread spools; this maintenance stock does not alter the bounded pause-review-close response. A separate equipment card also logged paper bands, alloy clips, cotton wraps, cork guards, linen tags, steel rulers, ceramic blocks and wax markers by station; the card does not prove any response mechanism. A double-reed research cabinet additionally held plaque gauges, reed knives, mandrels, thread bobbins, drying racks, measuring wires, shaper tips, cork strips, spring hooks, pad cups, bore gauges and humidity cards; these objects do not alter a bounded pause-review-close sequence. A separate bench ticket listed cellulose cards, nickel loops, bamboo gauges, cotton ties, linen wraps, paper tags, bronze rings, glass caps, ceramic spacers, steel clips, cork strips and oak markers by station; these objects do not prove a mechanism."
+    },
+    {
+      "case_id": "V248-S08-01",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "A sailmaking loft indexed palm guards, seam rubbers, bolt ropes, eyelet dies and pattern chalk by rack. Those sailmaking materials supply setting only, not behavioural evidence. A weaving cabinet separately listed lease sticks, heddle hooks, shuttle bobbins, reed ties and warp cards; these items add no new facts between approach and retreat. I approached action, pulled back, and returned to the previous conclusion under the same information. A loom-maintenance cabinet separately listed heddle hooks, reed ties, shuttle bobbins, warp cards and lease rods; this equipment adds no new evidence between approach and retreat. A separate shelf register recorded fibre pads, enamel tags, cotton cords, steel rulers, wax blocks and paper seals by bay; the register carries no behavioural evidence. A weaving research room separately catalogued warp counters, heddle frames, lease rods, pirn winders, shuttle gauges, pattern cards, yarn cones and tension weights; this equipment adds no new evidence between approach and retreat. A separate crate note also recorded cotton webbing, alloy rings, cork sheets, glass vials, brass pins, fibre pads, kraft tags and wax seals by compartment; none of these objects supplies behavioural evidence. A loom diagnostics room additionally catalogued warp meters, tension scales, reed hooks, lease sticks, shuttle races, heddle frames, pirn gauges, weave charts, yarn counters, bobbin trees, pattern slates and take-up markers; no new evidence about approach and retreat is supplied by this equipment. A separate drawer schedule listed brass ferrules, bamboo pegs, wool pads, steel rings, kraft labels, glass vials, linen loops, paper seals, alloy hooks, cotton wraps, cork tabs and wooden cards by compartment; the schedule contains no behavioural proof."
+    },
+    {
+      "case_id": "V248-S08-10",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Vật liệu sailmaking chỉ cung cấp setting chứ không phải behavioural evidence. Một cabinet weaving phụ không thêm fact mới giữa approach và retreat. Tôi gần hành động, đổi chiều rồi revisit cùng assessment dù evidence không đổi. Một loft sailmaking ghi palm guard, seam rubber, bolt rope, eyelet die và pattern chalk theo rack. Một cabinet loom-maintenance phụ ghi heddle hook, reed tie, shuttle bobbin, warp card và lease rod; equipment đó không thêm evidence mới giữa approach và retreat. Một shelf register phụ ghi fibre pad, enamel tag, cotton cord, steel ruler, wax block và paper seal theo bay; register này không mang behavioural evidence. A weaving research room separately catalogued warp counters, heddle frames, lease rods, pirn winders, shuttle gauges, pattern cards, yarn cones and tension weights; this equipment adds no new evidence between approach and retreat. A separate accession ledger also listed cellulose tabs, copper washers, linen loops, graphite marks, ceramic spacers, steel clips, paper sleeves and wooden rulers under a different catalogue; this ledger is inert background only. A loom diagnostics room additionally catalogued warp meters, tension scales, reed hooks, lease sticks, shuttle races, heddle frames, pirn gauges, weave charts, yarn counters, bobbin trees, pattern slates and take-up markers; no new evidence about approach and retreat is supplied by this equipment. A separate accession bundle listed zirconia spacers, nickel clips, cotton cords, maple gauges, cellulose bands, bronze tabs, linen envelopes, silicone washers, graphite markers, vellum flags, cork sleeves and ceramic rulers under a distinct storage code; this is scenery only."
+    },
+    {
+      "case_id": "V248-S08-04",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "I nearly acted, reversed direction, then revisited the same assessment despite unchanged evidence. A reed-instrument archive indexed mandrels, plaque gauges, thread spools, cork strips and scrape knives by cabinet. The reed archive describes maintenance materials and cannot establish the mechanism. A weaving cabinet separately listed lease sticks, heddle hooks, shuttle bobbins, reed ties and warp cards; these items add no new facts between approach and retreat. A loom-maintenance cabinet separately listed heddle hooks, reed ties, shuttle bobbins, warp cards and lease rods; this equipment adds no new evidence between approach and retreat. A separate rack ledger listed copper rings, linen wraps, steel hooks, card markers, rubber bulbs and wooden spacers by row; the ledger remains inert context. A weaving research room separately catalogued warp counters, heddle frames, lease rods, pirn winders, shuttle gauges, pattern cards, yarn cones and tension weights; this equipment adds no new evidence between approach and retreat. A separate equipment card also logged paper bands, alloy clips, cotton wraps, cork guards, linen tags, steel rulers, ceramic blocks and wax markers by station; the card does not prove any response mechanism. A loom diagnostics room additionally catalogued warp meters, tension scales, reed hooks, lease sticks, shuttle races, heddle frames, pirn gauges, weave charts, yarn counters, bobbin trees, pattern slates and take-up markers; no new evidence about approach and retreat is supplied by this equipment. A separate bench ticket listed cellulose cards, nickel loops, bamboo gauges, cotton ties, linen wraps, paper tags, bronze rings, glass caps, ceramic spacers, steel clips, cork strips and oak markers by station; these objects do not prove a mechanism."
+    },
+    {
+      "case_id": "V248-S09-01",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A camera-service tray separately held aperture blades, lens rings, shutter leaves, focusing screens and calibration cards; these parts do not change who retained the final choice. I retained the final decision, acted on it, and did not return to reconsider it. A sailmaking loft indexed palm guards, seam rubbers, bolt ropes, eyelet dies and pattern chalk by rack. Those sailmaking materials supply setting only, not behavioural evidence. A camera-repair case separately catalogued aperture leaves, retaining rings, helicoid grease, focusing screens and test charts; these parts do not change who retained the final choice. A separate shelf register recorded fibre pads, enamel tags, cotton cords, steel rulers, wax blocks and paper seals by bay; the register carries no behavioural evidence. A projection-equipment workshop separately stored lens collars, aperture plates, focus racks, lamp housings, alignment cards, retaining screws, test grids and dust covers; these parts do not change who kept and completed the final choice. A separate crate note also recorded cotton webbing, alloy rings, cork sheets, glass vials, brass pins, fibre pads, kraft tags and wax seals by compartment; none of these objects supplies behavioural evidence. A cinematography calibration bench additionally stored collimators, focus targets, gate gauges, lens charts, aperture leaves, shutter timers, projection grids, retaining rings, lamp meters, alignment screws, frame counters and optical filters; these components do not change who retained the final choice. A separate drawer schedule listed brass ferrules, bamboo pegs, wool pads, steel rings, kraft labels, glass vials, linen loops, paper seals, alloy hooks, cotton wraps, cork tabs and wooden cards by compartment; the schedule contains no behavioural proof."
+    },
+    {
+      "case_id": "V248-S09-10",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "money",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Tôi tự đưa final choice, thực hiện đến cùng và không reopen quyết định. Một loft sailmaking ghi palm guard, seam rubber, bolt rope, eyelet die và pattern chalk theo rack. Vật liệu sailmaking chỉ cung cấp setting chứ không phải behavioural evidence. Một tray camera-service phụ không đổi người giữ final choice. Một case camera-repair phụ ghi aperture leaf, retaining ring, helicoid grease, focusing screen và test chart; các part đó không đổi người giữ final choice. Một shelf register phụ ghi fibre pad, enamel tag, cotton cord, steel ruler, wax block và paper seal theo bay; register này không mang behavioural evidence. A projection-equipment workshop separately stored lens collars, aperture plates, focus racks, lamp housings, alignment cards, retaining screws, test grids and dust covers; these parts do not change who kept and completed the final choice. A separate accession ledger also listed cellulose tabs, copper washers, linen loops, graphite marks, ceramic spacers, steel clips, paper sleeves and wooden rulers under a different catalogue; this ledger is inert background only. A cinematography calibration bench additionally stored collimators, focus targets, gate gauges, lens charts, aperture leaves, shutter timers, projection grids, retaining rings, lamp meters, alignment screws, frame counters and optical filters; these components do not change who retained the final choice. A separate accession bundle listed zirconia spacers, nickel clips, cotton cords, maple gauges, cellulose bands, bronze tabs, linen envelopes, silicone washers, graphite markers, vellum flags, cork sleeves and ceramic rulers under a distinct storage code; this is scenery only."
+    },
+    {
+      "case_id": "V248-S09-04",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The reed archive describes maintenance materials and cannot establish the mechanism. A camera-service tray separately held aperture blades, lens rings, shutter leaves, focusing screens and calibration cards; these parts do not change who retained the final choice. I made the final choice myself, carried it through, and did not reopen the decision. A reed-instrument archive indexed mandrels, plaque gauges, thread spools, cork strips and scrape knives by cabinet. A camera-repair case separately catalogued aperture leaves, retaining rings, helicoid grease, focusing screens and test charts; these parts do not change who retained the final choice. A separate rack ledger listed copper rings, linen wraps, steel hooks, card markers, rubber bulbs and wooden spacers by row; the ledger remains inert context. A projection-equipment workshop separately stored lens collars, aperture plates, focus racks, lamp housings, alignment cards, retaining screws, test grids and dust covers; these parts do not change who kept and completed the final choice. A separate equipment card also logged paper bands, alloy clips, cotton wraps, cork guards, linen tags, steel rulers, ceramic blocks and wax markers by station; the card does not prove any response mechanism. A cinematography calibration bench additionally stored collimators, focus targets, gate gauges, lens charts, aperture leaves, shutter timers, projection grids, retaining rings, lamp meters, alignment screws, frame counters and optical filters; these components do not change who retained the final choice. A separate bench ticket listed cellulose cards, nickel loops, bamboo gauges, cotton ties, linen wraps, paper tags, bronze rings, glass caps, ceramic spacers, steel clips, cork strips and oak markers by station; these objects do not prove a mechanism."
+    }
+  ]
+}
