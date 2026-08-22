@@ -1,16 +1,16 @@
 {
   "candidate": "V8.3.240",
-  "internal_max_similarity": 0.736842,
+  "internal_max_similarity": 0.871795,
   "internal_max_pair": [
-    "V240-S08-00",
-    "V240-S08-06"
+    "V240-S05-09",
+    "V240-S05-15"
   ],
-  "external_max_similarity": 0.823529,
+  "external_max_similarity": 0.8125,
   "external_max_pair": [
-    "V240-S04-12",
-    "V236-S04-14"
+    "V240-S04-06",
+    "V236-S04-02"
   ],
-  "external_cases_at_or_above_0_75": 3,
+  "external_cases_at_or_above_0_75": 2,
   "exact_external_duplicates": 0,
   "semantic_fingerprint_exact_duplicates": 0,
   "semantic_runtime_executed": false
