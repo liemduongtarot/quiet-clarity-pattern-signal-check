@@ -1,5 +1,5 @@
-name: V8.3.244 PRESEAL internal-pair diagnostic via proven transport
-# trigger-v244-internal-pairs-2
+name: V8.3.244 PRESEAL category-diversity repair via proven transport
+# trigger-v244-category-diversity-repair-1
 on:
   push:
     branches: [main]
@@ -15,35 +15,46 @@ jobs:
         with:
           ref: v83244-v1-sealed-validation
           fetch-depth: 0
-      - name: Enumerate internal PRESEAL collisions only
+      - name: Apply construction-only category-specific inert contexts
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           from pathlib import Path
-          src=Path('validation/v83244-v1-sealed/v83244-preseal-freeze.py').read_text()
-          old="if q>internal[0]:internal=(q,(x['case_id'],y['case_id']))"
-          new="if q>=.75: print('INTERNALHIGH',round(q,9),x['case_id'],y['case_id'],flush=True)\n  if q>internal[0]:internal=(q,(x['case_id'],y['case_id']))"
-          if old not in src: raise SystemExit('internal anchor missing')
-          src=src.replace(old,new,1)
-          needle="assert internal[0]<.75 and external[0]<.75 and high==0 and exact==0 and fpdup==0"
-          src=src.replace(needle,"print('PRESEAL_METRICS', {'internal':internal,'external':external,'high':high,'exact':exact,'fpdup':fpdup}, flush=True)\n"+needle,1)
-          Path('/tmp/v83244-preseal-internal.py').write_text(src)
+          p=Path('validation/v83244-v1-sealed/v83244-preseal-freeze.py')
+          src=p.read_text()
+          if 'CATCTX={' not in src:
+              catctx="CATCTX={'clarification':'A lapidary cabinet listed dop sticks, polishing laps, gem tweezers, wax blocks and stone envelopes by tray.','decision':'A horology store logged balance staffs, jewel pushers, hand levers, cannon pinions and movement cushions by case.','hypothetical':'A papermaking room indexed deckle straps, couching felts, pulp scoops, sizing brushes and drying boards by rack.','third':'A ropework archive recorded fid gauges, serving mallets, marline spools, thimble forms and splice cards by locker.','prediction':'A modelmaking studio catalogued sprue cutters, sanding beams, decal trays, pin vises and masking rolls by drawer.','freeze':'A saddlery bench tracked edge creasers, stitching clams, awl hafts, buckle blanks and leather gauges by bay.','ignore':'A mosaic workshop listed tile nippers, grout floats, tessera trays, mesh sheets and setting combs by shelf.','slow':'A flute repair room logged pad cups, spring hooks, feeler strips, tenon corks and key rollers by cabinet.','sequence':'A weaving store indexed reed hooks, lease sticks, warp weights, temple pins and shuttle bobbins by bin.','neutral':'A camera repair desk recorded lens spanners, shutter testers, focusing screens, helicoid grease and aperture rings by case.'}\n"
+              if 'cases=[]' not in src: raise SystemExit('cases anchor missing')
+              src=src.replace('cases=[]',catctx+'cases=[]',1)
+              old="'surface':' '.join(parts)"
+              new="'surface':' '.join(parts)+' '+CATCTX[c]"
+              if old not in src: raise SystemExit('surface anchor missing')
+              src=src.replace(old,new,1)
+              p.write_text(src)
           PY
+      - name: Run exact construction-only PRESEAL after repair
+        id: run
+        shell: bash
+        run: |
           set +e
-          python /tmp/v83244-preseal-internal.py > /tmp/v244-internal.log 2>&1
+          python validation/v83244-v1-sealed/v83244-preseal-freeze.py > /tmp/v244-preseal-repair.log 2>&1
           rc=$?
           set -e
-          cat /tmp/v244-internal.log
-          cp /tmp/v244-internal.log validation/v83244-v1-sealed/V8_3_244_PRESEAL_INTERNAL_PAIR_DIAGNOSTIC.log
-          printf '{"candidate":"V8.3.244","phase":"preseal-internal-pair-diagnostic","run_id":"%s","rc":%s,"semantic_runtime_executed":false,"gold_expected_changed":false}\n' "$GITHUB_RUN_ID" "$rc" > validation/v83244-v1-sealed/V8_3_244_PRESEAL_INTERNAL_PAIR_DIAGNOSTIC.json
-      - name: Freeze internal-pair evidence
+          cat /tmp/v244-preseal-repair.log
+          cp /tmp/v244-preseal-repair.log validation/v83244-v1-sealed/V8_3_244_PRESEAL_REPAIR_RUN.log
+          printf '{"candidate":"V8.3.244","phase":"preseal-category-diversity-repair","run_id":"%s","rc":%s,"semantic_runtime_executed":false,"semantic_authority_changed":false,"gold_expected_changed":false,"threshold_changed":false}\n' "$GITHUB_RUN_ID" "$rc" > validation/v83244-v1-sealed/V8_3_244_PRESEAL_REPAIR_RUN.json
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+      - name: Freeze repaired PRESEAL construction evidence
         if: always()
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83244-v1-sealed/V8_3_244_PRESEAL_INTERNAL_PAIR_DIAGNOSTIC.log validation/v83244-v1-sealed/V8_3_244_PRESEAL_INTERNAL_PAIR_DIAGNOSTIC.json
-          git diff --cached --quiet || git commit -m 'Record V8.3.244 PRESEAL internal-pair diagnostic'
+          git add validation/v83244-v1-sealed/v83244-preseal-freeze.py validation/v83244-v1-sealed/V8_3_244_PRESEAL_REPAIR_RUN.log validation/v83244-v1-sealed/V8_3_244_PRESEAL_REPAIR_RUN.json
+          for f in validation/v83244-v1-sealed/V8_3_244_PRESEAL_RUN_RECEIPT.json validation/v83244-v1-sealed/V8_3_244_PRESEAL_CANDIDATE_BANK_V1.json validation/v83244-v1-sealed/V8_3_244_SEALED_SELECTION_V1.json validation/v83244-v1-sealed/V8_3_244_SEALED_FIXTURE_V1.json validation/v83244-v1-sealed/V8_3_244_INDEPENDENT_GOLD_V1.json validation/v83244-v1-sealed/V8_3_244_SEALED_MEMBERSHIP_V1.json validation/v83244-v1-sealed/V8_3_244_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83244-v1-sealed/V8_3_244_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Repair and freeze V8.3.244 PRESEAL internal diversity'
           git push origin HEAD:v83244-v1-sealed-validation
+      - name: Enforce PRESEAL outcome
+        run: test '${{ steps.run.outputs.rc }}' = '0'
