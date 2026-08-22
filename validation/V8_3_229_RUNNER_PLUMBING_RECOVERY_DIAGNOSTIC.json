@@ -1,0 +1,11 @@
+{
+  "candidate": "V8.3.229",
+  "phase": "runner-plumbing-recovery-diagnostic",
+  "outcome": "success",
+  "exit_code": "0",
+  "log_tail": "{\"candidate\": \"V8.3.229\", \"phase\": \"runner-plumbing-recovery\", \"base_development_sha\": \"2d5725e4b12f532ca9b710083e55e21efdb6c686\", \"semantic_authority\": \"QCEvidenceExtractorV5AF -> QCSemanticCoreV105\", \"frozen_v228_failure_reproduced\": true, \"failure_layer\": \"VALIDATION RUNNER / INFRASTRUCTURE\", \"v228_batch_a_rerun\": false, \"v228_semantic_runtime_executed\": false, \"semantic_parent_identity\": {\"validation/qc-evidence-extractor-v5af-v228-witness-completion.js\": true, \"validation/psc-v83228-v227-v105-witness-completion.js\": true}, \"immutable_regression\": \"1470/1470\", \"v216_frozen_a\": \"30/30\", \"prior_frozen_a_regressions\": {\"219\": \"30/30\", \"221\": \"30/30\", \"222\": \"30/30\", \"223\": \"30/30\", \"224\": \"30/30\", \"225\": \"30/30\", \"226\": \"30/30\", \"227\": \"30/30\"}, \"runner_contract\": {\"version_root\": \"validation/v83229-v1-sealed-runtime\", \"fixture\": \"V8_3_229_SEALED_FIXTURE_V1.json\", \"selection\": \"V8_3_229_SEALED_SELECTION_V1.json\", \"gold\": \"V8_3_229_INDEPENDENT_GOLD_V1.json\", \"single_source_of_truth_for_runtime_root\": true, \"parent_runtime_root_literal_forbidden\": \"validation/v83228-v1-sealed-runtime\", \"older_parent_runtime_root_literal_forbidden\": \"validation/v83227-v1-sealed-runtime\"}, \"expected_gold_changed\": false, \"sealed_validation_executed\": false, \"production_authorized\": false, \"step_111_authorized\": false, \"conclusion\": \"success\"}\n",
+  "sealed_validation_executed": false,
+  "v228_sealed_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
