@@ -1,0 +1,12 @@
+{
+  "candidate": "V8.3.243",
+  "phase": "DEVELOPMENT_AUTHORITY",
+  "semantic_authority": "QCEvidenceExtractorV5AR -> QCSemanticCoreV117",
+  "regression_pass": true,
+  "regression_receipt": "validation/V8_3_243_V117_REGRESSION_RECEIPT.json",
+  "parent_development_sha": "79645f8973c9e8288119f79318b39646e2feb00f",
+  "expected_gold_changed": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
