@@ -8,7 +8,7 @@ code=code.replace('V247-S','V248-S').replace('V8_3_247','V8_3_248').replace('V8.
 # Extend history through V247.
 code=code.replace("for v in [219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246]:","for v in [219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247]:")
 # Add a V248-only context layer after the V247 generator has constructed its cases.
-needle="compile(src,'v83248-preseal-adapted.py','exec')"
+needle="compile(src,'v83247-preseal-adapted.py','exec')"
 extra="""
 _V248_CAT=[
 ' A seismology teaching cabinet separately stored geophone leads, timing crystals, survey pegs, waveform cards, damping pads, cable reels, level bubbles and station labels; this unrelated inventory cannot supply the missing closing behaviour.',
