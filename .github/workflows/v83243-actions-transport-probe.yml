@@ -1,5 +1,5 @@
 name: V8.3.244 final static preflight after runner repair
-# trigger-v244-final-preflight-after-runner-v2
+# trigger-v244-final-preflight-after-runner-v2-r2
 on:
   push:
     branches: [main]
@@ -25,7 +25,7 @@ jobs:
           set -e
           cat /tmp/v244-final-preflight.log
           cp /tmp/v244-final-preflight.log validation/v83244-v1-sealed/V8_3_244_FINAL_PREFLIGHT_AFTER_RUNNER_V2.log
-          printf '{"candidate":"V8.3.244","phase":"final-preflight-after-runner-v2","run_id":"%s","rc":%s,"semantic_runtime_executed":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" "$rc" > validation/v83244-v1-sealed/V8_3_244_FINAL_PREFLIGHT_AFTER_RUNNER_V2.json
+          printf '{"candidate":"V8.3.244","phase":"final-preflight-after-runner-v2-r2","run_id":"%s","rc":%s,"semantic_runtime_executed":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" "$rc" > validation/v83244-v1-sealed/V8_3_244_FINAL_PREFLIGHT_AFTER_RUNNER_V2.json
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
       - name: Freeze final preflight evidence
         if: always()
@@ -37,7 +37,7 @@ jobs:
           git add validation/v83244-v1-sealed/V8_3_244_FINAL_PREFLIGHT_AFTER_RUNNER_V2.log validation/v83244-v1-sealed/V8_3_244_FINAL_PREFLIGHT_AFTER_RUNNER_V2.json
           test ! -f validation/v83244-v1-sealed/V8_3_244_TRANSPORT_VERIFICATION_V1.json || git add validation/v83244-v1-sealed/V8_3_244_TRANSPORT_VERIFICATION_V1.json
           test ! -f validation/v83244-v1-sealed/V8_3_244_STATIC_SEALED_PREFLIGHT_V1.json || git add validation/v83244-v1-sealed/V8_3_244_STATIC_SEALED_PREFLIGHT_V1.json
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.244 final preflight after runner repair'
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.244 final preflight after runner repair R2'
           git push origin HEAD:v83244-v1-sealed-validation
       - name: Enforce final preflight
         run: test '${{ steps.run.outputs.rc }}' = '0'
