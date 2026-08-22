@@ -1,0 +1,47 @@
+{
+  "candidate": "V8.3.230",
+  "semantic_authority": "QCEvidenceExtractorV5AG -> QCSemanticCoreV106",
+  "v229_total": 30,
+  "v229_passed": 28,
+  "v229_failed": 2,
+  "failures": [
+    {
+      "case_id": "V229-S00-03",
+      "category": "clarification",
+      "language": "EN",
+      "source_first_run_pass": false,
+      "pass": false,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I have given the real situation and its sequence, but not the behaviour that came from me at the closing point. A dance store logged costume tags and shoe bags by rail. The filing record supplies context only, not behavioural proof."
+    },
+    {
+      "case_id": "V229-S01-00",
+      "category": "decision",
+      "language": "EN",
+      "source_first_run_pass": false,
+      "pass": false,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The administrative record cannot determine the mechanism under review. Choose which route I should take so your call substitutes for mine. A kayaking shed tracked buckle kits and paddle rings by rack."
+    }
+  ],
+  "sealed_validation_executed": false,
+  "v229_sealed_rerun": false
+}
