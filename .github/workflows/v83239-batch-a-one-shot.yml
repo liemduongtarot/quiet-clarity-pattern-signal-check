@@ -1,4 +1,5 @@
 name: V8.3.239 sealed Batch A one-shot
+# trigger: first protected run
 on:
   push:
     branches: [main]
