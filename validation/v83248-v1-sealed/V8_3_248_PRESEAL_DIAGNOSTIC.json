@@ -1,9 +1,9 @@
 {
   "candidate": "V8.3.248",
   "phase": "preseal-diagnostic",
-  "run_id": "32600113317",
+  "run_id": "32600162996",
   "rc": 1,
-  "log_tail": "V248 final compile anchor missing\n",
+  "log_tail": "Traceback (most recent call last):\n  File \"/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83248-v1-sealed/v83248-preseal-freeze.py\", line 44, in <module>\n    exec(compile(code,'v83248-preseal-wrapper.py','exec'))\n  File \"v83248-preseal-wrapper.py\", line 80, in <module>\n  File \"v83247-preseal-adapted.py\", line 157, in <module>\nAssertionError\n",
   "semantic_runtime_executed": false,
   "semantic_authority_loaded": false,
   "batch_a_executed": false,
