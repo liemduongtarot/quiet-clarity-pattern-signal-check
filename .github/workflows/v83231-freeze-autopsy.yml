@@ -17,6 +17,7 @@ jobs:
       - name: Freeze exact autopsy
         shell: bash
         run: |
+          # first actual V8.3.231 frozen autopsy run
           set -euo pipefail
           python validation/v83231-v1-sealed/v83231-freeze-autopsy.py
           git config user.name github-actions
