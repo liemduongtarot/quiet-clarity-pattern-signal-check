@@ -1,4 +1,5 @@
 name: V8.3.240 transport and static preflight
+# trigger: actual preflight
 on:
   push:
     branches: [main]
