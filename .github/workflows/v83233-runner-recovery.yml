@@ -1,0 +1,62 @@
+name: V8.3.233 runner plumbing recovery
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83233-runner-recovery.yml
+permissions:
+  contents: write
+jobs:
+  recovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83233-v1-validation
+          fetch-depth: 0
+      - name: Run bounded recovery
+        id: run
+        shell: bash
+        run: |
+          set +e
+          python validation/v83233-runner-plumbing-recovery.py > /tmp/v233-recovery.log 2>&1
+          rc=$?
+          cat /tmp/v233-recovery.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          RC="$rc" python - <<'PY'
+          import json,os,pathlib
+          text=pathlib.Path('/tmp/v233-recovery.log').read_text(errors='replace');rc=os.environ['RC']
+          pathlib.Path('validation/V8_3_233_RUNNER_PLUMBING_RECOVERY_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.233','phase':'runner-plumbing-recovery-diagnostic','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-16000:],'sealed_validation_executed':False,'v232_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
+          PY
+          exit 0
+      - name: Freeze evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_233_RUNNER_PLUMBING_RECOVERY_DIAGNOSTIC.json
+          test ! -f validation/V8_3_233_RUNNER_PLUMBING_RECOVERY_RECEIPT.json || git add validation/V8_3_233_RUNNER_PLUMBING_RECOVERY_RECEIPT.json
+          git diff --cached --quiet || git commit -m 'Record V8.3.233 runner plumbing recovery evidence'
+          git push origin HEAD:v83233-v1-validation
+      - name: Build checkpoint
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir V8_3_233_RUNNER_RECOVERY_CHECKPOINT
+          for f in validation/V8_3_233_RUNNER_PLUMBING_RECOVERY_*.json validation/v83233-runner-plumbing-recovery.py; do test ! -f "$f" || cp "$f" V8_3_233_RUNNER_RECOVERY_CHECKPOINT/; done
+          (cd V8_3_233_RUNNER_RECOVERY_CHECKPOINT && sha256sum * > SHA256_MANIFEST.txt)
+          zip -r PSC_V8_3_233_RUNNER_RECOVERY_CHECKPOINT.zip V8_3_233_RUNNER_RECOVERY_CHECKPOINT
+          sha256sum PSC_V8_3_233_RUNNER_RECOVERY_CHECKPOINT.zip > PSC_V8_3_233_RUNNER_RECOVERY_CHECKPOINT_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_233_RUNNER_RECOVERY_CHECKPOINT
+          path: |
+            PSC_V8_3_233_RUNNER_RECOVERY_CHECKPOINT.zip
+            PSC_V8_3_233_RUNNER_RECOVERY_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce recovery outcome
+        shell: bash
+        run: test '${{ steps.run.outputs.rc }}' = '0'
