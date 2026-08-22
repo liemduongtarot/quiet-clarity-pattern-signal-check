@@ -1,0 +1,27 @@
+name: V8.3.243 Actions Transport Probe
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83243-actions-transport-probe.yml
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83243-v1-sealed-validation
+          fetch-depth: 0
+      - name: Write transport-only probe marker
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p validation/v83243-v1-sealed
+          printf '{"candidate":"V8.3.243","probe":"actions-push-transport","run_id":"%s","semantic_runtime_executed":false,"gold_changed":false}\n' "$GITHUB_RUN_ID" > validation/v83243-v1-sealed/V8_3_243_ACTIONS_TRANSPORT_PROBE.json
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83243-v1-sealed/V8_3_243_ACTIONS_TRANSPORT_PROBE.json
+          git commit -m 'Record V8.3.243 Actions transport probe'
+          git push origin HEAD:v83243-v1-sealed-validation
