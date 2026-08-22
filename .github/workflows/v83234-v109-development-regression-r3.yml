@@ -21,7 +21,7 @@ jobs:
         id: run
         shell: bash
         run: |
-          # actual R3 trigger
+          # R4 after isolated V231 third-party regression repair
           set +e
           python validation/v83234-v109-regression-orchestrator.py > /tmp/v234-r3.log 2>&1
           rc=$?
@@ -30,7 +30,7 @@ jobs:
           RC="$rc" python - <<'PY'
           import json,os,pathlib
           text=pathlib.Path('/tmp/v234-r3.log').read_text(errors='replace');rc=os.environ['RC']
-          pathlib.Path('validation/V8_3_234_V109_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.234','phase':'v109-development-regression-diagnostic-r3','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-32000:],'sealed_validation_executed':False,'v233_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
+          pathlib.Path('validation/V8_3_234_V109_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.234','phase':'v109-development-regression-diagnostic-r4','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-32000:],'sealed_validation_executed':False,'v233_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
           PY
           exit 0
       - name: Freeze evidence
@@ -43,7 +43,7 @@ jobs:
           git add validation/V8_3_234_V109_REGRESSION_DIAGNOSTIC.json
           test ! -f validation/V8_3_234_V109_REGRESSION_RECEIPT.json || git add validation/V8_3_234_V109_REGRESSION_RECEIPT.json
           for f in validation/V8_3_234_V*_A_FROZEN_CARRIER.json; do test ! -f "$f" || git add "$f"; done
-          git diff --cached --quiet || git commit -m 'Record V8.3.234 V109 DEVELOPMENT regression R3 evidence'
+          git diff --cached --quiet || git commit -m 'Record V8.3.234 V109 DEVELOPMENT regression R4 evidence'
           git push origin HEAD:v83234-v1-validation
       - name: Enforce outcome
         shell: bash
