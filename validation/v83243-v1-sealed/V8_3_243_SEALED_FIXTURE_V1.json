@@ -1,0 +1,773 @@
+{
+  "candidate": "V8.3.243",
+  "cases": [
+    {
+      "case_id": "V243-S00-02",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "That leathercraft list is logistical context rather than response evidence. The episode is genuine; the unresolved gap is my observable closing move. A leathercraft room catalogued awl guards, edge slickers and thread cards by bench.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S00-05",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The pottery inventory cannot determine the response classification. This actually occurred; what I personally did at closure is still missing. A pottery classroom logged trimming loops, clay gauges and glaze swatches by table.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S00-08",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "Those coffee-lab notes are operational detail, not behavioural evidence. The episode is genuine; the unresolved gap is my observable closing move. A coffee lab tracked filter papers, dose scoops and roast cards by station.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S00-10",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Một bàn sửa clock ghi envelope spring, case loupe và tube crown theo ngăn. Stock list sửa clock nằm ngoài hành vi đang đo. The lived context is available, but của tôi own endpoint behaviour is absent.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S00-14",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Ledger loom là background detail chứ không phải mechanism evidence. The episode is genuine; the unresolved gap is của tôi observable closing move. Một xưởng loom ghi hook heddle, sample yarn và guide shuttle theo bin.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S00-16",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Một phòng percussion ghi key drum, strip felt và thẻ tension theo ngăn. Bản ghi percussion chỉ nói về hardware, không phải behaviour. The lived context is available, but của tôi own endpoint behaviour is absent.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S01-02",
+      "category": "decision",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I want your choice to replace mine, not just shape my thinking. A leathercraft room catalogued awl guards, edge slickers and thread cards by bench. That leathercraft list is logistical context rather than response evidence.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S01-05",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Own the deciding call and determine which route stands. A pottery classroom logged trimming loops, clay gauges and glaze swatches by table. The pottery inventory cannot determine the response classification.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S01-08",
+      "category": "decision",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I want your choice to replace mine, not just shape my thinking. A coffee lab tracked filter papers, dose scoops and roast cards by station. Those coffee-lab notes are operational detail, not behavioural evidence.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S01-10",
+      "category": "decision",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Stock list sửa clock nằm ngoài hành vi đang đo. Make the final choice itself for me rather than merely advising. Một bàn sửa clock ghi envelope spring, case loupe và tube crown theo ngăn.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S01-14",
+      "category": "decision",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi want your choice to replace mine, not just shape của tôi thinking. Một xưởng loom ghi hook heddle, sample yarn và guide shuttle theo bin. Ledger loom là background detail chứ không phải mechanism evidence.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S01-16",
+      "category": "decision",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Bản ghi percussion chỉ nói về hardware, không phải behaviour. Make the final choice itself for me rather than merely advising. Một phòng percussion ghi key drum, strip felt và thẻ tension theo ngăn.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S02-02",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "money",
+      "surface": "A leathercraft room catalogued awl guards, edge slickers and thread cards by bench. That leathercraft list is logistical context rather than response evidence. This is fabricated evaluation material and not something I lived.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S02-05",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "family",
+      "surface": "A pottery classroom logged trimming loops, clay gauges and glaze swatches by table. The pottery inventory cannot determine the response classification. This example is artificial validation text rather than lived evidence.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S02-08",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "money",
+      "surface": "A coffee lab tracked filter papers, dose scoops and roast cards by station. Those coffee-lab notes are operational detail, not behavioural evidence. This is fabricated evaluation material and not something I lived.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S02-10",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Tôi constructed this solely to test classification, not from của tôi life. Một bàn sửa clock ghi envelope spring, case loupe và tube crown theo ngăn. Stock list sửa clock nằm ngoài hành vi đang đo.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S02-14",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Một xưởng loom ghi hook heddle, sample yarn và guide shuttle theo bin. Ledger loom là background detail chứ không phải mechanism evidence. This is fabricated evaluation material and not something Tôi lived.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S02-16",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Tôi constructed this solely to test classification, not from của tôi life. Một phòng percussion ghi key drum, strip felt và thẻ tension theo ngăn. Bản ghi percussion chỉ nói về hardware, không phải behaviour.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S03-02",
+      "category": "third",
+      "language": "EN",
+      "domain": "career",
+      "surface": "That leathercraft list is logistical context rather than response evidence. State someone else’s concealed view without any observable basis. A leathercraft room catalogued awl guards, edge slickers and thread cards by bench.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S03-05",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The pottery inventory cannot determine the response classification. Tell me the hidden conclusion in their mind without words or actions establishing it. A pottery classroom logged trimming loops, clay gauges and glaze swatches by table.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S03-08",
+      "category": "third",
+      "language": "EN",
+      "domain": "career",
+      "surface": "Those coffee-lab notes are operational detail, not behavioural evidence. State someone else’s concealed view without any observable basis. A coffee lab tracked filter papers, dose scoops and roast cards by station.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S03-10",
+      "category": "third",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Một bàn sửa clock ghi envelope spring, case loupe và tube crown theo ngăn. Stock list sửa clock nằm ngoài hành vi đang đo. Describe what another person secretly thinks when no conduct confirms it.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S03-14",
+      "category": "third",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Ledger loom là background detail chứ không phải mechanism evidence. State someone else’s concealed view without any observable basis. Một xưởng loom ghi hook heddle, sample yarn và guide shuttle theo bin.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S03-16",
+      "category": "third",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Một phòng percussion ghi key drum, strip felt và thẻ tension theo ngăn. Bản ghi percussion chỉ nói về hardware, không phải behaviour. Describe what another person secretly thinks when no conduct confirms it.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S04-02",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "By the future boundary, will the preferred result have happened? A leathercraft room catalogued awl guards, edge slickers and thread cards by bench. That leathercraft list is logistical context rather than response evidence.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S04-05",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "At that future point, will things have ended the way I want? A pottery classroom logged trimming loops, clay gauges and glaze swatches by table. The pottery inventory cannot determine the response classification.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S04-08",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "By the future boundary, will the preferred result have happened? A coffee lab tracked filter papers, dose scoops and roast cards by station. Those coffee-lab notes are operational detail, not behavioural evidence.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S04-10",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Stock list sửa clock nằm ngoài hành vi đang đo. At the later checkpoint, will the outcome Tôi want already be true? Một bàn sửa clock ghi envelope spring, case loupe và tube crown theo ngăn.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S04-14",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "By the future boundary, will the preferred result have happened? Một xưởng loom ghi hook heddle, sample yarn và guide shuttle theo bin. Ledger loom là background detail chứ không phải mechanism evidence.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S04-16",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Bản ghi percussion chỉ nói về hardware, không phải behaviour. At the later checkpoint, will the outcome Tôi want already be true? Một phòng percussion ghi key drum, strip felt và thẻ tension theo ngăn.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S05-02",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "money",
+      "surface": "A leathercraft room catalogued awl guards, edge slickers and thread cards by bench. That leathercraft list is logistical context rather than response evidence. A reversible starter was available, but I enlarged the option set and never began.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S05-05",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "family",
+      "surface": "A pottery classroom logged trimming loops, clay gauges and glaze swatches by table. The pottery inventory cannot determine the response classification. I could have tried one reversible move, but option growth displaced initiation.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S05-08",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "money",
+      "surface": "A coffee lab tracked filter papers, dose scoops and roast cards by station. Those coffee-lab notes are operational detail, not behavioural evidence. A reversible starter was available, but I enlarged the option set and never began.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S05-10",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "career",
+      "surface": "There was a low-commitment opening available, yet Tôi widened possibilities and made no move. Một bàn sửa clock ghi envelope spring, case loupe và tube crown theo ngăn. Stock list sửa clock nằm ngoài hành vi đang đo.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S05-14",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Một xưởng loom ghi hook heddle, sample yarn và guide shuttle theo bin. Ledger loom là background detail chứ không phải mechanism evidence. A reversible starter was available, but Tôi enlarged the option set and never began.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S05-16",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "career",
+      "surface": "There was a low-commitment opening available, yet Tôi widened possibilities and made no move. Một phòng percussion ghi key drum, strip felt và thẻ tension theo ngăn. Bản ghi percussion chỉ nói về hardware, không phải behaviour.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S06-02",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "That leathercraft list is logistical context rather than response evidence. The primary responsibility still needed me, yet I worked on tasks that could not settle it. A leathercraft room catalogued awl guards, edge slickers and thread cards by bench.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S06-05",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The pottery inventory cannot determine the response classification. A central obligation remained unanswered while I focused on peripheral tasks. A pottery classroom logged trimming loops, clay gauges and glaze swatches by table.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S06-08",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "Those coffee-lab notes are operational detail, not behavioural evidence. The primary responsibility still needed me, yet I worked on tasks that could not settle it. A coffee lab tracked filter papers, dose scoops and roast cards by station.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S06-10",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Một bàn sửa clock ghi envelope spring, case loupe và tube crown theo ngăn. Stock list sửa clock nằm ngoài hành vi đang đo. The core matter stayed open because Tôi shifted attention to side activity. A falconry archive indexed jesses, hood blocks, telemetry clips, moult cards and perch tags by cabinet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S06-14",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Ledger loom là background detail chứ không phải mechanism evidence. The primary responsibility still needed me, yet Tôi worked on tasks that could not settle it. Một xưởng loom ghi hook heddle, sample yarn và guide shuttle theo bin. A mineral lab catalogued streak plates, hardness picks, specimen trays, loupe tins and crystal labels by drawer.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S06-16",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Một phòng percussion ghi key drum, strip felt và thẻ tension theo ngăn. Bản ghi percussion chỉ nói về hardware, không phải behaviour. The core matter stayed open because Tôi shifted attention to side activity. A rowing shed logged oar collars, rigger bolts, seat rollers, gate pins and shell tags by rack.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S07-02",
+      "category": "slow",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I paused inside a clear limit, reviewed once, responded, and did not reopen it. A leathercraft room catalogued awl guards, edge slickers and thread cards by bench. That leathercraft list is logistical context rather than response evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S07-05",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "I delayed once within a fixed boundary, checked once, replied, and closed the matter. A pottery classroom logged trimming loops, clay gauges and glaze swatches by table. The pottery inventory cannot determine the response classification.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S07-08",
+      "category": "slow",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I paused inside a clear limit, reviewed once, responded, and did not reopen it. A coffee lab tracked filter papers, dose scoops and roast cards by station. Those coffee-lab notes are operational detail, not behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S07-10",
+      "category": "slow",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Stock list sửa clock nằm ngoài hành vi đang đo. Tôi used one bounded pause, checked once, replied, and then closed the issue. Một bàn sửa clock ghi envelope spring, case loupe và tube crown theo ngăn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S07-14",
+      "category": "slow",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi paused inside a clear limit, reviewed once, responded, and did not reopen it. Một xưởng loom ghi hook heddle, sample yarn và guide shuttle theo bin. Ledger loom là background detail chứ không phải mechanism evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S07-16",
+      "category": "slow",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Bản ghi percussion chỉ nói về hardware, không phải behaviour. Tôi used one bounded pause, checked once, replied, and then closed the issue. Một phòng percussion ghi key drum, strip felt và thẻ tension theo ngăn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S08-02",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "money",
+      "surface": "A leathercraft room catalogued awl guards, edge slickers and thread cards by bench. That leathercraft list is logistical context rather than response evidence. I moved toward action, backed away, then returned to the same conclusion without new facts.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V243-S08-05",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "family",
+      "surface": "A pottery classroom logged trimming loops, clay gauges and glaze swatches by table. The pottery inventory cannot determine the response classification. I nearly acted, reversed course, and revisited the same assessment under unchanged information.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V243-S08-08",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "money",
+      "surface": "A coffee lab tracked filter papers, dose scoops and roast cards by station. Those coffee-lab notes are operational detail, not behavioural evidence. I moved toward action, backed away, then returned to the same conclusion without new facts.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V243-S08-10",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Tôi advanced toward the move, pulled away, then repeated the same conclusion without added facts. Một bàn sửa clock ghi envelope spring, case loupe và tube crown theo ngăn. Stock list sửa clock nằm ngoài hành vi đang đo.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V243-S08-14",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Một xưởng loom ghi hook heddle, sample yarn và guide shuttle theo bin. Ledger loom là background detail chứ không phải mechanism evidence. Tôi moved toward action, backed away, then returned to the same conclusion without new facts.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V243-S08-16",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Tôi advanced toward the move, pulled away, then repeated the same conclusion without added facts. Một phòng percussion ghi key drum, strip felt và thẻ tension theo ngăn. Bản ghi percussion chỉ nói về hardware, không phải behaviour.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V243-S09-02",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "career",
+      "surface": "That leathercraft list is logistical context rather than response evidence. I chose for myself, finished the action, and left it closed. A leathercraft room catalogued awl guards, edge slickers and thread cards by bench.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S09-05",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The pottery inventory cannot determine the response classification. I made the decision myself, carried it out, and moved on. A pottery classroom logged trimming loops, clay gauges and glaze swatches by table.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S09-08",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "career",
+      "surface": "Those coffee-lab notes are operational detail, not behavioural evidence. I chose for myself, finished the action, and left it closed. A coffee lab tracked filter papers, dose scoops and roast cards by station.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S09-10",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Một bàn sửa clock ghi envelope spring, case loupe và tube crown theo ngăn. Stock list sửa clock nằm ngoài hành vi đang đo. The choice remained mine through completion; afterward Tôi did not reopen it.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S09-14",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Ledger loom là background detail chứ không phải mechanism evidence. Tôi chose for myself, finished the action, and left it closed. Một xưởng loom ghi hook heddle, sample yarn và guide shuttle theo bin.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V243-S09-16",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Một phòng percussion ghi key drum, strip felt và thẻ tension theo ngăn. Bản ghi percussion chỉ nói về hardware, không phải behaviour. The choice remained mine through completion; afterward Tôi did not reopen it.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
