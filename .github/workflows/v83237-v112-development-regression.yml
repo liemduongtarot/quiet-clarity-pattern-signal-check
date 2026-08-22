@@ -21,6 +21,7 @@ jobs:
         id: run
         shell: bash
         run: |
+          # first actual V8.3.237 DEVELOPMENT regression trigger
           set +e
           python validation/v83237-v112-regression-orchestrator.py > /tmp/v237.log 2>&1
           rc=$?
