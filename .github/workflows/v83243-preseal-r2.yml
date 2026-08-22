@@ -1,0 +1,37 @@
+name: V8.3.243 PRESEAL R2
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83243-preseal-r2.yml
+permissions:
+  contents: write
+jobs:
+  preseal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83243-v1-sealed-validation
+          fetch-depth: 0
+      - name: Run exact construction-only PRESEAL
+        id: run
+        shell: bash
+        run: |
+          set +e
+          python validation/v83243-v1-sealed/v83243-preseal-freeze.py > /tmp/v243-preseal-r2.log 2>&1
+          rc=$?
+          cat /tmp/v243-preseal-r2.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Freeze evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          for f in validation/v83243-v1-sealed/V8_3_243_PRESEAL_RUN_RECEIPT.json validation/v83243-v1-sealed/V8_3_243_PRESEAL_CANDIDATE_BANK_V1.json validation/v83243-v1-sealed/V8_3_243_SEALED_SELECTION_V1.json validation/v83243-v1-sealed/V8_3_243_SEALED_FIXTURE_V1.json validation/v83243-v1-sealed/V8_3_243_INDEPENDENT_GOLD_V1.json validation/v83243-v1-sealed/V8_3_243_SEALED_MEMBERSHIP_V1.json validation/v83243-v1-sealed/V8_3_243_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83243-v1-sealed/V8_3_243_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.243 PRESEAL R2 authority'
+          git push origin HEAD:v83243-v1-sealed-validation
+      - name: Enforce outcome
+        run: test '${{ steps.run.outputs.rc }}' = '0'
