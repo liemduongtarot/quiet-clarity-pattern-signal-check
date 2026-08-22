@@ -1,0 +1,29 @@
+{
+  "candidate": "V8.3.231",
+  "semantic_authority": "QCEvidenceExtractorV5AH -> QCSemanticCoreV107",
+  "v230_total": 30,
+  "v230_passed": 29,
+  "v230_failed": 1,
+  "failure": {
+    "case_id": "V230-S08-01",
+    "category": "sequence",
+    "language": "EN",
+    "source_first_run_pass": false,
+    "pass": false,
+    "expected": {
+      "route": "input:self-lived",
+      "families": [
+        "slow"
+      ],
+      "sequence": true
+    },
+    "actual": {
+      "route": "input:self-lived",
+      "families": [],
+      "sequence": false
+    },
+    "surface": "A woodworking room logged sanding blocks and clamp tags by bench. That physical detail is outside the response evidence. I came close to carrying it out, withdrew, and repeated the same judgement despite no new evidence."
+  },
+  "sealed_validation_executed": false,
+  "v230_sealed_rerun": false
+}
