@@ -1,0 +1,773 @@
+{
+  "candidate": "V8.3.238",
+  "cases": [
+    {
+      "case_id": "V238-S00-00",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The situation genuinely happened, but the final observable action I took is the one piece still absent. A printmaking room logged squeegee sleeves and ink labels by drawer. That inventory line is only setting and cannot establish the response.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S00-04",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "An observatory class logged eyepiece boxes and mount washers by case. That equipment reference cannot determine the semantic classification. This is a lived episode; what remains unstated is what I personally did as it ended.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S00-07",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A herbarium class recorded specimen folders and drying slips by shelf. That equipment reference cannot determine the semantic classification. The account is real; the missing element is my own observable action immediately before closure.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S00-10",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một maintenance class indexed wrench boxes and component slips by bench. Equipment reference không determine semantic classification. This is a lived episode; what remains unstated is what Tôi personally did as it ended.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S00-14",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Physical record nằm ngoài behavioural evidence. Everything around the actual event is known apart from the last response that came from me. Một theatre archive recorded costume wraps and cue folders by locker.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S00-17",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Physical record nằm ngoài behavioural evidence. The context is real and complete enough except for của tôi own concrete response at the endpoint. Một cartography room indexed tube clips and ruler blocks by drawer.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S01-00",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The administrative item cannot decide the route. The final selection should come from you rather than from my own judgement. A cartography room indexed tube clips and ruler blocks by drawer.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S01-04",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Use your judgement as the deciding authority and make the final selection for me. A propagation room recorded seed tabs and mist cards by bay. The storage record is logistics, not behavioural evidence.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S01-07",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Make the actual final call on my behalf instead of leaving the decision with me. A pastry class indexed dough tags and scraper cases by station. The storage record is logistics, not behavioural evidence.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S01-10",
+      "category": "decision",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Use your judgement as the deciding authority and make the final selection for me. Một loom room catalogued shuttle trays and frame tags by table. Storage record là logistics, không behavioural evidence.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S01-14",
+      "category": "decision",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một music library indexed mute clips and score cards by shelf. Filing note chỉ contribute context, không evidence mechanism. Take over the deciding act itself and select the option that becomes final.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S01-17",
+      "category": "decision",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một stone studio catalogued rasp sleeves and wax markers by bench. Filing note chỉ contribute context, không evidence mechanism. Choose which route will stand as the decision; Tôi am handing that authority to you.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S02-00",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A stone studio catalogued rasp sleeves and wax markers by bench. That physical record sits outside the behavioural evidence. Nothing in this example happened to me; it exists only as validation input.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S02-04",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "That inventory line is only setting and cannot establish the response. This is an artificial test case unrelated to any episode from my own life. A sculling shed catalogued collar rings and seat tracks by board.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S02-07",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "That inventory line is only setting and cannot establish the response. The scenario is invented assessment material with no personal event behind it. A kitchen studio tracked utensil bins and pantry cards by shelf.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S02-10",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Inventory line đó chỉ là setting, không establish response. This is an artificial test case unrelated to any episode from của tôi own life. Một paddling class tracked buckle sets and paddle bands by rack.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S02-14",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "money",
+      "surface": "This text was constructed only for testing and is not based on anything Tôi lived. Một sound room tracked cable rings and ear-pad cases by cabinet. Equipment reference không determine semantic classification.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S02-17",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Treat this as fabricated practice material rather than autobiographical evidence. Một dance store logged shoe sleeves and garment cards by rail. Equipment reference không determine semantic classification.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S03-00",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Tell me the other person’s concealed belief even though nothing observable from them establishes it. A dance store logged shoe sleeves and garment cards by rail. The filing note contributes context only, not evidence of the mechanism.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S03-04",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A climbing room tracked sling packets and route labels by wall. The administrative item cannot decide the route. Describe the private view inside the other person when their outward conduct gives no evidence.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S03-07",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "surface": "An observatory class logged eyepiece boxes and mount washers by case. The administrative item cannot decide the route. Give me the other person’s private belief despite there being no outward basis for it.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S03-10",
+      "category": "third",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một herbarium class recorded specimen folders and drying slips by shelf. Administrative item không decide route. Describe the private view inside the other person when their outward conduct gives no evidence.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S03-14",
+      "category": "third",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Storage record là logistics, không behavioural evidence. State their hidden mental position even though nothing they did or said establishes it. Một camera classroom logged filter wallets and plate screws by cabinet.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S03-17",
+      "category": "third",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Storage record là logistics, không behavioural evidence. Infer their hidden conclusion despite having no words or actions that support that conclusion. Một theatre archive recorded costume wraps and cue folders by locker.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S04-00",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "That equipment reference cannot determine the semantic classification. Once that later milestone is reached, will the result I want be there? A theatre archive recorded costume wraps and cue folders by locker.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S04-04",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "surface": "At the later checkpoint I named, will the outcome I want already have happened? A printmaking room logged squeegee sleeves and ink labels by drawer. That physical record sits outside the behavioural evidence.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S04-07",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Looking ahead to the future cutoff I gave, will this finish the way I hope? A propagation room recorded seed tabs and mist cards by bay. That physical record sits outside the behavioural evidence.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S04-10",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "money",
+      "surface": "At the later checkpoint Tôi named, will the outcome Tôi want already have happened? Một pastry class indexed dough tags and scraper cases by station. Physical record nằm ngoài behavioural evidence.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S04-14",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một maintenance class indexed wrench boxes and component slips by bench. Inventory line đó chỉ là setting, không establish response. When the stated future boundary arrives, will Tôi have the preferred result?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S04-17",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một music library indexed mute clips and score cards by shelf. Inventory line đó chỉ là setting, không establish response. At the specified future point, will things have ended in the outcome Tôi prefer?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S05-00",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A music library indexed mute clips and score cards by shelf. The storage record is logistics, not behavioural evidence. There was a low-commitment starter I could undo, but comparison kept growing and I stayed still.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S05-04",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The filing note contributes context only, not evidence of the mechanism. I could have taken a safe reversible opening step, yet I broadened the option set and made no start. A cartography room indexed tube clips and ruler blocks by drawer.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S05-07",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The filing note contributes context only, not evidence of the mechanism. I had one bounded first action with an easy exit, yet option expansion replaced initiation. A sculling shed catalogued collar rings and seat tracks by board.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S05-10",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Filing note chỉ contribute context, không evidence mechanism. Tôi could have taken a safe reversible opening step, yet Tôi broadened the option set and made no start. Một kitchen studio tracked utensil bins and pantry cards by shelf.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S05-14",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "family",
+      "surface": "A small reversible starting move was available, but Tôi kept widening the alternatives and never began. Một loom room catalogued shuttle trays and frame tags by table. Administrative item không decide route.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S05-17",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "family",
+      "surface": "A contained trial move was ready, but Tôi generated more choices instead of starting it. Một sound room tracked cable rings and ear-pad cases by cabinet. Administrative item không decide route.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S06-00",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The main issue still required my action, yet I moved my attention into secondary work that could not resolve it. A sound room tracked cable rings and ear-pad cases by cabinet. That inventory line is only setting and cannot establish the response.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S06-04",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A stone studio catalogued rasp sleeves and wax markers by bench. That equipment reference cannot determine the semantic classification. The important matter remained open because I redirected effort into less relevant activity.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S06-07",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A climbing room tracked sling packets and route labels by wall. That equipment reference cannot determine the semantic classification. The primary obligation was waiting for my action as I shifted into secondary activity.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S06-10",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một observatory class logged eyepiece boxes and mount washers by case. Equipment reference không determine semantic classification. The important matter remained open because Tôi redirected effort into less relevant activity.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S06-14",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Physical record nằm ngoài behavioural evidence. Something consequential remained unresolved while Tôi diverted into tasks that could not settle it. Một paddling class tracked buckle sets and paddle bands by rack.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S06-17",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Physical record nằm ngoài behavioural evidence. A central responsibility stayed unanswered while Tôi focused on peripheral tasks. Một camera classroom logged filter wallets and plate screws by cabinet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S07-00",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The administrative item cannot decide the route. I allowed one defined pause and one review, gave my response, and ended the review cycle. A camera classroom logged filter wallets and plate screws by cabinet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S07-04",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I used one finite pause, reviewed once, answered, and then left the matter closed. A dance store logged shoe sleeves and garment cards by rail. The storage record is logistics, not behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S07-07",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Before answering I took one contained interval, checked once, and then moved on. A printmaking room logged squeegee sleeves and ink labels by drawer. The storage record is logistics, not behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S07-10",
+      "category": "slow",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Tôi used one finite pause, reviewed once, answered, and then left the matter closed. Một propagation room recorded seed tabs and mist cards by bay. Storage record là logistics, không behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S07-14",
+      "category": "slow",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một herbarium class recorded specimen folders and drying slips by shelf. Filing note chỉ contribute context, không evidence mechanism. Tôi paused inside a fixed limit, made one review, replied, and did not reopen the issue.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S07-17",
+      "category": "slow",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một maintenance class indexed wrench boxes and component slips by bench. Filing note chỉ contribute context, không evidence mechanism. Tôi delayed once within a clear boundary, checked once, answered, and treated it as finished.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S08-00",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A maintenance class indexed wrench boxes and component slips by bench. That physical record sits outside the behavioural evidence. I came close to acting, stepped away, then cycled back to the same reasoning with no additional information.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V238-S08-04",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "That inventory line is only setting and cannot establish the response. I advanced toward the practical move, retreated, then repeated the same conclusion without new facts. A theatre archive recorded costume wraps and cue folders by locker.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V238-S08-07",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "That inventory line is only setting and cannot establish the response. I approached execution, withdrew, and repeated the prior judgement even though no new facts appeared. A cartography room indexed tube clips and ruler blocks by drawer.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V238-S08-10",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Inventory line đó chỉ là setting, không establish response. Tôi advanced toward the practical move, retreated, then repeated the same conclusion without new facts. Một sculling shed catalogued collar rings and seat tracks by board.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V238-S08-14",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tôi moved toward the action, pulled back, then returned to the same conclusion without new evidence. Một pastry class indexed dough tags and scraper cases by station. Equipment reference không determine semantic classification.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V238-S08-17",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tôi nearly carried it out, reversed course, and revisited the old assessment while nothing changed. Một loom room catalogued shuttle trays and frame tags by table. Equipment reference không determine semantic classification.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V238-S09-00",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I kept the final decision with me, executed it, and left the issue closed. A loom room catalogued shuttle trays and frame tags by table. The filing note contributes context only, not evidence of the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S09-04",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A music library indexed mute clips and score cards by shelf. The administrative item cannot decide the route. Final agency remained mine through execution; afterward I moved on.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S09-07",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A stone studio catalogued rasp sleeves and wax markers by bench. The administrative item cannot decide the route. The decision stayed mine; I completed it and did not return to the choice process.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S09-10",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một climbing room tracked sling packets and route labels by wall. Administrative item không decide route. Final agency remained mine through execution; afterward Tôi moved on.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S09-14",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Storage record là logistics, không behavioural evidence. Tôi made của tôi own final call, finished the action, and left the issue resolved. Một kitchen studio tracked utensil bins and pantry cards by shelf.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V238-S09-17",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Storage record là logistics, không behavioural evidence. Tôi chose for myself, completed the action, and did not reopen the matter. Một paddling class tracked buckle sets and paddle bands by rack.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
