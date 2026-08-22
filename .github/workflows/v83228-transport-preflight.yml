@@ -18,7 +18,7 @@ jobs:
         id: run
         shell: bash
         run: |
-          # V8.3.228 transport/static preflight R2 path repair only
+          # V8.3.228 transport/static preflight R3 plumbing trigger; semantics unchanged
           set +e
           git fetch --depth=1 origin refs/heads/v83227-v1-sealed-validation:refs/remotes/origin/v83227-v1-sealed-validation
           python validation/v83228-v1-sealed/v83228-transport-preflight.py > /tmp/v228-preflight.log 2>&1
@@ -28,7 +28,7 @@ jobs:
           RC="$rc" python - <<'PY'
           import json,os,pathlib
           text=pathlib.Path('/tmp/v228-preflight.log').read_text(errors='replace');rc=os.environ['RC']
-          pathlib.Path('validation/v83228-v1-sealed/V8_3_228_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.228','phase':'transport-static-preflight-diagnostic-r2','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-14000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False},indent=2)+'\n')
+          pathlib.Path('validation/v83228-v1-sealed/V8_3_228_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.228','phase':'transport-static-preflight-diagnostic-r3','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-14000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False},indent=2)+'\n')
           PY
           exit 0
       - name: Freeze evidence
