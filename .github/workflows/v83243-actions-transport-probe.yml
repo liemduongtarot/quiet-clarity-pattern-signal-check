@@ -1,5 +1,5 @@
-name: V8.3.248 PRESEAL metric diagnostic
-# trigger-v248-preseal-metrics-1
+name: V8.3.248 PRESEAL construction repair
+# trigger-v248-preseal-repair-layer2
 on:
   push:
     branches: [main]
@@ -15,35 +15,46 @@ jobs:
         with:
           ref: v83248-v1-sealed-validation
           fetch-depth: 0
-      - name: Persist metric start
+      - name: Add second V248-only inert lexical layer
         shell: bash
         run: |
           set -euo pipefail
-          printf '{"candidate":"V8.3.248","phase":"preseal-metric-start","run_id":"%s","semantic_runtime_executed":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83248-v1-sealed/V8_3_248_PRESEAL_METRIC_START.json
-          git config user.name github-actions
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83248-v1-sealed/V8_3_248_PRESEAL_METRIC_START.json
-          git commit -m 'Record V8.3.248 PRESEAL metric start'
-          git push origin HEAD:v83248-v1-sealed-validation
-      - name: Run metric diagnostic
-        shell: bash
-        run: |
-          set -euo pipefail
-          git fetch origin v83247-v1-sealed-validation:refs/remotes/origin/v83247-v1-sealed-validation
-          git fetch origin v83246-v1-sealed-validation:refs/remotes/origin/v83246-v1-sealed-validation
-          python - <<'PY' > /tmp/v248-metrics.log 2>&1 || true
+          python - <<'PY'
           from pathlib import Path
-          wrapper=Path('validation/v83248-v1-sealed/v83248-preseal-freeze.py').read_text()
-          needle="exec(compile(code,'v83248-preseal-wrapper.py','exec'))"
-          inner="code=code.replace(\"exec(compile(src,'v83247-preseal-adapted.py','exec'))\",\"src=src.replace('assert internal[0]<.75 and external[0]<.75 and high==0 and exact==0 and fpdup==0',\\\"print('PRESEAL_METRICS',{'internal':internal,'external':external,'high':high,'exact':exact,'fpdup':fpdup}); raise SystemExit(0)\\\",1); exec(compile(src,'v83247-preseal-adapted.py','exec'))\",1); exec(compile(code,'v83248-preseal-wrapper.py','exec'))"
-          if needle not in wrapper: raise SystemExit('outer exec anchor missing')
-          wrapper=wrapper.replace(needle,inner,1)
-          exec(compile(wrapper,'v248-metric-outer.py','exec'))
+          p=Path('validation/v83248-v1-sealed/v83248-preseal-freeze.py')
+          t=p.read_text()
+          old="for _c in cases:\n _ci=int(_c['case_id'].split('-S')[1].split('-')[0]);_j=int(_c['case_id'].rsplit('-',1)[1]);_c['surface']+=_V248_CAT[_ci]+_V248_J[_j%10]"
+          cat2=[
+          ' A remote acoustics archive additionally indexed anechoic wedges, impedance tubes, reference couplers, octave filters, calibration pistons, phase charts, response plots, signal attenuators, isolation mounts, probe microphones, frequency cards and damping blocks; these unrelated records remain inert to the measured behaviour.',
+          ' A printmaking chemistry cupboard additionally catalogued plate grounds, solvent clocks, etching trays, registration punches, roller durometers, wash bottles, blotting felts, scraper handles, acid-resistant tapes, grain screens, proof tags and drying racks; none of this stock assigns the final choice.',
+          ' A historical textile laboratory additionally stored mordant swatches, fibre microscopes, colour strips, wash-fastness cards, spindle samples, weave counters, yarn gauges, dye spoons, sample envelopes, pH papers, drying grids and batch notebooks; these materials cannot transform invented input into lived evidence.',
+          ' A manuscript climate vault additionally recorded silica packets, humidity loggers, light dosimeters, archival boards, repair tissues, polyester corners, linen hinges, box labels, preservation pencils, cotton gloves, blotter folders and shelf monitors; none reveals another person’s hidden mental state.',
+          ' A watershed modelling room additionally logged flume scales, sediment sieves, hydrograph sheets, tracer bottles, staff readers, current rotors, catchment maps, sampling poles, turbidity tubes, gauge cards, rainfall drums and calibration floats; these records cannot determine a future outcome.',
+          ' A conservation leather studio additionally indexed paring knives, edge irons, stitching ponies, spacer wheels, awl blades, thread wax, strap templates, buckle blanks, crease gauges, skiving boards, punch mats and mallet faces; these tools do not create or remove a stalled opening move.',
+          ' A building-materials archive additionally stored mortar prisms, joint profiles, crack monitors, survey tapes, pointing samples, line blocks, masonry brushes, core sleeves, site notebooks, sample tins, depth gauges and condition tags; this equipment cannot resolve an unattended central obligation.',
+          ' A double-reed research cabinet additionally held plaque gauges, reed knives, mandrels, thread bobbins, drying racks, measuring wires, shaper tips, cork strips, spring hooks, pad cups, bore gauges and humidity cards; these objects do not alter a bounded pause-review-close sequence.',
+          ' A loom diagnostics room additionally catalogued warp meters, tension scales, reed hooks, lease sticks, shuttle races, heddle frames, pirn gauges, weave charts, yarn counters, bobbin trees, pattern slates and take-up markers; no new evidence about approach and retreat is supplied by this equipment.',
+          ' A cinematography calibration bench additionally stored collimators, focus targets, gate gauges, lens charts, aperture leaves, shutter timers, projection grids, retaining rings, lamp meters, alignment screws, frame counters and optical filters; these components do not change who retained the final choice.'
+          ]
+          j2=[
+          ' A separate accession bundle listed zirconia spacers, nickel clips, cotton cords, maple gauges, cellulose bands, bronze tabs, linen envelopes, silicone washers, graphite markers, vellum flags, cork sleeves and ceramic rulers under a distinct storage code; this is scenery only.',
+          ' A separate drawer schedule listed brass ferrules, bamboo pegs, wool pads, steel rings, kraft labels, glass vials, linen loops, paper seals, alloy hooks, cotton wraps, cork tabs and wooden cards by compartment; the schedule contains no behavioural proof.',
+          ' A separate shelf manifest listed enamel discs, copper ties, fibre strips, oak shims, ceramic caps, paper sleeves, linen bands, glass rods, steel markers, cotton labels, cork gauges and brass pins by bay; none determines the semantic route.',
+          ' A separate crate ledger listed vellum tabs, maple spacers, alloy clips, cotton webbing, paper bands, ceramic washers, bronze hooks, linen sleeves, glass stoppers, cork markers, graphite slates and steel rulers; the ledger is unrelated context.',
+          ' A separate bench ticket listed cellulose cards, nickel loops, bamboo gauges, cotton ties, linen wraps, paper tags, bronze rings, glass caps, ceramic spacers, steel clips, cork strips and oak markers by station; these objects do not prove a mechanism.',
+          ' A separate archive register listed linen flags, ceramic rods, brass sleeves, paper seals, cotton cords, steel shims, bamboo tabs, glass markers, cork blocks, bronze clips, graphite labels and maple pins; this register cannot classify behaviour.',
+          ' A separate storeroom card listed fibre washers, oak rulers, linen tapes, alloy ferrules, cotton loops, paper sleeves, ceramic tabs, bronze pins, silicone markers, glass strips, cork caps and steel hooks; the card adds only physical context.',
+          ' A separate cabinet inventory listed vellum wraps, nickel rings, bamboo labels, cotton strips, ceramic clips, paper markers, linen cords, steel gauges, glass bands, cork sleeves, bronze tabs and maple blocks; the inventory carries no response evidence.',
+          ' A separate case note listed brass washers, cellulose flags, linen loops, oak shims, steel clips, cotton sleeves, ceramic markers, glass tabs, cork ties, bronze rings, paper gauges and bamboo cards; the note is inert to classification.',
+          ' A separate shelf ticket listed maple spacers, alloy pins, cotton bands, paper sleeves, linen tags, ceramic rings, glass clips, cork flags, bronze rulers, graphite tabs, steel loops and bamboo gauges; this ticket has no bearing on the measured response.'
+          ]
+          new="_V248_CAT2="+repr(cat2)+"\n_V248_J2="+repr(j2)+"\nfor _c in cases:\n _ci=int(_c['case_id'].split('-S')[1].split('-')[0]);_j=int(_c['case_id'].rsplit('-',1)[1]);_c['surface']+=_V248_CAT[_ci]+_V248_J[_j%10]+_V248_CAT2[_ci]+_V248_J2[_j%10]"
+          if old not in t: raise SystemExit('V248 lexical-layer anchor missing')
+          t=t.replace(old,new,1)
+          p.write_text(t)
           PY
-          cat /tmp/v248-metrics.log
-          cp /tmp/v248-metrics.log validation/v83248-v1-sealed/V8_3_248_PRESEAL_METRIC_DIAGNOSTIC.log
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83248-v1-sealed/V8_3_248_PRESEAL_METRIC_DIAGNOSTIC.log
-          git commit -m 'Record V8.3.248 PRESEAL metric diagnostic'
+          git add validation/v83248-v1-sealed/v83248-preseal-freeze.py
+          git commit -m 'Add V8.3.248 second fresh PRESEAL lexical layer'
           git push origin HEAD:v83248-v1-sealed-validation
