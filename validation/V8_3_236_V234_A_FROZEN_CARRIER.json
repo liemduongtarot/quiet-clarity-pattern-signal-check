@@ -1,0 +1,420 @@
+{
+  "authority": "V8.3.236 immutable carrier from frozen V8.3.234 A",
+  "source_run_id": "32575530462",
+  "cases": [
+    {
+      "case_id": "V234-S00-00",
+      "surface": "The event itself is real and the context is clear, but what I personally did at the final moment is still missing. A print room logged roller sleeves and ink cards by cabinet. That inventory note is background only and cannot establish the response.",
+      "domain": "money",
+      "category": "clarification",
+      "language": "EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S00-04",
+      "surface": "An astronomy club logged lens caps and mount bolts by case. That physical item sits outside the response evidence. The event itself is real and the context is clear, but what I personally did at the final moment is still missing.",
+      "domain": "workplace",
+      "category": "clarification",
+      "language": "EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S00-07",
+      "surface": "A specimen room recorded plant sleeves and drying sheets by shelf. The storage reference is logistical context, not behavioural evidence. Everything around the situation is available, but my personal endpoint behaviour is absent.",
+      "domain": "relationship",
+      "category": "clarification",
+      "language": "EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S01-00",
+      "surface": "That equipment detail cannot determine the semantic route. I am giving you ownership of the deciding call; choose the option that stands. A chart room indexed map tubes and paper weights by drawer.",
+      "domain": "other",
+      "category": "decision",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V234-S01-04",
+      "surface": "I am giving you ownership of the deciding call; choose the option that stands. A greenhouse room recorded tray labels and mist nozzles by bay. That inventory note is background only and cannot establish the response.",
+      "domain": "family",
+      "category": "decision",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S01-07",
+      "surface": "I want the selection to come from you, not advice on how I should choose. A pastry room indexed proofing cards and scraper bins by station. The filing record adds setting only, not proof of the mechanism.",
+      "domain": "money",
+      "category": "decision",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S02-00",
+      "surface": "A pottery lab catalogued carving tools and glaze tiles by bench. That physical item sits outside the response evidence. Nothing here comes from my life; it is synthetic validation material.",
+      "domain": "workplace",
+      "category": "hypothetical",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V234-S02-04",
+      "surface": "That equipment detail cannot determine the semantic route. Nothing here comes from my life; it is synthetic validation material. A rowing store catalogued seat bolts and oar clips by board.",
+      "domain": "career",
+      "category": "hypothetical",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V234-S02-07",
+      "surface": "The administrative detail cannot decide the classification. I created this artificial example only for evaluation, not from something I experienced. A cookery class tracked utensil boxes and pantry cards by shelf.",
+      "domain": "other",
+      "category": "hypothetical",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V234-S03-00",
+      "surface": "Tell me the private belief inside the other person when nothing observable from them supports it. A dance studio logged shoe bags and costume labels by rail. That inventory note is background only and cannot establish the response.",
+      "domain": "family",
+      "category": "third",
+      "language": "EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S03-04",
+      "surface": "A sailing shed tracked buckle kits and rope labels by rack. That physical item sits outside the response evidence. Tell me the private belief inside the other person when nothing observable from them supports it.",
+      "domain": "relationship",
+      "category": "third",
+      "language": "EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S03-07",
+      "surface": "An astronomy club logged lens caps and mount bolts by case. The storage reference is logistical context, not behavioural evidence. Work out their concealed internal view even though their outward conduct gives no basis.",
+      "domain": "workplace",
+      "category": "third",
+      "language": "EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S04-00",
+      "surface": "That equipment detail cannot determine the semantic route. Looking ahead to that future boundary, will things resolve the way I want? A costume archive recorded garment sleeves and cue cards by locker.",
+      "domain": "career",
+      "category": "prediction",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S04-04",
+      "surface": "Looking ahead to that future boundary, will things resolve the way I want? A print room logged roller sleeves and ink cards by cabinet. That inventory note is background only and cannot establish the response.",
+      "domain": "money",
+      "category": "prediction",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S04-07",
+      "surface": "When that future checkpoint arrives, will the situation end in my favour? A greenhouse room recorded tray labels and mist nozzles by bay. The filing record adds setting only, not proof of the mechanism.",
+      "domain": "family",
+      "category": "prediction",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S05-00",
+      "surface": "A climbing school indexed harness tags and chalk bags by wall. That physical item sits outside the response evidence. There was a contained starter action I could undo; I widened the choices instead of starting.",
+      "domain": "relationship",
+      "category": "freeze",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S05-04",
+      "surface": "That equipment detail cannot determine the semantic route. There was a contained starter action I could undo; I widened the choices instead of starting. A chart room indexed map tubes and paper weights by drawer.",
+      "domain": "other",
+      "category": "freeze",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S05-07",
+      "surface": "The administrative detail cannot decide the classification. A small reversible starter was ready, but I generated more options and did not initiate it. A rowing store catalogued seat bolts and oar clips by board.",
+      "domain": "career",
+      "category": "freeze",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S06-00",
+      "surface": "The central matter still needed my response, but I redirected effort into secondary work that could not settle it. An audio booth tracked cable loops and headset pads by cabinet. That inventory note is background only and cannot establish the response.",
+      "domain": "money",
+      "category": "ignore",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S06-04",
+      "surface": "A pottery lab catalogued carving tools and glaze tiles by bench. That physical item sits outside the response evidence. The central matter still needed my response, but I redirected effort into secondary work that could not settle it.",
+      "domain": "workplace",
+      "category": "ignore",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S06-07",
+      "surface": "A sailing shed tracked buckle kits and rope labels by rack. The storage reference is logistical context, not behavioural evidence. Something consequential required action from me, yet I occupied myself with peripheral work.",
+      "domain": "relationship",
+      "category": "ignore",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S07-00",
+      "surface": "That equipment detail cannot determine the semantic route. I allowed one defined pause and one review, gave my response, and moved on. A photo classroom logged filter wallets and tripod plates by drawer.",
+      "domain": "other",
+      "category": "slow",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V234-S07-04",
+      "surface": "I allowed one defined pause and one review, gave my response, and moved on. A dance studio logged shoe bags and costume labels by rail. That inventory note is background only and cannot establish the response.",
+      "domain": "family",
+      "category": "slow",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V234-S07-07",
+      "surface": "There was a single finite delay and one check before I answered and stopped reviewing. A print room logged roller sleeves and ink cards by cabinet. The filing record adds setting only, not proof of the mechanism.",
+      "domain": "money",
+      "category": "slow",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S08-00",
+      "surface": "A repair room indexed wrench trays and parts packets by bench. That physical item sits outside the response evidence. I got close to the practical move, retreated, then cycled back to identical reasoning without new facts.",
+      "domain": "workplace",
+      "category": "sequence",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S08-04",
+      "surface": "That equipment detail cannot determine the semantic route. I got close to the practical move, retreated, then cycled back to identical reasoning without new facts. A costume archive recorded garment sleeves and cue cards by locker.",
+      "domain": "career",
+      "category": "sequence",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S08-07",
+      "surface": "The administrative detail cannot decide the classification. I came close to doing it, backed out, and returned to prior reasoning although no new information appeared. A chart room indexed map tubes and paper weights by drawer.",
+      "domain": "other",
+      "category": "sequence",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S09-00",
+      "surface": "I kept the final decision with me, carried it out, and left the matter settled. A weaving room catalogued shuttle boxes and loom pegs by table. That inventory note is background only and cannot establish the response.",
+      "domain": "family",
+      "category": "neutral",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S09-04",
+      "surface": "A climbing school indexed harness tags and chalk bags by wall. That physical item sits outside the response evidence. I kept the final decision with me, carried it out, and left the matter settled.",
+      "domain": "relationship",
+      "category": "neutral",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V234-S09-07",
+      "surface": "A pottery lab catalogued carving tools and glaze tiles by bench. The storage reference is logistical context, not behavioural evidence. I retained ownership of the choice, executed it, and did not return to the decision.",
+      "domain": "workplace",
+      "category": "neutral",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    }
+  ]
+}
