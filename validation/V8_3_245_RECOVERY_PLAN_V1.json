@@ -1,0 +1,23 @@
+{
+  "candidate": "V8.3.245",
+  "phase": "DEVELOPMENT_RECOVERY_PLAN",
+  "base_exact_development_sha": "885608fce9e70a8818d1ebda23c786a81005a2fe",
+  "parent_semantic_authority": "QCEvidenceExtractorV5AR -> QCSemanticCoreV117",
+  "source_failure": "V8.3.244 protected Batch A first run 32593971008",
+  "source_failed": 14,
+  "source_passed": 16,
+  "repair_scope": [
+    "clarification-strong-evidence-secondary-recognition",
+    "third-party-strong-evidence-secondary-recognition",
+    "freeze-strong-evidence-secondary-recognition",
+    "ignore-strong-evidence-secondary-recognition",
+    "slow-strong-evidence-secondary-recognition",
+    "sequence-strong-evidence-secondary-recognition",
+    "neutral-strong-evidence-secondary-recognition"
+  ],
+  "expected_gold_changed": false,
+  "sealed_validation_executed": false,
+  "v244_batch_a_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
