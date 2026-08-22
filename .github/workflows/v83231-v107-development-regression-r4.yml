@@ -21,16 +21,16 @@ jobs:
         id: run
         shell: bash
         run: |
-          # actual R4 trigger after narrowed agency-transfer witness
+          # R5 trigger-only; same V5AH/V107 bytes
           set +e
-          python validation/v83231-v107-regression-orchestrator.py > /tmp/v231-r4.log 2>&1
+          python validation/v83231-v107-regression-orchestrator.py > /tmp/v231-r5.log 2>&1
           rc=$?
-          cat /tmp/v231-r4.log
+          cat /tmp/v231-r5.log
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
           RC="$rc" python - <<'PY'
           import json,os,pathlib
-          text=pathlib.Path('/tmp/v231-r4.log').read_text(errors='replace');rc=os.environ['RC']
-          pathlib.Path('validation/V8_3_231_V107_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.231','phase':'v107-development-regression-diagnostic-r4','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-20000:],'sealed_validation_executed':False,'v230_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
+          text=pathlib.Path('/tmp/v231-r5.log').read_text(errors='replace');rc=os.environ['RC']
+          pathlib.Path('validation/V8_3_231_V107_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.231','phase':'v107-development-regression-diagnostic-r5','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-20000:],'sealed_validation_executed':False,'v230_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
           PY
           exit 0
       - name: Freeze evidence
@@ -43,12 +43,12 @@ jobs:
           git add validation/V8_3_231_V107_REGRESSION_DIAGNOSTIC.json
           test ! -f validation/V8_3_231_V107_REGRESSION_RECEIPT.json || git add validation/V8_3_231_V107_REGRESSION_RECEIPT.json
           for f in validation/V8_3_231_V*_A_FROZEN_CARRIER.json; do test ! -f "$f" || git add "$f"; done
-          git diff --cached --quiet || git commit -m 'Record V8.3.231 V107 DEVELOPMENT regression R4 evidence'
+          git diff --cached --quiet || git commit -m 'Record V8.3.231 V107 DEVELOPMENT regression R5 evidence'
           git push origin HEAD:v83231-v1-validation
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: PSC_V8_3_231_V107_REGRESSION_R4
+          name: PSC_V8_3_231_V107_REGRESSION_R5
           path: |
             validation/V8_3_231_V107_REGRESSION_DIAGNOSTIC.json
             validation/V8_3_231_V107_REGRESSION_RECEIPT.json
