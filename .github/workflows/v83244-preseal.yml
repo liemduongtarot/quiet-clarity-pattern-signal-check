@@ -1,0 +1,44 @@
+name: V8.3.244 PRESEAL
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83244-preseal.yml
+permissions:
+  contents: write
+jobs:
+  preseal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83244-v1-sealed-validation
+          fetch-depth: 0
+      - name: Run exact construction-only PRESEAL
+        id: run
+        shell: bash
+        run: |
+          set +e
+          python validation/v83244-v1-sealed/v83244-preseal-freeze.py > /tmp/v244-preseal.log 2>&1
+          rc=$?
+          cat /tmp/v244-preseal.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          RC="$rc" python - <<'PY'
+          import json,os,pathlib
+          text=pathlib.Path('/tmp/v244-preseal.log').read_text(errors='replace')
+          pathlib.Path('validation/v83244-v1-sealed/V8_3_244_PRESEAL_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.244','phase':'preseal-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'exit_code':os.environ['RC'],'log_tail':text[-24000:],'semantic_runtime_executed':False,'gold_expected_changed':False},indent=2)+'\n')
+          PY
+          exit 0
+      - name: Freeze PRESEAL evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83244-v1-sealed/V8_3_244_PRESEAL_DIAGNOSTIC.json
+          for f in validation/v83244-v1-sealed/V8_3_244_PRESEAL_RUN_RECEIPT.json validation/v83244-v1-sealed/V8_3_244_PRESEAL_CANDIDATE_BANK_V1.json validation/v83244-v1-sealed/V8_3_244_SEALED_SELECTION_V1.json validation/v83244-v1-sealed/V8_3_244_SEALED_FIXTURE_V1.json validation/v83244-v1-sealed/V8_3_244_INDEPENDENT_GOLD_V1.json validation/v83244-v1-sealed/V8_3_244_SEALED_MEMBERSHIP_V1.json validation/v83244-v1-sealed/V8_3_244_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83244-v1-sealed/V8_3_244_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.244 PRESEAL evidence'
+          git push origin HEAD:v83244-v1-sealed-validation
+      - name: Enforce outcome
+        run: test '${{ steps.run.outputs.rc }}' = '0'
