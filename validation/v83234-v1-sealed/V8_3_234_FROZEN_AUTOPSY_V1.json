@@ -1,0 +1,199 @@
+{
+  "candidate": "V8.3.234",
+  "phase": "FROZEN_SEALED_AUTOPSY",
+  "batch_a_run_id": "32575530462",
+  "validated_development_head_sha": "6486a01fe4db04ad9594af67a8401d5340d54720",
+  "semantic_authority": "QCEvidenceExtractorV5AJ -> QCSemanticCoreV109",
+  "batch_a_total": 30,
+  "batch_a_passed": 24,
+  "batch_a_failed": 6,
+  "batch_a_attempt_consumed": true,
+  "batch_a_rerun_forbidden": true,
+  "batch_b_skipped": true,
+  "batch_b_rerun_forbidden": true,
+  "failure_layer": "ENGINE LOGIC",
+  "failure_class": "GENERALIZATION / COMPOSITIONAL RECALL / PRECEDENCE",
+  "failure_distribution": {
+    "decision": 1,
+    "hypothetical": 3,
+    "slow": 2
+  },
+  "route_confusions": [
+    {
+      "category": "decision",
+      "expected_route": "input:decision-request",
+      "actual_route": "input:self-lived",
+      "count": 1
+    },
+    {
+      "category": "hypothetical",
+      "expected_route": "input:hypothetical-or-example",
+      "actual_route": "input:decision-request",
+      "count": 1
+    },
+    {
+      "category": "hypothetical",
+      "expected_route": "input:hypothetical-or-example",
+      "actual_route": "input:self-lived",
+      "count": 2
+    },
+    {
+      "category": "slow",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:hypothetical-or-example",
+      "count": 1
+    },
+    {
+      "category": "slow",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:self-lived",
+      "count": 1
+    }
+  ],
+  "family_confusions": [
+    {
+      "category": "decision",
+      "expected_families": [],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "hypothetical",
+      "expected_families": [],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 3
+    },
+    {
+      "category": "slow",
+      "expected_families": [
+        "slow"
+      ],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 2
+    }
+  ],
+  "failures": [
+    {
+      "case_id": "V234-S01-00",
+      "category": "decision",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "That equipment detail cannot determine the semantic route. I am giving you ownership of the deciding call; choose the option that stands. A chart room indexed map tubes and paper weights by drawer."
+    },
+    {
+      "case_id": "V234-S02-00",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A pottery lab catalogued carving tools and glaze tiles by bench. That physical item sits outside the response evidence. Nothing here comes from my life; it is synthetic validation material."
+    },
+    {
+      "case_id": "V234-S02-04",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "That equipment detail cannot determine the semantic route. Nothing here comes from my life; it is synthetic validation material. A rowing store catalogued seat bolts and oar clips by board."
+    },
+    {
+      "case_id": "V234-S02-07",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The administrative detail cannot decide the classification. I created this artificial example only for evaluation, not from something I experienced. A cookery class tracked utensil boxes and pantry cards by shelf."
+    },
+    {
+      "case_id": "V234-S07-00",
+      "category": "slow",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "That equipment detail cannot determine the semantic route. I allowed one defined pause and one review, gave my response, and moved on. A photo classroom logged filter wallets and tripod plates by drawer."
+    },
+    {
+      "case_id": "V234-S07-04",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I allowed one defined pause and one review, gave my response, and moved on. A dance studio logged shoe bags and costume labels by rail. That inventory note is background only and cannot establish the response."
+    }
+  ],
+  "expected_gold_changed": false,
+  "v234_sealed_rerun": false,
+  "production_authorized": false,
+  "step_111_authorized": false
+}
