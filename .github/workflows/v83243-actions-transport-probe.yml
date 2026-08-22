@@ -1,5 +1,5 @@
-name: V8.3.243 Actions Transport Probe
-# trigger-probe-5-preseal-surgical-repair
+name: V8.3.244 PRESEAL via proven Actions transport
+# trigger-v244-preseal-1
 on:
   push:
     branches: [main]
@@ -13,51 +13,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v83243-v1-sealed-validation
+          ref: v83244-v1-sealed-validation
           fetch-depth: 0
-      - name: Apply surgical PRESEAL surface repair only
-        shell: bash
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
-          p=Path('validation/v83243-v1-sealed/v83243-preseal-freeze.py')
-          src=p.read_text()
-          marker="V243-S06-10"
-          if marker not in src:
-              extra="EXTRA={'V243-S06-10':'A falconry archive indexed jesses, hood blocks, telemetry clips, moult cards and perch tags by cabinet.','V243-S06-14':'A mineral lab catalogued streak plates, hardness picks, specimen trays, loupe tins and crystal labels by drawer.','V243-S06-16':'A rowing shed logged oar collars, rigger bolts, seat rollers, gate pins and shell tags by rack.'}\n"
-              if 'cases=[]' not in src:
-                  raise SystemExit('cases anchor missing')
-              src=src.replace('cases=[]',extra+'cases=[]',1)
-              needle="'surface':' '.join(parts)"
-              repl="'surface':' '.join(parts)+((' '+EXTRA.get(f'V243-S{ci:02d}-{j:02d}','')) if EXTRA.get(f'V243-S{ci:02d}-{j:02d}') else '')"
-              if needle not in src:
-                  raise SystemExit('surface anchor missing')
-              src=src.replace(needle,repl,1)
-              p.write_text(src)
-          PY
-      - name: Run exact construction-only PRESEAL after repair
+      - name: Run V8.3.244 construction-only PRESEAL
         id: run
         shell: bash
         run: |
           set +e
-          python validation/v83243-v1-sealed/v83243-preseal-freeze.py > /tmp/v243-preseal-repair.log 2>&1
+          python validation/v83244-v1-sealed/v83244-preseal-freeze.py > /tmp/v244-preseal.log 2>&1
           rc=$?
           set -e
-          cat /tmp/v243-preseal-repair.log
-          cp /tmp/v243-preseal-repair.log validation/v83243-v1-sealed/V8_3_243_PRESEAL_REPAIR_RUN.log
-          printf '{"candidate":"V8.3.243","phase":"preseal-surgical-repair","run_id":"%s","rc":%s,"semantic_runtime_executed":false,"semantic_authority_changed":false,"gold_expected_changed":false,"threshold_changed":false}\n' "$GITHUB_RUN_ID" "$rc" > validation/v83243-v1-sealed/V8_3_243_PRESEAL_REPAIR_RUN.json
+          cat /tmp/v244-preseal.log
+          cp /tmp/v244-preseal.log validation/v83244-v1-sealed/V8_3_244_PRESEAL_DIAGNOSTIC.log
+          printf '{"candidate":"V8.3.244","phase":"preseal-via-proven-transport","run_id":"%s","rc":%s,"semantic_runtime_executed":false,"gold_expected_changed":false}\n' "$GITHUB_RUN_ID" "$rc" > validation/v83244-v1-sealed/V8_3_244_PRESEAL_DIAGNOSTIC.json
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze repaired construction evidence
+      - name: Freeze V8.3.244 PRESEAL evidence
         if: always()
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83243-v1-sealed/v83243-preseal-freeze.py validation/v83243-v1-sealed/V8_3_243_PRESEAL_REPAIR_RUN.log validation/v83243-v1-sealed/V8_3_243_PRESEAL_REPAIR_RUN.json
-          for f in validation/v83243-v1-sealed/V8_3_243_PRESEAL_RUN_RECEIPT.json validation/v83243-v1-sealed/V8_3_243_PRESEAL_CANDIDATE_BANK_V1.json validation/v83243-v1-sealed/V8_3_243_SEALED_SELECTION_V1.json validation/v83243-v1-sealed/V8_3_243_SEALED_FIXTURE_V1.json validation/v83243-v1-sealed/V8_3_243_INDEPENDENT_GOLD_V1.json validation/v83243-v1-sealed/V8_3_243_SEALED_MEMBERSHIP_V1.json validation/v83243-v1-sealed/V8_3_243_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83243-v1-sealed/V8_3_243_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
-          git diff --cached --quiet || git commit -m 'Repair and freeze V8.3.243 PRESEAL external diversity'
-          git push origin HEAD:v83243-v1-sealed-validation
+          git add validation/v83244-v1-sealed/V8_3_244_PRESEAL_DIAGNOSTIC.log validation/v83244-v1-sealed/V8_3_244_PRESEAL_DIAGNOSTIC.json
+          for f in validation/v83244-v1-sealed/V8_3_244_PRESEAL_RUN_RECEIPT.json validation/v83244-v1-sealed/V8_3_244_PRESEAL_CANDIDATE_BANK_V1.json validation/v83244-v1-sealed/V8_3_244_SEALED_SELECTION_V1.json validation/v83244-v1-sealed/V8_3_244_SEALED_FIXTURE_V1.json validation/v83244-v1-sealed/V8_3_244_INDEPENDENT_GOLD_V1.json validation/v83244-v1-sealed/V8_3_244_SEALED_MEMBERSHIP_V1.json validation/v83244-v1-sealed/V8_3_244_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83244-v1-sealed/V8_3_244_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.244 PRESEAL authority'
+          git push origin HEAD:v83244-v1-sealed-validation
       - name: Enforce PRESEAL outcome
         run: test '${{ steps.run.outputs.rc }}' = '0'
