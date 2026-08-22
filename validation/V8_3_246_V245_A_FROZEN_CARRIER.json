@@ -1,0 +1,420 @@
+{
+  "authority": "V8.3.246 immutable carrier from frozen V8.3.245 A",
+  "source_run_id": "32595009435",
+  "cases": [
+    {
+      "case_id": "V245-S00-00",
+      "surface": "Everything is autobiographical except the response I made at closure. A mariner museum indexed signal flags, brass dividers, tide slates, knot boards and sextant shades by gallery. That maritime catalogue concerns stored objects only and supplies no evidence about the measured response. A mineral-survey cabinet separately tracked core rulers, streak tiles, sample flags, hand lenses and field envelopes; that catalogue has no bearing on whether my own closing action was supplied.",
+      "domain": "money",
+      "category": "clarification",
+      "language": "EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S00-09",
+      "surface": "Một kho maritime ghi signal flag, brass divider, tide slate, knot board và sextant shade theo gallery. Danh mục maritime chỉ nói về đồ vật lưu trữ và không cung cấp evidence cho response đang đo. Bối cảnh inventory phụ này hoàn toàn inert với measured mechanism. A mineral-survey cabinet separately tracked core rulers, streak tiles, sample flags, hand lenses and field envelopes; that catalogue has no bearing on whether my own closing action was supplied. Phần tôi đã làm gì ở cuối vẫn còn thiếu dù đây là bối cảnh thật của tôi.",
+      "domain": "family",
+      "category": "clarification",
+      "language": "VI",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S00-03",
+      "surface": "A mineral-survey cabinet separately tracked core rulers, streak tiles, sample flags, hand lenses and field envelopes; that catalogue has no bearing on whether my own closing action was supplied. Everything is autobiographical except the response I made at closure. A falconry school recorded hood blocks, jess braids, perch caps, telemetry sleeves and moult cards by locker. That falconry list concerns handling gear only, not the behaviour under classification.",
+      "domain": "family",
+      "category": "clarification",
+      "language": "EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S01-00",
+      "surface": "A mariner museum indexed signal flags, brass dividers, tide slates, knot boards and sextant shades by gallery. That maritime catalogue concerns stored objects only and supplies no evidence about the measured response. A bookbinding bench separately stored linen tapes, brass corners, press boards, paste knives and sewing keys; none of those materials transfers deciding authority. Take over the final choice so your selection replaces mine.",
+      "domain": "family",
+      "category": "decision",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S01-09",
+      "surface": "Danh mục maritime chỉ nói về đồ vật lưu trữ và không cung cấp evidence cho response đang đo. Bối cảnh inventory phụ này hoàn toàn inert với measured mechanism. A bookbinding bench separately stored linen tapes, brass corners, press boards, paste knives and sewing keys; none of those materials transfers deciding authority. Hãy cầm quyền chọn cuối để lựa chọn của bạn thay thế lựa chọn của tôi. Một kho maritime ghi signal flag, brass divider, tide slate, knot board và sextant shade theo gallery.",
+      "domain": "money",
+      "category": "decision",
+      "language": "VI",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V245-S01-03",
+      "surface": "Take over the final choice so your selection replaces mine. A falconry school recorded hood blocks, jess braids, perch caps, telemetry sleeves and moult cards by locker. That falconry list concerns handling gear only, not the behaviour under classification. A bookbinding bench separately stored linen tapes, brass corners, press boards, paste knives and sewing keys; none of those materials transfers deciding authority.",
+      "domain": "money",
+      "category": "decision",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S02-00",
+      "surface": "That maritime catalogue concerns stored objects only and supplies no evidence about the measured response. A model-railway club separately logged turnout gauges, ballast scoops, coupling hooks, signal lenses and track templates; those objects cannot turn synthetic text into a lived event. This case was constructed for testing and did not happen to me. A mariner museum indexed signal flags, brass dividers, tide slates, knot boards and sextant shades by gallery.",
+      "domain": "money",
+      "category": "hypothetical",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S02-09",
+      "surface": "Bối cảnh inventory phụ này hoàn toàn inert với measured mechanism. A model-railway club separately logged turnout gauges, ballast scoops, coupling hooks, signal lenses and track templates; those objects cannot turn synthetic text into a lived event. Case này được dựng để test và chưa từng xảy ra với tôi. Một kho maritime ghi signal flag, brass divider, tide slate, knot board và sextant shade theo gallery. Danh mục maritime chỉ nói về đồ vật lưu trữ và không cung cấp evidence cho response đang đo.",
+      "domain": "family",
+      "category": "hypothetical",
+      "language": "VI",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S02-03",
+      "surface": "A falconry school recorded hood blocks, jess braids, perch caps, telemetry sleeves and moult cards by locker. That falconry list concerns handling gear only, not the behaviour under classification. A model-railway club separately logged turnout gauges, ballast scoops, coupling hooks, signal lenses and track templates; those objects cannot turn synthetic text into a lived event. This case was constructed for testing and did not happen to me.",
+      "domain": "family",
+      "category": "hypothetical",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S03-00",
+      "surface": "A conservation archive separately indexed cotton gloves, humidity cards, mounting strips, light meters and storage sleeves; that inventory cannot reveal another person’s private mind. Work out someone else’s internal conclusion with no behavioural support. A mariner museum indexed signal flags, brass dividers, tide slates, knot boards and sextant shades by gallery. That maritime catalogue concerns stored objects only and supplies no evidence about the measured response.",
+      "domain": "family",
+      "category": "third",
+      "language": "EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S03-09",
+      "surface": "Hãy xác định kết luận bên trong của người khác khi không có behavioural support. Một kho maritime ghi signal flag, brass divider, tide slate, knot board và sextant shade theo gallery. Danh mục maritime chỉ nói về đồ vật lưu trữ và không cung cấp evidence cho response đang đo. Bối cảnh inventory phụ này hoàn toàn inert với measured mechanism. A conservation archive separately indexed cotton gloves, humidity cards, mounting strips, light meters and storage sleeves; that inventory cannot reveal another person’s private mind.",
+      "domain": "money",
+      "category": "third",
+      "language": "VI",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S03-03",
+      "surface": "That falconry list concerns handling gear only, not the behaviour under classification. A conservation archive separately indexed cotton gloves, humidity cards, mounting strips, light meters and storage sleeves; that inventory cannot reveal another person’s private mind. Work out someone else’s internal conclusion with no behavioural support. A falconry school recorded hood blocks, jess braids, perch caps, telemetry sleeves and moult cards by locker.",
+      "domain": "money",
+      "category": "third",
+      "language": "EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S04-00",
+      "surface": "When the future checkpoint arrives, will things resolve in my favour? A mariner museum indexed signal flags, brass dividers, tide slates, knot boards and sextant shades by gallery. That maritime catalogue concerns stored objects only and supplies no evidence about the measured response. A weather-instrument room separately catalogued barograph pens, rain gauges, anemometer cups, screen latches and calibration cards; those records do not answer a future-outcome question.",
+      "domain": "money",
+      "category": "prediction",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S04-09",
+      "surface": "Một kho maritime ghi signal flag, brass divider, tide slate, knot board và sextant shade theo gallery. Danh mục maritime chỉ nói về đồ vật lưu trữ và không cung cấp evidence cho response đang đo. Bối cảnh inventory phụ này hoàn toàn inert với measured mechanism. A weather-instrument room separately catalogued barograph pens, rain gauges, anemometer cups, screen latches and calibration cards; those records do not answer a future-outcome question. Khi future checkpoint tới, mọi thứ có resolve có lợi cho tôi không?",
+      "domain": "family",
+      "category": "prediction",
+      "language": "VI",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S04-03",
+      "surface": "A weather-instrument room separately catalogued barograph pens, rain gauges, anemometer cups, screen latches and calibration cards; those records do not answer a future-outcome question. When the future checkpoint arrives, will things resolve in my favour? A falconry school recorded hood blocks, jess braids, perch caps, telemetry sleeves and moult cards by locker. That falconry list concerns handling gear only, not the behaviour under classification.",
+      "domain": "family",
+      "category": "prediction",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S05-00",
+      "surface": "A mariner museum indexed signal flags, brass dividers, tide slates, knot boards and sextant shades by gallery. That maritime catalogue concerns stored objects only and supplies no evidence about the measured response. A saddle-making rack separately held edge irons, stitch wheels, buckle blanks, strap gauges and wax cakes; those materials do not create or remove the stalled opening move. A bounded opening move existed, but I generated extra possibilities and stayed still.",
+      "domain": "family",
+      "category": "freeze",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S05-09",
+      "surface": "Danh mục maritime chỉ nói về đồ vật lưu trữ và không cung cấp evidence cho response đang đo. Bối cảnh inventory phụ này hoàn toàn inert với measured mechanism. A saddle-making rack separately held edge irons, stitch wheels, buckle blanks, strap gauges and wax cakes; those materials do not create or remove the stalled opening move. Có opening move giới hạn, nhưng tôi tạo thêm possibility rồi đứng yên. Một kho maritime ghi signal flag, brass divider, tide slate, knot board và sextant shade theo gallery.",
+      "domain": "money",
+      "category": "freeze",
+      "language": "VI",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S05-03",
+      "surface": "A bounded opening move existed, but I generated extra possibilities and stayed still. A falconry school recorded hood blocks, jess braids, perch caps, telemetry sleeves and moult cards by locker. That falconry list concerns handling gear only, not the behaviour under classification. A saddle-making rack separately held edge irons, stitch wheels, buckle blanks, strap gauges and wax cakes; those materials do not create or remove the stalled opening move.",
+      "domain": "money",
+      "category": "freeze",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S06-00",
+      "surface": "That maritime catalogue concerns stored objects only and supplies no evidence about the measured response. A mosaic studio separately logged tessera trays, grout floats, nippers, mesh sheets and setting combs; that stock record does not resolve the unattended main obligation. Something important needed me to act, but I kept doing less relevant work instead. A mariner museum indexed signal flags, brass dividers, tide slates, knot boards and sextant shades by gallery.",
+      "domain": "money",
+      "category": "ignore",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S06-09",
+      "surface": "Bối cảnh inventory phụ này hoàn toàn inert với measured mechanism. A mosaic studio separately logged tessera trays, grout floats, nippers, mesh sheets and setting combs; that stock record does not resolve the unattended main obligation. Có việc quan trọng cần tôi làm, nhưng tôi cứ làm việc ít liên quan hơn. Một kho maritime ghi signal flag, brass divider, tide slate, knot board và sextant shade theo gallery. Danh mục maritime chỉ nói về đồ vật lưu trữ và không cung cấp evidence cho response đang đo.",
+      "domain": "family",
+      "category": "ignore",
+      "language": "VI",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S06-03",
+      "surface": "A falconry school recorded hood blocks, jess braids, perch caps, telemetry sleeves and moult cards by locker. That falconry list concerns handling gear only, not the behaviour under classification. A mosaic studio separately logged tessera trays, grout floats, nippers, mesh sheets and setting combs; that stock record does not resolve the unattended main obligation. Something important needed me to act, but I kept doing less relevant work instead.",
+      "domain": "family",
+      "category": "ignore",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S07-00",
+      "surface": "A flute-maintenance drawer separately contained pad shims, spring hooks, cork sheets, key rollers and feeler strips; those objects do not alter the bounded pause-and-close sequence. Before responding I used one limited pause and one review, then treated it as settled. A mariner museum indexed signal flags, brass dividers, tide slates, knot boards and sextant shades by gallery. That maritime catalogue concerns stored objects only and supplies no evidence about the measured response.",
+      "domain": "family",
+      "category": "slow",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S07-09",
+      "surface": "Trước khi phản hồi tôi dùng một pause giới hạn và một review, rồi xem chuyện đã settled. Một kho maritime ghi signal flag, brass divider, tide slate, knot board và sextant shade theo gallery. Danh mục maritime chỉ nói về đồ vật lưu trữ và không cung cấp evidence cho response đang đo. Bối cảnh inventory phụ này hoàn toàn inert với measured mechanism. A flute-maintenance drawer separately contained pad shims, spring hooks, cork sheets, key rollers and feeler strips; those objects do not alter the bounded pause-and-close sequence.",
+      "domain": "money",
+      "category": "slow",
+      "language": "VI",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V245-S07-03",
+      "surface": "That falconry list concerns handling gear only, not the behaviour under classification. A flute-maintenance drawer separately contained pad shims, spring hooks, cork sheets, key rollers and feeler strips; those objects do not alter the bounded pause-and-close sequence. Before responding I used one limited pause and one review, then treated it as settled. A falconry school recorded hood blocks, jess braids, perch caps, telemetry sleeves and moult cards by locker.",
+      "domain": "money",
+      "category": "slow",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S08-00",
+      "surface": "I came near to acting, stepped back, and returned to prior reasoning despite no new information. A mariner museum indexed signal flags, brass dividers, tide slates, knot boards and sextant shades by gallery. That maritime catalogue concerns stored objects only and supplies no evidence about the measured response. A loom room separately indexed lease sticks, reed hooks, shuttle bobbins, temple pins and warp weights; that inventory does not create new facts between approach and retreat.",
+      "domain": "money",
+      "category": "sequence",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S08-09",
+      "surface": "Một kho maritime ghi signal flag, brass divider, tide slate, knot board và sextant shade theo gallery. Danh mục maritime chỉ nói về đồ vật lưu trữ và không cung cấp evidence cho response đang đo. Bối cảnh inventory phụ này hoàn toàn inert với measured mechanism. A loom room separately indexed lease sticks, reed hooks, shuttle bobbins, temple pins and warp weights; that inventory does not create new facts between approach and retreat. Tôi gần hành động, bước lùi và quay lại reasoning trước dù không có information mới.",
+      "domain": "family",
+      "category": "sequence",
+      "language": "VI",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V245-S08-03",
+      "surface": "A loom room separately indexed lease sticks, reed hooks, shuttle bobbins, temple pins and warp weights; that inventory does not create new facts between approach and retreat. I came near to acting, stepped back, and returned to prior reasoning despite no new information. A falconry school recorded hood blocks, jess braids, perch caps, telemetry sleeves and moult cards by locker. That falconry list concerns handling gear only, not the behaviour under classification.",
+      "domain": "family",
+      "category": "sequence",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S09-00",
+      "surface": "A mariner museum indexed signal flags, brass dividers, tide slates, knot boards and sextant shades by gallery. That maritime catalogue concerns stored objects only and supplies no evidence about the measured response. A camera-repair desk separately stored lens spanners, shutter testers, aperture rings, focusing screens and helicoid grease; those tools do not change who retained and completed the final choice. The choice stayed with me; I executed it and did not revisit the decision.",
+      "domain": "family",
+      "category": "neutral",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S09-09",
+      "surface": "Danh mục maritime chỉ nói về đồ vật lưu trữ và không cung cấp evidence cho response đang đo. Bối cảnh inventory phụ này hoàn toàn inert với measured mechanism. A camera-repair desk separately stored lens spanners, shutter testers, aperture rings, focusing screens and helicoid grease; those tools do not change who retained and completed the final choice. Choice vẫn ở phía tôi; tôi execute và không revisit quyết định. Một kho maritime ghi signal flag, brass divider, tide slate, knot board và sextant shade theo gallery.",
+      "domain": "money",
+      "category": "neutral",
+      "language": "VI",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V245-S09-03",
+      "surface": "The choice stayed with me; I executed it and did not revisit the decision. A falconry school recorded hood blocks, jess braids, perch caps, telemetry sleeves and moult cards by locker. That falconry list concerns handling gear only, not the behaviour under classification. A camera-repair desk separately stored lens spanners, shutter testers, aperture rings, focusing screens and helicoid grease; those tools do not change who retained and completed the final choice.",
+      "domain": "money",
+      "category": "neutral",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    }
+  ]
+}
