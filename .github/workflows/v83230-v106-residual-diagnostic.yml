@@ -21,6 +21,7 @@ jobs:
         id: run
         shell: bash
         run: |
+          # exact residual diagnostic after V106 28/30
           set +e
           python validation/v83230-v106-v229-residual-diagnostic.py > /tmp/v230-residual.log 2>&1
           rc=$?
