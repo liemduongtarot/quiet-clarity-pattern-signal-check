@@ -1,0 +1,21 @@
+{
+  "candidate": "V8.3.244",
+  "phase": "sealed-batch-a-first-run",
+  "run_id": "32593971008",
+  "run_attempt": "1",
+  "validated_development_head_sha": "885608fce9e70a8818d1ebda23c786a81005a2fe",
+  "semantic_authority": "QCEvidenceExtractorV5AR -> QCSemanticCoreV117",
+  "batch_b_executed": false,
+  "v243_sealed_rerun": false,
+  "v244_batch_a_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "batch_a_attempt_consumed": true,
+  "batch_a_executed": true,
+  "batch_a_passed": 16,
+  "batch_a_failed": 14,
+  "semantic_runtime_executed": true,
+  "semantic_failure": true,
+  "frozen_on_batch_a_failure": true,
+  "conclusion": "failure"
+}
