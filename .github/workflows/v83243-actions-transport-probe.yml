@@ -1,5 +1,5 @@
 name: V8.3.246 materialize self-contained sealed runner
-# trigger-v246-runner-materialize-1
+# trigger-v246-runner-materialize-2
 on:
   push:
     branches: [main]
@@ -37,7 +37,6 @@ jobs:
           if oldchain not in src: raise SystemExit('loader-chain anchor missing')
           src=src.replace(oldchain,newchain,1)
           src=src.replace('QCEvidenceExtractorV5AS','QCEvidenceExtractorV5AT').replace('QCSemanticCoreV118','QCSemanticCoreV119')
-          # Correct result metadata inherited from the older mechanical carrier.
           src=src.replace("validated_development_head_sha:'885608fce9e70a8818d1ebda23c786a81005a2fe'","validated_development_head_sha:'00bcd4681a61ef1ab0b229eb90af9e74102dc649'",1)
           src=src.replace("console.log('V244 A'","console.log('V246 A'")
           out=Path('validation/v83246-batch-a-self-contained.py');out.write_text(src);compile(src,str(out),'exec')
