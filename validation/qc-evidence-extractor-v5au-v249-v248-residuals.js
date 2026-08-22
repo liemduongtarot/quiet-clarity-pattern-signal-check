@@ -21,9 +21,9 @@ function extract(raw){
  const sqSame=any(d,['revisit cung assessment','revisited the same assessment','returned to the same assessment']);
  const sqNoNew=any(d,['evidence khong doi','evidence unchanged','unchanged evidence','same evidence']);
  if(sqNear&&sqBack&&sqSame&&sqNoNew)o.v249_sequence=true;
- const nOwn=any(d,['retained the final decision','giu final decision','kept the final decision','final decision stayed with me']);
+ const nOwn=any(d,['retained the final decision','giu final decision','kept the final decision','final decision stayed with me','tu dua final choice']);
  const nDone=any(d,['acted on it','hanh dong theo no','carried it through','thuc hien den cung']);
- const nClose=any(d,['did not return to reconsider it','khong quay lai reconsider','did not reconsider it','left it closed','khong reconsider']);
+ const nClose=any(d,['did not return to reconsider it','khong quay lai reconsider','did not reconsider it','left it closed','khong reconsider','khong reopen quyet dinh']);
  if(nOwn&&nDone&&nClose)o.v249_neutral=true;
  return Object.freeze(o);
 }
