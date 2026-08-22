@@ -1,4 +1,5 @@
 name: V8.3.240 PRESEAL R3
+# trigger: actual diagnostic run
 on:
   push:
     branches: [main]
