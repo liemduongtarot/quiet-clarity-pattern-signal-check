@@ -18,7 +18,7 @@ function extract(raw){
  const missing=any(d,['have not said','has not been stated','still missing','not the action','apart from','except for','not the behaviour','not the behavior']);
  if(self&&real&&closing&&missing)o.v231_clarification=true;
  const decide=any(d,['choose','select','decision','choice','final selection','final call','pick']);
- const transfer=any(d,['for me','on my behalf','your call','your judgement','your judgment','rather than help me make it','replaces mine','instead of leaving','handing over decision ownership','take the choice out of my hands']);
+ const transfer=any(d,['on my behalf','your call','your judgement','your judgment','rather than help me make it','replaces mine','instead of leaving','handing over decision ownership','take the choice out of my hands']);
  if(decide&&transfer)o.v231_decision=true;
  const fictional=any(d,['fictional','artificial','invented','constructed','testing','test example','validation material','not autobiographical']);
  const nonlived=any(d,['not autobiographical','not something i actually lived','not describe anything that happened','no real event behind','unrelated to any event i experienced','nothing in this scenario','not a personal experience']);
