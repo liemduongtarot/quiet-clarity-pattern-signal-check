@@ -1,0 +1,116 @@
+{
+  "candidate": "V8.3.245",
+  "phase": "frozen-batch-a-semantic-autopsy",
+  "run_id": "32595009435",
+  "validated_development_head_sha": "2015436433bede4e454739efe2ebae4807f800af",
+  "semantic_authority": "QCEvidenceExtractorV5AS -> QCSemanticCoreV118",
+  "batch_a_total": 30,
+  "batch_a_passed": 27,
+  "batch_a_failed": 3,
+  "batch_b_executed": false,
+  "v245_batch_a_rerun": false,
+  "semantic_runtime_executed": true,
+  "semantic_failure": true,
+  "failure_counts_by_category": {
+    "decision": 1,
+    "slow": 1,
+    "sequence": 1
+  },
+  "mechanism_groups": [
+    {
+      "category": "decision",
+      "expected_route": "input:decision-request",
+      "actual_route": "input:self-lived",
+      "expected_families": [],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "slow",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:third-party-only",
+      "expected_families": [
+        "slow"
+      ],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "sequence",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:self-lived",
+      "expected_families": [
+        "slow"
+      ],
+      "actual_families": [],
+      "expected_sequence": true,
+      "actual_sequence": false,
+      "count": 1
+    }
+  ],
+  "failures": [
+    {
+      "case_id": "V245-S01-09",
+      "category": "decision",
+      "language": "VI",
+      "domain": "money",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Danh mục maritime chỉ nói về đồ vật lưu trữ và không cung cấp evidence cho response đang đo. Bối cảnh inventory phụ này hoàn toàn inert với measured mechanism. A bookbinding bench separately stored linen tapes, brass corners, press boards, paste knives and sewing keys; none of those materials transfers deciding authority. Hãy cầm quyền chọn cuối để lựa chọn của bạn thay thế lựa chọn của tôi. Một kho maritime ghi signal flag, brass divider, tide slate, knot board và sextant shade theo gallery."
+    },
+    {
+      "case_id": "V245-S07-09",
+      "category": "slow",
+      "language": "VI",
+      "domain": "money",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Trước khi phản hồi tôi dùng một pause giới hạn và một review, rồi xem chuyện đã settled. Một kho maritime ghi signal flag, brass divider, tide slate, knot board và sextant shade theo gallery. Danh mục maritime chỉ nói về đồ vật lưu trữ và không cung cấp evidence cho response đang đo. Bối cảnh inventory phụ này hoàn toàn inert với measured mechanism. A flute-maintenance drawer separately contained pad shims, spring hooks, cork sheets, key rollers and feeler strips; those objects do not alter the bounded pause-and-close sequence."
+    },
+    {
+      "case_id": "V245-S08-09",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "family",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Một kho maritime ghi signal flag, brass divider, tide slate, knot board và sextant shade theo gallery. Danh mục maritime chỉ nói về đồ vật lưu trữ và không cung cấp evidence cho response đang đo. Bối cảnh inventory phụ này hoàn toàn inert với measured mechanism. A loom room separately indexed lease sticks, reed hooks, shuttle bobbins, temple pins and warp weights; that inventory does not create new facts between approach and retreat. Tôi gần hành động, bước lùi và quay lại reasoning trước dù không có information mới."
+    }
+  ],
+  "expected_gold_changed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "frozen-semantic-failure"
+}
