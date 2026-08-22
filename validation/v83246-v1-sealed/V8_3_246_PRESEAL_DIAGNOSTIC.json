@@ -1,0 +1,12 @@
+{
+  "candidate": "V8.3.246",
+  "phase": "preseal-diagnostic",
+  "run_id": "32596749548",
+  "rc": 1,
+  "log_tail": "Traceback (most recent call last):\n  File \"/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83246-v1-sealed/v83246-preseal-freeze.py\", line 47, in <module>\n    exec(compile(src,'v83246-preseal-adapted.py','exec'))\n  File \"v83246-preseal-adapted.py\", line 148, in <module>\nAssertionError\n",
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "expected_gold_changed": false
+}
