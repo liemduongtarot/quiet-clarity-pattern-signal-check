@@ -1,5 +1,5 @@
-name: V8.3.245 V118 DEVELOPMENT regression via proven transport
-# trigger-v245-v118-development-after-transport-pass
+name: V8.3.245 V118 DEVELOPMENT regression instrumented
+# trigger-v245-v118-development-instrumented-1
 on:
   push:
     branches: [main]
@@ -18,6 +18,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - name: Persist DEVELOPMENT regression start marker
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '{"candidate":"V8.3.245","phase":"v118-development-regression-start","run_id":"%s","semantic_runtime_executed":false,"sealed_validation_executed":false,"expected_gold_changed":false}\n' "$GITHUB_RUN_ID" > validation/V8_3_245_V118_REGRESSION_START.json
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_245_V118_REGRESSION_START.json
+          git commit -m 'Record V8.3.245 V118 DEVELOPMENT regression start'
+          git push origin HEAD:v83245-v1-validation
       - name: Run V118 full DEVELOPMENT regression
         id: run
         shell: bash
