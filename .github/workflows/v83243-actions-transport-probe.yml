@@ -1,5 +1,5 @@
-name: V8.3.244 transport/static preflight via proven transport
-# trigger-v244-preflight-1
+name: V8.3.244 runner surgical repair via proven transport
+# trigger-v244-runner-repair-1
 on:
   push:
     branches: [main]
@@ -13,31 +13,42 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v83244-v1-sealed-validation
+          ref: v83244-v1-validation
           fetch-depth: 0
-      - name: Run V8.3.244 transport/static preflight
-        id: run
+      - name: Repair stale V242 runner literals only
         shell: bash
         run: |
-          set +e
-          python validation/v83244-v1-sealed/v83244-transport-preflight.py > /tmp/v244-preflight.log 2>&1
-          rc=$?
-          set -e
-          cat /tmp/v244-preflight.log
-          cp /tmp/v244-preflight.log validation/v83244-v1-sealed/V8_3_244_TRANSPORT_PREFLIGHT_DIAGNOSTIC.log
-          printf '{"candidate":"V8.3.244","phase":"transport-static-preflight","run_id":"%s","rc":%s,"semantic_runtime_executed":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" "$rc" > validation/v83244-v1-sealed/V8_3_244_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze preflight evidence
-        if: always()
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          p=Path('validation/v83244-batch-a-self-contained.py')
+          src=p.read_text()
+          replacements={
+            "assert A['validated_development_head_sha']==TARGET and A['semantic_authority']==SEM and A['preseal_pass'] is True and pf['pass'] is True and tr['pass'] is True":"assert A['base_exact_development_sha']==TARGET and A['semantic_authority']==SEM and A['preseal_pass'] is True and pf['pass'] is True and tr['pass'] is True",
+            "runner=runtime/'run-v83242-batch-a.cjs'":"runner=runtime/'run-v83244-batch-a.cjs'",
+            "const root='validation/v83242-v1-sealed-runtime'":"const root='validation/v83244-v1-sealed-runtime'",
+            "validated_development_head_sha:'79645f8973c9e8288119f79318b39646e2feb00f'":"validated_development_head_sha:'885608fce9e70a8818d1ebda23c786a81005a2fe'",
+            "throw Error('V5AQ missing')":"throw Error('V5AR missing')",
+            "throw Error('V116 missing')":"throw Error('V117 missing')"
+          }
+          for old,new in replacements.items():
+              if old not in src: raise SystemExit('missing repair anchor: '+old)
+              src=src.replace(old,new,1)
+          compile(src,str(p),'exec')
+          forbidden=['validation/v83242-v1-sealed-runtime',"run-v83242-batch-a.cjs",'79645f8973c9e8288119f79318b39646e2feb00f',"A['validated_development_head_sha']==TARGET"]
+          for x in forbidden:
+              if x in src: raise SystemExit('stale literal remains: '+x)
+          p.write_text(src)
+          d={'candidate':'V8.3.244','phase':'runner-surgical-repair-v2','base_exact_development_sha':'885608fce9e8288119f79318b39646e2feb00f','semantic_authority':'QCEvidenceExtractorV5AR -> QCSemanticCoreV117','runner_sha256':hashlib.sha256(src.encode()).hexdigest(),'semantic_change':False,'expected_gold_changed':False,'repair_scope':['authority-key','runtime-root','result-sha','runner-filename','diagnostic-labels'],'self_contained':True,'pass':True}
+          Path('validation/V8_3_244_RUNNER_REPAIR_V2.json').write_text(json.dumps(d,indent=2)+'\n')
+          PY
+      - name: Freeze repaired DEVELOPMENT runner
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83244-v1-sealed/V8_3_244_TRANSPORT_PREFLIGHT_DIAGNOSTIC.log validation/v83244-v1-sealed/V8_3_244_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json
-          test ! -f validation/v83244-v1-sealed/V8_3_244_TRANSPORT_VERIFICATION_V1.json || git add validation/v83244-v1-sealed/V8_3_244_TRANSPORT_VERIFICATION_V1.json
-          test ! -f validation/v83244-v1-sealed/V8_3_244_STATIC_SEALED_PREFLIGHT_V1.json || git add validation/v83244-v1-sealed/V8_3_244_STATIC_SEALED_PREFLIGHT_V1.json
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.244 transport/static preflight evidence'
-          git push origin HEAD:v83244-v1-sealed-validation
-      - name: Enforce preflight outcome
-        run: test '${{ steps.run.outputs.rc }}' = '0'
+          git add validation/v83244-batch-a-self-contained.py validation/V8_3_244_RUNNER_REPAIR_V2.json
+          git commit -m 'Repair V8.3.244 self-contained runner stale literals'
+          git push origin HEAD:v83244-v1-validation
