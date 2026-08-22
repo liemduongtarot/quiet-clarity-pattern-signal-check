@@ -1,9 +1,9 @@
 {
   "candidate": "V8.3.228",
-  "phase": "transport-static-preflight-diagnostic",
-  "outcome": "failure",
-  "exit_code": "1",
-  "log_tail": "fatal: path 'validation/V8_3_228_V104_REGRESSION_RECEIPT.json' does not exist in '2d5725e4b12f532ca9b710083e55e21efdb6c686'\nTraceback (most recent call last):\n  File \"/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83228-v1-sealed/v83228-transport-preflight.py\", line 13, in <module>\n    exec(compile(src,'v83228-transport-preflight-adapted.py','exec'))\n  File \"v83228-transport-preflight-adapted.py\", line 10, in <module>\n  File \"v83228-transport-preflight-adapted.py\", line 6, in show\n  File \"/usr/lib/python3.12/subprocess.py\", line 466, in check_output\n    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['git', 'show', '2d5725e4b12f532ca9b710083e55e21efdb6c686:validation/V8_3_228_V104_REGRESSION_RECEIPT.json']' returned non-zero exit status 128.\n",
+  "phase": "transport-static-preflight-diagnostic-r2",
+  "outcome": "success",
+  "exit_code": "0",
+  "log_tail": "{\"candidate\": \"V8.3.227\", \"phase\": \"static-sealed-preflight\", \"validated_development_head_sha\": \"2d5725e4b12f532ca9b710083e55e21efdb6c686\", \"loader_chain\": \"QCEvidenceExtractorV5AF -> QCSemanticCoreV105\", \"loader_chain_static_verified\": true, \"semantic_files_byte_identical_to_v228_dev\": true, \"parent_layers_byte_identical\": true, \"frozen_canonical_hashes_match\": {\"candidate_bank\": true, \"selection\": true, \"fixture\": true, \"independent_gold\": true, \"membership\": true, \"preseal_audit\": true}, \"transport_pass\": true, \"zero_failure_development_predicate\": true, \"first_run_marker_absent\": true, \"batch_a_attempt_marker_absent\": true, \"prior_batch_a_execution_absent\": true, \"semantic_runtime_executed\": false, \"semantic_authority_loaded\": false, \"v219_sealed_rerun\": false, \"v220_sealed_rerun\": false, \"v221_sealed_rerun\": false, \"v222_sealed_rerun\": false, \"v223_sealed_rerun\": false, \"v224_sealed_rerun\": false, \"v225_sealed_rerun\": false, \"v226_sealed_rerun\": false, \"v227_sealed_rerun\": false, \"pass\": true}\n",
   "semantic_runtime_executed": false,
   "batch_a_executed": false,
   "batch_b_executed": false
