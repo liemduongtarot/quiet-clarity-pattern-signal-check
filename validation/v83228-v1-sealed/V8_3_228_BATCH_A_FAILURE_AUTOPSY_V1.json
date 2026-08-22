@@ -1,0 +1,23 @@
+{
+  "candidate": "V8.3.228",
+  "phase": "sealed-batch-a-failure-autopsy",
+  "run_id": "32567035856",
+  "run_attempt": "1",
+  "validated_development_head_sha": "2d5725e4b12f532ca9b710083e55e21efdb6c686",
+  "semantic_authority": "QCEvidenceExtractorV5AF -> QCSemanticCoreV105",
+  "batch_a_attempt_consumed": true,
+  "batch_a_executed": false,
+  "semantic_runtime_executed": false,
+  "semantic_failure": false,
+  "failure_layer": "VALIDATION RUNNER / INFRASTRUCTURE",
+  "exact_error": "ENOENT: no such file or directory, open 'validation/v83227-v1-sealed-runtime/V8_3_228_SEALED_FIXTURE_V1.json'",
+  "cause": "V8.3.228 adapted one-shot runner created/copied fixture files under validation/v83228-v1-sealed-runtime but generated JS retained the parent V8.3.227 runtime-root literal validation/v83227-v1-sealed-runtime.",
+  "fix_scope_for_next_development": "runner plumbing only; preserve QCEvidenceExtractorV5AF and QCSemanticCoreV105 byte-for-byte; use a self-contained V8.3.229 runner with exact runtime-root V8.3.229 paths rather than nested text adaptation",
+  "batch_a_rerun_forbidden": true,
+  "batch_b_executed": false,
+  "batch_b_forbidden": true,
+  "expected_gold_changed": false,
+  "production_authorized": false,
+  "step_111_authorized": false,
+  "conclusion": "infrastructure_failure_frozen"
+}
