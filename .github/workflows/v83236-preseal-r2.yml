@@ -18,6 +18,7 @@ jobs:
         id: run
         shell: bash
         run: |
+          # actual V8.3.236 PRESEAL R2 trigger
           set +e
           python validation/v83236-v1-sealed/v83236-preseal-freeze.py > /tmp/v236-preseal-r2.log 2>&1
           rc=$?
