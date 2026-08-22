@@ -1,6 +1,10 @@
-import ast,json,pathlib,subprocess
+import ast,json,pathlib,subprocess,zipfile
 R=pathlib.Path('.');V=R/'validation'
 carrier=json.loads((V/'V8_3_248_A_FROZEN_CARRIER.json').read_text())
+archive=R/'PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip'
+assert archive.exists()
+with zipfile.ZipFile(archive) as z:z.extractall(R)
+assert (R/'PSC_V8_3_138_DEV/public/psc-v3.js').exists()
 tree=ast.parse((V/'v83220-v98-regression-orchestrator.py').read_text());EXT=None
 for node in ast.walk(tree):
     if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='ext' for t in node.targets):
