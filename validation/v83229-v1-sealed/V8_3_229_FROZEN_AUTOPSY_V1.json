@@ -1,0 +1,22 @@
+{
+  "candidate":"V8.3.229",
+  "phase":"FROZEN_SEALED_AUTOPSY",
+  "batch_a_run_id":"32568655884",
+  "validated_development_head_sha":"c0a28b22f49a0186dfea8babfe477a78f4bf7cf7",
+  "semantic_authority":"QCEvidenceExtractorV5AF -> QCSemanticCoreV105",
+  "batch_a_total":30,
+  "batch_a_passed":10,
+  "batch_a_failed":20,
+  "batch_a_attempt_consumed":true,
+  "batch_a_rerun_forbidden":true,
+  "batch_b_skipped":true,
+  "batch_b_rerun_forbidden":true,
+  "failure_layer":"ENGINE LOGIC",
+  "failure_class":"GENERALIZATION / COMPOSITIONAL RECALL / PRECEDENCE",
+  "failure_distribution":{"clarification":3,"decision":1,"hypothetical":1,"third-party":2,"prediction":1,"freeze":3,"ignore":2,"slow":2,"sequence":3,"neutral":2},
+  "expected_gold_changed":false,
+  "v229_sealed_rerun":false,
+  "production_authorized":false,
+  "step_111_authorized":false,
+  "conclusion":"FROZEN_FAILURE"
+}
