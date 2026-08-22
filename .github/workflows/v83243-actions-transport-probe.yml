@@ -1,5 +1,5 @@
-name: V8.3.245 V118 DEVELOPMENT regression instrumented
-# trigger-v245-v118-development-instrumented-1
+name: V8.3.245 construction-only PRESEAL
+# trigger-v245-preseal-1
 on:
   push:
     branches: [main]
@@ -13,47 +13,34 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v83245-v1-validation
+          ref: v83245-v1-sealed-validation
           fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-      - name: Persist DEVELOPMENT regression start marker
-        shell: bash
-        run: |
-          set -euo pipefail
-          printf '{"candidate":"V8.3.245","phase":"v118-development-regression-start","run_id":"%s","semantic_runtime_executed":false,"sealed_validation_executed":false,"expected_gold_changed":false}\n' "$GITHUB_RUN_ID" > validation/V8_3_245_V118_REGRESSION_START.json
-          git config user.name github-actions
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/V8_3_245_V118_REGRESSION_START.json
-          git commit -m 'Record V8.3.245 V118 DEVELOPMENT regression start'
-          git push origin HEAD:v83245-v1-validation
-      - name: Run V118 full DEVELOPMENT regression
+      - name: Run exact construction-only PRESEAL
         id: run
         shell: bash
         run: |
           set +e
-          python validation/v83245-v118-regression-orchestrator.py > /tmp/v245.log 2>&1
+          python validation/v83245-v1-sealed/v83245-preseal-freeze.py > /tmp/v245-preseal.log 2>&1
           rc=$?
           set -e
-          cat /tmp/v245.log
+          cat /tmp/v245-preseal.log
           RC="$rc" python - <<'PY'
           import json,os,pathlib
-          text=pathlib.Path('/tmp/v245.log').read_text(errors='replace')
-          pathlib.Path('validation/V8_3_245_V118_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.245','phase':'v118-development-regression-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'outcome':'success' if os.environ['RC']=='0' else 'failure','exit_code':os.environ['RC'],'log_tail':text[-66000:],'sealed_validation_executed':False,'v244_sealed_rerun':False,'expected_gold_changed':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
+          text=pathlib.Path('/tmp/v245-preseal.log').read_text(errors='replace')
+          o=pathlib.Path('validation/v83245-v1-sealed')
+          (o/'V8_3_245_PRESEAL_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.245','phase':'preseal-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ['RC']),'log_tail':text[-24000:],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'expected_gold_changed':False},indent=2)+'\n')
           PY
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze V245 DEVELOPMENT regression evidence
+      - name: Freeze PRESEAL evidence
         if: always()
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/V8_3_245_V118_REGRESSION_DIAGNOSTIC.json
-          test ! -f validation/V8_3_245_V118_REGRESSION_RECEIPT.json || git add validation/V8_3_245_V118_REGRESSION_RECEIPT.json
-          for f in validation/V8_3_245_V*_A_FROZEN_CARRIER.json; do test ! -f "$f" || git add "$f"; done
-          git diff --cached --quiet || git commit -m 'Record V8.3.245 V118 DEVELOPMENT regression evidence'
-          git push origin HEAD:v83245-v1-validation
-      - name: Enforce DEVELOPMENT regression outcome
+          git add validation/v83245-v1-sealed/V8_3_245_PRESEAL_DIAGNOSTIC.json
+          for f in validation/v83245-v1-sealed/V8_3_245_PRESEAL_RUN_RECEIPT.json validation/v83245-v1-sealed/V8_3_245_PRESEAL_CANDIDATE_BANK_V1.json validation/v83245-v1-sealed/V8_3_245_SEALED_SELECTION_V1.json validation/v83245-v1-sealed/V8_3_245_SEALED_FIXTURE_V1.json validation/v83245-v1-sealed/V8_3_245_INDEPENDENT_GOLD_V1.json validation/v83245-v1-sealed/V8_3_245_SEALED_MEMBERSHIP_V1.json validation/v83245-v1-sealed/V8_3_245_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83245-v1-sealed/V8_3_245_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.245 PRESEAL evidence'
+          git push origin HEAD:v83245-v1-sealed-validation
+      - name: Enforce PRESEAL outcome
         run: test '${{ steps.run.outputs.rc }}' = '0'
