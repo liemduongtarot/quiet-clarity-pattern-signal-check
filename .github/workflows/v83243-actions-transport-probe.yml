@@ -1,5 +1,5 @@
 name: V8.3.249 V248 residual DEVELOPMENT diagnostic
-# trigger-v249-v248-residual-diagnostic-1
+# trigger-v249-v248-residual-diagnostic-2-instrumented
 on:
   push:
     branches: [main]
@@ -18,6 +18,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - name: Persist residual diagnostic start
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '{"candidate":"V8.3.249","phase":"v248-residual-diagnostic-start","run_id":"%s","sealed_validation_executed":false,"expected_gold_changed":false}\n' "$GITHUB_RUN_ID" > validation/V8_3_249_V248_RESIDUAL_DIAGNOSTIC_START.json
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_249_V248_RESIDUAL_DIAGNOSTIC_START.json
+          git commit -m 'Record V8.3.249 V248 residual diagnostic start'
+          git push origin HEAD:v83249-v1-validation
       - name: Run V248 residual diagnostic only
         shell: bash
         run: |
