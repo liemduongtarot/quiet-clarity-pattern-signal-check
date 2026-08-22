@@ -1,0 +1,51 @@
+name: V8.3.244 frozen semantic autopsy
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83244-frozen-autopsy.yml
+permissions:
+  contents: write
+jobs:
+  autopsy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83244-v1-sealed-validation
+          fetch-depth: 0
+      - name: Build immutable failure autopsy
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,pathlib,collections
+          o=pathlib.Path('validation/v83244-v1-sealed')
+          r=json.loads((o/'V8_3_244_BATCH_A_RESULT_V1.json').read_text())
+          s=json.loads((o/'V8_3_244_BATCH_A_STATUS_V1.json').read_text())
+          assert r['total']==30 and r['passed']==16 and r['failed']==14
+          assert s['semantic_runtime_executed'] is True and s['semantic_failure'] is True and s['frozen_on_batch_a_failure'] is True and s['batch_b_executed'] is False
+          fails=[x for x in r['results'] if not x['pass']]
+          assert len(fails)==14
+          groups=collections.Counter()
+          cats=collections.Counter()
+          details=[]
+          for x in fails:
+              e=x['expected'];a=x['actual']
+              key=(x['category'],e['route'],a['route'],tuple(e['families']),tuple(a['families']),bool(e['sequence']),bool(a['sequence']))
+              groups[key]+=1;cats[x['category']]+=1
+              details.append({'case_id':x['case_id'],'category':x['category'],'language':x['language'],'domain':x['domain'],'expected':e,'actual':a,'surface':x['surface']})
+          grouped=[{'category':k[0],'expected_route':k[1],'actual_route':k[2],'expected_families':list(k[3]),'actual_families':list(k[4]),'expected_sequence':k[5],'actual_sequence':k[6],'count':v} for k,v in sorted(groups.items(),key=lambda kv:(kv[0][0],kv[0][1],kv[0][2],-kv[1]))]
+          out={'candidate':'V8.3.244','phase':'frozen-batch-a-semantic-autopsy','run_id':r['run_id'],'validated_development_head_sha':r['validated_development_head_sha'],'semantic_authority':r['semantic_authority'],'batch_a_total':30,'batch_a_passed':16,'batch_a_failed':14,'batch_b_executed':False,'v244_batch_a_rerun':False,'semantic_runtime_executed':True,'semantic_failure':True,'failure_counts_by_category':dict(sorted(cats.items())),'mechanism_groups':grouped,'failures':details,'expected_gold_changed':False,'step_111_authorized':False,'production_authorized':False,'conclusion':'frozen-semantic-failure'}
+          (o/'V8_3_244_FROZEN_AUTOPSY_V1.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps({'failure_counts_by_category':out['failure_counts_by_category'],'mechanism_groups':grouped},ensure_ascii=False))
+          PY
+      - name: Freeze autopsy evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83244-v1-sealed/V8_3_244_FROZEN_AUTOPSY_V1.json
+          git commit -m 'Freeze V8.3.244 semantic failure autopsy'
+          git push origin HEAD:v83244-v1-sealed-validation
