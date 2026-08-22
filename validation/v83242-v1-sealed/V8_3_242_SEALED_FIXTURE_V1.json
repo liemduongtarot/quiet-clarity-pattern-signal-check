@@ -1,0 +1,773 @@
+{
+  "candidate": "V8.3.242",
+  "cases": [
+    {
+      "case_id": "V242-S00-00",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "surface": "A real episode is described, but my final observable move is still missing. A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S00-03",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "surface": "I can describe the lived context but not my last behavioural response. A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S00-07",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism. Everything is grounded in a real event except my closing behaviour.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S00-11",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Bản ghi printmaking chỉ là context và không quyết định route. This happened in của tôi life; the endpoint action from me has not been supplied. Một studio printmaking ghi sleeve brayer, blanket plate và tab registration theo bàn.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S00-14",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Ledger weaving là background detail chứ không phải mechanism evidence. The situation is real; only của tôi own final action remains unknown. Một kho weaving ghi hook heddle, thẻ yarn và pin shuttle theo bin.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S00-17",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Danh mục pastry thêm context nhưng không có proof của response. This happened in của tôi life; the endpoint action from me has not been supplied. Một lớp pastry ghi ring mould, tip piping và thẻ proof theo trạm.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S01-00",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Those ceramics records concern stored materials only, not the response under test. Make the binding selection yourself rather than helping me weigh it. A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S01-03",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "That bindery stock record is separate from the measured behaviour. Take over the actual choosing and decide the final option for me. A bookbinding room tracked linen tapes, paste brushes and press boards by shelf.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S01-07",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Choose the final route in place of me making that choice. A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S01-11",
+      "category": "decision",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một studio printmaking ghi sleeve brayer, blanket plate và tab registration theo bàn. Bản ghi printmaking chỉ là context và không quyết định route. The decision itself should come from you instead of from của tôi judgement.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S01-14",
+      "category": "decision",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một kho weaving ghi hook heddle, thẻ yarn và pin shuttle theo bin. Ledger weaving là background detail chứ không phải mechanism evidence. Tôi want the deciding authority moved to you, not advice from you.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S01-17",
+      "category": "decision",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một lớp pastry ghi ring mould, tip piping và thẻ proof theo trạm. Danh mục pastry thêm context nhưng không có proof của response. The decision itself should come from you instead of from của tôi judgement.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S02-00",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test. This is synthetic evaluation text and not an event I lived.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S02-03",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour. This example is fictional validation input rather than autobiographical evidence.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S02-07",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "The violin-tool list adds scenery only and cannot prove the mechanism. Treat this as artificial practice text with no lived event attached. A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S02-11",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Nothing here comes from của tôi experience; it was fabricated for testing. Một studio printmaking ghi sleeve brayer, blanket plate và tab registration theo bàn. Bản ghi printmaking chỉ là context và không quyết định route.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S02-14",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tôi invented this case only to test classification, not to describe của tôi life. Một kho weaving ghi hook heddle, thẻ yarn và pin shuttle theo bin. Ledger weaving là background detail chứ không phải mechanism evidence.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S02-17",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Nothing here comes from của tôi experience; it was fabricated for testing. Một lớp pastry ghi ring mould, tip piping và thẻ proof theo trạm. Danh mục pastry thêm context nhưng không có proof của response.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S03-00",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Describe their internal view despite nothing behavioural confirming it. A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S03-03",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Infer the other person’s private thought with no outward behaviour supporting it. A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S03-07",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism. State what someone else secretly believes without observable evidence from them.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S03-11",
+      "category": "third",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Bản ghi printmaking chỉ là context và không quyết định route. Work out another person’s concealed belief without an observable basis. Một studio printmaking ghi sleeve brayer, blanket plate và tab registration theo bàn.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S03-14",
+      "category": "third",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Ledger weaving là background detail chứ không phải mechanism evidence. Tell me their hidden conclusion even though no words or actions establish it. Một kho weaving ghi hook heddle, thẻ yarn và pin shuttle theo bin.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S03-17",
+      "category": "third",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Danh mục pastry thêm context nhưng không có proof của response. Work out another person’s concealed belief without an observable basis. Một lớp pastry ghi ring mould, tip piping và thẻ proof theo trạm.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S04-00",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Those ceramics records concern stored materials only, not the response under test. At the future checkpoint, will the outcome I want already have happened? A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S04-03",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "That bindery stock record is separate from the measured behaviour. Looking ahead to the named milestone, will things finish as I hope? A bookbinding room tracked linen tapes, paste brushes and press boards by shelf.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S04-07",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "surface": "At that future point, will the situation have resolved the way I want? A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S04-11",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một studio printmaking ghi sleeve brayer, blanket plate và tab registration theo bàn. Bản ghi printmaking chỉ là context và không quyết định route. When the later deadline arrives, will this end in của tôi favour?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S04-14",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một kho weaving ghi hook heddle, thẻ yarn và pin shuttle theo bin. Ledger weaving là background detail chứ không phải mechanism evidence. Once that later cutoff is reached, will Tôi have the result Tôi want?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S04-17",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một lớp pastry ghi ring mould, tip piping và thẻ proof theo trạm. Danh mục pastry thêm context nhưng không có proof của response. When the later deadline arrives, will this end in của tôi favour?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S05-00",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test. I could have tried one reversible opening move, but option growth replaced initiation.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S05-03",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour. A reversible starter was available, but I widened the option set and never began.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S05-07",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The violin-tool list adds scenery only and cannot prove the mechanism. A small bounded start was ready, yet I generated more alternatives rather than acting. A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S05-11",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "family",
+      "surface": "There was a low-commitment start available, yet Tôi expanded possibilities and made no move. Một studio printmaking ghi sleeve brayer, blanket plate và tab registration theo bàn. Bản ghi printmaking chỉ là context và không quyết định route.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S05-14",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Tôi had one easy-to-undo first move; instead Tôi kept comparing and stayed still. Một kho weaving ghi hook heddle, thẻ yarn và pin shuttle theo bin. Ledger weaving là background detail chứ không phải mechanism evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S05-17",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "family",
+      "surface": "There was a low-commitment start available, yet Tôi expanded possibilities and made no move. Một lớp pastry ghi ring mould, tip piping và thẻ proof theo trạm. Danh mục pastry thêm context nhưng không có proof của response.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S06-00",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The main issue still needed my action, but I shifted effort into secondary work. A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S06-03",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Something important required my response while I kept busy with less relevant work. A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S06-07",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism. My action was needed on the main matter, but I occupied myself elsewhere.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S06-11",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Bản ghi printmaking chỉ là context và không quyết định route. A central obligation remained unanswered while Tôi worked on peripheral tasks. Một studio printmaking ghi sleeve brayer, blanket plate và tab registration theo bàn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S06-14",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Ledger weaving là background detail chứ không phải mechanism evidence. The primary responsibility still needed me, yet Tôi focused on tasks that could not settle it. Một kho weaving ghi hook heddle, thẻ yarn và pin shuttle theo bin.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S06-17",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Danh mục pastry thêm context nhưng không có proof của response. A central obligation remained unanswered while Tôi worked on peripheral tasks. Một lớp pastry ghi ring mould, tip piping và thẻ proof theo trạm.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S07-00",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Those ceramics records concern stored materials only, not the response under test. Before answering I used one contained interval, made one check, then ended the review. A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S07-03",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "That bindery stock record is separate from the measured behaviour. I took one bounded pause, checked once, answered, and then closed the issue. A bookbinding room tracked linen tapes, paste brushes and press boards by shelf.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S07-07",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I paused within a clear limit, reviewed once, responded, and did not reopen it. A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S07-11",
+      "category": "slow",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một studio printmaking ghi sleeve brayer, blanket plate và tab registration theo bàn. Bản ghi printmaking chỉ là context và không quyết định route. Tôi allowed one defined pause and one review, gave của tôi response, and stopped revisiting it.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S07-14",
+      "category": "slow",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một kho weaving ghi hook heddle, thẻ yarn và pin shuttle theo bin. Ledger weaving là background detail chứ không phải mechanism evidence. There was one finite delay and one review before Tôi replied and moved on.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S07-17",
+      "category": "slow",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một lớp pastry ghi ring mould, tip piping và thẻ proof theo trạm. Danh mục pastry thêm context nhưng không có proof của response. Tôi allowed one defined pause and one review, gave của tôi response, and stopped revisiting it.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S08-00",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test. I moved toward action, withdrew, then returned to the same conclusion without new facts.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V242-S08-03",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour. I nearly acted, reversed course, and revisited the same assessment under unchanged information.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V242-S08-07",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "The violin-tool list adds scenery only and cannot prove the mechanism. I got close to acting, backed off, and returned to prior reasoning despite no new information. A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V242-S08-11",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tôi came close to doing it, stepped back, and repeated the old judgement although nothing changed. Một studio printmaking ghi sleeve brayer, blanket plate và tab registration theo bàn. Bản ghi printmaking chỉ là context và không quyết định route.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V242-S08-14",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tôi advanced toward the move, pulled away, then repeated the same conclusion without added facts. Một kho weaving ghi hook heddle, thẻ yarn và pin shuttle theo bin. Ledger weaving là background detail chứ không phải mechanism evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V242-S08-17",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tôi came close to doing it, stepped back, and repeated the old judgement although nothing changed. Một lớp pastry ghi ring mould, tip piping và thẻ proof theo trạm. Danh mục pastry thêm context nhưng không có proof của response.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V242-S09-00",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I retained final agency, completed the action, and treated the issue as resolved. A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S09-03",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I kept the final choice, carried it out, and left the matter settled. A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S09-07",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism. The choice remained mine through completion; afterward I did not reopen it.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S09-11",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Bản ghi printmaking chỉ là context và không quyết định route. Tôi chose for myself, finished what Tôi chose, and left it closed. Một studio printmaking ghi sleeve brayer, blanket plate và tab registration theo bàn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S09-14",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Ledger weaving là background detail chứ không phải mechanism evidence. Tôi made the decision myself, executed it, and moved on. Một kho weaving ghi hook heddle, thẻ yarn và pin shuttle theo bin.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V242-S09-17",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Danh mục pastry thêm context nhưng không có proof của response. Tôi chose for myself, finished what Tôi chose, and left it closed. Một lớp pastry ghi ring mould, tip piping và thẻ proof theo trạm.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
