@@ -1,0 +1,17 @@
+{
+  "candidate": "V8.3.240",
+  "phase": "runner-plumbing-recovery-proof",
+  "semantic_authority": "QCEvidenceExtractorV5AO -> QCSemanticCoreV114",
+  "base_development_sha": "00ad4e2e12d58a22f26f171523c67231c662d325",
+  "extractor_path": "validation/qc-evidence-extractor-v5ao-v239-v238-residuals.js",
+  "core_path": "validation/psc-v83239-v238-v114-v238-residuals.js",
+  "semantic_files_byte_identical": true,
+  "v239_development_regression_preserved": true,
+  "v239_batch_a_rerun": false,
+  "v239_semantic_runtime_executed": false,
+  "sealed_validation_executed": false,
+  "expected_gold_changed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "success"
+}
