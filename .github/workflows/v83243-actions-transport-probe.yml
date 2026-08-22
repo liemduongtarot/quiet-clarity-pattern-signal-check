@@ -1,5 +1,5 @@
-name: V8.3.244 runner surgical repair via proven transport
-# trigger-v244-runner-repair-1
+name: V8.3.244 promote repaired runner to sealed
+# trigger-v244-runner-promote-1
 on:
   push:
     branches: [main]
@@ -13,42 +13,47 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v83244-v1-validation
+          ref: v83244-v1-sealed-validation
           fetch-depth: 0
-      - name: Repair stale V242 runner literals only
+      - name: Promote exact repaired DEVELOPMENT runner only
         shell: bash
         run: |
           set -euo pipefail
+          git fetch origin v83244-v1-validation:refs/remotes/origin/v83244-v1-validation
+          git show origin/v83244-v1-validation:validation/v83244-batch-a-self-contained.py > validation/v83244-batch-a-self-contained.py
+          git show origin/v83244-v1-validation:validation/V8_3_244_RUNNER_REPAIR_V2.json > validation/V8_3_244_RUNNER_REPAIR_V2.json
           python - <<'PY'
-          from pathlib import Path
-          import hashlib,json
-          p=Path('validation/v83244-batch-a-self-contained.py')
+          import json,pathlib,hashlib
+          o=pathlib.Path('validation/v83244-v1-sealed')
+          a=o/'V8_3_244_SEALED_AUTHORITY_V1.json'
+          obj=json.loads(a.read_text())
+          obj['recovery_development_head_sha']='a2af4854bd53a7c57aef835bc073366ebfdfa7b9'
+          obj['base_exact_development_sha']='885608fce9e8288119f79318b39646e2feb00f'
+          obj['semantic_authority']='QCEvidenceExtractorV5AR -> QCSemanticCoreV117'
+          obj['semantic_change']=False
+          obj['runner_materialized']=True
+          obj['runner_repair_v2_pass']=True
+          a.write_text(json.dumps(obj,indent=2)+'\n')
+          p=o/'v83244-transport-preflight.py'
           src=p.read_text()
-          replacements={
-            "assert A['validated_development_head_sha']==TARGET and A['semantic_authority']==SEM and A['preseal_pass'] is True and pf['pass'] is True and tr['pass'] is True":"assert A['base_exact_development_sha']==TARGET and A['semantic_authority']==SEM and A['preseal_pass'] is True and pf['pass'] is True and tr['pass'] is True",
-            "runner=runtime/'run-v83242-batch-a.cjs'":"runner=runtime/'run-v83244-batch-a.cjs'",
-            "const root='validation/v83242-v1-sealed-runtime'":"const root='validation/v83244-v1-sealed-runtime'",
-            "validated_development_head_sha:'79645f8973c9e8288119f79318b39646e2feb00f'":"validated_development_head_sha:'885608fce9e70a8818d1ebda23c786a81005a2fe'",
-            "throw Error('V5AQ missing')":"throw Error('V5AR missing')",
-            "throw Error('V116 missing')":"throw Error('V117 missing')"
-          }
-          for old,new in replacements.items():
-              if old not in src: raise SystemExit('missing repair anchor: '+old)
-              src=src.replace(old,new,1)
-          compile(src,str(p),'exec')
-          forbidden=['validation/v83242-v1-sealed-runtime',"run-v83242-batch-a.cjs",'79645f8973c9e8288119f79318b39646e2feb00f',"A['validated_development_head_sha']==TARGET"]
-          for x in forbidden:
-              if x in src: raise SystemExit('stale literal remains: '+x)
+          src=src.replace("DEV='184cb1253121307b72f66462ec7196625623635c'","DEV='a2af4854bd53a7c57aef835bc073366ebfdfa7b9'",1)
+          src=src.replace("mat=json.loads(show(DEV,'validation/V8_3_244_RUNNER_MATERIALIZATION_V1.json'))","mat=json.loads(show(DEV,'validation/V8_3_244_RUNNER_REPAIR_V2.json'))",1)
+          src=src.replace("assert dev244['semantic_change'] is False and dev244['expected_gold_changed'] is False and mat['pass'] is True and mat['self_contained'] is True","assert dev244['semantic_change'] is False and dev244['expected_gold_changed'] is False and mat['pass'] is True and mat['self_contained'] is True and mat['semantic_change'] is False and mat['expected_gold_changed'] is False",1)
           p.write_text(src)
-          d={'candidate':'V8.3.244','phase':'runner-surgical-repair-v2','base_exact_development_sha':'885608fce9e8288119f79318b39646e2feb00f','semantic_authority':'QCEvidenceExtractorV5AR -> QCSemanticCoreV117','runner_sha256':hashlib.sha256(src.encode()).hexdigest(),'semantic_change':False,'expected_gold_changed':False,'repair_scope':['authority-key','runtime-root','result-sha','runner-filename','diagnostic-labels'],'self_contained':True,'pass':True}
-          Path('validation/V8_3_244_RUNNER_REPAIR_V2.json').write_text(json.dumps(d,indent=2)+'\n')
+          runner=pathlib.Path('validation/v83244-batch-a-self-contained.py')
+          receipt=json.loads(pathlib.Path('validation/V8_3_244_RUNNER_REPAIR_V2.json').read_text())
+          assert hashlib.sha256(runner.read_bytes()).hexdigest()==receipt['runner_sha256']
+          assert receipt['pass'] is True and receipt['semantic_change'] is False and receipt['expected_gold_changed'] is False
+          forbidden=['validation/v83242-v1-sealed-runtime','run-v83242-batch-a.cjs','79645f8973c9e8288119f79318b39646e2feb00f',"A['validated_development_head_sha']==TARGET"]
+          text=runner.read_text()
+          for x in forbidden: assert x not in text,x
           PY
-      - name: Freeze repaired DEVELOPMENT runner
+      - name: Freeze sealed runner promotion
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83244-batch-a-self-contained.py validation/V8_3_244_RUNNER_REPAIR_V2.json
-          git commit -m 'Repair V8.3.244 self-contained runner stale literals'
-          git push origin HEAD:v83244-v1-validation
+          git add validation/v83244-batch-a-self-contained.py validation/V8_3_244_RUNNER_REPAIR_V2.json validation/v83244-v1-sealed/V8_3_244_SEALED_AUTHORITY_V1.json validation/v83244-v1-sealed/v83244-transport-preflight.py
+          git diff --cached --quiet || git commit -m 'Promote repaired V8.3.244 runner to sealed authority'
+          git push origin HEAD:v83244-v1-sealed-validation
