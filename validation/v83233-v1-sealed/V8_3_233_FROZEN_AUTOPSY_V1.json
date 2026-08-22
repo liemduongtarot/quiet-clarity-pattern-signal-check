@@ -1,0 +1,352 @@
+{
+  "candidate": "V8.3.233",
+  "phase": "FROZEN_SEALED_AUTOPSY",
+  "batch_a_run_id": "32574918890",
+  "validated_development_head_sha": "8f85efc8b8383420c65a50724d2512693302dbcb",
+  "semantic_authority": "QCEvidenceExtractorV5AI -> QCSemanticCoreV108",
+  "batch_a_total": 30,
+  "batch_a_passed": 20,
+  "batch_a_failed": 10,
+  "batch_a_attempt_consumed": true,
+  "batch_a_rerun_forbidden": true,
+  "batch_b_skipped": true,
+  "batch_b_rerun_forbidden": true,
+  "failure_layer": "ENGINE LOGIC",
+  "failure_class": "GENERALIZATION / COMPOSITIONAL RECALL / PRECEDENCE",
+  "failure_distribution": {
+    "clarification": 1,
+    "decision": 1,
+    "freeze": 2,
+    "hypothetical": 1,
+    "ignore": 2,
+    "sequence": 1,
+    "slow": 1,
+    "third": 1
+  },
+  "route_confusions": [
+    {
+      "category": "clarification",
+      "expected_route": "input:clarification-required",
+      "actual_route": "input:self-lived",
+      "count": 1
+    },
+    {
+      "category": "decision",
+      "expected_route": "input:decision-request",
+      "actual_route": "input:self-lived",
+      "count": 1
+    },
+    {
+      "category": "freeze",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:self-lived",
+      "count": 2
+    },
+    {
+      "category": "hypothetical",
+      "expected_route": "input:hypothetical-or-example",
+      "actual_route": "input:clarification-required",
+      "count": 1
+    },
+    {
+      "category": "ignore",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:self-lived",
+      "count": 2
+    },
+    {
+      "category": "sequence",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:self-lived",
+      "count": 1
+    },
+    {
+      "category": "slow",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:self-lived",
+      "count": 1
+    },
+    {
+      "category": "third",
+      "expected_route": "input:third-party-only",
+      "actual_route": "input:decision-request",
+      "count": 1
+    }
+  ],
+  "family_confusions": [
+    {
+      "category": "clarification",
+      "expected_families": [],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "decision",
+      "expected_families": [],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "freeze",
+      "expected_families": [
+        "freeze"
+      ],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 2
+    },
+    {
+      "category": "hypothetical",
+      "expected_families": [],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "ignore",
+      "expected_families": [
+        "ignore"
+      ],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 2
+    },
+    {
+      "category": "sequence",
+      "expected_families": [
+        "slow"
+      ],
+      "actual_families": [],
+      "expected_sequence": true,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "slow",
+      "expected_families": [
+        "slow"
+      ],
+      "actual_families": [
+        "freeze"
+      ],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "third",
+      "expected_families": [],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    }
+  ],
+  "failures": [
+    {
+      "case_id": "V233-S00-03",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "This really occurred, and the surrounding sequence is available, but my own last observable response is not included. A seed room recorded packet dividers and humidity slips by cabinet. The filing note adds context only, not evidence of the mechanism."
+    },
+    {
+      "case_id": "V233-S01-08",
+      "category": "decision",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Make the deciding choice rather than merely helping me compare. A choral store indexed score clips and pencil tins by shelf. The administrative detail cannot decide the classification."
+    },
+    {
+      "case_id": "V233-S02-03",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The filing note adds context only, not evidence of the mechanism. Treat this as an artificial practice scenario, not personal evidence. A specimen lab recorded plant sleeves and drying cards by shelf."
+    },
+    {
+      "case_id": "V233-S03-01",
+      "category": "third",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "An astronomy room logged eyepiece lids and mount bolts by case. That physical record sits outside the behavioural evidence. Give me someone else’s concealed belief even though their behaviour provides no support."
+    },
+    {
+      "case_id": "V233-S05-01",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A bounded first move was ready, but I kept adding possibilities and made no start. A watersports class tracked strap kits and paddle labels by rack. That physical record sits outside the behavioural evidence."
+    },
+    {
+      "case_id": "V233-S05-08",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A seed room recorded packet dividers and humidity slips by cabinet. The administrative detail cannot decide the classification. The first action was easy to reverse, but I broadened alternatives instead of beginning."
+    },
+    {
+      "case_id": "V233-S06-01",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A mountaineering room tracked sling coils and route cards by wall. The storage entry is logistics rather than behavioural evidence. The main matter remained unresolved because I shifted attention to secondary activity."
+    },
+    {
+      "case_id": "V233-S06-08",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "That equipment detail cannot determine the semantic route. The central obligation stayed unanswered while I diverted into less relevant tasks. A performance store recorded costume tags and cue folders by locker."
+    },
+    {
+      "case_id": "V233-S07-08",
+      "category": "slow",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "Before responding I took one finite pause, checked once, then closed the matter. A specimen lab recorded plant sleeves and drying cards by shelf. The administrative detail cannot decide the classification."
+    },
+    {
+      "case_id": "V233-S08-01",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I moved toward the action, withdrew, then returned to the same conclusion without any new evidence. A kitchen class tracked utensil boxes and pantry slips by shelf. The storage entry is logistics rather than behavioural evidence."
+    }
+  ],
+  "expected_gold_changed": false,
+  "v233_sealed_rerun": false,
+  "production_authorized": false,
+  "step_111_authorized": false
+}
