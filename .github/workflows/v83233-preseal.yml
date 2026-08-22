@@ -1,0 +1,62 @@
+name: V8.3.233 PRESEAL
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83233-preseal.yml
+permissions:
+  contents: write
+jobs:
+  preseal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83233-v1-sealed-validation
+          fetch-depth: 0
+      - name: Run construction-only PRESEAL
+        id: run
+        shell: bash
+        run: |
+          set +e
+          python validation/v83233-v1-sealed/v83233-preseal-freeze.py > /tmp/v233-preseal.log 2>&1
+          rc=$?
+          cat /tmp/v233-preseal.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          RC="$rc" python - <<'PY'
+          import json,os,pathlib
+          text=pathlib.Path('/tmp/v233-preseal.log').read_text(errors='replace');rc=os.environ['RC']
+          pathlib.Path('validation/v83233-v1-sealed/V8_3_233_PRESEAL_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.233','phase':'preseal-construction-diagnostic','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-18000:],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False},indent=2)+'\n')
+          PY
+          exit 0
+      - name: Freeze PRESEAL evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83233-v1-sealed/V8_3_233_PRESEAL_DIAGNOSTIC.json
+          for f in validation/v83233-v1-sealed/V8_3_233_PRESEAL_CANDIDATE_BANK_V1.json validation/v83233-v1-sealed/V8_3_233_SEALED_SELECTION_V1.json validation/v83233-v1-sealed/V8_3_233_SEALED_FIXTURE_V1.json validation/v83233-v1-sealed/V8_3_233_INDEPENDENT_GOLD_V1.json validation/v83233-v1-sealed/V8_3_233_SEALED_MEMBERSHIP_V1.json validation/v83233-v1-sealed/V8_3_233_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83233-v1-sealed/V8_3_233_SEALED_AUTHORITY_V1.json validation/v83233-v1-sealed/V8_3_233_PRESEAL_RUN_RECEIPT.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.233 PRESEAL authority'
+          git push origin HEAD:v83233-v1-sealed-validation
+      - name: Build checkpoint
+        if: always()
+        run: |
+          set -euo pipefail
+          rm -rf V8_3_233_PRESEAL_CHECKPOINT && mkdir V8_3_233_PRESEAL_CHECKPOINT
+          for f in validation/v83233-v1-sealed/V8_3_233_*; do test ! -f "$f" || cp "$f" V8_3_233_PRESEAL_CHECKPOINT/; done
+          (cd V8_3_233_PRESEAL_CHECKPOINT && sha256sum * > SHA256_MANIFEST.txt)
+          zip -r PSC_V8_3_233_PRESEAL_CHECKPOINT.zip V8_3_233_PRESEAL_CHECKPOINT
+          sha256sum PSC_V8_3_233_PRESEAL_CHECKPOINT.zip > PSC_V8_3_233_PRESEAL_CHECKPOINT_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_233_PRESEAL_CHECKPOINT
+          path: |
+            PSC_V8_3_233_PRESEAL_CHECKPOINT.zip
+            PSC_V8_3_233_PRESEAL_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce PRESEAL outcome
+        shell: bash
+        run: test '${{ steps.run.outputs.rc }}' = '0'
