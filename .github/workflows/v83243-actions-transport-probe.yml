@@ -1,5 +1,5 @@
-name: V8.3.249 V120 DEVELOPMENT regression
-# trigger-v249-v120-development-1
+name: V8.3.249 V248 residual DEVELOPMENT diagnostic
+# trigger-v249-v248-residual-diagnostic-1
 on:
   push:
     branches: [main]
@@ -18,52 +18,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Persist DEVELOPMENT regression start marker
+      - name: Run V248 residual diagnostic only
         shell: bash
         run: |
           set -euo pipefail
-          printf '{"candidate":"V8.3.249","phase":"v120-development-regression-start","run_id":"%s","semantic_runtime_executed":false,"sealed_validation_executed":false,"expected_gold_changed":false}\n' "$GITHUB_RUN_ID" > validation/V8_3_249_V120_REGRESSION_START.json
+          python validation/v83249-v120-v248-residual-diagnostic.py > /tmp/v249-v248.log 2>&1
+          cat /tmp/v249-v248.log
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/V8_3_249_V120_REGRESSION_START.json
-          git commit -m 'Record V8.3.249 V120 DEVELOPMENT regression start'
+          git add validation/V8_3_249_V248_RESIDUAL_DIAGNOSTIC_RESULTS.json
+          git commit -m 'Record V8.3.249 V248 residual diagnostic'
           git push origin HEAD:v83249-v1-validation
-      - name: Materialize V248 frozen carrier and run V120 full DEVELOPMENT regression
-        id: run
-        shell: bash
-        run: |
-          set +e
-          git fetch origin v83248-v1-sealed-validation:refs/remotes/origin/v83248-v1-sealed-validation
-          python - <<'PY'
-          import json,subprocess,pathlib
-          raw=subprocess.check_output(['git','show','origin/v83248-v1-sealed-validation:validation/v83248-v1-sealed/V8_3_248_BATCH_A_RESULT_V1.json'],text=True)
-          r=json.loads(raw); assert r['total']==30 and r['passed']==22 and r['failed']==8
-          out={'candidate':'V8.3.248','source':'frozen sealed Batch A first run','source_run_id':r['run_id'],'source_passed':22,'source_failed':8,'results':[]}
-          for x in r['results']:
-            out['results'].append({'case_id':x['case_id'],'category':x['category'],'language':x['language'],'domain':x['domain'],'surface':x['surface'],'expected':x['expected'],'source_first_run_pass':bool(x['pass'])})
-          pathlib.Path('validation/V8_3_248_A_FROZEN_CARRIER.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
-          PY
-          python validation/v83249-v120-regression-orchestrator.py > /tmp/v249.log 2>&1
-          rc=$?
-          set -e
-          cat /tmp/v249.log
-          RC="$rc" python - <<'PY'
-          import json,os,pathlib
-          text=pathlib.Path('/tmp/v249.log').read_text(errors='replace')
-          pathlib.Path('validation/V8_3_249_V120_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.249','phase':'v120-development-regression-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'outcome':'success' if os.environ['RC']=='0' else 'failure','exit_code':int(os.environ['RC']),'log_tail':text[-66000:],'sealed_validation_executed':False,'v248_sealed_rerun':False,'expected_gold_changed':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
-          PY
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze V249 DEVELOPMENT regression evidence
-        if: always()
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name github-actions
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/V8_3_248_A_FROZEN_CARRIER.json validation/V8_3_249_V120_REGRESSION_START.json validation/V8_3_249_V120_REGRESSION_DIAGNOSTIC.json
-          test ! -f validation/V8_3_249_V120_REGRESSION_RECEIPT.json || git add validation/V8_3_249_V120_REGRESSION_RECEIPT.json
-          for f in validation/V8_3_249_V*_A_REGRESSION_RESULTS.json; do test ! -f "$f" || git add "$f"; done
-          git diff --cached --quiet || git commit -m 'Record V8.3.249 V120 DEVELOPMENT regression evidence'
-          git push origin HEAD:v83249-v1-validation
-      - name: Enforce DEVELOPMENT regression outcome
-        run: test '${{ steps.run.outputs.rc }}' = '0'
