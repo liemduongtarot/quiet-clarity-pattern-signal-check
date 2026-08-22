@@ -1,0 +1,49 @@
+name: V8.3.232 V108 DEVELOPMENT regression R2
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83232-v108-development-regression-r2.yml
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83232-v1-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run exact V108 full regression
+        id: run
+        shell: bash
+        run: |
+          set +e
+          python validation/v83232-v108-regression-orchestrator.py > /tmp/v232-r2.log 2>&1
+          rc=$?
+          cat /tmp/v232-r2.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          RC="$rc" python - <<'PY'
+          import json,os,pathlib
+          text=pathlib.Path('/tmp/v232-r2.log').read_text(errors='replace');rc=os.environ['RC']
+          pathlib.Path('validation/V8_3_232_V108_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.232','phase':'v108-development-regression-diagnostic-r2','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-28000:],'sealed_validation_executed':False,'v231_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
+          PY
+          exit 0
+      - name: Freeze evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_232_V108_REGRESSION_DIAGNOSTIC.json
+          test ! -f validation/V8_3_232_V108_REGRESSION_RECEIPT.json || git add validation/V8_3_232_V108_REGRESSION_RECEIPT.json
+          for f in validation/V8_3_232_V*_A_FROZEN_CARRIER.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Record V8.3.232 V108 DEVELOPMENT regression R2 evidence'
+          git push origin HEAD:v83232-v1-validation
+      - name: Enforce outcome
+        shell: bash
+        run: test '${{ steps.run.outputs.rc }}' = '0'
