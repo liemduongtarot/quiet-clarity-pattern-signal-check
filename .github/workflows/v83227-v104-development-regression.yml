@@ -21,7 +21,7 @@ jobs:
         id: run
         shell: bash
         run: |
-          # first actual V8.3.227 DEVELOPMENT regression
+          # V8.3.227 DEVELOPMENT regression R2 plumbing trigger; semantics unchanged
           set +e
           python validation/v83227-v104-regression-orchestrator.py > /tmp/v227.log 2>&1
           rc=$?
@@ -30,7 +30,7 @@ jobs:
           RC="$rc" python - <<'PY'
           import json,os,pathlib
           text=pathlib.Path('/tmp/v227.log').read_text(errors='replace');rc=os.environ['RC']
-          d={'candidate':'V8.3.227','phase':'v104-development-regression-diagnostic','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-14000:],'sealed_validation_executed':False,'v226_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          d={'candidate':'V8.3.227','phase':'v104-development-regression-diagnostic-r2','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-14000:],'sealed_validation_executed':False,'v226_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
           pathlib.Path('validation/V8_3_227_V104_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
           PY
           exit 0
