@@ -1,0 +1,773 @@
+{
+  "candidate": "V8.3.240",
+  "cases": [
+    {
+      "case_id": "V240-S00-00",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The episode was real, but the concrete thing I did at the endpoint is still absent. A conservatory catalogued reed cases, valve cloths, and tuning forks by drawer. Those conservation records describe equipment handling only; they do not establish my response.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S00-03",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The real situation is described, yet my own endpoint behaviour remains unspecified. A marine lab recorded salinity tubes, mesh nets, and specimen jars by bench. Those marine-lab notes add setting but provide no proof of the response mechanism.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S00-07",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A florist studio recorded ribbon spools, stem gauges, and wrapping sheets by table. Those florist materials are background details rather than behavioural proof. This happened to me; the missing evidence is my observable closing response.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S00-10",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một phòng định hướng ghi thẻ la bàn, thước hải đồ và ghi chú beacon theo ngăn. Danh mục định hướng không thể thay thế bằng chứng về điều tôi đã làm. Everything around the event is available, but của tôi last response is not.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S00-14",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Danh mục phòng ảnh nằm ngoài bằng chứng cho cơ chế. The lived chain is clear except for the final action that came from me. Một phòng ảnh ghi khăn lens, dark slide và dây bấm theo bàn.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S00-17",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Bản ghi bộ gõ chỉ là hậu cảnh và không thể chứng minh phản ứng. The account is autobiographical; only của tôi final behavioural step is missing. Một studio bộ gõ ghi bọc dùi, nỉ chũm chọe và khóa chân đỡ theo giá.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S01-00",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A conservatory catalogued reed cases, valve cloths, and tuning forks by drawer. Those conservation records describe equipment handling only; they do not establish my response. I am handing you final decision authority; pick the route that stands.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S01-03",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A marine lab recorded salinity tubes, mesh nets, and specimen jars by bench. Those marine-lab notes add setting but provide no proof of the response mechanism. Take decision ownership and choose which option becomes final.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S01-07",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Those florist materials are background details rather than behavioural proof. Your choice should substitute for mine here, not just influence it. A florist studio recorded ribbon spools, stem gauges, and wrapping sheets by table.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S01-10",
+      "category": "decision",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Danh mục định hướng không thể thay thế bằng chứng về điều tôi đã làm. Tôi want the deciding call to come from you, not from của tôi judgement. Một phòng định hướng ghi thẻ la bàn, thước hải đồ và ghi chú beacon theo ngăn.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S01-14",
+      "category": "decision",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Make the actual final selection instead of leaving that act with me. Một phòng ảnh ghi khăn lens, dark slide và dây bấm theo bàn. Danh mục phòng ảnh nằm ngoài bằng chứng cho cơ chế.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S01-17",
+      "category": "decision",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Choose the final option for me rather than merely helping me assess it. Một studio bộ gõ ghi bọc dùi, nỉ chũm chọe và khóa chân đỡ theo giá. Bản ghi bộ gõ chỉ là hậu cảnh và không thể chứng minh phản ứng.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S02-00",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "surface": "Those conservation records describe equipment handling only; they do not establish my response. Nothing here is autobiographical; it was constructed for evaluation. A conservatory catalogued reed cases, valve cloths, and tuning forks by drawer.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S02-03",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "surface": "Those marine-lab notes add setting but provide no proof of the response mechanism. Treat this as fictional validation material with no lived episode behind it. A marine lab recorded salinity tubes, mesh nets, and specimen jars by bench.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S02-07",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "This example is artificial assessment text rather than personal evidence. A florist studio recorded ribbon spools, stem gauges, and wrapping sheets by table. Those florist materials are background details rather than behavioural proof.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S02-10",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "This is invented validation input and did not occur in của tôi life. Một phòng định hướng ghi thẻ la bàn, thước hải đồ và ghi chú beacon theo ngăn. Danh mục định hướng không thể thay thế bằng chứng về điều tôi đã làm.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S02-14",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Một phòng ảnh ghi khăn lens, dark slide và dây bấm theo bàn. Danh mục phòng ảnh nằm ngoài bằng chứng cho cơ chế. Tôi created this solely for testing, not from something Tôi experienced.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S02-17",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Một studio bộ gõ ghi bọc dùi, nỉ chũm chọe và khóa chân đỡ theo giá. Bản ghi bộ gõ chỉ là hậu cảnh và không thể chứng minh phản ứng. The scenario is synthetic test material, not a lived event.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S03-00",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Work out their internal view although nothing outward confirms it. A conservatory catalogued reed cases, valve cloths, and tuning forks by drawer. Those conservation records describe equipment handling only; they do not establish my response.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S03-03",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Infer the other person’s private belief despite no observable conduct supporting it. A marine lab recorded salinity tubes, mesh nets, and specimen jars by bench. Those marine-lab notes add setting but provide no proof of the response mechanism.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S03-07",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A florist studio recorded ribbon spools, stem gauges, and wrapping sheets by table. Those florist materials are background details rather than behavioural proof. State the other person’s hidden belief without observable evidence from them.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S03-10",
+      "category": "third",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một phòng định hướng ghi thẻ la bàn, thước hải đồ và ghi chú beacon theo ngăn. Danh mục định hướng không thể thay thế bằng chứng về điều tôi đã làm. Tell me their concealed conclusion without words or actions that establish it.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S03-14",
+      "category": "third",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Danh mục phòng ảnh nằm ngoài bằng chứng cho cơ chế. Give me their private conclusion even though their conduct provides no support. Một phòng ảnh ghi khăn lens, dark slide và dây bấm theo bàn.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S03-17",
+      "category": "third",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Bản ghi bộ gõ chỉ là hậu cảnh và không thể chứng minh phản ứng. Describe what someone else secretly thinks when there is no behavioural basis. Một studio bộ gõ ghi bọc dùi, nỉ chũm chọe và khóa chân đỡ theo giá.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S04-00",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "A conservatory catalogued reed cases, valve cloths, and tuning forks by drawer. Those conservation records describe equipment handling only; they do not establish my response. Once that future milestone is reached, will I get the result I want?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S04-03",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "A marine lab recorded salinity tubes, mesh nets, and specimen jars by bench. Those marine-lab notes add setting but provide no proof of the response mechanism. When that later deadline arrives, will this resolve in my favour?",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S04-07",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Those florist materials are background details rather than behavioural proof. At that later boundary, will the situation finish the way I want? A florist studio recorded ribbon spools, stem gauges, and wrapping sheets by table.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S04-10",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Danh mục định hướng không thể thay thế bằng chứng về điều tôi đã làm. By the future cutoff Tôi specified, will the preferred outcome have happened? Một phòng định hướng ghi thẻ la bàn, thước hải đồ và ghi chú beacon theo ngăn.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S04-14",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "career",
+      "surface": "At the future checkpoint Tôi named, will the result Tôi want already exist? Một phòng ảnh ghi khăn lens, dark slide và dây bấm theo bàn. Danh mục phòng ảnh nằm ngoài bằng chứng cho cơ chế.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S04-17",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Looking ahead to that named date, will things end the way Tôi hope? Một studio bộ gõ ghi bọc dùi, nỉ chũm chọe và khóa chân đỡ theo giá. Bản ghi bộ gõ chỉ là hậu cảnh và không thể chứng minh phản ứng.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S05-00",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "surface": "Those conservation records describe equipment handling only; they do not establish my response. One safe opening move was there, but I kept comparing and remained still. A conservatory catalogued reed cases, valve cloths, and tuning forks by drawer.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S05-03",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "surface": "Those marine-lab notes add setting but provide no proof of the response mechanism. A low-commitment opening action was ready; I added choices instead of starting. A marine lab recorded salinity tubes, mesh nets, and specimen jars by bench.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S05-07",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A reversible first move was available, but I widened the alternatives and never began. A florist studio recorded ribbon spools, stem gauges, and wrapping sheets by table. Those florist materials are background details rather than behavioural proof.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S05-10",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Tôi could have tested one bounded first step, but option growth replaced initiation. Một phòng định hướng ghi thẻ la bàn, thước hải đồ và ghi chú beacon theo ngăn. Danh mục định hướng không thể thay thế bằng chứng về điều tôi đã làm.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S05-14",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Một phòng ảnh ghi khăn lens, dark slide và dây bấm theo bàn. Danh mục phòng ảnh nằm ngoài bằng chứng cho cơ chế. Tôi had a small starter with an exit, yet comparison expanded and Tôi stayed inactive.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S05-17",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Một studio bộ gõ ghi bọc dùi, nỉ chũm chọe và khóa chân đỡ theo giá. Bản ghi bộ gõ chỉ là hậu cảnh và không thể chứng minh phản ứng. There was an easy-to-undo start available, yet Tôi broadened possibilities and made no start.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S06-00",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "surface": "The main matter still required my action, but I redirected effort into secondary work. A conservatory catalogued reed cases, valve cloths, and tuning forks by drawer. Those conservation records describe equipment handling only; they do not establish my response.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S06-03",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "surface": "Something consequential needed my response while I kept busy with less relevant work. A marine lab recorded salinity tubes, mesh nets, and specimen jars by bench. Those marine-lab notes add setting but provide no proof of the response mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S06-07",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A florist studio recorded ribbon spools, stem gauges, and wrapping sheets by table. Those florist materials are background details rather than behavioural proof. A central responsibility remained unanswered while I focused on peripheral tasks.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S06-10",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một phòng định hướng ghi thẻ la bàn, thước hải đồ và ghi chú beacon theo ngăn. Danh mục định hướng không thể thay thế bằng chứng về điều tôi đã làm. The core obligation still needed me, yet Tôi diverted effort into tasks that could not settle it.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S06-14",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Danh mục phòng ảnh nằm ngoài bằng chứng cho cơ chế. The primary issue stayed unresolved because Tôi shifted attention to side activity. Một phòng ảnh ghi khăn lens, dark slide và dây bấm theo bàn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S06-17",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Bản ghi bộ gõ chỉ là hậu cảnh và không thể chứng minh phản ứng. My action was required on the main issue, but Tôi occupied myself with secondary activity. Một studio bộ gõ ghi bọc dùi, nỉ chũm chọe và khóa chân đỡ theo giá.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S07-00",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A conservatory catalogued reed cases, valve cloths, and tuning forks by drawer. Those conservation records describe equipment handling only; they do not establish my response. There was one finite delay and one check before I replied and stopped revisiting it.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S07-03",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A marine lab recorded salinity tubes, mesh nets, and specimen jars by bench. Those marine-lab notes add setting but provide no proof of the response mechanism. I allowed one defined pause and one review, gave my response, and did not reopen it.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S07-07",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Those florist materials are background details rather than behavioural proof. I paused inside a clear limit, reviewed once, responded, and moved on. A florist studio recorded ribbon spools, stem gauges, and wrapping sheets by table.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S07-10",
+      "category": "slow",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Danh mục định hướng không thể thay thế bằng chứng về điều tôi đã làm. Tôi delayed once within a fixed boundary, checked once, replied, and closed the matter. Một phòng định hướng ghi thẻ la bàn, thước hải đồ và ghi chú beacon theo ngăn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S07-14",
+      "category": "slow",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Before answering Tôi took one contained interval, checked once, then ended the review. Một phòng ảnh ghi khăn lens, dark slide và dây bấm theo bàn. Danh mục phòng ảnh nằm ngoài bằng chứng cho cơ chế.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S07-17",
+      "category": "slow",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Tôi used one bounded pause, reviewed once, answered, and left the matter closed. Một studio bộ gõ ghi bọc dùi, nỉ chũm chọe và khóa chân đỡ theo giá. Bản ghi bộ gõ chỉ là hậu cảnh và không thể chứng minh phản ứng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S08-00",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "surface": "Those conservation records describe equipment handling only; they do not establish my response. I approached execution, stepped back, then cycled to the same reasoning with no new facts. A conservatory catalogued reed cases, valve cloths, and tuning forks by drawer.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V240-S08-03",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "surface": "Those marine-lab notes add setting but provide no proof of the response mechanism. I came close to acting, pulled away, and returned to prior reasoning despite no new evidence. A marine lab recorded salinity tubes, mesh nets, and specimen jars by bench.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V240-S08-07",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "I nearly acted, reversed course, and revisited the same assessment under unchanged evidence. A florist studio recorded ribbon spools, stem gauges, and wrapping sheets by table. Those florist materials are background details rather than behavioural proof.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V240-S08-10",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Tôi moved toward the action, backed away, then returned to the same conclusion without new information. Một phòng định hướng ghi thẻ la bàn, thước hải đồ và ghi chú beacon theo ngăn. Danh mục định hướng không thể thay thế bằng chứng về điều tôi đã làm.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V240-S08-14",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Một phòng ảnh ghi khăn lens, dark slide và dây bấm theo bàn. Danh mục phòng ảnh nằm ngoài bằng chứng cho cơ chế. Tôi advanced toward the move, retreated, then repeated the same conclusion without additional information.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V240-S08-17",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Một studio bộ gõ ghi bọc dùi, nỉ chũm chọe và khóa chân đỡ theo giá. Bản ghi bộ gõ chỉ là hậu cảnh và không thể chứng minh phản ứng. Tôi got close to doing it, withdrew, and repeated the earlier judgement although nothing changed.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V240-S09-00",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I retained final agency, completed what I chose, and treated the issue as resolved. A conservatory catalogued reed cases, valve cloths, and tuning forks by drawer. Those conservation records describe equipment handling only; they do not establish my response.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S09-03",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I kept the final decision with me, carried it out, and left the matter settled. A marine lab recorded salinity tubes, mesh nets, and specimen jars by bench. Those marine-lab notes add setting but provide no proof of the response mechanism.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S09-07",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A florist studio recorded ribbon spools, stem gauges, and wrapping sheets by table. Those florist materials are background details rather than behavioural proof. I chose for myself, finished the action, and left it closed.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S09-10",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một phòng định hướng ghi thẻ la bàn, thước hải đồ và ghi chú beacon theo ngăn. Danh mục định hướng không thể thay thế bằng chứng về điều tôi đã làm. Tôi made the final choice myself, executed it, and moved on.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S09-14",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Danh mục phòng ảnh nằm ngoài bằng chứng cho cơ chế. The final call remained mine; Tôi executed it and did not revisit the choice process. Một phòng ảnh ghi khăn lens, dark slide và dây bấm theo bàn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V240-S09-17",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Bản ghi bộ gõ chỉ là hậu cảnh và không thể chứng minh phản ứng. The decision stayed mine through completion; afterward Tôi did not reopen it. Một studio bộ gõ ghi bọc dùi, nỉ chũm chọe và khóa chân đỡ theo giá.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
