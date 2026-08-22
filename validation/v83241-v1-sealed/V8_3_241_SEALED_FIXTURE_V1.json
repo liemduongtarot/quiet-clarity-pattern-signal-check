@@ -1,0 +1,773 @@
+{
+  "candidate": "V8.3.241",
+  "cases": [
+    {
+      "case_id": "V241-S00-01",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Those microscopy records are operational context, not behavioural evidence. This lived situation is described except for the concrete action I took at the endpoint. A microscopy room indexed slide trays, objective caps, and focus keys by cabinet.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S00-04",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "The glass-tool record is outside the evidence about the behaviour. The surrounding facts are available from a real event; my endpoint behaviour is the missing evidence. A glass studio catalogued scoring wheels, foil rolls, and kiln spacers by bench.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S00-08",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A birding club recorded lens hoods, field slates, and tripod feet by case. The birding equipment note cannot decide the classification. I can give the real context, but not the behavioural step that came from me at the close.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S00-10",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Sổ kho bản đồ không thể thay thế bằng chứng về điều tôi đã làm. The surrounding facts are available from a real event; của tôi endpoint behaviour is the missing evidence. Một kho bản đồ ghi cổ ống, thước scale và thẻ legend theo ngăn.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S00-13",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Log thiết bị canoe là bối cảnh logistics và không phân loại phản ứng. This lived situation is described except for the concrete action Tôi took at the endpoint. Một kho canoe ghi bolt thwart, grip paddle và loop dây theo bảng.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S00-17",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một studio giấy ghi bone folder, cone chỉ và guard awl theo ngăn. Bản ghi studio giấy chỉ là hậu cảnh và không chứng minh phản ứng. This is autobiographical, but what Tôi personally did at the finish is unspecified.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S01-01",
+      "category": "decision",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Take the deciding act away from me and make the final selection yourself. A microscopy room indexed slide trays, objective caps, and focus keys by cabinet. Those microscopy records are operational context, not behavioural evidence.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S01-04",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Make the actual final decision on my behalf instead of only advising me. A glass studio catalogued scoring wheels, foil rolls, and kiln spacers by bench. The glass-tool record is outside the evidence about the behaviour.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S01-08",
+      "category": "decision",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The birding equipment note cannot decide the classification. I want you to own the choice and determine which option becomes final. A birding club recorded lens hoods, field slates, and tripod feet by case.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S01-10",
+      "category": "decision",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Make the actual final decision on của tôi behalf instead of only advising me. Một kho bản đồ ghi cổ ống, thước scale và thẻ legend theo ngăn. Sổ kho bản đồ không thể thay thế bằng chứng về điều tôi đã làm.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S01-13",
+      "category": "decision",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Take the deciding act away from me and make the final selection yourself. Một kho canoe ghi bolt thwart, grip paddle và loop dây theo bảng. Log thiết bị canoe là bối cảnh logistics và không phân loại phản ứng.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S01-17",
+      "category": "decision",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Bản ghi studio giấy chỉ là hậu cảnh và không chứng minh phản ứng. Tôi am transferring final choice ownership to you; select the route that stands. Một studio giấy ghi bone folder, cone chỉ và guard awl theo ngăn.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S02-01",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A microscopy room indexed slide trays, objective caps, and focus keys by cabinet. Those microscopy records are operational context, not behavioural evidence. Treat this as fictional practice material, not a situation from my life.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S02-04",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "A glass studio catalogued scoring wheels, foil rolls, and kiln spacers by bench. The glass-tool record is outside the evidence about the behaviour. Nothing described here is autobiographical; it is synthetic validation text.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S02-08",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "surface": "This is manufactured test input and has no lived event behind it. A birding club recorded lens hoods, field slates, and tripod feet by case. The birding equipment note cannot decide the classification.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S02-10",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Một kho bản đồ ghi cổ ống, thước scale và thẻ legend theo ngăn. Sổ kho bản đồ không thể thay thế bằng chứng về điều tôi đã làm. Nothing described here is autobiographical; it is synthetic validation text.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S02-13",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Một kho canoe ghi bolt thwart, grip paddle và loop dây theo bảng. Log thiết bị canoe là bối cảnh logistics và không phân loại phản ứng. Treat this as fictional practice material, not a situation from của tôi life.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S02-17",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "other",
+      "surface": "This artificial example exists for assessment rather than as personal evidence. Một studio giấy ghi bone folder, cone chỉ và guard awl theo ngăn. Bản ghi studio giấy chỉ là hậu cảnh và không chứng minh phản ứng.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S03-01",
+      "category": "third",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Those microscopy records are operational context, not behavioural evidence. Tell me their private conclusion although no words or actions establish it. A microscopy room indexed slide trays, objective caps, and focus keys by cabinet.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S03-04",
+      "category": "third",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The glass-tool record is outside the evidence about the behaviour. State what they secretly believe even though nothing observable supports it. A glass studio catalogued scoring wheels, foil rolls, and kiln spacers by bench.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S03-08",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A birding club recorded lens hoods, field slates, and tripod feet by case. The birding equipment note cannot decide the classification. Describe someone else’s concealed thought when there is no behavioural basis.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S03-10",
+      "category": "third",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Sổ kho bản đồ không thể thay thế bằng chứng về điều tôi đã làm. State what they secretly believe even though nothing observable supports it. Một kho bản đồ ghi cổ ống, thước scale và thẻ legend theo ngăn.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S03-13",
+      "category": "third",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Log thiết bị canoe là bối cảnh logistics và không phân loại phản ứng. Tell me their private conclusion although no words or actions establish it. Một kho canoe ghi bolt thwart, grip paddle và loop dây theo bảng.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S03-17",
+      "category": "third",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một studio giấy ghi bone folder, cone chỉ và guard awl theo ngăn. Bản ghi studio giấy chỉ là hậu cảnh và không chứng minh phản ứng. Give me their private view without any behaviour from them that substantiates it.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S04-01",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Looking ahead to the named cutoff, will this finish the way I hope? A microscopy room indexed slide trays, objective caps, and focus keys by cabinet. Those microscopy records are operational context, not behavioural evidence.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S04-04",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "At the later date I named, will the preferred outcome already be true? A glass studio catalogued scoring wheels, foil rolls, and kiln spacers by bench. The glass-tool record is outside the evidence about the behaviour.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S04-08",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "career",
+      "surface": "The birding equipment note cannot decide the classification. Once that later milestone is reached, will the outcome I want have happened? A birding club recorded lens hoods, field slates, and tripod feet by case.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S04-10",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "At the later date Tôi named, will the preferred outcome already be true? Một kho bản đồ ghi cổ ống, thước scale và thẻ legend theo ngăn. Sổ kho bản đồ không thể thay thế bằng chứng về điều tôi đã làm.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S04-13",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Looking ahead to the named cutoff, will this finish the way Tôi hope? Một kho canoe ghi bolt thwart, grip paddle và loop dây theo bảng. Log thiết bị canoe là bối cảnh logistics và không phân loại phản ứng.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S04-17",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Bản ghi studio giấy chỉ là hậu cảnh và không chứng minh phản ứng. When that future checkpoint arrives, will the situation resolve in của tôi favour? Một studio giấy ghi bone folder, cone chỉ và guard awl theo ngăn.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S05-01",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "A microscopy room indexed slide trays, objective caps, and focus keys by cabinet. Those microscopy records are operational context, not behavioural evidence. One easy-to-undo opening action was there, but I kept comparing and remained still.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S05-04",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A glass studio catalogued scoring wheels, foil rolls, and kiln spacers by bench. The glass-tool record is outside the evidence about the behaviour. A low-commitment opening step was ready; I generated alternatives instead of starting.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S05-08",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A small reversible first move was available, but I broadened the choices and did not begin. A birding club recorded lens hoods, field slates, and tripod feet by case. The birding equipment note cannot decide the classification.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S05-10",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Một kho bản đồ ghi cổ ống, thước scale và thẻ legend theo ngăn. Sổ kho bản đồ không thể thay thế bằng chứng về điều tôi đã làm. A low-commitment opening step was ready; Tôi generated alternatives instead of starting.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S05-13",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Một kho canoe ghi bolt thwart, grip paddle và loop dây theo bảng. Log thiết bị canoe là bối cảnh logistics và không phân loại phản ứng. One easy-to-undo opening action was there, but Tôi kept comparing and remained still.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S05-17",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Tôi could have tested one reversible action, but option growth displaced initiation. Một studio giấy ghi bone folder, cone chỉ và guard awl theo ngăn. Bản ghi studio giấy chỉ là hậu cảnh và không chứng minh phản ứng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S06-01",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Those microscopy records are operational context, not behavioural evidence. A primary responsibility remained unanswered while I focused on peripheral tasks. A microscopy room indexed slide trays, objective caps, and focus keys by cabinet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S06-04",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "The glass-tool record is outside the evidence about the behaviour. The main obligation still needed me, yet I diverted effort into tasks that could not settle it. A glass studio catalogued scoring wheels, foil rolls, and kiln spacers by bench.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S06-08",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A birding club recorded lens hoods, field slates, and tripod feet by case. The birding equipment note cannot decide the classification. The central issue stayed unresolved because I shifted attention to side activity.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S06-10",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Sổ kho bản đồ không thể thay thế bằng chứng về điều tôi đã làm. The main obligation still needed me, yet Tôi diverted effort into tasks that could not settle it. Một kho bản đồ ghi cổ ống, thước scale và thẻ legend theo ngăn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S06-13",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Log thiết bị canoe là bối cảnh logistics và không phân loại phản ứng. A primary responsibility remained unanswered while Tôi focused on peripheral tasks. Một kho canoe ghi bolt thwart, grip paddle và loop dây theo bảng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S06-17",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một studio giấy ghi bone folder, cone chỉ và guard awl theo ngăn. Bản ghi studio giấy chỉ là hậu cảnh và không chứng minh phản ứng. My action was required on the central issue, but Tôi occupied myself with secondary activity.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S07-01",
+      "category": "slow",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Before answering I used one contained interval, checked once, then ended the review. A microscopy room indexed slide trays, objective caps, and focus keys by cabinet. Those microscopy records are operational context, not behavioural evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S07-04",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "I took one bounded pause, reviewed once, answered, and left the issue closed. A glass studio catalogued scoring wheels, foil rolls, and kiln spacers by bench. The glass-tool record is outside the evidence about the behaviour.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S07-08",
+      "category": "slow",
+      "language": "EN",
+      "domain": "other",
+      "surface": "The birding equipment note cannot decide the classification. I allowed one defined pause and one review, gave my response, and did not reopen it. A birding club recorded lens hoods, field slates, and tripod feet by case.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S07-10",
+      "category": "slow",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Tôi took one bounded pause, reviewed once, answered, and left the issue closed. Một kho bản đồ ghi cổ ống, thước scale và thẻ legend theo ngăn. Sổ kho bản đồ không thể thay thế bằng chứng về điều tôi đã làm.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S07-13",
+      "category": "slow",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Before answering Tôi used one contained interval, checked once, then ended the review. Một kho canoe ghi bolt thwart, grip paddle và loop dây theo bảng. Log thiết bị canoe là bối cảnh logistics và không phân loại phản ứng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S07-17",
+      "category": "slow",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Bản ghi studio giấy chỉ là hậu cảnh và không chứng minh phản ứng. There was one finite delay and one check before Tôi replied and stopped revisiting it. Một studio giấy ghi bone folder, cone chỉ và guard awl theo ngăn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S08-01",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "A microscopy room indexed slide trays, objective caps, and focus keys by cabinet. Those microscopy records are operational context, not behavioural evidence. I came close to doing it, pulled away, and returned to prior reasoning despite no new evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V241-S08-04",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "A glass studio catalogued scoring wheels, foil rolls, and kiln spacers by bench. The glass-tool record is outside the evidence about the behaviour. I approached the practical move, stepped back, then cycled to the same reasoning with no new facts.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V241-S08-08",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "surface": "I moved toward acting, backed away, then returned to the same conclusion without new information. A birding club recorded lens hoods, field slates, and tripod feet by case. The birding equipment note cannot decide the classification.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V241-S08-10",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Một kho bản đồ ghi cổ ống, thước scale và thẻ legend theo ngăn. Sổ kho bản đồ không thể thay thế bằng chứng về điều tôi đã làm. Tôi approached the practical move, stepped back, then cycled to the same reasoning with no new facts.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V241-S08-13",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Một kho canoe ghi bolt thwart, grip paddle và loop dây theo bảng. Log thiết bị canoe là bối cảnh logistics và không phân loại phản ứng. Tôi came close to doing it, pulled away, and returned to prior reasoning despite no new evidence.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V241-S08-17",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Tôi nearly acted, reversed course, and revisited the same assessment under unchanged evidence. Một studio giấy ghi bone folder, cone chỉ và guard awl theo ngăn. Bản ghi studio giấy chỉ là hậu cảnh và không chứng minh phản ứng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V241-S09-01",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Those microscopy records are operational context, not behavioural evidence. I made the final choice myself, executed it, and moved on. A microscopy room indexed slide trays, objective caps, and focus keys by cabinet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S09-04",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "The glass-tool record is outside the evidence about the behaviour. I chose for myself, finished the action, and left it closed. A glass studio catalogued scoring wheels, foil rolls, and kiln spacers by bench.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S09-08",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A birding club recorded lens hoods, field slates, and tripod feet by case. The birding equipment note cannot decide the classification. The decision stayed mine through completion; afterward I did not reopen it.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S09-10",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Sổ kho bản đồ không thể thay thế bằng chứng về điều tôi đã làm. Tôi chose for myself, finished the action, and left it closed. Một kho bản đồ ghi cổ ống, thước scale và thẻ legend theo ngăn.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S09-13",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Log thiết bị canoe là bối cảnh logistics và không phân loại phản ứng. Tôi made the final choice myself, executed it, and moved on. Một kho canoe ghi bolt thwart, grip paddle và loop dây theo bảng.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V241-S09-17",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một studio giấy ghi bone folder, cone chỉ và guard awl theo ngăn. Bản ghi studio giấy chỉ là hậu cảnh và không chứng minh phản ứng. The final call remained mine; Tôi executed it and did not revisit the choice process.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
