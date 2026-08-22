@@ -1,0 +1,12 @@
+{
+  "candidate": "V8.3.247",
+  "phase": "preseal-r2-diagnostic",
+  "run_id": "32599859175",
+  "rc": 0,
+  "log_tail": "{\"candidate\": \"V8.3.247\", \"phase\": \"preseal-freeze-v1\", \"validated_development_head_sha\": \"2253e333f2b319e122e2bfdf06ddbdd330ff7408\", \"base_exact_development_sha\": \"00bcd4681a61ef1ab0b229eb90af9e74102dc649\", \"semantic_authority\": \"QCEvidenceExtractorV5AT -> QCSemanticCoreV119\", \"candidate_count\": 180, \"selected_count\": 60, \"batch_a_count\": 30, \"batch_b_count\": 30, \"internal_max_similarity\": 0.597938, \"internal_max_pair\": [\"V247-S00-12\", \"V247-S09-12\"], \"external_max_similarity\": 0.743902, \"external_cases_at_or_above_0_75\": 0, \"exact_external_duplicates\": 0, \"semantic_fingerprint_exact_duplicates\": 0, \"semantic_runtime_executed\": false, \"semantic_authority_loaded\": false, \"selection_uses_runtime_output\": false, \"batch_a_executed\": false, \"batch_b_executed\": false, \"conclusion\": \"success\"}\n",
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "expected_gold_changed": false
+}
