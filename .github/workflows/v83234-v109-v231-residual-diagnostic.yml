@@ -21,6 +21,7 @@ jobs:
         id: run
         shell: bash
         run: |
+          # actual diagnostic trigger
           set +e
           python validation/v83234-v109-v231-residual-diagnostic.py > /tmp/v234-v231.log 2>&1
           rc=$?
