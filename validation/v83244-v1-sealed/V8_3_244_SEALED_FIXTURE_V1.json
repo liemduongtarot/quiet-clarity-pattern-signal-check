@@ -1,0 +1,773 @@
+{
+  "candidate": "V8.3.244",
+  "cases": [
+    {
+      "case_id": "V244-S00-01",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. Everything is autobiographical except the response I made at closure. A lapidary cabinet listed dop sticks, polishing laps, gem tweezers, wax blocks and stone envelopes by tray.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S00-04",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. This is a lived episode, but my observable closing behaviour is absent. A lapidary cabinet listed dop sticks, polishing laps, gem tweezers, wax blocks and stone envelopes by tray.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S00-07",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. Everything is autobiographical except the response I made at closure. A lapidary cabinet listed dop sticks, polishing laps, gem tweezers, wax blocks and stone envelopes by tray.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S00-10",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một xưởng brass ghi valve felt, mouthpiece brush, cork sheet, slide grease và spring hook theo ngăn. Các item brass-maintenance thêm context nhưng không có behavioural proof. Đây là chuyện tôi đã trải qua, nhưng hành vi kết thúc có thể quan sát của tôi chưa được nêu. A lapidary cabinet listed dop sticks, polishing laps, gem tweezers, wax blocks and stone envelopes by tray.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S00-13",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một xưởng radio ghi tuning coil, ferrite rod, solder wick, dial cord và terminal strip theo bàn. Các part radio là background object và không quyết định route. Mọi phần đều là chuyện thật của tôi ngoại trừ response tôi đã làm ở đoạn kết. A lapidary cabinet listed dop sticks, polishing laps, gem tweezers, wax blocks and stone envelopes by tray.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S00-16",
+      "category": "clarification",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một kho geology ghi core box, acid bottle, field slate, sample bag và compass clinometer theo locker. Inventory geology chỉ thêm setting và không prove mechanism. Đây là chuyện tôi đã trải qua, nhưng hành vi kết thúc có thể quan sát của tôi chưa được nêu. A lapidary cabinet listed dop sticks, polishing laps, gem tweezers, wax blocks and stone envelopes by tray.",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S01-01",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Take over the final choice so your selection replaces mine. A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. A horology store logged balance staffs, jewel pushers, hand levers, cannon pinions and movement cushions by case.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S01-04",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "surface": "I want the final selection to come from you, not from my judgement. A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. A horology store logged balance staffs, jewel pushers, hand levers, cannon pinions and movement cushions by case.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S01-07",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Take over the final choice so your selection replaces mine. A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. A horology store logged balance staffs, jewel pushers, hand levers, cannon pinions and movement cushions by case.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S01-10",
+      "category": "decision",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Tôi muốn lựa chọn cuối đến từ bạn chứ không phải judgement của tôi. Một xưởng brass ghi valve felt, mouthpiece brush, cork sheet, slide grease và spring hook theo ngăn. Các item brass-maintenance thêm context nhưng không có behavioural proof. A horology store logged balance staffs, jewel pushers, hand levers, cannon pinions and movement cushions by case.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S01-13",
+      "category": "decision",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Hãy cầm quyền chọn cuối để lựa chọn của bạn thay thế lựa chọn của tôi. Một xưởng radio ghi tuning coil, ferrite rod, solder wick, dial cord và terminal strip theo bàn. Các part radio là background object và không quyết định route. A horology store logged balance staffs, jewel pushers, hand levers, cannon pinions and movement cushions by case.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S01-16",
+      "category": "decision",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Tôi muốn lựa chọn cuối đến từ bạn chứ không phải judgement của tôi. Một kho geology ghi core box, acid bottle, field slate, sample bag và compass clinometer theo locker. Inventory geology chỉ thêm setting và không prove mechanism. A horology store logged balance staffs, jewel pushers, hand levers, cannon pinions and movement cushions by case.",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S02-01",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Those apiary records describe equipment placement, not behavioural evidence. This case was constructed for testing and did not happen to me. A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. A papermaking room indexed deckle straps, couching felts, pulp scoops, sizing brushes and drying boards by rack.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S02-04",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Those glassblowing items are physical context and do not prove behaviour. I fabricated this example only for classification testing. A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. A papermaking room indexed deckle straps, couching felts, pulp scoops, sizing brushes and drying boards by rack.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S02-07",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Those canoe components do not determine the response family. This case was constructed for testing and did not happen to me. A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. A papermaking room indexed deckle straps, couching felts, pulp scoops, sizing brushes and drying boards by rack.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S02-10",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Các item brass-maintenance thêm context nhưng không có behavioural proof. Tôi tạo ví dụ này chỉ để test classification. Một xưởng brass ghi valve felt, mouthpiece brush, cork sheet, slide grease và spring hook theo ngăn. A papermaking room indexed deckle straps, couching felts, pulp scoops, sizing brushes and drying boards by rack.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S02-13",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Các part radio là background object và không quyết định route. Case này được dựng để test và chưa từng xảy ra với tôi. Một xưởng radio ghi tuning coil, ferrite rod, solder wick, dial cord và terminal strip theo bàn. A papermaking room indexed deckle straps, couching felts, pulp scoops, sizing brushes and drying boards by rack.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S02-16",
+      "category": "hypothetical",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Inventory geology chỉ thêm setting và không prove mechanism. Tôi tạo ví dụ này chỉ để test classification. Một kho geology ghi core box, acid bottle, field slate, sample bag và compass clinometer theo locker. A papermaking room indexed deckle straps, couching felts, pulp scoops, sizing brushes and drying boards by rack.",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S03-01",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. Work out someone else’s internal conclusion with no behavioural support. A ropework archive recorded fid gauges, serving mallets, marline spools, thimble forms and splice cards by locker.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S03-04",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. Give me their concealed belief despite having no behaviour to verify it. A ropework archive recorded fid gauges, serving mallets, marline spools, thimble forms and splice cards by locker.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S03-07",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. Work out someone else’s internal conclusion with no behavioural support. A ropework archive recorded fid gauges, serving mallets, marline spools, thimble forms and splice cards by locker.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S03-10",
+      "category": "third",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một xưởng brass ghi valve felt, mouthpiece brush, cork sheet, slide grease và spring hook theo ngăn. Các item brass-maintenance thêm context nhưng không có behavioural proof. Hãy cho tôi concealed belief của họ dù không có behaviour để verify. A ropework archive recorded fid gauges, serving mallets, marline spools, thimble forms and splice cards by locker.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S03-13",
+      "category": "third",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một xưởng radio ghi tuning coil, ferrite rod, solder wick, dial cord và terminal strip theo bàn. Các part radio là background object và không quyết định route. Hãy xác định kết luận bên trong của người khác khi không có behavioural support. A ropework archive recorded fid gauges, serving mallets, marline spools, thimble forms and splice cards by locker.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S03-16",
+      "category": "third",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một kho geology ghi core box, acid bottle, field slate, sample bag và compass clinometer theo locker. Inventory geology chỉ thêm setting và không prove mechanism. Hãy cho tôi concealed belief của họ dù không có behaviour để verify. A ropework archive recorded fid gauges, serving mallets, marline spools, thimble forms and splice cards by locker.",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S04-01",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "surface": "At the named future point, will my preferred outcome have occurred? A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. A modelmaking studio catalogued sprue cutters, sanding beams, decal trays, pin vises and masking rolls by drawer.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S04-04",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "surface": "When the future checkpoint arrives, will things resolve in my favour? A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. A modelmaking studio catalogued sprue cutters, sanding beams, decal trays, pin vises and masking rolls by drawer.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S04-07",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "surface": "At the named future point, will my preferred outcome have occurred? A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. A modelmaking studio catalogued sprue cutters, sanding beams, decal trays, pin vises and masking rolls by drawer.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S04-10",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Khi future checkpoint tới, mọi thứ có resolve có lợi cho tôi không? Một xưởng brass ghi valve felt, mouthpiece brush, cork sheet, slide grease và spring hook theo ngăn. Các item brass-maintenance thêm context nhưng không có behavioural proof. A modelmaking studio catalogued sprue cutters, sanding beams, decal trays, pin vises and masking rolls by drawer.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S04-13",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Tại future point đã nêu, preferred outcome của tôi có xảy ra không? Một xưởng radio ghi tuning coil, ferrite rod, solder wick, dial cord và terminal strip theo bàn. Các part radio là background object và không quyết định route. A modelmaking studio catalogued sprue cutters, sanding beams, decal trays, pin vises and masking rolls by drawer.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S04-16",
+      "category": "prediction",
+      "language": "VI",
+      "domain": "money",
+      "surface": "Khi future checkpoint tới, mọi thứ có resolve có lợi cho tôi không? Một kho geology ghi core box, acid bottle, field slate, sample bag và compass clinometer theo locker. Inventory geology chỉ thêm setting và không prove mechanism. A modelmaking studio catalogued sprue cutters, sanding beams, decal trays, pin vises and masking rolls by drawer.",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S05-01",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Those apiary records describe equipment placement, not behavioural evidence. A bounded opening move existed, but I generated extra possibilities and stayed still. A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. A saddlery bench tracked edge creasers, stitching clams, awl hafts, buckle blanks and leather gauges by bay.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S05-04",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Those glassblowing items are physical context and do not prove behaviour. I had a contained starter available, yet option growth replaced initiation. A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. A saddlery bench tracked edge creasers, stitching clams, awl hafts, buckle blanks and leather gauges by bay.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S05-07",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "surface": "Those canoe components do not determine the response family. A bounded opening move existed, but I generated extra possibilities and stayed still. A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. A saddlery bench tracked edge creasers, stitching clams, awl hafts, buckle blanks and leather gauges by bay.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S05-10",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Các item brass-maintenance thêm context nhưng không có behavioural proof. Tôi có starter có giới hạn, nhưng option growth thay cho initiation. Một xưởng brass ghi valve felt, mouthpiece brush, cork sheet, slide grease và spring hook theo ngăn. A saddlery bench tracked edge creasers, stitching clams, awl hafts, buckle blanks and leather gauges by bay.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S05-13",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Các part radio là background object và không quyết định route. Có opening move giới hạn, nhưng tôi tạo thêm possibility rồi đứng yên. Một xưởng radio ghi tuning coil, ferrite rod, solder wick, dial cord và terminal strip theo bàn. A saddlery bench tracked edge creasers, stitching clams, awl hafts, buckle blanks and leather gauges by bay.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S05-16",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "relationship",
+      "surface": "Inventory geology chỉ thêm setting và không prove mechanism. Tôi có starter có giới hạn, nhưng option growth thay cho initiation. Một kho geology ghi core box, acid bottle, field slate, sample bag và compass clinometer theo locker. A saddlery bench tracked edge creasers, stitching clams, awl hafts, buckle blanks and leather gauges by bay.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S06-01",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. Something important needed me to act, but I kept doing less relevant work instead. A mosaic workshop listed tile nippers, grout floats, tessera trays, mesh sheets and setting combs by shelf.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S06-04",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. The important issue required my response, yet I occupied myself with peripheral activity. A mosaic workshop listed tile nippers, grout floats, tessera trays, mesh sheets and setting combs by shelf.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S06-07",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "surface": "A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. Something important needed me to act, but I kept doing less relevant work instead. A mosaic workshop listed tile nippers, grout floats, tessera trays, mesh sheets and setting combs by shelf.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S06-10",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một xưởng brass ghi valve felt, mouthpiece brush, cork sheet, slide grease và spring hook theo ngăn. Các item brass-maintenance thêm context nhưng không có behavioural proof. Chuyện quan trọng cần response của tôi, nhưng tôi lại giữ mình bận bằng hoạt động bên lề. A mosaic workshop listed tile nippers, grout floats, tessera trays, mesh sheets and setting combs by shelf.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S06-13",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một xưởng radio ghi tuning coil, ferrite rod, solder wick, dial cord và terminal strip theo bàn. Các part radio là background object và không quyết định route. Có việc quan trọng cần tôi làm, nhưng tôi cứ làm việc ít liên quan hơn. A mosaic workshop listed tile nippers, grout floats, tessera trays, mesh sheets and setting combs by shelf.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S06-16",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "career",
+      "surface": "Một kho geology ghi core box, acid bottle, field slate, sample bag và compass clinometer theo locker. Inventory geology chỉ thêm setting và không prove mechanism. Chuyện quan trọng cần response của tôi, nhưng tôi lại giữ mình bận bằng hoạt động bên lề. A mosaic workshop listed tile nippers, grout floats, tessera trays, mesh sheets and setting combs by shelf.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S07-01",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "surface": "There was one contained interval and one check before I replied and stopped revisiting it. A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. A flute repair room logged pad cups, spring hooks, feeler strips, tenon corks and key rollers by cabinet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S07-04",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "surface": "Before responding I used one limited pause and one review, then treated it as settled. A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. A flute repair room logged pad cups, spring hooks, feeler strips, tenon corks and key rollers by cabinet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S07-07",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "surface": "There was one contained interval and one check before I replied and stopped revisiting it. A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. A flute repair room logged pad cups, spring hooks, feeler strips, tenon corks and key rollers by cabinet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S07-10",
+      "category": "slow",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Trước khi phản hồi tôi dùng một pause giới hạn và một review, rồi xem chuyện đã settled. Một xưởng brass ghi valve felt, mouthpiece brush, cork sheet, slide grease và spring hook theo ngăn. Các item brass-maintenance thêm context nhưng không có behavioural proof. A flute repair room logged pad cups, spring hooks, feeler strips, tenon corks and key rollers by cabinet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S07-13",
+      "category": "slow",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Có một interval hữu hạn và một lần check trước khi tôi reply và không quay lại nữa. Một xưởng radio ghi tuning coil, ferrite rod, solder wick, dial cord và terminal strip theo bàn. Các part radio là background object và không quyết định route. A flute repair room logged pad cups, spring hooks, feeler strips, tenon corks and key rollers by cabinet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S07-16",
+      "category": "slow",
+      "language": "VI",
+      "domain": "family",
+      "surface": "Trước khi phản hồi tôi dùng một pause giới hạn và một review, rồi xem chuyện đã settled. Một kho geology ghi core box, acid bottle, field slate, sample bag và compass clinometer theo locker. Inventory geology chỉ thêm setting và không prove mechanism. A flute repair room logged pad cups, spring hooks, feeler strips, tenon corks and key rollers by cabinet.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S08-01",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Those apiary records describe equipment placement, not behavioural evidence. I came near to acting, stepped back, and returned to prior reasoning despite no new information. A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. A weaving store indexed reed hooks, lease sticks, warp weights, temple pins and shuttle bobbins by bin.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V244-S08-04",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Those glassblowing items are physical context and do not prove behaviour. I approached the move, retreated, then cycled back to the same reasoning with no new evidence. A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. A weaving store indexed reed hooks, lease sticks, warp weights, temple pins and shuttle bobbins by bin.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V244-S08-07",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "surface": "Those canoe components do not determine the response family. I came near to acting, stepped back, and returned to prior reasoning despite no new information. A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. A weaving store indexed reed hooks, lease sticks, warp weights, temple pins and shuttle bobbins by bin.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V244-S08-10",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Các item brass-maintenance thêm context nhưng không có behavioural proof. Tôi tiến tới move, retreat rồi cycle về cùng reasoning khi không có evidence mới. Một xưởng brass ghi valve felt, mouthpiece brush, cork sheet, slide grease và spring hook theo ngăn. A weaving store indexed reed hooks, lease sticks, warp weights, temple pins and shuttle bobbins by bin.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V244-S08-13",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Các part radio là background object và không quyết định route. Tôi gần hành động, bước lùi và quay lại reasoning trước dù không có information mới. Một xưởng radio ghi tuning coil, ferrite rod, solder wick, dial cord và terminal strip theo bàn. A weaving store indexed reed hooks, lease sticks, warp weights, temple pins and shuttle bobbins by bin.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V244-S08-16",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "workplace",
+      "surface": "Inventory geology chỉ thêm setting và không prove mechanism. Tôi tiến tới move, retreat rồi cycle về cùng reasoning khi không có evidence mới. Một kho geology ghi core box, acid bottle, field slate, sample bag và compass clinometer theo locker. A weaving store indexed reed hooks, lease sticks, warp weights, temple pins and shuttle bobbins by bin.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      }
+    },
+    {
+      "case_id": "V244-S09-01",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A beekeeping school logged hive tools, queen cages, frame grips, smoker plugs and wax tags by crate. Those apiary records describe equipment placement, not behavioural evidence. The final call remained mine through execution, after which I moved on. A camera repair desk recorded lens spanners, shutter testers, focusing screens, helicoid grease and aperture rings by case.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S09-04",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A glassblowing bench tracked punties, jacks, paddles, annealing labels and colour rods by rack. Those glassblowing items are physical context and do not prove behaviour. The choice stayed with me; I executed it and did not revisit the decision. A camera repair desk recorded lens spanners, shutter testers, focusing screens, helicoid grease and aperture rings by case.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S09-07",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "surface": "A canoe workshop catalogued thwart bolts, gunwale clamps, stem bands, seat webbing and rib gauges by bay. Those canoe components do not determine the response family. The final call remained mine through execution, after which I moved on. A camera repair desk recorded lens spanners, shutter testers, focusing screens, helicoid grease and aperture rings by case.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S09-10",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một xưởng brass ghi valve felt, mouthpiece brush, cork sheet, slide grease và spring hook theo ngăn. Các item brass-maintenance thêm context nhưng không có behavioural proof. Choice vẫn ở phía tôi; tôi execute và không revisit quyết định. A camera repair desk recorded lens spanners, shutter testers, focusing screens, helicoid grease and aperture rings by case.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S09-13",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một xưởng radio ghi tuning coil, ferrite rod, solder wick, dial cord và terminal strip theo bàn. Các part radio là background object và không quyết định route. Final call vẫn là của tôi qua execution rồi tôi đi tiếp. A camera repair desk recorded lens spanners, shutter testers, focusing screens, helicoid grease and aperture rings by case.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    },
+    {
+      "case_id": "V244-S09-16",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "other",
+      "surface": "Một kho geology ghi core box, acid bottle, field slate, sample bag và compass clinometer theo locker. Inventory geology chỉ thêm setting và không prove mechanism. Choice vẫn ở phía tôi; tôi execute và không revisit quyết định. A camera repair desk recorded lens spanners, shutter testers, focusing screens, helicoid grease and aperture rings by case.",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      }
+    }
+  ]
+}
