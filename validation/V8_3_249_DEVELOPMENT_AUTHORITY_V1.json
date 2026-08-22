@@ -1,0 +1,19 @@
+{
+  "candidate": "V8.3.249",
+  "phase": "DEVELOPMENT_AUTHORITY_FROZEN",
+  "parent_development_sha": "84b6c508defc82dd952d7cc2797e5a1f51a3f8d6",
+  "base_exact_development_sha": "00bcd4681a61ef1ab0b229eb90af9e74102dc649",
+  "semantic_authority": "QCEvidenceExtractorV5AU -> QCSemanticCoreV120",
+  "regression_run_id": "32602085641",
+  "regression_pass": true,
+  "immutable_regression_total": 1470,
+  "immutable_regression_passed": 1470,
+  "v248_frozen_a_passed": 30,
+  "v248_previous_failures_repaired": 8,
+  "v248_previous_passes_preserved": 22,
+  "expected_gold_changed": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "frozen-development-authority"
+}
