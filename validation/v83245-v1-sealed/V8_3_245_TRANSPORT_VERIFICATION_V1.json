@@ -1,0 +1,13 @@
+{
+  "candidate": "V8.3.245",
+  "phase": "transport-verification",
+  "validated_development_head_sha": "2015436433bede4e454739efe2ebae4807f800af",
+  "base_exact_development_sha": "885608fce9e70a8818d1ebda23c786a81005a2fe",
+  "semantic_authority": "QCEvidenceExtractorV5AS -> QCSemanticCoreV118",
+  "public_runtime_materialized": true,
+  "self_contained_runner_verified": true,
+  "runner_sha256": "93b2c36225315f4e7b02840d53804878e43c0842508c1e74bfedd87c0f6157d0",
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "pass": true
+}
