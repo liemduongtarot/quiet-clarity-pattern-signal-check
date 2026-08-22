@@ -1,0 +1,14 @@
+{
+  "candidate":"V8.3.227",
+  "state":"FROZEN",
+  "reason":"SEALED_BATCH_A_FIRST_RUN_SEMANTIC_FAILURE",
+  "run_id":"32566530153",
+  "validated_development_head_sha":"a610a249639cb2a0e5fae5a8f69fed05cc3fe509",
+  "semantic_authority":"QCEvidenceExtractorV5AE -> QCSemanticCoreV104",
+  "batch_a":{"consumed":true,"executed":true,"passed":17,"failed":13,"rerun_forbidden":true},
+  "batch_b":{"executed":false,"skipped":true,"forbidden":true},
+  "semantic_failure":true,
+  "expected_gold_changed":false,
+  "production_authorized":false,
+  "step_111_authorized":false
+}
