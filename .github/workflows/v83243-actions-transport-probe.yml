@@ -1,5 +1,5 @@
-name: V8.3.247 transport/static preflight
-# trigger-v247-static-preflight-1
+name: V8.3.248 runner-only DEVELOPMENT recovery
+# trigger-v248-runner-recovery-1
 on:
   push:
     branches: [main]
@@ -13,35 +13,66 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v83247-v1-sealed-validation
+          ref: v83248-v1-validation
           fetch-depth: 0
-      - name: Run V8.3.247 transport/static preflight
-        id: run
+      - name: Persist V248 runner recovery start
         shell: bash
         run: |
-          set +e
-          python validation/v83247-v1-sealed/v83247-transport-preflight.py > /tmp/v247-preflight.log 2>&1
-          rc=$?
-          set -e
-          cat /tmp/v247-preflight.log
-          RC="$rc" python - <<'PY'
-          import json,os,pathlib
-          text=pathlib.Path('/tmp/v247-preflight.log').read_text(errors='replace')
-          o=pathlib.Path('validation/v83247-v1-sealed')
-          (o/'V8_3_247_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.247','phase':'transport-static-preflight-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ['RC']),'log_tail':text[-24000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False},indent=2)+'\n')
+          set -euo pipefail
+          printf '{"candidate":"V8.3.248","phase":"runner-only-recovery-start","run_id":"%s","semantic_runtime_executed":false,"sealed_validation_executed":false,"expected_gold_changed":false}\n' "$GITHUB_RUN_ID" > validation/V8_3_248_RUNNER_RECOVERY_START.json
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_248_RUNNER_RECOVERY_START.json
+          git commit -m 'Record V8.3.248 runner recovery start'
+          git push origin HEAD:v83248-v1-validation
+      - name: Build corrected V248 self-contained runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          src=Path('validation/v83247-batch-a-self-contained.py').read_text()
+          # Namespace-only promotion; semantic chain and exact semantic base remain unchanged.
+          src=src.replace("SEALED=REPO/'validation/v83247-v1-sealed'","SEALED=REPO/'validation/v83248-v1-sealed'",1)
+          src=src.replace("WORK=pathlib.Path('/tmp/v83247-batch-a-authority')","WORK=pathlib.Path('/tmp/v83248-batch-a-authority')",1)
+          src=src.replace("ROOT='validation/v83247-v1-sealed-runtime'","ROOT='validation/v83248-v1-sealed-runtime'",1)
+          src=src.replace('run-v83247-batch-a.cjs','run-v83248-batch-a.cjs')
+          src=src.replace("const root='validation/v83247-v1-sealed-runtime'","const root='validation/v83248-v1-sealed-runtime'")
+          src=src.replace("'candidate':'V8.3.247'","'candidate':'V8.3.248'")
+          src=src.replace("authority:'V8.3.247 V1 SEALED BATCH A FIRST RUN'","authority:'V8.3.248 V1 SEALED BATCH A FIRST RUN'")
+          src=src.replace("console.log('V247 A'","console.log('V248 A'")
+          src=src.replace('v247_batch_a_rerun','v248_batch_a_rerun').replace('v245_sealed_rerun','v247_sealed_rerun')
+          src=src.replace('PSC_V8_3_247_V1_BATCH_A_CHECKPOINT','PSC_V8_3_248_V1_BATCH_A_CHECKPOINT')
+          for old,new in [
+            ('V8_3_247_BATCH_A','V8_3_248_BATCH_A'),('V8_3_247_SEALED_FIRST_RUN_MARKER','V8_3_248_SEALED_FIRST_RUN_MARKER'),
+            ('V8_3_247_SEALED_AUTHORITY_V1','V8_3_248_SEALED_AUTHORITY_V1'),('V8_3_247_PRESEAL_DIVERSITY_AUDIT_V1','V8_3_248_PRESEAL_DIVERSITY_AUDIT_V1'),
+            ('V8_3_247_SEALED_SELECTION_V1','V8_3_248_SEALED_SELECTION_V1'),('V8_3_247_SEALED_FIXTURE_V1','V8_3_248_SEALED_FIXTURE_V1'),
+            ('V8_3_247_INDEPENDENT_GOLD_V1','V8_3_248_INDEPENDENT_GOLD_V1'),('V8_3_247_SEALED_MEMBERSHIP_V1','V8_3_248_SEALED_MEMBERSHIP_V1'),
+            ('V8_3_247_TRANSPORT_VERIFICATION_V1','V8_3_248_TRANSPORT_VERIFICATION_V1'),('V8_3_247_STATIC_SEALED_PREFLIGHT_V1','V8_3_248_STATIC_SEALED_PREFLIGHT_V1')]: src=src.replace(old,new)
+          # Proven V247 pre-A defects.
+          src=src.replace("'candidate_bank':'V8_3_246_PRESEAL_CANDIDATE_BANK_V1.json'","'candidate_bank':'V8_3_248_PRESEAL_CANDIDATE_BANK_V1.json'",1)
+          src=src.replace("A['validated_development_head_sha']==TARGET","A['base_exact_development_sha']==TARGET",1)
+          required_sem=['qc-evidence-extractor-v5as-v245-v244-residuals.js','psc-v83245-v244-v118-residuals.js','qc-evidence-extractor-v5at-v246-v245-residuals.js','psc-v83246-v245-v119-residuals.js']
+          missing=[x for x in required_sem if x not in src]
+          if missing: raise SystemExit('missing semantic loader literals '+repr(missing))
+          forbidden=['V8_3_246_PRESEAL_CANDIDATE_BANK_V1.json',"A['validated_development_head_sha']==TARGET",'validation/v83247-v1-sealed-runtime','run-v83247-batch-a.cjs','V8_3_247_BATCH_A_RESULT_V1.json','psc-v83246-v244-v118-residuals.js']
+          leftovers=[x for x in forbidden if x in src]
+          if leftovers: raise SystemExit('V248 runner stale/defect literals '+repr(leftovers))
+          required=['V8_3_248_PRESEAL_CANDIDATE_BANK_V1.json',"A['base_exact_development_sha']==TARGET",'validation/v83248-v1-sealed-runtime','run-v83248-batch-a.cjs','V8_3_248_BATCH_A_RESULT_V1.json','QCSemanticCoreV119.analyze']
+          miss=[x for x in required if x not in src]
+          if miss: raise SystemExit('V248 runner missing required literals '+repr(miss))
+          compile(src,'validation/v83248-batch-a-self-contained.py','exec')
+          Path('validation/v83248-batch-a-self-contained.py').write_text(src)
+          receipt={'candidate':'V8.3.248','phase':'runner-only-development-recovery','parent_recovery_development_sha':'2253e333f2b319e122e2bfdf06ddbdd330ff7408','base_exact_development_sha':'00bcd4681a61ef1ab0b229eb90af9e74102dc649','semantic_authority':'QCEvidenceExtractorV5AT -> QCSemanticCoreV119','semantic_change':False,'expected_gold_changed':False,'source_failure':'V8.3.247 pre-A audit found stale candidate-bank filename and recovery-head/base-SHA authority conflation','runner_sha256':hashlib.sha256(src.encode()).hexdigest(),'self_contained':True,'candidate_bank_namespace_corrected':True,'authority_schema_uses_base_exact_development_sha':True,'semantic_loader_chain_preserved':True,'pass':True,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False}
+          Path('validation/V8_3_248_RUNNER_RECOVERY_V1.json').write_text(json.dumps(receipt,indent=2)+'\n')
           PY
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze V247 preflight evidence
-        if: always()
+      - name: Freeze V248 runner recovery evidence
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83247-v1-sealed/V8_3_247_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json
-          test ! -f validation/v83247-v1-sealed/V8_3_247_TRANSPORT_VERIFICATION_V1.json || git add validation/v83247-v1-sealed/V8_3_247_TRANSPORT_VERIFICATION_V1.json
-          test ! -f validation/v83247-v1-sealed/V8_3_247_STATIC_SEALED_PREFLIGHT_V1.json || git add validation/v83247-v1-sealed/V8_3_247_STATIC_SEALED_PREFLIGHT_V1.json
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.247 transport/static preflight evidence'
-          git push origin HEAD:v83247-v1-sealed-validation
-      - name: Enforce preflight outcome
-        run: test '${{ steps.run.outputs.rc }}' = '0'
+          git add validation/v83248-batch-a-self-contained.py validation/V8_3_248_RUNNER_RECOVERY_START.json validation/V8_3_248_RUNNER_RECOVERY_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.248 runner-only recovery evidence'
+          git push origin HEAD:v83248-v1-validation
