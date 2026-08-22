@@ -1,0 +1,12 @@
+{
+  "candidate": "V8.3.244",
+  "phase": "runner-materialization-development",
+  "base_exact_development_sha": "885608fce9e70a8818d1ebda23c786a81005a2fe",
+  "semantic_authority": "QCEvidenceExtractorV5AR -> QCSemanticCoreV117",
+  "runner_sha256": "d93e58bf6d07516cc22f4f422101ea86e3ed6ae008194445785646b04e8b77f1",
+  "self_contained": true,
+  "semantic_runtime_executed": false,
+  "expected_gold_changed": false,
+  "v243_batch_a_rerun": false,
+  "pass": true
+}
