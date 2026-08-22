@@ -1,0 +1,25 @@
+name: V8.3.242 frozen Batch A autopsy
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83242-freeze-autopsy.yml
+permissions:
+  contents: write
+jobs:
+  autopsy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83242-v1-sealed-validation
+          fetch-depth: 0
+      - name: Freeze exact autopsy
+        run: |
+          set -euo pipefail
+          python validation/v83242-v1-sealed/v83242-freeze-autopsy.py
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83242-v1-sealed/V8_3_242_FROZEN_AUTOPSY_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.242 Batch A autopsy evidence'
+          git push origin HEAD:v83242-v1-sealed-validation
