@@ -1,5 +1,5 @@
-name: V8.3.250 V121 DEVELOPMENT regression
-# trigger-v250-v121-development-1
+name: V8.3.250 construction-only PRESEAL
+# trigger-v250-preseal-1
 on:
   push:
     branches: [main]
@@ -13,57 +13,47 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v83250-v1-validation
+          ref: v83250-v1-sealed-validation
           fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-      - name: Persist DEVELOPMENT regression start marker
+      - name: Persist PRESEAL start marker
         shell: bash
         run: |
           set -euo pipefail
-          printf '{"candidate":"V8.3.250","phase":"v121-development-regression-start","run_id":"%s","semantic_runtime_executed":false,"sealed_validation_executed":false,"expected_gold_changed":false}\n' "$GITHUB_RUN_ID" > validation/V8_3_250_V121_REGRESSION_START.json
+          mkdir -p validation/v83250-v1-sealed
+          printf '{"candidate":"V8.3.250","phase":"preseal-start","run_id":"%s","semantic_runtime_executed":false,"semantic_authority_loaded":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83250-v1-sealed/V8_3_250_PRESEAL_START.json
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/V8_3_250_V121_REGRESSION_START.json
-          git commit -m 'Record V8.3.250 V121 DEVELOPMENT regression start'
-          git push origin HEAD:v83250-v1-validation
-      - name: Materialize V249 frozen carrier and run V121 full DEVELOPMENT regression
+          git add validation/v83250-v1-sealed/V8_3_250_PRESEAL_START.json
+          git commit -m 'Record V8.3.250 PRESEAL start'
+          git push origin HEAD:v83250-v1-sealed-validation
+      - name: Run construction-only PRESEAL
         id: run
         shell: bash
         run: |
           set +e
           git fetch origin v83249-v1-sealed-validation:refs/remotes/origin/v83249-v1-sealed-validation
-          python - <<'PY'
-          import json,subprocess,pathlib
-          raw=subprocess.check_output(['git','show','origin/v83249-v1-sealed-validation:validation/v83249-v1-sealed/V8_3_249_BATCH_A_RESULT_V1.json'],text=True)
-          r=json.loads(raw);assert r['total']==30 and r['passed']==23 and r['failed']==7
-          out={'candidate':'V8.3.249','source':'frozen sealed Batch A first run','source_run_id':r['run_id'],'source_passed':23,'source_failed':7,'results':[]}
-          for x in r['results']:
-            out['results'].append({'case_id':x['case_id'],'category':x['category'],'language':x['language'],'domain':x['domain'],'surface':x['surface'],'expected':x['expected'],'source_first_run_pass':bool(x['pass'])})
-          pathlib.Path('validation/V8_3_249_A_FROZEN_CARRIER.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
-          PY
-          python validation/v83250-v121-regression-orchestrator.py > /tmp/v250.log 2>&1
+          git fetch origin v83248-v1-sealed-validation:refs/remotes/origin/v83248-v1-sealed-validation
+          python validation/v83250-v1-sealed/v83250-preseal-freeze.py > /tmp/v250-preseal.log 2>&1
           rc=$?
           set -e
-          cat /tmp/v250.log
+          cat /tmp/v250-preseal.log
           RC="$rc" python - <<'PY'
           import json,os,pathlib
-          text=pathlib.Path('/tmp/v250.log').read_text(errors='replace')
-          pathlib.Path('validation/V8_3_250_V121_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.250','phase':'v121-development-regression-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'outcome':'success' if os.environ['RC']=='0' else 'failure','exit_code':int(os.environ['RC']),'log_tail':text[-66000:],'sealed_validation_executed':False,'v249_sealed_rerun':False,'expected_gold_changed':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
+          text=pathlib.Path('/tmp/v250-preseal.log').read_text(errors='replace')
+          o=pathlib.Path('validation/v83250-v1-sealed')
+          (o/'V8_3_250_PRESEAL_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.250','phase':'preseal-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ['RC']),'log_tail':text[-30000:],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'expected_gold_changed':False},indent=2)+'\n')
           PY
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze V250 DEVELOPMENT regression evidence
+      - name: Freeze PRESEAL evidence
         if: always()
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/V8_3_249_A_FROZEN_CARRIER.json validation/V8_3_250_V121_REGRESSION_START.json validation/V8_3_250_V121_REGRESSION_DIAGNOSTIC.json
-          test ! -f validation/V8_3_250_V121_REGRESSION_RECEIPT.json || git add validation/V8_3_250_V121_REGRESSION_RECEIPT.json
-          for f in validation/V8_3_250_V*_A_REGRESSION_RESULTS.json; do test ! -f "$f" || git add "$f"; done
-          git diff --cached --quiet || git commit -m 'Record V8.3.250 V121 DEVELOPMENT regression evidence'
-          git push origin HEAD:v83250-v1-validation
-      - name: Enforce DEVELOPMENT regression outcome
+          git add validation/v83250-v1-sealed/V8_3_250_PRESEAL_START.json validation/v83250-v1-sealed/V8_3_250_PRESEAL_DIAGNOSTIC.json
+          for f in validation/v83250-v1-sealed/V8_3_250_PRESEAL_RUN_RECEIPT.json validation/v83250-v1-sealed/V8_3_250_PRESEAL_CANDIDATE_BANK_V1.json validation/v83250-v1-sealed/V8_3_250_SEALED_SELECTION_V1.json validation/v83250-v1-sealed/V8_3_250_SEALED_FIXTURE_V1.json validation/v83250-v1-sealed/V8_3_250_INDEPENDENT_GOLD_V1.json validation/v83250-v1-sealed/V8_3_250_SEALED_MEMBERSHIP_V1.json validation/v83250-v1-sealed/V8_3_250_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83250-v1-sealed/V8_3_250_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.250 PRESEAL evidence'
+          git push origin HEAD:v83250-v1-sealed-validation
+      - name: Enforce PRESEAL outcome
         run: test '${{ steps.run.outputs.rc }}' = '0'
