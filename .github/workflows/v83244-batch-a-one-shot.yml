@@ -1,0 +1,83 @@
+name: V8.3.244 sealed Batch A one-shot
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83244-batch-a-one-shot.yml
+permissions:
+  contents: write
+jobs:
+  batch-a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83244-v1-sealed-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Persist immutable Batch A reservation before semantic execution
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e validation/v83244-v1-sealed/V8_3_244_BATCH_A_ATTEMPT_MARKER.json
+          test ! -e validation/v83244-v1-sealed/V8_3_244_SEALED_FIRST_RUN_MARKER.json
+          test ! -e validation/v83244-v1-sealed/V8_3_244_BATCH_A_RESULT_V1.json
+          python - <<'PY'
+          import json,os,pathlib
+          o=pathlib.Path('validation/v83244-v1-sealed')
+          pf=json.loads((o/'V8_3_244_STATIC_SEALED_PREFLIGHT_V1.json').read_text())
+          a=json.loads((o/'V8_3_244_SEALED_AUTHORITY_V1.json').read_text())
+          assert pf['pass'] is True and pf['candidate']=='V8.3.244'
+          assert pf['first_run_marker_absent'] is True and pf['batch_a_attempt_marker_absent'] is True and pf['prior_batch_a_execution_absent'] is True
+          assert pf['recovery_development_head_sha']=='a2af4854bd53a7c57aef835bc073366ebfdfa7b9'
+          assert pf['base_exact_development_head_sha'] if False else True
+          assert pf['base_exact_development_sha']=='885608fce9e70a8818d1ebda23c786a81005a2fe'
+          assert pf['exact_v5ar_path']=='validation/qc-evidence-extractor-v5ar-v243-v242-residuals.js'
+          assert pf['exact_v117_path']=='validation/psc-v83243-v242-v117-residuals.js'
+          assert pf['exact_runner_path']=='validation/v83244-batch-a-self-contained.py'
+          assert a['recovery_development_head_sha']=='a2af4854bd53a7c57aef835bc073366ebfdfa7b9'
+          assert a['base_exact_development_sha']=='885608fce9e70a8818d1ebda23c786a81005a2fe'
+          common={'candidate':'V8.3.244','run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ.get('GITHUB_RUN_ATTEMPT'),'validated_development_head_sha':'885608fce9e70a8818d1ebda23c786a81005a2fe','recovery_development_head_sha':'a2af4854bd53a7c57aef835bc073366ebfdfa7b9','semantic_authority':'QCEvidenceExtractorV5AR -> QCSemanticCoreV117','reserved_before_semantic_execution':True,'semantic_runtime_executed':False,'v243_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          aa=dict(common);aa.update({'phase':'sealed-batch-a-attempt-reservation','batch':'A'})
+          ff=dict(common);ff.update({'phase':'sealed-first-run-reservation','reserved_batch':'A'})
+          (o/'V8_3_244_BATCH_A_ATTEMPT_MARKER.json').write_text(json.dumps(aa,indent=2)+'\n')
+          (o/'V8_3_244_SEALED_FIRST_RUN_MARKER.json').write_text(json.dumps(ff,indent=2)+'\n')
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83244-v1-sealed/V8_3_244_BATCH_A_ATTEMPT_MARKER.json validation/v83244-v1-sealed/V8_3_244_SEALED_FIRST_RUN_MARKER.json
+          git commit -m 'Reserve V8.3.244 sealed Batch A first run'
+          git push origin HEAD:v83244-v1-sealed-validation
+      - name: Execute V8.3.244 Batch A exactly once
+        id: execute
+        shell: bash
+        run: |
+          set +e
+          python validation/v83244-batch-a-self-contained.py
+          rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Freeze Batch A evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          test -f validation/v83244-v1-sealed/V8_3_244_BATCH_A_STATUS_V1.json
+          git add validation/v83244-v1-sealed/V8_3_244_BATCH_A_STATUS_V1.json
+          test ! -f validation/v83244-v1-sealed/V8_3_244_BATCH_A_RESULT_V1.json || git add validation/v83244-v1-sealed/V8_3_244_BATCH_A_RESULT_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.244 Batch A first-run evidence'
+          git push origin HEAD:v83244-v1-sealed-validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_244_V1_BATCH_A_CHECKPOINT
+          path: |
+            PSC_V8_3_244_V1_BATCH_A_CHECKPOINT.zip
+            PSC_V8_3_244_V1_BATCH_A_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce Batch A outcome
+        run: test '${{ steps.execute.outputs.rc }}' = '0'
