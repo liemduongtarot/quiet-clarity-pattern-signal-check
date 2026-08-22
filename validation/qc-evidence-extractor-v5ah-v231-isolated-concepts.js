@@ -9,9 +9,7 @@ function isolate(raw){const parts=String(raw||'').split(/(?<=[.!?])\s+/).filter(
 function scopeRaw(raw){return parent.scopeRaw(raw);}
 function extract(raw){
  const base={...parent.extract(raw)},clean=isolate(raw),p=parent.extract(clean),d=fold(clean),o={...base};
- // Promote only concept witnesses that survive context isolation.
  for(const k of ['clarification','decision','hypothetical','third','prediction','freeze','ignore','slow','sequence','neutral'])if(p['v230_'+k])o['v231_'+k]=true;
- // Residual concept completions from frozen V230 evidence; each remains conjunctive.
  const self=any(d,[' i ',' my ',' me ','toi ','cua toi','chinh toi']);
  const real=any(d,['real event','lived event','real situation','this actually happened','lived situation','real episode']);
  const closing=any(d,['ending','closure','closing','final moment','just before it ended','endpoint','last observable']);
@@ -43,7 +41,7 @@ function extract(raw){
  const approach=any(d,['moved toward','got close','approached','nearly acted','advanced toward','came close','came close to carrying it out']);
  const retreat=any(d,['pulled back','stepped away','retreated','reversed course','backed out','withdrew']);
  const repeat=any(d,['same judgement','same judgment','earlier reasoning','same conclusion','prior assessment','same reasoning','repeated']);
- const unchanged=any(d,['without new evidence','nothing changed','no new facts','evidence stayed unchanged','no additional information','no new information']);
+ const unchanged=any(d,['without new evidence','no new evidence','nothing changed','no new facts','evidence stayed unchanged','no additional information','no new information']);
  if(approach&&retreat&&repeat&&unchanged)o.v231_sequence=true;
  const owned=any(d,['made the final decision myself','choice stayed mine','kept final agency','made my own call','decision ownership remained with me','chose for myself']);
  const done=any(d,['completed the action','carried it out','executed what i chose','through completion','finished the action','completed what i decided']);
