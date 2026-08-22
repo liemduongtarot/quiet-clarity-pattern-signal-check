@@ -1,5 +1,5 @@
-name: V8.3.249 frozen Batch A semantic autopsy
-# trigger-v249-autopsy-1
+name: V8.3.250 V121 DEVELOPMENT regression
+# trigger-v250-v121-development-1
 on:
   push:
     branches: [main]
@@ -13,32 +13,57 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v83249-v1-sealed-validation
+          ref: v83250-v1-validation
           fetch-depth: 0
-      - name: Build immutable V249 autopsy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Persist DEVELOPMENT regression start marker
         shell: bash
         run: |
           set -euo pipefail
-          python - <<'PY'
-          import json,pathlib,collections
-          o=pathlib.Path('validation/v83249-v1-sealed')
-          r=json.loads((o/'V8_3_249_BATCH_A_RESULT_V1.json').read_text());s=json.loads((o/'V8_3_249_BATCH_A_STATUS_V1.json').read_text())
-          assert r['total']==30 and r['passed']==23 and r['failed']==7
-          assert s['semantic_runtime_executed'] is True and s['semantic_failure'] is True and s['batch_b_executed'] is False
-          fails=[x for x in r['results'] if not x['pass']];assert len(fails)==7
-          cats=collections.Counter();groups=collections.Counter();details=[]
-          for x in fails:
-              e=x['expected'];a=x['actual'];cats[x['category']]+=1
-              k=(x['category'],e['route'],a['route'],tuple(e['families']),tuple(a['families']),bool(e['sequence']),bool(a['sequence']))
-              groups[k]+=1
-              details.append({'case_id':x['case_id'],'category':x['category'],'language':x['language'],'domain':x['domain'],'expected':e,'actual':a,'surface':x['surface']})
-          grouped=[{'category':k[0],'expected_route':k[1],'actual_route':k[2],'expected_families':list(k[3]),'actual_families':list(k[4]),'expected_sequence':k[5],'actual_sequence':k[6],'count':v} for k,v in groups.items()]
-          out={'candidate':'V8.3.249','phase':'frozen-batch-a-semantic-autopsy','run_id':r['run_id'],'validated_development_head_sha':'e1dd5fdb3286e88a1394051a01b414ddc131d4d9','semantic_authority':'QCEvidenceExtractorV5AU -> QCSemanticCoreV120','batch_a_total':30,'batch_a_passed':23,'batch_a_failed':7,'batch_b_executed':False,'v249_batch_a_rerun':False,'semantic_runtime_executed':True,'semantic_failure':True,'failure_counts_by_category':dict(cats),'mechanism_groups':grouped,'failures':details,'expected_gold_changed':False,'step_111_authorized':False,'production_authorized':False,'conclusion':'frozen-semantic-failure'}
-          (o/'V8_3_249_FROZEN_AUTOPSY_V1.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
-          print(json.dumps({'cats':dict(cats),'groups':grouped,'ids':[x['case_id'] for x in details]},ensure_ascii=False))
-          PY
+          printf '{"candidate":"V8.3.250","phase":"v121-development-regression-start","run_id":"%s","semantic_runtime_executed":false,"sealed_validation_executed":false,"expected_gold_changed":false}\n' "$GITHUB_RUN_ID" > validation/V8_3_250_V121_REGRESSION_START.json
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83249-v1-sealed/V8_3_249_FROZEN_AUTOPSY_V1.json
-          git commit -m 'Freeze V8.3.249 semantic failure autopsy'
-          git push origin HEAD:v83249-v1-sealed-validation
+          git add validation/V8_3_250_V121_REGRESSION_START.json
+          git commit -m 'Record V8.3.250 V121 DEVELOPMENT regression start'
+          git push origin HEAD:v83250-v1-validation
+      - name: Materialize V249 frozen carrier and run V121 full DEVELOPMENT regression
+        id: run
+        shell: bash
+        run: |
+          set +e
+          git fetch origin v83249-v1-sealed-validation:refs/remotes/origin/v83249-v1-sealed-validation
+          python - <<'PY'
+          import json,subprocess,pathlib
+          raw=subprocess.check_output(['git','show','origin/v83249-v1-sealed-validation:validation/v83249-v1-sealed/V8_3_249_BATCH_A_RESULT_V1.json'],text=True)
+          r=json.loads(raw);assert r['total']==30 and r['passed']==23 and r['failed']==7
+          out={'candidate':'V8.3.249','source':'frozen sealed Batch A first run','source_run_id':r['run_id'],'source_passed':23,'source_failed':7,'results':[]}
+          for x in r['results']:
+            out['results'].append({'case_id':x['case_id'],'category':x['category'],'language':x['language'],'domain':x['domain'],'surface':x['surface'],'expected':x['expected'],'source_first_run_pass':bool(x['pass'])})
+          pathlib.Path('validation/V8_3_249_A_FROZEN_CARRIER.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+          PY
+          python validation/v83250-v121-regression-orchestrator.py > /tmp/v250.log 2>&1
+          rc=$?
+          set -e
+          cat /tmp/v250.log
+          RC="$rc" python - <<'PY'
+          import json,os,pathlib
+          text=pathlib.Path('/tmp/v250.log').read_text(errors='replace')
+          pathlib.Path('validation/V8_3_250_V121_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.250','phase':'v121-development-regression-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'outcome':'success' if os.environ['RC']=='0' else 'failure','exit_code':int(os.environ['RC']),'log_tail':text[-66000:],'sealed_validation_executed':False,'v249_sealed_rerun':False,'expected_gold_changed':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
+          PY
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+      - name: Freeze V250 DEVELOPMENT regression evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_249_A_FROZEN_CARRIER.json validation/V8_3_250_V121_REGRESSION_START.json validation/V8_3_250_V121_REGRESSION_DIAGNOSTIC.json
+          test ! -f validation/V8_3_250_V121_REGRESSION_RECEIPT.json || git add validation/V8_3_250_V121_REGRESSION_RECEIPT.json
+          for f in validation/V8_3_250_V*_A_REGRESSION_RESULTS.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Record V8.3.250 V121 DEVELOPMENT regression evidence'
+          git push origin HEAD:v83250-v1-validation
+      - name: Enforce DEVELOPMENT regression outcome
+        run: test '${{ steps.run.outputs.rc }}' = '0'
