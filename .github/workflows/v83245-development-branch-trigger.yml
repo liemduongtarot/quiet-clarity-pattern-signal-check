@@ -1,0 +1,48 @@
+name: V8.3.245 branch-triggered DEVELOPMENT regression
+on:
+  push:
+    branches: [v83245-v1-validation]
+    paths:
+      - validation/.trigger-v83245-v118-development
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83245-v1-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run V118 full DEVELOPMENT regression
+        id: run
+        shell: bash
+        run: |
+          set +e
+          python validation/v83245-v118-regression-orchestrator.py > /tmp/v245.log 2>&1
+          rc=$?
+          set -e
+          cat /tmp/v245.log
+          RC="$rc" python - <<'PY'
+          import json,os,pathlib
+          text=pathlib.Path('/tmp/v245.log').read_text(errors='replace')
+          pathlib.Path('validation/V8_3_245_V118_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.245','phase':'v118-development-regression-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'outcome':'success' if os.environ['RC']=='0' else 'failure','exit_code':os.environ['RC'],'log_tail':text[-66000:],'sealed_validation_executed':False,'v244_sealed_rerun':False,'expected_gold_changed':False,'step_111_authorized':False,'production_authorized':False},indent=2)+'\n')
+          PY
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+      - name: Freeze DEVELOPMENT regression evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_245_V118_REGRESSION_DIAGNOSTIC.json
+          test ! -f validation/V8_3_245_V118_REGRESSION_RECEIPT.json || git add validation/V8_3_245_V118_REGRESSION_RECEIPT.json
+          for f in validation/V8_3_245_V*_A_FROZEN_CARRIER.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Record V8.3.245 V118 DEVELOPMENT regression evidence'
+          git push origin HEAD:v83245-v1-validation
+      - name: Enforce DEVELOPMENT regression outcome
+        run: test '${{ steps.run.outputs.rc }}' = '0'
