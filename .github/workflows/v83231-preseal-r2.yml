@@ -18,6 +18,7 @@ jobs:
         id: run
         shell: bash
         run: |
+          # first actual V8.3.231 PRESEAL R2 run
           set +e
           python validation/v83231-v1-sealed/v83231-preseal-freeze.py > /tmp/v231-preseal-r2.log 2>&1
           rc=$?
