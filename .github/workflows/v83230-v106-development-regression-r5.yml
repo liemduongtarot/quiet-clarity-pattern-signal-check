@@ -21,6 +21,7 @@ jobs:
         id: run
         shell: bash
         run: |
+          # actual R5 trigger after two-residual V5AG repair
           set +e
           python validation/v83230-v106-regression-orchestrator.py > /tmp/v230-r5.log 2>&1
           rc=$?
