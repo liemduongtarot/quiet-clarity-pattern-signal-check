@@ -1,5 +1,5 @@
-name: V8.3.247 PRESEAL metric diagnostic instrumented
-# trigger-v247-preseal-metrics-2
+name: V8.3.247 PRESEAL high-pair diagnostic
+# trigger-v247-preseal-high-pairs-1
 on:
   push:
     branches: [main]
@@ -15,34 +15,25 @@ jobs:
         with:
           ref: v83247-v1-sealed-validation
           fetch-depth: 0
-      - name: Persist metric diagnostic start
-        shell: bash
-        run: |
-          set -euo pipefail
-          printf '{"candidate":"V8.3.247","phase":"preseal-metric-diagnostic-start","run_id":"%s","semantic_runtime_executed":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83247-v1-sealed/V8_3_247_PRESEAL_METRIC_DIAGNOSTIC_START.json
-          git config user.name github-actions
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83247-v1-sealed/V8_3_247_PRESEAL_METRIC_DIAGNOSTIC_START.json
-          git commit -m 'Record V8.3.247 PRESEAL metric diagnostic start'
-          git push origin HEAD:v83247-v1-sealed-validation
-      - name: Diagnose PRESEAL metrics without semantic runtime
+      - name: Enumerate high external similarity pairs
         shell: bash
         run: |
           set -euo pipefail
           git fetch origin v83246-v1-sealed-validation:refs/remotes/origin/v83246-v1-sealed-validation
-          python - <<'PY' > /tmp/v247-metrics.log 2>&1 || true
+          python - <<'PY' > /tmp/v247-high-pairs.log 2>&1 || true
           from pathlib import Path
           code=Path('validation/v83247-v1-sealed/v83247-preseal-freeze.py').read_text()
           needle="exec(compile(src,'v83247-preseal-adapted.py','exec'))"
-          repl="src=src.replace(\"assert internal[0]<.75 and external[0]<.75 and high==0 and exact==0 and fpdup==0\",\"print('PRESEAL_METRICS',{'internal':internal,'external':external,'high':high,'exact':exact,'fpdup':fpdup}); raise SystemExit(0)\",1); exec(compile(src,'v83247-preseal-adapted.py','exec'))"
+          diagnostic="pairs=[]\nfor x in cases:\n for y in prior:\n  q=sim(x['surface'],y.get('surface',''))\n  if q>=.75:pairs.append((round(q,9),x['case_id'],y.get('case_id'),x['category'],x['language']))\nprint('HIGH_PAIRS',sorted(pairs,reverse=True));raise SystemExit(0)"
+          repl="src=src.replace(\"assert internal[0]<.75 and external[0]<.75 and high==0 and exact==0 and fpdup==0\","+repr(diagnostic)+",1); exec(compile(src,'v83247-preseal-adapted.py','exec'))"
           if needle not in code: raise SystemExit('final exec anchor missing')
           code=code.replace(needle,repl,1)
-          exec(compile(code,'v247-metric-wrapper.py','exec'))
+          exec(compile(code,'v247-high-pair-wrapper.py','exec'))
           PY
-          cat /tmp/v247-metrics.log
-          cp /tmp/v247-metrics.log validation/v83247-v1-sealed/V8_3_247_PRESEAL_METRIC_DIAGNOSTIC.log
+          cat /tmp/v247-high-pairs.log
+          cp /tmp/v247-high-pairs.log validation/v83247-v1-sealed/V8_3_247_PRESEAL_HIGH_PAIR_DIAGNOSTIC.log
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83247-v1-sealed/V8_3_247_PRESEAL_METRIC_DIAGNOSTIC.log
-          git commit -m 'Record V8.3.247 PRESEAL metric diagnostic'
+          git add validation/v83247-v1-sealed/V8_3_247_PRESEAL_HIGH_PAIR_DIAGNOSTIC.log
+          git commit -m 'Record V8.3.247 PRESEAL high-pair diagnostic'
           git push origin HEAD:v83247-v1-sealed-validation
