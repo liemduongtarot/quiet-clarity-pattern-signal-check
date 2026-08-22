@@ -20,6 +20,7 @@ jobs:
       - name: Persist immutable Batch A reservation before semantic execution
         shell: bash
         run: |
+          # protected first and only V8.3.227 Batch A trigger
           set -euo pipefail
           test ! -e validation/v83227-v1-sealed/V8_3_227_BATCH_A_ATTEMPT_MARKER.json
           test ! -e validation/v83227-v1-sealed/V8_3_227_SEALED_FIRST_RUN_MARKER.json
