@@ -1,0 +1,21 @@
+{
+  "candidate": "V8.3.243",
+  "phase": "sealed-batch-a-first-run",
+  "run_id": "32592308399",
+  "run_attempt": "1",
+  "validated_development_head_sha": "885608fce9e70a8818d1ebda23c786a81005a2fe",
+  "semantic_authority": "QCEvidenceExtractorV5AR -> QCSemanticCoreV117",
+  "batch_a_attempt_consumed": true,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "semantic_runtime_executed": false,
+  "semantic_failure": false,
+  "failure_layer": "VALIDATION RUNNER / INFRASTRUCTURE",
+  "exact_error": "FileNotFoundError before semantic execution: validation/v83242-v1-sealed/v83242-batch-a-once.py not present in V8.3.243 sealed checkout",
+  "frozen_on_batch_a_failure": true,
+  "v242_sealed_rerun": false,
+  "v243_batch_a_rerun": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "failure"
+}
