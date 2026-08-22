@@ -1,0 +1,39 @@
+name: V8.3.243 PRESEAL R9 Diagnostic
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83243-preseal-r9-diagnostic.yml
+permissions:
+  contents: write
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83243-v1-sealed-validation
+          fetch-depth: 0
+      - name: Run exact construction-only PRESEAL and capture evidence
+        id: run
+        shell: bash
+        run: |
+          set +e
+          python validation/v83243-v1-sealed/v83243-preseal-freeze.py > /tmp/v243-preseal-r9-diagnostic.log 2>&1
+          rc=$?
+          cat /tmp/v243-preseal-r9-diagnostic.log
+          cp /tmp/v243-preseal-r9-diagnostic.log validation/v83243-v1-sealed/V8_3_243_PRESEAL_R9_DIAGNOSTIC.log
+          printf '{"candidate":"V8.3.243","phase":"preseal-r9-diagnostic","run_id":"%s","rc":%s,"semantic_runtime_executed":false,"gold_changed":false}\n' "$GITHUB_RUN_ID" "$rc" > validation/v83243-v1-sealed/V8_3_243_PRESEAL_R9_DIAGNOSTIC.json
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Freeze diagnostic evidence only
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83243-v1-sealed/V8_3_243_PRESEAL_R9_DIAGNOSTIC.log validation/v83243-v1-sealed/V8_3_243_PRESEAL_R9_DIAGNOSTIC.json
+          for f in validation/v83243-v1-sealed/V8_3_243_PRESEAL_RUN_RECEIPT.json validation/v83243-v1-sealed/V8_3_243_PRESEAL_CANDIDATE_BANK_V1.json validation/v83243-v1-sealed/V8_3_243_SEALED_SELECTION_V1.json validation/v83243-v1-sealed/V8_3_243_SEALED_FIXTURE_V1.json validation/v83243-v1-sealed/V8_3_243_INDEPENDENT_GOLD_V1.json validation/v83243-v1-sealed/V8_3_243_SEALED_MEMBERSHIP_V1.json validation/v83243-v1-sealed/V8_3_243_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83243-v1-sealed/V8_3_243_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.243 PRESEAL R9 diagnostic evidence'
+          git push origin HEAD:v83243-v1-sealed-validation
