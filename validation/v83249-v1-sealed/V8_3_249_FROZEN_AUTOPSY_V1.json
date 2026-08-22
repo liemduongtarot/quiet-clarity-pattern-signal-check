@@ -1,0 +1,221 @@
+{
+  "candidate": "V8.3.249",
+  "phase": "frozen-batch-a-semantic-autopsy",
+  "run_id": "32603408944",
+  "validated_development_head_sha": "e1dd5fdb3286e88a1394051a01b414ddc131d4d9",
+  "semantic_authority": "QCEvidenceExtractorV5AU -> QCSemanticCoreV120",
+  "batch_a_total": 30,
+  "batch_a_passed": 23,
+  "batch_a_failed": 7,
+  "batch_b_executed": false,
+  "v249_batch_a_rerun": false,
+  "semantic_runtime_executed": true,
+  "semantic_failure": true,
+  "failure_counts_by_category": {
+    "freeze": 3,
+    "ignore": 1,
+    "sequence": 1,
+    "neutral": 2
+  },
+  "mechanism_groups": [
+    {
+      "category": "freeze",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:self-lived",
+      "expected_families": [
+        "freeze"
+      ],
+      "actual_families": [
+        "fast",
+        "freeze"
+      ],
+      "expected_sequence": false,
+      "actual_sequence": true,
+      "count": 1
+    },
+    {
+      "category": "freeze",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:hypothetical-or-example",
+      "expected_families": [
+        "freeze"
+      ],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 2
+    },
+    {
+      "category": "ignore",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:hypothetical-or-example",
+      "expected_families": [
+        "ignore"
+      ],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "sequence",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:hypothetical-or-example",
+      "expected_families": [
+        "slow"
+      ],
+      "actual_families": [],
+      "expected_sequence": true,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "neutral",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:hypothetical-or-example",
+      "expected_families": [],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 2
+    }
+  ],
+  "failures": [
+    {
+      "case_id": "V249-S05-00",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "workplace",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "fast",
+          "freeze"
+        ],
+        "sequence": true
+      },
+      "surface": "A violin-making bench separately indexed bending irons, purfling cutters, arching templates, soundpost gauges, peg shapers, rib clamps, scraper sets, bridge blanks, varnish cups, thickness calipers, neck jigs and lining strips; these tools do not create or remove a stalled opening move. A furniture restoration shop separately indexed veneer knives, hide-glue pots, clamp blocks, cabinet scrapers, dowel gauges, shellac pads, joint templates, fret saws, edge planes, marking knives, sanding corks and repair labels; these tools do not create or remove a stalled first move. In a marine invertebrate room, staff separately catalogued sorting trays, shell gauges, preservation jars, specimen pins, mesh sieves, label cards, forceps cases, sample spoons, depth tags, storage racks, field pencils, collection bags by station; those objects describe environment only and cannot determine the behavioural route. In a herbarium mounting room, staff independently listed gummed strips, specimen folders, plant presses, mounting sheets, label pens, linen hinges, forceps, drying papers, archive boards, sample weights, cabinet tags, inspection cards by cabinet; this separate inventory cannot determine the measured route. That horology catalogue is environmental inventory and does not establish the measured response. A leather-pattern bench separately held scratch awls, edge gauges, strap templates, punch boards and buckle samples; these tools do not create or remove a stalled start. I had a low-commitment first move ready, yet I generated more options and remained still. A horological museum logged escapement models, dial blanks, winding keys, balance staffs and timing cards by gallery. A book-repair bench separately held lifting knives, linen tapes, bone folders, paste brushes and pressing boards; these tools do not create or remove a stalled first move. A second storage note recorded slate pencils, linen ties, brass clips, cork spacers, vellum tabs and wooden gauges by compartment; the note is inert background. A leather-tool library separately stored edge bevelers, stitching groovers, mauls, creasing wheels, strap cutters, wax cakes, buckle gauges and awl handles; these tools do not create or remove the stalled opening action. A separate accession ledger also listed cellulose tabs, copper washers, linen loops, graphite marks, ceramic spacers, steel clips, paper sleeves and wooden rulers under a different catalogue; this ledger is inert background only. A conservation leather studio additionally indexed paring knives, edge irons, stitching ponies, spacer wheels, awl blades, thread wax, strap templates, buckle blanks, crease gauges, skiving boards, punch mats and mallet faces; these tools do not create or remove a stalled opening move. A separate accession bundle listed zirconia spacers, nickel clips, cotton cords, maple gauges, cellulose bands, bronze tabs, linen envelopes, silicone washers, graphite markers, vellum flags, cork sleeves and ceramic rulers under a distinct storage code; this is scenery only. A separate marine invertebrate room inventory also remained physically present but semantically inert to the measured response. The additional herbarium mounting room register is independent physical scenery and does not supply evidence for the measured response."
+    },
+    {
+      "case_id": "V249-S05-09",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A violin-making bench separately indexed bending irons, purfling cutters, arching templates, soundpost gauges, peg shapers, rib clamps, scraper sets, bridge blanks, varnish cups, thickness calipers, neck jigs and lining strips; these tools do not create or remove a stalled opening move. A furniture restoration shop separately indexed veneer knives, hide-glue pots, clamp blocks, cabinet scrapers, dowel gauges, shellac pads, joint templates, fret saws, edge planes, marking knives, sanding corks and repair labels; these tools do not create or remove a stalled first move. In a sail loft archive, staff separately catalogued bolt ropes, seam rubbers, palm guards, eyelet dies, canvas rolls, pattern chalk, reefing samples, stitch cards, thimble tins, line gauges, clew templates, storage tags by station; those objects describe environment only and cannot determine the behavioural route. In a metal casting classroom, staff independently listed sprue cutters, mould flasks, riddle screens, wax gates, pouring cards, crucible tongs, sand scoops, pattern boards, vent wires, sample tags, bench brushes, storage bins by cabinet; this separate inventory cannot determine the measured route. Một bench leather-pattern phụ không tạo hay xoá stalled start. Có first action có giới hạn, nhưng tôi thêm route đến mức không bắt đầu gì. Một museum horology ghi escapement model, dial blank, winding key, balance staff và timing card theo gallery. Danh mục horology chỉ là environmental inventory và không establish response đang đo. Một bench book-repair phụ ghi lifting knife, linen tape, bone folder, paste brush và pressing board; các tool đó không tạo hay xoá stalled first move. Một storage note phụ ghi slate pencil, linen tie, brass clip, cork spacer, vellum tab và wooden gauge theo compartment; note này chỉ là inert background. A leather-tool library separately stored edge bevelers, stitching groovers, mauls, creasing wheels, strap cutters, wax cakes, buckle gauges and awl handles; these tools do not create or remove the stalled opening action. A separate storeroom sheet also recorded linen wraps, alloy pins, paper gauges, cork ties, wooden clips, glass markers, cotton bands and brass tags by rack; the sheet has no bearing on the response classification. A conservation leather studio additionally indexed paring knives, edge irons, stitching ponies, spacer wheels, awl blades, thread wax, strap templates, buckle blanks, crease gauges, skiving boards, punch mats and mallet faces; these tools do not create or remove a stalled opening move. A separate shelf ticket listed maple spacers, alloy pins, cotton bands, paper sleeves, linen tags, ceramic rings, glass clips, cork flags, bronze rulers, graphite tabs, steel loops and bamboo gauges; this ticket has no bearing on the measured response. A separate sail loft archive inventory also remained physically present but semantically inert to the measured response. The additional metal casting classroom register is independent physical scenery and does not supply evidence for the measured response."
+    },
+    {
+      "case_id": "V249-S05-03",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A violin-making bench separately indexed bending irons, purfling cutters, arching templates, soundpost gauges, peg shapers, rib clamps, scraper sets, bridge blanks, varnish cups, thickness calipers, neck jigs and lining strips; these tools do not create or remove a stalled opening move. A furniture restoration shop separately indexed veneer knives, hide-glue pots, clamp blocks, cabinet scrapers, dowel gauges, shellac pads, joint templates, fret saws, edge planes, marking knives, sanding corks and repair labels; these tools do not create or remove a stalled first move. In a wind instrument store, staff separately catalogued reed plaques, cork sheets, spring hooks, pad papers, bore swabs, key rollers, thread spools, mandrels, feeler strips, case blocks, joint grease, repair tags by station; those objects describe environment only and cannot determine the behavioural route. In a archive box workshop, staff independently listed board cutters, linen tapes, corner jigs, adhesive pots, bone folders, label frames, press weights, paper guards, thread reels, measuring squares, storage trays, batch slips by cabinet; this separate inventory cannot determine the measured route. A botanical drawing room recorded ruling pens, specimen clips, graphite holders, tracing veils and label weights by drawer. Those drawing-room supplies are physical context rather than evidence of behaviour. A leather-pattern bench separately held scratch awls, edge gauges, strap templates, punch boards and buckle samples; these tools do not create or remove a stalled start. A bounded first action was possible, but I added routes until no action began. A book-repair bench separately held lifting knives, linen tapes, bone folders, paste brushes and pressing boards; these tools do not create or remove a stalled first move. A separate drawer manifest listed silicone caps, brass shims, wool pads, archive sleeves, glass droppers and bamboo pins by section; none of these objects determines the semantic route. A leather-tool library separately stored edge bevelers, stitching groovers, mauls, creasing wheels, strap cutters, wax cakes, buckle gauges and awl handles; these tools do not create or remove the stalled opening action. A separate storage ticket also indexed brass tabs, wool pads, vellum strips, silicone caps, wooden pegs, archive labels, fibre washers and glass droppers by shelf; the ticket remains unrelated scenery. A conservation leather studio additionally indexed paring knives, edge irons, stitching ponies, spacer wheels, awl blades, thread wax, strap templates, buckle blanks, crease gauges, skiving boards, punch mats and mallet faces; these tools do not create or remove a stalled opening move. A separate crate ledger listed vellum tabs, maple spacers, alloy clips, cotton webbing, paper bands, ceramic washers, bronze hooks, linen sleeves, glass stoppers, cork markers, graphite slates and steel rulers; the ledger is unrelated context. A separate wind instrument store inventory also remained physically present but semantically inert to the measured response. The additional archive box workshop register is independent physical scenery and does not supply evidence for the measured response."
+    },
+    {
+      "case_id": "V249-S06-09",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "family",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A building acoustics survey kit separately catalogued sound-level meters, octave filters, tripods, calibration pistons, room sketches, absorption samples, cable reels, source speakers, timing cards, measurement grids, microphone clips and case labels; that inventory cannot resolve a central obligation left unattended. A pavement materials laboratory separately catalogued aggregate sieves, asphalt cores, density blocks, compaction charts, crack rulers, sample tins, temperature probes, straightedges, mix cards, calibration weights, texture plates and site tags; this equipment cannot resolve a main responsibility left open. In a sail loft archive, staff separately catalogued bolt ropes, seam rubbers, palm guards, eyelet dies, canvas rolls, pattern chalk, reefing samples, stitch cards, thimble tins, line gauges, clew templates, storage tags by station; those objects describe environment only and cannot determine the behavioural route. In a metal casting classroom, staff independently listed sprue cutters, mould flasks, riddle screens, wax gates, pouring cards, crucible tongs, sand scoops, pattern boards, vent wires, sample tags, bench brushes, storage bins by cabinet; this separate inventory cannot determine the measured route. Một museum horology ghi escapement model, dial blank, winding key, balance staff và timing card theo gallery. Danh mục horology chỉ là environmental inventory và không establish response đang đo. Một archive mosaic phụ không giải quyết central matter bị bỏ lại. Core problem vẫn cần tôi hành động nhưng tôi lại giữ mình bận ở chỗ khác. Một archive tile-survey phụ ghi grout card, glaze chip, spacer tray, mesh sample và nipper guard; inventory đó không giải quyết central task bị bỏ lại. Một storage note phụ ghi slate pencil, linen tie, brass clip, cork spacer, vellum tab và wooden gauge theo compartment; note này chỉ là inert background. A masonry survey locker separately indexed pointing keys, mortar cards, joint gauges, sample bags, line pins, brush heads, crack rulers and site tags; that equipment cannot resolve the central obligation left unattended. A separate storeroom sheet also recorded linen wraps, alloy pins, paper gauges, cork ties, wooden clips, glass markers, cotton bands and brass tags by rack; the sheet has no bearing on the response classification. A building-materials archive additionally stored mortar prisms, joint profiles, crack monitors, survey tapes, pointing samples, line blocks, masonry brushes, core sleeves, site notebooks, sample tins, depth gauges and condition tags; this equipment cannot resolve an unattended central obligation. A separate shelf ticket listed maple spacers, alloy pins, cotton bands, paper sleeves, linen tags, ceramic rings, glass clips, cork flags, bronze rulers, graphite tabs, steel loops and bamboo gauges; this ticket has no bearing on the measured response. A separate sail loft archive inventory also remained physically present but semantically inert to the measured response. The additional metal casting classroom register is independent physical scenery and does not supply evidence for the measured response."
+    },
+    {
+      "case_id": "V249-S08-09",
+      "category": "sequence",
+      "language": "VI",
+      "domain": "relationship",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A paper-weaving research studio separately logged warp boards, reed gauges, shuttle races, yarn cones, heddle frames, tension scales, lease sticks, bobbin trees, pattern grids, take-up markers, thread counters and sample cards; this equipment adds no new evidence between approach and retreat. A textile tension laboratory separately recorded warp meters, take-up rollers, yarn counters, reed frames, shuttle gauges, bobbin racks, pattern drafts, lease cords, test swatches, force scales, timing cards and loom tags; none of this equipment adds evidence between an approach and a retreat. In a sail loft archive, staff separately catalogued bolt ropes, seam rubbers, palm guards, eyelet dies, canvas rolls, pattern chalk, reefing samples, stitch cards, thimble tins, line gauges, clew templates, storage tags by station; those objects describe environment only and cannot determine the behavioural route. In a metal casting classroom, staff independently listed sprue cutters, mould flasks, riddle screens, wax gates, pouring cards, crucible tongs, sand scoops, pattern boards, vent wires, sample tags, bench brushes, storage bins by cabinet; this separate inventory cannot determine the measured route. Một museum horology ghi escapement model, dial blank, winding key, balance staff và timing card theo gallery. Danh mục horology chỉ là environmental inventory và không establish response đang đo. Một cabinet weaving phụ không thêm fact mới giữa approach và retreat. Tôi tiến tới execution, retreat rồi cycle về kết luận cũ mà không có information thêm. Một cabinet loom-maintenance phụ ghi heddle hook, reed tie, shuttle bobbin, warp card và lease rod; equipment đó không thêm evidence mới giữa approach và retreat. Một storage note phụ ghi slate pencil, linen tie, brass clip, cork spacer, vellum tab và wooden gauge theo compartment; note này chỉ là inert background. A weaving research room separately catalogued warp counters, heddle frames, lease rods, pirn winders, shuttle gauges, pattern cards, yarn cones and tension weights; this equipment adds no new evidence between approach and retreat. A separate storeroom sheet also recorded linen wraps, alloy pins, paper gauges, cork ties, wooden clips, glass markers, cotton bands and brass tags by rack; the sheet has no bearing on the response classification. A loom diagnostics room additionally catalogued warp meters, tension scales, reed hooks, lease sticks, shuttle races, heddle frames, pirn gauges, weave charts, yarn counters, bobbin trees, pattern slates and take-up markers; no new evidence about approach and retreat is supplied by this equipment. A separate shelf ticket listed maple spacers, alloy pins, cotton bands, paper sleeves, linen tags, ceramic rings, glass clips, cork flags, bronze rulers, graphite tabs, steel loops and bamboo gauges; this ticket has no bearing on the measured response. A separate sail loft archive inventory also remained physically present but semantically inert to the measured response. The additional metal casting classroom register is independent physical scenery and does not supply evidence for the measured response."
+    },
+    {
+      "case_id": "V249-S09-09",
+      "category": "neutral",
+      "language": "VI",
+      "domain": "family",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A telescope service room separately stored collimation caps, eyepiece rings, focus racks, lens cells, star-test cards, retaining collars, dew shields, finder brackets, alignment screws, optical cloths, aperture masks and calibration targets; these parts do not change who retained and completed the final choice. An optical instrument archive separately stored prism mounts, iris diaphragms, focus helicoids, reticle plates, collimation targets, lens cells, filter rings, alignment jigs, dust caps, test lamps, retaining screws and service cards; these parts do not change ownership of the final completed choice. In a sail loft archive, staff separately catalogued bolt ropes, seam rubbers, palm guards, eyelet dies, canvas rolls, pattern chalk, reefing samples, stitch cards, thimble tins, line gauges, clew templates, storage tags by station; those objects describe environment only and cannot determine the behavioural route. In a metal casting classroom, staff independently listed sprue cutters, mould flasks, riddle screens, wax gates, pouring cards, crucible tongs, sand scoops, pattern boards, vent wires, sample tags, bench brushes, storage bins by cabinet; this separate inventory cannot determine the measured route. Một tray camera-service phụ không đổi người giữ final choice. Tôi giữ deciding authority, hoàn tất action và để issue đóng lại. Một museum horology ghi escapement model, dial blank, winding key, balance staff và timing card theo gallery. Danh mục horology chỉ là environmental inventory và không establish response đang đo. Một case camera-repair phụ ghi aperture leaf, retaining ring, helicoid grease, focusing screen và test chart; các part đó không đổi người giữ final choice. Một storage note phụ ghi slate pencil, linen tie, brass clip, cork spacer, vellum tab và wooden gauge theo compartment; note này chỉ là inert background. A projection-equipment workshop separately stored lens collars, aperture plates, focus racks, lamp housings, alignment cards, retaining screws, test grids and dust covers; these parts do not change who kept and completed the final choice. A separate storeroom sheet also recorded linen wraps, alloy pins, paper gauges, cork ties, wooden clips, glass markers, cotton bands and brass tags by rack; the sheet has no bearing on the response classification. A cinematography calibration bench additionally stored collimators, focus targets, gate gauges, lens charts, aperture leaves, shutter timers, projection grids, retaining rings, lamp meters, alignment screws, frame counters and optical filters; these components do not change who retained the final choice. A separate shelf ticket listed maple spacers, alloy pins, cotton bands, paper sleeves, linen tags, ceramic rings, glass clips, cork flags, bronze rulers, graphite tabs, steel loops and bamboo gauges; this ticket has no bearing on the measured response. A separate sail loft archive inventory also remained physically present but semantically inert to the measured response. The additional metal casting classroom register is independent physical scenery and does not supply evidence for the measured response."
+    },
+    {
+      "case_id": "V249-S09-03",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A telescope service room separately stored collimation caps, eyepiece rings, focus racks, lens cells, star-test cards, retaining collars, dew shields, finder brackets, alignment screws, optical cloths, aperture masks and calibration targets; these parts do not change who retained and completed the final choice. An optical instrument archive separately stored prism mounts, iris diaphragms, focus helicoids, reticle plates, collimation targets, lens cells, filter rings, alignment jigs, dust caps, test lamps, retaining screws and service cards; these parts do not change ownership of the final completed choice. In a wind instrument store, staff separately catalogued reed plaques, cork sheets, spring hooks, pad papers, bore swabs, key rollers, thread spools, mandrels, feeler strips, case blocks, joint grease, repair tags by station; those objects describe environment only and cannot determine the behavioural route. In a archive box workshop, staff independently listed board cutters, linen tapes, corner jigs, adhesive pots, bone folders, label frames, press weights, paper guards, thread reels, measuring squares, storage trays, batch slips by cabinet; this separate inventory cannot determine the measured route. A botanical drawing room recorded ruling pens, specimen clips, graphite holders, tracing veils and label weights by drawer. Those drawing-room supplies are physical context rather than evidence of behaviour. A camera-service tray separately held aperture blades, lens rings, shutter leaves, focusing screens and calibration cards; these parts do not change who retained the final choice. I kept the deciding authority, completed the action, and left the issue closed. A camera-repair case separately catalogued aperture leaves, retaining rings, helicoid grease, focusing screens and test charts; these parts do not change who retained the final choice. A separate drawer manifest listed silicone caps, brass shims, wool pads, archive sleeves, glass droppers and bamboo pins by section; none of these objects determines the semantic route. A projection-equipment workshop separately stored lens collars, aperture plates, focus racks, lamp housings, alignment cards, retaining screws, test grids and dust covers; these parts do not change who kept and completed the final choice. A separate storage ticket also indexed brass tabs, wool pads, vellum strips, silicone caps, wooden pegs, archive labels, fibre washers and glass droppers by shelf; the ticket remains unrelated scenery. A cinematography calibration bench additionally stored collimators, focus targets, gate gauges, lens charts, aperture leaves, shutter timers, projection grids, retaining rings, lamp meters, alignment screws, frame counters and optical filters; these components do not change who retained the final choice. A separate crate ledger listed vellum tabs, maple spacers, alloy clips, cotton webbing, paper bands, ceramic washers, bronze hooks, linen sleeves, glass stoppers, cork markers, graphite slates and steel rulers; the ledger is unrelated context. A separate wind instrument store inventory also remained physically present but semantically inert to the measured response. The additional archive box workshop register is independent physical scenery and does not supply evidence for the measured response."
+    }
+  ],
+  "expected_gold_changed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "frozen-semantic-failure"
+}
