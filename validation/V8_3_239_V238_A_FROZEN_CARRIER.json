@@ -1,0 +1,420 @@
+{
+  "authority": "V8.3.239 immutable carrier from frozen V8.3.238 A",
+  "source_run_id": "32581219460",
+  "cases": [
+    {
+      "case_id": "V238-S00-00",
+      "surface": "The situation genuinely happened, but the final observable action I took is the one piece still absent. A printmaking room logged squeegee sleeves and ink labels by drawer. That inventory line is only setting and cannot establish the response.",
+      "domain": "money",
+      "category": "clarification",
+      "language": "EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S00-04",
+      "surface": "An observatory class logged eyepiece boxes and mount washers by case. That equipment reference cannot determine the semantic classification. This is a lived episode; what remains unstated is what I personally did as it ended.",
+      "domain": "career",
+      "category": "clarification",
+      "language": "EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V238-S00-07",
+      "surface": "A herbarium class recorded specimen folders and drying slips by shelf. That equipment reference cannot determine the semantic classification. The account is real; the missing element is my own observable action immediately before closure.",
+      "domain": "career",
+      "category": "clarification",
+      "language": "EN",
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S01-00",
+      "surface": "The administrative item cannot decide the route. The final selection should come from you rather than from my own judgement. A cartography room indexed tube clips and ruler blocks by drawer.",
+      "domain": "relationship",
+      "category": "decision",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V238-S01-04",
+      "surface": "Use your judgement as the deciding authority and make the final selection for me. A propagation room recorded seed tabs and mist cards by bay. The storage record is logistics, not behavioural evidence.",
+      "domain": "family",
+      "category": "decision",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S01-07",
+      "surface": "Make the actual final call on my behalf instead of leaving the decision with me. A pastry class indexed dough tags and scraper cases by station. The storage record is logistics, not behavioural evidence.",
+      "domain": "family",
+      "category": "decision",
+      "language": "EN",
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S02-00",
+      "surface": "A stone studio catalogued rasp sleeves and wax markers by bench. That physical record sits outside the behavioural evidence. Nothing in this example happened to me; it exists only as validation input.",
+      "domain": "career",
+      "category": "hypothetical",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V238-S02-04",
+      "surface": "That inventory line is only setting and cannot establish the response. This is an artificial test case unrelated to any episode from my own life. A sculling shed catalogued collar rings and seat tracks by board.",
+      "domain": "workplace",
+      "category": "hypothetical",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V238-S02-07",
+      "surface": "That inventory line is only setting and cannot establish the response. The scenario is invented assessment material with no personal event behind it. A kitchen studio tracked utensil bins and pantry cards by shelf.",
+      "domain": "workplace",
+      "category": "hypothetical",
+      "language": "EN",
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S03-00",
+      "surface": "Tell me the other person’s concealed belief even though nothing observable from them establishes it. A dance store logged shoe sleeves and garment cards by rail. The filing note contributes context only, not evidence of the mechanism.",
+      "domain": "family",
+      "category": "third",
+      "language": "EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S03-04",
+      "surface": "A climbing room tracked sling packets and route labels by wall. The administrative item cannot decide the route. Describe the private view inside the other person when their outward conduct gives no evidence.",
+      "domain": "other",
+      "category": "third",
+      "language": "EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S03-07",
+      "surface": "An observatory class logged eyepiece boxes and mount washers by case. The administrative item cannot decide the route. Give me the other person’s private belief despite there being no outward basis for it.",
+      "domain": "other",
+      "category": "third",
+      "language": "EN",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S04-00",
+      "surface": "That equipment reference cannot determine the semantic classification. Once that later milestone is reached, will the result I want be there? A theatre archive recorded costume wraps and cue folders by locker.",
+      "domain": "workplace",
+      "category": "prediction",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S04-04",
+      "surface": "At the later checkpoint I named, will the outcome I want already have happened? A printmaking room logged squeegee sleeves and ink labels by drawer. That physical record sits outside the behavioural evidence.",
+      "domain": "money",
+      "category": "prediction",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S04-07",
+      "surface": "Looking ahead to the future cutoff I gave, will this finish the way I hope? A propagation room recorded seed tabs and mist cards by bay. That physical record sits outside the behavioural evidence.",
+      "domain": "money",
+      "category": "prediction",
+      "language": "EN",
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S05-00",
+      "surface": "A music library indexed mute clips and score cards by shelf. The storage record is logistics, not behavioural evidence. There was a low-commitment starter I could undo, but comparison kept growing and I stayed still.",
+      "domain": "other",
+      "category": "freeze",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V238-S05-04",
+      "surface": "The filing note contributes context only, not evidence of the mechanism. I could have taken a safe reversible opening step, yet I broadened the option set and made no start. A cartography room indexed tube clips and ruler blocks by drawer.",
+      "domain": "relationship",
+      "category": "freeze",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V238-S05-07",
+      "surface": "The filing note contributes context only, not evidence of the mechanism. I had one bounded first action with an easy exit, yet option expansion replaced initiation. A sculling shed catalogued collar rings and seat tracks by board.",
+      "domain": "relationship",
+      "category": "freeze",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V238-S06-00",
+      "surface": "The main issue still required my action, yet I moved my attention into secondary work that could not resolve it. A sound room tracked cable rings and ear-pad cases by cabinet. That inventory line is only setting and cannot establish the response.",
+      "domain": "money",
+      "category": "ignore",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S06-04",
+      "surface": "A stone studio catalogued rasp sleeves and wax markers by bench. That equipment reference cannot determine the semantic classification. The important matter remained open because I redirected effort into less relevant activity.",
+      "domain": "career",
+      "category": "ignore",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S06-07",
+      "surface": "A climbing room tracked sling packets and route labels by wall. That equipment reference cannot determine the semantic classification. The primary obligation was waiting for my action as I shifted into secondary activity.",
+      "domain": "career",
+      "category": "ignore",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V238-S07-00",
+      "surface": "The administrative item cannot decide the route. I allowed one defined pause and one review, gave my response, and ended the review cycle. A camera classroom logged filter wallets and plate screws by cabinet.",
+      "domain": "relationship",
+      "category": "slow",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V238-S07-04",
+      "surface": "I used one finite pause, reviewed once, answered, and then left the matter closed. A dance store logged shoe sleeves and garment cards by rail. The storage record is logistics, not behavioural evidence.",
+      "domain": "family",
+      "category": "slow",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S07-07",
+      "surface": "Before answering I took one contained interval, checked once, and then moved on. A printmaking room logged squeegee sleeves and ink labels by drawer. The storage record is logistics, not behavioural evidence.",
+      "domain": "family",
+      "category": "slow",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V238-S08-00",
+      "surface": "A maintenance class indexed wrench boxes and component slips by bench. That physical record sits outside the behavioural evidence. I came close to acting, stepped away, then cycled back to the same reasoning with no additional information.",
+      "domain": "career",
+      "category": "sequence",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S08-04",
+      "surface": "That inventory line is only setting and cannot establish the response. I advanced toward the practical move, retreated, then repeated the same conclusion without new facts. A theatre archive recorded costume wraps and cue folders by locker.",
+      "domain": "workplace",
+      "category": "sequence",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S08-07",
+      "surface": "That inventory line is only setting and cannot establish the response. I approached execution, withdrew, and repeated the prior judgement even though no new facts appeared. A cartography room indexed tube clips and ruler blocks by drawer.",
+      "domain": "workplace",
+      "category": "sequence",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S09-00",
+      "surface": "I kept the final decision with me, executed it, and left the issue closed. A loom room catalogued shuttle trays and frame tags by table. The filing note contributes context only, not evidence of the mechanism.",
+      "domain": "family",
+      "category": "neutral",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    },
+    {
+      "case_id": "V238-S09-04",
+      "surface": "A music library indexed mute clips and score cards by shelf. The administrative item cannot decide the route. Final agency remained mine through execution; afterward I moved on.",
+      "domain": "other",
+      "category": "neutral",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": true
+    },
+    {
+      "case_id": "V238-S09-07",
+      "surface": "A stone studio catalogued rasp sleeves and wax markers by bench. The administrative item cannot decide the route. The decision stayed mine; I completed it and did not return to the choice process.",
+      "domain": "other",
+      "category": "neutral",
+      "language": "EN",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "source_first_run_pass": false
+    }
+  ]
+}
