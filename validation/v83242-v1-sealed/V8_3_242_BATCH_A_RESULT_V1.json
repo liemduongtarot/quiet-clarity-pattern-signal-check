@@ -1,0 +1,596 @@
+{
+  "authority": "V8.3.242 V1 SEALED BATCH A FIRST RUN",
+  "run_id": "32589049192",
+  "run_attempt": "1",
+  "validated_development_head_sha": "79645f8973c9e8288119f79318b39646e2feb00f",
+  "semantic_authority": "QCEvidenceExtractorV5AQ -> QCSemanticCoreV116",
+  "total": 30,
+  "passed": 16,
+  "failed": 14,
+  "results": [
+    {
+      "case_id": "V242-S00-00",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A real episode is described, but my final observable move is still missing. A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test."
+    },
+    {
+      "case_id": "V242-S00-03",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "money",
+      "pass": false,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "fast"
+        ],
+        "sequence": false
+      },
+      "surface": "I can describe the lived context but not my last behavioural response. A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour."
+    },
+    {
+      "case_id": "V242-S00-07",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism. Everything is grounded in a real event except my closing behaviour."
+    },
+    {
+      "case_id": "V242-S01-00",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Those ceramics records concern stored materials only, not the response under test. Make the binding selection yourself rather than helping me weigh it. A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay."
+    },
+    {
+      "case_id": "V242-S01-03",
+      "category": "decision",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "That bindery stock record is separate from the measured behaviour. Take over the actual choosing and decide the final option for me. A bookbinding room tracked linen tapes, paste brushes and press boards by shelf."
+    },
+    {
+      "case_id": "V242-S01-07",
+      "category": "decision",
+      "language": "EN",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Choose the final route in place of me making that choice. A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism."
+    },
+    {
+      "case_id": "V242-S02-00",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test. This is synthetic evaluation text and not an event I lived."
+    },
+    {
+      "case_id": "V242-S02-03",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour. This example is fictional validation input rather than autobiographical evidence."
+    },
+    {
+      "case_id": "V242-S02-07",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The violin-tool list adds scenery only and cannot prove the mechanism. Treat this as artificial practice text with no lived event attached. A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer."
+    },
+    {
+      "case_id": "V242-S03-00",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Describe their internal view despite nothing behavioural confirming it. A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test."
+    },
+    {
+      "case_id": "V242-S03-03",
+      "category": "third",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Infer the other person’s private thought with no outward behaviour supporting it. A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour."
+    },
+    {
+      "case_id": "V242-S03-07",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism. State what someone else secretly believes without observable evidence from them."
+    },
+    {
+      "case_id": "V242-S04-00",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Those ceramics records concern stored materials only, not the response under test. At the future checkpoint, will the outcome I want already have happened? A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay."
+    },
+    {
+      "case_id": "V242-S04-03",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "fast"
+        ],
+        "sequence": false
+      },
+      "surface": "That bindery stock record is separate from the measured behaviour. Looking ahead to the named milestone, will things finish as I hope? A bookbinding room tracked linen tapes, paste brushes and press boards by shelf."
+    },
+    {
+      "case_id": "V242-S04-07",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "money",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "At that future point, will the situation have resolved the way I want? A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism."
+    },
+    {
+      "case_id": "V242-S05-00",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test. I could have tried one reversible opening move, but option growth replaced initiation."
+    },
+    {
+      "case_id": "V242-S05-03",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour. A reversible starter was available, but I widened the option set and never began."
+    },
+    {
+      "case_id": "V242-S05-07",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The violin-tool list adds scenery only and cannot prove the mechanism. A small bounded start was ready, yet I generated more alternatives rather than acting. A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer."
+    },
+    {
+      "case_id": "V242-S06-00",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The main issue still needed my action, but I shifted effort into secondary work. A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test."
+    },
+    {
+      "case_id": "V242-S06-03",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "money",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "fast"
+        ],
+        "sequence": false
+      },
+      "surface": "Something important required my response while I kept busy with less relevant work. A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour."
+    },
+    {
+      "case_id": "V242-S06-07",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism. My action was needed on the main matter, but I occupied myself elsewhere."
+    },
+    {
+      "case_id": "V242-S07-00",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "Those ceramics records concern stored materials only, not the response under test. Before answering I used one contained interval, made one check, then ended the review. A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay."
+    },
+    {
+      "case_id": "V242-S07-03",
+      "category": "slow",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "That bindery stock record is separate from the measured behaviour. I took one bounded pause, checked once, answered, and then closed the issue. A bookbinding room tracked linen tapes, paste brushes and press boards by shelf."
+    },
+    {
+      "case_id": "V242-S07-07",
+      "category": "slow",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "I paused within a clear limit, reviewed once, responded, and did not reopen it. A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism."
+    },
+    {
+      "case_id": "V242-S08-00",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test. I moved toward action, withdrew, then returned to the same conclusion without new facts."
+    },
+    {
+      "case_id": "V242-S08-03",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour. I nearly acted, reversed course, and revisited the same assessment under unchanged information."
+    },
+    {
+      "case_id": "V242-S08-07",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The violin-tool list adds scenery only and cannot prove the mechanism. I got close to acting, backed off, and returned to prior reasoning despite no new information. A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer."
+    },
+    {
+      "case_id": "V242-S09-00",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I retained final agency, completed the action, and treated the issue as resolved. A ceramics archive logged glaze paddles, kiln cones and sponge blocks by bay. Those ceramics records concern stored materials only, not the response under test."
+    },
+    {
+      "case_id": "V242-S09-03",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "I kept the final choice, carried it out, and left the matter settled. A bookbinding room tracked linen tapes, paste brushes and press boards by shelf. That bindery stock record is separate from the measured behaviour."
+    },
+    {
+      "case_id": "V242-S09-07",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A violin workshop catalogued bridge blanks, peg shapers and rosin cloths by drawer. The violin-tool list adds scenery only and cannot prove the mechanism. The choice remained mine through completion; afterward I did not reopen it."
+    }
+  ]
+}
