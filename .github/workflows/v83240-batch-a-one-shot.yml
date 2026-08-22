@@ -1,0 +1,76 @@
+name: V8.3.240 sealed Batch A one-shot
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83240-batch-a-one-shot.yml
+permissions:
+  contents: write
+jobs:
+  batch-a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83240-v1-sealed-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Persist immutable Batch A reservation before semantic execution
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e validation/v83240-v1-sealed/V8_3_240_BATCH_A_ATTEMPT_MARKER.json
+          test ! -e validation/v83240-v1-sealed/V8_3_240_SEALED_FIRST_RUN_MARKER.json
+          test ! -e validation/v83240-v1-sealed/V8_3_240_BATCH_A_RESULT_V1.json
+          python - <<'PY'
+          import json,os,pathlib
+          o=pathlib.Path('validation/v83240-v1-sealed')
+          pf=json.loads((o/'V8_3_240_STATIC_SEALED_PREFLIGHT_V1.json').read_text())
+          assert pf['pass'] is True and pf['candidate']=='V8.3.240'
+          assert pf['first_run_marker_absent'] is True and pf['batch_a_attempt_marker_absent'] is True and pf['prior_batch_a_execution_absent'] is True
+          assert pf['exact_v5ao_path']=='validation/qc-evidence-extractor-v5ao-v239-v238-residuals.js'
+          assert pf['exact_v114_path']=='validation/psc-v83239-v238-v114-v238-residuals.js'
+          common={'candidate':'V8.3.240','run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ.get('GITHUB_RUN_ATTEMPT'),'validated_development_head_sha':'11a6b7da05b9ed48bdee76c789c17b83c575152d','semantic_authority':'QCEvidenceExtractorV5AO -> QCSemanticCoreV114','reserved_before_semantic_execution':True,'semantic_runtime_executed':False,'v239_batch_a_rerun':False,'v239_semantic_runtime_executed':False,'step_111_authorized':False,'production_authorized':False}
+          a=dict(common);a.update({'phase':'sealed-batch-a-attempt-reservation','batch':'A'})
+          f=dict(common);f.update({'phase':'sealed-first-run-reservation','reserved_batch':'A'})
+          (o/'V8_3_240_BATCH_A_ATTEMPT_MARKER.json').write_text(json.dumps(a,indent=2)+'\n')
+          (o/'V8_3_240_SEALED_FIRST_RUN_MARKER.json').write_text(json.dumps(f,indent=2)+'\n')
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83240-v1-sealed/V8_3_240_BATCH_A_ATTEMPT_MARKER.json validation/v83240-v1-sealed/V8_3_240_SEALED_FIRST_RUN_MARKER.json
+          git commit -m 'Reserve V8.3.240 sealed Batch A first run'
+          git push origin HEAD:v83240-v1-sealed-validation
+      - name: Execute V8.3.240 Batch A exactly once
+        id: execute
+        shell: bash
+        run: |
+          set +e
+          python validation/v83240-v1-sealed/v83240-batch-a-once.py
+          rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Freeze Batch A evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          test -f validation/v83240-v1-sealed/V8_3_240_BATCH_A_STATUS_V1.json
+          git add validation/v83240-v1-sealed/V8_3_240_BATCH_A_STATUS_V1.json
+          test ! -f validation/v83240-v1-sealed/V8_3_240_BATCH_A_RESULT_V1.json || git add validation/v83240-v1-sealed/V8_3_240_BATCH_A_RESULT_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.240 Batch A first-run evidence'
+          git push origin HEAD:v83240-v1-sealed-validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_240_V1_BATCH_A_CHECKPOINT
+          path: |
+            PSC_V8_3_240_V1_BATCH_A_CHECKPOINT.zip
+            PSC_V8_3_240_V1_BATCH_A_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce Batch A outcome
+        run: test '${{ steps.execute.outputs.rc }}' = '0'
