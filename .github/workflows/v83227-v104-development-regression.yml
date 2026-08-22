@@ -1,0 +1,68 @@
+name: V8.3.227 V104 DEVELOPMENT regression
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83227-v104-development-regression.yml
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83227-v1-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run V104 regression
+        id: run
+        shell: bash
+        run: |
+          set +e
+          python validation/v83227-v104-regression-orchestrator.py > /tmp/v227.log 2>&1
+          rc=$?
+          cat /tmp/v227.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          RC="$rc" python - <<'PY'
+          import json,os,pathlib
+          text=pathlib.Path('/tmp/v227.log').read_text(errors='replace');rc=os.environ['RC']
+          d={'candidate':'V8.3.227','phase':'v104-development-regression-diagnostic','outcome':'success' if rc=='0' else 'failure','exit_code':rc,'log_tail':text[-14000:],'sealed_validation_executed':False,'v226_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_227_V104_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
+          PY
+          exit 0
+      - name: Freeze evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_227_V104_REGRESSION_DIAGNOSTIC.json
+          test ! -f validation/V8_3_227_V104_REGRESSION_RECEIPT.json || git add validation/V8_3_227_V104_REGRESSION_RECEIPT.json
+          for f in validation/V8_3_227_V*_A_FROZEN_CARRIER.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Record V8.3.227 V104 DEVELOPMENT regression evidence'
+          git push origin HEAD:v83227-v1-validation
+      - name: Build checkpoint
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf V8_3_227_DEVELOPMENT_REGRESSION_CHECKPOINT && mkdir V8_3_227_DEVELOPMENT_REGRESSION_CHECKPOINT
+          for f in validation/V8_3_227_V104_REGRESSION_DIAGNOSTIC.json validation/V8_3_227_V104_REGRESSION_RECEIPT.json validation/qc-evidence-extractor-v5ae-v227-residual-witness.js validation/psc-v83227-v226-v104-residual-witness.js; do test ! -f "$f" || cp "$f" V8_3_227_DEVELOPMENT_REGRESSION_CHECKPOINT/; done
+          (cd V8_3_227_DEVELOPMENT_REGRESSION_CHECKPOINT && sha256sum * > SHA256_MANIFEST.txt)
+          zip -r PSC_V8_3_227_DEVELOPMENT_REGRESSION_CHECKPOINT.zip V8_3_227_DEVELOPMENT_REGRESSION_CHECKPOINT
+          sha256sum PSC_V8_3_227_DEVELOPMENT_REGRESSION_CHECKPOINT.zip > PSC_V8_3_227_DEVELOPMENT_REGRESSION_CHECKPOINT_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_227_DEVELOPMENT_REGRESSION_CHECKPOINT
+          path: |
+            PSC_V8_3_227_DEVELOPMENT_REGRESSION_CHECKPOINT.zip
+            PSC_V8_3_227_DEVELOPMENT_REGRESSION_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce outcome
+        shell: bash
+        run: test '${{ steps.run.outputs.rc }}' = '0'
