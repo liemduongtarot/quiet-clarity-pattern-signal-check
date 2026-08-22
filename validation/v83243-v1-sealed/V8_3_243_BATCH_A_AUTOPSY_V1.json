@@ -1,0 +1,21 @@
+{
+  "candidate": "V8.3.243",
+  "source_run_id": "32592308399",
+  "attempt_consumed": true,
+  "semantic_runtime_executed": false,
+  "semantic_failure": false,
+  "batch_b_executed": false,
+  "classification": "VALIDATION RUNNER / INFRASTRUCTURE",
+  "root_cause": "The V8.3.243 Batch A runner was implemented as a runtime wrapper that tried to read validation/v83242-v1-sealed/v83242-batch-a-once.py from the V8.3.243 sealed checkout. That parent sealed runner file is not part of the exact V8.3.243 DEVELOPMENT/sealed authority checkout, so Python raised FileNotFoundError before any semantic runtime loaded or executed.",
+  "immutable_evidence": {
+    "reservation_persisted_before_semantics": true,
+    "missing_path": "validation/v83242-v1-sealed/v83242-batch-a-once.py",
+    "result_file_created": false,
+    "status_file_created_by_runner": false,
+    "checkpoint_created_by_runner": false
+  },
+  "repair_scope_for_next_version": "Validation-runner materialization only. Build a self-contained runner on the recovery branch; do not depend on a prior sealed-branch runner path. Preserve exact V8.3.243 DEVELOPMENT semantic authority and all expected/gold contracts.",
+  "v243_batch_a_rerun_permitted": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
