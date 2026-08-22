@@ -1,0 +1,19 @@
+{
+  "candidate": "V8.3.247",
+  "phase": "runner-only-development-recovery",
+  "parent_development_sha": "00bcd4681a61ef1ab0b229eb90af9e74102dc649",
+  "semantic_authority": "QCEvidenceExtractorV5AT -> QCSemanticCoreV119",
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "source_failure": "V8.3.246 infrastructure-only loader filename corruption before semantic runtime",
+  "correct_parent_v118_filename": "psc-v83245-v244-v118-residuals.js",
+  "child_v119_filename": "psc-v83246-v245-v119-residuals.js",
+  "runner_sha256": "0fa68a717ce75b429e9d5773420f33b50b8c0683f02c22fb09a95b907d5b6902",
+  "self_contained": true,
+  "required_semantic_literals_present": true,
+  "corrupt_parent_filename_absent": true,
+  "pass": true,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
