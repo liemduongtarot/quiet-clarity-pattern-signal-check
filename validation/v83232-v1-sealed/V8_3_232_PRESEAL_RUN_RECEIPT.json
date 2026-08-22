@@ -1,0 +1,25 @@
+{
+  "candidate": "V8.3.232",
+  "phase": "preseal-freeze-v1",
+  "validated_development_head_sha": "7731574dd6db5d4c257dc088f5e791b1e980d5be",
+  "semantic_authority": "QCEvidenceExtractorV5AI -> QCSemanticCoreV108",
+  "candidate_count": 180,
+  "selected_count": 60,
+  "batch_a_count": 30,
+  "batch_b_count": 30,
+  "internal_max_similarity": 0.714286,
+  "internal_max_pair": [
+    "V232-S00-10",
+    "V232-S02-12"
+  ],
+  "external_max_similarity": 0.590909,
+  "external_cases_at_or_above_0_75": 0,
+  "exact_external_duplicates": 0,
+  "semantic_fingerprint_exact_duplicates": 0,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "selection_uses_runtime_output": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "conclusion": "success"
+}
