@@ -1,0 +1,27 @@
+{
+  "candidate": "V8.3.249",
+  "total": 30,
+  "passed": 29,
+  "failed": 1,
+  "failure": {
+    "case_id": "V248-S09-10",
+    "category": "neutral",
+    "language": "VI",
+    "domain": "money",
+    "surface": "Tôi tự đưa final choice, thực hiện đến cùng và không reopen quyết định. Một loft sailmaking ghi palm guard, seam rubber, bolt rope, eyelet die và pattern chalk theo rack. Vật liệu sailmaking chỉ cung cấp setting chứ không phải behavioural evidence. Một tray camera-service phụ không đổi người giữ final choice. Một case camera-repair phụ ghi aperture leaf, retaining ring, helicoid grease, focusing screen và test chart; các part đó không đổi người giữ final choice. Một shelf register phụ ghi fibre pad, enamel tag, cotton cord, steel ruler, wax block và paper seal theo bay; register này không mang behavioural evidence. A projection-equipment workshop separately stored lens collars, aperture plates, focus racks, lamp housings, alignment cards, retaining screws, test grids and dust covers; these parts do not change who kept and completed the final choice. A separate accession ledger also listed cellulose tabs, copper washers, linen loops, graphite marks, ceramic spacers, steel clips, paper sleeves and wooden rulers under a different catalogue; this ledger is inert background only. A cinematography calibration bench additionally stored collimators, focus targets, gate gauges, lens charts, aperture leaves, shutter timers, projection grids, retaining rings, lamp meters, alignment screws, frame counters and optical filters; these components do not change who retained the final choice. A separate accession bundle listed zirconia spacers, nickel clips, cotton cords, maple gauges, cellulose bands, bronze tabs, linen envelopes, silicone washers, graphite markers, vellum flags, cork sleeves and ceramic rulers under a distinct storage code; this is scenery only.",
+    "expected": {
+      "route": "input:self-lived",
+      "families": [],
+      "sequence": false
+    },
+    "source_first_run_pass": false,
+    "pass": false,
+    "actual": {
+      "route": "input:hypothetical-or-example",
+      "families": [],
+      "sequence": false
+    }
+  },
+  "sealed_validation_executed": false,
+  "expected_gold_changed": false
+}
