@@ -1,0 +1,42 @@
+name: V8.3.237 frozen Batch A autopsy
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83237-freeze-autopsy.yml
+permissions:
+  contents: write
+jobs:
+  autopsy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83237-v1-sealed-validation
+          fetch-depth: 0
+      - name: Freeze exact autopsy
+        shell: bash
+        run: |
+          set -euo pipefail
+          python validation/v83237-v1-sealed/v83237-freeze-autopsy.py
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83237-v1-sealed/V8_3_237_FROZEN_AUTOPSY_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.237 Batch A autopsy evidence'
+          git push origin HEAD:v83237-v1-sealed-validation
+      - name: Build frozen checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir V8_3_237_FROZEN_CHECKPOINT
+          for f in validation/v83237-v1-sealed/V8_3_237_BATCH_A_RESULT_V1.json validation/v83237-v1-sealed/V8_3_237_BATCH_A_STATUS_V1.json validation/v83237-v1-sealed/V8_3_237_BATCH_A_ATTEMPT_MARKER.json validation/v83237-v1-sealed/V8_3_237_SEALED_FIRST_RUN_MARKER.json validation/v83237-v1-sealed/V8_3_237_FROZEN_AUTOPSY_V1.json validation/v83237-v1-sealed/V8_3_237_SEALED_AUTHORITY_V1.json; do cp "$f" V8_3_237_FROZEN_CHECKPOINT/; done
+          (cd V8_3_237_FROZEN_CHECKPOINT && sha256sum * > SHA256_MANIFEST.txt)
+          zip -r PSC_V8_3_237_FROZEN_CHECKPOINT.zip V8_3_237_FROZEN_CHECKPOINT
+          sha256sum PSC_V8_3_237_FROZEN_CHECKPOINT.zip > PSC_V8_3_237_FROZEN_CHECKPOINT_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_237_FROZEN_CHECKPOINT
+          path: |
+            PSC_V8_3_237_FROZEN_CHECKPOINT.zip
+            PSC_V8_3_237_FROZEN_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
