@@ -1,5 +1,5 @@
-name: V8.3.244 final static preflight after runner repair
-# trigger-v244-final-preflight-after-runner-v2-r2
+name: V8.3.244 preflight authority assertion diagnostic
+# trigger-v244-preflight-assert-diagnostic
 on:
   push:
     branches: [main]
@@ -15,29 +15,29 @@ jobs:
         with:
           ref: v83244-v1-sealed-validation
           fetch-depth: 0
-      - name: Run final V8.3.244 transport/static preflight
-        id: run
+      - name: Capture exact preflight authority values
         shell: bash
         run: |
-          set +e
-          python validation/v83244-v1-sealed/v83244-transport-preflight.py > /tmp/v244-final-preflight.log 2>&1
-          rc=$?
-          set -e
-          cat /tmp/v244-final-preflight.log
-          cp /tmp/v244-final-preflight.log validation/v83244-v1-sealed/V8_3_244_FINAL_PREFLIGHT_AFTER_RUNNER_V2.log
-          printf '{"candidate":"V8.3.244","phase":"final-preflight-after-runner-v2-r2","run_id":"%s","rc":%s,"semantic_runtime_executed":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" "$rc" > validation/v83244-v1-sealed/V8_3_244_FINAL_PREFLIGHT_AFTER_RUNNER_V2.json
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze final preflight evidence
-        if: always()
+          set -euo pipefail
+          python - <<'PY'
+          import json,pathlib,re
+          o=pathlib.Path('validation/v83244-v1-sealed')
+          src=(o/'v83244-transport-preflight.py').read_text()
+          mbase=re.search(r"BASE='([^']+)'",src);mdev=re.search(r"DEV='([^']+)'",src);msem=re.search(r"SEM='([^']+)'",src)
+          a=json.loads((o/'V8_3_244_SEALED_AUTHORITY_V1.json').read_text())
+          rec=json.loads((o/'V8_3_244_PRESEAL_RUN_RECEIPT.json').read_text())
+          data={'candidate':'V8.3.244','phase':'preflight-authority-assert-diagnostic','script_base':mbase.group(1) if mbase else None,'script_dev':mdev.group(1) if mdev else None,'script_sem':msem.group(1) if msem else None,'authority_recovery_development_head_sha':a.get('recovery_development_head_sha'),'authority_base_exact_development_sha':a.get('base_exact_development_sha'),'authority_semantic_authority':a.get('semantic_authority'),'authority_preseal_pass':a.get('preseal_pass'),'receipt_conclusion':rec.get('conclusion'),'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False}
+          data['assert_components']={'recovery_head_match':data['authority_recovery_development_head_sha']==data['script_dev'],'base_match':data['authority_base_exact_development_sha']==data['script_base'],'semantic_match':data['authority_semantic_authority']==data['script_sem'],'preseal_pass_true':data['authority_preseal_pass'] is True,'receipt_success':data['receipt_conclusion']=='success'}
+          data['pass']=all(data['assert_components'].values())
+          (o/'V8_3_244_PREFLIGHT_AUTHORITY_ASSERT_DIAGNOSTIC.json').write_text(json.dumps(data,indent=2)+'\n')
+          print(json.dumps(data))
+          PY
+      - name: Freeze diagnostic
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83244-v1-sealed/V8_3_244_FINAL_PREFLIGHT_AFTER_RUNNER_V2.log validation/v83244-v1-sealed/V8_3_244_FINAL_PREFLIGHT_AFTER_RUNNER_V2.json
-          test ! -f validation/v83244-v1-sealed/V8_3_244_TRANSPORT_VERIFICATION_V1.json || git add validation/v83244-v1-sealed/V8_3_244_TRANSPORT_VERIFICATION_V1.json
-          test ! -f validation/v83244-v1-sealed/V8_3_244_STATIC_SEALED_PREFLIGHT_V1.json || git add validation/v83244-v1-sealed/V8_3_244_STATIC_SEALED_PREFLIGHT_V1.json
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.244 final preflight after runner repair R2'
+          git add validation/v83244-v1-sealed/V8_3_244_PREFLIGHT_AUTHORITY_ASSERT_DIAGNOSTIC.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.244 preflight authority assertion diagnostic'
           git push origin HEAD:v83244-v1-sealed-validation
-      - name: Enforce final preflight
-        run: test '${{ steps.run.outputs.rc }}' = '0'
