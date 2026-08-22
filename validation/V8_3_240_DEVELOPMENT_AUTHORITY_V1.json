@@ -1,0 +1,16 @@
+{
+  "candidate": "V8.3.240",
+  "phase": "DEVELOPMENT_AUTHORITY",
+  "semantic_authority": "QCEvidenceExtractorV5AO -> QCSemanticCoreV114",
+  "base_development_sha": "00ad4e2e12d58a22f26f171523c67231c662d325",
+  "runner_recovery_receipt": "validation/V8_3_240_RUNNER_PLUMBING_RECOVERY_RECEIPT.json",
+  "semantic_files_byte_identical": true,
+  "v239_development_regression_preserved": true,
+  "v239_batch_a_rerun": false,
+  "v239_semantic_runtime_executed": false,
+  "expected_gold_changed": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "success"
+}
