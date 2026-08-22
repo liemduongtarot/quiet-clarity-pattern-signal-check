@@ -1,9 +1,1 @@
-{
-  "candidate": "V8.3.244",
-  "phase": "preseal-diagnostic",
-  "run_id": "32592558461",
-  "exit_code": "1",
-  "log_tail": "Traceback (most recent call last):\n  File \"/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83244-v1-sealed/v83244-preseal-freeze.py\", line 66, in <module>\n    assert internal[0]<.75 and external[0]<.75 and high==0 and exact==0 and fpdup==0\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
-  "semantic_runtime_executed": false,
-  "gold_expected_changed": false
-}
+{"candidate":"V8.3.244","phase":"preseal-via-proven-transport","run_id":"32592614866","rc":1,"semantic_runtime_executed":false,"gold_expected_changed":false}
