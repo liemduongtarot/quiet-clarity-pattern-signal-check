@@ -1,0 +1,20 @@
+{
+  "candidate": "V8.3.232",
+  "phase": "FROZEN_SEALED_AUTOPSY",
+  "batch_a_run_id": "32573509245",
+  "validated_development_head_sha": "7731574dd6db5d4c257dc088f5e791b1e980d5be",
+  "semantic_authority": "QCEvidenceExtractorV5AI -> QCSemanticCoreV108",
+  "batch_a_attempt_consumed": true,
+  "batch_a_executed": false,
+  "semantic_runtime_executed": false,
+  "semantic_failure": false,
+  "failure_layer": "VALIDATION RUNNER / INFRASTRUCTURE",
+  "exact_error": "AssertionError during V8.3.232 runner adaptation before semantic execution",
+  "batch_a_rerun_forbidden": true,
+  "batch_b_skipped": true,
+  "batch_b_rerun_forbidden": true,
+  "expected_gold_changed": false,
+  "v232_sealed_rerun": false,
+  "production_authorized": false,
+  "step_111_authorized": false
+}
