@@ -1,0 +1,23 @@
+{
+  "candidate": "V8.3.244",
+  "phase": "preflight-authority-assert-diagnostic",
+  "script_base": "885608fce9e70a8818d1ebda23c786a81005a2fe",
+  "script_dev": "a2af4854bd53a7c57aef835bc073366ebfdfa7b9",
+  "script_sem": "QCEvidenceExtractorV5AR -> QCSemanticCoreV117",
+  "authority_recovery_development_head_sha": "a2af4854bd53a7c57aef835bc073366ebfdfa7b9",
+  "authority_base_exact_development_sha": "885608fce9e8288119f79318b39646e2feb00f",
+  "authority_semantic_authority": "QCEvidenceExtractorV5AR -> QCSemanticCoreV117",
+  "authority_preseal_pass": true,
+  "receipt_conclusion": "success",
+  "semantic_runtime_executed": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "assert_components": {
+    "recovery_head_match": true,
+    "base_match": false,
+    "semantic_match": true,
+    "preseal_pass_true": true,
+    "receipt_success": true
+  },
+  "pass": false
+}
