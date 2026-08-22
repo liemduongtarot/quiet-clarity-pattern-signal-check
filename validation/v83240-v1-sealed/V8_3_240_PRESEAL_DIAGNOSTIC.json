@@ -1,0 +1,11 @@
+{
+  "candidate": "V8.3.240",
+  "phase": "preseal-construction-diagnostic",
+  "outcome": "failure",
+  "exit_code": "1",
+  "log_tail": "Traceback (most recent call last):\n  File \"/home/runner/work/quiet-clarity-pattern-signal-check/quiet-clarity-pattern-signal-check/validation/v83240-v1-sealed/v83240-preseal-freeze.py\", line 56, in <module>\n    assert internal[0]<.75 and external[0]<.75 and high==0 and exact==0 and fpdup==0\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false
+}
