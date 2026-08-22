@@ -16,6 +16,7 @@ jobs:
           fetch-depth: 0
       - name: Build checkpoint
         run: |
+          # exact V8.3.229 DEVELOPMENT authority checkpoint
           set -euo pipefail
           mkdir V8_3_229_DEVELOPMENT_CHECKPOINT
           cp validation/V8_3_229_DEVELOPMENT_AUTHORITY_V1.json V8_3_229_DEVELOPMENT_CHECKPOINT/
