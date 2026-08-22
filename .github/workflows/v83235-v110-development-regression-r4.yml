@@ -21,6 +21,7 @@ jobs:
         id: run
         shell: bash
         run: |
+          # actual R4 after raw-parent delegation repair
           set +e
           python validation/v83235-v110-regression-orchestrator.py > /tmp/v235-r4.log 2>&1
           rc=$?
