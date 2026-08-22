@@ -17,6 +17,7 @@ jobs:
       - name: Build checkpoint
         shell: bash
         run: |
+          # exact V8.3.228 DEVELOPMENT authority checkpoint
           set -euo pipefail
           mkdir V8_3_228_DEVELOPMENT_CHECKPOINT
           cp validation/V8_3_228_DEVELOPMENT_AUTHORITY_V1.json V8_3_228_DEVELOPMENT_CHECKPOINT/
