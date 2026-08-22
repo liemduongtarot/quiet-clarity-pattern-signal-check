@@ -40,7 +40,7 @@ function extract(raw){
  const response=any(d,['responded','answered','replied','gave my response']);
  const closed=any(d,['stopped reviewing','closed the matter','did not reopen','process as finished','left it closed','ended the review cycle']);
  if(bounded&&once&&response&&closed)o.v231_slow=true;
- const approach=any(d,['moved toward','got close','approached','nearly acted','advanced toward','came close']);
+ const approach=any(d,['moved toward','got close','approached','nearly acted','advanced toward','came close','came close to carrying it out']);
  const retreat=any(d,['pulled back','stepped away','retreated','reversed course','backed out','withdrew']);
  const repeat=any(d,['same judgement','same judgment','earlier reasoning','same conclusion','prior assessment','same reasoning','repeated']);
  const unchanged=any(d,['without new evidence','nothing changed','no new facts','evidence stayed unchanged','no additional information','no new information']);
