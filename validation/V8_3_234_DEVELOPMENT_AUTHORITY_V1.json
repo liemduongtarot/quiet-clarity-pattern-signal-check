@@ -1,0 +1,19 @@
+{
+  "candidate":"V8.3.234",
+  "phase":"DEVELOPMENT_AUTHORITY",
+  "base_development_sha":"8f85efc8b8383420c65a50724d2512693302dbcb",
+  "semantic_authority":"QCEvidenceExtractorV5AJ -> QCSemanticCoreV109",
+  "semantic_change_from_v233":true,
+  "regression_pass":true,
+  "immutable_regression":"1470/1470",
+  "v216_frozen_a":"30/30",
+  "prior_frozen_a_regressions":{"219":"30/30","221":"30/30","222":"30/30","223":"30/30","224":"30/30","225":"30/30","226":"30/30","227":"30/30","229":"30/30","230":"30/30","231":"30/30","233":"30/30"},
+  "v228_semantic_runtime_executed":false,
+  "v232_semantic_runtime_executed":false,
+  "v233_previous_failures_repaired":10,
+  "v233_previous_passes_preserved":20,
+  "expected_gold_changed":false,
+  "sealed_validation_executed":false,
+  "production_authorized":false,
+  "step_111_authorized":false
+}
