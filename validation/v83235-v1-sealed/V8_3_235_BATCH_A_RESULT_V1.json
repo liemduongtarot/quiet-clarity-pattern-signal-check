@@ -1,0 +1,590 @@
+{
+  "authority": "V8.3.235 V1 SEALED BATCH A FIRST RUN",
+  "run_id": "32577521511",
+  "run_attempt": "1",
+  "validated_development_head_sha": "4c58dbbd7315719093e58eb01ac18acec8cdb6fd",
+  "semantic_authority": "QCEvidenceExtractorV5AK -> QCSemanticCoreV110",
+  "total": 30,
+  "passed": 18,
+  "failed": 12,
+  "results": [
+    {
+      "case_id": "V235-S00-01",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The storage note is logistical background, not behavioural evidence. The lived account is otherwise complete, yet the concrete response from me at the end is absent. A baking classroom logged mixer cards and tray clips by station."
+    },
+    {
+      "case_id": "V235-S00-05",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A costume room tracked garment bags and prop cards by locker. The administrative note cannot decide the classification. The situation is real and described; what remains unknown is my personal endpoint behaviour."
+    },
+    {
+      "case_id": "V235-S00-08",
+      "category": "clarification",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A film archive catalogued reel cans and cue labels by shelf. That equipment reference does not determine the semantic mechanism. The situation is real and described; what remains unknown is my personal endpoint behaviour."
+    },
+    {
+      "case_id": "V235-S01-01",
+      "category": "decision",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Choose the actual route for me rather than only helping me assess the alternatives. A violin workshop logged bow wraps and bridge tags by cabinet. That physical record is outside the behavioural evidence."
+    },
+    {
+      "case_id": "V235-S01-05",
+      "category": "decision",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "That equipment reference does not determine the semantic mechanism. Make the final selection itself so the decision comes from you instead of me. A botanical classroom tracked pot markers and mist valves by bay."
+    },
+    {
+      "case_id": "V235-S01-08",
+      "category": "decision",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:decision-request",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The administrative note cannot decide the classification. Make the final selection itself so the decision comes from you instead of me. A bookbinding room tracked awl sleeves and thread cards by drawer."
+    },
+    {
+      "case_id": "V235-S02-01",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A rowing shed recorded seat rails and collar clips by board. The storage note is logistical background, not behavioural evidence. This is synthetic test material and does not come from any event in my life."
+    },
+    {
+      "case_id": "V235-S02-05",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The example is artificial validation text rather than personal evidence. A repair classroom logged socket cases and part slips by bench. The administrative note cannot decide the classification."
+    },
+    {
+      "case_id": "V235-S02-08",
+      "category": "hypothetical",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The example is artificial validation text rather than personal evidence. A herbarium room tracked specimen sheets and drying boards by shelf. That equipment reference does not determine the semantic mechanism."
+    },
+    {
+      "case_id": "V235-S03-01",
+      "category": "third",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "That physical record is outside the behavioural evidence. Give me someone else’s private conclusion when nothing they said or did substantiates it. A textile lab recorded spindle boxes and loom tags by table."
+    },
+    {
+      "case_id": "V235-S03-05",
+      "category": "third",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A drafting room logged tube straps and ruler weights by drawer. That equipment reference does not determine the semantic mechanism. Infer their private conclusion without any words or actions establishing that view."
+    },
+    {
+      "case_id": "V235-S03-08",
+      "category": "third",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A costume room tracked garment bags and prop cards by locker. The administrative note cannot decide the classification. Infer their private conclusion without any words or actions establishing that view."
+    },
+    {
+      "case_id": "V235-S04-01",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "Looking ahead to that stated deadline, will things end the way I want? A glass studio recorded cutter sleeves and kiln notes by bench. The storage note is logistical background, not behavioural evidence."
+    },
+    {
+      "case_id": "V235-S04-05",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The administrative note cannot decide the classification. By the future date I specified, will the outcome I want be there? A baking classroom logged mixer cards and tray clips by station."
+    },
+    {
+      "case_id": "V235-S04-08",
+      "category": "prediction",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:prediction",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "That equipment reference does not determine the semantic mechanism. By the future date I specified, will the outcome I want be there? A botanical classroom tracked pot markers and mist valves by bay."
+    },
+    {
+      "case_id": "V235-S05-01",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "surface": "A culinary studio indexed utensil trays and pantry labels by shelf. That physical record is outside the behavioural evidence. There was a contained first step I could undo, but more possibilities replaced initiation."
+    },
+    {
+      "case_id": "V235-S05-05",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I had an easy-to-reverse first action, but kept generating options and remained still. A violin workshop logged bow wraps and bridge tags by cabinet. That equipment reference does not determine the semantic mechanism."
+    },
+    {
+      "case_id": "V235-S05-08",
+      "category": "freeze",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "I had an easy-to-reverse first action, but kept generating options and remained still. A repair classroom logged socket cases and part slips by bench. The administrative note cannot decide the classification."
+    },
+    {
+      "case_id": "V235-S06-01",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "The storage note is logistical background, not behavioural evidence. The central matter stayed unresolved because I shifted effort to secondary activity. A podcast booth indexed cable loops and ear pads by cabinet."
+    },
+    {
+      "case_id": "V235-S06-05",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "other",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A rowing shed recorded seat rails and collar clips by board. The administrative note cannot decide the classification. The core obligation was waiting for my response while I diverted into side tasks."
+    },
+    {
+      "case_id": "V235-S06-08",
+      "category": "ignore",
+      "language": "EN",
+      "domain": "career",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A drafting room logged tube straps and ruler weights by drawer. That equipment reference does not determine the semantic mechanism. The core obligation was waiting for my response while I diverted into side tasks."
+    },
+    {
+      "case_id": "V235-S07-01",
+      "category": "slow",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": false,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "There was one finite delay and one review before I answered and stopped revisiting it. A sailing loft indexed sail ties and buckle kits by rack. That physical record is outside the behavioural evidence."
+    },
+    {
+      "case_id": "V235-S07-05",
+      "category": "slow",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "That equipment reference does not determine the semantic mechanism. Before responding I used one contained interval and one check, then left the matter settled. A textile lab recorded spindle boxes and loom tags by table."
+    },
+    {
+      "case_id": "V235-S07-08",
+      "category": "slow",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "surface": "The administrative note cannot decide the classification. Before responding I used one contained interval and one check, then left the matter settled. A baking classroom logged mixer cards and tray clips by station."
+    },
+    {
+      "case_id": "V235-S08-01",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "relationship",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "A climbing archive indexed carabiner cards and rope labels by wall. The storage note is logistical background, not behavioural evidence. I moved toward the action, pulled back, then returned to the same conclusion without new facts."
+    },
+    {
+      "case_id": "V235-S08-05",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "I came close to acting, stepped away, then cycled back to the same reasoning with no new information. A glass studio recorded cutter sleeves and kiln notes by bench. The administrative note cannot decide the classification."
+    },
+    {
+      "case_id": "V235-S08-08",
+      "category": "sequence",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": true
+      },
+      "surface": "I came close to acting, stepped away, then cycled back to the same reasoning with no new information. A violin workshop logged bow wraps and bridge tags by cabinet. That equipment reference does not determine the semantic mechanism."
+    },
+    {
+      "case_id": "V235-S09-01",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "workplace",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "That physical record is outside the behavioural evidence. The decision remained mine; I completed it and did not return to the choice process. A dance archive catalogued shoe pouches and costume tags by rail."
+    },
+    {
+      "case_id": "V235-S09-05",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "career",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A culinary studio indexed utensil trays and pantry labels by shelf. That equipment reference does not determine the semantic mechanism. I chose for myself, completed the action, and did not reopen the issue."
+    },
+    {
+      "case_id": "V235-S09-08",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "other",
+      "pass": true,
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A rowing shed recorded seat rails and collar clips by board. The administrative note cannot decide the classification. I chose for myself, completed the action, and did not reopen the issue."
+    }
+  ]
+}
