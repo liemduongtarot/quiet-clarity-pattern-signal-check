@@ -1,0 +1,9 @@
+HIGHPAIR 0.871794872 V243-S06-10 V242-S06-10
+HIGHPAIR 0.777777778 V243-S06-14 V242-S06-14
+HIGHPAIR 0.805555556 V243-S06-16 V242-S06-16
+PRESEAL_METRICS {'internal': (0.6739130434782609, ('V243-S01-15', 'V243-S09-15')), 'external': (0.8717948717948718, ('V243-S06-10', 'V242-S06-10')), 'high': 3, 'exact': 0, 'fpdup': 0}
+Traceback (most recent call last):
+  File "/tmp/v83243-preseal-highpair-diagnostic.py", line 58, in <module>
+    assert internal[0]<.75 and external[0]<.75 and high==0 and exact==0 and fpdup==0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
