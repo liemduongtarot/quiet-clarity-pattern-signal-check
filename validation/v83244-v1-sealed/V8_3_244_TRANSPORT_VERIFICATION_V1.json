@@ -1,0 +1,12 @@
+{
+  "candidate": "V8.3.244",
+  "phase": "transport-verification",
+  "recovery_development_head_sha": "184cb1253121307b72f66462ec7196625623635c",
+  "base_exact_development_sha": "885608fce9e70a8818d1ebda23c786a81005a2fe",
+  "semantic_authority": "QCEvidenceExtractorV5AR -> QCSemanticCoreV117",
+  "public_runtime_materialized": true,
+  "self_contained_runner_verified": true,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "pass": true
+}
