@@ -18,6 +18,7 @@ jobs:
         id: run
         shell: bash
         run: |
+          # first actual V8.3.230 self-contained preflight
           set +e
           python validation/v83230-v1-sealed/v83230-transport-preflight.py > /tmp/v230-preflight.log 2>&1
           rc=$?
