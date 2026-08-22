@@ -1,0 +1,14 @@
+{
+  "candidate": "V8.3.244",
+  "phase": "DEVELOPMENT_AUTHORITY",
+  "base_exact_development_sha": "885608fce9e70a8818d1ebda23c786a81005a2fe",
+  "semantic_authority": "QCEvidenceExtractorV5AR -> QCSemanticCoreV117",
+  "semantic_change": false,
+  "recovery_scope": "validation-runner materialization only",
+  "inherited_regression_authority": "validation/V8_3_243_V117_REGRESSION_RECEIPT.json",
+  "inherited_regression_pass": true,
+  "expected_gold_changed": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
