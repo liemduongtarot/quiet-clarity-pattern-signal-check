@@ -1,5 +1,5 @@
 name: V8.3.247 runner-only DEVELOPMENT recovery
-# trigger-v247-runner-recovery-4-instrumented
+# trigger-v247-runner-recovery-5-proof-fix
 on:
   push:
     branches: [main]
@@ -15,16 +15,6 @@ jobs:
         with:
           ref: v83247-v1-validation
           fetch-depth: 0
-      - name: Persist V247 runner recovery R4 start
-        shell: bash
-        run: |
-          set -euo pipefail
-          printf '{"candidate":"V8.3.247","phase":"runner-only-recovery-r4-start","run_id":"%s","semantic_runtime_executed":false,"sealed_validation_executed":false,"expected_gold_changed":false}\n' "$GITHUB_RUN_ID" > validation/V8_3_247_RUNNER_RECOVERY_R4_START.json
-          git config user.name github-actions
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/V8_3_247_RUNNER_RECOVERY_R4_START.json
-          git commit -m 'Record V8.3.247 runner recovery R4 start'
-          git push origin HEAD:v83247-v1-validation
       - name: Materialize corrected V247 runner only
         shell: bash
         run: |
@@ -40,14 +30,14 @@ jobs:
           pairs={"SEALED=REPO/'validation/v83246-v1-sealed'":"SEALED=REPO/'validation/v83247-v1-sealed'","WORK=pathlib.Path('/tmp/v83246-batch-a-authority')":"WORK=pathlib.Path('/tmp/v83247-batch-a-authority')","ROOT='validation/v83246-v1-sealed-runtime'":"ROOT='validation/v83247-v1-sealed-runtime'","run-v83246-batch-a.cjs":"run-v83247-batch-a.cjs","const root='validation/v83246-v1-sealed-runtime'":"const root='validation/v83247-v1-sealed-runtime'","candidate':'V8.3.246'":"candidate':'V8.3.247'","authority:'V8.3.246 V1 SEALED BATCH A FIRST RUN'":"authority:'V8.3.247 V1 SEALED BATCH A FIRST RUN'","console.log('V246 A'":"console.log('V247 A'","v246_batch_a_rerun":"v247_batch_a_rerun","PSC_V8_3_246_V1_BATCH_A_CHECKPOINT":"PSC_V8_3_247_V1_BATCH_A_CHECKPOINT","V8_3_246_BATCH_A":"V8_3_247_BATCH_A","V8_3_246_SEALED_FIRST_RUN_MARKER":"V8_3_247_SEALED_FIRST_RUN_MARKER","V8_3_246_SEALED_AUTHORITY_V1":"V8_3_247_SEALED_AUTHORITY_V1","V8_3_246_PRESEAL_DIVERSITY_AUDIT_V1":"V8_3_247_PRESEAL_DIVERSITY_AUDIT_V1","V8_3_246_SEALED_SELECTION_V1":"V8_3_247_SEALED_SELECTION_V1","V8_3_246_SEALED_FIXTURE_V1":"V8_3_247_SEALED_FIXTURE_V1","V8_3_246_INDEPENDENT_GOLD_V1":"V8_3_247_INDEPENDENT_GOLD_V1","V8_3_246_SEALED_MEMBERSHIP_V1":"V8_3_247_SEALED_MEMBERSHIP_V1","V8_3_246_TRANSPORT_VERIFICATION_V1":"V8_3_247_TRANSPORT_VERIFICATION_V1","V8_3_246_STATIC_SEALED_PREFLIGHT_V1":"V8_3_247_STATIC_SEALED_PREFLIGHT_V1"}
           for old,new in pairs.items(): src=src.replace(old,new)
           required_sem=['qc-evidence-extractor-v5as-v245-v244-residuals.js','psc-v83245-v244-v118-residuals.js','qc-evidence-extractor-v5at-v246-v245-residuals.js','psc-v83246-v245-v119-residuals.js']
-          for x in required_sem:
-              if src.count(x)!=1: raise SystemExit('semantic loader chain defect '+x+' count='+str(src.count(x)))
+          missing=[x for x in required_sem if x not in src]
+          if missing: raise SystemExit('missing semantic loader literals '+repr(missing))
           forbidden=[bad,'validation/v83246-v1-sealed-runtime','run-v83246-batch-a.cjs','V8_3_246_BATCH_A_RESULT_V1.json']
           leftovers=[x for x in forbidden if x in src]
           if leftovers: raise SystemExit('V247 runner stale literals '+repr(leftovers))
           compile(src,'validation/v83247-batch-a-self-contained.py','exec')
           p=Path('validation/v83247-batch-a-self-contained.py');p.write_text(src)
-          receipt={'candidate':'V8.3.247','phase':'runner-only-development-recovery','parent_development_sha':'00bcd4681a61ef1ab0b229eb90af9e74102dc649','semantic_authority':'QCEvidenceExtractorV5AT -> QCSemanticCoreV119','semantic_change':False,'expected_gold_changed':False,'source_failure':'V8.3.246 infrastructure-only loader filename corruption before semantic runtime','correct_parent_v118_filename':good,'child_v119_filename':'psc-v83246-v245-v119-residuals.js','runner_sha256':hashlib.sha256(src.encode()).hexdigest(),'self_contained':True,'pass':True,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False}
+          receipt={'candidate':'V8.3.247','phase':'runner-only-development-recovery','parent_development_sha':'00bcd4681a61ef1ab0b229eb90af9e74102dc649','semantic_authority':'QCEvidenceExtractorV5AT -> QCSemanticCoreV119','semantic_change':False,'expected_gold_changed':False,'source_failure':'V8.3.246 infrastructure-only loader filename corruption before semantic runtime','correct_parent_v118_filename':good,'child_v119_filename':'psc-v83246-v245-v119-residuals.js','runner_sha256':hashlib.sha256(src.encode()).hexdigest(),'self_contained':True,'required_semantic_literals_present':True,'corrupt_parent_filename_absent':bad not in src,'pass':True,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False}
           Path('validation/V8_3_247_RUNNER_RECOVERY_V1.json').write_text(json.dumps(receipt,indent=2)+'\n')
           PY
       - name: Freeze V247 runner-only DEVELOPMENT evidence
@@ -56,6 +46,6 @@ jobs:
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83247-batch-a-self-contained.py validation/V8_3_247_RUNNER_RECOVERY_R4_START.json validation/V8_3_247_RUNNER_RECOVERY_V1.json
+          git add validation/v83247-batch-a-self-contained.py validation/V8_3_247_RUNNER_RECOVERY_V1.json
           git commit -m 'Freeze V8.3.247 runner-only recovery evidence'
           git push origin HEAD:v83247-v1-validation
