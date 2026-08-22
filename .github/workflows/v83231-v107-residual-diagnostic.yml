@@ -21,6 +21,7 @@ jobs:
         id: run
         shell: bash
         run: |
+          # first actual V8.3.231 one-residual diagnostic
           set +e
           python validation/v83231-v107-v230-residual-diagnostic.py > /tmp/v231-residual.log 2>&1
           rc=$?
