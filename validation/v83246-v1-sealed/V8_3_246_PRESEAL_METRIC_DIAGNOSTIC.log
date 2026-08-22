@@ -1,0 +1,6 @@
+PRESEAL_METRICS {'internal': (0.6048387096774194, ('V246-S00-02', 'V246-S00-08')), 'external': (0.9195402298850575, ('V246-S00-09', 'V245-S00-09')), 'high': 92, 'exact': 0, 'fpdup': 0}
+Traceback (most recent call last):
+  File "/tmp/v246-preseal-diagnostic-wrapper.py", line 48, in <module>
+    exec(compile(src,'v83246-preseal-adapted.py','exec'))
+  File "v83246-preseal-adapted.py", line 149, in <module>
+AssertionError
