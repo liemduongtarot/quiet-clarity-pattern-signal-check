@@ -1,5 +1,5 @@
 name: V8.3.247 runner-only DEVELOPMENT recovery
-# trigger-v247-runner-recovery-5-proof-fix
+# trigger-v247-runner-recovery-6-instrumented
 on:
   push:
     branches: [main]
@@ -15,6 +15,16 @@ jobs:
         with:
           ref: v83247-v1-validation
           fetch-depth: 0
+      - name: Persist V247 runner recovery start
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '{"candidate":"V8.3.247","phase":"runner-only-recovery-r6-start","run_id":"%s","semantic_runtime_executed":false,"sealed_validation_executed":false,"expected_gold_changed":false}\n' "$GITHUB_RUN_ID" > validation/V8_3_247_RUNNER_RECOVERY_R6_START.json
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_247_RUNNER_RECOVERY_R6_START.json
+          git commit -m 'Record V8.3.247 runner recovery R6 start'
+          git push origin HEAD:v83247-v1-validation
       - name: Materialize corrected V247 runner only
         shell: bash
         run: |
@@ -46,6 +56,6 @@ jobs:
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83247-batch-a-self-contained.py validation/V8_3_247_RUNNER_RECOVERY_V1.json
+          git add validation/v83247-batch-a-self-contained.py validation/V8_3_247_RUNNER_RECOVERY_R6_START.json validation/V8_3_247_RUNNER_RECOVERY_V1.json
           git commit -m 'Freeze V8.3.247 runner-only recovery evidence'
           git push origin HEAD:v83247-v1-validation
