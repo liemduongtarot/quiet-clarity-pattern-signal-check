@@ -1,5 +1,5 @@
-name: V8.3.255 construction-only PRESEAL R2
-# trigger-v255-preseal-r2-density
+name: V8.3.255 provenance A runner materialization
+# trigger-v255-runner-materialization-1
 on:
   push:
     branches: [main]
@@ -15,38 +15,108 @@ jobs:
         with:
           ref: v83255-v1-sealed-validation
           fetch-depth: 0
-      - name: Persist PRESEAL R2 start
+      - name: Persist V255 runner materialization start
+        shell: bash
         run: |
           set -euo pipefail
-          printf '{"candidate":"V8.3.255","phase":"preseal-r2-start","run_id":"%s","semantic_runtime_executed":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83255-v1-sealed/V8_3_255_PRESEAL_R2_START.json
+          printf '{"candidate":"V8.3.255","phase":"provenance-runner-materialization-start","run_id":"%s","semantic_runtime_executed":false,"batch_a_executed":false,"batch_b_executed":false,"v254_sealed_rerun":false}\n' "$GITHUB_RUN_ID" > validation/v83255-v1-sealed/V8_3_255_RUNNER_MATERIALIZATION_START.json
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83255-v1-sealed/V8_3_255_PRESEAL_R2_START.json
-          git commit -m 'Record V8.3.255 PRESEAL R2 start'
+          git add validation/v83255-v1-sealed/V8_3_255_RUNNER_MATERIALIZATION_START.json
+          git commit -m 'Record V8.3.255 provenance runner materialization start'
           git push origin HEAD:v83255-v1-sealed-validation
-      - name: Run construction-only PRESEAL R2
+      - name: Materialize provenance-enabled A runner and manifests
         id: run
         shell: bash
         run: |
           set +e
-          python validation/v83255-v1-sealed/v83255-preseal-r2.py > /tmp/v255-preseal-r2.log 2>&1
+          git fetch origin v83254-v1-sealed-validation:refs/remotes/origin/v83254-v1-sealed-validation
+          python - <<'PY' > /tmp/v255-runner.log 2>&1
+          import subprocess,hashlib,json,pathlib,re,shutil
+          V=pathlib.Path('validation');O=V/'v83255-v1-sealed'
+          DEV='8100c9d590a95b612829e92f4a9fc859b6eddb23';BASE='238cdba6ee2d4d17bcde19de2d895a7087983345';SEM='QCEvidenceExtractorV5AY -> QCSemanticCoreV124'
+          src=subprocess.check_output(['git','show','origin/v83254-v1-sealed-validation:validation/v83254-batch-a-self-contained.py'],text=True)
+          repl=[
+            ("TARGET='238cdba6ee2d4d17bcde19de2d895a7087983345'",f"TARGET='{DEV}'"),
+            ("SEALED=REPO/'validation/v83254-v1-sealed'","SEALED=REPO/'validation/v83255-v1-sealed'"),
+            ("WORK=pathlib.Path('/tmp/v83254-batch-a-authority')","WORK=pathlib.Path('/tmp/v83255-batch-a-authority')"),
+            ("ROOT='validation/v83254-v1-sealed-runtime'","ROOT='validation/v83255-v1-sealed-runtime'"),
+            ('V8_3_254','V8_3_255'),('V8.3.254','V8.3.255'),('v83254','v83255'),('PSC_V8_3_254','PSC_V8_3_255'),
+            ('v253_sealed_rerun','v254_sealed_rerun'),('v254_batch_a_rerun','v255_batch_a_rerun'),
+            ('89db04ec936af998c14d2f0451ef87270ea8e349',DEV)
+          ]
+          for a,b in repl: src=src.replace(a,b)
+          # Inherited evidence schema/module stay at V254 by authority.
+          src=src.replace("validation/v83255-evidence-provenance.py","validation/v83254-evidence-provenance.py")
+          src=src.replace("validation/V8_3_255_EVIDENCE_PROVENANCE_CONTRACT_V1.json","validation/V8_3_254_EVIDENCE_PROVENANCE_CONTRACT_V1.json")
+          # V255 runner must consume hardened source-identity evidence instead of legacy exact-path preflight fields.
+          old="assert pf['exact_v5ay_path']=='validation/qc-evidence-extractor-v5ay-v253-v252-residual.js' and pf['exact_v124_path']=='validation/psc-v83253-v252-v124-residual.js'"
+          new="identity=json.loads((SEALED/'V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json').read_text()); assert pf.get('semantic_source_identity_pass') is True and identity.get('pass') is True and identity.get('all_byte_identical_to_frozen_development') is True and identity.get('loaded_semantic_source_count',0)>=55"
+          if old not in src: raise SystemExit('legacy runner preflight anchor missing')
+          src=src.replace(old,new,1)
+          # Reflect explicit continuation authorization; this does not authorize production.
+          src=src.replace("'step_111_authorized':False","'step_111_authorized':True")
+          required=['V8_3_255_BATCH_A_RESERVATION_V1.json','V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json','V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json','execution_ordinal','executed_at_utc','previous_record_sha256','schema_contract_sha256','V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json','QCSemanticCoreV124.analyze',DEV,'validation/v83254-evidence-provenance.py','validation/V8_3_254_EVIDENCE_PROVENANCE_CONTRACT_V1.json']
+          missing=[x for x in required if x not in src]
+          if missing: raise SystemExit('missing V255 runner literals '+repr(missing))
+          forbidden=['QCSemanticCoreV125','QCEvidenceExtractorV5AZ','V8_3_254_BATCH_A_RESULT_V1.json','validation/v83254-v1-sealed-runtime',"pf['exact_v5ay_path']", "pf['exact_v124_path']"]
+          stale=[x for x in forbidden if x in src]
+          if stale: raise SystemExit('stale/semantic-change literals '+repr(stale))
+          compile(src,'validation/v83255-batch-a-self-contained.py','exec')
+          runner=V/'v83255-batch-a-self-contained.py';runner.write_text(src)
+          runner_sha=hashlib.sha256(src.encode()).hexdigest()
+          mat={'candidate':'V8.3.255','phase':'provenance-enabled-runner-materialization','validated_development_head_sha':DEV,'parent_development_sha':BASE,'semantic_authority':SEM,'evidence_schema_authority':'V8.3.254-EVIDENCE-PROVENANCE-V1','runner_sha256':runner_sha,'provenance_capture':True,'runtime_case_timestamp_capture':True,'append_only_ledger':True,'case_level_hash_chain':True,'semantic_source_identity_required':True,'legacy_exact_path_fields_required':False,'semantic_change':False,'expected_gold_changed':False,'v254_sealed_rerun':False,'sealed_semantics_executed':False,'step_111_authorized':True,'production_authorized':False,'pass':True}
+          (O/'V8_3_255_RUNNER_MATERIALIZATION_V1.json').write_text(json.dumps(mat,indent=2)+'\n')
+          def hb(b):return hashlib.sha256(b).hexdigest()
+          def fsha(p):return hb(pathlib.Path(p).read_bytes())
+          def show(path):return subprocess.check_output(['git','show',f'{DEV}:{path}'])
+          names=[]
+          for pat in [r"['\"](qc-evidence-extractor-[^'\"]+\.js)['\"]",r"['\"](psc-v83[^'\"]+\.js)['\"]"]: names += re.findall(pat,src)
+          names=list(dict.fromkeys(names));sources=[]
+          for n in names:
+              p='validation/'+n
+              if pathlib.Path(p).exists():
+                  cur=pathlib.Path(p).read_bytes();dev=show(p);sources.append({'path':p,'sha256':hb(cur),'frozen_development_sha256':hb(dev),'byte_identical_to_frozen_development':hb(cur)==hb(dev)})
+          if len(sources)<55 or not all(x['byte_identical_to_frozen_development'] for x in sources): raise SystemExit('semantic source identity failed')
+          ident={'candidate':'V8.3.255','phase':'semantic-source-identity','validated_development_head_sha':DEV,'semantic_authority':SEM,'loaded_semantic_source_count':len(sources),'sources':sources,'all_byte_identical_to_frozen_development':True,'semantic_change':False,'pass':True}
+          (O/'V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json').write_text(json.dumps(ident,indent=2)+'\n')
+          contract=V/'V8_3_254_EVIDENCE_PROVENANCE_CONTRACT_V1.json';module=V/'v83254-evidence-provenance.py'
+          shutil.copy2(contract,O/'V8_3_255_EVIDENCE_PROVENANCE_CONTRACT_COPY_V1.json')
+          for srcn,dstn in [
+            ('V8_3_254_HARNESS_POSITIVE_TEST_V1.json','V8_3_255_HARNESS_POSITIVE_TEST_V1.json'),
+            ('V8_3_254_HARNESS_NEGATIVE_MISSING_FIELD_TEST_V1.json','V8_3_255_HARNESS_NEGATIVE_MISSING_FIELD_TEST_V1.json'),
+            ('V8_3_254_HARNESS_MUTATION_DETECTION_TEST_V1.json','V8_3_255_HARNESS_MUTATION_DETECTION_TEST_V1.json'),
+            ('V8_3_255_RUNNER_EVIDENCE_GATE_POSITIVE_TEST_V1.json','V8_3_255_RUNNER_EVIDENCE_GATE_POSITIVE_TEST_V1.json'),
+            ('V8_3_255_RUNNER_EVIDENCE_GATE_NEGATIVE_IDENTITY_TEST_V1.json','V8_3_255_RUNNER_EVIDENCE_GATE_NEGATIVE_IDENTITY_TEST_V1.json'),
+            ('V8_3_255_RUNNER_EVIDENCE_GATE_NEGATIVE_PROVENANCE_TEST_V1.json','V8_3_255_RUNNER_EVIDENCE_GATE_NEGATIVE_PROVENANCE_TEST_V1.json')]:
+              s=V/srcn
+              if not s.exists(): raise SystemExit('missing evidence selftest '+srcn)
+              shutil.copy2(s,O/dstn)
+          auth=json.loads((O/'V8_3_255_SEALED_AUTHORITY_V1.json').read_text())
+          manifest={'candidate':'V8.3.255','phase':'runtime-config-schema-manifest','validated_development_head_sha':DEV,'base_exact_development_sha':BASE,'semantic_authority':SEM,'evidence_schema_authority':'V8.3.254-EVIDENCE-PROVENANCE-V1','node_major':24,'runner_sha256':runner_sha,'evidence_contract_raw_sha256':fsha(contract),'evidence_module_raw_sha256':fsha(module),'runner_evidence_gate_sha256':fsha(V/'v83255-runner-evidence-gate.py'),'sealed_object_hashes':auth['hashes'],'semantic_source_identity_report_sha256':fsha(O/'V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json'),'runtime_case_timestamp_capture':True,'append_only_ledger_contract':True,'case_hash_chain_contract':True,'semantic_change':False,'expected_gold_changed':False,'v254_sealed_rerun':False,'pass':True}
+          (O/'V8_3_255_RUNTIME_CONFIG_SCHEMA_MANIFEST_V1.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          limits={'candidate':'V8.3.255','phase':'known-limitations','items':['Case executed_at_utc is captured immediately before the semantic analyze call for that case.','canonical_state_trace_ref points to the immutable batch result record for the same case; it is an evidence reference, not a hidden chain-of-thought trace.','Evidence instrumentation records and hashes runtime observations but does not alter semantic route/family/sequence decisions.','Evidence schema authority remains V8.3.254-EVIDENCE-PROVENANCE-V1; V255 repairs runner evidence contract validation only.','Step 111 is owner-authorized for this continuation cycle; production remains unauthorized unless Step 111 passes and authority-defined post-Step-111 actions allow it.'],'production_authorized':False}
+          (O/'V8_3_255_KNOWN_LIMITATIONS_V1.json').write_text(json.dumps(limits,indent=2)+'\n')
+          print(json.dumps({'candidate':'V8.3.255','source_identity_count':len(sources),'runner_sha256':runner_sha,'pass':True}))
+          PY
           rc=$?
           set -e
-          cat /tmp/v255-preseal-r2.log
+          cat /tmp/v255-runner.log
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze PRESEAL R2 evidence
+      - name: Freeze V255 runner materialization evidence
         if: always()
+        shell: bash
         run: |
           set -euo pipefail
           RC='${{ steps.run.outputs.rc }}' python - <<'PY'
           import json,os,pathlib
-          o=pathlib.Path('validation/v83255-v1-sealed');log=pathlib.Path('/tmp/v255-preseal-r2.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-preseal-r2.log').exists() else ''
-          (o/'V8_3_255_PRESEAL_R2_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.255','phase':'preseal-r2-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'expected_gold_changed':False},indent=2)+'\n')
+          o=pathlib.Path('validation/v83255-v1-sealed');log=pathlib.Path('/tmp/v255-runner.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-runner.log').exists() else ''
+          (o/'V8_3_255_RUNNER_MATERIALIZATION_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.255','phase':'provenance-runner-materialization-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'v254_sealed_rerun':False,'expected_gold_changed':False},indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83255-v1-sealed
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.255 PRESEAL R2 evidence'
+          git add validation/v83255-v1-sealed validation/v83255-batch-a-self-contained.py
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.255 provenance A runner and audit manifests'
           git push origin HEAD:v83255-v1-sealed-validation
-      - name: Enforce PRESEAL R2
+      - name: Enforce V255 runner materialization
         run: test '${{ steps.run.outputs.rc }}' = '0'
