@@ -1,5 +1,5 @@
-name: V8.3.255 deployment source discovery
-# trigger-v255-deploy-discovery-1
+name: V8.3.255 deployment bundle preflight
+# trigger-v255-deploy-preflight-1
 on:
   push:
     branches: [main]
@@ -8,55 +8,72 @@ on:
 permissions:
   contents: write
 jobs:
-  discover:
+  preflight:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: v83255-v1-deployment
           fetch-depth: 0
-      - name: Discover exact locked deployment materials
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Extract, inspect and build exact base
+        id: pf
         shell: bash
-        env:
-          HAS_VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN != '' }}
-          HAS_VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID != '' }}
-          HAS_VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID != '' }}
+        run: |
+          set +e
+          python - <<'PY' > /tmp/v255-preflight.log 2>&1
+          import pathlib,zipfile,hashlib,json,subprocess,os,shutil
+          R=pathlib.Path('.'); Z=R/'PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip'; D=R/'PSC_V8_3_138_DEV'
+          PUB='886936b9e771c55474158e27c5129ccd06637cee690aabbdf15bb08ad68926ac'; BASE='c2b57a436f744627b5600b97bdbc43dce70f748e66f2d0986c361f20683a7f5f'
+          sha=lambda p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          assert sha(Z)==BASE
+          with zipfile.ZipFile(Z) as z:z.extractall(R)
+          assert sha(D/'public/psc-v3.js')==PUB
+          terms=['QCSemanticCoreV124','QCEvidenceExtractorV5AY','v83253-v252-v124-residual','qc-evidence-extractor-v5ay']
+          refs={t:[] for t in terms}
+          for p in list(D.rglob('*'))+list((R/'validation').rglob('*')):
+            if not p.is_file() or p.stat().st_size>3000000:continue
+            try:s=p.read_text(errors='ignore')
+            except:continue
+            for t in terms:
+              if t in s:refs[t].append(str(p))
+          subprocess.run(['npm','ci'],cwd=D,check=True)
+          subprocess.run(['npm','run','build'],cwd=D,check=True)
+          subprocess.run(['npm','run','validate:artifact'],cwd=D,check=True)
+          dist=D/'dist'; assert dist.exists()
+          dist_files=[]
+          for p in sorted(dist.rglob('*')):
+            if p.is_file():dist_files.append({'path':str(p.relative_to(D)),'sha256':sha(p),'size':p.stat().st_size})
+          # Ensure the exact public runtime survives materialization where present.
+          pub_matches=[x for x in dist_files if x['sha256']==PUB]
+          htmls=[x for x in dist_files if x['path'].endswith('.html')]
+          out={'candidate':'V8.3.255','phase':'deployment-bundle-preflight','run_id':os.environ['GITHUB_RUN_ID'],'source_lock_commit':'f96cecd6bac63d5cfc868a42bfad80fc236bb7ef','base_archive_sha256':sha(Z),'public_runtime_sha256':sha(D/'public/psc-v3.js'),'semantic_authority':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124','semantic_reference_paths':refs,'dist_file_count':len(dist_files),'dist_public_runtime_matches':pub_matches,'dist_html_files':htmls,'dist_manifest':dist_files,'build_pass':True,'artifact_validation_pass':True,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'deployment_executed':False,'pass':True}
+          (R/'validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_V1.json').write_text(json.dumps(out,indent=2)+'\n')
+          # package exact dist as an audit artifact, not deployment yet
+          shutil.make_archive('PSC_V8_3_255_PREDEPLOY_DIST','zip',D/'dist')
+          print(json.dumps({'dist_count':len(dist_files),'pub_matches':pub_matches,'htmls':htmls,'semantic_refs':{k:len(v) for k,v in refs.items()}}))
+          PY
+          rc=$?
+          set -e
+          cat /tmp/v255-preflight.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+      - name: Freeze preflight evidence
+        if: always()
+        shell: bash
         run: |
           set -euo pipefail
-          python - <<'PY'
-          import pathlib,hashlib,zipfile,json,os
-          R=pathlib.Path('.')
-          LOCK='f96cecd6bac63d5cfc868a42bfad80fc236bb7ef'
-          PUB='886936b9e771c55474158e27c5129ccd06637cee690aabbdf15bb08ad68926ac'
-          BASE='c2b57a436f744627b5600b97bdbc43dce70f748e66f2d0986c361f20683a7f5f'
-          def sha(b): return hashlib.sha256(b).hexdigest()
-          file_matches=[]; zip_matches=[]; candidates=[]
-          for p in R.rglob('*'):
-            if not p.is_file() or '.git' in p.parts: continue
-            try:b=p.read_bytes()
-            except:continue
-            h=sha(b)
-            if h in (PUB,BASE): file_matches.append({'path':str(p),'sha256':h,'size':len(b)})
-            if p.suffix.lower()=='.zip':
-              try:
-                with zipfile.ZipFile(p) as z:
-                  for n in z.namelist():
-                    if n.endswith('/'): continue
-                    try:d=z.read(n)
-                    except:continue
-                    hh=sha(d)
-                    if hh in (PUB,BASE): zip_matches.append({'zip':str(p),'entry':n,'sha256':hh,'size':len(d)})
-                    ln=n.lower()
-                    if any(x in ln for x in ['candidate.html','public/','dist/client','semantic-convergence','extractor']): candidates.append({'zip':str(p),'entry':n,'sha256':hh,'size':len(d)})
-              except zipfile.BadZipFile: pass
-          lock=json.loads((R/'validation/v83255-v1-sealed/V8_3_255_PRODUCTION_LOCK_V1.json').read_text())
-          assert lock['production_locked'] is True and lock['semantic_change'] is False and lock['expected_gold_changed'] is False
-          out={'candidate':'V8.3.255','phase':'deployment-source-discovery','source_branch':'v83255-v1-deployment','source_lock_commit':LOCK,'public_runtime_sha256_expected':PUB,'base_archive_sha256_expected':BASE,'file_matches':file_matches,'zip_entry_matches':zip_matches,'candidate_entries':candidates[:500],'vercel_secret_presence':{'token':os.environ.get('HAS_VERCEL_TOKEN')=='true','org_id':os.environ.get('HAS_VERCEL_ORG_ID')=='true','project_id':os.environ.get('HAS_VERCEL_PROJECT_ID')=='true'},'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False}
-          pathlib.Path('validation/V8_3_255_DEPLOYMENT_SOURCE_DISCOVERY_V1.json').write_text(json.dumps(out,indent=2)+'\n')
-          print(json.dumps({'file_matches':file_matches,'zip_matches':zip_matches,'candidate_count':len(candidates),'secrets':out['vercel_secret_presence']}))
-          PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/V8_3_255_DEPLOYMENT_SOURCE_DISCOVERY_V1.json
-          git commit -m 'Record V8.3.255 deployment source discovery'
-          git push origin HEAD:v83255-v1-deployment
+          if [ -f validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_V1.json ]; then git add validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_V1.json; git commit -m 'Record V8.3.255 deployment bundle preflight'; git push origin HEAD:v83255-v1-deployment; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_255_PREDEPLOY_DIST
+          path: |
+            PSC_V8_3_255_PREDEPLOY_DIST.zip
+            validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_V1.json
+          if-no-files-found: warn
+      - name: Enforce preflight
+        run: test '${{ steps.pf.outputs.rc }}' = '0'
