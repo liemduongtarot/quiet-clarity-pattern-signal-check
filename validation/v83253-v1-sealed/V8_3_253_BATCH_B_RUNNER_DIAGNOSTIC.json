@@ -1,0 +1,9 @@
+{
+  "candidate": "V8.3.253",
+  "phase": "batch-b-runner-materialization-diagnostic",
+  "run_id": "32615116720",
+  "rc": 1,
+  "log_tail": "missing B transform anchor 'batch_b_executed':False,'v252_sealed_rerun':False,'v253_batch_a_rerun':False\n",
+  "batch_b_executed": false,
+  "step_111_authorized": false
+}
