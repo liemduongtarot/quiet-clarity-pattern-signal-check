@@ -1,5 +1,5 @@
-name: V8.3.255 deployment bundle preflight R2
-# trigger-v255-deploy-preflight-r2
+name: V8.3.255 deployment bundle preflight R3
+# trigger-v255-deploy-preflight-r3
 on:
   push:
     branches: [main]
@@ -30,6 +30,7 @@ jobs:
           assert sha(Z)==BASE
           with zipfile.ZipFile(Z) as z:z.extractall(R)
           assert sha(D/'public/psc-v3.js')==PUB
+          for p in (D/'scripts').glob('*.sh'): p.chmod(p.stat().st_mode | 0o111)
           terms=['QCSemanticCoreV124','QCEvidenceExtractorV5AY','v83253-v252-v124-residual','qc-evidence-extractor-v5ay'];refs={t:[] for t in terms}
           for p in list(D.rglob('*'))+list((R/'validation').rglob('*')):
             if not p.is_file() or p.stat().st_size>3000000:continue
@@ -44,8 +45,8 @@ jobs:
           for p in sorted(dist.rglob('*')):
             if p.is_file():dist_files.append({'path':str(p.relative_to(D)),'sha256':sha(p),'size':p.stat().st_size})
           pub_matches=[x for x in dist_files if x['sha256']==PUB];htmls=[x for x in dist_files if x['path'].endswith('.html')]
-          out={'candidate':'V8.3.255','phase':'deployment-bundle-preflight-r2','run_id':os.environ['GITHUB_RUN_ID'],'source_lock_commit':'f96cecd6bac63d5cfc868a42bfad80fc236bb7ef','base_archive_sha256':sha(Z),'public_runtime_sha256':sha(D/'public/psc-v3.js'),'semantic_authority':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124','semantic_reference_paths':refs,'dist_file_count':len(dist_files),'dist_public_runtime_matches':pub_matches,'dist_html_files':htmls,'dist_manifest':dist_files,'build_pass':True,'artifact_validation_pass':True,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'deployment_executed':False,'pass':True}
-          (R/'validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R2_V1.json').write_text(json.dumps(out,indent=2)+'\n');shutil.make_archive('PSC_V8_3_255_PREDEPLOY_DIST_R2','zip',D/'dist');print(json.dumps({'dist_count':len(dist_files),'pub_matches':pub_matches,'htmls':htmls,'semantic_refs':{k:len(v) for k,v in refs.items()}}))
+          out={'candidate':'V8.3.255','phase':'deployment-bundle-preflight-r3','run_id':os.environ['GITHUB_RUN_ID'],'source_lock_commit':'f96cecd6bac63d5cfc868a42bfad80fc236bb7ef','base_archive_sha256':sha(Z),'public_runtime_sha256':sha(D/'public/psc-v3.js'),'semantic_authority':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124','semantic_reference_paths':refs,'dist_file_count':len(dist_files),'dist_public_runtime_matches':pub_matches,'dist_html_files':htmls,'dist_manifest':dist_files,'build_pass':True,'artifact_validation_pass':True,'permission_repair_only':True,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'deployment_executed':False,'pass':True}
+          (R/'validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R3_V1.json').write_text(json.dumps(out,indent=2)+'\n');shutil.make_archive('PSC_V8_3_255_PREDEPLOY_DIST_R3','zip',D/'dist');print(json.dumps({'dist_count':len(dist_files),'pub_matches':pub_matches,'htmls':htmls,'semantic_refs':{k:len(v) for k,v in refs.items()}}))
           PY
           rc=$?
           set -e
@@ -61,23 +62,23 @@ jobs:
           python - <<'PY'
           import json,pathlib,os
           log=pathlib.Path('/tmp/v255-preflight.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-preflight.log').exists() else ''
-          d={'candidate':'V8.3.255','phase':'deployment-bundle-preflight-r2-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-40000:],'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'deployment_executed':False}
-          pathlib.Path('validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R2_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
+          d={'candidate':'V8.3.255','phase':'deployment-bundle-preflight-r3-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-40000:],'permission_repair_only':True,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'deployment_executed':False}
+          pathlib.Path('validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R3_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R2_DIAGNOSTIC.json
-          test ! -f validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R2_V1.json || git add validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R2_V1.json
-          git commit -m 'Record V8.3.255 deploy preflight R2 evidence'
+          git add validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R3_DIAGNOSTIC.json
+          test ! -f validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R3_V1.json || git add validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R3_V1.json
+          git commit -m 'Record V8.3.255 deploy preflight R3 evidence'
           git push origin HEAD:v83255-v1-deployment
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: PSC_V8_3_255_PREDEPLOY_DIST_R2
+          name: PSC_V8_3_255_PREDEPLOY_DIST_R3
           path: |
-            PSC_V8_3_255_PREDEPLOY_DIST_R2.zip
-            validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R2_V1.json
-            validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R2_DIAGNOSTIC.json
+            PSC_V8_3_255_PREDEPLOY_DIST_R3.zip
+            validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R3_V1.json
+            validation/V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R3_DIAGNOSTIC.json
           if-no-files-found: warn
       - name: Enforce
         run: test '${{ steps.pf.outputs.rc }}' = '0'
