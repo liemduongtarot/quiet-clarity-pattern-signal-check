@@ -1,0 +1,13 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "step-111-diagnostic",
+  "run_id": "32669277785",
+  "rc": 1,
+  "log_tail": "Traceback (most recent call last):\n  File \"<stdin>\", line 8, in <module>\nKeyError: 'max_internal_similarity'\n",
+  "step_111_authorized": true,
+  "production_authorized": false,
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "batch_a_rerun": false,
+  "batch_b_rerun": false
+}
