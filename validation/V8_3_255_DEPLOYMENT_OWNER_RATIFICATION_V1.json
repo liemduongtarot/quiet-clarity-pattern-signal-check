@@ -1,0 +1,21 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "DEPLOYMENT_OWNER_RATIFICATION",
+  "recorded_at_local": "2026-08-24T00:21:00+01:00",
+  "owner_statement": "I explicitly ratify and authorize the V8.3.255 production deployment provenance record.",
+  "scope": "deployment provenance record only",
+  "ratifies_existing_production_deployment": true,
+  "authorizes_historical_lock_mutation": false,
+  "authorizes_redeployment": false,
+  "authorizes_semantic_change": false,
+  "authorizes_expected_gold_change": false,
+  "authorizes_batch_a_rerun": false,
+  "authorizes_batch_b_rerun": false,
+  "production_lock_commit": "f96cecd6bac63d5cfc868a42bfad80fc236bb7ef",
+  "production_deployed_checkpoint_commit": "5860c948ef12781867a9115d57d2fe7de8f319b5",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "deployment_id": "dpl_GefHDcpjva2iYpGm7ougXjwcBDAd",
+  "canonical_url": "https://quiet-clarity-pattern-signal-check.vercel.app",
+  "append_only": true,
+  "pass": true
+}
