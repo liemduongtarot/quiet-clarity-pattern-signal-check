@@ -1,0 +1,19 @@
+{
+  "core": "V8.3.253-V124-V252-RESIDUAL",
+  "extractor": true,
+  "tests": [
+    {
+      "input": "Khi nào tôi mới có tiền?",
+      "route": "input:prediction",
+      "can_continue": false,
+      "pass": true
+    },
+    {
+      "input": "Tôi đã trì hoãn gửi báo cáo ba lần trong tháng này dù biết việc đó làm dự án chậm, và tuần này tôi lại tránh mở email nhắc việc.",
+      "route": "input:self-lived",
+      "can_continue": true,
+      "pass": true
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,19 @@
+{
+  "candidate": "V8.3.255 Step 4 Facebook Bridge Repair R2",
+  "base_production_pointer": "5860c948ef12781867a9115d57d2fe7de8f319b5",
+  "approved_destination": "https://www.facebook.com/quietclarity.uklondon",
+  "diagnostic_layer": "UI / PRESENTATION",
+  "static_regression": "PASS",
+  "semantic_valid_invalid_smoke": "PASS",
+  "browser_e2e": "PASS",
+  "copy_save_unchanged": true,
+  "session_only_privacy": "PASS",
+  "v124_v5ay_identity": "PASS",
+  "expected_gold_changed": false,
+  "sealed_batch_a_rerun": false,
+  "sealed_batch_b_rerun": false,
+  "production_deployed": false,
+  "candidate_sha256": "cbb638cb20996e1a05de6711b3fe34a2d1c464ef0daf0de57ebe633cf9d012cd",
+  "verdict": "PASS — STEP 4 PUBLIC BRIDGE REPAIR CANDIDATE FROZEN; OWNER PRODUCTION PROMOTION/DEPLOYMENT AUTHORIZATION REQUIRED",
+  "pass": true
+}
