@@ -1,0 +1,14 @@
+{
+  "candidate": "V8.3.251",
+  "phase": "sealed-runner-materialization",
+  "validated_development_head_sha": "125a6f60c94eda4c455323a171006cac613eb903",
+  "parent_development_sha": "514cbcb34fbe336033c8f8858a53415371137973",
+  "semantic_authority": "QCEvidenceExtractorV5AW -> QCSemanticCoreV122",
+  "runner_sha256": "1d8db1effcd49aa3dc0bde020b8fca7cd2d09e8eda4f6e9eb6ffa62c131138c6",
+  "self_contained": true,
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "pass": true,
+  "sealed_semantics_executed": false,
+  "step_111_authorized": false
+}
