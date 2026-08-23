@@ -1,5 +1,5 @@
 name: V8.3.253 construction-only PRESEAL
-# trigger-v253-preseal-1
+# trigger-v253-preseal-2-retrigger
 on:
   push:
     branches: [main]
@@ -24,7 +24,7 @@ jobs:
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add validation/v83253-v1-sealed/v83253-preseal-freeze.py
-          git commit -m 'Materialize V8.3.253 PRESEAL harness'
+          git diff --cached --quiet || git commit -m 'Materialize V8.3.253 PRESEAL harness'
           git push origin HEAD:v83253-v1-sealed-validation
       - name: Persist PRESEAL start marker
         shell: bash
