@@ -1,0 +1,11 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "pre-step-111-archive-r2-diagnostic",
+  "run_id": "32669221219",
+  "rc": 0,
+  "log_tail": "{\"candidate\": \"V8.3.255\", \"phase\": \"pre-step-111-archive-r2-validation\", \"archive_sha256\": \"ada3b7ac7fa8589b36707cd30a2b88927ca3fdfa51f3cc588ef60875cf22f416\", \"archive_entry_count\": 39, \"unique_entries\": true, \"manifest_entries\": 38, \"semantic_change\": false, \"expected_gold_changed\": false, \"batch_a_rerun\": false, \"batch_b_rerun\": false, \"step_111_authorized\": true, \"pass\": true}\n",
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "batch_a_rerun": false,
+  "batch_b_rerun": false
+}

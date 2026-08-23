@@ -1,0 +1,210 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "pre-step-111-self-contained-archive-manifest-r2",
+  "repair_reason": "remove duplicate archive entry only",
+  "validated_development_head_sha": "8100c9d590a95b612829e92f4a9fc859b6eddb23",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "created_at_utc": "2026-08-23T22:00:06.965852Z",
+  "files": [
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_PRESEAL_RUN_RECEIPT.json",
+      "sha256": "1cc79b39ebf447937ff0d54000b19141e02647462f5083214dfa0c0f8e6e5b36",
+      "size": 788
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_PRESEAL_DIVERSITY_AUDIT_V1.json",
+      "sha256": "dc9855baf24c71ac0da57a8b31b56b83d1faf4cfb212b7d7451b3bdeb1e1e20d",
+      "size": 650
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_CONTAMINATION_DUPLICATE_AUDIT_V1.json",
+      "sha256": "416a4bd5b21f56ef41d8326c29189f7006695b91caf7e151c1d9e3c8b676c0de",
+      "size": 380
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_SEMANTIC_FINGERPRINTS_V1.json",
+      "sha256": "ae85e9227e241d1b123280b3e1cbedcbcf75bec0172ab1cd11c984c9f9e4e33d",
+      "size": 26874
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_SEALED_AUTHORITY_V1.json",
+      "sha256": "09549a352cfd115b848ce37a40c99b4e3687e5a92dae9d4bc814cfd74e98b201",
+      "size": 1388
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_PRESEAL_CANDIDATE_BANK_V1.json",
+      "sha256": "caf02677a9eb5d503abf438770164a01b019d27841fc98b249a645c4e9f764a3",
+      "size": 3046141
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_SEALED_SELECTION_V1.json",
+      "sha256": "60ff4ced67aec17ec9c5a953e55b37a3ad2df685f484638cd51ea4cdc6b74fbb",
+      "size": 2368
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_SEALED_FIXTURE_V1.json",
+      "sha256": "7d18c208ea410d5da3dfb7ed7aa9d7b48a745ac04f6d3d242489357394e6f0f8",
+      "size": 1014646
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_INDEPENDENT_GOLD_V1.json",
+      "sha256": "8c565005df2a659b43cecedbde8b35942b111fa2f156f78794709953d08174ae",
+      "size": 10511
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_SEALED_MEMBERSHIP_V1.json",
+      "sha256": "cf6528f8f5cbe18dd4aeb692cb9f76ff456018cdd3ee926c22833122671e60fa",
+      "size": 1208
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_RUNNER_MATERIALIZATION_V1.json",
+      "sha256": "39ba1fe3c8e77dc869e23f6666c8e7083830910c3f53ffe0e20e41c027f2a944",
+      "size": 901
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json",
+      "sha256": "229e2da474a2b2a29644a9ceb1e2853d089287c0f1b52a795d4cce3966d603a0",
+      "size": 18326
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_RUNTIME_CONFIG_SCHEMA_MANIFEST_V1.json",
+      "sha256": "735f1efc29c10add5b5f79c4bfd63d7ec95f1ae375a2da6818ccc4a052f72c34",
+      "size": 2094
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_STATIC_SEALED_PREFLIGHT_V1.json",
+      "sha256": "06fb4770ac8c9aa116faf1e07fe1a396d0dbf835c949cfd3f3f8a010c168cad9",
+      "size": 1985
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_RUNNER_EVIDENCE_GATE_PREFLIGHT_V1.json",
+      "sha256": "2cc39d0128989689dcdee6bf3eaafa81010df85dc25cb4ab93589d29ffc92293",
+      "size": 435
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_KNOWN_LIMITATIONS_V1.json",
+      "sha256": "e759ef653948576d3a9dee9d5e84a431ffea377b878e3ed22cff88fd7cd94b78",
+      "size": 905
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_A_RESERVATION_V1.json",
+      "sha256": "a294fafc61f204c90e7ca168d0a927fc62a379ddf1787d74965fd308902c926e",
+      "size": 525
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_A_ATTEMPT_MARKER.json",
+      "sha256": "501d973143509dfadda2d6fffabf1492443477c7beb0d6a53b7b89117341b72c",
+      "size": 662
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_SEALED_FIRST_RUN_MARKER.json",
+      "sha256": "503fb6e7c784d0edc55a6fa4aa6448a9c72842de20952024d2f382cda7e051c0",
+      "size": 665
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_A_RESULT_V1.json",
+      "sha256": "14fc9e400291290deafbc6cb55ac0235ab783516b92e21ff47dab6d846ac70fc",
+      "size": 515233
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_A_STATUS_V1.json",
+      "sha256": "2df018f7bbda33d48447ded1836c679e1bb3dd5fa8a5fdd01307e4a63c7fade5",
+      "size": 739
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json",
+      "sha256": "521674e65d36d517ed4e67fd02af9f70c7d9673430e1fe413dc3aacf2173c90f",
+      "size": 55732
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json",
+      "sha256": "b89fd467609906e122c6aee8d8e57556368d0f0155dfaa1e7507252f2c88b8db",
+      "size": 56598
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_B_RUNNER_MATERIALIZATION_V1.json",
+      "sha256": "8db86f68550d5ad43ef743ca6252e0c67ececb71bad6eebfb4d72d64b2051e1c",
+      "size": 768
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_B_STATIC_PREFLIGHT_V1.json",
+      "sha256": "f85fd3343c6e10c481ab3d8fb22277c2913b634559cc0b0083430c1991bfaf2e",
+      "size": 1089
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_B_RESERVATION_V1.json",
+      "sha256": "195488ec3b516f95ce4d4b2db09054529767c1bd250b720ff83bd635aa5bed1b",
+      "size": 525
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_B_ATTEMPT_MARKER.json",
+      "sha256": "9a13700f540898b76ebb74c5e9aff81886455b1373c40866604b86dbe2259b89",
+      "size": 688
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_B_RESULT_V1.json",
+      "sha256": "965d80f78d71a2fe9619d8926c283f128c044edf08e7b032ae63aa6dd0da2670",
+      "size": 513940
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_B_STATUS_V1.json",
+      "sha256": "e4625db34211a03fcecdef3fe9b4c59cc3faa90703c959e2409386d8a73cc395",
+      "size": 738
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json",
+      "sha256": "f7436e625c61d97087b5f5bfdb516752af2ebb4af99b10a7198d289251c187f2",
+      "size": 55722
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json",
+      "sha256": "53ae0a2123922e7f7433c5fc553d61a22c40e1b41c444173b395bdf14ae418fd",
+      "size": 56588
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_POST_B_INTEGRITY_AUDIT_V1.json",
+      "sha256": "c6a61059080f44cf285db179784cda949523f69e2d1c1851d504f2bfa573a01b",
+      "size": 815
+    },
+    {
+      "archive_path": "validation/v83255-v1-sealed/V8_3_255_POST_B_DIAGNOSTIC.json",
+      "sha256": "2c2d91d76817d1d6d970219ec3b6fbea6360e0e5a1468139ead444a7bc9a2e20",
+      "size": 645
+    },
+    {
+      "archive_path": "validation/v83255-runner-evidence-gate.py",
+      "sha256": "d3957c4c2fc4183b4e20025b9cbc340e6352ccbec86fed8e414053e702b7a297",
+      "size": 1056
+    },
+    {
+      "archive_path": "validation/v83254-evidence-provenance.py",
+      "sha256": "51f19bd0757b589dd971eec5ef47d75b38b3a09f547ba26b2e437341186d92bf",
+      "size": 4531
+    },
+    {
+      "archive_path": "validation/V8_3_254_EVIDENCE_PROVENANCE_CONTRACT_V1.json",
+      "sha256": "72c15c5690b57e09d2c72210696295962d22b8aea2dbb4a2a8fc89f6c7cfb0dc",
+      "size": 2202
+    },
+    {
+      "archive_path": "validation/v83255-batch-a-self-contained.py",
+      "sha256": "6d71b929e929e0892ceb1d05b174d4ebe69a1edf336db03fdca187fd06b8caff",
+      "size": 13315
+    },
+    {
+      "archive_path": "validation/v83255-batch-b-materialized.py",
+      "sha256": "af297926d68381599eb461dc432e660a6065cd3c9ea969d62c672920721534b2",
+      "size": 13747
+    }
+  ],
+  "unique_archive_paths": true,
+  "batch_a_run_id": "32668811798",
+  "batch_b_run_id": "32669034665",
+  "batch_a_rerun": false,
+  "batch_b_rerun": false,
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "step_111_authorized": true,
+  "production_authorized": false,
+  "pass": true
+}
