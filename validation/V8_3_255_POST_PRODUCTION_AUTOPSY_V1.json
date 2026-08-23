@@ -1,0 +1,42 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "POST_PRODUCTION_AUTOPSY",
+  "basis": "Final production-deployed checkpoint and frozen production-lock evidence",
+  "production_state": "DEPLOYED / LIVE VERIFIED",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "runtime_integrity": {
+    "final_manifest_hash_size_errors": 0,
+    "live_verification_pass": true,
+    "v124_byte_identical": true,
+    "v5ay_byte_identical": true,
+    "batch_a_rerun": false,
+    "batch_b_rerun": false,
+    "semantic_change": false,
+    "expected_gold_changed": false
+  },
+  "diagnostic_layer": "EVIDENCE / GOVERNANCE PROVENANCE",
+  "defect": {
+    "id": "V255-POSTPROD-AUTH-PROVENANCE-001",
+    "severity": "governance-record inconsistency",
+    "historical_lock_file": "validation/v83255-v1-sealed/V8_3_255_PRODUCTION_LOCK_V1.json",
+    "historical_lock_deployment_authorized": false,
+    "historical_lock_production_deployed": false,
+    "later_final_state_production_deployed": true,
+    "later_live_verification_pass": true,
+    "description": "The immutable production-lock record predates deployment and does not itself carry a later deployment-authorization event. Final deployed-state evidence proves deployment occurred, but the checkpoint does not contain a dedicated immutable record linking that later deployment action to an explicit owner deployment authorization event.",
+    "semantic_failure": false,
+    "application_failure": false,
+    "live_content_drift": false
+  },
+  "repair_policy": {
+    "historical_lock_mutation_permitted": false,
+    "production_redeploy_required": false,
+    "semantic_repair_required": false,
+    "gold_change_required": false,
+    "sealed_batch_rerun_permitted": false,
+    "required_closure": "Add a separate owner-authorized deployment provenance/ratification record if and only if explicit owner authorization is available; do not rewrite historical evidence."
+  },
+  "verdict": "PARTIAL PASS — PRODUCTION CONTENT VALID; DEPLOYMENT AUTHORIZATION PROVENANCE GAP OPEN",
+  "production_left_unchanged": true,
+  "pass": false
+}
