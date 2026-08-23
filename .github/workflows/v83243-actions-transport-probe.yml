@@ -1,5 +1,5 @@
-name: V8.3.253 construction-only PRESEAL R2
-# trigger-v253-preseal-r2-dense-capsule
+name: V8.3.253 sealed runner materialization
+# trigger-v253-runner-materialization-1
 on:
   push:
     branches: [main]
@@ -15,61 +15,77 @@ jobs:
         with:
           ref: v83253-v1-sealed-validation
           fetch-depth: 0
-      - name: Persist PRESEAL R2 start marker
+      - name: Materialize self-contained V253 runner
         shell: bash
         run: |
           set -euo pipefail
-          printf '{"candidate":"V8.3.253","phase":"preseal-r2-start","run_id":"%s","semantic_runtime_executed":false,"semantic_authority_loaded":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83253-v1-sealed/V8_3_253_PRESEAL_R2_START.json
-          git config user.name github-actions
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83253-v1-sealed/V8_3_253_PRESEAL_R2_START.json
-          git commit -m 'Record V8.3.253 PRESEAL R2 start'
-          git push origin HEAD:v83253-v1-sealed-validation
-      - name: Rebuild V253 PRESEAL harness with dense capsule
-        id: build
-        shell: bash
-        run: |
-          set +e
           git fetch origin v83252-v1-sealed-validation:refs/remotes/origin/v83252-v1-sealed-validation
-          python validation/v83253-v1-sealed/v83253-preseal-build.py > /tmp/v253-r2-build.log 2>&1
-          rc=$?
-          set -e
-          cat /tmp/v253-r2-build.log
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-          if [ "$rc" = 0 ]; then
-            git add validation/v83253-v1-sealed/v83253-preseal-freeze.py
-            git diff --cached --quiet || git commit -m 'Rebuild V8.3.253 PRESEAL R2 harness'
-            git push origin HEAD:v83253-v1-sealed-validation
-          fi
-      - name: Run construction-only PRESEAL R2
-        id: run
-        if: steps.build.outputs.rc == '0'
-        shell: bash
-        run: |
-          set +e
-          python validation/v83253-v1-sealed/v83253-preseal-freeze.py > /tmp/v253-preseal-r2.log 2>&1
-          rc=$?
-          set -e
-          cat /tmp/v253-preseal-r2.log
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze PRESEAL R2 evidence
-        if: always()
-        shell: bash
-        run: |
-          set -euo pipefail
-          RC_BUILD='${{ steps.build.outputs.rc }}' RC_RUN='${{ steps.run.outputs.rc }}' python - <<'PY'
-          import json,os,pathlib
-          o=pathlib.Path('validation/v83253-v1-sealed')
-          b=pathlib.Path('/tmp/v253-r2-build.log').read_text(errors='replace') if pathlib.Path('/tmp/v253-r2-build.log').exists() else ''
-          r=pathlib.Path('/tmp/v253-preseal-r2.log').read_text(errors='replace') if pathlib.Path('/tmp/v253-preseal-r2.log').exists() else ''
-          rb=int(os.environ.get('RC_BUILD') or 1); rr=int(os.environ.get('RC_RUN') or 1)
-          (o/'V8_3_253_PRESEAL_R2_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.253','phase':'preseal-r2-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'build_rc':rb,'run_rc':rr,'build_log_tail':b[-20000:],'run_log_tail':r[-30000:],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'expected_gold_changed':False},indent=2)+'\n')
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess,hashlib,json
+          src=subprocess.check_output(['git','show','origin/v83252-v1-sealed-validation:validation/v83252-batch-a-self-contained.py'],text=True)
+          repls=[
+            ("TARGET='59d1d564a2208ae4ce5899262ad094357a20402a'","TARGET='89db04ec936af998c14d2f0451ef87270ea8e349'"),
+            ("SEM='QCEvidenceExtractorV5AX -> QCSemanticCoreV123'","SEM='QCEvidenceExtractorV5AY -> QCSemanticCoreV124'"),
+            ("SEALED=REPO/'validation/v83252-v1-sealed'","SEALED=REPO/'validation/v83253-v1-sealed'"),
+            ("WORK=pathlib.Path('/tmp/v83252-batch-a-authority')","WORK=pathlib.Path('/tmp/v83253-batch-a-authority')"),
+            ("ROOT='validation/v83252-v1-sealed-runtime'","ROOT='validation/v83253-v1-sealed-runtime'"),
+            ("ATTEMPT=SEALED/'V8_3_252_BATCH_A_ATTEMPT_MARKER.json'","ATTEMPT=SEALED/'V8_3_253_BATCH_A_ATTEMPT_MARKER.json'"),
+            ("FIRST=SEALED/'V8_3_252_SEALED_FIRST_RUN_MARKER.json'","FIRST=SEALED/'V8_3_253_SEALED_FIRST_RUN_MARKER.json'"),
+            ("RESULT=SEALED/'V8_3_252_BATCH_A_RESULT_V1.json'","RESULT=SEALED/'V8_3_253_BATCH_A_RESULT_V1.json'"),
+            ("STATUS=SEALED/'V8_3_252_BATCH_A_STATUS_V1.json'","STATUS=SEALED/'V8_3_253_BATCH_A_STATUS_V1.json'"),
+            ("'candidate':'V8.3.252'","'candidate':'V8.3.253'"),
+            ("'v251_sealed_rerun':False,'v252_batch_a_rerun':False","'v252_sealed_rerun':False,'v253_batch_a_rerun':False"),
+            ("PSC_V8_3_252_V1_BATCH_A_CHECKPOINT","PSC_V8_3_253_V1_BATCH_A_CHECKPOINT"),
+            ("V8_3_252_BATCH_A_RESULT_V1.json","V8_3_253_BATCH_A_RESULT_V1.json"),
+            ("V8_3_252_BATCH_A_STATUS_V1.json","V8_3_253_BATCH_A_STATUS_V1.json"),
+            ("V8_3_252_BATCH_A_ATTEMPT_MARKER.json","V8_3_253_BATCH_A_ATTEMPT_MARKER.json"),
+            ("V8_3_252_SEALED_FIRST_RUN_MARKER.json","V8_3_253_SEALED_FIRST_RUN_MARKER.json"),
+            ("V8_3_252_SEALED_AUTHORITY_V1.json","V8_3_253_SEALED_AUTHORITY_V1.json"),
+            ("V8_3_252_PRESEAL_DIVERSITY_AUDIT_V1.json","V8_3_253_PRESEAL_DIVERSITY_AUDIT_V1.json"),
+            ("V8_3_252_SEALED_SELECTION_V1.json","V8_3_253_SEALED_SELECTION_V1.json"),
+            ("V8_3_252_SEALED_FIXTURE_V1.json","V8_3_253_SEALED_FIXTURE_V1.json"),
+            ("V8_3_252_INDEPENDENT_GOLD_V1.json","V8_3_253_INDEPENDENT_GOLD_V1.json"),
+            ("V8_3_252_SEALED_MEMBERSHIP_V1.json","V8_3_253_SEALED_MEMBERSHIP_V1.json"),
+            ("V8_3_252_TRANSPORT_VERIFICATION_V1.json","V8_3_253_TRANSPORT_VERIFICATION_V1.json"),
+            ("V8_3_252_STATIC_SEALED_PREFLIGHT_V1.json","V8_3_253_STATIC_SEALED_PREFLIGHT_V1.json"),
+            ("assert pf['exact_v5ax_path']=='validation/qc-evidence-extractor-v5ax-v252-v251-residuals.js' and pf['exact_v123_path']=='validation/psc-v83252-v251-v123-residuals.js'","assert pf['exact_v5ay_path']=='validation/qc-evidence-extractor-v5ay-v253-v252-residual.js' and pf['exact_v124_path']=='validation/psc-v83253-v252-v124-residual.js'"),
+            ("'V8_3_252_PRESEAL_CANDIDATE_BANK_V1.json'","'V8_3_253_PRESEAL_CANDIDATE_BANK_V1.json'"),
+            ("'selection':'V8_3_252_SEALED_SELECTION_V1.json'","'selection':'V8_3_253_SEALED_SELECTION_V1.json'"),
+            ("'fixture':'V8_3_252_SEALED_FIXTURE_V1.json'","'fixture':'V8_3_253_SEALED_FIXTURE_V1.json'"),
+            ("'independent_gold':'V8_3_252_INDEPENDENT_GOLD_V1.json'","'independent_gold':'V8_3_253_INDEPENDENT_GOLD_V1.json'"),
+            ("'membership':'V8_3_252_SEALED_MEMBERSHIP_V1.json'","'membership':'V8_3_253_SEALED_MEMBERSHIP_V1.json'"),
+            ("'preseal_audit':'V8_3_252_PRESEAL_DIVERSITY_AUDIT_V1.json'","'preseal_audit':'V8_3_253_PRESEAL_DIVERSITY_AUDIT_V1.json'"),
+            ("validation/v83252-v1-sealed-runtime","validation/v83253-v1-sealed-runtime"),
+            ("run-v83252-batch-a.cjs","run-v83253-batch-a.cjs"),
+            ("if(!s.QCEvidenceExtractorV5AX)throw Error('V5AX missing');if(!s.QCSemanticCoreV123)throw Error('V123 missing');","if(!s.QCEvidenceExtractorV5AY)throw Error('V5AY missing');if(!s.QCSemanticCoreV124)throw Error('V124 missing');"),
+            ("s.QCSemanticCoreV123.analyze","s.QCSemanticCoreV124.analyze"),
+            ("authority:'V8.3.252 V1 SEALED BATCH A FIRST RUN'","authority:'V8.3.253 V1 SEALED BATCH A FIRST RUN'"),
+            ("validated_development_head_sha:'59d1d564a2208ae4ce5899262ad094357a20402a'","validated_development_head_sha:'89db04ec936af998c14d2f0451ef87270ea8e349'"),
+            ("semantic_authority:'QCEvidenceExtractorV5AX -> QCSemanticCoreV123'","semantic_authority:'QCEvidenceExtractorV5AY -> QCSemanticCoreV124'"),
+            ("console.log('V252 A'","console.log('V253 A'")]
+          for a,b in repls:
+            if a not in src: raise SystemExit('missing runner transform anchor '+a)
+            src=src.replace(a,b)
+          anchor="'qc-evidence-extractor-v5ax-v252-v251-residuals.js','psc-v83252-v251-v123-residuals.js']"
+          repl="'qc-evidence-extractor-v5ax-v252-v251-residuals.js','psc-v83252-v251-v123-residuals.js','qc-evidence-extractor-v5ay-v253-v252-residual.js','psc-v83253-v252-v124-residual.js']"
+          if anchor not in src: raise SystemExit('V253 semantic chain anchor missing')
+          src=src.replace(anchor,repl,1)
+          # Exact namespace/static guards.
+          forbidden=['validation/v83252-v1-sealed-runtime','run-v83252-batch-a.cjs','V8_3_252_BATCH_A_RESULT_V1.json','QCSemanticCoreV123.analyze']
+          stale=[x for x in forbidden if x in src]
+          if stale: raise SystemExit('V253 runner stale literals '+repr(stale))
+          required=['V8_3_253_PRESEAL_CANDIDATE_BANK_V1.json','validation/v83253-v1-sealed-runtime','run-v83253-batch-a.cjs','V8_3_253_BATCH_A_RESULT_V1.json',"A['validated_development_head_sha']==TARGET",'qc-evidence-extractor-v5ay-v253-v252-residual.js','psc-v83253-v252-v124-residual.js','QCSemanticCoreV124.analyze']
+          missing=[x for x in required if x not in src]
+          if missing: raise SystemExit('V253 runner missing '+repr(missing))
+          compile(src,'validation/v83253-batch-a-self-contained.py','exec')
+          p=Path('validation/v83253-batch-a-self-contained.py');p.write_text(src)
+          receipt={'candidate':'V8.3.253','phase':'sealed-runner-materialization','validated_development_head_sha':'89db04ec936af998c14d2f0451ef87270ea8e349','parent_development_sha':'59d1d564a2208ae4ce5899262ad094357a20402a','semantic_authority':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124','runner_sha256':hashlib.sha256(src.encode()).hexdigest(),'self_contained':True,'semantic_change':False,'expected_gold_changed':False,'pass':True,'sealed_semantics_executed':False,'step_111_authorized':False}
+          Path('validation/v83253-v1-sealed/V8_3_253_RUNNER_MATERIALIZATION_V1.json').write_text(json.dumps(receipt,indent=2)+'\n')
+          print(json.dumps(receipt))
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83253-v1-sealed/V8_3_253_PRESEAL_R2_START.json validation/v83253-v1-sealed/V8_3_253_PRESEAL_R2_DIAGNOSTIC.json
-          for f in validation/v83253-v1-sealed/V8_3_253_PRESEAL_RUN_RECEIPT.json validation/v83253-v1-sealed/V8_3_253_PRESEAL_CANDIDATE_BANK_V1.json validation/v83253-v1-sealed/V8_3_253_SEALED_SELECTION_V1.json validation/v83253-v1-sealed/V8_3_253_SEALED_FIXTURE_V1.json validation/v83253-v1-sealed/V8_3_253_INDEPENDENT_GOLD_V1.json validation/v83253-v1-sealed/V8_3_253_SEALED_MEMBERSHIP_V1.json validation/v83253-v1-sealed/V8_3_253_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83253-v1-sealed/V8_3_253_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.253 PRESEAL R2 evidence'
+          git add validation/v83253-batch-a-self-contained.py validation/v83253-v1-sealed/V8_3_253_RUNNER_MATERIALIZATION_V1.json
+          git commit -m 'Materialize V8.3.253 sealed runner'
           git push origin HEAD:v83253-v1-sealed-validation
-      - name: Enforce PRESEAL R2 outcome
-        run: test '${{ steps.build.outputs.rc }}' = '0' -a '${{ steps.run.outputs.rc }}' = '0'
