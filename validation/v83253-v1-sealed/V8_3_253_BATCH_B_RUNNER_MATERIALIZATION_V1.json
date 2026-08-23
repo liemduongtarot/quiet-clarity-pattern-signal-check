@@ -1,0 +1,13 @@
+{
+  "candidate": "V8.3.253",
+  "phase": "batch-b-runner-materialization",
+  "source_runner_sha256": "c3128d8f104d99cd98d3786d8d9ff17fd3554a6bdf0659e30b86bf40e6568cb7",
+  "batch_b_runner_sha256": "4d58ea59f916decc6a79cbf2c494bcb25034c8cfc24a09c4630e0b032b72eb94",
+  "requires_batch_a_30_of_30": true,
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "expected_gold_changed": false,
+  "semantic_change": false,
+  "pass": true,
+  "batch_b_executed": false,
+  "step_111_authorized": false
+}
