@@ -1,5 +1,5 @@
-name: V8.3.255 hardened evidence preflight
-# trigger-v255-evidence-preflight-1
+name: V8.3.255 sealed Batch A provenance one-shot
+# trigger-v255-batch-a-one-shot-1
 on:
   push:
     branches: [main]
@@ -8,80 +8,71 @@ on:
 permissions:
   contents: write
 jobs:
-  probe:
+  batch-a:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: v83255-v1-sealed-validation
           fetch-depth: 0
-      - name: Run hardened transport/evidence preflight
-        id: run
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Persist immutable A reservation and first-run marker before semantics
+        shell: bash
+        run: |
+          set -euo pipefail
+          O=validation/v83255-v1-sealed
+          for f in V8_3_255_BATCH_A_ATTEMPT_MARKER.json V8_3_255_SEALED_FIRST_RUN_MARKER.json V8_3_255_BATCH_A_RESERVATION_V1.json V8_3_255_BATCH_A_RESULT_V1.json V8_3_255_BATCH_A_STATUS_V1.json V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json; do test ! -e "$O/$f"; done
+          python - <<'PY'
+          import json,os,pathlib,importlib.util,hashlib
+          V=pathlib.Path('validation');O=V/'v83255-v1-sealed';DEV='8100c9d590a95b612829e92f4a9fc859b6eddb23';SEM='QCEvidenceExtractorV5AY -> QCSemanticCoreV124';RUNNER_SHA='6d71b929e929e0892ceb1d05b174d4ebe69a1edf336db03fdca187fd06b8caff'
+          pf=json.loads((O/'V8_3_255_STATIC_SEALED_PREFLIGHT_V1.json').read_text());a=json.loads((O/'V8_3_255_SEALED_AUTHORITY_V1.json').read_text());mat=json.loads((O/'V8_3_255_RUNNER_MATERIALIZATION_V1.json').read_text());gate=json.loads((O/'V8_3_255_RUNNER_EVIDENCE_GATE_PREFLIGHT_V1.json').read_text())
+          assert pf['pass'] and pf['validated_development_head_sha']==DEV and pf['step_111_authorized'] is True
+          assert a['validated_development_head_sha']==DEV and a['semantic_authority']==SEM and a['preseal_pass'] is True
+          assert mat['pass'] and mat['runner_sha256']==RUNNER_SHA and gate['pass'] and gate['validated']
+          assert hashlib.sha256((V/'v83255-batch-a-self-contained.py').read_bytes()).hexdigest()==RUNNER_SHA
+          spec=importlib.util.spec_from_file_location('prov',V/'v83254-evidence-provenance.py');prov=importlib.util.module_from_spec(spec);spec.loader.exec_module(prov)
+          reservation=prov.build_reservation('V8.3.255','A',os.environ['GITHUB_RUN_ID'],os.environ.get('GITHUB_RUN_ATTEMPT','1'),DEV,SEM,RUNNER_SHA)
+          (O/'V8_3_255_BATCH_A_RESERVATION_V1.json').write_text(json.dumps(reservation,indent=2)+'\n')
+          common={'candidate':'V8.3.255','run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ.get('GITHUB_RUN_ATTEMPT','1'),'validated_development_head_sha':DEV,'semantic_authority':SEM,'source_runner_sha256':RUNNER_SHA,'reservation_sha256':reservation['reservation_sha256'],'reserved_before_semantic_execution':True,'semantic_runtime_executed':False,'v254_sealed_rerun':False,'step_111_authorized':True,'production_authorized':False}
+          aa=dict(common);aa.update({'phase':'sealed-batch-a-attempt-reservation','batch':'A'});ff=dict(common);ff.update({'phase':'sealed-first-run-reservation','reserved_batch':'A'})
+          (O/'V8_3_255_BATCH_A_ATTEMPT_MARKER.json').write_text(json.dumps(aa,indent=2)+'\n');(O/'V8_3_255_SEALED_FIRST_RUN_MARKER.json').write_text(json.dumps(ff,indent=2)+'\n')
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add "$O/V8_3_255_BATCH_A_RESERVATION_V1.json" "$O/V8_3_255_BATCH_A_ATTEMPT_MARKER.json" "$O/V8_3_255_SEALED_FIRST_RUN_MARKER.json"
+          git commit -m 'Reserve V8.3.255 sealed Batch A first run with provenance hash'
+          git push origin HEAD:v83255-v1-sealed-validation
+      - name: Execute V8.3.255 Batch A exactly once
+        id: execute
         shell: bash
         run: |
           set +e
-          python - <<'PY' > /tmp/v255-preflight.log 2>&1
-          import json,hashlib,pathlib,subprocess,zipfile,tempfile,shutil,importlib.util
-          R=pathlib.Path('.');V=R/'validation';O=V/'v83255-v1-sealed'
-          DEV='8100c9d590a95b612829e92f4a9fc859b6eddb23';BASE='238cdba6ee2d4d17bcde19de2d895a7087983345';SEM='QCEvidenceExtractorV5AY -> QCSemanticCoreV124'
-          def canon(o):return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
-          def ho(o):return hashlib.sha256(canon(o)).hexdigest()
-          def hb(b):return hashlib.sha256(b).hexdigest()
-          def fsha(p):return hb(pathlib.Path(p).read_bytes())
-          def show(ref,path):return subprocess.check_output(['git','show',f'{ref}:{path}'])
-          a=json.loads((O/'V8_3_255_SEALED_AUTHORITY_V1.json').read_text());rec=json.loads((O/'V8_3_255_PRESEAL_RUN_RECEIPT.json').read_text());mat=json.loads((O/'V8_3_255_RUNNER_MATERIALIZATION_V1.json').read_text());identity=json.loads((O/'V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json').read_text());manifest=json.loads((O/'V8_3_255_RUNTIME_CONFIG_SCHEMA_MANIFEST_V1.json').read_text())
-          assert a['validated_development_head_sha']==DEV and a['base_exact_development_sha']==BASE and a['semantic_authority']==SEM and a['preseal_pass'] is True
-          assert rec['conclusion']=='success' and rec['semantic_runtime_executed'] is False and rec['batch_a_executed'] is False and rec['batch_b_executed'] is False
-          paths={'candidate_bank':'V8_3_255_PRESEAL_CANDIDATE_BANK_V1.json','selection':'V8_3_255_SEALED_SELECTION_V1.json','fixture':'V8_3_255_SEALED_FIXTURE_V1.json','independent_gold':'V8_3_255_INDEPENDENT_GOLD_V1.json','membership':'V8_3_255_SEALED_MEMBERSHIP_V1.json','preseal_audit':'V8_3_255_PRESEAL_DIVERSITY_AUDIT_V1.json','contamination_duplicate_audit':'V8_3_255_CONTAMINATION_DUPLICATE_AUDIT_V1.json','semantic_fingerprints':'V8_3_255_SEMANTIC_FINGERPRINTS_V1.json'}
-          hash_match={k:ho(json.loads((O/n).read_text()))==a['hashes'][k] for k,n in paths.items()};assert all(hash_match.values())
-          cont=json.loads((O/paths['contamination_duplicate_audit']).read_text());div=json.loads((O/paths['preseal_audit']).read_text())
-          assert cont['pass'] and div['pass'] and not cont.get('pairs_at_or_above_0_75',[]) and not cont.get('exact_surface_duplicates',[]) and not cont.get('semantic_fingerprint_exact_duplicates',[])
-          assert identity['pass'] and identity['all_byte_identical_to_frozen_development'] and identity['loaded_semantic_source_count']>=55 and manifest['pass']
-          runner=V/'v83255-batch-a-self-contained.py';assert fsha(runner)==mat['runner_sha256'];text=runner.read_text()
-          required=['V8_3_255_BATCH_A_RESERVATION_V1.json','V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json','V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json','execution_ordinal','executed_at_utc','previous_record_sha256','schema_contract_sha256','V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json','QCSemanticCoreV124.analyze',DEV]
-          assert all(x in text for x in required)
-          assert mat['runtime_case_timestamp_capture'] is True and mat['append_only_ledger'] is True and mat['case_level_hash_chain'] is True and mat['semantic_source_identity_required'] is True and mat['legacy_exact_path_fields_required'] is False
-          for n in ['V8_3_255_HARNESS_POSITIVE_TEST_V1.json','V8_3_255_HARNESS_NEGATIVE_MISSING_FIELD_TEST_V1.json','V8_3_255_HARNESS_MUTATION_DETECTION_TEST_V1.json','V8_3_255_RUNNER_EVIDENCE_GATE_POSITIVE_TEST_V1.json','V8_3_255_RUNNER_EVIDENCE_GATE_NEGATIVE_IDENTITY_TEST_V1.json','V8_3_255_RUNNER_EVIDENCE_GATE_NEGATIVE_PROVENANCE_TEST_V1.json']:
-              assert json.loads((O/n).read_text())['pass'] is True
-          contract_copy=O/'V8_3_255_EVIDENCE_PROVENANCE_CONTRACT_COPY_V1.json';assert fsha(contract_copy)==fsha(V/'V8_3_254_EVIDENCE_PROVENANCE_CONTRACT_V1.json')
-          # Verify exact frozen DEVELOPMENT evidence gate identity.
-          gate_hash=fsha(V/'v83255-runner-evidence-gate.py');assert gate_hash=='d3957c4c2fc4183b4e20025b9cbc340e6352ccbec86fed8e414053e702b7a297'
-          # Public runtime transport materialization from exact frozen DEVELOPMENT authority.
-          archive=R/'PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip';assert archive.exists();tmp=pathlib.Path(tempfile.mkdtemp(prefix='v83255-transport-'))
-          try:
-              with zipfile.ZipFile(archive) as z:z.extractall(tmp)
-              public=tmp/'PSC_V8_3_138_DEV/public/psc-v3.js';assert public.exists() and public.stat().st_size>0
-              public_hash=fsha(public);archive_hash=fsha(archive)
-          finally:shutil.rmtree(tmp,ignore_errors=True)
-          transport={'candidate':'V8.3.255','phase':'transport-verification','validated_development_head_sha':DEV,'base_exact_development_sha':BASE,'semantic_authority':SEM,'public_runtime_materialized':True,'public_runtime_sha256':public_hash,'base_archive_sha256':archive_hash,'self_contained_runner_verified':True,'semantic_runtime_executed':False,'semantic_authority_loaded':False,'v254_sealed_rerun':False,'pass':True};(O/'V8_3_255_TRANSPORT_VERIFICATION_V1.json').write_text(json.dumps(transport,indent=2)+'\n')
-          manifest['public_runtime_sha256']=public_hash;manifest['base_archive_sha256']=archive_hash;manifest['transport_verified']=True;(O/'V8_3_255_RUNTIME_CONFIG_SCHEMA_MANIFEST_V1.json').write_text(json.dumps(manifest,indent=2)+'\n')
-          absence_names=['V8_3_255_SEALED_FIRST_RUN_MARKER.json','V8_3_255_BATCH_A_ATTEMPT_MARKER.json','V8_3_255_BATCH_A_RESERVATION_V1.json','V8_3_255_BATCH_A_RESULT_V1.json','V8_3_255_BATCH_A_STATUS_V1.json','V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json','V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json','V8_3_255_BATCH_B_ATTEMPT_MARKER.json','V8_3_255_BATCH_B_RESULT_V1.json','V8_3_255_BATCH_B_STATUS_V1.json']
-          absence={n:not (O/n).exists() for n in absence_names};assert all(absence.values())
-          sel=json.loads((O/paths['selection']).read_text());assert len(sel['batch_a'])==30 and len(sel['batch_b'])==30 and set(sel['batch_a']).isdisjoint(sel['batch_b'])
-          pf={'candidate':'V8.3.255','phase':'hardened-static-transport-evidence-preflight','validated_development_head_sha':DEV,'base_exact_development_sha':BASE,'semantic_authority':SEM,'repair_scope':'RUNNER_EVIDENCE_CONTRACT_ONLY','development_regression':'1470/1470','semantic_change':False,'expected_gold_changed':False,'v254_sealed_rerun':False,'canonical_hashes_match':hash_match,'preseal_diversity_pass':True,'contamination_duplicate_pass':True,'semantic_source_identity_pass':True,'loaded_semantic_source_count':identity['loaded_semantic_source_count'],'runner_hash_verified':True,'runtime_case_timestamp_capture':True,'append_only_ledger_contract':True,'case_hash_chain_contract':True,'provenance_harness_tests_pass':True,'runner_evidence_gate_selftests_pass':True,'contract_hash_verified':True,'transport_pass':True,'batch_a_b_disjoint':True,'pre_execution_absence':absence,'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'step_111_authorized':True,'production_authorized':False,'pass':True}
-          spec=importlib.util.spec_from_file_location('gate',V/'v83255-runner-evidence-gate.py');gate=importlib.util.module_from_spec(spec);spec.loader.exec_module(gate);assert gate.validate_preflight(pf,identity,DEV) is True
-          (O/'V8_3_255_STATIC_SEALED_PREFLIGHT_V1.json').write_text(json.dumps(pf,indent=2)+'\n')
-          gate_rec={'candidate':'V8.3.255','phase':'runner-evidence-gate-preflight','validated_development_head_sha':DEV,'runner_evidence_gate_sha256':gate_hash,'validated':True,'legacy_exact_path_fields_required':False,'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'pass':True};(O/'V8_3_255_RUNNER_EVIDENCE_GATE_PREFLIGHT_V1.json').write_text(json.dumps(gate_rec,indent=2)+'\n')
-          print(json.dumps(pf))
-          PY
+          python validation/v83255-batch-a-self-contained.py
           rc=$?
-          set -e
-          cat /tmp/v255-preflight.log
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze V255 preflight evidence
+          exit 0
+      - name: Freeze Batch A provenance evidence
         if: always()
         shell: bash
         run: |
           set -euo pipefail
-          RC='${{ steps.run.outputs.rc }}' python - <<'PY'
-          import json,os,pathlib
-          o=pathlib.Path('validation/v83255-v1-sealed');log=pathlib.Path('/tmp/v255-preflight.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-preflight.log').exists() else ''
-          (o/'V8_3_255_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.255','phase':'hardened-transport-evidence-preflight-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'v254_sealed_rerun':False,'expected_gold_changed':False},indent=2)+'\n')
-          PY
+          O=validation/v83255-v1-sealed
+          test -f "$O/V8_3_255_BATCH_A_STATUS_V1.json"
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83255-v1-sealed
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.255 hardened evidence preflight'
+          git add "$O/V8_3_255_BATCH_A_STATUS_V1.json"
+          for f in V8_3_255_BATCH_A_RESULT_V1.json V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json; do test ! -f "$O/$f" || git add "$O/$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.255 Batch A first-run provenance evidence'
           git push origin HEAD:v83255-v1-sealed-validation
-      - name: Enforce V255 hardened preflight
-        run: test '${{ steps.run.outputs.rc }}' = '0'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_255_V1_BATCH_A_PROVENANCE_CHECKPOINT
+          path: |
+            PSC_V8_3_255_V1_BATCH_A_CHECKPOINT.zip
+            PSC_V8_3_255_V1_BATCH_A_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce Batch A outcome
+        run: test '${{ steps.execute.outputs.rc }}' = '0'
