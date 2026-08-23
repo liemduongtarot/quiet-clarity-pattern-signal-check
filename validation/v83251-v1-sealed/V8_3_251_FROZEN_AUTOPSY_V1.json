@@ -1,0 +1,103 @@
+{
+  "candidate": "V8.3.251",
+  "phase": "frozen-batch-a-semantic-autopsy",
+  "run_id": "32610306829",
+  "validated_development_head_sha": "125a6f60c94eda4c455323a171006cac613eb903",
+  "semantic_authority": "QCEvidenceExtractorV5AW -> QCSemanticCoreV122",
+  "batch_a_total": 30,
+  "batch_a_passed": 27,
+  "batch_a_failed": 3,
+  "batch_b_executed": false,
+  "v251_batch_a_rerun": false,
+  "semantic_runtime_executed": true,
+  "semantic_failure": true,
+  "failure_counts_by_category": {
+    "third": 1,
+    "neutral": 2
+  },
+  "mechanism_groups": [
+    {
+      "category": "third",
+      "expected_route": "input:third-party-only",
+      "actual_route": "input:clarification-required",
+      "expected_families": [],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "neutral",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:self-lived",
+      "expected_families": [],
+      "actual_families": [
+        "ignore"
+      ],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 2
+    }
+  ],
+  "failures": [
+    {
+      "case_id": "V251-S03-09",
+      "category": "third",
+      "language": "VI",
+      "domain": "family",
+      "expected": {
+        "route": "input:third-party-only",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:clarification-required",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A historical cartography room independently catalogued rhumb lines, graticule arcs, portolan coasts, compass roses, scale bars, latitude ticks, loxodromes, projection grids, engraved plates, copper impressions, hand colors, watermarks, plate marks, neatlines, cartouches, toponyms, soundings, hachures, boundary washes, fold lines, mounting guards, atlas signatures, sheet numbers, catalogue slips; that technical inventory is environmental scenery only and cannot determine the measured response. A separate forensic toxicology register catalogued solid-phase cartridges, internal standards, deuterated analogues, calibration levels, matrix blanks, control samples, retention windows, quantifier ions, qualifier ions, ion ratios, chromatographic peaks, extraction recoveries, matrix effects, carryover checks, dilution factors, derivatization batches, blood aliquots, urine aliquots, vitreous samples, liver homogenates, chain seals, custody forms, instrument tunes, source temperatures, collision energies, transition tables, batch sequences, reinjections, integration reviews, uncertainty budgets, reporting limits, stability tests, freeze-thaw cycles, reference materials, proficiency samples, lot numbers, vial positions, analyst initials, review signatures, accession numbers and storage temperatures; these data cannot reveal another person’s hidden belief. Tôi đang hỏi kết luận kín bên trong của người khác dù không có hành vi bên ngoài để verify. A separate accession ledger for historical cartography room remained unrelated physical context and supplied no behavioural evidence. Archive batch marker qv09 registered compartment sequence kappa066 lambda104 sigma124; these identifiers are inert."
+    },
+    {
+      "case_id": "V251-S09-00",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "money",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "A spectrograph calibration annex independently catalogued echelle orders, thorium lines, flat fields, bias frames, dispersion solutions, blaze functions, cross-correlation masks, radial-velocity standards, wavelength residuals, order traces, extraction apertures, cosmic-ray flags, continuum windows, line-spread functions, detector gains, read noise, overscan regions, barycentric corrections, airmass tables, lamp exposures, pixel maps, slit widths, focus curves, temperature logs; that technical inventory is environmental scenery only and cannot determine the measured response. A separate conservation decision register listed condition assessments, treatment proposals, solvent tests, cleaning trials, consolidation spots, adhesive choices, reversibility notes, ageing tests, color changes, gloss measurements, surface tensions, capillary effects, poultice recipes, swab counts, microscopy images, UV examinations, IR images, X-ray plates, loss maps, crack maps, deformation surveys, mount designs, handling protocols, display limits, light doses, humidity ranges, packing methods, transport crates, vibration monitors, loan reports, insurance values, accession IDs, curator approvals, conservator signatures, treatment dates, material batches, photograph sets, storage locations, follow-up checks, preventive measures and documentation links; these records do not change who retained the final choice. I kept the final deciding authority, completed the action, and left the issue closed without reconsidering it. A separate accession ledger for spectrograph calibration annex remained unrelated physical context and supplied no behavioural evidence. Archive batch marker qv00 registered compartment sequence kappa003 lambda005 sigma007; these identifiers are inert."
+    },
+    {
+      "case_id": "V251-S09-03",
+      "category": "neutral",
+      "language": "EN",
+      "domain": "family",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "surface": "A manuscript pigment laboratory independently catalogued azurite grains, malachite particles, vermilion crystals, red-lead phases, orpiment plates, indigo lakes, carbon blacks, lead-white aggregates, gypsum grounds, chalk fillers, gum binders, protein sizes, Raman bands, XRF maps, FORS curves, microscope cross-sections, gold leaf, silver tarnish, verdigris products, iron-gall halos, parchment fibres, paint losses, retouch zones, sampling labels; that technical inventory is environmental scenery only and cannot determine the measured response. A separate conservation decision register listed condition assessments, treatment proposals, solvent tests, cleaning trials, consolidation spots, adhesive choices, reversibility notes, ageing tests, color changes, gloss measurements, surface tensions, capillary effects, poultice recipes, swab counts, microscopy images, UV examinations, IR images, X-ray plates, loss maps, crack maps, deformation surveys, mount designs, handling protocols, display limits, light doses, humidity ranges, packing methods, transport crates, vibration monitors, loan reports, insurance values, accession IDs, curator approvals, conservator signatures, treatment dates, material batches, photograph sets, storage locations, follow-up checks, preventive measures and documentation links; these records do not change who retained the final choice. I kept the final deciding authority, completed the action, and left the issue closed without reconsidering it. A separate accession ledger for manuscript pigment laboratory remained unrelated physical context and supplied no behavioural evidence. Archive batch marker qv03 registered compartment sequence kappa024 lambda038 sigma046; these identifiers are inert."
+    }
+  ],
+  "expected_gold_changed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "frozen-semantic-failure"
+}
