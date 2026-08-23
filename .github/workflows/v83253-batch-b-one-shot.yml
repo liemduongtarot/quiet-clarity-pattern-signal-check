@@ -1,0 +1,76 @@
+name: V8.3.253 sealed Batch B one-shot
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83253-batch-b-one-shot.yml
+permissions:
+  contents: write
+jobs:
+  batch-b:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83253-v1-sealed-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Persist immutable Batch B reservation before semantic execution
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e validation/v83253-v1-sealed/V8_3_253_BATCH_B_ATTEMPT_MARKER.json
+          test ! -e validation/v83253-v1-sealed/V8_3_253_BATCH_B_RESULT_V1.json
+          test ! -e validation/v83253-v1-sealed/V8_3_253_BATCH_B_STATUS_V1.json
+          python - <<'PY'
+          import json,os,pathlib
+          o=pathlib.Path('validation/v83253-v1-sealed')
+          pf=json.loads((o/'V8_3_253_BATCH_B_PREFLIGHT_V1.json').read_text())
+          ast=json.loads((o/'V8_3_253_BATCH_A_STATUS_V1.json').read_text())
+          ar=json.loads((o/'V8_3_253_BATCH_A_RESULT_V1.json').read_text())
+          mat=json.loads((o/'V8_3_253_BATCH_B_RUNNER_MATERIALIZATION_V1.json').read_text())
+          assert pf['pass'] is True and pf['batch_a_30_of_30_verified'] is True
+          assert ast['conclusion']=='success' and ast['batch_a_passed']==30 and ast['batch_a_failed']==0
+          assert ar['passed']==30 and ar['failed']==0
+          assert mat['pass'] is True and mat['requires_batch_a_30_of_30'] is True
+          m={'candidate':'V8.3.253','phase':'sealed-batch-b-attempt-reservation','batch':'B','run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ.get('GITHUB_RUN_ATTEMPT'),'validated_development_head_sha':'89db04ec936af998c14d2f0451ef87270ea8e349','semantic_authority':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124','batch_a_verified_30_of_30':True,'reserved_before_semantic_execution':True,'semantic_runtime_executed':False,'v253_batch_b_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          (o/'V8_3_253_BATCH_B_ATTEMPT_MARKER.json').write_text(json.dumps(m,indent=2)+'\n')
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83253-v1-sealed/V8_3_253_BATCH_B_ATTEMPT_MARKER.json
+          git commit -m 'Reserve V8.3.253 sealed Batch B first run'
+          git push origin HEAD:v83253-v1-sealed-validation
+      - name: Execute V8.3.253 Batch B exactly once
+        id: execute
+        shell: bash
+        run: |
+          set +e
+          python validation/v83253-batch-b-materialized.py
+          rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Freeze Batch B evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          test -f validation/v83253-v1-sealed/V8_3_253_BATCH_B_STATUS_V1.json
+          git add validation/v83253-v1-sealed/V8_3_253_BATCH_B_STATUS_V1.json
+          test ! -f validation/v83253-v1-sealed/V8_3_253_BATCH_B_RESULT_V1.json || git add validation/v83253-v1-sealed/V8_3_253_BATCH_B_RESULT_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.253 Batch B first-run evidence'
+          git push origin HEAD:v83253-v1-sealed-validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_253_V1_BATCH_B_CHECKPOINT
+          path: |
+            PSC_V8_3_253_V1_BATCH_B_CHECKPOINT.zip
+            PSC_V8_3_253_V1_BATCH_B_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce Batch B outcome
+        run: test '${{ steps.execute.outputs.rc }}' = '0'
