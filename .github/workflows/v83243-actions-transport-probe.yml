@@ -1,5 +1,5 @@
-name: V8.3.251 hardened transport/static preflight
-# trigger-v251-preflight-1
+name: V8.3.251 hardened preflight corrected
+# trigger-v251-preflight-2-corrected-paths
 on:
   push:
     branches: [main]
@@ -15,58 +15,32 @@ jobs:
         with:
           ref: v83251-v1-sealed-validation
           fetch-depth: 0
-      - name: Materialize and run hardened preflight
+      - name: Run corrected hardened preflight
         id: run
         shell: bash
         run: |
           set +e
-          git fetch origin v83250-v1-sealed-validation:refs/remotes/origin/v83250-v1-sealed-validation
-          python - <<'PY' > /tmp/v251-preflight.log 2>&1
-          from pathlib import Path
-          import subprocess
-          src=subprocess.check_output(['git','show','origin/v83250-v1-sealed-validation:validation/v83250-v1-sealed/v83250-transport-preflight.py'],text=True)
-          repls=[
-            ("O=R/'validation/v83250-v1-sealed'","O=R/'validation/v83251-v1-sealed'"),
-            ("DEV='514cbcb34fbe336033c8f8858a53415371137973'","DEV='125a6f60c94eda4c455323a171006cac613eb903'"),
-            ("BASE='e1dd5fdb3286e88a1394051a01b414ddc131d4d9'","BASE='514cbcb34fbe336033c8f8858a53415371137973'"),
-            ("SEM='QCEvidenceExtractorV5AV -> QCSemanticCoreV121'","SEM='QCEvidenceExtractorV5AW -> QCSemanticCoreV122'"),
-            ('V8_3_250_','V8_3_251_'),('V8.3.250','V8.3.251'),('v83250','v83251'),
-            ("reg=json.loads(show(DEV,'validation/V8_3_251_V121_REGRESSION_RECEIPT.json'));assert reg['conclusion']=='success' and reg['immutable_regression_passed']==1470 and reg['v249_previous_failures_repaired']==7 and reg['v249_previous_passes_preserved']==23 and reg['expected_gold_changed'] is False","reg=json.loads(show(DEV,'validation/V8_3_251_V122_REGRESSION_RECEIPT.json'));assert reg['conclusion']=='success' and reg['immutable_regression_passed']==1470 and reg['v250_batch_a_passed']==30 and reg['v250_batch_b_previous_failures_repaired']==3 and reg['v250_batch_b_previous_passes_preserved']==27 and reg['expected_gold_changed'] is False"),
-            ("child=['validation/qc-evidence-extractor-v5av-v250-v249-residuals.js','validation/psc-v83250-v249-v121-residuals.js'];parent=['validation/qc-evidence-extractor-v5au-v249-v248-residuals.js','validation/psc-v83249-v248-v120-residuals.js']","child=['validation/qc-evidence-extractor-v5aw-v251-v250-b-residuals.js','validation/psc-v83251-v250-v122-b-residuals.js'];parent=['validation/qc-evidence-extractor-v5av-v250-v249-residuals.js','validation/psc-v83250-v249-v121-residuals.js']"),
-            ('QCSemanticCoreV121.analyze','QCSemanticCoreV122.analyze'),('QCEvidenceExtractorV5AV -> QCSemanticCoreV121','QCEvidenceExtractorV5AW -> QCSemanticCoreV122'),
-            ("'exact_v5av_path':child[0],'exact_v121_path':child[1]","'exact_v5aw_path':child[0],'exact_v122_path':child[1]")]
-          for a,b in repls: src=src.replace(a,b)
-          src=src.replace("runner=pathlib.Path('validation/v83251-batch-a-self-contained.py');runner_hash=hb(runner.read_bytes());runner_identity=runner_hash==mat['runner_sha256'];assert runner_identity","runner=pathlib.Path('validation/v83251-batch-a-self-contained.py');runner_hash=hb(runner.read_bytes());runner_identity=runner_hash==mat['runner_sha256'];assert runner_identity",1)
-          stale_marker="stale=["
-          idx=src.index(stale_marker);end=src.index(']\nrequired=',idx)+1
-          stale="stale=['V8_3_250_PRESEAL_CANDIDATE_BANK_V1.json','validation/v83250-v1-sealed-runtime','run-v83250-batch-a.cjs','V8_3_250_BATCH_A_RESULT_V1.json','QCSemanticCoreV121.analyze',\"SEM='QCEvidenceExtractorV5AV -> QCSemanticCoreV121'\",'psc-v83246-v244-v118-residuals.js']"
-          src=src[:idx]+stale+src[end:]
-          ridx=src.index('required=[');rend=src.index(']\nstale_scan=',ridx)+1
-          required="required=['V8_3_251_PRESEAL_CANDIDATE_BANK_V1.json','validation/v83251-v1-sealed-runtime','run-v83251-batch-a.cjs','V8_3_251_BATCH_A_RESULT_V1.json',\"A['validated_development_head_sha']==TARGET\",'qc-evidence-extractor-v5aw-v251-v250-b-residuals.js','psc-v83251-v250-v122-b-residuals.js','QCSemanticCoreV122.analyze','QCEvidenceExtractorV5AW -> QCSemanticCoreV122',DEV]"
-          src=src[:ridx]+required+src[rend:]
-          Path('validation/v83251-v1-sealed/v83251-transport-preflight.py').write_text(src)
-          exec(compile(src,'v83251-transport-preflight.py','exec'))
-          PY
+          python validation/v83251-v1-sealed/v83251-transport-preflight.py > /tmp/v251-preflight2.log 2>&1
           rc=$?
           set -e
-          cat /tmp/v251-preflight.log
+          cat /tmp/v251-preflight2.log
           RC="$rc" python - <<'PY'
           import json,os,pathlib
-          o=pathlib.Path('validation/v83251-v1-sealed');text=pathlib.Path('/tmp/v251-preflight.log').read_text(errors='replace')
-          (o/'V8_3_251_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.251','phase':'hardened-transport-static-preflight','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ['RC']),'log_tail':text[-30000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False},indent=2)+'\n')
+          o=pathlib.Path('validation/v83251-v1-sealed');text=pathlib.Path('/tmp/v251-preflight2.log').read_text(errors='replace')
+          (o/'V8_3_251_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.251','phase':'hardened-transport-static-preflight-corrected','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ['RC']),'log_tail':text[-30000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False},indent=2)+'\n')
           PY
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze preflight evidence
+      - name: Freeze corrected preflight evidence
         if: always()
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83251-v1-sealed/v83251-transport-preflight.py validation/v83251-v1-sealed/V8_3_251_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json
+          git add validation/v83251-v1-sealed/V8_3_251_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json
           test ! -f validation/v83251-v1-sealed/V8_3_251_TRANSPORT_VERIFICATION_V1.json || git add validation/v83251-v1-sealed/V8_3_251_TRANSPORT_VERIFICATION_V1.json
           test ! -f validation/v83251-v1-sealed/V8_3_251_STATIC_SEALED_PREFLIGHT_V1.json || git add validation/v83251-v1-sealed/V8_3_251_STATIC_SEALED_PREFLIGHT_V1.json
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.251 hardened preflight evidence'
+          git diff --cached --quiet || git commit -m 'Freeze corrected V8.3.251 hardened preflight evidence'
           git push origin HEAD:v83251-v1-sealed-validation
       - name: Enforce preflight outcome
         run: test '${{ steps.run.outputs.rc }}' = '0'
