@@ -1,0 +1,11 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "production-lock-diagnostic",
+  "run_id": "32670404936",
+  "rc": 0,
+  "log_tail": "{\"candidate\": \"V8.3.255\", \"phase\": \"production-lock-checkpoint-validation\", \"archive_sha256\": \"2f5a418b2066228eff1947cff83362663dd44b8abbe037a1ebf72554fe3feb33\", \"archive_entries\": 65, \"unique_entries\": true, \"production_authorized\": true, \"production_locked\": true, \"production_deployed\": false, \"deployment_authorized\": false, \"semantic_change\": false, \"expected_gold_changed\": false, \"batch_a_rerun\": false, \"batch_b_rerun\": false, \"pass\": true}\n",
+  "production_deployed": false,
+  "deployment_authorized": false,
+  "batch_a_rerun": false,
+  "batch_b_rerun": false
+}
