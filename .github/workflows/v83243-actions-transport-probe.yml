@@ -1,5 +1,5 @@
-name: V8.3.252 hardened transport/static preflight
-# trigger-v252-preflight-1
+name: V8.3.252 frozen Batch A semantic autopsy
+# trigger-v252-autopsy-1
 on:
   push:
     branches: [main]
@@ -15,32 +15,24 @@ jobs:
         with:
           ref: v83252-v1-sealed-validation
           fetch-depth: 0
-      - name: Run hardened preflight
-        id: run
-        shell: bash
-        run: |
-          set +e
-          python validation/v83252-v1-sealed/v83252-transport-preflight.py > /tmp/v252-preflight.log 2>&1
-          rc=$?
-          set -e
-          cat /tmp/v252-preflight.log
-          RC="$rc" python - <<'PY'
-          import json,os,pathlib
-          o=pathlib.Path('validation/v83252-v1-sealed');text=pathlib.Path('/tmp/v252-preflight.log').read_text(errors='replace')
-          (o/'V8_3_252_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.252','phase':'hardened-transport-static-preflight','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ['RC']),'log_tail':text[-30000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False},indent=2)+'\n')
-          PY
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze preflight evidence
-        if: always()
+      - name: Build immutable V252 autopsy
         shell: bash
         run: |
           set -euo pipefail
+          python - <<'PY'
+          import json,pathlib,collections
+          o=pathlib.Path('validation/v83252-v1-sealed')
+          r=json.loads((o/'V8_3_252_BATCH_A_RESULT_V1.json').read_text());s=json.loads((o/'V8_3_252_BATCH_A_STATUS_V1.json').read_text())
+          assert r['total']==30 and r['passed']==29 and r['failed']==1
+          assert s['semantic_runtime_executed'] is True and s['semantic_failure'] is True and s['batch_b_executed'] is False
+          fails=[x for x in r['results'] if not x['pass']];assert len(fails)==1
+          x=fails[0];e=x['expected'];a=x['actual']
+          out={'candidate':'V8.3.252','phase':'frozen-batch-a-semantic-autopsy','run_id':r['run_id'],'validated_development_head_sha':'59d1d564a2208ae4ce5899262ad094357a20402a','semantic_authority':'QCEvidenceExtractorV5AX -> QCSemanticCoreV123','batch_a_total':30,'batch_a_passed':29,'batch_a_failed':1,'batch_b_executed':False,'v252_batch_a_rerun':False,'semantic_runtime_executed':True,'semantic_failure':True,'failure_counts_by_category':{x['category']:1},'failure':{'case_id':x['case_id'],'category':x['category'],'language':x['language'],'domain':x['domain'],'expected':e,'actual':a,'surface':x['surface']},'expected_gold_changed':False,'step_111_authorized':False,'production_authorized':False,'conclusion':'frozen-semantic-failure'}
+          (o/'V8_3_252_FROZEN_AUTOPSY_V1.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps({'case_id':x['case_id'],'category':x['category'],'language':x['language'],'domain':x['domain'],'expected':e,'actual':a},ensure_ascii=False))
+          PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83252-v1-sealed/V8_3_252_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json
-          test ! -f validation/v83252-v1-sealed/V8_3_252_TRANSPORT_VERIFICATION_V1.json || git add validation/v83252-v1-sealed/V8_3_252_TRANSPORT_VERIFICATION_V1.json
-          test ! -f validation/v83252-v1-sealed/V8_3_252_STATIC_SEALED_PREFLIGHT_V1.json || git add validation/v83252-v1-sealed/V8_3_252_STATIC_SEALED_PREFLIGHT_V1.json
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.252 hardened preflight evidence'
+          git add validation/v83252-v1-sealed/V8_3_252_FROZEN_AUTOPSY_V1.json
+          git commit -m 'Freeze V8.3.252 semantic failure autopsy'
           git push origin HEAD:v83252-v1-sealed-validation
-      - name: Enforce preflight outcome
-        run: test '${{ steps.run.outputs.rc }}' = '0'
