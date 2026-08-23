@@ -1,5 +1,5 @@
-name: V8.3.255 hardened Batch B preflight
-# trigger-v255-b-preflight-1
+name: V8.3.255 sealed Batch B provenance one-shot
+# trigger-v255-batch-b-one-shot-1
 on:
   push:
     branches: [main]
@@ -8,56 +8,69 @@ on:
 permissions:
   contents: write
 jobs:
-  probe:
+  batch-b:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: v83255-v1-sealed-validation
           fetch-depth: 0
-      - name: Run hardened Batch B evidence preflight
-        id: run
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Persist immutable B reservation before semantics
         shell: bash
         run: |
-          set +e
-          python - <<'PY' > /tmp/v255-b-preflight.log 2>&1
-          import json,hashlib,pathlib,importlib.util
-          V=pathlib.Path('validation');O=V/'v83255-v1-sealed';DEV='8100c9d590a95b612829e92f4a9fc859b6eddb23';SEM='QCEvidenceExtractorV5AY -> QCSemanticCoreV124';B_SHA='af297926d68381599eb461dc432e660a6065cd3c9ea969d62c672920721534b2'
-          def fsha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
-          pf=json.loads((O/'V8_3_255_STATIC_SEALED_PREFLIGHT_V1.json').read_text());a=json.loads((O/'V8_3_255_SEALED_AUTHORITY_V1.json').read_text());m=json.loads((O/'V8_3_255_BATCH_B_RUNNER_MATERIALIZATION_V1.json').read_text())
-          astat=json.loads((O/'V8_3_255_BATCH_A_STATUS_V1.json').read_text());ares=json.loads((O/'V8_3_255_BATCH_A_RESULT_V1.json').read_text());aled=json.loads((O/'V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json').read_text());aprov=json.loads((O/'V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json').read_text())
-          spec=importlib.util.spec_from_file_location('prov',V/'v83254-evidence-provenance.py');prov=importlib.util.module_from_spec(spec);spec.loader.exec_module(prov);ok,why=prov.verify_ledger(aled);assert ok,why
-          assert astat['conclusion']=='success' and astat['batch_a_passed']==30 and astat['batch_a_failed']==0 and ares['passed']==30 and ares['failed']==0 and len(aprov['records'])==30
-          assert pf['pass'] and pf['validated_development_head_sha']==DEV and pf['semantic_authority']==SEM and pf['step_111_authorized'] is True
-          assert a['preseal_pass'] is True and m['pass'] and m['batch_b_runner_sha256']==B_SHA and m['requires_valid_a_ledger'] is True
-          runner=V/'v83255-batch-b-materialized.py';assert fsha(runner)==B_SHA;text=runner.read_text()
-          required=['new Set(S.batch_b)','V8.3.255 V1 SEALED BATCH B FIRST RUN','V8_3_255_BATCH_B_RESERVATION_V1.json','V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json','V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json',"prov.new_ledger('V8.3.255','B'", "'batch':'B'",'execution_ordinal','executed_at_utc','previous_record_sha256','QCSemanticCoreV124.analyze',DEV]
-          assert all(x in text for x in required)
-          forbidden=['new Set(S.batch_a)','V8.3.255 V1 SEALED BATCH A FIRST RUN',"prov.new_ledger('V8.3.255','A'", "'batch':'A'",'QCSemanticCoreV125','QCEvidenceExtractorV5AZ']
-          assert not [x for x in forbidden if x in text]
-          absence_names=['V8_3_255_BATCH_B_ATTEMPT_MARKER.json','V8_3_255_BATCH_B_RESERVATION_V1.json','V8_3_255_BATCH_B_RESULT_V1.json','V8_3_255_BATCH_B_STATUS_V1.json','V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json','V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json']
-          absence={n:not (O/n).exists() for n in absence_names};assert all(absence.values())
-          out={'candidate':'V8.3.255','phase':'hardened-batch-b-evidence-preflight','validated_development_head_sha':DEV,'semantic_authority':SEM,'batch_a_first_run_verified':True,'batch_a_30_of_30':True,'batch_a_ledger_verified':True,'batch_a_provenance_count':30,'batch_b_runner_sha256':B_SHA,'batch_b_runner_hash_verified':True,'batch_b_provenance_contract_verified':True,'batch_b_pre_execution_absence':absence,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_executed':False,'step_111_authorized':True,'production_authorized':False,'pass':True}
-          (O/'V8_3_255_BATCH_B_STATIC_PREFLIGHT_V1.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out))
-          PY
-          rc=$?
-          set -e
-          cat /tmp/v255-b-preflight.log
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze Batch B preflight evidence
-        if: always()
-        run: |
           set -euo pipefail
-          RC='${{ steps.run.outputs.rc }}' python - <<'PY'
-          import json,os,pathlib
-          o=pathlib.Path('validation/v83255-v1-sealed');log=pathlib.Path('/tmp/v255-b-preflight.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-b-preflight.log').exists() else ''
-          (o/'V8_3_255_BATCH_B_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.255','phase':'batch-b-preflight-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'batch_a_rerun':False,'batch_b_executed':False,'semantic_change':False,'expected_gold_changed':False},indent=2)+'\n')
+          O=validation/v83255-v1-sealed
+          for f in V8_3_255_BATCH_B_ATTEMPT_MARKER.json V8_3_255_BATCH_B_RESERVATION_V1.json V8_3_255_BATCH_B_RESULT_V1.json V8_3_255_BATCH_B_STATUS_V1.json V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json; do test ! -e "$O/$f"; done
+          python - <<'PY'
+          import json,os,pathlib,importlib.util,hashlib
+          V=pathlib.Path('validation');O=V/'v83255-v1-sealed';DEV='8100c9d590a95b612829e92f4a9fc859b6eddb23';SEM='QCEvidenceExtractorV5AY -> QCSemanticCoreV124';RUNNER_SHA='af297926d68381599eb461dc432e660a6065cd3c9ea969d62c672920721534b2'
+          pf=json.loads((O/'V8_3_255_BATCH_B_STATIC_PREFLIGHT_V1.json').read_text());m=json.loads((O/'V8_3_255_BATCH_B_RUNNER_MATERIALIZATION_V1.json').read_text());astat=json.loads((O/'V8_3_255_BATCH_A_STATUS_V1.json').read_text())
+          assert pf['pass'] and pf['batch_a_30_of_30'] and pf['batch_a_ledger_verified'] and pf['batch_b_runner_hash_verified'] and pf['step_111_authorized'] is True
+          assert astat['conclusion']=='success' and astat['batch_a_passed']==30 and m['pass'] and m['batch_b_runner_sha256']==RUNNER_SHA
+          assert hashlib.sha256((V/'v83255-batch-b-materialized.py').read_bytes()).hexdigest()==RUNNER_SHA
+          spec=importlib.util.spec_from_file_location('prov',V/'v83254-evidence-provenance.py');prov=importlib.util.module_from_spec(spec);spec.loader.exec_module(prov)
+          reservation=prov.build_reservation('V8.3.255','B',os.environ['GITHUB_RUN_ID'],os.environ.get('GITHUB_RUN_ATTEMPT','1'),DEV,SEM,RUNNER_SHA)
+          (O/'V8_3_255_BATCH_B_RESERVATION_V1.json').write_text(json.dumps(reservation,indent=2)+'\n')
+          mark={'candidate':'V8.3.255','phase':'sealed-batch-b-attempt-reservation','batch':'B','run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ.get('GITHUB_RUN_ATTEMPT','1'),'validated_development_head_sha':DEV,'semantic_authority':SEM,'source_runner_sha256':RUNNER_SHA,'reservation_sha256':reservation['reservation_sha256'],'reserved_before_semantic_execution':True,'semantic_runtime_executed':False,'batch_a_rerun':False,'v254_sealed_rerun':False,'step_111_authorized':True,'production_authorized':False}
+          (O/'V8_3_255_BATCH_B_ATTEMPT_MARKER.json').write_text(json.dumps(mark,indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83255-v1-sealed/V8_3_255_BATCH_B_PREFLIGHT_DIAGNOSTIC.json
-          test ! -f validation/v83255-v1-sealed/V8_3_255_BATCH_B_STATIC_PREFLIGHT_V1.json || git add validation/v83255-v1-sealed/V8_3_255_BATCH_B_STATIC_PREFLIGHT_V1.json
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.255 hardened Batch B preflight'
+          git add "$O/V8_3_255_BATCH_B_RESERVATION_V1.json" "$O/V8_3_255_BATCH_B_ATTEMPT_MARKER.json"
+          git commit -m 'Reserve V8.3.255 sealed Batch B first run with provenance hash'
           git push origin HEAD:v83255-v1-sealed-validation
-      - name: Enforce Batch B preflight
-        run: test '${{ steps.run.outputs.rc }}' = '0'
+      - name: Execute V8.3.255 Batch B exactly once
+        id: execute
+        shell: bash
+        run: |
+          set +e
+          python validation/v83255-batch-b-materialized.py
+          rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Freeze Batch B provenance evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          O=validation/v83255-v1-sealed
+          test -f "$O/V8_3_255_BATCH_B_STATUS_V1.json"
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add "$O/V8_3_255_BATCH_B_STATUS_V1.json"
+          for f in V8_3_255_BATCH_B_RESULT_V1.json V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json; do test ! -f "$O/$f" || git add "$O/$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.255 Batch B first-run provenance evidence'
+          git push origin HEAD:v83255-v1-sealed-validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_255_V1_BATCH_B_PROVENANCE_CHECKPOINT
+          path: |
+            PSC_V8_3_255_V1_BATCH_B_CHECKPOINT.zip
+            PSC_V8_3_255_V1_BATCH_B_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce Batch B outcome
+        run: test '${{ steps.execute.outputs.rc }}' = '0'
