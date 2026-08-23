@@ -1,0 +1,178 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "deployment-source-discovery",
+  "source_branch": "v83255-v1-deployment",
+  "source_lock_commit": "f96cecd6bac63d5cfc868a42bfad80fc236bb7ef",
+  "public_runtime_sha256_expected": "886936b9e771c55474158e27c5129ccd06637cee690aabbdf15bb08ad68926ac",
+  "base_archive_sha256_expected": "c2b57a436f744627b5600b97bdbc43dce70f748e66f2d0986c361f20683a7f5f",
+  "file_matches": [
+    {
+      "path": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "sha256": "c2b57a436f744627b5600b97bdbc43dce70f748e66f2d0986c361f20683a7f5f",
+      "size": 2512508
+    }
+  ],
+  "zip_entry_matches": [
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v3.js",
+      "sha256": "886936b9e771c55474158e27c5129ccd06637cee690aabbdf15bb08ad68926ac",
+      "size": 32366
+    }
+  ],
+  "candidate_entries": [
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/globe.svg",
+      "sha256": "d051a8c47936990a9085693d307bb7cea1bc1b6d7ed956bcbaacf674f4ec96b9",
+      "size": 1036
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/mobile-qa.html",
+      "sha256": "7571cf8d936020d85e3d724e29cc0ee1c4e28a0a6601ca13be6440679b9784b1",
+      "size": 327
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83137-ui-gate-authority.js",
+      "sha256": "bccf07c2c3f7ff7e59d13096335754d50fbfa6871f1af6e75ff7014601a711b1",
+      "size": 2031
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83126-public-route-canonicalization.js",
+      "sha256": "6e1da8ca491cee49fb8c5a12cc11aaaa7f8d13634fe362885d556d0cece2a115",
+      "size": 5315
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83139-semantic-convergence.js",
+      "sha256": "b2794b6c47252c4c99d52d7a54fd1188f1d2c894772ebb5106f7c817e3ce9d69",
+      "size": 10742
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83130-representation-coverage.js",
+      "sha256": "85fb1242dfef529d117ebee0bbe74d17e7060c98b3bfbc940ed62ba84ac097a0",
+      "size": 37979
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83131-proposition-consolidation.js",
+      "sha256": "94712ff1b0f52eaf731a7e74b41bf30420ff9a62942f45c51f7830871f609eef",
+      "size": 42640
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/file.svg",
+      "sha256": "1e0ae4d1a1ddfa36752988647b731e4abf150c414d069ec83c96fb0aaeff0307",
+      "size": 392
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83123-family-preservation.js",
+      "sha256": "992f9d5b616f16b45c8c2af30548730490ce7e7665aa29c99d35c8100b6552d0",
+      "size": 13132
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83122-operator-aware.js",
+      "sha256": "bd762a7a229146bb8ca7d8fabb1c0eeb1ed1fc5775a7c5401562bf37a54c0c7a",
+      "size": 16937
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v3.js",
+      "sha256": "886936b9e771c55474158e27c5129ccd06637cee690aabbdf15bb08ad68926ac",
+      "size": 32366
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83127-review-intent-authority.js",
+      "sha256": "d5d16025ecdf7c15c613075fd146ae8684ff5a10107367b9a7cec0ef1496d572",
+      "size": 10742
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/window.svg",
+      "sha256": "decf1cf7bb22b5c99c4857cfcd5718ce5465c4454166317589c83fc73df74b66",
+      "size": 386
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83125-semantic-routing.js",
+      "sha256": "67a11416e052142e4464f97e17fa0d5acb675c4521a016250e694c214a8efc1a",
+      "size": 13055
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83124-operator-context.js",
+      "sha256": "5ed75c3259b03ddfed7ce5e6887fb4854d6749b5a5074d5780afd7040f1ccbda",
+      "size": 11674
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83121-r1-reconstructed.js",
+      "sha256": "335766aba72677e20c444b9490a0e1ab98721f8ac579bdee51f990ac6368ab70",
+      "size": 16122
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83132-relation-graph.js",
+      "sha256": "76d03dd8e911a38811f2e55774d766daa5046902629b1787bee8ad3073e06bf5",
+      "size": 50129
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83133-canonical-role-binding.js",
+      "sha256": "a87bfd6fe4f8dbe30fea9daa70c70f97890e1cb53522d1f60f1cd013b06adf14",
+      "size": 11088
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83138-semantic-convergence.js",
+      "sha256": "48e89bef4b3deff40d8ac7d9cd5a282c9ae3bc6610e6186544ae51a28a5f8f82",
+      "size": 9078
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83129-canonical-shadow.js",
+      "sha256": "457d92bdb4cc0ca83fd0450c6cacc93f5748144bcabe388b78cd3c53b29de60a",
+      "size": 29605
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v83135-scoped-operator.js",
+      "sha256": "8d432d72016c86718cef18cdc07141ad74d2e6656e97ca79172b4c9fc34a0ab7",
+      "size": 11935
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/favicon.svg",
+      "sha256": "e6d2e59b7b5bbb0342e0fb496dfc262decbfe4426bbb7b047aec8d467d1dc6f7",
+      "size": 712
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/psc-v4.js",
+      "sha256": "43431840d1230c776dfec34c0fa6f2359ebd83f3beace273a2f686d7f78d602f",
+      "size": 25197
+    },
+    {
+      "zip": "PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip",
+      "entry": "PSC_V8_3_138_DEV/public/candidate.html",
+      "sha256": "bd5acd1789bcd92ab7c89aed9b7b2feca186c2f578ad1ebd667343d8603f91c4",
+      "size": 1251612
+    }
+  ],
+  "vercel_secret_presence": {
+    "token": false,
+    "org_id": false,
+    "project_id": false
+  },
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "batch_a_rerun": false,
+  "batch_b_rerun": false
+}
