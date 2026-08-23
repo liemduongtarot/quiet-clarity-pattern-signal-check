@@ -1,5 +1,5 @@
-name: V8.3.255 Batch B provenance runner materialization
-# trigger-v255-b-runner-materialization-1
+name: V8.3.255 hardened Batch B preflight
+# trigger-v255-b-preflight-1
 on:
   push:
     branches: [main]
@@ -15,86 +15,49 @@ jobs:
         with:
           ref: v83255-v1-sealed-validation
           fetch-depth: 0
-      - name: Materialize V255 Batch B provenance runner
+      - name: Run hardened Batch B evidence preflight
         id: run
         shell: bash
         run: |
           set +e
-          python - <<'PY' > /tmp/v255-b-mat.log 2>&1
-          from pathlib import Path
-          import hashlib,json,importlib.util
-          V=Path('validation');O=V/'v83255-v1-sealed';A=V/'v83255-batch-a-self-contained.py'
-          DEV='8100c9d590a95b612829e92f4a9fc859b6eddb23';SEM='QCEvidenceExtractorV5AY -> QCSemanticCoreV124'
+          python - <<'PY' > /tmp/v255-b-preflight.log 2>&1
+          import json,hashlib,pathlib,importlib.util
+          V=pathlib.Path('validation');O=V/'v83255-v1-sealed';DEV='8100c9d590a95b612829e92f4a9fc859b6eddb23';SEM='QCEvidenceExtractorV5AY -> QCSemanticCoreV124';B_SHA='af297926d68381599eb461dc432e660a6065cd3c9ea969d62c672920721534b2'
+          def fsha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          pf=json.loads((O/'V8_3_255_STATIC_SEALED_PREFLIGHT_V1.json').read_text());a=json.loads((O/'V8_3_255_SEALED_AUTHORITY_V1.json').read_text());m=json.loads((O/'V8_3_255_BATCH_B_RUNNER_MATERIALIZATION_V1.json').read_text())
           astat=json.loads((O/'V8_3_255_BATCH_A_STATUS_V1.json').read_text());ares=json.loads((O/'V8_3_255_BATCH_A_RESULT_V1.json').read_text());aled=json.loads((O/'V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json').read_text());aprov=json.loads((O/'V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json').read_text())
-          assert astat['conclusion']=='success' and astat['batch_a_passed']==30 and astat['batch_a_failed']==0 and astat['execution_ledger_sealed'] is True
-          assert ares['passed']==30 and ares['failed']==0 and len(aprov['records'])==30
           spec=importlib.util.spec_from_file_location('prov',V/'v83254-evidence-provenance.py');prov=importlib.util.module_from_spec(spec);spec.loader.exec_module(prov);ok,why=prov.verify_ledger(aled);assert ok,why
-          src=A.read_text()
-          repl=[
-            ("WORK=pathlib.Path('/tmp/v83255-batch-a-authority')","WORK=pathlib.Path('/tmp/v83255-batch-b-authority')"),
-            ("ATTEMPT=SEALED/'V8_3_255_BATCH_A_ATTEMPT_MARKER.json'","ATTEMPT=SEALED/'V8_3_255_BATCH_B_ATTEMPT_MARKER.json'"),
-            ("RESULT=SEALED/'V8_3_255_BATCH_A_RESULT_V1.json'","RESULT=SEALED/'V8_3_255_BATCH_B_RESULT_V1.json'"),
-            ("STATUS=SEALED/'V8_3_255_BATCH_A_STATUS_V1.json'","STATUS=SEALED/'V8_3_255_BATCH_B_STATUS_V1.json'"),
-            ("'phase':'sealed-batch-a-first-run'","'phase':'sealed-batch-b-first-run'"),
-            ("'batch_b_executed':False,'v254_sealed_rerun':False,'v255_batch_a_rerun':False","'batch_a_executed':True,'v254_sealed_rerun':False,'v255_batch_b_rerun':False"),
-            ('PSC_V8_3_255_V1_BATCH_A_CHECKPOINT','PSC_V8_3_255_V1_BATCH_B_CHECKPOINT'),
-            ('V8_3_255_BATCH_A_RESULT_V1.json','V8_3_255_BATCH_B_RESULT_V1.json'),
-            ('V8_3_255_BATCH_A_STATUS_V1.json','V8_3_255_BATCH_B_STATUS_V1.json'),
-            ('V8_3_255_BATCH_A_ATTEMPT_MARKER.json','V8_3_255_BATCH_B_ATTEMPT_MARKER.json'),
-            ('V8_3_255_BATCH_A_RESERVATION_V1.json','V8_3_255_BATCH_B_RESERVATION_V1.json'),
-            ('V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json','V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json'),
-            ('V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json','V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json'),
-            ("att['batch']=='A'","att['batch']=='B'"),
-            ('run-v83255-batch-a.cjs','run-v83255-batch-b.cjs'),
-            ('new Set(S.batch_a)','new Set(S.batch_b)'),
-            ('A cardinality ','B cardinality '),
-            ('V8.3.255 V1 SEALED BATCH A FIRST RUN','V8.3.255 V1 SEALED BATCH B FIRST RUN'),
-            ("console.log('V252 A'","console.log('V255 B'"),
-            ("prov.new_ledger('V8.3.255','A'","prov.new_ledger('V8.3.255','B'"),
-            ("'batch':'A'","'batch':'B'"),
-            ("batch_a_attempt_consumed=True,batch_a_executed=True,batch_a_passed=a['passed'],batch_a_failed=a['failed']","batch_b_attempt_consumed=True,batch_b_executed=True,batch_b_passed=a['passed'],batch_b_failed=a['failed']"),
-            ("batch_a_attempt_consumed=True,batch_a_executed=False","batch_b_attempt_consumed=True,batch_b_executed=False")
-          ]
-          for a,b in repl:
-              if a not in src: raise SystemExit('missing B transform anchor '+a)
-              src=src.replace(a,b)
-          anchor="A=json.loads((SEALED/'V8_3_255_SEALED_AUTHORITY_V1.json').read_text());pf=json.loads((SEALED/'V8_3_255_STATIC_SEALED_PREFLIGHT_V1.json').read_text());tr=json.loads((SEALED/'V8_3_255_TRANSPORT_VERIFICATION_V1.json').read_text())"
-          insert="a_status=json.loads((SEALED/'V8_3_255_BATCH_A_STATUS_V1.json').read_text());a_result=json.loads((SEALED/'V8_3_255_BATCH_A_RESULT_V1.json').read_text());a_ledger=json.loads((SEALED/'V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json').read_text());assert a_status['conclusion']=='success' and a_status['batch_a_passed']==30 and a_status['batch_a_failed']==0 and a_result['passed']==30 and a_result['failed']==0 and a_ledger['sealed'] is True\n "+anchor
-          if anchor not in src: raise SystemExit('B gate anchor missing')
-          src=src.replace(anchor,insert,1)
-          # B state trace refs must point to B result.
-          src=src.replace("'canonical_state_trace_ref':'V8_3_255_BATCH_A_RESULT_V1.json#'+row['case_id']","'canonical_state_trace_ref':'V8_3_255_BATCH_B_RESULT_V1.json#'+row['case_id']")
-          forbidden=['new Set(S.batch_a)','V8.3.255 V1 SEALED BATCH A FIRST RUN','run-v83255-batch-a.cjs',"prov.new_ledger('V8.3.255','A'", "'batch':'A'", "V8_3_255_BATCH_A_RESULT_V1.json#'+row['case_id']"]
-          left=[x for x in forbidden if x in src]
-          if left: raise SystemExit('stale B literals '+repr(left))
-          required=['new Set(S.batch_b)','V8.3.255 V1 SEALED BATCH B FIRST RUN','V8_3_255_BATCH_B_RESULT_V1.json','V8_3_255_BATCH_B_STATUS_V1.json','V8_3_255_BATCH_B_RESERVATION_V1.json','V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json','V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json','run-v83255-batch-b.cjs',"a_result['passed']==30",'execution_ordinal','executed_at_utc','previous_record_sha256']
-          miss=[x for x in required if x not in src]
-          if miss: raise SystemExit('missing B literals '+repr(miss))
-          compile(src,'validation/v83255-batch-b-materialized.py','exec')
-          p=V/'v83255-batch-b-materialized.py';p.write_text(src)
-          rec={'candidate':'V8.3.255','phase':'batch-b-provenance-runner-materialization','source_runner_sha256':hashlib.sha256(A.read_bytes()).hexdigest(),'batch_b_runner_sha256':hashlib.sha256(src.encode()).hexdigest(),'requires_batch_a_30_of_30':True,'requires_valid_a_ledger':True,'semantic_authority':SEM,'validated_development_head_sha':DEV,'evidence_schema_authority':'V8.3.254-EVIDENCE-PROVENANCE-V1','expected_gold_changed':False,'semantic_change':False,'v254_sealed_rerun':False,'batch_b_executed':False,'step_111_authorized':True,'production_authorized':False,'pass':True}
-          (O/'V8_3_255_BATCH_B_RUNNER_MATERIALIZATION_V1.json').write_text(json.dumps(rec,indent=2)+'\n');print(json.dumps(rec))
+          assert astat['conclusion']=='success' and astat['batch_a_passed']==30 and astat['batch_a_failed']==0 and ares['passed']==30 and ares['failed']==0 and len(aprov['records'])==30
+          assert pf['pass'] and pf['validated_development_head_sha']==DEV and pf['semantic_authority']==SEM and pf['step_111_authorized'] is True
+          assert a['preseal_pass'] is True and m['pass'] and m['batch_b_runner_sha256']==B_SHA and m['requires_valid_a_ledger'] is True
+          runner=V/'v83255-batch-b-materialized.py';assert fsha(runner)==B_SHA;text=runner.read_text()
+          required=['new Set(S.batch_b)','V8.3.255 V1 SEALED BATCH B FIRST RUN','V8_3_255_BATCH_B_RESERVATION_V1.json','V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json','V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json',"prov.new_ledger('V8.3.255','B'", "'batch':'B'",'execution_ordinal','executed_at_utc','previous_record_sha256','QCSemanticCoreV124.analyze',DEV]
+          assert all(x in text for x in required)
+          forbidden=['new Set(S.batch_a)','V8.3.255 V1 SEALED BATCH A FIRST RUN',"prov.new_ledger('V8.3.255','A'", "'batch':'A'",'QCSemanticCoreV125','QCEvidenceExtractorV5AZ']
+          assert not [x for x in forbidden if x in text]
+          absence_names=['V8_3_255_BATCH_B_ATTEMPT_MARKER.json','V8_3_255_BATCH_B_RESERVATION_V1.json','V8_3_255_BATCH_B_RESULT_V1.json','V8_3_255_BATCH_B_STATUS_V1.json','V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json','V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json']
+          absence={n:not (O/n).exists() for n in absence_names};assert all(absence.values())
+          out={'candidate':'V8.3.255','phase':'hardened-batch-b-evidence-preflight','validated_development_head_sha':DEV,'semantic_authority':SEM,'batch_a_first_run_verified':True,'batch_a_30_of_30':True,'batch_a_ledger_verified':True,'batch_a_provenance_count':30,'batch_b_runner_sha256':B_SHA,'batch_b_runner_hash_verified':True,'batch_b_provenance_contract_verified':True,'batch_b_pre_execution_absence':absence,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_executed':False,'step_111_authorized':True,'production_authorized':False,'pass':True}
+          (O/'V8_3_255_BATCH_B_STATIC_PREFLIGHT_V1.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out))
           PY
           rc=$?
           set -e
-          cat /tmp/v255-b-mat.log
+          cat /tmp/v255-b-preflight.log
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze B runner materialization evidence
+      - name: Freeze Batch B preflight evidence
         if: always()
-        shell: bash
         run: |
           set -euo pipefail
           RC='${{ steps.run.outputs.rc }}' python - <<'PY'
           import json,os,pathlib
-          o=pathlib.Path('validation/v83255-v1-sealed');log=pathlib.Path('/tmp/v255-b-mat.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-b-mat.log').exists() else ''
-          (o/'V8_3_255_BATCH_B_RUNNER_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.255','phase':'batch-b-provenance-runner-materialization-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'batch_a_rerun':False,'batch_b_executed':False,'semantic_change':False,'expected_gold_changed':False},indent=2)+'\n')
+          o=pathlib.Path('validation/v83255-v1-sealed');log=pathlib.Path('/tmp/v255-b-preflight.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-b-preflight.log').exists() else ''
+          (o/'V8_3_255_BATCH_B_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.255','phase':'batch-b-preflight-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'batch_a_rerun':False,'batch_b_executed':False,'semantic_change':False,'expected_gold_changed':False},indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83255-v1-sealed/V8_3_255_BATCH_B_RUNNER_DIAGNOSTIC.json
-          test ! -f validation/v83255-batch-b-materialized.py || git add validation/v83255-batch-b-materialized.py
-          test ! -f validation/v83255-v1-sealed/V8_3_255_BATCH_B_RUNNER_MATERIALIZATION_V1.json || git add validation/v83255-v1-sealed/V8_3_255_BATCH_B_RUNNER_MATERIALIZATION_V1.json
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.255 Batch B provenance runner materialization'
+          git add validation/v83255-v1-sealed/V8_3_255_BATCH_B_PREFLIGHT_DIAGNOSTIC.json
+          test ! -f validation/v83255-v1-sealed/V8_3_255_BATCH_B_STATIC_PREFLIGHT_V1.json || git add validation/v83255-v1-sealed/V8_3_255_BATCH_B_STATIC_PREFLIGHT_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.255 hardened Batch B preflight'
           git push origin HEAD:v83255-v1-sealed-validation
-      - name: Enforce B runner materialization
+      - name: Enforce Batch B preflight
         run: test '${{ steps.run.outputs.rc }}' = '0'
