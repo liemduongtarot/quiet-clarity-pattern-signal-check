@@ -1,5 +1,5 @@
-name: V8.3.251 V122 DEVELOPMENT regression
-# trigger-v251-v122-development-1
+name: V8.3.251 construction-only PRESEAL
+# trigger-v251-preseal-1
 on:
   push:
     branches: [main]
@@ -13,67 +13,46 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v83251-v1-validation
+          ref: v83251-v1-sealed-validation
           fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-      - name: Persist DEVELOPMENT regression start marker
+      - name: Persist PRESEAL start marker
         shell: bash
         run: |
           set -euo pipefail
-          printf '{"candidate":"V8.3.251","phase":"v122-development-regression-start","run_id":"%s","semantic_runtime_executed":false,"sealed_validation_executed":false,"expected_gold_changed":false}\n' "$GITHUB_RUN_ID" > validation/V8_3_251_V122_REGRESSION_START.json
+          mkdir -p validation/v83251-v1-sealed
+          printf '{"candidate":"V8.3.251","phase":"preseal-start","run_id":"%s","semantic_runtime_executed":false,"semantic_authority_loaded":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83251-v1-sealed/V8_3_251_PRESEAL_START.json
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/V8_3_251_V122_REGRESSION_START.json
-          git commit -m 'Record V8.3.251 V122 DEVELOPMENT regression start'
-          git push origin HEAD:v83251-v1-validation
-      - name: Materialize V250 frozen A/B carriers and run full regression
+          git add validation/v83251-v1-sealed/V8_3_251_PRESEAL_START.json
+          git commit -m 'Record V8.3.251 PRESEAL start'
+          git push origin HEAD:v83251-v1-sealed-validation
+      - name: Run construction-only PRESEAL
         id: run
         shell: bash
         run: |
           set +e
           git fetch origin v83250-v1-sealed-validation:refs/remotes/origin/v83250-v1-sealed-validation
-          python - <<'PY'
-          import json,subprocess,pathlib
-          for batch,passed,failed in [('A',30,0),('B',27,3)]:
-            raw=subprocess.check_output(['git','show',f'origin/v83250-v1-sealed-validation:validation/v83250-v1-sealed/V8_3_250_BATCH_{batch}_RESULT_V1.json'],text=True)
-            r=json.loads(raw);assert r['total']==30 and r['passed']==passed and r['failed']==failed
-            out={'candidate':'V8.3.250','batch':batch,'source':'frozen sealed first run','source_run_id':r['run_id'],'source_passed':passed,'source_failed':failed,'results':[]}
-            for x in r['results']:
-              out['results'].append({'case_id':x['case_id'],'category':x['category'],'language':x['language'],'domain':x['domain'],'surface':x['surface'],'expected':x['expected'],'source_first_run_pass':bool(x['pass'])})
-            pathlib.Path(f'validation/V8_3_250_{batch}_FROZEN_CARRIER.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
-          PY
-          python validation/v83251-v122-regression-orchestrator.py > /tmp/v251-legacy.log 2>&1
-          rc1=$?
-          if [ "$rc1" = 0 ]; then python validation/v83251-v122-v250-b-regression.py > /tmp/v251-b.log 2>&1; rc2=$?; else rc2=1; fi
+          python validation/v83251-v1-sealed/v83251-preseal-freeze.py > /tmp/v251-preseal.log 2>&1
+          rc=$?
           set -e
-          cat /tmp/v251-legacy.log
-          test ! -f /tmp/v251-b.log || cat /tmp/v251-b.log
-          RC1="$rc1" RC2="$rc2" python - <<'PY'
+          cat /tmp/v251-preseal.log
+          RC="$rc" python - <<'PY'
           import json,os,pathlib
-          l=pathlib.Path('/tmp/v251-legacy.log').read_text(errors='replace');b=pathlib.Path('/tmp/v251-b.log').read_text(errors='replace') if pathlib.Path('/tmp/v251-b.log').exists() else ''
-          ok=os.environ['RC1']=='0' and os.environ['RC2']=='0'
-          d={'candidate':'V8.3.251','phase':'v122-development-regression-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'legacy_rc':int(os.environ['RC1']),'v250_b_rc':int(os.environ['RC2']),'outcome':'success' if ok else 'failure','legacy_log_tail':l[-50000:],'b_log_tail':b[-30000:],'sealed_validation_executed':False,'expected_gold_changed':False,'step_111_authorized':False,'production_authorized':False}
-          pathlib.Path('validation/V8_3_251_V122_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
-          if ok:
-            legacy=json.loads(pathlib.Path('validation/V8_3_251_V122_LEGACY_REGRESSION_RECEIPT.json').read_text());br=json.loads(pathlib.Path('validation/V8_3_251_V250_B_REGRESSION_RECEIPT.json').read_text())
-            assert legacy['conclusion']=='success' and legacy['immutable_regression_passed']==1470 and br['v250_batch_b_previous_failures_repaired']==3 and br['v250_batch_b_previous_passes_preserved']==27
-            final={'candidate':'V8.3.251','phase':'v122-bounded-regression','semantic_authority':'QCEvidenceExtractorV5AW -> QCSemanticCoreV122','immutable_regression_total':legacy['immutable_regression_total'],'immutable_regression_passed':legacy['immutable_regression_passed'],'v250_batch_a_passed':30,'v250_batch_b_passed':30,'v250_batch_b_previous_failures_repaired':3,'v250_batch_b_previous_passes_preserved':27,'expected_gold_changed':False,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False,'conclusion':'success'}
-            pathlib.Path('validation/V8_3_251_V122_REGRESSION_RECEIPT.json').write_text(json.dumps(final,indent=2)+'\n')
+          text=pathlib.Path('/tmp/v251-preseal.log').read_text(errors='replace')
+          o=pathlib.Path('validation/v83251-v1-sealed')
+          (o/'V8_3_251_PRESEAL_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.251','phase':'preseal-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ['RC']),'log_tail':text[-30000:],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'expected_gold_changed':False},indent=2)+'\n')
           PY
-          echo "rc=$(( rc1 || rc2 ))" >> "$GITHUB_OUTPUT"
-      - name: Freeze V251 DEVELOPMENT regression evidence
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+      - name: Freeze PRESEAL evidence
         if: always()
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/V8_3_250_A_FROZEN_CARRIER.json validation/V8_3_250_B_FROZEN_CARRIER.json validation/V8_3_251_V122_REGRESSION_START.json validation/V8_3_251_V122_REGRESSION_DIAGNOSTIC.json
-          for f in validation/V8_3_251_V122_LEGACY_REGRESSION_RECEIPT.json validation/V8_3_251_V250_B_REGRESSION_RECEIPT.json validation/V8_3_251_V250_B_REGRESSION_RESULTS.json validation/V8_3_251_V122_REGRESSION_RECEIPT.json; do test ! -f "$f" || git add "$f"; done
-          for f in validation/V8_3_251_V*_A_REGRESSION_RESULTS.json; do test ! -f "$f" || git add "$f"; done
-          git diff --cached --quiet || git commit -m 'Record V8.3.251 V122 DEVELOPMENT regression evidence'
-          git push origin HEAD:v83251-v1-validation
-      - name: Enforce DEVELOPMENT regression outcome
+          git add validation/v83251-v1-sealed/V8_3_251_PRESEAL_START.json validation/v83251-v1-sealed/V8_3_251_PRESEAL_DIAGNOSTIC.json
+          for f in validation/v83251-v1-sealed/V8_3_251_PRESEAL_RUN_RECEIPT.json validation/v83251-v1-sealed/V8_3_251_PRESEAL_CANDIDATE_BANK_V1.json validation/v83251-v1-sealed/V8_3_251_SEALED_SELECTION_V1.json validation/v83251-v1-sealed/V8_3_251_SEALED_FIXTURE_V1.json validation/v83251-v1-sealed/V8_3_251_INDEPENDENT_GOLD_V1.json validation/v83251-v1-sealed/V8_3_251_SEALED_MEMBERSHIP_V1.json validation/v83251-v1-sealed/V8_3_251_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83251-v1-sealed/V8_3_251_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.251 PRESEAL evidence'
+          git push origin HEAD:v83251-v1-sealed-validation
+      - name: Enforce PRESEAL outcome
         run: test '${{ steps.run.outputs.rc }}' = '0'
