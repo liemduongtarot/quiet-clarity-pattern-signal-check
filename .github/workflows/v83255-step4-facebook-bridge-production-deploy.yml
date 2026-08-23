@@ -1,0 +1,97 @@
+name: V8.3.255 Step 4 Facebook Bridge Production Deploy
+on:
+  push:
+    branches: [v83255-step4-facebook-bridge-deployment]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  deploy-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Materialize exact candidate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p src original patched evidence
+          gh run download 32671592504 -n PSC_V8_3_255_EXACT_DEPLOYABLE_DIST -D src
+          unzip -q src/PSC_V8_3_255_EXACT_DEPLOYABLE_DIST.zip -d original
+          cp -a original/. patched/
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('patched/client/candidate.html'); s=p.read_text(encoding='utf-8')
+          old='<div class="note consult-note"><b>NẾU BẠN MUỐN ĐI SÂU HƠN</b><p>Nếu bạn muốn Quiet Clarity xem xét tình huống này sâu hơn, hãy sao chép kết quả Pattern Signal Check và gửi lại khi liên hệ tư vấn. Không có kết quả nào được tự động gửi sang Quiet Clarity.</p></div>'
+          new='<div class="note consult-note"><b>NẾU BẠN MUỐN ĐI SÂU HƠN</b><p>Nếu bạn muốn Quiet Clarity xem xét tình huống này sâu hơn, hãy sao chép kết quả và gửi lại qua Facebook Page.</p><a class="consult-contact" id="contactFacebook" href="https://www.facebook.com/quietclarity.uklondon" target="_blank" rel="noopener noreferrer">LIÊN HỆ QUIET CLARITY TRÊN FACEBOOK</a><p class="privacy-note">Pattern Signal Check không tự động gửi nội dung của bạn sang Quiet Clarity.</p></div>'
+          oldcss='.consult-note{margin-top:22px}.privacy-note{color:#cdbba3;font-size:14px}'
+          newcss='.consult-note{margin-top:22px}.consult-contact{display:inline-block;margin-top:10px;padding:9px 13px;border:1px solid #765a38;border-radius:7px;background:transparent;color:#eee1d0;font-family:"Inter",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;font-weight:700;text-decoration:none}.privacy-note{color:#cdbba3;font-size:14px;margin-top:10px}'
+          assert s.count(old)==1 and s.count(oldcss)==1
+          p.write_text(s.replace(old,new).replace(oldcss,newcss),encoding='utf-8')
+          PY
+      - name: Verify exact scope and authority
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          O=Path('original'); P=Path('patched')
+          sha=lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          o={str(x.relative_to(O)):sha(x) for x in O.rglob('*') if x.is_file()}; n={str(x.relative_to(P)):sha(x) for x in P.rglob('*') if x.is_file()}
+          changed=sorted(k for k in o if o[k]!=n.get(k)); h=(P/'client/candidate.html').read_text(encoding='utf-8')
+          out={'changed_files':changed,'scope_pass':changed==['client/candidate.html'],'cta_exact':'href="https://www.facebook.com/quietclarity.uklondon" target="_blank" rel="noopener noreferrer"' in h,'privacy_exact':'Pattern Signal Check không tự động gửi nội dung của bạn sang Quiet Clarity.' in h,'v124_sha':sha(P/'client/psc-v83253-v252-v124-residual.js'),'v5ay_sha':sha(P/'client/qc-evidence-extractor-v5ay-v253-v252-residual.js'),'expected_gold_changed':False,'sealed_batch_a_rerun':False,'sealed_batch_b_rerun':False}
+          out['v124_identity']=out['v124_sha']=='50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96'; out['v5ay_identity']=out['v5ay_sha']=='26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a'; out['pass']=all([out['scope_pass'],out['cta_exact'],out['privacy_exact'],out['v124_identity'],out['v5ay_identity']])
+          Path('evidence/V8_3_255_STEP4_PRODUCTION_PREDEPLOY_VERIFY_V1.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          if not out['pass']: raise SystemExit(1)
+          PY
+      - name: Deploy production
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$VERCEL_TOKEN"
+          npm i -g vercel@latest >/dev/null 2>&1
+          mkdir -p deploy/.vercel
+          cp -a patched/client/. deploy/
+          printf '{"projectId":"prj_plL2tv0BOESnC1dfzcwiXIV1WgSM","orgId":"team_I0n7MLuicWTSeEQ3ANBAfmz8"}\n' > deploy/.vercel/project.json
+          printf '{"rewrites":[{"source":"/","destination":"/candidate.html"}]}' > deploy/vercel.json
+          cd deploy
+          DEPLOY_URL=$(vercel deploy --prod --yes --token "$VERCEL_TOKEN" | tail -n1)
+          echo "DEPLOY_URL=$DEPLOY_URL" >> "$GITHUB_ENV"
+          echo "$DEPLOY_URL" > ../evidence/deployment_url.txt
+      - name: Verify canonical live
+        run: |
+          python - <<'PY'
+          import urllib.request,hashlib,json,time,os
+          from pathlib import Path
+          c='https://quiet-clarity-pattern-signal-check.vercel.app'
+          def get(u):
+            with urllib.request.urlopen(urllib.request.Request(u,headers={'User-Agent':'PSC-Step4-Verify'}),timeout=30) as r:return r.status,r.read()
+          for _ in range(12):
+            try:
+              st,b=get(c+'/'); t=b.decode('utf-8','replace')
+              if st==200 and 'LIÊN HỆ QUIET CLARITY TRÊN FACEBOOK' in t: break
+            except Exception: pass
+            time.sleep(5)
+          else: raise SystemExit('canonical not updated')
+          _,b124=get(c+'/psc-v83253-v252-v124-residual.js'); _,b5=get(c+'/qc-evidence-extractor-v5ay-v253-v252-residual.js')
+          out={'canonical_url':c,'deployment_url':os.environ.get('DEPLOY_URL',''),'root_http':st,'facebook_cta_live':'LIÊN HỆ QUIET CLARITY TRÊN FACEBOOK' in t,'facebook_url_live':'https://www.facebook.com/quietclarity.uklondon' in t,'privacy_live':'Pattern Signal Check không tự động gửi nội dung của bạn sang Quiet Clarity.' in t,'v124_live_sha256':hashlib.sha256(b124).hexdigest(),'v5ay_live_sha256':hashlib.sha256(b5).hexdigest(),'expected_gold_changed':False,'sealed_batch_a_rerun':False,'sealed_batch_b_rerun':False}
+          out['v124_identity']=out['v124_live_sha256']=='50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96';out['v5ay_identity']=out['v5ay_live_sha256']=='26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a';out['pass']=all([out['root_http']==200,out['facebook_cta_live'],out['facebook_url_live'],out['privacy_live'],out['v124_identity'],out['v5ay_identity']])
+          Path('evidence/V8_3_255_STEP4_LIVE_PRODUCTION_VERIFICATION_V1.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          if not out['pass']: raise SystemExit(1)
+          PY
+      - name: Freeze deployment receipt
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          out={'candidate':'V8.3.255 Step 4 Facebook Bridge Repair','source_frozen_branch':'v83255-step4-facebook-bridge-frozen','deployment_branch':'v83255-step4-facebook-bridge-deployment','owner_authorized':True,'production_deployed':True,'deployment_url':os.environ.get('DEPLOY_URL',''),'canonical_url':'https://quiet-clarity-pattern-signal-check.vercel.app','semantic_authority':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124','expected_gold_changed':False,'sealed_batch_a_rerun':False,'sealed_batch_b_rerun':False,'verdict':'PASS — STEP 4 FACEBOOK BRIDGE DEPLOYED AND LIVE VERIFIED','pass':True}
+          Path('evidence/V8_3_255_STEP4_PRODUCTION_DEPLOYMENT_PASS_V1.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          mkdir -p validation/v83255-step4-facebook-bridge-deployment
+          cp evidence/* validation/v83255-step4-facebook-bridge-deployment/
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83255-step4-facebook-bridge-deployment
+          git commit -m "Freeze V8.3.255 Step 4 production deployment PASS"
+          git push origin HEAD:v83255-step4-facebook-bridge-deployment
