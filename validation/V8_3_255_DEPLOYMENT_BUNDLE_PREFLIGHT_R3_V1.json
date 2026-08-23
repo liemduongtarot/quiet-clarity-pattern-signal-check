@@ -1,0 +1,467 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "deployment-bundle-preflight-r3",
+  "run_id": "32671460993",
+  "source_lock_commit": "f96cecd6bac63d5cfc868a42bfad80fc236bb7ef",
+  "base_archive_sha256": "c2b57a436f744627b5600b97bdbc43dce70f748e66f2d0986c361f20683a7f5f",
+  "public_runtime_sha256": "886936b9e771c55474158e27c5129ccd06637cee690aabbdf15bb08ad68926ac",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "semantic_reference_paths": {
+    "QCSemanticCoreV124": [
+      "validation/psc-v83253-v252-v124-residual.js",
+      "validation/V8_3_254_DEVELOPMENT_AUTHORITY_V1.json",
+      "validation/v83255-runner-recovery-regression.py",
+      "validation/V8_3_253_V252_A_REGRESSION_RECEIPT.json",
+      "validation/V8_3_255_RUNNER_RECOVERY_REGRESSION_RECEIPT_V1.json",
+      "validation/v83255-batch-b-materialized.py",
+      "validation/V8_3_254_EVIDENCE_PROVENANCE_CONTRACT_V1.json",
+      "validation/v83253-v124-legacy-regression.py",
+      "validation/V8_3_255_RUNNER_RECOVERY_DIAGNOSTIC.json",
+      "validation/v83254-development-evidence-regression.py",
+      "validation/V8_3_253_V124_REGRESSION_RECEIPT.json",
+      "validation/V8_3_253_V124_REGRESSION_DIAGNOSTIC.json",
+      "validation/V8_3_253_V124_REGRESSION_R2_DIAGNOSTIC.json",
+      "validation/v83254-evidence-provenance-selftest.py",
+      "validation/V8_3_254_DEVELOPMENT_EVIDENCE_DIAGNOSTIC.json",
+      "validation/v83255-batch-a-self-contained.py",
+      "validation/v83255-runner-evidence-gate.py",
+      "validation/V8_3_254_DEVELOPMENT_EVIDENCE_REGRESSION_RECEIPT_V1.json",
+      "validation/V8_3_253_DEVELOPMENT_AUTHORITY_V1.json",
+      "validation/V8_3_255_DEVELOPMENT_AUTHORITY_V1.json",
+      "validation/v83253-v124-v252-a-regression.py",
+      "validation/V8_3_253_V124_LEGACY_REGRESSION_RECEIPT.json",
+      "validation/v83255-runner-evidence-gate-selftest.py",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_RUNNER_DIAGNOSTIC.json",
+      "validation/v83255-v1-sealed/V8_3_255_POST_B_INTEGRITY_AUDIT_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_STATIC_PREFLIGHT_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_PRESEAL_RUN_RECEIPT.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_PREFLIGHT_DIAGNOSTIC.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_A_RESERVATION_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_RUNTIME_CONFIG_SCHEMA_MANIFEST_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_SEALED_AUTHORITY_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_RUNNER_MATERIALIZATION_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_RUNNER_MATERIALIZATION_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_PRODUCTION_LOCK_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_TRANSPORT_VERIFICATION_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_SEALED_FIRST_RUN_MARKER.json",
+      "validation/v83255-v1-sealed/V8_3_255_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json",
+      "validation/v83255-v1-sealed/v83255-preseal-freeze.py",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_ATTEMPT_MARKER.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_STATUS_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_FINAL_POST_STEP_111_CHECKPOINT_MANIFEST_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_PRESEAL_R2_DIAGNOSTIC.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_EVIDENCE_PROVENANCE_CONTRACT_COPY_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_PRE_STEP_111_ARCHIVE_MANIFEST_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_STEP_111_VERDICT_R2.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_RESERVATION_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_STEP_111_R2_DIAGNOSTIC.json",
+      "validation/v83255-v1-sealed/V8_3_255_STATIC_SEALED_PREFLIGHT_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_A_RESULT_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_A_STATUS_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_PRE_STEP_111_ARCHIVE_MANIFEST_R2.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_RESULT_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_A_ATTEMPT_MARKER.json"
+    ],
+    "QCEvidenceExtractorV5AY": [
+      "validation/psc-v83253-v252-v124-residual.js",
+      "validation/V8_3_254_DEVELOPMENT_AUTHORITY_V1.json",
+      "validation/v83255-runner-recovery-regression.py",
+      "validation/V8_3_253_V252_A_REGRESSION_RECEIPT.json",
+      "validation/V8_3_255_RUNNER_RECOVERY_REGRESSION_RECEIPT_V1.json",
+      "validation/v83255-batch-b-materialized.py",
+      "validation/V8_3_254_EVIDENCE_PROVENANCE_CONTRACT_V1.json",
+      "validation/v83253-v124-legacy-regression.py",
+      "validation/V8_3_255_RUNNER_RECOVERY_DIAGNOSTIC.json",
+      "validation/v83254-development-evidence-regression.py",
+      "validation/V8_3_253_V124_REGRESSION_RECEIPT.json",
+      "validation/V8_3_253_V124_REGRESSION_DIAGNOSTIC.json",
+      "validation/V8_3_253_V124_REGRESSION_R2_DIAGNOSTIC.json",
+      "validation/v83254-evidence-provenance-selftest.py",
+      "validation/V8_3_254_DEVELOPMENT_EVIDENCE_DIAGNOSTIC.json",
+      "validation/v83255-batch-a-self-contained.py",
+      "validation/v83255-runner-evidence-gate.py",
+      "validation/V8_3_254_DEVELOPMENT_EVIDENCE_REGRESSION_RECEIPT_V1.json",
+      "validation/qc-evidence-extractor-v5ay-v253-v252-residual.js",
+      "validation/V8_3_253_DEVELOPMENT_AUTHORITY_V1.json",
+      "validation/V8_3_255_DEVELOPMENT_AUTHORITY_V1.json",
+      "validation/v83253-v124-v252-a-regression.py",
+      "validation/V8_3_253_V124_LEGACY_REGRESSION_RECEIPT.json",
+      "validation/v83255-runner-evidence-gate-selftest.py",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_RUNNER_DIAGNOSTIC.json",
+      "validation/v83255-v1-sealed/V8_3_255_POST_B_INTEGRITY_AUDIT_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_STATIC_PREFLIGHT_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_PRESEAL_RUN_RECEIPT.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_PREFLIGHT_DIAGNOSTIC.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_A_RESERVATION_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_RUNTIME_CONFIG_SCHEMA_MANIFEST_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_SEALED_AUTHORITY_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_RUNNER_MATERIALIZATION_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_RUNNER_MATERIALIZATION_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_PRODUCTION_LOCK_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_TRANSPORT_VERIFICATION_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_SEALED_FIRST_RUN_MARKER.json",
+      "validation/v83255-v1-sealed/V8_3_255_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json",
+      "validation/v83255-v1-sealed/v83255-preseal-freeze.py",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_ATTEMPT_MARKER.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_STATUS_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_FINAL_POST_STEP_111_CHECKPOINT_MANIFEST_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_PRESEAL_R2_DIAGNOSTIC.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_EVIDENCE_PROVENANCE_CONTRACT_COPY_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_PRE_STEP_111_ARCHIVE_MANIFEST_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_STEP_111_VERDICT_R2.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_RESERVATION_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_STEP_111_R2_DIAGNOSTIC.json",
+      "validation/v83255-v1-sealed/V8_3_255_STATIC_SEALED_PREFLIGHT_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_A_RESULT_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_A_STATUS_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_PRE_STEP_111_ARCHIVE_MANIFEST_R2.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_B_RESULT_V1.json",
+      "validation/v83255-v1-sealed/V8_3_255_BATCH_A_ATTEMPT_MARKER.json"
+    ],
+    "v83253-v252-v124-residual": [
+      "validation/v83255-batch-b-materialized.py",
+      "validation/v83253-v124-legacy-regression.py",
+      "validation/v83255-batch-a-self-contained.py",
+      "validation/v83253-v124-v252-a-regression.py",
+      "validation/v83255-v1-sealed/V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json"
+    ],
+    "qc-evidence-extractor-v5ay": [
+      "validation/v83255-batch-b-materialized.py",
+      "validation/v83253-v124-legacy-regression.py",
+      "validation/v83255-batch-a-self-contained.py",
+      "validation/v83253-v124-v252-a-regression.py",
+      "validation/v83255-v1-sealed/V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json"
+    ]
+  },
+  "dist_file_count": 58,
+  "dist_public_runtime_matches": [
+    {
+      "path": "dist/client/psc-v3.js",
+      "sha256": "886936b9e771c55474158e27c5129ccd06637cee690aabbdf15bb08ad68926ac",
+      "size": 32366
+    }
+  ],
+  "dist_html_files": [
+    {
+      "path": "dist/client/candidate.html",
+      "sha256": "bd5acd1789bcd92ab7c89aed9b7b2feca186c2f578ad1ebd667343d8603f91c4",
+      "size": 1251612
+    },
+    {
+      "path": "dist/client/mobile-qa.html",
+      "sha256": "7571cf8d936020d85e3d724e29cc0ee1c4e28a0a6601ca13be6440679b9784b1",
+      "size": 327
+    }
+  ],
+  "dist_manifest": [
+    {
+      "path": "dist/.openai/drizzle/meta/_journal.json",
+      "sha256": "90cb374e093894d0efce6f1830d873a42aadd8ba49d2f024495e5cb2e1c8c303",
+      "size": 61
+    },
+    {
+      "path": "dist/.openai/hosting.json",
+      "sha256": "e5bf099446e0be974d0127fe0711a71c2e0970827f7a4d968b5ce2b35da60fad",
+      "size": 91
+    },
+    {
+      "path": "dist/client/.assetsignore",
+      "sha256": "4f83140d5f4293ab55bd1207327e995c83258f1e7d3145b1b5d7a3d17fdfe0a7",
+      "size": 24
+    },
+    {
+      "path": "dist/client/.vite/manifest.json",
+      "sha256": "e410a35d2b450f6eb0c5b31ea1dcc7ff708de4757dd49cd6e35d18a473fba11a",
+      "size": 1094
+    },
+    {
+      "path": "dist/client/_headers",
+      "sha256": "9e55124bccd40b43dbc6e002daa777fa8f32a230420152910784ca65501d9e0f",
+      "size": 125
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-8ac0455e797f/geist-001175b1.woff2",
+      "sha256": "58a6b173d5ca1dec92166ea3c6cb1a84a4144556d10928ac14e8e6b40e4787bd",
+      "size": 16540
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-8ac0455e797f/geist-52306abf.woff2",
+      "sha256": "f689f638f29fff460a2d5749edb5d5c38d7bef0389f32032d871f23fc6ebb008",
+      "size": 7968
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-8ac0455e797f/geist-875ccdd4.woff2",
+      "sha256": "6129fc8571c3e0cb0a4c41f5160c974a843b055009dc4ad8858bd808e18a2d86",
+      "size": 14900
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-8ac0455e797f/geist-98bbbccb.woff2",
+      "sha256": "9b6f5ff45b278c744b5f379a2c4ecbaf858a842b8eaf82ac8d21b699ca16c608",
+      "size": 29288
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-8ac0455e797f/geist-ff2310f5.woff2",
+      "sha256": "b7a545bbb08256bd809f11cfe66d88da3e22d169ea4407737b1ef0ec1ed3d791",
+      "size": 7252
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-013b2f2f.woff2",
+      "sha256": "5f3d6ad60f29d6cb708414ec6887163d63bf197377ef5417d2483ff31ace6c3b",
+      "size": 23108
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-0638449e.woff2",
+      "sha256": "d67e4a94ba498635f764ddca7d1ec4271f5642f032eb24b426764480f66f8497",
+      "size": 5892
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-44745446.woff2",
+      "sha256": "745994b5cd950ec201b66526375f057d540847cccfc70f4f24f5f571d26d3923",
+      "size": 14712
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-44e03052.woff2",
+      "sha256": "75b3bedbebc35f347c0ae3b416aa871941555357e7b0f83767eb5987875589ed",
+      "size": 12872
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-971fb274.woff2",
+      "sha256": "16e1d48b6dd29eb240aec5db36184eb182933c082cd43de7f35af686d58087d2",
+      "size": 7728
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-f6b33328.woff2",
+      "sha256": "e27f657e38d52887baa3b6b2f812bef93dfdd356f0810e40edd4ee284cc7e9f6",
+      "size": 6204
+    },
+    {
+      "path": "dist/client/assets/framework-XU8gKkFC.js",
+      "sha256": "b1aff339554868991407e12903b13fd8fcbc0ba5e4fe3d0872ab2fa0394765db",
+      "size": 189752
+    },
+    {
+      "path": "dist/client/assets/index-BgQ1tAKL.css",
+      "sha256": "51d6c24402655424e10a624e951dd18106859a950a0f24e216d59a45c0a31c98",
+      "size": 10557
+    },
+    {
+      "path": "dist/client/assets/index-CtVXNBql.js",
+      "sha256": "c4c14424b3008113f1e301a6d9ec2467aff23e7d0e22180a38127ca7469310c0",
+      "size": 80551
+    },
+    {
+      "path": "dist/client/assets/layout-segment-context-BRmgGGHe.js",
+      "sha256": "e616874446b7ccb2249da90c03995f539f43a5e5c6d30b7e9aa35cdc6ac58116",
+      "size": 288
+    },
+    {
+      "path": "dist/client/assets/rolldown-runtime-S-ySWqyJ.js",
+      "sha256": "5db5ba82eef00d1dee7e86e663098c9427d01183a88d357437daff295aec3e75",
+      "size": 694
+    },
+    {
+      "path": "dist/client/candidate.html",
+      "sha256": "bd5acd1789bcd92ab7c89aed9b7b2feca186c2f578ad1ebd667343d8603f91c4",
+      "size": 1251612
+    },
+    {
+      "path": "dist/client/favicon.svg",
+      "sha256": "e6d2e59b7b5bbb0342e0fb496dfc262decbfe4426bbb7b047aec8d467d1dc6f7",
+      "size": 712
+    },
+    {
+      "path": "dist/client/file.svg",
+      "sha256": "1e0ae4d1a1ddfa36752988647b731e4abf150c414d069ec83c96fb0aaeff0307",
+      "size": 392
+    },
+    {
+      "path": "dist/client/globe.svg",
+      "sha256": "d051a8c47936990a9085693d307bb7cea1bc1b6d7ed956bcbaacf674f4ec96b9",
+      "size": 1036
+    },
+    {
+      "path": "dist/client/mobile-qa.html",
+      "sha256": "7571cf8d936020d85e3d724e29cc0ee1c4e28a0a6601ca13be6440679b9784b1",
+      "size": 327
+    },
+    {
+      "path": "dist/client/psc-v3.js",
+      "sha256": "886936b9e771c55474158e27c5129ccd06637cee690aabbdf15bb08ad68926ac",
+      "size": 32366
+    },
+    {
+      "path": "dist/client/psc-v4.js",
+      "sha256": "43431840d1230c776dfec34c0fa6f2359ebd83f3beace273a2f686d7f78d602f",
+      "size": 25197
+    },
+    {
+      "path": "dist/client/psc-v83121-r1-reconstructed.js",
+      "sha256": "335766aba72677e20c444b9490a0e1ab98721f8ac579bdee51f990ac6368ab70",
+      "size": 16122
+    },
+    {
+      "path": "dist/client/psc-v83122-operator-aware.js",
+      "sha256": "bd762a7a229146bb8ca7d8fabb1c0eeb1ed1fc5775a7c5401562bf37a54c0c7a",
+      "size": 16937
+    },
+    {
+      "path": "dist/client/psc-v83123-family-preservation.js",
+      "sha256": "992f9d5b616f16b45c8c2af30548730490ce7e7665aa29c99d35c8100b6552d0",
+      "size": 13132
+    },
+    {
+      "path": "dist/client/psc-v83124-operator-context.js",
+      "sha256": "5ed75c3259b03ddfed7ce5e6887fb4854d6749b5a5074d5780afd7040f1ccbda",
+      "size": 11674
+    },
+    {
+      "path": "dist/client/psc-v83125-semantic-routing.js",
+      "sha256": "67a11416e052142e4464f97e17fa0d5acb675c4521a016250e694c214a8efc1a",
+      "size": 13055
+    },
+    {
+      "path": "dist/client/psc-v83126-public-route-canonicalization.js",
+      "sha256": "6e1da8ca491cee49fb8c5a12cc11aaaa7f8d13634fe362885d556d0cece2a115",
+      "size": 5315
+    },
+    {
+      "path": "dist/client/psc-v83127-review-intent-authority.js",
+      "sha256": "d5d16025ecdf7c15c613075fd146ae8684ff5a10107367b9a7cec0ef1496d572",
+      "size": 10742
+    },
+    {
+      "path": "dist/client/psc-v83129-canonical-shadow.js",
+      "sha256": "457d92bdb4cc0ca83fd0450c6cacc93f5748144bcabe388b78cd3c53b29de60a",
+      "size": 29605
+    },
+    {
+      "path": "dist/client/psc-v83130-representation-coverage.js",
+      "sha256": "85fb1242dfef529d117ebee0bbe74d17e7060c98b3bfbc940ed62ba84ac097a0",
+      "size": 37979
+    },
+    {
+      "path": "dist/client/psc-v83131-proposition-consolidation.js",
+      "sha256": "94712ff1b0f52eaf731a7e74b41bf30420ff9a62942f45c51f7830871f609eef",
+      "size": 42640
+    },
+    {
+      "path": "dist/client/psc-v83132-relation-graph.js",
+      "sha256": "76d03dd8e911a38811f2e55774d766daa5046902629b1787bee8ad3073e06bf5",
+      "size": 50129
+    },
+    {
+      "path": "dist/client/psc-v83133-canonical-role-binding.js",
+      "sha256": "a87bfd6fe4f8dbe30fea9daa70c70f97890e1cb53522d1f60f1cd013b06adf14",
+      "size": 11088
+    },
+    {
+      "path": "dist/client/psc-v83135-scoped-operator.js",
+      "sha256": "8d432d72016c86718cef18cdc07141ad74d2e6656e97ca79172b4c9fc34a0ab7",
+      "size": 11935
+    },
+    {
+      "path": "dist/client/psc-v83137-ui-gate-authority.js",
+      "sha256": "bccf07c2c3f7ff7e59d13096335754d50fbfa6871f1af6e75ff7014601a711b1",
+      "size": 2031
+    },
+    {
+      "path": "dist/client/psc-v83138-semantic-convergence.js",
+      "sha256": "48e89bef4b3deff40d8ac7d9cd5a282c9ae3bc6610e6186544ae51a28a5f8f82",
+      "size": 9078
+    },
+    {
+      "path": "dist/client/psc-v83139-semantic-convergence.js",
+      "sha256": "b2794b6c47252c4c99d52d7a54fd1188f1d2c894772ebb5106f7c817e3ce9d69",
+      "size": 10742
+    },
+    {
+      "path": "dist/client/window.svg",
+      "sha256": "decf1cf7bb22b5c99c4857cfcd5718ce5465c4454166317589c83fc73df74b66",
+      "size": 386
+    },
+    {
+      "path": "dist/server/.vite/manifest.json",
+      "sha256": "2d4032b01b19be509a71d72395587ffac973adb9cb2ab3f8f33d517851739359",
+      "size": 282
+    },
+    {
+      "path": "dist/server/__vite_rsc_assets_manifest.js",
+      "sha256": "17f849095186c47a5619f8a0b9cce5e8e3dc57878ae006ef9bd71b4c9c46c81b",
+      "size": 884
+    },
+    {
+      "path": "dist/server/assets/index-BgQ1tAKL.css",
+      "sha256": "51d6c24402655424e10a624e951dd18106859a950a0f24e216d59a45c0a31c98",
+      "size": 10557
+    },
+    {
+      "path": "dist/server/image-config.json",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "size": 2
+    },
+    {
+      "path": "dist/server/index.js",
+      "sha256": "b1ce1fedc816e730aa6d9d1d21f3505bde2b52db222e36f2e1b963ae9320a93a",
+      "size": 624634
+    },
+    {
+      "path": "dist/server/ssr/__vite_rsc_assets_manifest.js",
+      "sha256": "17f849095186c47a5619f8a0b9cce5e8e3dc57878ae006ef9bd71b4c9c46c81b",
+      "size": 884
+    },
+    {
+      "path": "dist/server/ssr/assets/error-boundary-CcKD-2-C.js",
+      "sha256": "df076a1e1f600a2a799ff299ae05cb31ef520f4b72eabfabb673953d4e8cb0ea",
+      "size": 8418
+    },
+    {
+      "path": "dist/server/ssr/assets/layout-segment-context-B3_CX8Ut.js",
+      "sha256": "9487f9672e71210b67829aecdbf4cfcaabbc01cceebadb27b45c620d02a3a9d9",
+      "size": 1741
+    },
+    {
+      "path": "dist/server/ssr/index.js",
+      "sha256": "6db3e8d18d4f90b20222f205ab2270f1a7a49cfa769a422a5139c537243480c3",
+      "size": 584079
+    },
+    {
+      "path": "dist/server/ssr/vinext-server.json",
+      "sha256": "cad7abece35f17372f4637eea21d232172d098cdd4ed8c8a26e170e98e30e5d0",
+      "size": 86
+    },
+    {
+      "path": "dist/server/vinext-externals.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "size": 3
+    },
+    {
+      "path": "dist/server/vinext-server.json",
+      "sha256": "cad7abece35f17372f4637eea21d232172d098cdd4ed8c8a26e170e98e30e5d0",
+      "size": 86
+    },
+    {
+      "path": "dist/server/wrangler.json",
+      "sha256": "183c5df8a3de8dd28e378da0a54cfb45bf63d82dc39f3bce989c08a4be1f0dbe",
+      "size": 1196
+    }
+  ],
+  "build_pass": true,
+  "artifact_validation_pass": true,
+  "permission_repair_only": true,
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "batch_a_rerun": false,
+  "batch_b_rerun": false,
+  "deployment_executed": false,
+  "pass": true
+}
