@@ -1,0 +1,38 @@
+{
+  "candidate": "V8.3.252",
+  "phase": "frozen-batch-a-semantic-autopsy",
+  "run_id": "32610952385",
+  "validated_development_head_sha": "59d1d564a2208ae4ce5899262ad094357a20402a",
+  "semantic_authority": "QCEvidenceExtractorV5AX -> QCSemanticCoreV123",
+  "batch_a_total": 30,
+  "batch_a_passed": 29,
+  "batch_a_failed": 1,
+  "batch_b_executed": false,
+  "v252_batch_a_rerun": false,
+  "semantic_runtime_executed": true,
+  "semantic_failure": true,
+  "failure_counts_by_category": {
+    "prediction": 1
+  },
+  "failure": {
+    "case_id": "V252-S04-09",
+    "category": "prediction",
+    "language": "VI",
+    "domain": "other",
+    "expected": {
+      "route": "input:prediction",
+      "families": [],
+      "sequence": false
+    },
+    "actual": {
+      "route": "input:decision-request",
+      "families": [],
+      "sequence": false
+    },
+    "surface": " A planetary climate modelling centre separately logged radiative-transfer bands, opacity tables, cloud microphysics, aerosol modes, convective schemes, boundary layers, surface albedos, orbital parameters, obliquities, eccentricities, stellar spectra, greenhouse abundances, lapse rates, pressure grids, temperature fields, wind vectors, circulation cells, eddy fluxes, precipitation rates, evaporation fields, sea-ice fractions, soil moistures, model timesteps, spin-up lengths, restart files, ensemble members, forcing scenarios, diagnostics, energy balances, top-of-atmosphere fluxes, spectral outputs, validation cases, sensitivity runs, parameter files and simulation IDs; none of these records answers a future-outcome request. A separate planetary materials lab independently indexed meteorite sections, chondrule diameters, CAI inclusions, matrix fractions, metal grains, troilite phases, olivine compositions, pyroxene compositions, oxygen isotopes, chromium isotopes, titanium isotopes, cosmic-ray exposures, shock stages, weathering grades, petrologic types, bulk densities, magnetic susceptibilities, reflectance spectra, Raman shifts, SEM images, microprobe analyses, LA-ICP-MS spots, noble gases, radiogenic ages, Pb-Pb dates, Al-Mg systematics, sample masses, curatorial numbers, thin-section labels, mount IDs, beam currents, spot sizes, counting times, standard materials, data reductions, uncertainty tables; this specialist inventory is inert physical context and supplies no behavioural evidence.A historical cartography room independently catalogued rhumb lines, graticule arcs, portolan coasts, compass roses, scale bars, latitude ticks, loxodromes, projection grids, engraved plates, copper impressions, hand colors, watermarks, plate marks, neatlines, cartouches, toponyms, soundings, hachures, boundary washes, fold lines, mounting guards, atlas signatures, sheet numbers, catalogue slips; that technical inventory is environmental scenery only and cannot determine the measured response. A separate paleoclimate modelling register listed orbital forcings, greenhouse trajectories, aerosol loads, boundary conditions, spin-up years, ensemble members, grid resolutions, parameterizations, ocean mixing, sea-ice schemes, land-surface modules, vegetation states, albedo feedbacks, cloud fractions, precipitation biases, temperature anomalies, proxy assimilations, age models, isotope-enabled runs, equilibrium climates, transient runs, forcing files, restart states, output frequencies, netCDF variables, coordinate grids, mask fields, validation metrics, skill scores, sensitivity experiments, control integrations, perturbation ensembles, diagnostic budgets, flux corrections, energy balances, moisture transports, circulation indices, teleconnection patterns and archive DOIs; these calculations cannot answer a future-outcome request. Hãy cho tôi biết tương lai sẽ xảy ra gì và outcome này có xảy ra hay không. A separate accession ledger for historical cartography room remained unrelated physical context and supplied no behavioural evidence. Archive batch marker qv09 registered compartment sequence kappa066 lambda104 sigma124; these identifiers are inert."
+  },
+  "expected_gold_changed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "frozen-semantic-failure"
+}
