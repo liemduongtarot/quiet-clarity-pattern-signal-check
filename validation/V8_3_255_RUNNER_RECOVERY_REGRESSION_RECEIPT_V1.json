@@ -1,0 +1,23 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "runner-evidence-contract-recovery-regression",
+  "base_exact_development_sha": "238cdba6ee2d4d17bcde19de2d895a7087983345",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "repair_scope": "RUNNER_EVIDENCE_CONTRACT_ONLY",
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "v254_sealed_rerun": false,
+  "immutable_regression_total": 1470,
+  "immutable_regression_passed": 1470,
+  "evidence_provenance_positive": true,
+  "evidence_provenance_negative_missing_field": true,
+  "evidence_provenance_mutation_detection": true,
+  "runner_gate_positive": true,
+  "runner_gate_negative_identity": true,
+  "runner_gate_negative_provenance": true,
+  "runner_gate_sha256": "d3957c4c2fc4183b4e20025b9cbc340e6352ccbec86fed8e414053e702b7a297",
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "success"
+}
