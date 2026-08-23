@@ -1,5 +1,5 @@
-name: V8.3.253 Batch B hardened preflight
-# trigger-v253-b-preflight-1
+name: V8.3.253 post-B integrity gate
+# trigger-v253-post-b-integrity-1
 on:
   push:
     branches: [main]
@@ -15,17 +15,17 @@ jobs:
         with:
           ref: v83253-v1-sealed-validation
           fetch-depth: 0
-      - name: Run V253 Batch B hardened preflight
+      - name: Run V253 post-B integrity gate
         id: run
         shell: bash
         run: |
           set +e
-          python validation/v83253-v1-sealed/v83253-batch-b-preflight.py > /tmp/v253-b-preflight.log 2>&1
+          python validation/v83253-v1-sealed/v83253-post-b-integrity.py > /tmp/v253-post-b.log 2>&1
           rc=$?
           set -e
-          cat /tmp/v253-b-preflight.log
+          cat /tmp/v253-post-b.log
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze B preflight evidence
+      - name: Freeze post-B evidence
         if: always()
         shell: bash
         run: |
@@ -33,14 +33,23 @@ jobs:
           RC='${{ steps.run.outputs.rc }}' python - <<'PY'
           import json,os,pathlib
           o=pathlib.Path('validation/v83253-v1-sealed')
-          log=pathlib.Path('/tmp/v253-b-preflight.log').read_text(errors='replace') if pathlib.Path('/tmp/v253-b-preflight.log').exists() else ''
-          (o/'V8_3_253_BATCH_B_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.253','phase':'batch-b-hardened-preflight-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'batch_b_executed':False,'step_111_authorized':False},indent=2)+'\n')
+          log=pathlib.Path('/tmp/v253-post-b.log').read_text(errors='replace') if pathlib.Path('/tmp/v253-post-b.log').exists() else ''
+          (o/'V8_3_253_POST_B_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.253','phase':'post-b-integrity-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'step_111_authorized':False,'step_111_executed':False,'production_authorized':False},indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83253-v1-sealed/V8_3_253_BATCH_B_PREFLIGHT_DIAGNOSTIC.json
-          test ! -f validation/v83253-v1-sealed/V8_3_253_BATCH_B_PREFLIGHT_V1.json || git add validation/v83253-v1-sealed/V8_3_253_BATCH_B_PREFLIGHT_V1.json
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.253 Batch B preflight evidence'
+          git add validation/v83253-v1-sealed/V8_3_253_POST_B_DIAGNOSTIC.json
+          test ! -f validation/v83253-v1-sealed/V8_3_253_POST_B_INTEGRITY_GATE_V1.json || git add validation/v83253-v1-sealed/V8_3_253_POST_B_INTEGRITY_GATE_V1.json
+          test ! -f validation/v83253-v1-sealed/V8_3_253_STEP_111_READINESS_V1.json || git add validation/v83253-v1-sealed/V8_3_253_STEP_111_READINESS_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.253 post-B integrity evidence'
           git push origin HEAD:v83253-v1-sealed-validation
-      - name: Enforce B preflight
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_253_PRE_STEP_111_CHECKPOINT
+          path: |
+            PSC_V8_3_253_PRE_STEP_111_CHECKPOINT.zip
+            PSC_V8_3_253_PRE_STEP_111_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce post-B integrity
         run: test '${{ steps.run.outputs.rc }}' = '0'
