@@ -1,0 +1,25 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "production-deployment-materialization",
+  "run_id": "32672474205",
+  "source_lock_commit": "f96cecd6bac63d5cfc868a42bfad80fc236bb7ef",
+  "base_archive_sha256": "c2b57a436f744627b5600b97bdbc43dce70f748e66f2d0986c361f20683a7f5f",
+  "public_runtime_sha256": "886936b9e771c55474158e27c5129ccd06637cee690aabbdf15bb08ad68926ac",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "chain_file_count": 176,
+  "runtime_smoke": {
+    "extractor": true,
+    "core": "V8.3.253-V124-V252-RESIDUAL",
+    "route": "input:prediction",
+    "can_continue": false
+  },
+  "build_pass": true,
+  "artifact_validation_pass": true,
+  "transport_root_rewrite_only": true,
+  "semantic_source_modified": false,
+  "expected_gold_changed": false,
+  "batch_a_rerun": false,
+  "batch_b_rerun": false,
+  "deployment_executed": false,
+  "pass": true
+}
