@@ -1,0 +1,20 @@
+{
+  "candidate": "V8.3.254",
+  "phase": "DEVELOPMENT_AUTHORITY_FROZEN",
+  "parent_exact_development_sha": "89db04ec936af998c14d2f0451ef87270ea8e349",
+  "pre_freeze_evidence_head_sha": "d3b786171960ac3aea64a677301ee0c15243bdfd",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "repair_scope": "EVIDENCE_PROVENANCE_INFRASTRUCTURE_ONLY",
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "v253_sealed_rerun": false,
+  "immutable_regression": "1470/1470",
+  "evidence_contract_sha256": "72c15c5690b57e09d2c72210696295962d22b8aea2dbb4a2a8fc89f6c7cfb0dc",
+  "evidence_module_sha256": "51f19bd0757b589dd971eec5ef47d75b38b3a09f547ba26b2e437341186d92bf",
+  "provenance_harness_positive": true,
+  "provenance_harness_negative_missing_field": true,
+  "provenance_harness_mutation_detection": true,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
