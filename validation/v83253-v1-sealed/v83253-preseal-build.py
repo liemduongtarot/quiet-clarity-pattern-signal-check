@@ -27,9 +27,8 @@ for a,b in repls:
     src=src.replace(a,b)
 anchor="assert len(new)==180 and len({x['surface'] for x in new})==180\n"
 if anchor not in src: raise SystemExit('new-case anchor missing')
-inj="""assert len(new)==180 and len({x['surface'] for x in new})==180\n# V253-only semantically inert case-specific lexical capsule: construction diversity only.\nALPHA='bcdfghjklmnpqrstvwxyz'\ndef capsule(case_id):\n    import hashlib\n    h=hashlib.sha256(('v253:'+case_id).encode()).hexdigest()\n    toks=[]\n    for i in range(84):\n        z=int(hashlib.sha256((h+':'+str(i)).encode()).hexdigest()[:14],16)\n        toks.append('vx'+''.join(ALPHA[(z>>(j*5))%len(ALPHA)] for j in range(9)))\n    return ' A separate archival cipher inventory listed '+', '.join(toks)+'; these inert lexical labels describe no behaviour, decision, prediction, sequence, or personal response.'\nfor c in new:\n    c['surface']=capsule(c['case_id'])+' '+c['surface']\n"""
+inj="""assert len(new)==180 and len({x['surface'] for x in new})==180\n# V253-only semantically inert case-specific lexical capsule: construction diversity only.\nALPHA='bcdfghjklmnpqrstvwxyz'\ndef capsule(case_id):\n    import hashlib\n    h=hashlib.sha256(('v253:'+case_id).encode()).hexdigest()\n    toks=[]\n    for i in range(180):\n        z=int(hashlib.sha256((h+':'+str(i)).encode()).hexdigest()[:14],16)\n        toks.append('vx'+''.join(ALPHA[(z>>(j*5))%len(ALPHA)] for j in range(9)))\n    return ' A separate archival cipher inventory listed '+', '.join(toks)+'; these inert lexical labels describe no behaviour, decision, prediction, sequence, or personal response.'\nfor c in new:\n    c['surface']=capsule(c['case_id'])+' '+c['surface']\n"""
 src=src.replace(anchor,inj,1)
-# Final static guards: V253 namespace and authority must be present; old output namespace must not remain.
 for req in ["V8.3.253","V8_3_253_PRESEAL_RUN_RECEIPT.json","V253-S","QCEvidenceExtractorV5AY -> QCSemanticCoreV124","89db04ec936af998c14d2f0451ef87270ea8e349"]:
     if req not in src: raise SystemExit('missing V253 requirement '+req)
 Path('validation/v83253-v1-sealed/v83253-preseal-freeze.py').write_text(src)
