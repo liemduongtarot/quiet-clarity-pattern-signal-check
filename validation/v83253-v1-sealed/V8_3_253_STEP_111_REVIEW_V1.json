@@ -1,0 +1,97 @@
+{
+  "candidate": "V8.3.253",
+  "phase": "manual-step-111-review",
+  "validated_development_head_sha": "89db04ec936af998c14d2f0451ef87270ea8e349",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "owner_authorization_received": true,
+  "owner_authorization_scope": "Execute Step 111 only; do not broaden scope or alter validated semantics.",
+  "semantic_validity": {
+    "development_regression": "1470/1470 PASS",
+    "batch_a_first_run": "30/30 PASS",
+    "batch_b_first_run": "30/30 PASS",
+    "verdict": "PASS"
+  },
+  "sealed_pool_independence": {
+    "internal_max_similarity": 0.303145,
+    "external_max_similarity": 0.641366,
+    "external_cases_at_or_above_0_75": 0,
+    "exact_external_duplicates": 0,
+    "semantic_fingerprint_exact_duplicates": 0,
+    "verdict": "PASS_AS_RECORDED_PRESEAL"
+  },
+  "first_run_evidence_review": {
+    "batch_a_case_records": 30,
+    "batch_b_case_records": 30,
+    "case_record_keys_present": ["case_id","category","language","domain","pass","expected","actual","surface"],
+    "required_case_level_fields_missing_for_all_60": [
+      "per-case run_id",
+      "timestamp",
+      "execution_ordinal",
+      "source_hash",
+      "config_hash",
+      "schema_hash",
+      "gold_hash",
+      "pool_hash",
+      "canonical state trace/reference"
+    ],
+    "route_family_sequence_only_nested_in_expected_actual": true,
+    "verdict": "FAIL_INDEPENDENT_FIRST_RUN_AUDITABILITY"
+  },
+  "execution_ledger_review": {
+    "batch_a_attempt_marker_present": true,
+    "batch_b_attempt_marker_present": true,
+    "top_level_run_ids_present": true,
+    "append_only_first_run_execution_ledger_present_in_checkpoint": false,
+    "verdict": "FAIL_INDEPENDENT_LEDGER_AUDITABILITY"
+  },
+  "archive_integrity_review": {
+    "reviewed_checkpoint": "PSC_V8_3_253_PRE_STEP_111_CHECKPOINT.zip",
+    "checkpoint_sha256": "0dfec3301a1cff6acbf8cc1d441fff86181e75be1b93478c418e17ae6374ac7e",
+    "zip_integrity": "PASS",
+    "archive_file_count": 14,
+    "required_independent_audit_package_missing": [
+      "complete runtime source / config / schema",
+      "full sealed pool 60",
+      "gold package",
+      "semantic fingerprints",
+      "raw / normalized / identifier-stripped duplicate audits",
+      "fingerprint duplicate audit",
+      "duplicate-pair audit",
+      "contamination audit",
+      "pool integrity report",
+      "first-run execution ledger",
+      "A/B source identity report",
+      "validation harness positive test report",
+      "validation harness mutation / negative-proof report",
+      "final acceptance report / manifest",
+      "version graph / provenance package"
+    ],
+    "verdict": "FAIL_INDEPENDENT_FUTURE_REAUDITABILITY"
+  },
+  "a_b_identity": {
+    "validated_development_head_sha_same": true,
+    "semantic_authority_same": true,
+    "post_b_integrity_gate_recorded_pass": true,
+    "runner_hashes_recorded_verified": true,
+    "verdict": "PASS_AS_RECORDED"
+  },
+  "post_run_immutability": {
+    "expected_gold_changed": false,
+    "batch_a_single_attempt_recorded": true,
+    "batch_b_single_attempt_recorded": true,
+    "verdict": "PASS_AS_RECORDED"
+  },
+  "production_blockers": [
+    "Incomplete immutable case-level first-run evidence for all 60 records under Step 111 evidence-integrity contract.",
+    "No independently auditable first-run execution ledger in the frozen checkpoint package.",
+    "Pre-Step-111 checkpoint is not a full independent re-audit archive and omits required validation/pool/provenance evidence."
+  ],
+  "known_acceptable_limitations": [],
+  "final_verdict": "STEP 111 REVIEW FAIL — PRODUCTION LOCK PROHIBITED",
+  "production_lock_authorized": false,
+  "production_deploy_authorized": false,
+  "validated_semantics_modified": false,
+  "repair_authorized": false,
+  "next_version_authorized": false,
+  "instruction": "KEEP V8.3.253 IMMUTABLE. DO NOT REPAIR AUTOMATICALLY. DO NOT OPEN NEXT VERSION AUTOMATICALLY. PRODUCTION LOCK REMAINS PROHIBITED."
+}
