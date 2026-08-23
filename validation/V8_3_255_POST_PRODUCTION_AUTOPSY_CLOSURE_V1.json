@@ -1,0 +1,19 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "POST_PRODUCTION_AUTOPSY_CLOSURE",
+  "closed_at_local": "2026-08-24T00:21:00+01:00",
+  "defect_id": "V255-POSTPROD-AUTH-PROVENANCE-001",
+  "prior_verdict": "PARTIAL PASS — PRODUCTION CONTENT VALID; DEPLOYMENT AUTHORIZATION PROVENANCE GAP OPEN",
+  "closure_basis": "Explicit owner ratification recorded append-only in V8_3_255_DEPLOYMENT_OWNER_RATIFICATION_V1.json",
+  "historical_lock_mutated": false,
+  "production_redeployed": false,
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "batch_a_rerun": false,
+  "batch_b_rerun": false,
+  "production_content_status": "VALID / LIVE VERIFIED",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "provenance_gap_closed": true,
+  "final_verdict": "PASS — DEPLOYMENT AUTHORIZATION PROVENANCE CLOSED",
+  "pass": true
+}
