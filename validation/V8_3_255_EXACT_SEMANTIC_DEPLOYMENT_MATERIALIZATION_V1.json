@@ -1,0 +1,2082 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "exact-semantic-deployment-materialization",
+  "run_id": "32671592504",
+  "source_lock_commit": "f96cecd6bac63d5cfc868a42bfad80fc236bb7ef",
+  "base_archive_sha256": "c2b57a436f744627b5600b97bdbc43dce70f748e66f2d0986c361f20683a7f5f",
+  "public_runtime_sha256": "886936b9e771c55474158e27c5129ccd06637cee690aabbdf15bb08ad68926ac",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "chain_file_count": 176,
+  "copied_chain": [
+    {
+      "file": "psc-v83142-sealed-failure-convergence.js",
+      "sha256": "eef50ddfc10ff78c363d3ad076cbc9f8ba5bc22fe20c1ce1762fbef18a03f04d",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83143-semantic-convergence.js",
+      "sha256": "3630cc27cacc0c6467dd07107d4f10244758692b54d034b5d7524c435cb8f603",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83144-sealed-failure-convergence.js",
+      "sha256": "06e6b3fcd771c1478b5fcf33564c1cc365e32bc934288fd880e248fd1af8322b",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83145-route-layer.js",
+      "sha256": "31f5a1f84960a57f7e2459c97ac6ea09b58151c50596d5120c822552803e7352",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83145-family-state-layer.js",
+      "sha256": "165699bc219acf54e100fafafede45891eecfa2708f46960799355a61d411f57",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83146-route-boundary-repair.js",
+      "sha256": "ddcc814dfa9d8afef374014bceb6a79d136330fd24f06b78a34ac9eacdce6aaf",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83146-family-sequence-repair.js",
+      "sha256": "f9ace3c9aac6b2853f97d29a4e9a5ae2e1ca091db411970d1cf529daaa31a109",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83147-sealed-failure-repair.js",
+      "sha256": "538f1ba5c1068c86ec60bf257761d861be643cbb39043a5df071bc99cd1dbdcd",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83148-sealed-failure-repair.js",
+      "sha256": "65edaa79ddcd67a6903d2250b2526773d675028eec2acc003d7b1ca9dc1ef1c6",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83149-sealed-failure-repair.js",
+      "sha256": "c0857825e5f39830f54ca7ea8622d6f55b04c027cd05c70c8df173b59732d31f",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83150-sealed-failure-repair.js",
+      "sha256": "63c56b79d2b10d241d49fd3895c440f9ac0e15bc495c8bc343ffd3d680a45381",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83151-sealed-failure-repair.js",
+      "sha256": "39d8425eb6dcca6f2e33c1f06f294df6a487613274d41ed252ce7bd23c6777a1",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83152-sealed-failure-repair.js",
+      "sha256": "26755138652ed6271fb6ca65024bfe1b03a400a4b389521612d54504a068a98d",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83153-sealed-failure-repair.js",
+      "sha256": "7bfc567867720f780bbac7475947a281f7196d1bffeaa9efed173174e5e16436",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83154-sealed-failure-repair.js",
+      "sha256": "e8299cfd5a8fc617966c08fe1311a15a7a65ac3592490bd73de4d7ef2aa7f369",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83155-sealed-failure-repair.js",
+      "sha256": "7cc8409c44718b3b3f03d03b8767c8a3374bf891eedb3632594a341e7223bc51",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83156-v155-v3-bounded-repair.js",
+      "sha256": "b40b71d7196d787a04be7a7ebd93b5e6c97a3e4438a0f95e904aff0b32ab2e01",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83157-v156-sealed-a-bounded-repair.js",
+      "sha256": "58f433aafed971e8f920f932ecbc5093e442df733e230beb76c621ca9601998e",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83158-v157-sealed-a-bounded-repair.js",
+      "sha256": "85d16e46a4ad9dd7e688c3549a83563a0f895420cccb06378c7f50c8a6f8e1d1",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83159-v158-sealed-a-bounded-repair.js",
+      "sha256": "a970b71e1b2af54c38e8df72aebdc0323cf53023af95072434fba4318d775839",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83160-v159-v2-sealed-a-bounded-repair.js",
+      "sha256": "0395ed571b5a189038b83f27bc9a933871ff33cdba76968d2bb0630b41ced5e7",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83161-v160-v1-sealed-a-bounded-repair.js",
+      "sha256": "94db19efb1af8b44a5c69fbc975c6f3e7423ebf3bed73ea365e7a189e8ceadd8",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83162-v161-v1-sealed-a-bounded-repair.js",
+      "sha256": "6001c796a3e9586896ea42f0fc78240825930a20fef66f15e2c1f27ad10a978e",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83163-v162-v1-sealed-a-bounded-repair.js",
+      "sha256": "b74c81f6d4985b07610357757d841423f27ea7d0e7a2b92fa95624dc0e58542a",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83164-v163-v1-sealed-a-bounded-repair.js",
+      "sha256": "1fa6bb9b17812fca64a2aafd274710ef7f705d99e6aa561d993b7e965d804651",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83165-v164-v1-sealed-a-bounded-repair.js",
+      "sha256": "cd6d719e3c587d3191c41b81d19e53cf33c8676411732ebceb69dba4545f3347",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83166-v165-v1-sealed-a-bounded-repair.js",
+      "sha256": "341e9e9a00c59b4a0f1ca2e41a410d49407a330f151ca4d7f7eaaafd09e8df0a",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83167-v166-v1-sealed-a-bounded-repair.js",
+      "sha256": "45cc7d28c705f77d44b470fffdc08d8dfb6aa9e2fec83db3df065cee65bad717",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83168-v167-v1-sealed-a-bounded-repair.js",
+      "sha256": "f412126e810cb69510fb9275ebc4e1421d49e7021ad5a2a58c33028c4b357fd7",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83169-v168-v1-sealed-a-bounded-repair.js",
+      "sha256": "dc4f4acc24dd9f2720479f6ab7c94cd1fb1008eabbdbfa203a4ea3ca79c0ba10",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83170-v169-v1-sealed-a-bounded-repair.js",
+      "sha256": "1b5ba218ed5b109f756d20050ec72fa70d29d1d4794ad1f369628fd1c1aa6a8a",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83171-v170-v1-sealed-a-bounded-repair.js",
+      "sha256": "b0b3ad6aff30006e95130a213075152c9154aa321761f07613a71712ca190a85",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83172-v171-v1-sealed-a-bounded-repair.js",
+      "sha256": "b72ec577896c343f88d001ab14dc7b085f3f87d307e7763f6a67861784a511d0",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83173-v172-v1-sealed-a-bounded-repair.js",
+      "sha256": "e0dc933900ffc054cf1a63bf43be3952a52ee5a07df04497c5aa4afb18c37a23",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83174-v173-v1-sealed-a-bounded-repair.js",
+      "sha256": "0cce4af10da82048c3bd61607bebd808548e3a26a601e22cc1f1371d85d7a6e9",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83175-v174-v1-sealed-a-bounded-repair.js",
+      "sha256": "6711b6d064c94a290fb45515cd72721990ab54ecb6b64d4cb726b4c86bcc94b8",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83176-v175-bank-contract-carry-forward.js",
+      "sha256": "b0d41d5f522ac0f899ae9415c258429159625f48a5f651db7904798013bc0237",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83177-v176-sealed-a-bounded-repair.js",
+      "sha256": "972ca39ba581c4668b596a7e1a8b55ee41c5f62c9e30357fd30e627c855e98cd",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83178-v177-sealed-a-bounded-repair.js",
+      "sha256": "d22d82b7162ddb97c5d95cdf36886f0052e013e738be24d37309d3e7ecdd5a51",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83179-v178-sealed-a-bounded-repair.js",
+      "sha256": "ed236deee27580a78fcf2340dab49d248764d5032b7df82797bb9746c5d44a5d",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83180-v179-sealed-a-bounded-repair.js",
+      "sha256": "781da7f176f9ea1c897effac807d9748eed8e2cd4e661b020742c3c200a3dc46",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83181-v180-sealed-a-bounded-repair.js",
+      "sha256": "f11acba9d847c31b37c8acbb54191b7f7974fca049cce7f06987d2e6d4f9272e",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83181-v180-v1-historical-precedence-repair.js",
+      "sha256": "0c02f674ac69ab3e9b92cf7db69d609c6606c81ff598ac60f1ee7fb7a61cd9e8",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83181-v180-v1-historical-self-family-precedence-repair.js",
+      "sha256": "c0b8b25a8caedc04d253ce90521f111bc2e8fd6133bc6b55da3959a717e86696",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83181-v180-v1-explicit-intent-precedence-repair.js",
+      "sha256": "9444aa5870155cf1b636ebf5600a46ac5df61f8761ade4afb6068c87b1b70835",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83182-v181-sealed-a-bounded-repair.js",
+      "sha256": "babe832ded9b31cb1a7c22dc5f83d17f4fc3884ea3ebfc242f810d37cf2770ec",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83183-v182-sealed-a-bounded-repair.js",
+      "sha256": "424fceb7f1ccbd4cb79e2171d7036ac9bba22055586300fb7f23055382f6e594",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83184-v183-sealed-a-bounded-repair.js",
+      "sha256": "0050c88323de662e8d384a52763d443519e948831e2a24009b81ae8d4920cdf5",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83185-v184-sealed-a-bounded-repair.js",
+      "sha256": "0012c3e985ff1deeb7682473c498f0386c294645907be3842cdbb4a8bba7db21",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83186-v185-sealed-a-bounded-repair.js",
+      "sha256": "36430272a5c7de47c39919f201d237fbb2ed68ec1220c5dbdb6f12842ef13291",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83187-v186-sealed-a-bounded-repair.js",
+      "sha256": "cb545e8aa4d600ed582b2c7b5ae7ab7f88f09102393b72a2f20b2a8c6682e48d",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83188-v187-sealed-a-bounded-repair.js",
+      "sha256": "5ad542b4ce07f9355cda4e5519bac343b6459cfd3c140299929d301720818517",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83189-v188-sealed-a-bounded-repair.js",
+      "sha256": "f120bbce47d461a22e9780af3d5eb75ed8a947e6e22dbb35b25a522ee6967882",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83190-v189-sealed-a-bounded-repair.js",
+      "sha256": "631f3f2c438cbcb9f2a233ac95248e8d643d794ab4d05bdad0dbc76c9ae1567f",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83190-v189-v1-preservation-precedence-repair.js",
+      "sha256": "ac4ffe8012c6fa9545700e05ee24c1e51a37a6aec7245d3f84b0240c744a4b20",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83191-v190-sealed-a-bounded-repair.js",
+      "sha256": "ffc9920deb9f90d98fb68f32ebeaf397ec33045b053276984adf4184534d1ba1",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83192-v191-sealed-a-bounded-repair.js",
+      "sha256": "7b32837412a4100490a3ecfa995bd8faef03dbd7fb6b94a3eee914f3096d0de0",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83192-v191-v1-slow-preservation-repair.js",
+      "sha256": "b182b9be21a7906a5555b6a5807b76bc7533b203187804379a749e9bae269fe1",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83193-v192-sealed-a-bounded-repair.js",
+      "sha256": "830bb4e5d47b5b46700920e6bcf0a3d92de342546395d1546c3a1b5a47329c73",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83194-v193-sealed-a-bounded-repair.js",
+      "sha256": "6b4d73b6c57d56717dff185b22cfe845e9a43826c13ef2674a2a0dd2cb701a7d",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83195-v194-sealed-a-bounded-repair.js",
+      "sha256": "51501d3d4ec2b3a258eae313a6b02ee2d65e07fdd000a53bd3ae898d70cc578e",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83196-v195-sealed-a-bounded-repair.js",
+      "sha256": "a5c986a10bb4ca206417221928a2852a08a7d8b51c2ebb5cec76daf12668aa1a",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83196-v195-v1-hypothetical-preservation-repair.js",
+      "sha256": "8e0a2be056e55a4b8d7a64ddcec29359fb2e09dbead9d29d067ed0c62ee0bfd2",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83197-v196-sealed-a-bounded-repair.js",
+      "sha256": "704e170fc2ca8913cf4066f35c1aae0c355710b64e1400431bd7b6baf1002555",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83198-v197-sealed-a-bounded-repair.js",
+      "sha256": "47241f248421e9f8e731f6c4039807fc14badc4bf405d9d31a6be453f736a1eb",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83199-v198-sealed-a-bounded-repair.js",
+      "sha256": "378e988ecb43bd82b5fdeda20ec1bce32ee89fea4574fd9436beb7a8d9cbc487",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83200-v199-sealed-a-bounded-repair.js",
+      "sha256": "5409821332c7969b5e6873f51a468cc5b8144d6d788120eb3b1c960daa2d368c",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83201-v200-sealed-a-bounded-repair.js",
+      "sha256": "bb2b2854917634af396d65a7cd3300598187fe2b5376a12e84fd000fed96c515",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83201-v200-v1-preservation-precedence-repair.js",
+      "sha256": "483ef26a698e29d53fbd157e07495c2bf1b7109d2a313849b017e80085087122",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83202-v201-sealed-a-bounded-repair.js",
+      "sha256": "43527ae21004fd080a26be644bae8d778f3978625ada7ce9ce63e67abb33559e",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83203-v202-sealed-a-bounded-repair.js",
+      "sha256": "e1a4ccfb0630d2121d220f07ca34557a289b93e1615c38dd182fe21027db62e0",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83204-v203-sealed-a-bounded-repair.js",
+      "sha256": "84009975221ebc7d729be789a13953efc5ee66d87c4a5a66330358db16d0c214",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83205-v204-sealed-a-bounded-repair.js",
+      "sha256": "f97c47748edf6d1a1bc7a3336fdc50cb4177dc5a1c9144467d0e14157095cdc5",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83206-v205-compositional-generalization.js",
+      "sha256": "75a2667bfc9eaab34e0dd61ddba0bbb7ef3d112583621a0c2c597f29bcd858be",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83206-v205-v1-preservation-repair.js",
+      "sha256": "cc6b8a70ba06c9fa125fb9a7f472bd6d3cb7f8e4c93e86abe79492f41ba71834",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83207-v206-mechanism-cue-repair.js",
+      "sha256": "bb4fae3dee26f08a8b6413cb6a4315ce69fd59ce113be2b85f7617a0423ac76f",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83207-v206-v1-preservation-repair.js",
+      "sha256": "7409a1bfa68fa773feb27274fc1eb1182be356def9050ada5d2ca1d9c030db72",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83208-v207-mechanism-cue-repair.js",
+      "sha256": "650fbc764a7b310ac13eec5292b761f45fa078f1d2d6c938e5a02bac46affc6e",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83208-v207-v1-preservation-repair.js",
+      "sha256": "f5eb34096c28f835d5222f6818f6feec7940423dbe94544bfa5b348ea9558268",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83209-v208-evidence-slot-composition.js",
+      "sha256": "6c77308141b3bdfee2c62c4c3441fed82864ad8c3272197748ec898676db9b26",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83209-v208-v1-preservation-repair.js",
+      "sha256": "20dab67e641a10288dce120e983da1680ace65a49e9e51f57d9de7723667ec81",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v1-review-candidate.js",
+      "sha256": "27d7380f0e52a476c9be57231b4ac32ca1eeedc5b592dcc58cbc68ba670368b2",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v1r-review-candidate.js",
+      "sha256": "30871ed74e2899b4f61c50fbe2a928f510f3f83699a738df1463aa0454699d26",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v1r2-review-candidate.js",
+      "sha256": "7912f8ae4deb77043307850e63aa2ab272ccd81d16055cf0d2ae1ddc86a74437",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83209-semantic-rule-table-v3-review-candidate.js",
+      "sha256": "6e338a70c90a07f27085874cb90597e90530c23a845e37e8d0a7e69c588506c1",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83209-v208-semantic-rule-table-promotion.js",
+      "sha256": "72c46b76907b4d76426cd4600dca4b2584456b9ba3f1cd4845787d322b480180",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v1r3-v210-concept-coverage.js",
+      "sha256": "7e053ed6c3c1150427f5d75b9d9b749266d76fa420e3fcbd8b74f06dc3f0131a",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83210-v209-semantic-rule-table-v4.js",
+      "sha256": "4ca139e1ed67360050b4fde55de2d60bdbf633cc6ee4847f2c897ad8cd891802",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v1r4-v210-relational-preservation.js",
+      "sha256": "de336e4b72d246f9527cdde01c28e412d0948f0b9eb933ee8920ef7d22b5b99f",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83210-v209-v1-relational-preservation.js",
+      "sha256": "08ffd67b0046703a9b58e9c3ee179172486b2501630156717d6bfbe6ba5238d3",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v2-v210-relational-semantics.js",
+      "sha256": "e6edc6d25be62d7e168685f84fcb81f4b8f5094551e5f72e6435425ff6e57776",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83210-v210-semantic-rule-table-v5.js",
+      "sha256": "762eccbbd3bae47cae21167d27f6f506b9fe268bf3fe6b365d25c7fc86afc7ec",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v2r-v210-multilingual-aliases.js",
+      "sha256": "2ad24631568f67b36b49794c26ba7975143a07d923aba08df13f757c7bd16714",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83210-v210-semantic-rule-table-v6.js",
+      "sha256": "2ebaedb9d342a17d5a5fb8bfb01ccc38a57bc0d05f362b52fde20e72c5b05219",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v2s-v210-context-sanitizer.js",
+      "sha256": "0ebaaaccdac9b52cc7eec5a1f5fa8bd75cd25dc83144ba896f4965e1c3e84193",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83210-v210-semantic-rule-table-v7.js",
+      "sha256": "642502986cac2902649faf842c481c007b9e5d5b25c5738dc6b01c7ba39e07f3",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v2t-v210-contextual-recall.js",
+      "sha256": "8b3f0826761e5f9136de6c1b57ffef939681ad6b04e249653d007d2fc8e8ed81",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83210-v210-semantic-rule-table-v8-parent-containment.js",
+      "sha256": "7e4af94e95b60127b6b9102b820c3c67e9def0ac06df7fa4914eff662ced927d",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v3-v211-context-scoped.js",
+      "sha256": "101765aa7cccdf99f618bba469cd03c8486757e6e4bdf898a461c5f91062e3df",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83211-v210-context-scoped-rule-table.js",
+      "sha256": "b9c56dd13d98e3348cd2ea7c435cf00107cafdfc4b8d38b1c26e5e158f43a275",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v3r-v211-preservation.js",
+      "sha256": "d298d33ca9d7f0cfdd17476f20ebae6805799b7f147cdf48823d606cd0863dc5",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83211-v210-preservation-containment.js",
+      "sha256": "5c930725f2e22eee735f2d8f585ed099e64dab2e9cf810b8f3dddad1a515c731",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v4-v211-relational-recall.js",
+      "sha256": "2b1e3ac533dedaf6ad6826c9f21af9940e91488a961c290c71099d5e90e68d6f",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83211-v210-v89-relational-recall.js",
+      "sha256": "bd217945faaa043f4fe2c0c9b252cd57c1fa9202e85086596654a510d32e3daf",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v5-v212-scope-propagation.js",
+      "sha256": "3d554307d6eeb1db10bf5a289bdb36d998113f91038a6b1dee96187155752bb6",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83212-v211-v90-scope-propagation.js",
+      "sha256": "f4c3c7e1e8c697a15296e6e6c57e85965690fd537a0091f1db656b642ff35d2c",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v5r-v212-delegated-decision-preservation.js",
+      "sha256": "4d892c69f3cbe599d37358c25b95ffc9d35e5596841b480d53923b5ac1eea6e2",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83212-v211-v91-delegated-decision-preservation.js",
+      "sha256": "f7b3a74aa2ebc18005be22d46a98bb2019ab7f33f9b1cf7245181c29becee46a",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v5s-v212-relational-recall.js",
+      "sha256": "41e9238d54f5a58eddc43255a464708d914d8756555a4bf16b5d7a450bc5ef67",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83212-v211-v92-relational-recall.js",
+      "sha256": "550bd84ebf8916734db8528a105b14ef0d8b63a11dd80e59ae0610bde8d58a88",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v5t-v213-relational-paraphrase-recall.js",
+      "sha256": "1c53b7fb789454f2c76893bf7b9477722bbb982ab45b78bd7b27910c2cd41601",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83213-v212-v93-relational-paraphrase-recall.js",
+      "sha256": "49592f3b6c96ca758566f24032dea5d5cdc6c66f1191b0eeb62dd651ae5739de",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v5u-v214-sealed-recall.js",
+      "sha256": "ac4cae5b3fafc1aaea2d25993d0a5d4df48205733b12b275a595562802947ec2",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83214-v213-v94-sealed-recall.js",
+      "sha256": "c35eb5224fa3019cc84c66ffd81a12bf1ff3eb90712998c9e0d9d65d149f9fdf",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v5u2-v214-clarification-containment.js",
+      "sha256": "cbea93425d82dfb86afa7bef7455b4b031fe640a5f10584dac269d1f10596aa0",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83214-v213-v94r-clarification-containment.js",
+      "sha256": "e7a917fe49d96dd1b4deede8b50eecf6cde28ffaee7e8bb688198d5bc1471da3",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v5v-v215-compositional-recall.js",
+      "sha256": "67cbfdced88fb067f00d498ef28845f3bf4b7dc9b80353c6288839adcb87ebea",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83215-v214-v95-compositional-recall.js",
+      "sha256": "e1ba827754d3fdeec87115cdb4e800214b81d43f923572eecd83e626b0ea34c5",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v5w-v216-sealed-recall.js",
+      "sha256": "439979f77ead8b6b301e6b4955ae3e62d3d52c9ed3a2adc8e7d65580cf47478a",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83216-v215-v96-sealed-recall.js",
+      "sha256": "8d6f491e66e95b19e8a7070b6f4f6fdf43981eaf42eb4b2a33dc109e1739bcd9",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v5x-v217-relational-recall.js",
+      "sha256": "510f71fe0654ad26572be40a86ade10e79058db52f3e96198bbda6b01748dbf6",
+      "source_identity_covered": false
+    },
+    {
+      "file": "psc-v83217-v216-v97-relational-recall.js",
+      "sha256": "13322f68e4115aad3edf5a53087d7161f78557b90a7296669506653c89b60288",
+      "source_identity_covered": false
+    },
+    {
+      "file": "qc-evidence-extractor-v5y-v220-bounded-recall.js",
+      "sha256": "2096207841c14c77b7252c801132c97c2c9b4dfa42e9d9297f6a0b7a81f66b97",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83220-v219-v98-bounded-recall.js",
+      "sha256": "a15ccac0cda936aa72fbe4b5fbd81a69d52711f823dc25eb028699604dc7ac5b",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5z-v222-compositional-generalization.js",
+      "sha256": "a09dab5bb8fcfb38e4090c51dc8fd87a8c572f82923a2bebb0dda4620f0c30e8",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83222-v221-v99-compositional-generalization.js",
+      "sha256": "1216427da967d32baefda6b3fa980dd5a9663c46faebe44398e8b13d1aaa9d41",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5aa-v223-precedence-generalization.js",
+      "sha256": "ca77f626af7bf5a3e3ce70c2559b58339e7fdd9bce6059ffd489770f8a8f6bd2",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83223-v222-v100-precedence-generalization.js",
+      "sha256": "926a0b7d05cf01292631964e39d9888ac0b6964a91394ae8edf19b0d13fe1420",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5ab-v224-compositional-recall.js",
+      "sha256": "3e35881f704a59f97b858a9808fcb922893e1523a2ddcb81128e3747b8544929",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83224-v223-v101-compositional-recall.js",
+      "sha256": "7644ebd7846a27012204f44ab2d36aea1a8892e2295c4a49f32b0b55162f28b5",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5ac-v225-residual-composition.js",
+      "sha256": "59dea89f2a26ab86dea252dac161b7536d71e0e4817a40f28c881009e96605bd",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83225-v224-v102-residual-composition.js",
+      "sha256": "4544889613ec8adad8edde2f947951398c0694cf88baa8c10d2c9c6d1789decc",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5ad-v226-full-input-witness.js",
+      "sha256": "c1125f08a37f7c312a5c70a2de526a020c8f12b6c72c3b36940fecac876a7885",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83226-v225-v103-full-input-witness.js",
+      "sha256": "a54c2bc3fe52496a7043543e6c516c436f47c9ca6cc292ebff6de94fea3239c5",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5ae-v227-residual-witness.js",
+      "sha256": "6e1e74abb7bbc80502faed14cf852a81759c804c801d4951f41cd21580e0ff3b",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83227-v226-v104-residual-witness.js",
+      "sha256": "abde857bd1b5136b3d921644683758ac9492c4c1b0effa9ae0720ea8cfe9ff40",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5af-v228-witness-completion.js",
+      "sha256": "628347de69015d170baa111b4d15f04e58edc914419d3ce35d68be2f76c0f8c9",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83228-v227-v105-witness-completion.js",
+      "sha256": "3d63077153af8879b3345a32e87f518ede3d69a90ba0f107b3d041e42058b195",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5ag-v230-concept-generalization.js",
+      "sha256": "849d8df5bf50f1c72fbc5afacb13744555ccc3e03af8db27aff07e2230d4d3a4",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83230-v229-v106-concept-generalization.js",
+      "sha256": "e7b002fa97036c579df03f2313d9d27dbd0a458bf7ad986e00be191953f7e994",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5ah-v231-isolated-concepts.js",
+      "sha256": "7630f8a708b4bc33d20716e4a2a91f58a19a4bc58105f8e76d96ff3755e04fe5",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83231-v230-v107-isolated-concepts.js",
+      "sha256": "aff1d66fd641729c9fe9a77d78c1b491704432ffca2167718171562c7c22b680",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5ai-v232-residual-isolated-generalization.js",
+      "sha256": "3fa8f5b390590967b1d7c05933ffbf79b16d3cfadddbc94a2f50fadc6917b6ff",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83232-v231-v108-residual-isolated-generalization.js",
+      "sha256": "6172097ba532c3f323907b5707f0d7d8f063c8d1a3fe880232fec0af68d61747",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5aj-v234-residual-generalization.js",
+      "sha256": "f2dc506c21193d99242eb6e146ca47ca6e7bd6865fb91f9277d1b028e46dcac4",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83234-v233-v109-residual-generalization.js",
+      "sha256": "380c5edab4043b12a270d7ce754406b98852c3c1c57e836c976d048f22185882",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5ak-v235-final-residuals.js",
+      "sha256": "de086c888459bd017299c787b1c6c08bb1990731f352efb0c8b180303308a9c8",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83235-v234-v110-final-residuals.js",
+      "sha256": "d8ec604bd2a3430f9b63de268a6b2a855eb1fd0a158c58bdb20b71571cf00ebe",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5al-v236-contextual-mechanisms.js",
+      "sha256": "8e075e615d3e3f4fcc673aae9fd08305a0536375b78d9ad925b11c714d13d83f",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83236-v235-v111-contextual-mechanisms.js",
+      "sha256": "22a4ac294ff0ca0047c8f9b991c50dcc255196b76f17e3f0ca47e806039ff08f",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5am-v237-final-compositional.js",
+      "sha256": "f5fc880610376172fba4c8f17dde80dadafee39de82aa1e75951fca21346b49d",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83237-v236-v112-final-compositional.js",
+      "sha256": "48ec7f057a7c2cf3af5468ff44cd7888e5f0e4058d66674a390092c16447843b",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5an-v238-frozen-residuals.js",
+      "sha256": "a3820c0856de8c6b5bce4033eb1de42fc5ec40856c3ddf8d82c4e4bb76227711",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83238-v237-v113-frozen-residuals.js",
+      "sha256": "7adec488cbab42e2adfff45c961234821199d93f9ecb1d640ab669dac437624a",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5ao-v239-v238-residuals.js",
+      "sha256": "9e34670ed24f3edde774bc84de6ac18f8e0bb713707c5726f057d2bee9ab37ce",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83239-v238-v114-v238-residuals.js",
+      "sha256": "e99a49eaee3ce23a9dc1eea80ab8e19cd44ea66f740d41970a613f6f7d264e44",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5ap-v241-v240-residuals.js",
+      "sha256": "69680774c811f53c8a2c50ef7226dbd6d34b938d238fe3ba18369631dafec4a0",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83241-v240-v115-residuals.js",
+      "sha256": "bfa21fc8ef40f1b053da8adf173d5bc8d5f3635e5b15a96361c108af4861a309",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5aq-v242-v241-residuals.js",
+      "sha256": "c324e2d20a188b32bbe6b349af8de063aef3e54fdb64f59b090a30f31b5c836d",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83242-v241-v116-residuals.js",
+      "sha256": "17da6ecf208e6e52ca0c6c801d16be4e4a652e6598d20c58f9ab9fc34e870965",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5ar-v243-v242-residuals.js",
+      "sha256": "a30b898507e08c450fb7f797c974c30c7efbc5109224b8f08c842752ef0c492f",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83243-v242-v117-residuals.js",
+      "sha256": "97edb0e580c04bc9d1060920cf7f357dd26bc3e519c41ce832d4fafe2fad105c",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5as-v245-v244-residuals.js",
+      "sha256": "b127a8f15a1cae7226568e8ef091ca7919bebefec36131af81a572b9c396ad99",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83245-v244-v118-residuals.js",
+      "sha256": "2fc406d56b2f23d22b64710e2b2e344c8bf746bbf84c759c7fadb19a3a05c011",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5at-v246-v245-residuals.js",
+      "sha256": "214dedce936fea738e9f70507c2b84875cead2ede9e7e7d5f5a542dd20046fd2",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83246-v245-v119-residuals.js",
+      "sha256": "3be2c498ab2f23e4ce9a1a7b0537c97ad807c5459f82f18b359c166c98e159c3",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5au-v249-v248-residuals.js",
+      "sha256": "3d5e46a4fb62251069dde8c98f847a63980b6cc8ae3819d3caf69424d2d6a66a",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83249-v248-v120-residuals.js",
+      "sha256": "38713a1c65de20cd410896f69199770e54eb1a80cb46b3890ab2410532420e08",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5av-v250-v249-residuals.js",
+      "sha256": "071d520864d869235338ab1b1d8adefeca3a96aa7509c5bb1ea692ac1f64fcde",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83250-v249-v121-residuals.js",
+      "sha256": "00713ed4f6eb7a711e12e75616388c877ac32c8fae5cc18e702bfca736ba8c25",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5aw-v251-v250-b-residuals.js",
+      "sha256": "56667ce55e9f3f5f6d83e248bdfe2ea861c7dcd0557a70a57e105d481fab6b49",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83251-v250-v122-b-residuals.js",
+      "sha256": "f840edbcf6d6c1c55bc836b09a2825dee038988752a3b8f3da2a4c130a2ad86c",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5ax-v252-v251-residuals.js",
+      "sha256": "ad1c737603ddb5c54ffab944c9495cc05a7dc7fc8ac6555ddd53423ab58f58d8",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83252-v251-v123-residuals.js",
+      "sha256": "cf8f43a12ddde2f7209de2f871023797e91f3eff95ea43e43d0e34d576ff09d7",
+      "source_identity_covered": true
+    },
+    {
+      "file": "qc-evidence-extractor-v5ay-v253-v252-residual.js",
+      "sha256": "26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a",
+      "source_identity_covered": true
+    },
+    {
+      "file": "psc-v83253-v252-v124-residual.js",
+      "sha256": "50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96",
+      "source_identity_covered": true
+    }
+  ],
+  "v255_identity_count": 55,
+  "candidate_aliases_v4_to_v124": true,
+  "runtime_smoke": {
+    "extractor": true,
+    "core": "V8.3.253-V124-V252-RESIDUAL",
+    "route": "input:prediction",
+    "can_continue": false
+  },
+  "build_pass": true,
+  "artifact_validation_pass": true,
+  "dist_file_count": 234,
+  "dist_manifest": [
+    {
+      "path": "dist/.openai/drizzle/meta/_journal.json",
+      "sha256": "90cb374e093894d0efce6f1830d873a42aadd8ba49d2f024495e5cb2e1c8c303",
+      "size": 61
+    },
+    {
+      "path": "dist/.openai/hosting.json",
+      "sha256": "e5bf099446e0be974d0127fe0711a71c2e0970827f7a4d968b5ce2b35da60fad",
+      "size": 91
+    },
+    {
+      "path": "dist/client/.assetsignore",
+      "sha256": "4f83140d5f4293ab55bd1207327e995c83258f1e7d3145b1b5d7a3d17fdfe0a7",
+      "size": 24
+    },
+    {
+      "path": "dist/client/.vite/manifest.json",
+      "sha256": "e410a35d2b450f6eb0c5b31ea1dcc7ff708de4757dd49cd6e35d18a473fba11a",
+      "size": 1094
+    },
+    {
+      "path": "dist/client/_headers",
+      "sha256": "9e55124bccd40b43dbc6e002daa777fa8f32a230420152910784ca65501d9e0f",
+      "size": 125
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-8ac0455e797f/geist-001175b1.woff2",
+      "sha256": "58a6b173d5ca1dec92166ea3c6cb1a84a4144556d10928ac14e8e6b40e4787bd",
+      "size": 16540
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-8ac0455e797f/geist-52306abf.woff2",
+      "sha256": "f689f638f29fff460a2d5749edb5d5c38d7bef0389f32032d871f23fc6ebb008",
+      "size": 7968
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-8ac0455e797f/geist-875ccdd4.woff2",
+      "sha256": "6129fc8571c3e0cb0a4c41f5160c974a843b055009dc4ad8858bd808e18a2d86",
+      "size": 14900
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-8ac0455e797f/geist-98bbbccb.woff2",
+      "sha256": "9b6f5ff45b278c744b5f379a2c4ecbaf858a842b8eaf82ac8d21b699ca16c608",
+      "size": 29288
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-8ac0455e797f/geist-ff2310f5.woff2",
+      "sha256": "b7a545bbb08256bd809f11cfe66d88da3e22d169ea4407737b1ef0ec1ed3d791",
+      "size": 7252
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-013b2f2f.woff2",
+      "sha256": "5f3d6ad60f29d6cb708414ec6887163d63bf197377ef5417d2483ff31ace6c3b",
+      "size": 23108
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-0638449e.woff2",
+      "sha256": "d67e4a94ba498635f764ddca7d1ec4271f5642f032eb24b426764480f66f8497",
+      "size": 5892
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-44745446.woff2",
+      "sha256": "745994b5cd950ec201b66526375f057d540847cccfc70f4f24f5f571d26d3923",
+      "size": 14712
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-44e03052.woff2",
+      "sha256": "75b3bedbebc35f347c0ae3b416aa871941555357e7b0f83767eb5987875589ed",
+      "size": 12872
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-971fb274.woff2",
+      "sha256": "16e1d48b6dd29eb240aec5db36184eb182933c082cd43de7f35af686d58087d2",
+      "size": 7728
+    },
+    {
+      "path": "dist/client/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-f6b33328.woff2",
+      "sha256": "e27f657e38d52887baa3b6b2f812bef93dfdd356f0810e40edd4ee284cc7e9f6",
+      "size": 6204
+    },
+    {
+      "path": "dist/client/assets/framework-XU8gKkFC.js",
+      "sha256": "b1aff339554868991407e12903b13fd8fcbc0ba5e4fe3d0872ab2fa0394765db",
+      "size": 189752
+    },
+    {
+      "path": "dist/client/assets/index-BgQ1tAKL.css",
+      "sha256": "51d6c24402655424e10a624e951dd18106859a950a0f24e216d59a45c0a31c98",
+      "size": 10557
+    },
+    {
+      "path": "dist/client/assets/index-CtVXNBql.js",
+      "sha256": "c4c14424b3008113f1e301a6d9ec2467aff23e7d0e22180a38127ca7469310c0",
+      "size": 80551
+    },
+    {
+      "path": "dist/client/assets/layout-segment-context-BRmgGGHe.js",
+      "sha256": "e616874446b7ccb2249da90c03995f539f43a5e5c6d30b7e9aa35cdc6ac58116",
+      "size": 288
+    },
+    {
+      "path": "dist/client/assets/rolldown-runtime-S-ySWqyJ.js",
+      "sha256": "5db5ba82eef00d1dee7e86e663098c9427d01183a88d357437daff295aec3e75",
+      "size": 694
+    },
+    {
+      "path": "dist/client/candidate.html",
+      "sha256": "11004327339e564a703de123de4882b23e30faf6af8fe20f7ffa57b1c547906f",
+      "size": 1263805
+    },
+    {
+      "path": "dist/client/favicon.svg",
+      "sha256": "e6d2e59b7b5bbb0342e0fb496dfc262decbfe4426bbb7b047aec8d467d1dc6f7",
+      "size": 712
+    },
+    {
+      "path": "dist/client/file.svg",
+      "sha256": "1e0ae4d1a1ddfa36752988647b731e4abf150c414d069ec83c96fb0aaeff0307",
+      "size": 392
+    },
+    {
+      "path": "dist/client/globe.svg",
+      "sha256": "d051a8c47936990a9085693d307bb7cea1bc1b6d7ed956bcbaacf674f4ec96b9",
+      "size": 1036
+    },
+    {
+      "path": "dist/client/mobile-qa.html",
+      "sha256": "7571cf8d936020d85e3d724e29cc0ee1c4e28a0a6601ca13be6440679b9784b1",
+      "size": 327
+    },
+    {
+      "path": "dist/client/psc-v3.js",
+      "sha256": "886936b9e771c55474158e27c5129ccd06637cee690aabbdf15bb08ad68926ac",
+      "size": 32366
+    },
+    {
+      "path": "dist/client/psc-v4.js",
+      "sha256": "43431840d1230c776dfec34c0fa6f2359ebd83f3beace273a2f686d7f78d602f",
+      "size": 25197
+    },
+    {
+      "path": "dist/client/psc-v83121-r1-reconstructed.js",
+      "sha256": "335766aba72677e20c444b9490a0e1ab98721f8ac579bdee51f990ac6368ab70",
+      "size": 16122
+    },
+    {
+      "path": "dist/client/psc-v83122-operator-aware.js",
+      "sha256": "bd762a7a229146bb8ca7d8fabb1c0eeb1ed1fc5775a7c5401562bf37a54c0c7a",
+      "size": 16937
+    },
+    {
+      "path": "dist/client/psc-v83123-family-preservation.js",
+      "sha256": "992f9d5b616f16b45c8c2af30548730490ce7e7665aa29c99d35c8100b6552d0",
+      "size": 13132
+    },
+    {
+      "path": "dist/client/psc-v83124-operator-context.js",
+      "sha256": "5ed75c3259b03ddfed7ce5e6887fb4854d6749b5a5074d5780afd7040f1ccbda",
+      "size": 11674
+    },
+    {
+      "path": "dist/client/psc-v83125-semantic-routing.js",
+      "sha256": "67a11416e052142e4464f97e17fa0d5acb675c4521a016250e694c214a8efc1a",
+      "size": 13055
+    },
+    {
+      "path": "dist/client/psc-v83126-public-route-canonicalization.js",
+      "sha256": "6e1da8ca491cee49fb8c5a12cc11aaaa7f8d13634fe362885d556d0cece2a115",
+      "size": 5315
+    },
+    {
+      "path": "dist/client/psc-v83127-review-intent-authority.js",
+      "sha256": "d5d16025ecdf7c15c613075fd146ae8684ff5a10107367b9a7cec0ef1496d572",
+      "size": 10742
+    },
+    {
+      "path": "dist/client/psc-v83129-canonical-shadow.js",
+      "sha256": "457d92bdb4cc0ca83fd0450c6cacc93f5748144bcabe388b78cd3c53b29de60a",
+      "size": 29605
+    },
+    {
+      "path": "dist/client/psc-v83130-representation-coverage.js",
+      "sha256": "85fb1242dfef529d117ebee0bbe74d17e7060c98b3bfbc940ed62ba84ac097a0",
+      "size": 37979
+    },
+    {
+      "path": "dist/client/psc-v83131-proposition-consolidation.js",
+      "sha256": "94712ff1b0f52eaf731a7e74b41bf30420ff9a62942f45c51f7830871f609eef",
+      "size": 42640
+    },
+    {
+      "path": "dist/client/psc-v83132-relation-graph.js",
+      "sha256": "76d03dd8e911a38811f2e55774d766daa5046902629b1787bee8ad3073e06bf5",
+      "size": 50129
+    },
+    {
+      "path": "dist/client/psc-v83133-canonical-role-binding.js",
+      "sha256": "a87bfd6fe4f8dbe30fea9daa70c70f97890e1cb53522d1f60f1cd013b06adf14",
+      "size": 11088
+    },
+    {
+      "path": "dist/client/psc-v83135-scoped-operator.js",
+      "sha256": "8d432d72016c86718cef18cdc07141ad74d2e6656e97ca79172b4c9fc34a0ab7",
+      "size": 11935
+    },
+    {
+      "path": "dist/client/psc-v83137-ui-gate-authority.js",
+      "sha256": "bccf07c2c3f7ff7e59d13096335754d50fbfa6871f1af6e75ff7014601a711b1",
+      "size": 2031
+    },
+    {
+      "path": "dist/client/psc-v83138-semantic-convergence.js",
+      "sha256": "48e89bef4b3deff40d8ac7d9cd5a282c9ae3bc6610e6186544ae51a28a5f8f82",
+      "size": 9078
+    },
+    {
+      "path": "dist/client/psc-v83139-semantic-convergence.js",
+      "sha256": "b2794b6c47252c4c99d52d7a54fd1188f1d2c894772ebb5106f7c817e3ce9d69",
+      "size": 10742
+    },
+    {
+      "path": "dist/client/psc-v83142-sealed-failure-convergence.js",
+      "sha256": "eef50ddfc10ff78c363d3ad076cbc9f8ba5bc22fe20c1ce1762fbef18a03f04d",
+      "size": 12065
+    },
+    {
+      "path": "dist/client/psc-v83143-semantic-convergence.js",
+      "sha256": "3630cc27cacc0c6467dd07107d4f10244758692b54d034b5d7524c435cb8f603",
+      "size": 7134
+    },
+    {
+      "path": "dist/client/psc-v83144-sealed-failure-convergence.js",
+      "sha256": "06e6b3fcd771c1478b5fcf33564c1cc365e32bc934288fd880e248fd1af8322b",
+      "size": 9190
+    },
+    {
+      "path": "dist/client/psc-v83145-family-state-layer.js",
+      "sha256": "165699bc219acf54e100fafafede45891eecfa2708f46960799355a61d411f57",
+      "size": 15300
+    },
+    {
+      "path": "dist/client/psc-v83145-route-layer.js",
+      "sha256": "31f5a1f84960a57f7e2459c97ac6ea09b58151c50596d5120c822552803e7352",
+      "size": 6345
+    },
+    {
+      "path": "dist/client/psc-v83146-family-sequence-repair.js",
+      "sha256": "f9ace3c9aac6b2853f97d29a4e9a5ae2e1ca091db411970d1cf529daaa31a109",
+      "size": 10639
+    },
+    {
+      "path": "dist/client/psc-v83146-route-boundary-repair.js",
+      "sha256": "ddcc814dfa9d8afef374014bceb6a79d136330fd24f06b78a34ac9eacdce6aaf",
+      "size": 3677
+    },
+    {
+      "path": "dist/client/psc-v83147-sealed-failure-repair.js",
+      "sha256": "538f1ba5c1068c86ec60bf257761d861be643cbb39043a5df071bc99cd1dbdcd",
+      "size": 6674
+    },
+    {
+      "path": "dist/client/psc-v83148-sealed-failure-repair.js",
+      "sha256": "65edaa79ddcd67a6903d2250b2526773d675028eec2acc003d7b1ca9dc1ef1c6",
+      "size": 4897
+    },
+    {
+      "path": "dist/client/psc-v83149-sealed-failure-repair.js",
+      "sha256": "c0857825e5f39830f54ca7ea8622d6f55b04c027cd05c70c8df173b59732d31f",
+      "size": 4445
+    },
+    {
+      "path": "dist/client/psc-v83150-sealed-failure-repair.js",
+      "sha256": "63c56b79d2b10d241d49fd3895c440f9ac0e15bc495c8bc343ffd3d680a45381",
+      "size": 5122
+    },
+    {
+      "path": "dist/client/psc-v83151-sealed-failure-repair.js",
+      "sha256": "39d8425eb6dcca6f2e33c1f06f294df6a487613274d41ed252ce7bd23c6777a1",
+      "size": 4037
+    },
+    {
+      "path": "dist/client/psc-v83152-sealed-failure-repair.js",
+      "sha256": "26755138652ed6271fb6ca65024bfe1b03a400a4b389521612d54504a068a98d",
+      "size": 4154
+    },
+    {
+      "path": "dist/client/psc-v83153-sealed-failure-repair.js",
+      "sha256": "7bfc567867720f780bbac7475947a281f7196d1bffeaa9efed173174e5e16436",
+      "size": 5395
+    },
+    {
+      "path": "dist/client/psc-v83154-sealed-failure-repair.js",
+      "sha256": "e8299cfd5a8fc617966c08fe1311a15a7a65ac3592490bd73de4d7ef2aa7f369",
+      "size": 4464
+    },
+    {
+      "path": "dist/client/psc-v83155-sealed-failure-repair.js",
+      "sha256": "7cc8409c44718b3b3f03d03b8767c8a3374bf891eedb3632594a341e7223bc51",
+      "size": 6016
+    },
+    {
+      "path": "dist/client/psc-v83156-v155-v3-bounded-repair.js",
+      "sha256": "b40b71d7196d787a04be7a7ebd93b5e6c97a3e4438a0f95e904aff0b32ab2e01",
+      "size": 4473
+    },
+    {
+      "path": "dist/client/psc-v83157-v156-sealed-a-bounded-repair.js",
+      "sha256": "58f433aafed971e8f920f932ecbc5093e442df733e230beb76c621ca9601998e",
+      "size": 5324
+    },
+    {
+      "path": "dist/client/psc-v83158-v157-sealed-a-bounded-repair.js",
+      "sha256": "85d16e46a4ad9dd7e688c3549a83563a0f895420cccb06378c7f50c8a6f8e1d1",
+      "size": 4614
+    },
+    {
+      "path": "dist/client/psc-v83159-v158-sealed-a-bounded-repair.js",
+      "sha256": "a970b71e1b2af54c38e8df72aebdc0323cf53023af95072434fba4318d775839",
+      "size": 4110
+    },
+    {
+      "path": "dist/client/psc-v83160-v159-v2-sealed-a-bounded-repair.js",
+      "sha256": "0395ed571b5a189038b83f27bc9a933871ff33cdba76968d2bb0630b41ced5e7",
+      "size": 4056
+    },
+    {
+      "path": "dist/client/psc-v83161-v160-v1-sealed-a-bounded-repair.js",
+      "sha256": "94db19efb1af8b44a5c69fbc975c6f3e7423ebf3bed73ea365e7a189e8ceadd8",
+      "size": 4043
+    },
+    {
+      "path": "dist/client/psc-v83162-v161-v1-sealed-a-bounded-repair.js",
+      "sha256": "6001c796a3e9586896ea42f0fc78240825930a20fef66f15e2c1f27ad10a978e",
+      "size": 4478
+    },
+    {
+      "path": "dist/client/psc-v83163-v162-v1-sealed-a-bounded-repair.js",
+      "sha256": "b74c81f6d4985b07610357757d841423f27ea7d0e7a2b92fa95624dc0e58542a",
+      "size": 5992
+    },
+    {
+      "path": "dist/client/psc-v83164-v163-v1-sealed-a-bounded-repair.js",
+      "sha256": "1fa6bb9b17812fca64a2aafd274710ef7f705d99e6aa561d993b7e965d804651",
+      "size": 3937
+    },
+    {
+      "path": "dist/client/psc-v83165-v164-v1-sealed-a-bounded-repair.js",
+      "sha256": "cd6d719e3c587d3191c41b81d19e53cf33c8676411732ebceb69dba4545f3347",
+      "size": 4238
+    },
+    {
+      "path": "dist/client/psc-v83166-v165-v1-sealed-a-bounded-repair.js",
+      "sha256": "341e9e9a00c59b4a0f1ca2e41a410d49407a330f151ca4d7f7eaaafd09e8df0a",
+      "size": 7063
+    },
+    {
+      "path": "dist/client/psc-v83167-v166-v1-sealed-a-bounded-repair.js",
+      "sha256": "45cc7d28c705f77d44b470fffdc08d8dfb6aa9e2fec83db3df065cee65bad717",
+      "size": 7326
+    },
+    {
+      "path": "dist/client/psc-v83168-v167-v1-sealed-a-bounded-repair.js",
+      "sha256": "f412126e810cb69510fb9275ebc4e1421d49e7021ad5a2a58c33028c4b357fd7",
+      "size": 5781
+    },
+    {
+      "path": "dist/client/psc-v83169-v168-v1-sealed-a-bounded-repair.js",
+      "sha256": "dc4f4acc24dd9f2720479f6ab7c94cd1fb1008eabbdbfa203a4ea3ca79c0ba10",
+      "size": 3631
+    },
+    {
+      "path": "dist/client/psc-v83170-v169-v1-sealed-a-bounded-repair.js",
+      "sha256": "1b5ba218ed5b109f756d20050ec72fa70d29d1d4794ad1f369628fd1c1aa6a8a",
+      "size": 3630
+    },
+    {
+      "path": "dist/client/psc-v83171-v170-v1-sealed-a-bounded-repair.js",
+      "sha256": "b0b3ad6aff30006e95130a213075152c9154aa321761f07613a71712ca190a85",
+      "size": 3410
+    },
+    {
+      "path": "dist/client/psc-v83172-v171-v1-sealed-a-bounded-repair.js",
+      "sha256": "b72ec577896c343f88d001ab14dc7b085f3f87d307e7763f6a67861784a511d0",
+      "size": 4283
+    },
+    {
+      "path": "dist/client/psc-v83173-v172-v1-sealed-a-bounded-repair.js",
+      "sha256": "e0dc933900ffc054cf1a63bf43be3952a52ee5a07df04497c5aa4afb18c37a23",
+      "size": 4527
+    },
+    {
+      "path": "dist/client/psc-v83174-v173-v1-sealed-a-bounded-repair.js",
+      "sha256": "0cce4af10da82048c3bd61607bebd808548e3a26a601e22cc1f1371d85d7a6e9",
+      "size": 4432
+    },
+    {
+      "path": "dist/client/psc-v83175-v174-v1-sealed-a-bounded-repair.js",
+      "sha256": "6711b6d064c94a290fb45515cd72721990ab54ecb6b64d4cb726b4c86bcc94b8",
+      "size": 4357
+    },
+    {
+      "path": "dist/client/psc-v83176-v175-bank-contract-carry-forward.js",
+      "sha256": "b0d41d5f522ac0f899ae9415c258429159625f48a5f651db7904798013bc0237",
+      "size": 920
+    },
+    {
+      "path": "dist/client/psc-v83177-v176-sealed-a-bounded-repair.js",
+      "sha256": "972ca39ba581c4668b596a7e1a8b55ee41c5f62c9e30357fd30e627c855e98cd",
+      "size": 3601
+    },
+    {
+      "path": "dist/client/psc-v83178-v177-sealed-a-bounded-repair.js",
+      "sha256": "d22d82b7162ddb97c5d95cdf36886f0052e013e738be24d37309d3e7ecdd5a51",
+      "size": 4535
+    },
+    {
+      "path": "dist/client/psc-v83179-v178-sealed-a-bounded-repair.js",
+      "sha256": "ed236deee27580a78fcf2340dab49d248764d5032b7df82797bb9746c5d44a5d",
+      "size": 4016
+    },
+    {
+      "path": "dist/client/psc-v83180-v179-sealed-a-bounded-repair.js",
+      "sha256": "781da7f176f9ea1c897effac807d9748eed8e2cd4e661b020742c3c200a3dc46",
+      "size": 3956
+    },
+    {
+      "path": "dist/client/psc-v83181-v180-sealed-a-bounded-repair.js",
+      "sha256": "f11acba9d847c31b37c8acbb54191b7f7974fca049cce7f06987d2e6d4f9272e",
+      "size": 3935
+    },
+    {
+      "path": "dist/client/psc-v83181-v180-v1-explicit-intent-precedence-repair.js",
+      "sha256": "9444aa5870155cf1b636ebf5600a46ac5df61f8761ade4afb6068c87b1b70835",
+      "size": 3640
+    },
+    {
+      "path": "dist/client/psc-v83181-v180-v1-historical-precedence-repair.js",
+      "sha256": "0c02f674ac69ab3e9b92cf7db69d609c6606c81ff598ac60f1ee7fb7a61cd9e8",
+      "size": 2855
+    },
+    {
+      "path": "dist/client/psc-v83181-v180-v1-historical-self-family-precedence-repair.js",
+      "sha256": "c0b8b25a8caedc04d253ce90521f111bc2e8fd6133bc6b55da3959a717e86696",
+      "size": 2380
+    },
+    {
+      "path": "dist/client/psc-v83182-v181-sealed-a-bounded-repair.js",
+      "sha256": "babe832ded9b31cb1a7c22dc5f83d17f4fc3884ea3ebfc242f810d37cf2770ec",
+      "size": 3093
+    },
+    {
+      "path": "dist/client/psc-v83183-v182-sealed-a-bounded-repair.js",
+      "sha256": "424fceb7f1ccbd4cb79e2171d7036ac9bba22055586300fb7f23055382f6e594",
+      "size": 3413
+    },
+    {
+      "path": "dist/client/psc-v83184-v183-sealed-a-bounded-repair.js",
+      "sha256": "0050c88323de662e8d384a52763d443519e948831e2a24009b81ae8d4920cdf5",
+      "size": 3622
+    },
+    {
+      "path": "dist/client/psc-v83185-v184-sealed-a-bounded-repair.js",
+      "sha256": "0012c3e985ff1deeb7682473c498f0386c294645907be3842cdbb4a8bba7db21",
+      "size": 3531
+    },
+    {
+      "path": "dist/client/psc-v83186-v185-sealed-a-bounded-repair.js",
+      "sha256": "36430272a5c7de47c39919f201d237fbb2ed68ec1220c5dbdb6f12842ef13291",
+      "size": 3486
+    },
+    {
+      "path": "dist/client/psc-v83187-v186-sealed-a-bounded-repair.js",
+      "sha256": "cb545e8aa4d600ed582b2c7b5ae7ab7f88f09102393b72a2f20b2a8c6682e48d",
+      "size": 3535
+    },
+    {
+      "path": "dist/client/psc-v83188-v187-sealed-a-bounded-repair.js",
+      "sha256": "5ad542b4ce07f9355cda4e5519bac343b6459cfd3c140299929d301720818517",
+      "size": 3750
+    },
+    {
+      "path": "dist/client/psc-v83189-v188-sealed-a-bounded-repair.js",
+      "sha256": "f120bbce47d461a22e9780af3d5eb75ed8a947e6e22dbb35b25a522ee6967882",
+      "size": 4068
+    },
+    {
+      "path": "dist/client/psc-v83190-v189-sealed-a-bounded-repair.js",
+      "sha256": "631f3f2c438cbcb9f2a233ac95248e8d643d794ab4d05bdad0dbc76c9ae1567f",
+      "size": 3923
+    },
+    {
+      "path": "dist/client/psc-v83190-v189-v1-preservation-precedence-repair.js",
+      "sha256": "ac4ffe8012c6fa9545700e05ee24c1e51a37a6aec7245d3f84b0240c744a4b20",
+      "size": 2883
+    },
+    {
+      "path": "dist/client/psc-v83191-v190-sealed-a-bounded-repair.js",
+      "sha256": "ffc9920deb9f90d98fb68f32ebeaf397ec33045b053276984adf4184534d1ba1",
+      "size": 4325
+    },
+    {
+      "path": "dist/client/psc-v83192-v191-sealed-a-bounded-repair.js",
+      "sha256": "7b32837412a4100490a3ecfa995bd8faef03dbd7fb6b94a3eee914f3096d0de0",
+      "size": 5637
+    },
+    {
+      "path": "dist/client/psc-v83192-v191-v1-slow-preservation-repair.js",
+      "sha256": "b182b9be21a7906a5555b6a5807b76bc7533b203187804379a749e9bae269fe1",
+      "size": 1352
+    },
+    {
+      "path": "dist/client/psc-v83193-v192-sealed-a-bounded-repair.js",
+      "sha256": "830bb4e5d47b5b46700920e6bcf0a3d92de342546395d1546c3a1b5a47329c73",
+      "size": 5397
+    },
+    {
+      "path": "dist/client/psc-v83194-v193-sealed-a-bounded-repair.js",
+      "sha256": "6b4d73b6c57d56717dff185b22cfe845e9a43826c13ef2674a2a0dd2cb701a7d",
+      "size": 4693
+    },
+    {
+      "path": "dist/client/psc-v83195-v194-sealed-a-bounded-repair.js",
+      "sha256": "51501d3d4ec2b3a258eae313a6b02ee2d65e07fdd000a53bd3ae898d70cc578e",
+      "size": 4024
+    },
+    {
+      "path": "dist/client/psc-v83196-v195-sealed-a-bounded-repair.js",
+      "sha256": "a5c986a10bb4ca206417221928a2852a08a7d8b51c2ebb5cec76daf12668aa1a",
+      "size": 7516
+    },
+    {
+      "path": "dist/client/psc-v83196-v195-v1-hypothetical-preservation-repair.js",
+      "sha256": "8e0a2be056e55a4b8d7a64ddcec29359fb2e09dbead9d29d067ed0c62ee0bfd2",
+      "size": 1666
+    },
+    {
+      "path": "dist/client/psc-v83197-v196-sealed-a-bounded-repair.js",
+      "sha256": "704e170fc2ca8913cf4066f35c1aae0c355710b64e1400431bd7b6baf1002555",
+      "size": 3977
+    },
+    {
+      "path": "dist/client/psc-v83198-v197-sealed-a-bounded-repair.js",
+      "sha256": "47241f248421e9f8e731f6c4039807fc14badc4bf405d9d31a6be453f736a1eb",
+      "size": 5592
+    },
+    {
+      "path": "dist/client/psc-v83199-v198-sealed-a-bounded-repair.js",
+      "sha256": "378e988ecb43bd82b5fdeda20ec1bce32ee89fea4574fd9436beb7a8d9cbc487",
+      "size": 4356
+    },
+    {
+      "path": "dist/client/psc-v83200-v199-sealed-a-bounded-repair.js",
+      "sha256": "5409821332c7969b5e6873f51a468cc5b8144d6d788120eb3b1c960daa2d368c",
+      "size": 4718
+    },
+    {
+      "path": "dist/client/psc-v83201-v200-sealed-a-bounded-repair.js",
+      "sha256": "bb2b2854917634af396d65a7cd3300598187fe2b5376a12e84fd000fed96c515",
+      "size": 5041
+    },
+    {
+      "path": "dist/client/psc-v83201-v200-v1-preservation-precedence-repair.js",
+      "sha256": "483ef26a698e29d53fbd157e07495c2bf1b7109d2a313849b017e80085087122",
+      "size": 1787
+    },
+    {
+      "path": "dist/client/psc-v83202-v201-sealed-a-bounded-repair.js",
+      "sha256": "43527ae21004fd080a26be644bae8d778f3978625ada7ce9ce63e67abb33559e",
+      "size": 4897
+    },
+    {
+      "path": "dist/client/psc-v83203-v202-sealed-a-bounded-repair.js",
+      "sha256": "e1a4ccfb0630d2121d220f07ca34557a289b93e1615c38dd182fe21027db62e0",
+      "size": 7197
+    },
+    {
+      "path": "dist/client/psc-v83204-v203-sealed-a-bounded-repair.js",
+      "sha256": "84009975221ebc7d729be789a13953efc5ee66d87c4a5a66330358db16d0c214",
+      "size": 10704
+    },
+    {
+      "path": "dist/client/psc-v83205-v204-sealed-a-bounded-repair.js",
+      "sha256": "f97c47748edf6d1a1bc7a3336fdc50cb4177dc5a1c9144467d0e14157095cdc5",
+      "size": 4280
+    },
+    {
+      "path": "dist/client/psc-v83206-v205-compositional-generalization.js",
+      "sha256": "75a2667bfc9eaab34e0dd61ddba0bbb7ef3d112583621a0c2c597f29bcd858be",
+      "size": 12115
+    },
+    {
+      "path": "dist/client/psc-v83206-v205-v1-preservation-repair.js",
+      "sha256": "cc6b8a70ba06c9fa125fb9a7f472bd6d3cb7f8e4c93e86abe79492f41ba71834",
+      "size": 1867
+    },
+    {
+      "path": "dist/client/psc-v83207-v206-mechanism-cue-repair.js",
+      "sha256": "bb4fae3dee26f08a8b6413cb6a4315ce69fd59ce113be2b85f7617a0423ac76f",
+      "size": 9447
+    },
+    {
+      "path": "dist/client/psc-v83207-v206-v1-preservation-repair.js",
+      "sha256": "7409a1bfa68fa773feb27274fc1eb1182be356def9050ada5d2ca1d9c030db72",
+      "size": 1687
+    },
+    {
+      "path": "dist/client/psc-v83208-v207-mechanism-cue-repair.js",
+      "sha256": "650fbc764a7b310ac13eec5292b761f45fa078f1d2d6c938e5a02bac46affc6e",
+      "size": 7962
+    },
+    {
+      "path": "dist/client/psc-v83208-v207-v1-preservation-repair.js",
+      "sha256": "f5eb34096c28f835d5222f6818f6feec7940423dbe94544bfa5b348ea9558268",
+      "size": 1686
+    },
+    {
+      "path": "dist/client/psc-v83209-semantic-rule-table-v3-review-candidate.js",
+      "sha256": "6e338a70c90a07f27085874cb90597e90530c23a845e37e8d0a7e69c588506c1",
+      "size": 4263
+    },
+    {
+      "path": "dist/client/psc-v83209-v208-evidence-slot-composition.js",
+      "sha256": "6c77308141b3bdfee2c62c4c3441fed82864ad8c3272197748ec898676db9b26",
+      "size": 8827
+    },
+    {
+      "path": "dist/client/psc-v83209-v208-semantic-rule-table-promotion.js",
+      "sha256": "72c46b76907b4d76426cd4600dca4b2584456b9ba3f1cd4845787d322b480180",
+      "size": 474
+    },
+    {
+      "path": "dist/client/psc-v83209-v208-v1-preservation-repair.js",
+      "sha256": "20dab67e641a10288dce120e983da1680ace65a49e9e51f57d9de7723667ec81",
+      "size": 2589
+    },
+    {
+      "path": "dist/client/psc-v83210-v209-semantic-rule-table-v4.js",
+      "sha256": "4ca139e1ed67360050b4fde55de2d60bdbf633cc6ee4847f2c897ad8cd891802",
+      "size": 4196
+    },
+    {
+      "path": "dist/client/psc-v83210-v209-v1-relational-preservation.js",
+      "sha256": "08ffd67b0046703a9b58e9c3ee179172486b2501630156717d6bfbe6ba5238d3",
+      "size": 1416
+    },
+    {
+      "path": "dist/client/psc-v83210-v210-semantic-rule-table-v5.js",
+      "sha256": "762eccbbd3bae47cae21167d27f6f506b9fe268bf3fe6b365d25c7fc86afc7ec",
+      "size": 4260
+    },
+    {
+      "path": "dist/client/psc-v83210-v210-semantic-rule-table-v6.js",
+      "sha256": "2ebaedb9d342a17d5a5fb8bfb01ccc38a57bc0d05f362b52fde20e72c5b05219",
+      "size": 4267
+    },
+    {
+      "path": "dist/client/psc-v83210-v210-semantic-rule-table-v7.js",
+      "sha256": "642502986cac2902649faf842c481c007b9e5d5b25c5738dc6b01c7ba39e07f3",
+      "size": 4277
+    },
+    {
+      "path": "dist/client/psc-v83210-v210-semantic-rule-table-v8-parent-containment.js",
+      "sha256": "7e4af94e95b60127b6b9102b820c3c67e9def0ac06df7fa4914eff662ced927d",
+      "size": 5155
+    },
+    {
+      "path": "dist/client/psc-v83211-v210-context-scoped-rule-table.js",
+      "sha256": "b9c56dd13d98e3348cd2ea7c435cf00107cafdfc4b8d38b1c26e5e158f43a275",
+      "size": 4021
+    },
+    {
+      "path": "dist/client/psc-v83211-v210-preservation-containment.js",
+      "sha256": "5c930725f2e22eee735f2d8f585ed099e64dab2e9cf810b8f3dddad1a515c731",
+      "size": 4527
+    },
+    {
+      "path": "dist/client/psc-v83211-v210-v89-relational-recall.js",
+      "sha256": "bd217945faaa043f4fe2c0c9b252cd57c1fa9202e85086596654a510d32e3daf",
+      "size": 4357
+    },
+    {
+      "path": "dist/client/psc-v83212-v211-v90-scope-propagation.js",
+      "sha256": "f4c3c7e1e8c697a15296e6e6c57e85965690fd537a0091f1db656b642ff35d2c",
+      "size": 5258
+    },
+    {
+      "path": "dist/client/psc-v83212-v211-v91-delegated-decision-preservation.js",
+      "sha256": "f7b3a74aa2ebc18005be22d46a98bb2019ab7f33f9b1cf7245181c29becee46a",
+      "size": 5184
+    },
+    {
+      "path": "dist/client/psc-v83212-v211-v92-relational-recall.js",
+      "sha256": "550bd84ebf8916734db8528a105b14ef0d8b63a11dd80e59ae0610bde8d58a88",
+      "size": 5068
+    },
+    {
+      "path": "dist/client/psc-v83213-v212-v93-relational-paraphrase-recall.js",
+      "sha256": "49592f3b6c96ca758566f24032dea5d5cdc6c66f1191b0eeb62dd651ae5739de",
+      "size": 5087
+    },
+    {
+      "path": "dist/client/psc-v83214-v213-v94-sealed-recall.js",
+      "sha256": "c35eb5224fa3019cc84c66ffd81a12bf1ff3eb90712998c9e0d9d65d149f9fdf",
+      "size": 5057
+    },
+    {
+      "path": "dist/client/psc-v83214-v213-v94r-clarification-containment.js",
+      "sha256": "e7a917fe49d96dd1b4deede8b50eecf6cde28ffaee7e8bb688198d5bc1471da3",
+      "size": 5101
+    },
+    {
+      "path": "dist/client/psc-v83215-v214-v95-compositional-recall.js",
+      "sha256": "e1ba827754d3fdeec87115cdb4e800214b81d43f923572eecd83e626b0ea34c5",
+      "size": 5222
+    },
+    {
+      "path": "dist/client/psc-v83216-v215-v96-sealed-recall.js",
+      "sha256": "8d6f491e66e95b19e8a7070b6f4f6fdf43981eaf42eb4b2a33dc109e1739bcd9",
+      "size": 4062
+    },
+    {
+      "path": "dist/client/psc-v83217-v216-v97-relational-recall.js",
+      "sha256": "13322f68e4115aad3edf5a53087d7161f78557b90a7296669506653c89b60288",
+      "size": 4070
+    },
+    {
+      "path": "dist/client/psc-v83220-v219-v98-bounded-recall.js",
+      "sha256": "a15ccac0cda936aa72fbe4b5fbd81a69d52711f823dc25eb028699604dc7ac5b",
+      "size": 3051
+    },
+    {
+      "path": "dist/client/psc-v83222-v221-v99-compositional-generalization.js",
+      "sha256": "1216427da967d32baefda6b3fa980dd5a9663c46faebe44398e8b13d1aaa9d41",
+      "size": 2688
+    },
+    {
+      "path": "dist/client/psc-v83223-v222-v100-precedence-generalization.js",
+      "sha256": "926a0b7d05cf01292631964e39d9888ac0b6964a91394ae8edf19b0d13fe1420",
+      "size": 3118
+    },
+    {
+      "path": "dist/client/psc-v83224-v223-v101-compositional-recall.js",
+      "sha256": "7644ebd7846a27012204f44ab2d36aea1a8892e2295c4a49f32b0b55162f28b5",
+      "size": 2837
+    },
+    {
+      "path": "dist/client/psc-v83225-v224-v102-residual-composition.js",
+      "sha256": "4544889613ec8adad8edde2f947951398c0694cf88baa8c10d2c9c6d1789decc",
+      "size": 2767
+    },
+    {
+      "path": "dist/client/psc-v83226-v225-v103-full-input-witness.js",
+      "sha256": "a54c2bc3fe52496a7043543e6c516c436f47c9ca6cc292ebff6de94fea3239c5",
+      "size": 2747
+    },
+    {
+      "path": "dist/client/psc-v83227-v226-v104-residual-witness.js",
+      "sha256": "abde857bd1b5136b3d921644683758ac9492c4c1b0effa9ae0720ea8cfe9ff40",
+      "size": 2802
+    },
+    {
+      "path": "dist/client/psc-v83228-v227-v105-witness-completion.js",
+      "sha256": "3d63077153af8879b3345a32e87f518ede3d69a90ba0f107b3d041e42058b195",
+      "size": 2989
+    },
+    {
+      "path": "dist/client/psc-v83230-v229-v106-concept-generalization.js",
+      "sha256": "e7b002fa97036c579df03f2313d9d27dbd0a458bf7ad986e00be191953f7e994",
+      "size": 2997
+    },
+    {
+      "path": "dist/client/psc-v83231-v230-v107-isolated-concepts.js",
+      "sha256": "aff1d66fd641729c9fe9a77d78c1b491704432ffca2167718171562c7c22b680",
+      "size": 2997
+    },
+    {
+      "path": "dist/client/psc-v83232-v231-v108-residual-isolated-generalization.js",
+      "sha256": "6172097ba532c3f323907b5707f0d7d8f063c8d1a3fe880232fec0af68d61747",
+      "size": 3032
+    },
+    {
+      "path": "dist/client/psc-v83234-v233-v109-residual-generalization.js",
+      "sha256": "380c5edab4043b12a270d7ce754406b98852c3c1c57e836c976d048f22185882",
+      "size": 2848
+    },
+    {
+      "path": "dist/client/psc-v83235-v234-v110-final-residuals.js",
+      "sha256": "d8ec604bd2a3430f9b63de268a6b2a855eb1fd0a158c58bdb20b71571cf00ebe",
+      "size": 2361
+    },
+    {
+      "path": "dist/client/psc-v83236-v235-v111-contextual-mechanisms.js",
+      "sha256": "22a4ac294ff0ca0047c8f9b991c50dcc255196b76f17e3f0ca47e806039ff08f",
+      "size": 2748
+    },
+    {
+      "path": "dist/client/psc-v83237-v236-v112-final-compositional.js",
+      "sha256": "48ec7f057a7c2cf3af5468ff44cd7888e5f0e4058d66674a390092c16447843b",
+      "size": 2532
+    },
+    {
+      "path": "dist/client/psc-v83238-v237-v113-frozen-residuals.js",
+      "sha256": "7adec488cbab42e2adfff45c961234821199d93f9ecb1d640ab669dac437624a",
+      "size": 2792
+    },
+    {
+      "path": "dist/client/psc-v83239-v238-v114-v238-residuals.js",
+      "sha256": "e99a49eaee3ce23a9dc1eea80ab8e19cd44ea66f740d41970a613f6f7d264e44",
+      "size": 2677
+    },
+    {
+      "path": "dist/client/psc-v83241-v240-v115-residuals.js",
+      "sha256": "bfa21fc8ef40f1b053da8adf173d5bc8d5f3635e5b15a96361c108af4861a309",
+      "size": 2601
+    },
+    {
+      "path": "dist/client/psc-v83242-v241-v116-residuals.js",
+      "sha256": "17da6ecf208e6e52ca0c6c801d16be4e4a652e6598d20c58f9ab9fc34e870965",
+      "size": 2841
+    },
+    {
+      "path": "dist/client/psc-v83243-v242-v117-residuals.js",
+      "sha256": "97edb0e580c04bc9d1060920cf7f357dd26bc3e519c41ce832d4fafe2fad105c",
+      "size": 2747
+    },
+    {
+      "path": "dist/client/psc-v83245-v244-v118-residuals.js",
+      "sha256": "2fc406d56b2f23d22b64710e2b2e344c8bf746bbf84c759c7fadb19a3a05c011",
+      "size": 2646
+    },
+    {
+      "path": "dist/client/psc-v83246-v245-v119-residuals.js",
+      "sha256": "3be2c498ab2f23e4ce9a1a7b0537c97ad807c5459f82f18b359c166c98e159c3",
+      "size": 2350
+    },
+    {
+      "path": "dist/client/psc-v83249-v248-v120-residuals.js",
+      "sha256": "38713a1c65de20cd410896f69199770e54eb1a80cb46b3890ab2410532420e08",
+      "size": 1967
+    },
+    {
+      "path": "dist/client/psc-v83250-v249-v121-residuals.js",
+      "sha256": "00713ed4f6eb7a711e12e75616388c877ac32c8fae5cc18e702bfca736ba8c25",
+      "size": 2336
+    },
+    {
+      "path": "dist/client/psc-v83251-v250-v122-b-residuals.js",
+      "sha256": "f840edbcf6d6c1c55bc836b09a2825dee038988752a3b8f3da2a4c130a2ad86c",
+      "size": 1919
+    },
+    {
+      "path": "dist/client/psc-v83252-v251-v123-residuals.js",
+      "sha256": "cf8f43a12ddde2f7209de2f871023797e91f3eff95ea43e43d0e34d576ff09d7",
+      "size": 2120
+    },
+    {
+      "path": "dist/client/psc-v83253-v252-v124-residual.js",
+      "sha256": "50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96",
+      "size": 1677
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v1-review-candidate.js",
+      "sha256": "27d7380f0e52a476c9be57231b4ac32ca1eeedc5b592dcc58cbc68ba670368b2",
+      "size": 8753
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v1r-review-candidate.js",
+      "sha256": "30871ed74e2899b4f61c50fbe2a928f510f3f83699a738df1463aa0454699d26",
+      "size": 1009
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v1r2-review-candidate.js",
+      "sha256": "7912f8ae4deb77043307850e63aa2ab272ccd81d16055cf0d2ae1ddc86a74437",
+      "size": 967
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v1r3-v210-concept-coverage.js",
+      "sha256": "7e053ed6c3c1150427f5d75b9d9b749266d76fa420e3fcbd8b74f06dc3f0131a",
+      "size": 5475
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v1r4-v210-relational-preservation.js",
+      "sha256": "de336e4b72d246f9527cdde01c28e412d0948f0b9eb933ee8920ef7d22b5b99f",
+      "size": 1065
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v2-v210-relational-semantics.js",
+      "sha256": "e6edc6d25be62d7e168685f84fcb81f4b8f5094551e5f72e6435425ff6e57776",
+      "size": 12603
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v2r-v210-multilingual-aliases.js",
+      "sha256": "2ad24631568f67b36b49794c26ba7975143a07d923aba08df13f757c7bd16714",
+      "size": 2754
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v2s-v210-context-sanitizer.js",
+      "sha256": "0ebaaaccdac9b52cc7eec5a1f5fa8bd75cd25dc83144ba896f4965e1c3e84193",
+      "size": 3508
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v2t-v210-contextual-recall.js",
+      "sha256": "8b3f0826761e5f9136de6c1b57ffef939681ad6b04e249653d007d2fc8e8ed81",
+      "size": 2644
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v3-v211-context-scoped.js",
+      "sha256": "101765aa7cccdf99f618bba469cd03c8486757e6e4bdf898a461c5f91062e3df",
+      "size": 9802
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v3r-v211-preservation.js",
+      "sha256": "d298d33ca9d7f0cfdd17476f20ebae6805799b7f147cdf48823d606cd0863dc5",
+      "size": 3544
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v4-v211-relational-recall.js",
+      "sha256": "2b1e3ac533dedaf6ad6826c9f21af9940e91488a961c290c71099d5e90e68d6f",
+      "size": 7786
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5-v212-scope-propagation.js",
+      "sha256": "3d554307d6eeb1db10bf5a289bdb36d998113f91038a6b1dee96187155752bb6",
+      "size": 6620
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5aa-v223-precedence-generalization.js",
+      "sha256": "ca77f626af7bf5a3e3ce70c2559b58339e7fdd9bce6059ffd489770f8a8f6bd2",
+      "size": 8495
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5ab-v224-compositional-recall.js",
+      "sha256": "3e35881f704a59f97b858a9808fcb922893e1523a2ddcb81128e3747b8544929",
+      "size": 6219
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5ac-v225-residual-composition.js",
+      "sha256": "59dea89f2a26ab86dea252dac161b7536d71e0e4817a40f28c881009e96605bd",
+      "size": 5300
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5ad-v226-full-input-witness.js",
+      "sha256": "c1125f08a37f7c312a5c70a2de526a020c8f12b6c72c3b36940fecac876a7885",
+      "size": 4896
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5ae-v227-residual-witness.js",
+      "sha256": "6e1e74abb7bbc80502faed14cf852a81759c804c801d4951f41cd21580e0ff3b",
+      "size": 6039
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5af-v228-witness-completion.js",
+      "sha256": "628347de69015d170baa111b4d15f04e58edc914419d3ce35d68be2f76c0f8c9",
+      "size": 7183
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5ag-v230-concept-generalization.js",
+      "sha256": "849d8df5bf50f1c72fbc5afacb13744555ccc3e03af8db27aff07e2230d4d3a4",
+      "size": 9637
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5ah-v231-isolated-concepts.js",
+      "sha256": "7630f8a708b4bc33d20716e4a2a91f58a19a4bc58105f8e76d96ff3755e04fe5",
+      "size": 6075
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5ai-v232-residual-isolated-generalization.js",
+      "sha256": "3fa8f5b390590967b1d7c05933ffbf79b16d3cfadddbc94a2f50fadc6917b6ff",
+      "size": 6372
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5aj-v234-residual-generalization.js",
+      "sha256": "f2dc506c21193d99242eb6e146ca47ca6e7bd6865fb91f9277d1b028e46dcac4",
+      "size": 5178
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5ak-v235-final-residuals.js",
+      "sha256": "de086c888459bd017299c787b1c6c08bb1990731f352efb0c8b180303308a9c8",
+      "size": 2311
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5al-v236-contextual-mechanisms.js",
+      "sha256": "8e075e615d3e3f4fcc673aae9fd08305a0536375b78d9ad925b11c714d13d83f",
+      "size": 4969
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5am-v237-final-compositional.js",
+      "sha256": "f5fc880610376172fba4c8f17dde80dadafee39de82aa1e75951fca21346b49d",
+      "size": 2578
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5an-v238-frozen-residuals.js",
+      "sha256": "a3820c0856de8c6b5bce4033eb1de42fc5ec40856c3ddf8d82c4e4bb76227711",
+      "size": 4059
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5ao-v239-v238-residuals.js",
+      "sha256": "9e34670ed24f3edde774bc84de6ac18f8e0bb713707c5726f057d2bee9ab37ce",
+      "size": 3193
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5ap-v241-v240-residuals.js",
+      "sha256": "69680774c811f53c8a2c50ef7226dbd6d34b938d238fe3ba18369631dafec4a0",
+      "size": 2707
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5aq-v242-v241-residuals.js",
+      "sha256": "c324e2d20a188b32bbe6b349af8de063aef3e54fdb64f59b090a30f31b5c836d",
+      "size": 3652
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5ar-v243-v242-residuals.js",
+      "sha256": "a30b898507e08c450fb7f797c974c30c7efbc5109224b8f08c842752ef0c492f",
+      "size": 3507
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5as-v245-v244-residuals.js",
+      "sha256": "b127a8f15a1cae7226568e8ef091ca7919bebefec36131af81a572b9c396ad99",
+      "size": 6019
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5at-v246-v245-residuals.js",
+      "sha256": "214dedce936fea738e9f70507c2b84875cead2ede9e7e7d5f5a542dd20046fd2",
+      "size": 1169
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5au-v249-v248-residuals.js",
+      "sha256": "3d5e46a4fb62251069dde8c98f847a63980b6cc8ae3819d3caf69424d2d6a66a",
+      "size": 2668
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5av-v250-v249-residuals.js",
+      "sha256": "071d520864d869235338ab1b1d8adefeca3a96aa7509c5bb1ea692ac1f64fcde",
+      "size": 1986
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5aw-v251-v250-b-residuals.js",
+      "sha256": "56667ce55e9f3f5f6d83e248bdfe2ea861c7dcd0557a70a57e105d481fab6b49",
+      "size": 1164
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5ax-v252-v251-residuals.js",
+      "sha256": "ad1c737603ddb5c54ffab944c9495cc05a7dc7fc8ac6555ddd53423ab58f58d8",
+      "size": 1573
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5ay-v253-v252-residual.js",
+      "sha256": "26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a",
+      "size": 927
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5r-v212-delegated-decision-preservation.js",
+      "sha256": "4d892c69f3cbe599d37358c25b95ffc9d35e5596841b480d53923b5ac1eea6e2",
+      "size": 1871
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5s-v212-relational-recall.js",
+      "sha256": "41e9238d54f5a58eddc43255a464708d914d8756555a4bf16b5d7a450bc5ef67",
+      "size": 10399
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5t-v213-relational-paraphrase-recall.js",
+      "sha256": "1c53b7fb789454f2c76893bf7b9477722bbb982ab45b78bd7b27910c2cd41601",
+      "size": 5113
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5u-v214-sealed-recall.js",
+      "sha256": "ac4cae5b3fafc1aaea2d25993d0a5d4df48205733b12b275a595562802947ec2",
+      "size": 8975
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5u2-v214-clarification-containment.js",
+      "sha256": "cbea93425d82dfb86afa7bef7455b4b031fe640a5f10584dac269d1f10596aa0",
+      "size": 1730
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5v-v215-compositional-recall.js",
+      "sha256": "67cbfdced88fb067f00d498ef28845f3bf4b7dc9b80353c6288839adcb87ebea",
+      "size": 7652
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5w-v216-sealed-recall.js",
+      "sha256": "439979f77ead8b6b301e6b4955ae3e62d3d52c9ed3a2adc8e7d65580cf47478a",
+      "size": 3352
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5x-v217-relational-recall.js",
+      "sha256": "510f71fe0654ad26572be40a86ade10e79058db52f3e96198bbda6b01748dbf6",
+      "size": 4435
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5y-v220-bounded-recall.js",
+      "sha256": "2096207841c14c77b7252c801132c97c2c9b4dfa42e9d9297f6a0b7a81f66b97",
+      "size": 3296
+    },
+    {
+      "path": "dist/client/qc-evidence-extractor-v5z-v222-compositional-generalization.js",
+      "sha256": "a09dab5bb8fcfb38e4090c51dc8fd87a8c572f82923a2bebb0dda4620f0c30e8",
+      "size": 4911
+    },
+    {
+      "path": "dist/client/window.svg",
+      "sha256": "decf1cf7bb22b5c99c4857cfcd5718ce5465c4454166317589c83fc73df74b66",
+      "size": 386
+    },
+    {
+      "path": "dist/server/.vite/manifest.json",
+      "sha256": "2d4032b01b19be509a71d72395587ffac973adb9cb2ab3f8f33d517851739359",
+      "size": 282
+    },
+    {
+      "path": "dist/server/__vite_rsc_assets_manifest.js",
+      "sha256": "17f849095186c47a5619f8a0b9cce5e8e3dc57878ae006ef9bd71b4c9c46c81b",
+      "size": 884
+    },
+    {
+      "path": "dist/server/assets/index-BgQ1tAKL.css",
+      "sha256": "51d6c24402655424e10a624e951dd18106859a950a0f24e216d59a45c0a31c98",
+      "size": 10557
+    },
+    {
+      "path": "dist/server/image-config.json",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "size": 2
+    },
+    {
+      "path": "dist/server/index.js",
+      "sha256": "6ad123307af668369f707c8225653e826a3fe963ab79828f0d7872f176c884df",
+      "size": 633563
+    },
+    {
+      "path": "dist/server/ssr/__vite_rsc_assets_manifest.js",
+      "sha256": "17f849095186c47a5619f8a0b9cce5e8e3dc57878ae006ef9bd71b4c9c46c81b",
+      "size": 884
+    },
+    {
+      "path": "dist/server/ssr/assets/error-boundary-CcKD-2-C.js",
+      "sha256": "df076a1e1f600a2a799ff299ae05cb31ef520f4b72eabfabb673953d4e8cb0ea",
+      "size": 8418
+    },
+    {
+      "path": "dist/server/ssr/assets/layout-segment-context-B3_CX8Ut.js",
+      "sha256": "9487f9672e71210b67829aecdbf4cfcaabbc01cceebadb27b45c620d02a3a9d9",
+      "size": 1741
+    },
+    {
+      "path": "dist/server/ssr/index.js",
+      "sha256": "6db3e8d18d4f90b20222f205ab2270f1a7a49cfa769a422a5139c537243480c3",
+      "size": 584079
+    },
+    {
+      "path": "dist/server/ssr/vinext-server.json",
+      "sha256": "f6a8954e199d9bc6cb4fc89904be55538a9d6beabaaf1137da314530bfb990d2",
+      "size": 86
+    },
+    {
+      "path": "dist/server/vinext-externals.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "size": 3
+    },
+    {
+      "path": "dist/server/vinext-server.json",
+      "sha256": "f6a8954e199d9bc6cb4fc89904be55538a9d6beabaaf1137da314530bfb990d2",
+      "size": 86
+    },
+    {
+      "path": "dist/server/wrangler.json",
+      "sha256": "183c5df8a3de8dd28e378da0a54cfb45bf63d82dc39f3bce989c08a4be1f0dbe",
+      "size": 1196
+    }
+  ],
+  "semantic_source_modified": false,
+  "integration_change_only": true,
+  "expected_gold_changed": false,
+  "batch_a_rerun": false,
+  "batch_b_rerun": false,
+  "deployment_executed": false,
+  "pass": true
+}
