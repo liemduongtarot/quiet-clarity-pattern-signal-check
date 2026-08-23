@@ -1,0 +1,11 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "batch-b-provenance-runner-materialization-diagnostic",
+  "run_id": "32668964674",
+  "rc": 0,
+  "log_tail": "{\"candidate\": \"V8.3.255\", \"phase\": \"batch-b-provenance-runner-materialization\", \"source_runner_sha256\": \"6d71b929e929e0892ceb1d05b174d4ebe69a1edf336db03fdca187fd06b8caff\", \"batch_b_runner_sha256\": \"af297926d68381599eb461dc432e660a6065cd3c9ea969d62c672920721534b2\", \"requires_batch_a_30_of_30\": true, \"requires_valid_a_ledger\": true, \"semantic_authority\": \"QCEvidenceExtractorV5AY -> QCSemanticCoreV124\", \"validated_development_head_sha\": \"8100c9d590a95b612829e92f4a9fc859b6eddb23\", \"evidence_schema_authority\": \"V8.3.254-EVIDENCE-PROVENANCE-V1\", \"expected_gold_changed\": false, \"semantic_change\": false, \"v254_sealed_rerun\": false, \"batch_b_executed\": false, \"step_111_authorized\": true, \"production_authorized\": false, \"pass\": true}\n",
+  "batch_a_rerun": false,
+  "batch_b_executed": false,
+  "semantic_change": false,
+  "expected_gold_changed": false
+}
