@@ -1,0 +1,74 @@
+name: V8.3.254 sealed Batch A provenance one-shot
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/v83254-batch-a-one-shot.yml
+permissions:
+  contents: write
+jobs:
+  batch-a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v83254-v1-sealed-validation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Persist immutable A reservation and first-run marker before semantics
+        shell: bash
+        run: |
+          set -euo pipefail
+          O=validation/v83254-v1-sealed
+          for f in V8_3_254_BATCH_A_ATTEMPT_MARKER.json V8_3_254_SEALED_FIRST_RUN_MARKER.json V8_3_254_BATCH_A_RESERVATION_V1.json V8_3_254_BATCH_A_RESULT_V1.json V8_3_254_BATCH_A_STATUS_V1.json V8_3_254_BATCH_A_CASE_PROVENANCE_V1.json V8_3_254_BATCH_A_EXECUTION_LEDGER_V1.json; do test ! -e "$O/$f"; done
+          python - <<'PY'
+          import json,os,pathlib,importlib.util
+          V=pathlib.Path('validation');O=V/'v83254-v1-sealed';DEV='238cdba6ee2d4d17bcde19de2d895a7087983345';SEM='QCEvidenceExtractorV5AY -> QCSemanticCoreV124'
+          pf=json.loads((O/'V8_3_254_STATIC_SEALED_PREFLIGHT_V1.json').read_text());a=json.loads((O/'V8_3_254_SEALED_AUTHORITY_V1.json').read_text());mat=json.loads((O/'V8_3_254_RUNNER_MATERIALIZATION_V1.json').read_text())
+          assert pf['pass'] and pf['validated_development_head_sha']==DEV and a['validated_development_head_sha']==DEV and a['semantic_authority']==SEM and mat['pass'] and mat['runner_sha256']=='393756f1bac9939268fe2111326cbf9cabac51595f9207b286b3cc74f914419c'
+          spec=importlib.util.spec_from_file_location('prov',V/'v83254-evidence-provenance.py');prov=importlib.util.module_from_spec(spec);spec.loader.exec_module(prov)
+          reservation=prov.build_reservation('V8.3.254','A',os.environ['GITHUB_RUN_ID'],os.environ.get('GITHUB_RUN_ATTEMPT','1'),DEV,SEM,mat['runner_sha256'])
+          (O/'V8_3_254_BATCH_A_RESERVATION_V1.json').write_text(json.dumps(reservation,indent=2)+'\n')
+          common={'candidate':'V8.3.254','run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ.get('GITHUB_RUN_ATTEMPT','1'),'validated_development_head_sha':DEV,'semantic_authority':SEM,'source_runner_sha256':mat['runner_sha256'],'reservation_sha256':reservation['reservation_sha256'],'reserved_before_semantic_execution':True,'semantic_runtime_executed':False,'v253_sealed_rerun':False,'step_111_authorized':False,'production_authorized':False}
+          aa=dict(common);aa.update({'phase':'sealed-batch-a-attempt-reservation','batch':'A'});ff=dict(common);ff.update({'phase':'sealed-first-run-reservation','reserved_batch':'A'})
+          (O/'V8_3_254_BATCH_A_ATTEMPT_MARKER.json').write_text(json.dumps(aa,indent=2)+'\n');(O/'V8_3_254_SEALED_FIRST_RUN_MARKER.json').write_text(json.dumps(ff,indent=2)+'\n')
+          PY
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add "$O/V8_3_254_BATCH_A_RESERVATION_V1.json" "$O/V8_3_254_BATCH_A_ATTEMPT_MARKER.json" "$O/V8_3_254_SEALED_FIRST_RUN_MARKER.json"
+          git commit -m 'Reserve V8.3.254 sealed Batch A first run with provenance hash'
+          git push origin HEAD:v83254-v1-sealed-validation
+      - name: Execute V8.3.254 Batch A exactly once
+        id: execute
+        shell: bash
+        run: |
+          set +e
+          python validation/v83254-batch-a-self-contained.py
+          rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Freeze Batch A provenance evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          O=validation/v83254-v1-sealed
+          test -f "$O/V8_3_254_BATCH_A_STATUS_V1.json"
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add "$O/V8_3_254_BATCH_A_STATUS_V1.json"
+          for f in V8_3_254_BATCH_A_RESULT_V1.json V8_3_254_BATCH_A_CASE_PROVENANCE_V1.json V8_3_254_BATCH_A_EXECUTION_LEDGER_V1.json; do test ! -f "$O/$f" || git add "$O/$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.254 Batch A first-run provenance evidence'
+          git push origin HEAD:v83254-v1-sealed-validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_254_V1_BATCH_A_PROVENANCE_CHECKPOINT
+          path: |
+            PSC_V8_3_254_V1_BATCH_A_CHECKPOINT.zip
+            PSC_V8_3_254_V1_BATCH_A_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce Batch A outcome
+        run: test '${{ steps.execute.outputs.rc }}' = '0'
