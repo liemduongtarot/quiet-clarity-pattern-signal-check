@@ -1,0 +1,12 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "live-production-verification-r2-diagnostic",
+  "run_id": "32672627271",
+  "rc": 0,
+  "log_tail": "{\"candidate\": \"V8.3.255\", \"phase\": \"live-production-verification-r2\", \"run_id\": \"32672627271\", \"canonical_url\": \"https://quiet-clarity-pattern-signal-check.vercel.app\", \"deployment_url\": \"https://quiet-clarity-pattern-signal-check-g5oo4rm04.vercel.app\", \"root_http_status\": 200, \"root_contains_pattern_signal_check\": true, \"root_contains_v124_alias\": true, \"root_contains_v5ay_source\": true, \"root_contains_v124_source\": true, \"v124_source_sha256\": \"50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96\", \"v124_live_sha256\": \"50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96\", \"v124_byte_identical\": true, \"v5ay_source_sha256\": \"26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a\", \"v5ay_live_sha256\": \"26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a\", \"v5ay_byte_identical\": true, \"semantic_authority\": \"QCEvidenceExtractorV5AY -> QCSemanticCoreV124\", \"prior_verifier_failure_cause\": \"incorrect hardcoded V124 SHA256 in verification runner; deployment content was not changed\", \"redeploy_executed\": false, \"semantic_change\": false, \"expected_gold_changed\": false, \"batch_a_rerun\": false, \"batch_b_rerun\": false, \"production_deployed\": true, \"pass\": true}\n",
+  "redeploy_executed": false,
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "batch_a_rerun": false,
+  "batch_b_rerun": false
+}
