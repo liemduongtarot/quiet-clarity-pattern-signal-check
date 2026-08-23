@@ -1,0 +1,15 @@
+{
+  "candidate": "V8.3.254",
+  "phase": "contamination-duplicate-audit",
+  "historical_case_count": 6300,
+  "external_max_similarity": 0.682581,
+  "external_max_pair": [
+    "V254-S02-01",
+    "V253-S02-01"
+  ],
+  "pairs_at_or_above_0_75": [],
+  "exact_surface_duplicates": [],
+  "semantic_fingerprint_exact_duplicates": [],
+  "pass": true,
+  "semantic_runtime_executed": false
+}
