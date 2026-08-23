@@ -1,5 +1,5 @@
-name: V8.3.255 exact semantic deployment materialization
-# trigger-v255-materialize-v124-1
+name: V8.3.255 exact production deployment
+# trigger-v255-production-deploy-1
 on:
   push:
     branches: [main]
@@ -8,8 +8,11 @@ on:
 permissions:
   contents: write
 jobs:
-  materialize:
+  deploy:
     runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: team_I0n7MLuicWTSeEQ3ANBAfmz8
+      VERCEL_PROJECT_ID: prj_plL2tv0BOESnC1dfzcwiXIV1WgSM
     steps:
       - uses: actions/checkout@v4
         with:
@@ -18,12 +21,27 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Materialize byte-identical semantic chain and build
+      - name: Verify deploy authorization and credential presence
+        shell: bash
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$VERCEL_TOKEN"
+          python - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('validation/v83255-v1-sealed/V8_3_255_PRODUCTION_LOCK_V1.json')
+          o=json.loads(p.read_text())
+          assert o['production_locked'] is True
+          assert o['semantic_authority']=='QCEvidenceExtractorV5AY -> QCSemanticCoreV124'
+          assert o['semantic_change'] is False and o['expected_gold_changed'] is False
+          PY
+      - name: Materialize exact V124 production bundle
         id: mat
         shell: bash
         run: |
           set +e
-          python - <<'PY' > /tmp/v255-materialize.log 2>&1
+          python - <<'PY' > /tmp/v255-production-materialize.log 2>&1
           import pathlib,zipfile,hashlib,json,subprocess,os,shutil,re,ast
           R=pathlib.Path('.');V=R/'validation';Z=R/'PSC_V8_3_139_FINAL_LOCAL_READINESS_EXTERNAL_BUILD_PENDING_CHECKPOINT (1).zip';D=R/'PSC_V8_3_138_DEV';P=D/'public'
           BASESHA='c2b57a436f744627b5600b97bdbc43dce70f748e66f2d0986c361f20683a7f5f';PUBSHA='886936b9e771c55474158e27c5129ccd06637cee690aabbdf15bb08ad68926ac';sha=lambda p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
@@ -31,86 +49,109 @@ jobs:
           with zipfile.ZipFile(Z) as z:z.extractall(R)
           assert sha(P/'psc-v3.js')==PUBSHA
           for p in (D/'scripts').glob('*.sh'):p.chmod(p.stat().st_mode|0o111)
-          # Derive historical later list exactly from the immutable V196 orchestrator.
-          orch=(V/'run-v83196-full-regression-sweep-v2.cjs').read_text()
-          m=re.search(r"const later=(\[[^;]+\]);",orch);assert m
-          later=ast.literal_eval(m.group(1))
-          # Derive V220 base extension from its Python orchestrator.
+          orch=(V/'run-v83196-full-regression-sweep-v2.cjs').read_text();m=re.search(r"const later=(\[[^;]+\]);",orch);assert m;later=ast.literal_eval(m.group(1))
           tree=ast.parse((V/'v83220-v98-regression-orchestrator.py').read_text());ext=None
           for node in ast.walk(tree):
-            if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='ext' for t in node.targets): ext=ast.literal_eval(node.value);break
+            if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='ext' for t in node.targets):ext=ast.literal_eval(node.value);break
           assert ext and ext[-2:]==['qc-evidence-extractor-v5y-v220-bounded-recall.js','psc-v83220-v219-v98-bounded-recall.js']
-          # Derive all post-V220 additions exactly from the sealed V255 runner source.
           rtree=ast.parse((V/'v83255-batch-a-self-contained.py').read_text());adds=None
           for node in ast.walk(rtree):
-            if isinstance(node,ast.AugAssign) and isinstance(node.target,ast.Name) and node.target.id=='EXT' and isinstance(node.op,ast.Add): adds=ast.literal_eval(node.value);break
+            if isinstance(node,ast.AugAssign) and isinstance(node.target,ast.Name) and node.target.id=='EXT' and isinstance(node.op,ast.Add):adds=ast.literal_eval(node.value);break
           assert adds and adds[-2:]==['qc-evidence-extractor-v5ay-v253-v252-residual.js','psc-v83253-v252-v124-residual.js']
-          chain=later+ext+adds
-          assert len(chain)==len(set(chain))
-          # Cross-check all V255 source-identity entries that are part of the deploy chain.
+          chain=later+ext+adds;assert len(chain)==len(set(chain))
           ident=json.loads((V/'v83255-v1-sealed/V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json').read_text());imap={pathlib.Path(x['path']).name:x['sha256'] for x in ident['sources']}
           copied=[]
           for fn in chain:
-            src=V/fn;assert src.exists(),fn
-            dst=P/fn;shutil.copy2(src,dst)
-            h=sha(dst)
+            src=V/fn;assert src.exists(),fn;dst=P/fn;shutil.copy2(src,dst);h=sha(dst)
             if fn in imap:assert h==imap[fn],fn
             copied.append({'file':fn,'sha256':h,'source_identity_covered':fn in imap})
-          cand=P/'candidate.html';s=cand.read_text()
-          anchor='<script src="psc-v83139-semantic-convergence.js"></script><script src="psc-v83137-ui-gate-authority.js"></script>'
-          assert anchor in s
-          tags=''.join(f'<script src="{fn}"></script>' for fn in chain)
-          s=s.replace(anchor,'<script src="psc-v83139-semantic-convergence.js"></script>'+tags+'<script src="psc-v83137-ui-gate-authority.js"></script>',1)
-          old="if(globalThis.QCSemanticCoreV9)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV9;else if(globalThis.QCSemanticCoreV8)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV8;"
-          assert old in s
-          new="if(globalThis.QCSemanticCoreV124)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV124;else if(globalThis.QCSemanticCoreV9)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV9;else if(globalThis.QCSemanticCoreV8)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV8;"
-          s=s.replace(old,new,1);cand.write_text(s)
-          subprocess.run(['npm','ci'],cwd=D,check=True)
-          subprocess.run(['npm','run','build'],cwd=D,check=True)
-          subprocess.run(['npm','run','validate:artifact'],cwd=D,check=True)
-          # Runtime load smoke using the exact materialized public chain.
-          smoke=R/'validation/v255-materialized-smoke.cjs'
-          base_match=re.search(r"const base=(\[[^;]+\]);",orch);assert base_match;base=ast.literal_eval(base_match.group(1))
-          js="const fs=require('fs'),vm=require('vm'),path=require('path');const s={};vm.createContext(s);const root='PSC_V8_3_138_DEV/public';const files="+json.dumps(base+chain)+";for(const f of files)vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),s,{filename:f});if(!s.QCEvidenceExtractorV5AY)throw Error('V5AY missing');if(!s.QCSemanticCoreV124)throw Error('V124 missing');let r=s.QCSemanticCoreV124.analyze('Khi nào tôi mới có tiền?','money');if(r.input_route.id!=='input:prediction'||r.can_continue!==false)throw Error('V124 prediction smoke failed');console.log(JSON.stringify({extractor:!!s.QCEvidenceExtractorV5AY,core:s.QCSemanticCoreV124.version,route:r.input_route.id,can_continue:r.can_continue}));"
-          smoke.write_text(js);sm=subprocess.run(['node',str(smoke)],cwd=R,text=True,capture_output=True,check=True)
-          dist=D/'dist';assert (dist/'client/candidate.html').exists();ds=(dist/'client/candidate.html').read_text();assert 'QCSemanticCoreV124' in ds and 'qc-evidence-extractor-v5ay-v253-v252-residual.js' in ds and 'psc-v83253-v252-v124-residual.js' in ds
-          for x in copied:assert sha(dist/'client'/x['file'])==x['sha256'],x['file']
-          files=[]
-          for p in sorted(dist.rglob('*')):
-            if p.is_file():files.append({'path':str(p.relative_to(D)),'sha256':sha(p),'size':p.stat().st_size})
-          out={'candidate':'V8.3.255','phase':'exact-semantic-deployment-materialization','run_id':os.environ['GITHUB_RUN_ID'],'source_lock_commit':'f96cecd6bac63d5cfc868a42bfad80fc236bb7ef','base_archive_sha256':sha(Z),'public_runtime_sha256':sha(P/'psc-v3.js'),'semantic_authority':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124','chain_file_count':len(chain),'copied_chain':copied,'v255_identity_count':ident['loaded_semantic_source_count'],'candidate_aliases_v4_to_v124':True,'runtime_smoke':json.loads(sm.stdout),'build_pass':True,'artifact_validation_pass':True,'dist_file_count':len(files),'dist_manifest':files,'semantic_source_modified':False,'integration_change_only':True,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'deployment_executed':False,'pass':True}
-          (V/'V8_3_255_EXACT_SEMANTIC_DEPLOYMENT_MATERIALIZATION_V1.json').write_text(json.dumps(out,indent=2)+'\n');shutil.make_archive('PSC_V8_3_255_EXACT_DEPLOYABLE_DIST','zip',dist);print(json.dumps({'chain_count':len(chain),'smoke':out['runtime_smoke'],'dist_count':len(files)}))
+          cand=P/'candidate.html';s=cand.read_text();anchor='<script src="psc-v83139-semantic-convergence.js"></script><script src="psc-v83137-ui-gate-authority.js"></script>';assert anchor in s
+          tags=''.join(f'<script src="{fn}"></script>' for fn in chain);s=s.replace(anchor,'<script src="psc-v83139-semantic-convergence.js"></script>'+tags+'<script src="psc-v83137-ui-gate-authority.js"></script>',1)
+          old="if(globalThis.QCSemanticCoreV9)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV9;else if(globalThis.QCSemanticCoreV8)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV8;";assert old in s
+          new="if(globalThis.QCSemanticCoreV124)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV124;else if(globalThis.QCSemanticCoreV9)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV9;else if(globalThis.QCSemanticCoreV8)globalThis.QCSemanticCoreV4=globalThis.QCSemanticCoreV8;";cand.write_text(s.replace(old,new,1))
+          subprocess.run(['npm','ci'],cwd=D,check=True);subprocess.run(['npm','run','build'],cwd=D,check=True);subprocess.run(['npm','run','validate:artifact'],cwd=D,check=True)
+          base_match=re.search(r"const base=(\[[^;]+\]);",orch);assert base_match;base=ast.literal_eval(base_match.group(1));smoke=R/'validation/v255-production-smoke.cjs'
+          js="const fs=require('fs'),vm=require('vm'),path=require('path');const s={};vm.createContext(s);const root='PSC_V8_3_138_DEV/public';const files="+json.dumps(base+chain)+";for(const f of files)vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),s,{filename:f});if(!s.QCEvidenceExtractorV5AY)throw Error('V5AY missing');if(!s.QCSemanticCoreV124)throw Error('V124 missing');let r=s.QCSemanticCoreV124.analyze('Khi nào tôi mới có tiền?','money');if(r.input_route.id!=='input:prediction'||r.can_continue!==false)throw Error('V124 prediction smoke failed');console.log(JSON.stringify({extractor:!!s.QCEvidenceExtractorV5AY,core:s.QCSemanticCoreV124.version,route:r.input_route.id,can_continue:r.can_continue}));";smoke.write_text(js);sm=subprocess.run(['node',str(smoke)],cwd=R,text=True,capture_output=True,check=True)
+          dist=D/'dist/client';assert (dist/'candidate.html').exists();ds=(dist/'candidate.html').read_text();assert 'QCSemanticCoreV124' in ds and 'qc-evidence-extractor-v5ay-v253-v252-residual.js' in ds and 'psc-v83253-v252-v124-residual.js' in ds
+          for x in copied:assert sha(dist/x['file'])==x['sha256'],x['file']
+          stage=R/'v255-vercel-production';shutil.rmtree(stage,ignore_errors=True);shutil.copytree(dist,stage);(stage/'.vercel').mkdir()
+          (stage/'.vercel/project.json').write_text(json.dumps({'orgId':os.environ['VERCEL_ORG_ID'],'projectId':os.environ['VERCEL_PROJECT_ID']})+'\n')
+          (stage/'vercel.json').write_text(json.dumps({'rewrites':[{'source':'/','destination':'/candidate.html'}]},indent=2)+'\n')
+          out={'candidate':'V8.3.255','phase':'production-deployment-materialization','run_id':os.environ['GITHUB_RUN_ID'],'source_lock_commit':'f96cecd6bac63d5cfc868a42bfad80fc236bb7ef','base_archive_sha256':sha(Z),'public_runtime_sha256':sha(P/'psc-v3.js'),'semantic_authority':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124','chain_file_count':len(chain),'runtime_smoke':json.loads(sm.stdout),'build_pass':True,'artifact_validation_pass':True,'transport_root_rewrite_only':True,'semantic_source_modified':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'deployment_executed':False,'pass':True}
+          (V/'V8_3_255_PRODUCTION_DEPLOYMENT_MATERIALIZATION_V1.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out))
           PY
-          rc=$?
-          set -e
-          cat /tmp/v255-materialize.log
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze materialization evidence
+          rc=$?;set -e;cat /tmp/v255-production-materialize.log;echo "rc=$rc" >> "$GITHUB_OUTPUT"
+      - name: Deploy exact materialized bundle to production
+        id: deploy
+        if: steps.mat.outputs.rc == '0'
+        shell: bash
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          set -euo pipefail
+          npm install -g vercel@latest
+          cd v255-vercel-production
+          URL=$(vercel deploy --prod --yes --token "$VERCEL_TOKEN")
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          echo "$URL" > ../V8_3_255_PRODUCTION_DEPLOYMENT_URL.txt
+      - name: Verify live production transport and semantic identity
+        id: verify
+        if: steps.deploy.outputs.url != ''
+        shell: bash
+        env:
+          DEPLOY_URL: ${{ steps.deploy.outputs.url }}
+        run: |
+          set +e
+          python - <<'PY' > /tmp/v255-live-verify.log 2>&1
+          import urllib.request,hashlib,json,os,pathlib,time
+          url=os.environ['DEPLOY_URL'].rstrip('/')
+          def get(path):
+            with urllib.request.urlopen(url+path,timeout=30) as r:return r.status,r.read()
+          for _ in range(20):
+            try:
+              st,root=get('/');
+              if st==200:break
+            except Exception:time.sleep(3)
+          assert st==200 and b'Pattern Signal Check' in root and b'QCSemanticCoreV124' in root
+          st2,v124=get('/psc-v83253-v252-v124-residual.js');assert st2==200
+          st3,v5ay=get('/qc-evidence-extractor-v5ay-v253-v252-residual.js');assert st3==200
+          h124=hashlib.sha256(v124).hexdigest();h5ay=hashlib.sha256(v5ay).hexdigest()
+          assert h124=='5424ca5d925d1c3555e759b88ef8e7a68ad0fd032bc8b39fa8b812708a5a6cb4'
+          assert h5ay=='26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a'
+          out={'candidate':'V8.3.255','phase':'live-production-verification','deployment_url':url,'root_http_status':st,'root_contains_pattern_signal_check':True,'root_contains_v124_alias':True,'v124_sha256':h124,'v5ay_sha256':h5ay,'semantic_authority':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124','semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'production_deployed':True,'pass':True}
+          pathlib.Path('validation/V8_3_255_LIVE_PRODUCTION_VERIFICATION_V1.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out))
+          PY
+          rc=$?;set -e;cat /tmp/v255-live-verify.log;echo "rc=$rc" >> "$GITHUB_OUTPUT"
+      - name: Freeze deployment evidence
         if: always()
         shell: bash
         env:
-          RC: ${{ steps.mat.outputs.rc }}
+          MAT_RC: ${{ steps.mat.outputs.rc }}
+          DEPLOY_URL: ${{ steps.deploy.outputs.url }}
+          VERIFY_RC: ${{ steps.verify.outputs.rc }}
         run: |
           set -euo pipefail
           python - <<'PY'
           import pathlib,json,os
-          log=pathlib.Path('/tmp/v255-materialize.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-materialize.log').exists() else ''
-          pathlib.Path('validation/V8_3_255_EXACT_SEMANTIC_DEPLOYMENT_MATERIALIZATION_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.255','phase':'materialization-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-50000:],'semantic_source_modified':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'deployment_executed':False},indent=2)+'\n')
+          d={'candidate':'V8.3.255','phase':'production-deployment-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'materialization_rc':int(os.environ.get('MAT_RC') or 1),'deployment_url':os.environ.get('DEPLOY_URL') or None,'verification_rc':int(os.environ.get('VERIFY_RC') or 1),'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'production_deployed':bool(os.environ.get('DEPLOY_URL'))}
+          pathlib.Path('validation/V8_3_255_PRODUCTION_DEPLOYMENT_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/V8_3_255_EXACT_SEMANTIC_DEPLOYMENT_MATERIALIZATION_DIAGNOSTIC.json
-          test ! -f validation/V8_3_255_EXACT_SEMANTIC_DEPLOYMENT_MATERIALIZATION_V1.json || git add validation/V8_3_255_EXACT_SEMANTIC_DEPLOYMENT_MATERIALIZATION_V1.json
-          git commit -m 'Record V8.3.255 exact semantic deploy materialization'
+          git add validation/V8_3_255_PRODUCTION_DEPLOYMENT_DIAGNOSTIC.json
+          test ! -f validation/V8_3_255_PRODUCTION_DEPLOYMENT_MATERIALIZATION_V1.json || git add validation/V8_3_255_PRODUCTION_DEPLOYMENT_MATERIALIZATION_V1.json
+          test ! -f validation/V8_3_255_LIVE_PRODUCTION_VERIFICATION_V1.json || git add validation/V8_3_255_LIVE_PRODUCTION_VERIFICATION_V1.json
+          git commit -m 'Freeze V8.3.255 production deployment evidence'
           git push origin HEAD:v83255-v1-deployment
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: PSC_V8_3_255_EXACT_DEPLOYABLE_DIST
+          name: PSC_V8_3_255_PRODUCTION_DEPLOYMENT_EVIDENCE
           path: |
-            PSC_V8_3_255_EXACT_DEPLOYABLE_DIST.zip
-            validation/V8_3_255_EXACT_SEMANTIC_DEPLOYMENT_MATERIALIZATION_V1.json
-            validation/V8_3_255_EXACT_SEMANTIC_DEPLOYMENT_MATERIALIZATION_DIAGNOSTIC.json
+            validation/V8_3_255_PRODUCTION_DEPLOYMENT_MATERIALIZATION_V1.json
+            validation/V8_3_255_LIVE_PRODUCTION_VERIFICATION_V1.json
+            validation/V8_3_255_PRODUCTION_DEPLOYMENT_DIAGNOSTIC.json
+            V8_3_255_PRODUCTION_DEPLOYMENT_URL.txt
           if-no-files-found: warn
-      - name: Enforce materialization
-        run: test '${{ steps.mat.outputs.rc }}' = '0'
+      - name: Enforce production deployment
+        run: test '${{ steps.mat.outputs.rc }}' = '0' && test '${{ steps.verify.outputs.rc }}' = '0'
