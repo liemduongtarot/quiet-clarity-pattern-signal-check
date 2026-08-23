@@ -1,5 +1,5 @@
-name: V8.3.255 sealed Batch B provenance one-shot
-# trigger-v255-batch-b-one-shot-1
+name: V8.3.255 post-B integrity and archive audit
+# trigger-v255-post-b-integrity-1
 on:
   push:
     branches: [main]
@@ -8,69 +8,81 @@ on:
 permissions:
   contents: write
 jobs:
-  batch-b:
+  post-b:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: v83255-v1-sealed-validation
           fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-      - name: Persist immutable B reservation before semantics
-        shell: bash
-        run: |
-          set -euo pipefail
-          O=validation/v83255-v1-sealed
-          for f in V8_3_255_BATCH_B_ATTEMPT_MARKER.json V8_3_255_BATCH_B_RESERVATION_V1.json V8_3_255_BATCH_B_RESULT_V1.json V8_3_255_BATCH_B_STATUS_V1.json V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json; do test ! -e "$O/$f"; done
-          python - <<'PY'
-          import json,os,pathlib,importlib.util,hashlib
-          V=pathlib.Path('validation');O=V/'v83255-v1-sealed';DEV='8100c9d590a95b612829e92f4a9fc859b6eddb23';SEM='QCEvidenceExtractorV5AY -> QCSemanticCoreV124';RUNNER_SHA='af297926d68381599eb461dc432e660a6065cd3c9ea969d62c672920721534b2'
-          pf=json.loads((O/'V8_3_255_BATCH_B_STATIC_PREFLIGHT_V1.json').read_text());m=json.loads((O/'V8_3_255_BATCH_B_RUNNER_MATERIALIZATION_V1.json').read_text());astat=json.loads((O/'V8_3_255_BATCH_A_STATUS_V1.json').read_text())
-          assert pf['pass'] and pf['batch_a_30_of_30'] and pf['batch_a_ledger_verified'] and pf['batch_b_runner_hash_verified'] and pf['step_111_authorized'] is True
-          assert astat['conclusion']=='success' and astat['batch_a_passed']==30 and m['pass'] and m['batch_b_runner_sha256']==RUNNER_SHA
-          assert hashlib.sha256((V/'v83255-batch-b-materialized.py').read_bytes()).hexdigest()==RUNNER_SHA
-          spec=importlib.util.spec_from_file_location('prov',V/'v83254-evidence-provenance.py');prov=importlib.util.module_from_spec(spec);spec.loader.exec_module(prov)
-          reservation=prov.build_reservation('V8.3.255','B',os.environ['GITHUB_RUN_ID'],os.environ.get('GITHUB_RUN_ATTEMPT','1'),DEV,SEM,RUNNER_SHA)
-          (O/'V8_3_255_BATCH_B_RESERVATION_V1.json').write_text(json.dumps(reservation,indent=2)+'\n')
-          mark={'candidate':'V8.3.255','phase':'sealed-batch-b-attempt-reservation','batch':'B','run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ.get('GITHUB_RUN_ATTEMPT','1'),'validated_development_head_sha':DEV,'semantic_authority':SEM,'source_runner_sha256':RUNNER_SHA,'reservation_sha256':reservation['reservation_sha256'],'reserved_before_semantic_execution':True,'semantic_runtime_executed':False,'batch_a_rerun':False,'v254_sealed_rerun':False,'step_111_authorized':True,'production_authorized':False}
-          (O/'V8_3_255_BATCH_B_ATTEMPT_MARKER.json').write_text(json.dumps(mark,indent=2)+'\n')
-          PY
-          git config user.name github-actions
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add "$O/V8_3_255_BATCH_B_RESERVATION_V1.json" "$O/V8_3_255_BATCH_B_ATTEMPT_MARKER.json"
-          git commit -m 'Reserve V8.3.255 sealed Batch B first run with provenance hash'
-          git push origin HEAD:v83255-v1-sealed-validation
-      - name: Execute V8.3.255 Batch B exactly once
-        id: execute
+      - name: Audit frozen A/B evidence and build pre-Step-111 archive
+        id: audit
         shell: bash
         run: |
           set +e
-          python validation/v83255-batch-b-materialized.py
+          python - <<'PY' > /tmp/v255-post-b.log 2>&1
+          import json,hashlib,pathlib,importlib.util,zipfile,datetime
+          R=pathlib.Path('.');V=R/'validation';O=V/'v83255-v1-sealed';DEV='8100c9d590a95b612829e92f4a9fc859b6eddb23';SEM='QCEvidenceExtractorV5AY -> QCSemanticCoreV124'
+          def fsha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+          def j(n):return json.loads((O/n).read_text())
+          a=j('V8_3_255_BATCH_A_STATUS_V1.json');b=j('V8_3_255_BATCH_B_STATUS_V1.json');ar=j('V8_3_255_BATCH_A_RESULT_V1.json');br=j('V8_3_255_BATCH_B_RESULT_V1.json');al=j('V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json');bl=j('V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json');ap=j('V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json');bp=j('V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json')
+          spec=importlib.util.spec_from_file_location('prov',V/'v83254-evidence-provenance.py');prov=importlib.util.module_from_spec(spec);spec.loader.exec_module(prov)
+          oka,whya=prov.verify_ledger(al);okb,whyb=prov.verify_ledger(bl);assert oka,whya;assert okb,whyb
+          assert a['conclusion']=='success' and a['batch_a_passed']==30 and a['batch_a_failed']==0 and b['conclusion']=='success' and b['batch_b_passed']==30 and b['batch_b_failed']==0
+          assert ar['passed']==30 and ar['failed']==0 and br['passed']==30 and br['failed']==0 and len(ap['records'])==30 and len(bp['records'])==30
+          assert a['run_id']=='32668811798' and b['run_id']=='32669034665' and a['v255_batch_a_rerun'] is False and b['v255_batch_b_rerun'] is False
+          auth=j('V8_3_255_SEALED_AUTHORITY_V1.json');div=j('V8_3_255_PRESEAL_DIVERSITY_AUDIT_V1.json');cont=j('V8_3_255_CONTAMINATION_DUPLICATE_AUDIT_V1.json');identity=j('V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json');manifest=j('V8_3_255_RUNTIME_CONFIG_SCHEMA_MANIFEST_V1.json')
+          assert auth['preseal_pass'] and div['pass'] and cont['pass'] and identity['pass'] and identity['all_byte_identical_to_frozen_development'] and manifest['pass'] and manifest.get('transport_verified') is True
+          required=[
+           'V8_3_255_PRESEAL_RUN_RECEIPT.json','V8_3_255_PRESEAL_DIVERSITY_AUDIT_V1.json','V8_3_255_CONTAMINATION_DUPLICATE_AUDIT_V1.json','V8_3_255_SEMANTIC_FINGERPRINTS_V1.json','V8_3_255_SEALED_AUTHORITY_V1.json','V8_3_255_PRESEAL_CANDIDATE_BANK_V1.json','V8_3_255_SEALED_SELECTION_V1.json','V8_3_255_SEALED_FIXTURE_V1.json','V8_3_255_INDEPENDENT_GOLD_V1.json','V8_3_255_SEALED_MEMBERSHIP_V1.json','V8_3_255_RUNNER_MATERIALIZATION_V1.json','V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json','V8_3_255_RUNTIME_CONFIG_SCHEMA_MANIFEST_V1.json','V8_3_255_STATIC_SEALED_PREFLIGHT_V1.json','V8_3_255_RUNNER_EVIDENCE_GATE_PREFLIGHT_V1.json','V8_3_255_KNOWN_LIMITATIONS_V1.json','V8_3_255_BATCH_A_RESERVATION_V1.json','V8_3_255_BATCH_A_ATTEMPT_MARKER.json','V8_3_255_SEALED_FIRST_RUN_MARKER.json','V8_3_255_BATCH_A_RESULT_V1.json','V8_3_255_BATCH_A_STATUS_V1.json','V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json','V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json','V8_3_255_BATCH_B_RUNNER_MATERIALIZATION_V1.json','V8_3_255_BATCH_B_STATIC_PREFLIGHT_V1.json','V8_3_255_BATCH_B_RESERVATION_V1.json','V8_3_255_BATCH_B_ATTEMPT_MARKER.json','V8_3_255_BATCH_B_RESULT_V1.json','V8_3_255_BATCH_B_STATUS_V1.json','V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json','V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json']
+          missing=[n for n in required if not (O/n).exists()];assert not missing,missing
+          support=['validation/v83255-runner-evidence-gate.py','validation/v83254-evidence-provenance.py','validation/V8_3_254_EVIDENCE_PROVENANCE_CONTRACT_V1.json','validation/v83255-batch-a-self-contained.py','validation/v83255-batch-b-materialized.py']
+          for n in support: assert (R/n).exists(),n
+          hashes={n:fsha(O/n) for n in required};support_hashes={n:fsha(R/n) for n in support}
+          audit={'candidate':'V8.3.255','phase':'post-b-integrity-and-archive-completeness','validated_development_head_sha':DEV,'semantic_authority':SEM,'batch_a_run_id':a['run_id'],'batch_b_run_id':b['run_id'],'batch_a':'30/30','batch_b':'30/30','batch_a_ledger_verified':True,'batch_b_ledger_verified':True,'case_provenance_records':60,'semantic_source_identity_verified':True,'preseal_diversity_verified':True,'post_run_frozen_evidence_present':True,'required_archive_file_count':len(required)+len(support),'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'step_111_authorized':True,'production_authorized':False,'pass':True}
+          (O/'V8_3_255_POST_B_INTEGRITY_AUDIT_V1.json').write_text(json.dumps(audit,indent=2)+'\n')
+          limitations=j('V8_3_255_KNOWN_LIMITATIONS_V1.json');limitations['post_b_note']='A and B are one-shot consumed first-run evidence and must never be rerun.';(O/'V8_3_255_KNOWN_LIMITATIONS_V1.json').write_text(json.dumps(limitations,indent=2)+'\n')
+          archive=R/'PSC_V8_3_255_PRE_STEP_111_SELF_CONTAINED_CHECKPOINT.zip'
+          archive_files=[O/n for n in required]+[R/n for n in support]+[O/'V8_3_255_POST_B_INTEGRITY_AUDIT_V1.json',O/'V8_3_255_KNOWN_LIMITATIONS_V1.json']
+          archive_manifest={'candidate':'V8.3.255','phase':'pre-step-111-self-contained-archive-manifest','created_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00','Z'),'validated_development_head_sha':DEV,'semantic_authority':SEM,'files':[],'independent_reaudit_scope':['semantic diversity','case-level first-run evidence','A/B identity','post-run immutability','archive/provenance completeness','known limitations'],'step_111_authorized':True,'production_authorized':False}
+          for p in archive_files: archive_manifest['files'].append({'archive_path':str(p),'sha256':fsha(p),'size':p.stat().st_size})
+          manpath=O/'V8_3_255_PRE_STEP_111_ARCHIVE_MANIFEST_V1.json';manpath.write_text(json.dumps(archive_manifest,indent=2)+'\n');archive_files.append(manpath)
+          with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
+              for p in archive_files:z.write(p,str(p))
+          sha=fsha(archive);(R/'PSC_V8_3_255_PRE_STEP_111_SELF_CONTAINED_CHECKPOINT_SHA256.txt').write_text(sha+'  '+archive.name+'\n')
+          # Independent archive self-check: every manifest item exists in ZIP and hashes match.
+          with zipfile.ZipFile(archive) as z:
+              names=set(z.namelist());assert str(manpath) in names
+              for item in archive_manifest['files']:
+                  assert item['archive_path'] in names and hashlib.sha256(z.read(item['archive_path'])).hexdigest()==item['sha256']
+          print(json.dumps({'candidate':'V8.3.255','post_b_pass':True,'archive_sha256':sha,'archive_entries':len(archive_files),'step_111_authorized':True}))
+          PY
           rc=$?
+          set -e
+          cat /tmp/v255-post-b.log
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-          exit 0
-      - name: Freeze Batch B provenance evidence
+      - name: Freeze post-B audit evidence
         if: always()
-        shell: bash
         run: |
           set -euo pipefail
-          O=validation/v83255-v1-sealed
-          test -f "$O/V8_3_255_BATCH_B_STATUS_V1.json"
+          RC='${{ steps.audit.outputs.rc }}' python - <<'PY'
+          import json,os,pathlib
+          o=pathlib.Path('validation/v83255-v1-sealed');log=pathlib.Path('/tmp/v255-post-b.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-post-b.log').exists() else ''
+          (o/'V8_3_255_POST_B_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.255','phase':'post-b-integrity-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'batch_a_rerun':False,'batch_b_rerun':False,'semantic_change':False,'expected_gold_changed':False},indent=2)+'\n')
+          PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add "$O/V8_3_255_BATCH_B_STATUS_V1.json"
-          for f in V8_3_255_BATCH_B_RESULT_V1.json V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json; do test ! -f "$O/$f" || git add "$O/$f"; done
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.255 Batch B first-run provenance evidence'
+          git add validation/v83255-v1-sealed/V8_3_255_POST_B_DIAGNOSTIC.json
+          for f in validation/v83255-v1-sealed/V8_3_255_POST_B_INTEGRITY_AUDIT_V1.json validation/v83255-v1-sealed/V8_3_255_PRE_STEP_111_ARCHIVE_MANIFEST_V1.json validation/v83255-v1-sealed/V8_3_255_KNOWN_LIMITATIONS_V1.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.255 post-B integrity and archive manifest'
           git push origin HEAD:v83255-v1-sealed-validation
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: PSC_V8_3_255_V1_BATCH_B_PROVENANCE_CHECKPOINT
+          name: PSC_V8_3_255_PRE_STEP_111_SELF_CONTAINED_CHECKPOINT
           path: |
-            PSC_V8_3_255_V1_BATCH_B_CHECKPOINT.zip
-            PSC_V8_3_255_V1_BATCH_B_CHECKPOINT_SHA256.txt
+            PSC_V8_3_255_PRE_STEP_111_SELF_CONTAINED_CHECKPOINT.zip
+            PSC_V8_3_255_PRE_STEP_111_SELF_CONTAINED_CHECKPOINT_SHA256.txt
           if-no-files-found: error
-      - name: Enforce Batch B outcome
-        run: test '${{ steps.execute.outputs.rc }}' = '0'
+      - name: Enforce post-B audit
+        run: test '${{ steps.audit.outputs.rc }}' = '0'
