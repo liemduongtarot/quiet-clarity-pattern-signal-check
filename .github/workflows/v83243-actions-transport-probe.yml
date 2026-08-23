@@ -1,5 +1,5 @@
-name: V8.3.254 hardened evidence preflight
-# trigger-v254-evidence-preflight-1
+name: V8.3.255 runner evidence recovery regression
+# trigger-v255-runner-recovery-1
 on:
   push:
     branches: [main]
@@ -13,33 +13,46 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v83254-v1-sealed-validation
+          ref: v83255-v1-validation
           fetch-depth: 0
-      - name: Run hardened transport/evidence preflight
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Persist V255 recovery start
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '{"candidate":"V8.3.255","phase":"runner-evidence-recovery-start","run_id":"%s","semantic_runtime_executed":false,"sealed_validation_executed":false,"v254_sealed_rerun":false}\n' "$GITHUB_RUN_ID" > validation/V8_3_255_RUNNER_RECOVERY_START.json
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_255_RUNNER_RECOVERY_START.json
+          git commit -m 'Record V8.3.255 runner recovery start'
+          git push origin HEAD:v83255-v1-validation
+      - name: Run full recovery regression
         id: run
         shell: bash
         run: |
           set +e
-          python validation/v83254-v1-sealed/v83254-transport-evidence-preflight.py > /tmp/v254-preflight.log 2>&1
+          python validation/v83255-runner-recovery-regression.py > /tmp/v255-reg.log 2>&1
           rc=$?
           set -e
-          cat /tmp/v254-preflight.log
+          cat /tmp/v255-reg.log
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze preflight evidence
+      - name: Freeze V255 recovery evidence
         if: always()
         shell: bash
         run: |
           set -euo pipefail
           RC='${{ steps.run.outputs.rc }}' python - <<'PY'
           import json,os,pathlib
-          o=pathlib.Path('validation/v83254-v1-sealed');log=pathlib.Path('/tmp/v254-preflight.log').read_text(errors='replace') if pathlib.Path('/tmp/v254-preflight.log').exists() else ''
-          (o/'V8_3_254_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.254','phase':'hardened-transport-evidence-preflight-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False,'v253_sealed_rerun':False},indent=2)+'\n')
+          V=pathlib.Path('validation');log=pathlib.Path('/tmp/v255-reg.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-reg.log').exists() else ''
+          (V/'V8_3_255_RUNNER_RECOVERY_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.255','phase':'runner-evidence-recovery-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-50000:],'sealed_validation_executed':False,'v254_sealed_rerun':False,'step_111_authorized':False},indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83254-v1-sealed/V8_3_254_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json
-          for f in validation/v83254-v1-sealed/V8_3_254_TRANSPORT_VERIFICATION_V1.json validation/v83254-v1-sealed/V8_3_254_STATIC_SEALED_PREFLIGHT_V1.json validation/v83254-v1-sealed/V8_3_254_RUNTIME_CONFIG_SCHEMA_MANIFEST_V1.json; do test ! -f "$f" || git add "$f"; done
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.254 hardened evidence preflight'
-          git push origin HEAD:v83254-v1-sealed-validation
-      - name: Enforce preflight outcome
+          git add validation/V8_3_255_RUNNER_RECOVERY_START.json validation/V8_3_255_RUNNER_RECOVERY_DIAGNOSTIC.json
+          for f in validation/V8_3_255_RUNNER_EVIDENCE_GATE_POSITIVE_TEST_V1.json validation/V8_3_255_RUNNER_EVIDENCE_GATE_NEGATIVE_IDENTITY_TEST_V1.json validation/V8_3_255_RUNNER_EVIDENCE_GATE_NEGATIVE_PROVENANCE_TEST_V1.json validation/V8_3_255_RUNNER_RECOVERY_REGRESSION_RECEIPT_V1.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.255 runner recovery regression evidence'
+          git push origin HEAD:v83255-v1-validation
+      - name: Enforce V255 recovery
         run: test '${{ steps.run.outputs.rc }}' = '0'
