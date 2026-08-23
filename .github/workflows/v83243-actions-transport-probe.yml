@@ -1,5 +1,5 @@
-name: V8.3.252 construction-only PRESEAL
-# trigger-v252-preseal-1
+name: V8.3.252 construction-only PRESEAL R2
+# trigger-v252-preseal-r2-var18
 on:
   push:
     branches: [main]
@@ -15,44 +15,51 @@ jobs:
         with:
           ref: v83252-v1-sealed-validation
           fetch-depth: 0
-      - name: Persist PRESEAL start marker
+      - name: Apply VAR18 construction repair
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p validation/v83252-v1-sealed
-          printf '{"candidate":"V8.3.252","phase":"preseal-start","run_id":"%s","semantic_runtime_executed":false,"semantic_authority_loaded":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83252-v1-sealed/V8_3_252_PRESEAL_START.json
+          python validation/v83252-v1-sealed/v83252-preseal-var18-repair.py
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83252-v1-sealed/V8_3_252_PRESEAL_START.json
-          git commit -m 'Record V8.3.252 PRESEAL start'
+          git add validation/v83252-v1-sealed/v83252-preseal-freeze.py
+          git commit -m 'Apply V8.3.252 PRESEAL VAR18 repair'
           git push origin HEAD:v83252-v1-sealed-validation
-      - name: Run construction-only PRESEAL
+      - name: Persist PRESEAL R2 start marker
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '{"candidate":"V8.3.252","phase":"preseal-r2-start","run_id":"%s","semantic_runtime_executed":false,"semantic_authority_loaded":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83252-v1-sealed/V8_3_252_PRESEAL_R2_START.json
+          git add validation/v83252-v1-sealed/V8_3_252_PRESEAL_R2_START.json
+          git commit -m 'Record V8.3.252 PRESEAL R2 start'
+          git push origin HEAD:v83252-v1-sealed-validation
+      - name: Run construction-only PRESEAL R2
         id: run
         shell: bash
         run: |
           set +e
           git fetch origin v83251-v1-sealed-validation:refs/remotes/origin/v83251-v1-sealed-validation
-          python validation/v83252-v1-sealed/v83252-preseal-freeze.py > /tmp/v252-preseal.log 2>&1
+          python validation/v83252-v1-sealed/v83252-preseal-freeze.py > /tmp/v252-preseal-r2.log 2>&1
           rc=$?
           set -e
-          cat /tmp/v252-preseal.log
+          cat /tmp/v252-preseal-r2.log
           RC="$rc" python - <<'PY'
           import json,os,pathlib
-          text=pathlib.Path('/tmp/v252-preseal.log').read_text(errors='replace')
+          text=pathlib.Path('/tmp/v252-preseal-r2.log').read_text(errors='replace')
           o=pathlib.Path('validation/v83252-v1-sealed')
-          (o/'V8_3_252_PRESEAL_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.252','phase':'preseal-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ['RC']),'log_tail':text[-30000:],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'expected_gold_changed':False},indent=2)+'\n')
+          (o/'V8_3_252_PRESEAL_R2_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.252','phase':'preseal-r2-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ['RC']),'log_tail':text[-30000:],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'expected_gold_changed':False},indent=2)+'\n')
           PY
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze PRESEAL evidence
+      - name: Freeze PRESEAL R2 evidence
         if: always()
         shell: bash
         run: |
           set -euo pipefail
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83252-v1-sealed/V8_3_252_PRESEAL_START.json validation/v83252-v1-sealed/V8_3_252_PRESEAL_DIAGNOSTIC.json
+          git add validation/v83252-v1-sealed/V8_3_252_PRESEAL_R2_START.json validation/v83252-v1-sealed/V8_3_252_PRESEAL_R2_DIAGNOSTIC.json
           for f in validation/v83252-v1-sealed/V8_3_252_PRESEAL_RUN_RECEIPT.json validation/v83252-v1-sealed/V8_3_252_PRESEAL_CANDIDATE_BANK_V1.json validation/v83252-v1-sealed/V8_3_252_SEALED_SELECTION_V1.json validation/v83252-v1-sealed/V8_3_252_SEALED_FIXTURE_V1.json validation/v83252-v1-sealed/V8_3_252_INDEPENDENT_GOLD_V1.json validation/v83252-v1-sealed/V8_3_252_SEALED_MEMBERSHIP_V1.json validation/v83252-v1-sealed/V8_3_252_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83252-v1-sealed/V8_3_252_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.252 PRESEAL evidence'
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.252 PRESEAL R2 evidence'
           git push origin HEAD:v83252-v1-sealed-validation
-      - name: Enforce PRESEAL outcome
+      - name: Enforce PRESEAL R2 outcome
         run: test '${{ steps.run.outputs.rc }}' = '0'
