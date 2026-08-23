@@ -1,5 +1,5 @@
-name: V8.3.255 production lock freeze
-# trigger-v255-production-lock-1
+name: V8.3.255 deployment source discovery
+# trigger-v255-deploy-discovery-1
 on:
   push:
     branches: [main]
@@ -8,69 +8,55 @@ on:
 permissions:
   contents: write
 jobs:
-  lock:
+  discover:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v83255-v1-sealed-validation
+          ref: v83255-v1-deployment
           fetch-depth: 0
-      - name: Authorize and freeze production lock
-        id: lock
+      - name: Discover exact locked deployment materials
         shell: bash
-        run: |
-          set +e
-          python - <<'PY' > /tmp/v255-production-lock.log 2>&1
-          import json,hashlib,pathlib,zipfile,datetime,os
-          R=pathlib.Path('.');O=R/'validation/v83255-v1-sealed'
-          def fsha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
-          verdict=json.loads((O/'V8_3_255_STEP_111_VERDICT_R2.json').read_text())
-          final=json.loads((O/'V8_3_255_FINAL_POST_STEP_111_CHECKPOINT_RECEIPT_V1.json').read_text())
-          a=json.loads((O/'V8_3_255_BATCH_A_STATUS_V1.json').read_text());b=json.loads((O/'V8_3_255_BATCH_B_STATUS_V1.json').read_text())
-          assert verdict['conclusion']=='success' and verdict['production_lock_eligible'] is True
-          assert final['pass'] is True and final['unique_entries'] is True
-          assert a['conclusion']=='success' and a['batch_a_passed']==30 and a['v255_batch_a_rerun'] is False
-          assert b['conclusion']=='success' and b['batch_b_passed']==30 and b['v255_batch_b_rerun'] is False
-          lock={'candidate':'V8.3.255','phase':'PRODUCTION_LOCKED','locked_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00','Z'),'owner_authorization':'explicit owner authorization in continuation chain on 2026-08-23','validated_development_head_sha':verdict['validated_development_head_sha'],'base_exact_development_sha':verdict['base_exact_development_sha'],'semantic_authority':verdict['semantic_authority'],'step_111_verdict_sha256':fsha(O/'V8_3_255_STEP_111_VERDICT_R2.json'),'step_111_verdict':verdict['verdict'],'production_lock_eligible':True,'production_authorized':True,'production_locked':True,'production_deployed':False,'deployment_authorized':False,'semantic_change':False,'expected_gold_changed':False,'batch_a_run_id':a['run_id'],'batch_b_run_id':b['run_id'],'batch_a_rerun':False,'batch_b_rerun':False,'sealed_branch':'v83255-v1-sealed-validation','pre_lock_sealed_head':'abe9e07302c330107d50c06fddbf88cbd15caf3c','pass':True}
-          lp=O/'V8_3_255_PRODUCTION_LOCK_V1.json';lp.write_text(json.dumps(lock,indent=2)+'\n')
-          paths=sorted([p for p in O.iterdir() if p.is_file()])
-          man={'candidate':'V8.3.255','phase':'production-lock-checkpoint-manifest','production_locked':True,'production_deployed':False,'files':[{'archive_path':str(p),'sha256':fsha(p),'size':p.stat().st_size} for p in paths]}
-          mp=O/'V8_3_255_PRODUCTION_LOCK_CHECKPOINT_MANIFEST_V1.json';mp.write_text(json.dumps(man,indent=2)+'\n');paths.append(mp)
-          z=R/'PSC_V8_3_255_PRODUCTION_LOCKED_CHECKPOINT.zip'
-          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
-              for p in paths:q.write(p,str(p))
-          with zipfile.ZipFile(z) as q:
-              ns=q.namelist();assert len(ns)==len(set(ns))==len(paths)
-          sha=fsha(z);(R/'PSC_V8_3_255_PRODUCTION_LOCKED_CHECKPOINT_SHA256.txt').write_text(sha+'  '+z.name+'\n')
-          receipt={'candidate':'V8.3.255','phase':'production-lock-checkpoint-validation','archive_sha256':sha,'archive_entries':len(paths),'unique_entries':True,'production_authorized':True,'production_locked':True,'production_deployed':False,'deployment_authorized':False,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'pass':True};(O/'V8_3_255_PRODUCTION_LOCK_CHECKPOINT_RECEIPT_V1.json').write_text(json.dumps(receipt,indent=2)+'\n')
-          print(json.dumps(receipt))
-          PY
-          rc=$?
-          set -e
-          cat /tmp/v255-production-lock.log
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze production lock evidence
-        if: always()
-        shell: bash
+        env:
+          HAS_VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN != '' }}
+          HAS_VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID != '' }}
+          HAS_VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID != '' }}
         run: |
           set -euo pipefail
-          RC='${{ steps.lock.outputs.rc }}' python - <<'PY'
-          import json,os,pathlib
-          o=pathlib.Path('validation/v83255-v1-sealed');log=pathlib.Path('/tmp/v255-production-lock.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-production-lock.log').exists() else ''
-          (o/'V8_3_255_PRODUCTION_LOCK_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.255','phase':'production-lock-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'production_deployed':False,'deployment_authorized':False,'batch_a_rerun':False,'batch_b_rerun':False},indent=2)+'\n')
+          python - <<'PY'
+          import pathlib,hashlib,zipfile,json,os
+          R=pathlib.Path('.')
+          LOCK='f96cecd6bac63d5cfc868a42bfad80fc236bb7ef'
+          PUB='886936b9e771c55474158e27c5129ccd06637cee690aabbdf15bb08ad68926ac'
+          BASE='c2b57a436f744627b5600b97bdbc43dce70f748e66f2d0986c361f20683a7f5f'
+          def sha(b): return hashlib.sha256(b).hexdigest()
+          file_matches=[]; zip_matches=[]; candidates=[]
+          for p in R.rglob('*'):
+            if not p.is_file() or '.git' in p.parts: continue
+            try:b=p.read_bytes()
+            except:continue
+            h=sha(b)
+            if h in (PUB,BASE): file_matches.append({'path':str(p),'sha256':h,'size':len(b)})
+            if p.suffix.lower()=='.zip':
+              try:
+                with zipfile.ZipFile(p) as z:
+                  for n in z.namelist():
+                    if n.endswith('/'): continue
+                    try:d=z.read(n)
+                    except:continue
+                    hh=sha(d)
+                    if hh in (PUB,BASE): zip_matches.append({'zip':str(p),'entry':n,'sha256':hh,'size':len(d)})
+                    ln=n.lower()
+                    if any(x in ln for x in ['candidate.html','public/','dist/client','semantic-convergence','extractor']): candidates.append({'zip':str(p),'entry':n,'sha256':hh,'size':len(d)})
+              except zipfile.BadZipFile: pass
+          lock=json.loads((R/'validation/v83255-v1-sealed/V8_3_255_PRODUCTION_LOCK_V1.json').read_text())
+          assert lock['production_locked'] is True and lock['semantic_change'] is False and lock['expected_gold_changed'] is False
+          out={'candidate':'V8.3.255','phase':'deployment-source-discovery','source_branch':'v83255-v1-deployment','source_lock_commit':LOCK,'public_runtime_sha256_expected':PUB,'base_archive_sha256_expected':BASE,'file_matches':file_matches,'zip_entry_matches':zip_matches,'candidate_entries':candidates[:500],'vercel_secret_presence':{'token':os.environ.get('HAS_VERCEL_TOKEN')=='true','org_id':os.environ.get('HAS_VERCEL_ORG_ID')=='true','project_id':os.environ.get('HAS_VERCEL_PROJECT_ID')=='true'},'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False}
+          pathlib.Path('validation/V8_3_255_DEPLOYMENT_SOURCE_DISCOVERY_V1.json').write_text(json.dumps(out,indent=2)+'\n')
+          print(json.dumps({'file_matches':file_matches,'zip_matches':zip_matches,'candidate_count':len(candidates),'secrets':out['vercel_secret_presence']}))
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83255-v1-sealed/V8_3_255_PRODUCTION_LOCK_V1.json validation/v83255-v1-sealed/V8_3_255_PRODUCTION_LOCK_CHECKPOINT_MANIFEST_V1.json validation/v83255-v1-sealed/V8_3_255_PRODUCTION_LOCK_CHECKPOINT_RECEIPT_V1.json validation/v83255-v1-sealed/V8_3_255_PRODUCTION_LOCK_DIAGNOSTIC.json
-          git commit -m 'Freeze V8.3.255 production lock authority'
-          git push origin HEAD:v83255-v1-sealed-validation
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: PSC_V8_3_255_PRODUCTION_LOCKED_CHECKPOINT
-          path: |
-            PSC_V8_3_255_PRODUCTION_LOCKED_CHECKPOINT.zip
-            PSC_V8_3_255_PRODUCTION_LOCKED_CHECKPOINT_SHA256.txt
-          if-no-files-found: error
-      - name: Enforce production lock
-        run: test '${{ steps.lock.outputs.rc }}' = '0'
+          git add validation/V8_3_255_DEPLOYMENT_SOURCE_DISCOVERY_V1.json
+          git commit -m 'Record V8.3.255 deployment source discovery'
+          git push origin HEAD:v83255-v1-deployment
