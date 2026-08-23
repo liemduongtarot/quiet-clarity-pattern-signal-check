@@ -1,5 +1,5 @@
-name: V8.3.253 PRESEAL metric diagnostic
-# trigger-v253-preseal-metric-1
+name: V8.3.253 construction-only PRESEAL R2
+# trigger-v253-preseal-r2-dense-capsule
 on:
   push:
     branches: [main]
@@ -15,33 +15,61 @@ jobs:
         with:
           ref: v83253-v1-sealed-validation
           fetch-depth: 0
-      - name: Persist metric start
+      - name: Persist PRESEAL R2 start marker
         shell: bash
         run: |
           set -euo pipefail
-          printf '{"candidate":"V8.3.253","phase":"preseal-metric-start","run_id":"%s","semantic_runtime_executed":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83253-v1-sealed/V8_3_253_PRESEAL_METRIC_START.json
+          printf '{"candidate":"V8.3.253","phase":"preseal-r2-start","run_id":"%s","semantic_runtime_executed":false,"semantic_authority_loaded":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83253-v1-sealed/V8_3_253_PRESEAL_R2_START.json
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83253-v1-sealed/V8_3_253_PRESEAL_METRIC_START.json
-          git commit -m 'Record V8.3.253 PRESEAL metric start'
+          git add validation/v83253-v1-sealed/V8_3_253_PRESEAL_R2_START.json
+          git commit -m 'Record V8.3.253 PRESEAL R2 start'
           git push origin HEAD:v83253-v1-sealed-validation
-      - name: Print construction metrics without semantics
+      - name: Rebuild V253 PRESEAL harness with dense capsule
+        id: build
+        shell: bash
+        run: |
+          set +e
+          git fetch origin v83252-v1-sealed-validation:refs/remotes/origin/v83252-v1-sealed-validation
+          python validation/v83253-v1-sealed/v83253-preseal-build.py > /tmp/v253-r2-build.log 2>&1
+          rc=$?
+          set -e
+          cat /tmp/v253-r2-build.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          if [ "$rc" = 0 ]; then
+            git add validation/v83253-v1-sealed/v83253-preseal-freeze.py
+            git diff --cached --quiet || git commit -m 'Rebuild V8.3.253 PRESEAL R2 harness'
+            git push origin HEAD:v83253-v1-sealed-validation
+          fi
+      - name: Run construction-only PRESEAL R2
+        id: run
+        if: steps.build.outputs.rc == '0'
+        shell: bash
+        run: |
+          set +e
+          python validation/v83253-v1-sealed/v83253-preseal-freeze.py > /tmp/v253-preseal-r2.log 2>&1
+          rc=$?
+          set -e
+          cat /tmp/v253-preseal-r2.log
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+      - name: Freeze PRESEAL R2 evidence
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
-          python - <<'PY' > /tmp/v253-metrics.log 2>&1 || true
-          from pathlib import Path
-          code=Path('validation/v83253-v1-sealed/v83253-preseal-freeze.py').read_text()
-          needle="assert internal[0]<.75 and external[0]<.75 and high==0 and exact==0 and fpdup==0"
-          repl="print('PRESEAL_METRICS',{'internal':internal,'external':external,'high':high,'exact':exact,'fpdup':fpdup}); raise SystemExit(0)"
-          if needle not in code: raise SystemExit('metric assertion anchor missing')
-          code=code.replace(needle,repl,1)
-          exec(compile(code,'v253-preseal-metric.py','exec'))
+          RC_BUILD='${{ steps.build.outputs.rc }}' RC_RUN='${{ steps.run.outputs.rc }}' python - <<'PY'
+          import json,os,pathlib
+          o=pathlib.Path('validation/v83253-v1-sealed')
+          b=pathlib.Path('/tmp/v253-r2-build.log').read_text(errors='replace') if pathlib.Path('/tmp/v253-r2-build.log').exists() else ''
+          r=pathlib.Path('/tmp/v253-preseal-r2.log').read_text(errors='replace') if pathlib.Path('/tmp/v253-preseal-r2.log').exists() else ''
+          rb=int(os.environ.get('RC_BUILD') or 1); rr=int(os.environ.get('RC_RUN') or 1)
+          (o/'V8_3_253_PRESEAL_R2_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.253','phase':'preseal-r2-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'build_rc':rb,'run_rc':rr,'build_log_tail':b[-20000:],'run_log_tail':r[-30000:],'semantic_runtime_executed':False,'semantic_authority_loaded':False,'batch_a_executed':False,'batch_b_executed':False,'expected_gold_changed':False},indent=2)+'\n')
           PY
-          cat /tmp/v253-metrics.log
-          cp /tmp/v253-metrics.log validation/v83253-v1-sealed/V8_3_253_PRESEAL_METRIC_DIAGNOSTIC.log
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83253-v1-sealed/V8_3_253_PRESEAL_METRIC_DIAGNOSTIC.log
-          git commit -m 'Record V8.3.253 PRESEAL metric diagnostic'
+          git add validation/v83253-v1-sealed/V8_3_253_PRESEAL_R2_START.json validation/v83253-v1-sealed/V8_3_253_PRESEAL_R2_DIAGNOSTIC.json
+          for f in validation/v83253-v1-sealed/V8_3_253_PRESEAL_RUN_RECEIPT.json validation/v83253-v1-sealed/V8_3_253_PRESEAL_CANDIDATE_BANK_V1.json validation/v83253-v1-sealed/V8_3_253_SEALED_SELECTION_V1.json validation/v83253-v1-sealed/V8_3_253_SEALED_FIXTURE_V1.json validation/v83253-v1-sealed/V8_3_253_INDEPENDENT_GOLD_V1.json validation/v83253-v1-sealed/V8_3_253_SEALED_MEMBERSHIP_V1.json validation/v83253-v1-sealed/V8_3_253_PRESEAL_DIVERSITY_AUDIT_V1.json validation/v83253-v1-sealed/V8_3_253_SEALED_AUTHORITY_V1.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.253 PRESEAL R2 evidence'
           git push origin HEAD:v83253-v1-sealed-validation
+      - name: Enforce PRESEAL R2 outcome
+        run: test '${{ steps.build.outputs.rc }}' = '0' -a '${{ steps.run.outputs.rc }}' = '0'
