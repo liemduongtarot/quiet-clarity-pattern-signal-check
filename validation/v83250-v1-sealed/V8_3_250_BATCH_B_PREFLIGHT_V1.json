@@ -1,0 +1,31 @@
+{
+  "candidate": "V8.3.250",
+  "phase": "batch-b-preflight",
+  "batch_a_30_of_30": true,
+  "batch_b_runner_hash_verified": true,
+  "runner_required_scan": {
+    "new Set(S.batch_b)": true,
+    "V8.3.250 V1 SEALED BATCH B FIRST RUN": true,
+    "V8_3_250_BATCH_B_RESULT_V1.json": true,
+    "V8_3_250_BATCH_B_STATUS_V1.json": true,
+    "run-v83250-batch-b.cjs": true,
+    "a_result['passed']==30": true,
+    "QCSemanticCoreV121.analyze": true,
+    "QCEvidenceExtractorV5AV -> QCSemanticCoreV121": true
+  },
+  "runner_stale_scan": {
+    "new Set(S.batch_a)": false,
+    "V8.3.250 V1 SEALED BATCH A FIRST RUN": false,
+    "run-v83250-batch-a.cjs": false,
+    "QCSemanticCoreV120.analyze": false
+  },
+  "batch_b_attempt_marker_absent": true,
+  "batch_b_result_absent": true,
+  "batch_b_status_absent": true,
+  "semantic_authority": "QCEvidenceExtractorV5AV -> QCSemanticCoreV121",
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "batch_b_executed": false,
+  "step_111_authorized": false,
+  "pass": true
+}
