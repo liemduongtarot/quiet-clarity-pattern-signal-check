@@ -1,0 +1,242 @@
+name: V8.3.255 Step 4 Facebook Bridge Repair
+
+on:
+  push:
+    branches:
+      - v83255-step4-repair
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  repair-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SOURCE_RUN_ID: "32671592504"
+      SOURCE_ARTIFACT: "PSC_V8_3_255_EXACT_DEPLOYABLE_DIST"
+      FACEBOOK_URL: "https://www.facebook.com/quietclarity.uklondon"
+      EXPECTED_V124_SHA256: "50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96"
+      EXPECTED_V5AY_SHA256: "26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download exact V8.3.255 deployed candidate authority artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p source_artifact
+          gh run download "$SOURCE_RUN_ID" -n "$SOURCE_ARTIFACT" -D source_artifact
+          test -f source_artifact/PSC_V8_3_255_EXACT_DEPLOYABLE_DIST.zip
+          mkdir -p original patched
+          unzip -q source_artifact/PSC_V8_3_255_EXACT_DEPLOYABLE_DIST.zip -d original
+          cp -a original/. patched/
+          test -f patched/client/candidate.html
+
+      - name: Apply minimum Step 4 bridge-only repair
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('patched/client/candidate.html')
+          s=p.read_text(encoding='utf-8')
+          old='<div class="note consult-note"><b>NẾU BẠN MUỐN ĐI SÂU HƠN</b><p>Nếu bạn muốn Quiet Clarity xem xét tình huống này sâu hơn, hãy sao chép kết quả Pattern Signal Check và gửi lại khi liên hệ tư vấn. Không có kết quả nào được tự động gửi sang Quiet Clarity.</p></div>'
+          new='<div class="note consult-note"><b>NẾU BẠN MUỐN ĐI SÂU HƠN</b><p>Nếu bạn muốn Quiet Clarity xem xét tình huống này sâu hơn, hãy sao chép kết quả và gửi lại qua Facebook Page.</p><a class="consult-contact" id="contactFacebook" href="https://www.facebook.com/quietclarity.uklondon" target="_blank" rel="noopener noreferrer">LIÊN HỆ QUIET CLARITY TRÊN FACEBOOK</a><p class="privacy-note">Pattern Signal Check không tự động gửi nội dung của bạn sang Quiet Clarity.</p></div>'
+          old_css='.consult-note{margin-top:22px}.privacy-note{color:#cdbba3;font-size:14px}'
+          new_css='.consult-note{margin-top:22px}.consult-contact{display:inline-block;margin-top:10px;padding:9px 13px;border:1px solid #765a38;border-radius:7px;background:transparent;color:#eee1d0;font-family:"Inter",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;font-weight:700;text-decoration:none}.privacy-note{color:#cdbba3;font-size:14px;margin-top:10px}'
+          if s.count(old)!=1: raise SystemExit(f'expected one old bridge block, found {s.count(old)}')
+          if s.count(old_css)!=1: raise SystemExit(f'expected one old css block, found {s.count(old_css)}')
+          s=s.replace(old,new).replace(old_css,new_css)
+          p.write_text(s,encoding='utf-8')
+          PY
+
+      - name: Targeted static regression and authority identity verification
+        run: |
+          python - <<'PY'
+          import hashlib,json,re,urllib.parse
+          from pathlib import Path
+          O=Path('original'); P=Path('patched')
+          old=(O/'client/candidate.html').read_text(encoding='utf-8')
+          new=(P/'client/candidate.html').read_text(encoding='utf-8')
+          def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          def fun(s,name,nextname):
+              a=s.index('function '+name)
+              b=s.index('function '+nextname,a)
+              return hashlib.sha256(s[a:b].encode()).hexdigest()
+          checks={}
+          # Only candidate.html may differ.
+          old_files={str(x.relative_to(O)):sha(x) for x in O.rglob('*') if x.is_file()}
+          new_files={str(x.relative_to(P)):sha(x) for x in P.rglob('*') if x.is_file()}
+          changed=sorted(k for k in old_files if old_files[k]!=new_files.get(k))
+          checks['changed_files_only_candidate_html']=(changed==['client/candidate.html'])
+          checks['changed_files']=changed
+          # Preserve copy/save/result-export functions byte-for-byte.
+          checks['resultPlainText_unchanged']=fun(old,'resultPlainText','actionMessage')==fun(new,'resultPlainText','actionMessage')
+          checks['copyCurrentResult_unchanged']=fun(old,'copyCurrentResult','saveCurrentResult')==fun(new,'copyCurrentResult','saveCurrentResult')
+          checks['saveCurrentResult_unchanged']=fun(old,'saveCurrentResult','wireResultActions')==fun(new,'saveCurrentResult','wireResultActions')
+          checks['wireResultActions_unchanged']=fun(old,'wireResultActions','showResult')==fun(new,'wireResultActions','showResult')
+          # Exact CTA contract.
+          m=re.search(r'id="contactFacebook" href="([^"]+)" target="_blank" rel="noopener noreferrer"',new)
+          checks['facebook_cta_present']=bool(m)
+          url=m.group(1) if m else ''
+          u=urllib.parse.urlsplit(url)
+          checks['facebook_url_exact']=url=='https://www.facebook.com/quietclarity.uklondon'
+          checks['facebook_url_has_no_query_or_fragment']=(not u.query and not u.fragment)
+          checks['bridge_copy_exact']='Nếu bạn muốn Quiet Clarity xem xét tình huống này sâu hơn, hãy sao chép kết quả và gửi lại qua Facebook Page.' in new
+          checks['manual_send_privacy_exact']='Pattern Signal Check không tự động gửi nội dung của bạn sang Quiet Clarity.' in new
+          checks['no_prefill_or_result_in_url']=all(x not in url.lower() for x in ['text=','message=','result=','situation=','pattern='])
+          # No new submission/storage mechanism introduced by allowed delta.
+          for token in ['fetch(','XMLHttpRequest','sendBeacon','localStorage','sessionStorage','indexedDB','WebSocket(','EventSource(']:
+              checks['no_new_'+re.sub(r'[^a-z0-9]+','_',token.lower()).strip('_')]=new.count(token)<=old.count(token)
+          # Semantic identity exact.
+          checks['v124_sha256']=sha(P/'client/psc-v83253-v252-v124-residual.js')
+          checks['v5ay_sha256']=sha(P/'client/qc-evidence-extractor-v5ay-v253-v252-residual.js')
+          checks['v124_identity_pass']=checks['v124_sha256']=='50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96'
+          checks['v5ay_identity_pass']=checks['v5ay_sha256']=='26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a'
+          # Prove the HTML delta is exactly the two authorised substitutions by reconstructing it.
+          old_bridge='<div class="note consult-note"><b>NẾU BẠN MUỐN ĐI SÂU HƠN</b><p>Nếu bạn muốn Quiet Clarity xem xét tình huống này sâu hơn, hãy sao chép kết quả Pattern Signal Check và gửi lại khi liên hệ tư vấn. Không có kết quả nào được tự động gửi sang Quiet Clarity.</p></div>'
+          new_bridge='<div class="note consult-note"><b>NẾU BẠN MUỐN ĐI SÂU HƠN</b><p>Nếu bạn muốn Quiet Clarity xem xét tình huống này sâu hơn, hãy sao chép kết quả và gửi lại qua Facebook Page.</p><a class="consult-contact" id="contactFacebook" href="https://www.facebook.com/quietclarity.uklondon" target="_blank" rel="noopener noreferrer">LIÊN HỆ QUIET CLARITY TRÊN FACEBOOK</a><p class="privacy-note">Pattern Signal Check không tự động gửi nội dung của bạn sang Quiet Clarity.</p></div>'
+          old_css='.consult-note{margin-top:22px}.privacy-note{color:#cdbba3;font-size:14px}'
+          new_css='.consult-note{margin-top:22px}.consult-contact{display:inline-block;margin-top:10px;padding:9px 13px;border:1px solid #765a38;border-radius:7px;background:transparent;color:#eee1d0;font-family:"Inter",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;font-weight:700;text-decoration:none}.privacy-note{color:#cdbba3;font-size:14px;margin-top:10px}'
+          checks['delta_exactly_authorised']=old.replace(old_bridge,new_bridge).replace(old_css,new_css)==new
+          checks['expected_gold_changed']=False
+          checks['sealed_batch_a_rerun']=False
+          checks['sealed_batch_b_rerun']=False
+          required=[v for k,v in checks.items() if isinstance(v,bool) and k not in ['expected_gold_changed','sealed_batch_a_rerun','sealed_batch_b_rerun']]
+          checks['static_pass']=all(required)
+          Path('evidence').mkdir(exist_ok=True)
+          Path('evidence/V8_3_255_STEP4_FACEBOOK_BRIDGE_STATIC_REGRESSION_V1.json').write_text(json.dumps(checks,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          if not checks['static_pass']:
+              print(json.dumps(checks,indent=2,ensure_ascii=False)); raise SystemExit(1)
+          PY
+
+      - name: Runtime semantic smoke unchanged
+        run: |
+          python - <<'PY'
+          import re,json
+          from pathlib import Path
+          html=Path('patched/client/candidate.html').read_text(encoding='utf-8')
+          srcs=re.findall(r'<script[^>]+src="([^"]+)"',html)
+          lines=["const fs=require('fs'),vm=require('vm');"]
+          for src in srcs:
+              if src.endswith('.js'):
+                  b=Path(src).name
+                  lines.append(f"vm.runInThisContext(fs.readFileSync('patched/client/{b}','utf8'),{{filename:{b!r}}});")
+          tests=[
+            ["Khi nào tôi mới có tiền?","money","input:prediction",False],
+            ["Tôi đã trì hoãn gửi báo cáo ba lần trong tháng này dù biết việc đó làm dự án chậm, và tuần này tôi lại tránh mở email nhắc việc.","career","input:self-lived",True]
+          ]
+          lines.append('const tests='+json.dumps(tests,ensure_ascii=False)+';')
+          lines.append("const out=[]; for(const [text,domain,route,can] of tests){const r=globalThis.QCSemanticCoreV124.analyze(text,domain); out.push({text,domain,actual_route:r.input_route&&r.input_route.id,actual_can_continue:r.can_continue,expected_route:route,expected_can_continue:can,pass:(r.input_route&&r.input_route.id)===route && r.can_continue===can});} fs.mkdirSync('evidence',{recursive:true}); fs.writeFileSync('evidence/V8_3_255_STEP4_SEMANTIC_SMOKE_V1.json',JSON.stringify({core:globalThis.QCSemanticCoreV124.version,extractor_loaded:!!globalThis.QCEvidenceExtractorV5AY,tests:out,pass:out.every(x=>x.pass)},null,2)); if(!out.every(x=>x.pass)) process.exit(1);")
+          Path('/tmp/semantic-smoke.js').write_text('\n'.join(lines),encoding='utf-8')
+          PY
+          node /tmp/semantic-smoke.js
+
+      - name: Install Playwright Chromium
+        run: |
+          cd /tmp
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.55.0 >/dev/null 2>&1
+          npx playwright install --with-deps chromium >/dev/null 2>&1
+
+      - name: Browser E2E — result actions, Facebook CTA, no auto-send
+        run: |
+          python3 -m http.server 4173 --directory patched/client >/tmp/psc-step4-http.log 2>&1 &
+          echo $! >/tmp/psc-step4-http.pid
+          sleep 2
+          cat >/tmp/psc-step4-e2e.cjs <<'JS'
+          const { chromium } = require('/tmp/node_modules/playwright');
+          const fs=require('fs');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const context=await browser.newContext();
+            await context.grantPermissions(['clipboard-read','clipboard-write'],{origin:'http://127.0.0.1:4173'});
+            const page=await context.newPage();
+            const outbound=[];
+            await context.route('https://www.facebook.com/**',async route=>{outbound.push(route.request().url()); await route.fulfill({status:200,contentType:'text/html',body:'<title>Facebook stub</title>'});});
+            await page.goto('http://127.0.0.1:4173/candidate.html',{waitUntil:'domcontentloaded'});
+            await page.evaluate(()=>showResult('<div class="b"><b>KẾT QUẢ TEST</b><p>RESULT BODY</p></div>'));
+            const result={};
+            result.copy_button=await page.locator('#copyResult').isVisible();
+            result.save_button=await page.locator('#saveResult').isVisible();
+            result.facebook_button=await page.locator('#contactFacebook').isVisible();
+            result.facebook_text=await page.locator('#contactFacebook').textContent();
+            result.facebook_href=await page.locator('#contactFacebook').getAttribute('href');
+            result.facebook_target=await page.locator('#contactFacebook').getAttribute('target');
+            result.facebook_rel=await page.locator('#contactFacebook').getAttribute('rel');
+            result.bridge_copy=await page.locator('.consult-note p').first().textContent();
+            result.privacy_copy=await page.locator('.consult-note .privacy-note').textContent();
+            await page.locator('#copyResult').click();
+            result.copy_message=await page.locator('#actionMsg').textContent();
+            const dlPromise=page.waitForEvent('download');
+            await page.locator('#saveResult').click();
+            const dl=await dlPromise;
+            result.download_filename=dl.suggestedFilename();
+            const popupPromise=page.waitForEvent('popup');
+            await page.locator('#contactFacebook').click();
+            const popup=await popupPromise;
+            await popup.waitForLoadState('domcontentloaded').catch(()=>{});
+            result.popup_url=popup.url();
+            result.outbound_requests=outbound;
+            result.no_prefill=!/[?&#](text|message|result|situation|pattern)=/i.test(result.facebook_href||'');
+            result.pass = result.copy_button && result.save_button && result.facebook_button &&
+              result.facebook_text.trim()==='LIÊN HỆ QUIET CLARITY TRÊN FACEBOOK' &&
+              result.facebook_href==='https://www.facebook.com/quietclarity.uklondon' &&
+              result.facebook_target==='_blank' && /noopener/.test(result.facebook_rel||'') && /noreferrer/.test(result.facebook_rel||'') &&
+              result.bridge_copy.trim()==='Nếu bạn muốn Quiet Clarity xem xét tình huống này sâu hơn, hãy sao chép kết quả và gửi lại qua Facebook Page.' &&
+              result.privacy_copy.trim()==='Pattern Signal Check không tự động gửi nội dung của bạn sang Quiet Clarity.' &&
+              result.copy_message.startsWith('Đã sao chép kết quả.') && result.download_filename==='Pattern_Signal_Check_Result.txt' && result.no_prefill;
+            fs.mkdirSync('evidence',{recursive:true});
+            fs.writeFileSync('evidence/V8_3_255_STEP4_FACEBOOK_BRIDGE_BROWSER_E2E_V1.json',JSON.stringify(result,null,2));
+            await browser.close();
+            if(!result.pass){console.error(result);process.exit(1)}
+          })();
+          JS
+          node /tmp/psc-step4-e2e.cjs
+          kill $(cat /tmp/psc-step4-http.pid) || true
+
+      - name: Build candidate package and final repair verdict
+        if: success()
+        run: |
+          (cd patched && zip -qr ../PSC_V8_3_255_STEP4_FACEBOOK_BRIDGE_REPAIR_CANDIDATE.zip .)
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path('PSC_V8_3_255_STEP4_FACEBOOK_BRIDGE_REPAIR_CANDIDATE.zip')
+          verdict={
+            'candidate':'V8.3.255 Step 4 Facebook Bridge Repair Candidate',
+            'base_authority_commit':'5860c948ef12781867a9115d57d2fe7de8f319b5',
+            'diagnostic_layer':'UI / PRESENTATION — public handoff destination only',
+            'approved_destination':'https://www.facebook.com/quietclarity.uklondon',
+            'static_regression':'PASS',
+            'browser_e2e':'PASS',
+            'semantic_smoke':'PASS',
+            'v124_identity':'PASS',
+            'v5ay_identity':'PASS',
+            'copy_result_unchanged':True,
+            'save_to_device_unchanged':True,
+            'session_only_privacy_regression':'PASS',
+            'valid_invalid_flow_regression':'PASS',
+            'expected_gold_changed':False,
+            'sealed_batch_a_rerun':False,
+            'sealed_batch_b_rerun':False,
+            'production_deployed':False,
+            'candidate_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),
+            'verdict':'PASS — STEP 4 PUBLIC BRIDGE REPAIR CANDIDATE ELIGIBLE TO FREEZE; STOP BEFORE PRODUCTION PROMOTION/DEPLOYMENT OWNER AUTHORIZATION',
+            'pass':True
+          }
+          Path('evidence/V8_3_255_STEP4_FACEBOOK_BRIDGE_REPAIR_VERDICT_V1.json').write_text(json.dumps(verdict,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          Path('PSC_V8_3_255_STEP4_FACEBOOK_BRIDGE_REPAIR_CANDIDATE_SHA256.txt').write_text(verdict['candidate_sha256']+'  '+p.name+'\n')
+          PY
+
+      - name: Upload immutable repair evidence and candidate bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_255_STEP4_FACEBOOK_BRIDGE_REPAIR_CANDIDATE
+          path: |
+            evidence/
+            PSC_V8_3_255_STEP4_FACEBOOK_BRIDGE_REPAIR_CANDIDATE.zip
+            PSC_V8_3_255_STEP4_FACEBOOK_BRIDGE_REPAIR_CANDIDATE_SHA256.txt
+          if-no-files-found: error
