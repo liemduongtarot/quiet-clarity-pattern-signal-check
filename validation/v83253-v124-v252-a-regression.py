@@ -10,7 +10,6 @@ repls=[
 ("repaired==3 and preserved==27","repaired==1 and preserved==29"),
 ('V8_3_252_V251_A_REGRESSION_RECEIPT','V8_3_253_V252_A_REGRESSION_RECEIPT'),
 ("'candidate':'V8.3.252'","'candidate':'V8.3.253'"),
-("QCEvidenceExtractorV5AX -> QCSemanticCoreV123","QCEvidenceExtractorV5AY -> QCSemanticCoreV124"),
 ("'v251_batch_a_total':30,'v251_batch_a_passed':30,'v251_batch_a_previous_failures_repaired':3,'v251_batch_a_previous_passes_preserved':27","'v252_batch_a_total':30,'v252_batch_a_passed':30,'v252_batch_a_previous_failures_repaired':1,'v252_batch_a_previous_passes_preserved':29")]
 for a,b in repls:
  if a not in src: raise SystemExit('missing transform anchor '+a)
