@@ -1,5 +1,5 @@
-name: V8.3.252 frozen Batch A semantic autopsy
-# trigger-v252-autopsy-1
+name: V8.3.253 V124 DEVELOPMENT regression
+# trigger-v253-v124-development-1
 on:
   push:
     branches: [main]
@@ -13,26 +13,66 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v83252-v1-sealed-validation
+          ref: v83253-v1-validation
           fetch-depth: 0
-      - name: Build immutable V252 autopsy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Persist DEVELOPMENT regression start marker
         shell: bash
         run: |
           set -euo pipefail
-          python - <<'PY'
-          import json,pathlib,collections
-          o=pathlib.Path('validation/v83252-v1-sealed')
-          r=json.loads((o/'V8_3_252_BATCH_A_RESULT_V1.json').read_text());s=json.loads((o/'V8_3_252_BATCH_A_STATUS_V1.json').read_text())
-          assert r['total']==30 and r['passed']==29 and r['failed']==1
-          assert s['semantic_runtime_executed'] is True and s['semantic_failure'] is True and s['batch_b_executed'] is False
-          fails=[x for x in r['results'] if not x['pass']];assert len(fails)==1
-          x=fails[0];e=x['expected'];a=x['actual']
-          out={'candidate':'V8.3.252','phase':'frozen-batch-a-semantic-autopsy','run_id':r['run_id'],'validated_development_head_sha':'59d1d564a2208ae4ce5899262ad094357a20402a','semantic_authority':'QCEvidenceExtractorV5AX -> QCSemanticCoreV123','batch_a_total':30,'batch_a_passed':29,'batch_a_failed':1,'batch_b_executed':False,'v252_batch_a_rerun':False,'semantic_runtime_executed':True,'semantic_failure':True,'failure_counts_by_category':{x['category']:1},'failure':{'case_id':x['case_id'],'category':x['category'],'language':x['language'],'domain':x['domain'],'expected':e,'actual':a,'surface':x['surface']},'expected_gold_changed':False,'step_111_authorized':False,'production_authorized':False,'conclusion':'frozen-semantic-failure'}
-          (o/'V8_3_252_FROZEN_AUTOPSY_V1.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
-          print(json.dumps({'case_id':x['case_id'],'category':x['category'],'language':x['language'],'domain':x['domain'],'expected':e,'actual':a},ensure_ascii=False))
-          PY
+          printf '{"candidate":"V8.3.253","phase":"v124-development-regression-start","run_id":"%s","semantic_runtime_executed":false,"sealed_validation_executed":false,"expected_gold_changed":false}\n' "$GITHUB_RUN_ID" > validation/V8_3_253_V124_REGRESSION_START.json
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83252-v1-sealed/V8_3_252_FROZEN_AUTOPSY_V1.json
-          git commit -m 'Freeze V8.3.252 semantic failure autopsy'
-          git push origin HEAD:v83252-v1-sealed-validation
+          git add validation/V8_3_253_V124_REGRESSION_START.json
+          git commit -m 'Record V8.3.253 V124 DEVELOPMENT regression start'
+          git push origin HEAD:v83253-v1-validation
+      - name: Materialize V252 frozen A carrier and run full regression
+        id: run
+        shell: bash
+        run: |
+          set +e
+          git fetch origin v83252-v1-sealed-validation:refs/remotes/origin/v83252-v1-sealed-validation
+          python - <<'PY'
+          import json,subprocess,pathlib
+          raw=subprocess.check_output(['git','show','origin/v83252-v1-sealed-validation:validation/v83252-v1-sealed/V8_3_252_BATCH_A_RESULT_V1.json'],text=True)
+          r=json.loads(raw);assert r['total']==30 and r['passed']==29 and r['failed']==1
+          out={'candidate':'V8.3.252','batch':'A','source':'frozen sealed first run','source_run_id':r['run_id'],'source_passed':29,'source_failed':1,'results':[]}
+          for x in r['results']:
+            out['results'].append({'case_id':x['case_id'],'category':x['category'],'language':x['language'],'domain':x['domain'],'surface':x['surface'],'expected':x['expected'],'source_first_run_pass':bool(x['pass'])})
+          pathlib.Path('validation/V8_3_252_A_FROZEN_CARRIER.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+          PY
+          python validation/v83253-v124-legacy-regression.py > /tmp/v253-legacy.log 2>&1
+          rc1=$?
+          if [ "$rc1" = 0 ]; then python validation/v83253-v124-v252-a-regression.py > /tmp/v253-a.log 2>&1; rc2=$?; else rc2=1; fi
+          set -e
+          cat /tmp/v253-legacy.log
+          test ! -f /tmp/v253-a.log || cat /tmp/v253-a.log
+          RC1="$rc1" RC2="$rc2" python - <<'PY'
+          import json,os,pathlib
+          l=pathlib.Path('/tmp/v253-legacy.log').read_text(errors='replace');a=pathlib.Path('/tmp/v253-a.log').read_text(errors='replace') if pathlib.Path('/tmp/v253-a.log').exists() else ''
+          ok=os.environ['RC1']=='0' and os.environ['RC2']=='0'
+          d={'candidate':'V8.3.253','phase':'v124-development-regression-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'legacy_rc':int(os.environ['RC1']),'v252_a_rc':int(os.environ['RC2']),'outcome':'success' if ok else 'failure','legacy_log_tail':l[-50000:],'a_log_tail':a[-30000:],'sealed_validation_executed':False,'expected_gold_changed':False,'step_111_authorized':False,'production_authorized':False}
+          pathlib.Path('validation/V8_3_253_V124_REGRESSION_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
+          if ok:
+            legacy=json.loads(pathlib.Path('validation/V8_3_253_V124_LEGACY_REGRESSION_RECEIPT.json').read_text());ar=json.loads(pathlib.Path('validation/V8_3_253_V252_A_REGRESSION_RECEIPT.json').read_text())
+            assert legacy['conclusion']=='success' and legacy['immutable_regression_passed']==1470 and ar['v252_batch_a_previous_failures_repaired']==1 and ar['v252_batch_a_previous_passes_preserved']==29
+            final={'candidate':'V8.3.253','phase':'v124-bounded-regression','semantic_authority':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124','immutable_regression_total':legacy['immutable_regression_total'],'immutable_regression_passed':legacy['immutable_regression_passed'],'v252_batch_a_passed':30,'v252_batch_a_previous_failures_repaired':1,'v252_batch_a_previous_passes_preserved':29,'expected_gold_changed':False,'sealed_validation_executed':False,'step_111_authorized':False,'production_authorized':False,'conclusion':'success'}
+            pathlib.Path('validation/V8_3_253_V124_REGRESSION_RECEIPT.json').write_text(json.dumps(final,indent=2)+'\n')
+          PY
+          echo "rc=$(( rc1 || rc2 ))" >> "$GITHUB_OUTPUT"
+      - name: Freeze V253 DEVELOPMENT regression evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/V8_3_252_A_FROZEN_CARRIER.json validation/V8_3_253_V124_REGRESSION_START.json validation/V8_3_253_V124_REGRESSION_DIAGNOSTIC.json
+          for f in validation/V8_3_253_V124_LEGACY_REGRESSION_RECEIPT.json validation/V8_3_253_V252_A_REGRESSION_RECEIPT.json validation/V8_3_253_V252_A_REGRESSION_RESULTS.json validation/V8_3_253_V124_REGRESSION_RECEIPT.json; do test ! -f "$f" || git add "$f"; done
+          for f in validation/V8_3_253_V*_A_REGRESSION_RESULTS.json; do test ! -f "$f" || git add "$f"; done
+          git diff --cached --quiet || git commit -m 'Record V8.3.253 V124 DEVELOPMENT regression evidence'
+          git push origin HEAD:v83253-v1-validation
+      - name: Enforce DEVELOPMENT regression outcome
+        run: test '${{ steps.run.outputs.rc }}' = '0'
