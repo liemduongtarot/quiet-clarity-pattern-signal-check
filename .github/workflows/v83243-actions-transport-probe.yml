@@ -1,5 +1,5 @@
-name: V8.3.255 live production verification R2
-# trigger-v255-live-verification-r2
+name: V8.3.255 final deployed checkpoint
+# trigger-v255-final-deployed-checkpoint-1
 on:
   push:
     branches: [main]
@@ -8,107 +8,107 @@ on:
 permissions:
   contents: write
 jobs:
-  verify:
+  checkpoint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: v83255-v1-deployment
           fetch-depth: 0
-      - name: Verify canonical production against frozen semantic sources
-        id: verify
+      - name: Build final self-contained deployed checkpoint
+        id: pack
         shell: bash
         run: |
           set +e
-          python - <<'PY' > /tmp/v255-live-r2.log 2>&1
-          import urllib.request,hashlib,json,pathlib,time,os
-          BASE='https://quiet-clarity-pattern-signal-check.vercel.app'
-          V=pathlib.Path('validation')
+          python - <<'PY' > /tmp/v255-final-deployed.log 2>&1
+          import pathlib,json,hashlib,zipfile,datetime,os
+          R=pathlib.Path('.');V=R/'validation';O=V/'v83255-v1-sealed'
           def fsha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
-          def get(path):
-            req=urllib.request.Request(BASE+path,headers={'User-Agent':'PSC-V8.3.255-live-verifier'})
-            with urllib.request.urlopen(req,timeout=30) as r:return r.status,r.read()
-          source_v124=V/'psc-v83253-v252-v124-residual.js'
-          source_v5ay=V/'qc-evidence-extractor-v5ay-v253-v252-residual.js'
-          assert source_v124.exists() and source_v5ay.exists()
-          expected_v124=fsha(source_v124);expected_v5ay=fsha(source_v5ay)
-          root=None;st=None
-          for _ in range(20):
-            try:
-              st,root=get('/')
-              if st==200:break
-            except Exception:time.sleep(3)
-          assert st==200 and root is not None
-          assert b'Pattern Signal Check' in root
-          assert b'QCSemanticCoreV124' in root
-          assert b'qc-evidence-extractor-v5ay-v253-v252-residual.js' in root
-          assert b'psc-v83253-v252-v124-residual.js' in root
-          st2,v124=get('/psc-v83253-v252-v124-residual.js');assert st2==200
-          st3,v5ay=get('/qc-evidence-extractor-v5ay-v253-v252-residual.js');assert st3==200
-          live_v124=hashlib.sha256(v124).hexdigest();live_v5ay=hashlib.sha256(v5ay).hexdigest()
-          assert live_v124==expected_v124,(live_v124,expected_v124)
-          assert live_v5ay==expected_v5ay,(live_v5ay,expected_v5ay)
-          lock=json.loads((V/'v83255-v1-sealed/V8_3_255_PRODUCTION_LOCK_V1.json').read_text())
+          live=json.loads((V/'V8_3_255_LIVE_PRODUCTION_VERIFICATION_R2_V1.json').read_text())
           diag=json.loads((V/'V8_3_255_PRODUCTION_DEPLOYMENT_DIAGNOSTIC.json').read_text())
-          assert lock['production_locked'] is True
-          assert lock['semantic_authority']=='QCEvidenceExtractorV5AY -> QCSemanticCoreV124'
-          assert diag['production_deployed'] is True
-          out={
-            'candidate':'V8.3.255','phase':'live-production-verification-r2',
-            'run_id':os.environ['GITHUB_RUN_ID'],
-            'canonical_url':BASE,
-            'deployment_url':diag['deployment_url'],
-            'root_http_status':st,
-            'root_contains_pattern_signal_check':True,
-            'root_contains_v124_alias':True,
-            'root_contains_v5ay_source':True,
-            'root_contains_v124_source':True,
-            'v124_source_sha256':expected_v124,
-            'v124_live_sha256':live_v124,
-            'v124_byte_identical':True,
-            'v5ay_source_sha256':expected_v5ay,
-            'v5ay_live_sha256':live_v5ay,
-            'v5ay_byte_identical':True,
+          mat=json.loads((V/'V8_3_255_PRODUCTION_DEPLOYMENT_MATERIALIZATION_V1.json').read_text())
+          lock=json.loads((O/'V8_3_255_PRODUCTION_LOCK_V1.json').read_text())
+          step=json.loads((O/'V8_3_255_STEP_111_VERDICT_R2.json').read_text())
+          a=json.loads((O/'V8_3_255_BATCH_A_STATUS_V1.json').read_text());b=json.loads((O/'V8_3_255_BATCH_B_STATUS_V1.json').read_text())
+          assert live['pass'] is True and live['production_deployed'] is True and live['v124_byte_identical'] is True and live['v5ay_byte_identical'] is True
+          assert diag['production_deployed'] is True and mat['pass'] is True
+          assert lock['production_locked'] is True and step['conclusion']=='success'
+          assert a['batch_a_passed']==30 and b['batch_b_passed']==30 and a['v255_batch_a_rerun'] is False and b['v255_batch_b_rerun'] is False
+          state={
+            'candidate':'V8.3.255','phase':'PRODUCTION_DEPLOYED','created_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00','Z'),
+            'production_lock_commit':'f96cecd6bac63d5cfc868a42bfad80fc236bb7ef',
+            'production_locked_branch':'v83255-v1-production-locked',
+            'deployment_evidence_branch':'v83255-v1-deployment',
+            'validated_development_head_sha':'8100c9d590a95b612829e92f4a9fc859b6eddb23',
             'semantic_authority':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124',
-            'prior_verifier_failure_cause':'incorrect hardcoded V124 SHA256 in verification runner; deployment content was not changed',
-            'redeploy_executed':False,
-            'semantic_change':False,'expected_gold_changed':False,
-            'batch_a_rerun':False,'batch_b_rerun':False,
+            'deployment_id':'dpl_GefHDcpjva2iYpGm7ougXjwcBDAd',
+            'deployment_url':live['deployment_url'],
+            'canonical_url':live['canonical_url'],
+            'target':'production','ready_state':'READY',
+            'aliases':['quiet-clarity-pattern-signal-check.vercel.app','quiet-clarity-pattern-signal-check-liamduong92-2767s-projects.vercel.app'],
+            'v124_sha256':live['v124_live_sha256'],'v5ay_sha256':live['v5ay_live_sha256'],
+            'batch_a':'30/30 PASS','batch_b':'30/30 PASS','step_111':'PASS','production_lock':'PASS','live_verification':'PASS',
+            'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,
             'production_deployed':True,'pass':True
           }
-          (V/'V8_3_255_LIVE_PRODUCTION_VERIFICATION_R2_V1.json').write_text(json.dumps(out,indent=2)+'\n')
-          print(json.dumps(out))
+          sp=V/'V8_3_255_PRODUCTION_DEPLOYED_STATE_V1.json';sp.write_text(json.dumps(state,indent=2)+'\n')
+          paths=sorted([p for p in O.iterdir() if p.is_file()])
+          extras=[
+            V/'V8_3_255_DEPLOYMENT_SOURCE_DISCOVERY_V1.json',
+            V/'V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R2_DIAGNOSTIC.json',
+            V/'V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R3_V1.json',
+            V/'V8_3_255_DEPLOYMENT_BUNDLE_PREFLIGHT_R3_DIAGNOSTIC.json',
+            V/'V8_3_255_EXACT_SEMANTIC_DEPLOYMENT_MATERIALIZATION_V1.json',
+            V/'V8_3_255_EXACT_SEMANTIC_DEPLOYMENT_MATERIALIZATION_DIAGNOSTIC.json',
+            V/'V8_3_255_PRODUCTION_DEPLOYMENT_MATERIALIZATION_V1.json',
+            V/'V8_3_255_PRODUCTION_DEPLOYMENT_DIAGNOSTIC.json',
+            V/'V8_3_255_LIVE_PRODUCTION_VERIFICATION_R2_V1.json',
+            V/'V8_3_255_LIVE_PRODUCTION_VERIFICATION_R2_DIAGNOSTIC.json',sp,
+            V/'qc-evidence-extractor-v5ay-v253-v252-residual.js',
+            V/'psc-v83253-v252-v124-residual.js'
+          ]
+          for p in extras:
+            if p.exists() and str(p) not in {str(x) for x in paths}:paths.append(p)
+          assert all(p.exists() for p in paths) and len(paths)==len({str(p) for p in paths})
+          manifest={'candidate':'V8.3.255','phase':'final-production-deployed-checkpoint-manifest','created_at_utc':state['created_at_utc'],'state':state,'files':[{'archive_path':str(p),'sha256':fsha(p),'size':p.stat().st_size} for p in paths]}
+          mp=V/'V8_3_255_FINAL_PRODUCTION_DEPLOYED_CHECKPOINT_MANIFEST_V1.json';mp.write_text(json.dumps(manifest,indent=2)+'\n');paths.append(mp)
+          z=R/'PATTERN_SIGNAL_CHECK_V8_3_255_FINAL_PRODUCTION_DEPLOYED_CHECKPOINT.zip'
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+            for p in paths:q.write(p,str(p))
+          with zipfile.ZipFile(z) as q:
+            ns=q.namelist();assert len(ns)==len(set(ns))==len(paths)
+            for x in manifest['files']:assert hashlib.sha256(q.read(x['archive_path'])).hexdigest()==x['sha256']
+          sha=fsha(z);(R/'PATTERN_SIGNAL_CHECK_V8_3_255_FINAL_PRODUCTION_DEPLOYED_CHECKPOINT_SHA256.txt').write_text(sha+'  '+z.name+'\n')
+          receipt={'candidate':'V8.3.255','phase':'final-production-deployed-checkpoint-validation','archive_sha256':sha,'archive_entries':len(paths),'unique_entries':True,'production_deployed':True,'canonical_url':state['canonical_url'],'semantic_authority':state['semantic_authority'],'v124_byte_identical':True,'v5ay_byte_identical':True,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'pass':True}
+          rp=V/'V8_3_255_FINAL_PRODUCTION_DEPLOYED_CHECKPOINT_RECEIPT_V1.json';rp.write_text(json.dumps(receipt,indent=2)+'\n')
+          print(json.dumps(receipt))
           PY
-          rc=$?
-          set -e
-          cat /tmp/v255-live-r2.log
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze R2 live verification evidence
+          rc=$?;set -e;cat /tmp/v255-final-deployed.log;echo "rc=$rc" >> "$GITHUB_OUTPUT"
+      - name: Freeze final deployed checkpoint metadata
         if: always()
         shell: bash
         env:
-          RC: ${{ steps.verify.outputs.rc }}
+          RC: ${{ steps.pack.outputs.rc }}
         run: |
           set -euo pipefail
           python - <<'PY'
           import json,pathlib,os
-          log=pathlib.Path('/tmp/v255-live-r2.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-live-r2.log').exists() else ''
-          d={'candidate':'V8.3.255','phase':'live-production-verification-r2-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'redeploy_executed':False,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False}
-          pathlib.Path('validation/V8_3_255_LIVE_PRODUCTION_VERIFICATION_R2_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
+          log=pathlib.Path('/tmp/v255-final-deployed.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-final-deployed.log').exists() else ''
+          d={'candidate':'V8.3.255','phase':'final-production-deployed-checkpoint-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False}
+          pathlib.Path('validation/V8_3_255_FINAL_PRODUCTION_DEPLOYED_CHECKPOINT_DIAGNOSTIC.json').write_text(json.dumps(d,indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/V8_3_255_LIVE_PRODUCTION_VERIFICATION_R2_DIAGNOSTIC.json
-          test ! -f validation/V8_3_255_LIVE_PRODUCTION_VERIFICATION_R2_V1.json || git add validation/V8_3_255_LIVE_PRODUCTION_VERIFICATION_R2_V1.json
-          git commit -m 'Freeze V8.3.255 live production verification R2'
+          git add validation/V8_3_255_PRODUCTION_DEPLOYED_STATE_V1.json validation/V8_3_255_FINAL_PRODUCTION_DEPLOYED_CHECKPOINT_MANIFEST_V1.json validation/V8_3_255_FINAL_PRODUCTION_DEPLOYED_CHECKPOINT_RECEIPT_V1.json validation/V8_3_255_FINAL_PRODUCTION_DEPLOYED_CHECKPOINT_DIAGNOSTIC.json
+          git commit -m 'Freeze V8.3.255 final production deployed checkpoint'
           git push origin HEAD:v83255-v1-deployment
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: PSC_V8_3_255_LIVE_PRODUCTION_VERIFICATION_R2
+          name: PSC_V8_3_255_FINAL_PRODUCTION_DEPLOYED_CHECKPOINT
           path: |
-            validation/V8_3_255_LIVE_PRODUCTION_VERIFICATION_R2_V1.json
-            validation/V8_3_255_LIVE_PRODUCTION_VERIFICATION_R2_DIAGNOSTIC.json
-          if-no-files-found: warn
-      - name: Enforce R2 verification
-        run: test '${{ steps.verify.outputs.rc }}' = '0'
+            PATTERN_SIGNAL_CHECK_V8_3_255_FINAL_PRODUCTION_DEPLOYED_CHECKPOINT.zip
+            PATTERN_SIGNAL_CHECK_V8_3_255_FINAL_PRODUCTION_DEPLOYED_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce final checkpoint
+        run: test '${{ steps.pack.outputs.rc }}' = '0'
