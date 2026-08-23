@@ -1,5 +1,5 @@
-name: V8.3.255 Step 111 independent audit R2
-# trigger-v255-step111-r2-1
+name: V8.3.255 final post-Step-111 checkpoint
+# trigger-v255-final-checkpoint-1
 on:
   push:
     branches: [main]
@@ -8,80 +8,64 @@ on:
 permissions:
   contents: write
 jobs:
-  step111:
+  checkpoint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: v83255-v1-sealed-validation
           fetch-depth: 0
-      - name: Execute independent Step 111 audit R2
-        id: audit
+      - name: Build final self-contained checkpoint
+        id: pack
         shell: bash
         run: |
           set +e
-          python - <<'PY' > /tmp/v255-step111-r2.log 2>&1
-          import json,hashlib,pathlib,importlib.util
-          R=pathlib.Path('.');V=R/'validation';O=V/'v83255-v1-sealed';DEV='8100c9d590a95b612829e92f4a9fc859b6eddb23';BASE='238cdba6ee2d4d17bcde19de2d895a7087983345';SEM='QCEvidenceExtractorV5AY -> QCSemanticCoreV124'
+          python - <<'PY' > /tmp/v255-final.log 2>&1
+          import json,hashlib,pathlib,zipfile,datetime
+          R=pathlib.Path('.');O=R/'validation/v83255-v1-sealed'
           def fsha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
-          def j(n):return json.loads((O/n).read_text())
-          checks={};details={}
-          div=j('V8_3_255_PRESEAL_DIVERSITY_AUDIT_V1.json');cont=j('V8_3_255_CONTAMINATION_DUPLICATE_AUDIT_V1.json')
-          checks['semantic_diversity']=bool(div.get('pass') is True and div.get('internal_max_similarity',1)>=0 and div.get('internal_max_similarity',1)<.75 and div.get('external_max_similarity',1)<.75 and div.get('external_cases_at_or_above_0_75',1)==0 and div.get('exact_external_duplicates',1)==0 and div.get('semantic_fingerprint_exact_duplicates',1)==0 and cont.get('pass') is True and cont.get('pairs_at_or_above_0_75')==[] and cont.get('exact_surface_duplicates')==[] and cont.get('semantic_fingerprint_exact_duplicates')==[])
-          details['semantic_diversity']={'internal_max_similarity':div.get('internal_max_similarity'),'external_max_similarity':div.get('external_max_similarity'),'external_cases_at_or_above_0_75':div.get('external_cases_at_or_above_0_75'),'exact_external_duplicates':div.get('exact_external_duplicates'),'semantic_fingerprint_exact_duplicates':div.get('semantic_fingerprint_exact_duplicates')}
-          auth=j('V8_3_255_SEALED_AUTHORITY_V1.json');identity=j('V8_3_255_SEMANTIC_SOURCE_IDENTITY_REPORT_V1.json');rman=j('V8_3_255_RUNTIME_CONFIG_SCHEMA_MANIFEST_V1.json')
-          checks['authority_identity']=bool(auth.get('validated_development_head_sha')==DEV and auth.get('base_exact_development_sha')==BASE and auth.get('semantic_authority')==SEM and auth.get('preseal_pass') is True and identity.get('pass') is True and identity.get('all_byte_identical_to_frozen_development') is True and identity.get('loaded_semantic_source_count',0)>=55 and rman.get('pass') is True and rman.get('transport_verified') is True)
-          sel=j('V8_3_255_SEALED_SELECTION_V1.json');ar=j('V8_3_255_BATCH_A_RESULT_V1.json');br=j('V8_3_255_BATCH_B_RESULT_V1.json');ast=j('V8_3_255_BATCH_A_STATUS_V1.json');bst=j('V8_3_255_BATCH_B_STATUS_V1.json');ares=j('V8_3_255_BATCH_A_RESERVATION_V1.json');bres=j('V8_3_255_BATCH_B_RESERVATION_V1.json')
-          aids=set(sel.get('batch_a',[]));bids=set(sel.get('batch_b',[]));arids={x['case_id'] for x in ar.get('results',[])};brids={x['case_id'] for x in br.get('results',[])}
-          checks['ab_identity']=bool(len(aids)==30 and len(bids)==30 and aids.isdisjoint(bids) and arids==aids and brids==bids and ar.get('run_id')=='32668811798' and br.get('run_id')=='32669034665' and ast.get('run_id')==ar.get('run_id') and bst.get('run_id')==br.get('run_id') and ares.get('run_id')==ar.get('run_id') and bres.get('run_id')==br.get('run_id') and ares.get('reserved_before_semantic_execution') is True and bres.get('reserved_before_semantic_execution') is True and ast.get('v255_batch_a_rerun') is False and bst.get('v255_batch_b_rerun') is False)
-          details['ab_identity']={'a_run_id':ar.get('run_id'),'b_run_id':br.get('run_id'),'a_count':len(arids),'b_count':len(brids),'disjoint':aids.isdisjoint(bids),'a_reservation_sha256':ares.get('reservation_sha256'),'b_reservation_sha256':bres.get('reservation_sha256')}
-          al=j('V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json');bl=j('V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json');ap=j('V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json');bp=j('V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json')
-          spec=importlib.util.spec_from_file_location('prov',V/'v83254-evidence-provenance.py');prov=importlib.util.module_from_spec(spec);spec.loader.exec_module(prov);oka,whya=prov.verify_ledger(al);okb,whyb=prov.verify_ledger(bl)
-          def verify_records(result,provobj,ledger,batch):
-              rows={x['case_id']:x for x in result.get('results',[])};recs=provobj.get('records',[])
-              if len(recs)!=30 or len(ledger.get('entries',[]))!=30:return False
-              for i,r in enumerate(recs,1):
-                  if r!=ledger['entries'][i-1] or r.get('batch')!=batch or r.get('execution_ordinal')!=i or not r.get('executed_at_utc') or r.get('case_id') not in rows:return False
-                  row=rows[r['case_id']]
-                  if r.get('expected')!=row.get('expected') or r.get('actual')!=row.get('actual') or bool(r.get('pass'))!=bool(row.get('pass')):return False
-                  if r.get('surface_sha256')!=hashlib.sha256(row.get('surface','').encode()).hexdigest():return False
-              return True
-          checks['case_level_first_run_evidence']=bool(oka and okb and verify_records(ar,ap,al,'A') and verify_records(br,bp,bl,'B') and ast.get('case_provenance_recorded') is True and bst.get('case_provenance_recorded') is True and ast.get('execution_ledger_sealed') is True and bst.get('execution_ledger_sealed') is True)
-          details['case_level_first_run_evidence']={'a_ledger':whya,'b_ledger':whyb,'a_final_chain_sha256':al.get('final_chain_sha256'),'b_final_chain_sha256':bl.get('final_chain_sha256'),'records':60}
-          checks['semantic_outcome']=bool(ar.get('passed')==30 and ar.get('failed')==0 and br.get('passed')==30 and br.get('failed')==0 and ast.get('semantic_failure') is False and bst.get('semantic_failure') is False)
-          post=j('V8_3_255_POST_B_INTEGRITY_AUDIT_V1.json');checks['post_run_integrity']=bool(post.get('pass') is True and post.get('batch_a_ledger_verified') is True and post.get('batch_b_ledger_verified') is True and post.get('case_provenance_records')==60 and post.get('batch_a_rerun') is False and post.get('batch_b_rerun') is False)
-          am=j('V8_3_255_PRE_STEP_111_ARCHIVE_MANIFEST_R2.json');av=j('V8_3_255_PRE_STEP_111_ARCHIVE_R2_VALIDATION_V1.json');items=am.get('files',[])
-          manifest_current=all(pathlib.Path(x['archive_path']).exists() and fsha(pathlib.Path(x['archive_path']))==x['sha256'] and pathlib.Path(x['archive_path']).stat().st_size==x['size'] for x in items)
-          manifest_paths={x['archive_path'] for x in items}
-          required_support={'validation/v83255-runner-evidence-gate.py','validation/v83254-evidence-provenance.py','validation/V8_3_254_EVIDENCE_PROVENANCE_CONTRACT_V1.json','validation/v83255-batch-a-self-contained.py','validation/v83255-batch-b-materialized.py'}
-          required_evidence={'validation/v83255-v1-sealed/V8_3_255_PRESEAL_DIVERSITY_AUDIT_V1.json','validation/v83255-v1-sealed/V8_3_255_SEALED_AUTHORITY_V1.json','validation/v83255-v1-sealed/V8_3_255_BATCH_A_RESULT_V1.json','validation/v83255-v1-sealed/V8_3_255_BATCH_A_CASE_PROVENANCE_V1.json','validation/v83255-v1-sealed/V8_3_255_BATCH_A_EXECUTION_LEDGER_V1.json','validation/v83255-v1-sealed/V8_3_255_BATCH_B_RESULT_V1.json','validation/v83255-v1-sealed/V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json','validation/v83255-v1-sealed/V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json','validation/v83255-v1-sealed/V8_3_255_KNOWN_LIMITATIONS_V1.json','validation/v83255-v1-sealed/V8_3_255_POST_B_INTEGRITY_AUDIT_V1.json'}
-          checks['archive_provenance_completeness']=bool(av.get('pass') is True and av.get('unique_entries') is True and am.get('unique_archive_paths') is True and manifest_current and required_support.issubset(manifest_paths) and required_evidence.issubset(manifest_paths))
-          limitations=j('V8_3_255_KNOWN_LIMITATIONS_V1.json');checks['known_limitations_present']=bool(limitations.get('items') and limitations.get('production_authorized') is False)
-          checks['future_independent_reaudit_sufficiency']=bool(checks['archive_provenance_completeness'] and checks['case_level_first_run_evidence'] and checks['authority_identity'] and checks['semantic_diversity'] and checks['ab_identity'] and checks['known_limitations_present'])
-          checks['governance_firewall']=bool(ast.get('v254_sealed_rerun') is False and bst.get('v254_sealed_rerun') is False and post.get('semantic_change') is False and post.get('expected_gold_changed') is False and av.get('semantic_change') is False and av.get('expected_gold_changed') is False)
-          passed=all(checks.values());verdict='PASS — PRODUCTION LOCK ELIGIBILITY ESTABLISHED' if passed else 'FAIL — PRODUCTION LOCK PROHIBITED'
-          out={'candidate':'V8.3.255','phase':'STEP_111_INDEPENDENT_AUDIT_R2','validated_development_head_sha':DEV,'base_exact_development_sha':BASE,'semantic_authority':SEM,'owner_authorization_basis':'continuation-cycle pre-authorization supplied before Step 111','step_111_authorized':True,'checks':checks,'details':details,'verdict':verdict,'production_lock_eligible':bool(passed),'production_authorized':False,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'prior_step111_attempt':'32669277785 infrastructure/schema-key failure; no verdict emitted','conclusion':'success' if passed else 'failure'}
-          (O/'V8_3_255_STEP_111_VERDICT_R2.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out))
-          if not passed: raise SystemExit(1)
+          verdict=json.loads((O/'V8_3_255_STEP_111_VERDICT_R2.json').read_text());assert verdict['conclusion']=='success' and verdict['production_lock_eligible'] is True and verdict['production_authorized'] is False
+          pre=json.loads((O/'V8_3_255_PRE_STEP_111_ARCHIVE_MANIFEST_R2.json').read_text());paths=[pathlib.Path(x['archive_path']) for x in pre['files']]
+          extras=[O/'V8_3_255_PRE_STEP_111_ARCHIVE_MANIFEST_R2.json',O/'V8_3_255_PRE_STEP_111_ARCHIVE_R2_VALIDATION_V1.json',O/'V8_3_255_STEP_111_DIAGNOSTIC.json',O/'V8_3_255_STEP_111_R2_DIAGNOSTIC.json',O/'V8_3_255_STEP_111_VERDICT_R2.json']
+          for p in extras:
+              if p.exists() and str(p) not in {str(x) for x in paths}:paths.append(p)
+          assert len(paths)==len({str(p) for p in paths}) and all(p.exists() for p in paths)
+          man={'candidate':'V8.3.255','phase':'final-post-step-111-checkpoint','created_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00','Z'),'validated_development_head_sha':verdict['validated_development_head_sha'],'semantic_authority':verdict['semantic_authority'],'step_111_verdict':verdict['verdict'],'production_lock_eligible':True,'production_authorized':False,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'files':[{'archive_path':str(p),'sha256':fsha(p),'size':p.stat().st_size} for p in paths]}
+          mp=O/'V8_3_255_FINAL_POST_STEP_111_CHECKPOINT_MANIFEST_V1.json';mp.write_text(json.dumps(man,indent=2)+'\n');paths.append(mp)
+          z=R/'PSC_V8_3_255_FINAL_POST_STEP_111_CHECKPOINT.zip'
+          with zipfile.ZipFile(z,'w',zipfile.ZIP_DEFLATED) as q:
+              for p in paths:q.write(p,str(p))
+          with zipfile.ZipFile(z) as q:
+              ns=q.namelist();assert len(ns)==len(set(ns))==len(paths)
+              for x in man['files']:assert hashlib.sha256(q.read(x['archive_path'])).hexdigest()==x['sha256']
+          sha=fsha(z);(R/'PSC_V8_3_255_FINAL_POST_STEP_111_CHECKPOINT_SHA256.txt').write_text(sha+'  '+z.name+'\n')
+          receipt={'candidate':'V8.3.255','phase':'final-post-step-111-checkpoint-validation','archive_sha256':sha,'archive_entries':len(paths),'unique_entries':True,'step_111_pass':True,'production_lock_eligible':True,'production_authorized':False,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False,'pass':True};(O/'V8_3_255_FINAL_POST_STEP_111_CHECKPOINT_RECEIPT_V1.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt))
           PY
           rc=$?
           set -e
-          cat /tmp/v255-step111-r2.log
+          cat /tmp/v255-final.log
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze Step 111 R2 verdict
+      - name: Freeze final checkpoint metadata
         if: always()
         run: |
           set -euo pipefail
-          RC='${{ steps.audit.outputs.rc }}' python - <<'PY'
+          RC='${{ steps.pack.outputs.rc }}' python - <<'PY'
           import json,os,pathlib
-          o=pathlib.Path('validation/v83255-v1-sealed');log=pathlib.Path('/tmp/v255-step111-r2.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-step111-r2.log').exists() else ''
-          (o/'V8_3_255_STEP_111_R2_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.255','phase':'step-111-r2-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-40000:],'step_111_authorized':True,'production_authorized':False,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False},indent=2)+'\n')
+          o=pathlib.Path('validation/v83255-v1-sealed');log=pathlib.Path('/tmp/v255-final.log').read_text(errors='replace') if pathlib.Path('/tmp/v255-final.log').exists() else ''
+          (o/'V8_3_255_FINAL_POST_STEP_111_CHECKPOINT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.255','phase':'final-post-step-111-checkpoint-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'production_authorized':False,'semantic_change':False,'expected_gold_changed':False,'batch_a_rerun':False,'batch_b_rerun':False},indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83255-v1-sealed/V8_3_255_STEP_111_R2_DIAGNOSTIC.json
-          test ! -f validation/v83255-v1-sealed/V8_3_255_STEP_111_VERDICT_R2.json || git add validation/v83255-v1-sealed/V8_3_255_STEP_111_VERDICT_R2.json
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.255 Step 111 R2 independent audit verdict'
+          git add validation/v83255-v1-sealed/V8_3_255_FINAL_POST_STEP_111_CHECKPOINT_MANIFEST_V1.json validation/v83255-v1-sealed/V8_3_255_FINAL_POST_STEP_111_CHECKPOINT_RECEIPT_V1.json validation/v83255-v1-sealed/V8_3_255_FINAL_POST_STEP_111_CHECKPOINT_DIAGNOSTIC.json
+          git commit -m 'Freeze V8.3.255 final post-Step-111 checkpoint metadata'
           git push origin HEAD:v83255-v1-sealed-validation
-      - name: Enforce Step 111 R2 verdict
-        run: test '${{ steps.audit.outputs.rc }}' = '0'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_255_FINAL_POST_STEP_111_CHECKPOINT
+          path: |
+            PSC_V8_3_255_FINAL_POST_STEP_111_CHECKPOINT.zip
+            PSC_V8_3_255_FINAL_POST_STEP_111_CHECKPOINT_SHA256.txt
+          if-no-files-found: error
+      - name: Enforce final checkpoint
+        run: test '${{ steps.pack.outputs.rc }}' = '0'
