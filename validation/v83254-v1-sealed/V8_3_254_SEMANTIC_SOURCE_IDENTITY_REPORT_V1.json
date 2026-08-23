@@ -1,0 +1,287 @@
+{
+  "candidate": "V8.3.254",
+  "phase": "semantic-source-identity",
+  "validated_development_head_sha": "238cdba6ee2d4d17bcde19de2d895a7087983345",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "loaded_semantic_source_count": 55,
+  "sources": [
+    {
+      "path": "validation/qc-evidence-extractor-v5y-v220-bounded-recall.js",
+      "sha256": "2096207841c14c77b7252c801132c97c2c9b4dfa42e9d9297f6a0b7a81f66b97",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5z-v222-compositional-generalization.js",
+      "sha256": "a09dab5bb8fcfb38e4090c51dc8fd87a8c572f82923a2bebb0dda4620f0c30e8",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5aa-v223-precedence-generalization.js",
+      "sha256": "ca77f626af7bf5a3e3ce70c2559b58339e7fdd9bce6059ffd489770f8a8f6bd2",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5ab-v224-compositional-recall.js",
+      "sha256": "3e35881f704a59f97b858a9808fcb922893e1523a2ddcb81128e3747b8544929",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5ac-v225-residual-composition.js",
+      "sha256": "59dea89f2a26ab86dea252dac161b7536d71e0e4817a40f28c881009e96605bd",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5ad-v226-full-input-witness.js",
+      "sha256": "c1125f08a37f7c312a5c70a2de526a020c8f12b6c72c3b36940fecac876a7885",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5ae-v227-residual-witness.js",
+      "sha256": "6e1e74abb7bbc80502faed14cf852a81759c804c801d4951f41cd21580e0ff3b",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5af-v228-witness-completion.js",
+      "sha256": "628347de69015d170baa111b4d15f04e58edc914419d3ce35d68be2f76c0f8c9",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5ag-v230-concept-generalization.js",
+      "sha256": "849d8df5bf50f1c72fbc5afacb13744555ccc3e03af8db27aff07e2230d4d3a4",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5ah-v231-isolated-concepts.js",
+      "sha256": "7630f8a708b4bc33d20716e4a2a91f58a19a4bc58105f8e76d96ff3755e04fe5",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5ai-v232-residual-isolated-generalization.js",
+      "sha256": "3fa8f5b390590967b1d7c05933ffbf79b16d3cfadddbc94a2f50fadc6917b6ff",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5aj-v234-residual-generalization.js",
+      "sha256": "f2dc506c21193d99242eb6e146ca47ca6e7bd6865fb91f9277d1b028e46dcac4",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5ak-v235-final-residuals.js",
+      "sha256": "de086c888459bd017299c787b1c6c08bb1990731f352efb0c8b180303308a9c8",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5al-v236-contextual-mechanisms.js",
+      "sha256": "8e075e615d3e3f4fcc673aae9fd08305a0536375b78d9ad925b11c714d13d83f",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5am-v237-final-compositional.js",
+      "sha256": "f5fc880610376172fba4c8f17dde80dadafee39de82aa1e75951fca21346b49d",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5an-v238-frozen-residuals.js",
+      "sha256": "a3820c0856de8c6b5bce4033eb1de42fc5ec40856c3ddf8d82c4e4bb76227711",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5ao-v239-v238-residuals.js",
+      "sha256": "9e34670ed24f3edde774bc84de6ac18f8e0bb713707c5726f057d2bee9ab37ce",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5ap-v241-v240-residuals.js",
+      "sha256": "69680774c811f53c8a2c50ef7226dbd6d34b938d238fe3ba18369631dafec4a0",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5aq-v242-v241-residuals.js",
+      "sha256": "c324e2d20a188b32bbe6b349af8de063aef3e54fdb64f59b090a30f31b5c836d",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5ar-v243-v242-residuals.js",
+      "sha256": "a30b898507e08c450fb7f797c974c30c7efbc5109224b8f08c842752ef0c492f",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5as-v245-v244-residuals.js",
+      "sha256": "b127a8f15a1cae7226568e8ef091ca7919bebefec36131af81a572b9c396ad99",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5at-v246-v245-residuals.js",
+      "sha256": "214dedce936fea738e9f70507c2b84875cead2ede9e7e7d5f5a542dd20046fd2",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5au-v249-v248-residuals.js",
+      "sha256": "3d5e46a4fb62251069dde8c98f847a63980b6cc8ae3819d3caf69424d2d6a66a",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5av-v250-v249-residuals.js",
+      "sha256": "071d520864d869235338ab1b1d8adefeca3a96aa7509c5bb1ea692ac1f64fcde",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5aw-v251-v250-b-residuals.js",
+      "sha256": "56667ce55e9f3f5f6d83e248bdfe2ea861c7dcd0557a70a57e105d481fab6b49",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5ax-v252-v251-residuals.js",
+      "sha256": "ad1c737603ddb5c54ffab944c9495cc05a7dc7fc8ac6555ddd53423ab58f58d8",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/qc-evidence-extractor-v5ay-v253-v252-residual.js",
+      "sha256": "26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83220-v219-v98-bounded-recall.js",
+      "sha256": "a15ccac0cda936aa72fbe4b5fbd81a69d52711f823dc25eb028699604dc7ac5b",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83222-v221-v99-compositional-generalization.js",
+      "sha256": "1216427da967d32baefda6b3fa980dd5a9663c46faebe44398e8b13d1aaa9d41",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83223-v222-v100-precedence-generalization.js",
+      "sha256": "926a0b7d05cf01292631964e39d9888ac0b6964a91394ae8edf19b0d13fe1420",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83224-v223-v101-compositional-recall.js",
+      "sha256": "7644ebd7846a27012204f44ab2d36aea1a8892e2295c4a49f32b0b55162f28b5",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83225-v224-v102-residual-composition.js",
+      "sha256": "4544889613ec8adad8edde2f947951398c0694cf88baa8c10d2c9c6d1789decc",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83226-v225-v103-full-input-witness.js",
+      "sha256": "a54c2bc3fe52496a7043543e6c516c436f47c9ca6cc292ebff6de94fea3239c5",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83227-v226-v104-residual-witness.js",
+      "sha256": "abde857bd1b5136b3d921644683758ac9492c4c1b0effa9ae0720ea8cfe9ff40",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83228-v227-v105-witness-completion.js",
+      "sha256": "3d63077153af8879b3345a32e87f518ede3d69a90ba0f107b3d041e42058b195",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83230-v229-v106-concept-generalization.js",
+      "sha256": "e7b002fa97036c579df03f2313d9d27dbd0a458bf7ad986e00be191953f7e994",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83231-v230-v107-isolated-concepts.js",
+      "sha256": "aff1d66fd641729c9fe9a77d78c1b491704432ffca2167718171562c7c22b680",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83232-v231-v108-residual-isolated-generalization.js",
+      "sha256": "6172097ba532c3f323907b5707f0d7d8f063c8d1a3fe880232fec0af68d61747",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83234-v233-v109-residual-generalization.js",
+      "sha256": "380c5edab4043b12a270d7ce754406b98852c3c1c57e836c976d048f22185882",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83235-v234-v110-final-residuals.js",
+      "sha256": "d8ec604bd2a3430f9b63de268a6b2a855eb1fd0a158c58bdb20b71571cf00ebe",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83236-v235-v111-contextual-mechanisms.js",
+      "sha256": "22a4ac294ff0ca0047c8f9b991c50dcc255196b76f17e3f0ca47e806039ff08f",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83237-v236-v112-final-compositional.js",
+      "sha256": "48ec7f057a7c2cf3af5468ff44cd7888e5f0e4058d66674a390092c16447843b",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83238-v237-v113-frozen-residuals.js",
+      "sha256": "7adec488cbab42e2adfff45c961234821199d93f9ecb1d640ab669dac437624a",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83239-v238-v114-v238-residuals.js",
+      "sha256": "e99a49eaee3ce23a9dc1eea80ab8e19cd44ea66f740d41970a613f6f7d264e44",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83241-v240-v115-residuals.js",
+      "sha256": "bfa21fc8ef40f1b053da8adf173d5bc8d5f3635e5b15a96361c108af4861a309",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83242-v241-v116-residuals.js",
+      "sha256": "17da6ecf208e6e52ca0c6c801d16be4e4a652e6598d20c58f9ab9fc34e870965",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83243-v242-v117-residuals.js",
+      "sha256": "97edb0e580c04bc9d1060920cf7f357dd26bc3e519c41ce832d4fafe2fad105c",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83245-v244-v118-residuals.js",
+      "sha256": "2fc406d56b2f23d22b64710e2b2e344c8bf746bbf84c759c7fadb19a3a05c011",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83246-v245-v119-residuals.js",
+      "sha256": "3be2c498ab2f23e4ce9a1a7b0537c97ad807c5459f82f18b359c166c98e159c3",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83249-v248-v120-residuals.js",
+      "sha256": "38713a1c65de20cd410896f69199770e54eb1a80cb46b3890ab2410532420e08",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83250-v249-v121-residuals.js",
+      "sha256": "00713ed4f6eb7a711e12e75616388c877ac32c8fae5cc18e702bfca736ba8c25",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83251-v250-v122-b-residuals.js",
+      "sha256": "f840edbcf6d6c1c55bc836b09a2825dee038988752a3b8f3da2a4c130a2ad86c",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83252-v251-v123-residuals.js",
+      "sha256": "cf8f43a12ddde2f7209de2f871023797e91f3eff95ea43e43d0e34d576ff09d7",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83253-v252-v124-residual.js",
+      "sha256": "50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96",
+      "byte_identical_to_frozen_development": true
+    },
+    {
+      "path": "validation/psc-v83196-v195-v1-hypothetical-preservation-repair.js",
+      "sha256": "8e0a2be056e55a4b8d7a64ddcec29359fb2e09dbead9d29d067ed0c62ee0bfd2",
+      "byte_identical_to_frozen_development": true
+    }
+  ],
+  "all_byte_identical_to_frozen_development": true,
+  "semantic_change": false,
+  "pass": true
+}

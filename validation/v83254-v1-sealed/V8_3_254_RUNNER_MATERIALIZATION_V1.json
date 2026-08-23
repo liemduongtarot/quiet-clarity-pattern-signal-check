@@ -1,0 +1,17 @@
+{
+  "candidate": "V8.3.254",
+  "phase": "provenance-enabled-runner-materialization",
+  "validated_development_head_sha": "238cdba6ee2d4d17bcde19de2d895a7087983345",
+  "parent_development_sha": "89db04ec936af998c14d2f0451ef87270ea8e349",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "runner_sha256": "393756f1bac9939268fe2111326cbf9cabac51595f9207b286b3cc74f914419c",
+  "provenance_capture": true,
+  "runtime_case_timestamp_capture": true,
+  "append_only_ledger": true,
+  "case_level_hash_chain": true,
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "pass": true,
+  "sealed_semantics_executed": false,
+  "step_111_authorized": false
+}
