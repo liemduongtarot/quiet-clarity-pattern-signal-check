@@ -1,0 +1,16 @@
+{
+  "candidate": "V8.3.252",
+  "phase": "DEVELOPMENT_AUTHORITY_FROZEN",
+  "development_head_before_freeze": "a59103cbe75488e55d8177627e38b5606499f8ec",
+  "parent_development_authority_sha": "125a6f60c94eda4c455323a171006cac613eb903",
+  "semantic_authority": "QCEvidenceExtractorV5AX -> QCSemanticCoreV123",
+  "regression_receipt": "validation/V8_3_252_V123_REGRESSION_RECEIPT.json",
+  "immutable_regression_passed": 1470,
+  "v251_batch_a_previous_failures_repaired": 3,
+  "v251_batch_a_previous_passes_preserved": 27,
+  "expected_gold_changed": false,
+  "sealed_validation_executed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "pass": true
+}
