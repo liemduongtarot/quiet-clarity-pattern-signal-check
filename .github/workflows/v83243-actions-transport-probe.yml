@@ -1,5 +1,5 @@
-name: V8.3.250 hardened transport/static preflight
-# trigger-v250-preflight-1
+name: V8.3.250 Batch B runner materialization
+# trigger-v250-b-runner-materialization-1
 on:
   push:
     branches: [main]
@@ -15,33 +15,13 @@ jobs:
         with:
           ref: v83250-v1-sealed-validation
           fetch-depth: 0
-      - name: Run hardened preflight
-        id: run
-        shell: bash
-        run: |
-          set +e
-          python validation/v83250-v1-sealed/v83250-transport-preflight.py > /tmp/v250-preflight.log 2>&1
-          rc=$?
-          set -e
-          cat /tmp/v250-preflight.log
-          RC="$rc" python - <<'PY'
-          import json,os,pathlib
-          text=pathlib.Path('/tmp/v250-preflight.log').read_text(errors='replace')
-          o=pathlib.Path('validation/v83250-v1-sealed')
-          (o/'V8_3_250_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.250','phase':'hardened-transport-static-preflight','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ['RC']),'log_tail':text[-30000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False},indent=2)+'\n')
-          PY
-          echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze preflight evidence
-        if: always()
+      - name: Materialize B-only runner
         shell: bash
         run: |
           set -euo pipefail
+          python validation/v83250-batch-b-self-contained.py
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83250-v1-sealed/V8_3_250_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json
-          test ! -f validation/v83250-v1-sealed/V8_3_250_TRANSPORT_VERIFICATION_V1.json || git add validation/v83250-v1-sealed/V8_3_250_TRANSPORT_VERIFICATION_V1.json
-          test ! -f validation/v83250-v1-sealed/V8_3_250_STATIC_SEALED_PREFLIGHT_V1.json || git add validation/v83250-v1-sealed/V8_3_250_STATIC_SEALED_PREFLIGHT_V1.json
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.250 hardened preflight evidence'
+          git add validation/v83250-batch-b-materialized.py validation/v83250-v1-sealed/V8_3_250_BATCH_B_RUNNER_MATERIALIZATION_V1.json
+          git commit -m 'Materialize V8.3.250 Batch B runner'
           git push origin HEAD:v83250-v1-sealed-validation
-      - name: Enforce preflight outcome
-        run: test '${{ steps.run.outputs.rc }}' = '0'
