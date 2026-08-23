@@ -1,0 +1,28 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "hardened-batch-b-evidence-preflight",
+  "validated_development_head_sha": "8100c9d590a95b612829e92f4a9fc859b6eddb23",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "batch_a_first_run_verified": true,
+  "batch_a_30_of_30": true,
+  "batch_a_ledger_verified": true,
+  "batch_a_provenance_count": 30,
+  "batch_b_runner_sha256": "af297926d68381599eb461dc432e660a6065cd3c9ea969d62c672920721534b2",
+  "batch_b_runner_hash_verified": true,
+  "batch_b_provenance_contract_verified": true,
+  "batch_b_pre_execution_absence": {
+    "V8_3_255_BATCH_B_ATTEMPT_MARKER.json": true,
+    "V8_3_255_BATCH_B_RESERVATION_V1.json": true,
+    "V8_3_255_BATCH_B_RESULT_V1.json": true,
+    "V8_3_255_BATCH_B_STATUS_V1.json": true,
+    "V8_3_255_BATCH_B_CASE_PROVENANCE_V1.json": true,
+    "V8_3_255_BATCH_B_EXECUTION_LEDGER_V1.json": true
+  },
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "batch_a_rerun": false,
+  "batch_b_executed": false,
+  "step_111_authorized": true,
+  "production_authorized": false,
+  "pass": true
+}
