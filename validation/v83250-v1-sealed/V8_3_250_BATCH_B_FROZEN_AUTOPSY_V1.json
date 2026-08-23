@@ -1,0 +1,120 @@
+{
+  "candidate": "V8.3.250",
+  "phase": "frozen-batch-b-semantic-autopsy",
+  "run_id": "32608439132",
+  "validated_development_head_sha": "514cbcb34fbe336033c8f8858a53415371137973",
+  "semantic_authority": "QCEvidenceExtractorV5AV -> QCSemanticCoreV121",
+  "batch_a_passed": 30,
+  "batch_b_total": 30,
+  "batch_b_passed": 27,
+  "batch_b_failed": 3,
+  "v250_batch_b_rerun": false,
+  "semantic_runtime_executed": true,
+  "semantic_failure": true,
+  "failure_counts_by_category": {
+    "freeze": 1,
+    "ignore": 1,
+    "slow": 1
+  },
+  "mechanism_groups": [
+    {
+      "category": "freeze",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:hypothetical-or-example",
+      "expected_families": [
+        "freeze"
+      ],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "ignore",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:hypothetical-or-example",
+      "expected_families": [
+        "ignore"
+      ],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    },
+    {
+      "category": "slow",
+      "expected_route": "input:self-lived",
+      "actual_route": "input:hypothetical-or-example",
+      "expected_families": [
+        "slow"
+      ],
+      "actual_families": [],
+      "expected_sequence": false,
+      "actual_sequence": false,
+      "count": 1
+    }
+  ],
+  "failures": [
+    {
+      "case_id": "V250-S05-12",
+      "category": "freeze",
+      "language": "VI",
+      "domain": "workplace",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "freeze"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A dendroarchaeology workshop separately indexed increment borers, core mounts, sanding grits, ring-width scanners, skeleton plots, crossdating tables, master chronologies, cambial-age estimates, sapwood counts, waney-edge records, pointer-year sheets, dendroprovenance maps, growth-index curves, COFECHA reports, Gleichlaeufigkeit scores, latewood bands, earlywood vessels, false-ring notes, compression-wood flags, resin-duct charts, pith-offset estimates, bark-edge codes, sample radii, serial sections, tracheid measurements, microtome blades, image mosaics, dating certificates, specimen racks and accession ledgers; these tools do not create or remove a stalled opening move. A separate chromatography core independently indexed HPLC pumps, UHPLC columns, autosampler vials, guard cartridges, gradient mixers, degassers, UV detectors, DAD spectra, fluorescence detectors, mass analyzers, electrospray sources, ion traps, quadrupoles, time-of-flight tubes, retention times, capacity factors, selectivity factors, resolution values, peak asymmetry, theoretical plates, Van Deemter curves, mobile phases, stationary phases, acetonitrile gradients, methanol gradients, buffer strengths, pH modifiers, internal standards, external standards, calibration curves, response factors, limit of detection, limit of quantitation, blank injections, carryover tests, system suitability, peak integrations, extracted ion chromatograms, mass fragments, library matches; this specialist material is inert physical context and supplies no behavioural evidence. A cello repair bench separately indexed bridge knives, soundpost setters, peg shapers, rib clamps, purfling strips, scraper blades, varnish jars, neck gauges, lining clamps, thickness calipers, string reels and repair cards; these tools do not create or remove a stalled opening move. In a stage mechanics shop, technicians independently catalogued control rods, hinge wires, mask blanks, fabric pieces, joint pins, thread reels, paint cups, storage pegs, backdrop tabs, costume hooks, pattern cards, scene labels by station; this inventory is physical scenery only and cannot determine the measured response. A violin-making bench separately indexed bending irons, purfling cutters, arching templates, soundpost gauges, peg shapers, rib clamps, scraper sets, bridge blanks, varnish cups, thickness calipers, neck jigs and lining strips; these tools do not create or remove a stalled opening move. A furniture restoration shop separately indexed veneer knives, hide-glue pots, clamp blocks, cabinet scrapers, dowel gauges, shellac pads, joint templates, fret saws, edge planes, marking knives, sanding corks and repair labels; these tools do not create or remove a stalled first move. In a puppetry workshop, staff separately catalogued control bars, joint pins, thread reels, costume hooks, backdrop tabs, hinge wires, mask blanks, paint cups, storage pegs, pattern cards, fabric pieces, scene labels by station; those objects describe environment only and cannot determine the behavioural route. In a letterpress proof room, staff independently listed ink slabs, roller bearers, proof papers, registration pins, type-high gauges, wash tins, galley labels, chase keys, paper stacks, packing sheets, press cards, cabinet tags by cabinet; this separate inventory cannot determine the measured route. Đồ dùng drawing-room chỉ là physical context chứ không phải evidence hành vi. Một bench leather-pattern phụ không tạo hay xoá stalled start. Tôi có first move ít cam kết, nhưng lại tạo thêm option rồi đứng yên. Một phòng botanical drawing ghi ruling pen, specimen clip, graphite holder, tracing veil và label weight theo ngăn. Một bench book-repair phụ ghi lifting knife, linen tape, bone folder, paste brush và pressing board; các tool đó không tạo hay xoá stalled first move. Một drawer manifest phụ ghi silicone cap, brass shim, wool pad, archive sleeve, glass dropper và bamboo pin theo section; các object này không quyết định semantic route. A leather-tool library separately stored edge bevelers, stitching groovers, mauls, creasing wheels, strap cutters, wax cakes, buckle gauges and awl handles; these tools do not create or remove the stalled opening action. A separate inventory slip also listed bamboo sticks, enamel markers, linen bands, steel hooks, paper gauges, wooden shims, ceramic beads and cotton ties by drawer; the slip cannot determine the measured semantic route. A conservation leather studio additionally indexed paring knives, edge irons, stitching ponies, spacer wheels, awl blades, thread wax, strap templates, buckle blanks, crease gauges, skiving boards, punch mats and mallet faces; these tools do not create or remove a stalled opening move. A separate shelf manifest listed enamel discs, copper ties, fibre strips, oak shims, ceramic caps, paper sleeves, linen bands, glass rods, steel markers, cotton labels, cork gauges and brass pins by bay; none determines the semantic route. A separate puppetry workshop inventory also remained physically present but semantically inert to the measured response. The additional letterpress proof room register is independent physical scenery and does not supply evidence for the measured response."
+    },
+    {
+      "case_id": "V250-S06-12",
+      "category": "ignore",
+      "language": "VI",
+      "domain": "money",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "ignore"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A structural dynamics laboratory separately catalogued modal shakers, triaxial accelerometers, laser vibrometers, impedance heads, force hammers, strain rosettes, frequency-response functions, coherence spectra, damping ratios, mode-shape plots, operational deflection shapes, finite-element meshes, boundary-condition fixtures, charge amplifiers, anti-alias filters, data-acquisition chassis, tachometer pickups, electrodynamic exciters, modal masses, suspension cords, transmissibility curves, resonance sweeps, Nyquist plots, Bode traces, spectral windows, sampling clocks, sensor calibrators, shaker stingers, reference channels and test-article tags; that inventory cannot resolve a central obligation left unattended. A separate chromatography core independently indexed HPLC pumps, UHPLC columns, autosampler vials, guard cartridges, gradient mixers, degassers, UV detectors, DAD spectra, fluorescence detectors, mass analyzers, electrospray sources, ion traps, quadrupoles, time-of-flight tubes, retention times, capacity factors, selectivity factors, resolution values, peak asymmetry, theoretical plates, Van Deemter curves, mobile phases, stationary phases, acetonitrile gradients, methanol gradients, buffer strengths, pH modifiers, internal standards, external standards, calibration curves, response factors, limit of detection, limit of quantitation, blank injections, carryover tests, system suitability, peak integrations, extracted ion chromatograms, mass fragments, library matches; this specialist material is inert physical context and supplies no behavioural evidence. A structural materials store separately catalogued core sleeves, joint gauges, crack cards, mortar samples, survey rulers, depth probes, site tags, mesh strips, sample tins, brush heads, condition sheets and line pins; this equipment cannot resolve a central obligation left unattended. In a stage mechanics shop, technicians independently catalogued control rods, hinge wires, mask blanks, fabric pieces, joint pins, thread reels, paint cups, storage pegs, backdrop tabs, costume hooks, pattern cards, scene labels by station; this inventory is physical scenery only and cannot determine the measured response. A building acoustics survey kit separately catalogued sound-level meters, octave filters, tripods, calibration pistons, room sketches, absorption samples, cable reels, source speakers, timing cards, measurement grids, microphone clips and case labels; that inventory cannot resolve a central obligation left unattended. A pavement materials laboratory separately catalogued aggregate sieves, asphalt cores, density blocks, compaction charts, crack rulers, sample tins, temperature probes, straightedges, mix cards, calibration weights, texture plates and site tags; this equipment cannot resolve a main responsibility left open. In a puppetry workshop, staff separately catalogued control bars, joint pins, thread reels, costume hooks, backdrop tabs, hinge wires, mask blanks, paint cups, storage pegs, pattern cards, fabric pieces, scene labels by station; those objects describe environment only and cannot determine the behavioural route. In a letterpress proof room, staff independently listed ink slabs, roller bearers, proof papers, registration pins, type-high gauges, wash tins, galley labels, chase keys, paper stacks, packing sheets, press cards, cabinet tags by cabinet; this separate inventory cannot determine the measured route. Việc trung tâm vẫn cần action của tôi, nhưng tôi lại dùng effort cho công việc thứ yếu. Một phòng botanical drawing ghi ruling pen, specimen clip, graphite holder, tracing veil và label weight theo ngăn. Đồ dùng drawing-room chỉ là physical context chứ không phải evidence hành vi. Một archive mosaic phụ không giải quyết central matter bị bỏ lại. Một archive tile-survey phụ ghi grout card, glaze chip, spacer tray, mesh sample và nipper guard; inventory đó không giải quyết central task bị bỏ lại. Một drawer manifest phụ ghi silicone cap, brass shim, wool pad, archive sleeve, glass dropper và bamboo pin theo section; các object này không quyết định semantic route. A masonry survey locker separately indexed pointing keys, mortar cards, joint gauges, sample bags, line pins, brush heads, crack rulers and site tags; that equipment cannot resolve the central obligation left unattended. A separate inventory slip also listed bamboo sticks, enamel markers, linen bands, steel hooks, paper gauges, wooden shims, ceramic beads and cotton ties by drawer; the slip cannot determine the measured semantic route. A building-materials archive additionally stored mortar prisms, joint profiles, crack monitors, survey tapes, pointing samples, line blocks, masonry brushes, core sleeves, site notebooks, sample tins, depth gauges and condition tags; this equipment cannot resolve an unattended central obligation. A separate shelf manifest listed enamel discs, copper ties, fibre strips, oak shims, ceramic caps, paper sleeves, linen bands, glass rods, steel markers, cotton labels, cork gauges and brass pins by bay; none determines the semantic route. A separate puppetry workshop inventory also remained physically present but semantically inert to the measured response. The additional letterpress proof room register is independent physical scenery and does not supply evidence for the measured response."
+    },
+    {
+      "case_id": "V250-S07-12",
+      "category": "slow",
+      "language": "VI",
+      "domain": "career",
+      "expected": {
+        "route": "input:self-lived",
+        "families": [
+          "slow"
+        ],
+        "sequence": false
+      },
+      "actual": {
+        "route": "input:hypothetical-or-example",
+        "families": [],
+        "sequence": false
+      },
+      "surface": "A precision chronometry institute separately held rubidium oscillators, cesium references, GPS-disciplined standards, phase comparators, Allan-deviation plots, time-interval counters, frequency synthesizers, distribution amplifiers, pulse-per-second monitors, oven-controlled crystal oscillators, phase-noise analyzers, hydrogen maser logs, leap-second bulletins, UTC traceability sheets, coaxial delay lines, trigger discriminators, reference dividers, thermal chambers, disciplined clocks, holdover curves, aging-rate tables, synchronization fibres, jitter spectra, timestamp validators, rubidium lamps, servo-loop diagrams, drift estimates, calibration epochs, timing receivers and reference epochs; these objects do not alter a bounded pause-review-close response. A separate chromatography core independently indexed HPLC pumps, UHPLC columns, autosampler vials, guard cartridges, gradient mixers, degassers, UV detectors, DAD spectra, fluorescence detectors, mass analyzers, electrospray sources, ion traps, quadrupoles, time-of-flight tubes, retention times, capacity factors, selectivity factors, resolution values, peak asymmetry, theoretical plates, Van Deemter curves, mobile phases, stationary phases, acetonitrile gradients, methanol gradients, buffer strengths, pH modifiers, internal standards, external standards, calibration curves, response factors, limit of detection, limit of quantitation, blank injections, carryover tests, system suitability, peak integrations, extracted ion chromatograms, mass fragments, library matches; this specialist material is inert physical context and supplies no behavioural evidence. A mechanical clock service bench separately held arbor supports, mainspring clamps, jewel pushers, timing strips, pivot files, hand lifters, movement cushions, screw trays, oil cups, balance gauges, dial guards and service tags; these objects do not alter a bounded pause-review-close response. In a stage mechanics shop, technicians independently catalogued control rods, hinge wires, mask blanks, fabric pieces, joint pins, thread reels, paint cups, storage pegs, backdrop tabs, costume hooks, pattern cards, scene labels by station; this inventory is physical scenery only and cannot determine the measured response. A watch-repair cabinet separately held balance staffs, pallet stones, mainspring winders, jewel presses, timing papers, loupe cases, hand levers, dial protectors, oil cups, pivot broaches, screw trays and movement holders; these objects do not alter a bounded pause-review-close response. A flute acoustics cabinet separately held embouchure gauges, pad shims, leak lights, spring hooks, cork strips, bore scopes, key rollers, feeler papers, cleaning rods, reference tubes, measurement cards and case tags; these objects do not alter one bounded pause followed by closure. In a puppetry workshop, staff separately catalogued control bars, joint pins, thread reels, costume hooks, backdrop tabs, hinge wires, mask blanks, paint cups, storage pegs, pattern cards, fabric pieces, scene labels by station; those objects describe environment only and cannot determine the behavioural route. In a letterpress proof room, staff independently listed ink slabs, roller bearers, proof papers, registration pins, type-high gauges, wash tins, galley labels, chase keys, paper stacks, packing sheets, press cards, cabinet tags by cabinet; this separate inventory cannot determine the measured route. Đồ dùng drawing-room chỉ là physical context chứ không phải evidence hành vi. Một drawer flute-service phụ không đổi bounded pause-and-close response. Có một pause giới hạn và một review trước khi tôi trả lời rồi ngừng revisit. Một phòng botanical drawing ghi ruling pen, specimen clip, graphite holder, tracing veil và label weight theo ngăn. Một drawer clarinet-service phụ ghi pad paper, spring hook, cork strip, bore swab và key roller; các object đó không đổi bounded pause-review-close response. Một drawer manifest phụ ghi silicone cap, brass shim, wool pad, archive sleeve, glass dropper và bamboo pin theo section; các object này không quyết định semantic route. A bassoon-service cabinet separately held mandrels, pad cups, spring hooks, bore swabs, cork strips, key rollers, feeler papers and thread spools; this maintenance stock does not alter the bounded pause-review-close response. A separate inventory slip also listed bamboo sticks, enamel markers, linen bands, steel hooks, paper gauges, wooden shims, ceramic beads and cotton ties by drawer; the slip cannot determine the measured semantic route. A double-reed research cabinet additionally held plaque gauges, reed knives, mandrels, thread bobbins, drying racks, measuring wires, shaper tips, cork strips, spring hooks, pad cups, bore gauges and humidity cards; these objects do not alter a bounded pause-review-close sequence. A separate shelf manifest listed enamel discs, copper ties, fibre strips, oak shims, ceramic caps, paper sleeves, linen bands, glass rods, steel markers, cotton labels, cork gauges and brass pins by bay; none determines the semantic route. A separate puppetry workshop inventory also remained physically present but semantically inert to the measured response. The additional letterpress proof room register is independent physical scenery and does not supply evidence for the measured response."
+    }
+  ],
+  "expected_gold_changed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "frozen-semantic-failure"
+}
