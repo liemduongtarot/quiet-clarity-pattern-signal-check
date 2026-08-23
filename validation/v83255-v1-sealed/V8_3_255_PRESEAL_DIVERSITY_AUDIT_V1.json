@@ -1,0 +1,26 @@
+{
+  "candidate": "V8.3.255",
+  "candidate_count": 180,
+  "selected_count": 60,
+  "batch_a_count": 30,
+  "batch_b_count": 30,
+  "internal_max_similarity": 0.120211,
+  "internal_max_pair": [
+    "V255-S02-10",
+    "V255-S02-16"
+  ],
+  "external_max_similarity": 0.658454,
+  "external_max_pair": [
+    "V255-S02-01",
+    "V254-S02-01"
+  ],
+  "external_cases_at_or_above_0_75": 0,
+  "exact_external_duplicates": 0,
+  "semantic_fingerprint_exact_duplicates": 0,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "selection_uses_runtime_output": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "pass": true
+}

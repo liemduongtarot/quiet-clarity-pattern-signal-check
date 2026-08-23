@@ -1,0 +1,26 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "SEALED_AUTHORITY_PRE_BATCH_A",
+  "validated_development_head_sha": "8100c9d590a95b612829e92f4a9fc859b6eddb23",
+  "base_exact_development_sha": "238cdba6ee2d4d17bcde19de2d895a7087983345",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "repair_scope": "RUNNER_EVIDENCE_CONTRACT_ONLY",
+  "evidence_schema_authority": "V8.3.254-EVIDENCE-PROVENANCE-V1",
+  "preseal_pass": true,
+  "hashes": {
+    "candidate_bank": "a35d149f296e6bba9817a3f8aa4c7c6db4c2e0157a9855e7517d60b358c7e4be",
+    "selection": "ed13db17bbcea9833d592ef865ac44655bcf11b048780376d49bddad56168506",
+    "fixture": "62165e17b94cb1784648670189f680c00fea6848e8e2de31a0177e10b89bf9a2",
+    "independent_gold": "cf8fa19a456e90a5e02687fa9d845108bcee0ab3d768562473fdee18678424df",
+    "membership": "f53e6014e9d435222901d8a4b07dc02350e016611d84937af43e9caa711119eb",
+    "preseal_audit": "1402be96bf853a33f0879318c17e449b9efe83d2d61857bc34895f1701692664",
+    "contamination_duplicate_audit": "d0652f965478e73e487bc10039d80188ac8875cf10d25783503e9773c06d1d43",
+    "semantic_fingerprints": "7c7419882f140a31ce41a4d4054d6b96e50fc6eb7b722a5c2b0861bab1b5b605"
+  },
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "semantic_runtime_executed": false,
+  "semantic_authority_loaded": false,
+  "step_111_authorized": false,
+  "production_authorized": false
+}
