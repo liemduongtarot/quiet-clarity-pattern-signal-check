@@ -1,0 +1,55 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "STEP_111_INDEPENDENT_AUDIT_R2",
+  "validated_development_head_sha": "8100c9d590a95b612829e92f4a9fc859b6eddb23",
+  "base_exact_development_sha": "238cdba6ee2d4d17bcde19de2d895a7087983345",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "owner_authorization_basis": "continuation-cycle pre-authorization supplied before Step 111",
+  "step_111_authorized": true,
+  "checks": {
+    "semantic_diversity": true,
+    "authority_identity": true,
+    "ab_identity": true,
+    "case_level_first_run_evidence": true,
+    "semantic_outcome": true,
+    "post_run_integrity": true,
+    "archive_provenance_completeness": true,
+    "known_limitations_present": true,
+    "future_independent_reaudit_sufficiency": true,
+    "governance_firewall": true
+  },
+  "details": {
+    "semantic_diversity": {
+      "internal_max_similarity": 0.120211,
+      "external_max_similarity": 0.658454,
+      "external_cases_at_or_above_0_75": 0,
+      "exact_external_duplicates": 0,
+      "semantic_fingerprint_exact_duplicates": 0
+    },
+    "ab_identity": {
+      "a_run_id": "32668811798",
+      "b_run_id": "32669034665",
+      "a_count": 30,
+      "b_count": 30,
+      "disjoint": true,
+      "a_reservation_sha256": "e48ecb142a21a4108fccaacb8999200e2973b824c4f910657ece0c8c2c9d22db",
+      "b_reservation_sha256": "d4011a63c353bafed9c9826d3e62769e1e5dc713c8e4ee6a96baf86862bc890a"
+    },
+    "case_level_first_run_evidence": {
+      "a_ledger": "ok",
+      "b_ledger": "ok",
+      "a_final_chain_sha256": "611827096f1ee81f1250b2682a6be642b678dbc3e64230fc1259d47f8db23b99",
+      "b_final_chain_sha256": "7041258bcbc7e1d12eb2be4cdd37bcad1abd1e70eccb23aba30c035723720e3b",
+      "records": 60
+    }
+  },
+  "verdict": "PASS \u2014 PRODUCTION LOCK ELIGIBILITY ESTABLISHED",
+  "production_lock_eligible": true,
+  "production_authorized": false,
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "batch_a_rerun": false,
+  "batch_b_rerun": false,
+  "prior_step111_attempt": "32669277785 infrastructure/schema-key failure; no verdict emitted",
+  "conclusion": "success"
+}
