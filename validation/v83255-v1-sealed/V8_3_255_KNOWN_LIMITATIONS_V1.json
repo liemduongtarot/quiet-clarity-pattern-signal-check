@@ -1,0 +1,12 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "known-limitations",
+  "items": [
+    "Case executed_at_utc is captured immediately before the semantic analyze call for that case.",
+    "canonical_state_trace_ref points to the immutable batch result record for the same case; it is an evidence reference, not a hidden chain-of-thought trace.",
+    "Evidence instrumentation records and hashes runtime observations but does not alter semantic route/family/sequence decisions.",
+    "Evidence schema authority remains V8.3.254-EVIDENCE-PROVENANCE-V1; V255 repairs runner evidence contract validation only.",
+    "Step 111 is owner-authorized for this continuation cycle; production remains unauthorized unless Step 111 passes and authority-defined post-Step-111 actions allow it."
+  ],
+  "production_authorized": false
+}

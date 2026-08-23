@@ -1,0 +1,12 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "provenance-runner-materialization-diagnostic",
+  "run_id": "32668664474",
+  "rc": 0,
+  "log_tail": "{\"candidate\": \"V8.3.255\", \"source_identity_count\": 55, \"runner_sha256\": \"6d71b929e929e0892ceb1d05b174d4ebe69a1edf336db03fdca187fd06b8caff\", \"pass\": true}\n",
+  "semantic_runtime_executed": false,
+  "batch_a_executed": false,
+  "batch_b_executed": false,
+  "v254_sealed_rerun": false,
+  "expected_gold_changed": false
+}
