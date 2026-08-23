@@ -1,0 +1,23 @@
+{
+  "candidate": "V8.3.254",
+  "phase": "frozen-batch-a-runner-infrastructure-autopsy",
+  "run_id": "32617522252",
+  "validated_development_head_sha": "238cdba6ee2d4d17bcde19de2d895a7087983345",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "batch_a_attempt_consumed": true,
+  "batch_a_executed": false,
+  "semantic_runtime_executed": false,
+  "semantic_failure": false,
+  "batch_b_executed": false,
+  "v254_batch_a_rerun": false,
+  "failure_layer": "VALIDATION RUNNER / EVIDENCE CONTRACT",
+  "exact_error": "KeyError: 'exact_v5ay_path'",
+  "cause": "V254 provenance runner inherited the V253 assertion for preflight fields exact_v5ay_path/exact_v124_path, while V254 hardened evidence preflight intentionally proves semantic identity through the complete 55-file semantic-source-identity report and does not emit those legacy fields.",
+  "repair_scope_for_next_version": "RUNNER_EVIDENCE_CONTRACT_ONLY",
+  "semantic_change_allowed": false,
+  "expected_gold_change_allowed": false,
+  "v254_sealed_rerun_allowed": false,
+  "step_111_authorized": false,
+  "production_authorized": false,
+  "conclusion": "FROZEN_PRE_SEMANTIC_INFRASTRUCTURE_FAILURE"
+}
