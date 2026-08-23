@@ -1,5 +1,5 @@
-name: V8.3.253 sealed runner materialization diagnostic
-# trigger-v253-runner-materialization-2-marker-first
+name: V8.3.253 hardened transport/static preflight
+# trigger-v253-preflight-1
 on:
   push:
     branches: [main]
@@ -15,82 +15,32 @@ jobs:
         with:
           ref: v83253-v1-sealed-validation
           fetch-depth: 0
-      - name: Persist runner materialization start
-        shell: bash
-        run: |
-          set -euo pipefail
-          printf '{"candidate":"V8.3.253","phase":"runner-materialization-start","run_id":"%s","semantic_runtime_executed":false,"batch_a_executed":false,"batch_b_executed":false}\n' "$GITHUB_RUN_ID" > validation/v83253-v1-sealed/V8_3_253_RUNNER_MATERIALIZATION_START.json
-          git config user.name github-actions
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83253-v1-sealed/V8_3_253_RUNNER_MATERIALIZATION_START.json
-          git commit -m 'Record V8.3.253 runner materialization start'
-          git push origin HEAD:v83253-v1-sealed-validation
-      - name: Materialize self-contained V253 runner
-        id: mat
+      - name: Run hardened preflight
+        id: run
         shell: bash
         run: |
           set +e
-          git fetch origin v83252-v1-sealed-validation:refs/remotes/origin/v83252-v1-sealed-validation
-          python - <<'PY' > /tmp/v253-runner-mat.log 2>&1
-          from pathlib import Path
-          import subprocess,hashlib,json
-          src=subprocess.check_output(['git','show','origin/v83252-v1-sealed-validation:validation/v83252-batch-a-self-contained.py'],text=True)
-          simple=[
-            ('V8.3.252','V8.3.253'),('V8_3_252','V8_3_253'),('v83252','v83253'),
-            ('PSC_V8_3_252','PSC_V8_3_253'),
-            ('QCEvidenceExtractorV5AX -> QCSemanticCoreV123','QCEvidenceExtractorV5AY -> QCSemanticCoreV124'),
-            ('QCEvidenceExtractorV5AX','QCEvidenceExtractorV5AY'),('QCSemanticCoreV123','QCSemanticCoreV124'),
-            ('qc-evidence-extractor-v5ax-v252-v251-residuals.js','qc-evidence-extractor-v5ax-v252-v251-residuals.js'),
-            ('psc-v83252-v251-v123-residuals.js','psc-v83252-v251-v123-residuals.js'),
-            ('59d1d564a2208ae4ce5899262ad094357a20402a','89db04ec936af998c14d2f0451ef87270ea8e349')]
-          for a,b in simple: src=src.replace(a,b)
-          # Repair parent semantic filenames after broad namespace replacement.
-          src=src.replace('qc-evidence-extractor-v5ax-v253-v251-residuals.js','qc-evidence-extractor-v5ax-v252-v251-residuals.js')
-          src=src.replace('psc-v83253-v251-v123-residuals.js','psc-v83252-v251-v123-residuals.js')
-          # Extend exact semantic load chain with V5AY/V124.
-          anchor="'qc-evidence-extractor-v5ax-v252-v251-residuals.js','psc-v83252-v251-v123-residuals.js']"
-          repl="'qc-evidence-extractor-v5ax-v252-v251-residuals.js','psc-v83252-v251-v123-residuals.js','qc-evidence-extractor-v5ay-v253-v252-residual.js','psc-v83253-v252-v124-residual.js']"
-          if anchor not in src: raise SystemExit('semantic chain anchor missing')
-          src=src.replace(anchor,repl,1)
-          # Fix preflight field contract to V253 child.
-          old="assert pf['exact_v5ax_path']=='validation/qc-evidence-extractor-v5ax-v252-v251-residuals.js' and pf['exact_v123_path']=='validation/psc-v83252-v251-v123-residuals.js'"
-          new="assert pf['exact_v5ay_path']=='validation/qc-evidence-extractor-v5ay-v253-v252-residual.js' and pf['exact_v124_path']=='validation/psc-v83253-v252-v124-residual.js'"
-          if old not in src: raise SystemExit('preflight field anchor missing')
-          src=src.replace(old,new,1)
-          # Exact current semantics only in execution tail.
-          src=src.replace("if(!s.QCEvidenceExtractorV5AY)throw Error('V5AX missing');if(!s.QCSemanticCoreV124)throw Error('V123 missing');","if(!s.QCEvidenceExtractorV5AY)throw Error('V5AY missing');if(!s.QCSemanticCoreV124)throw Error('V124 missing');")
-          required=['validation/v83253-v1-sealed-runtime','V8_3_253_PRESEAL_CANDIDATE_BANK_V1.json','V8_3_253_BATCH_A_RESULT_V1.json','run-v83253-batch-a.cjs',"A['validated_development_head_sha']==TARGET",'qc-evidence-extractor-v5ay-v253-v252-residual.js','psc-v83253-v252-v124-residual.js','QCSemanticCoreV124.analyze','89db04ec936af998c14d2f0451ef87270ea8e349']
-          missing=[x for x in required if x not in src]
-          if missing: raise SystemExit('missing V253 runner literals '+repr(missing))
-          forbidden=['validation/v83252-v1-sealed-runtime','V8_3_252_BATCH_A_RESULT_V1.json','run-v83252-batch-a.cjs','QCSemanticCoreV123.analyze']
-          stale=[x for x in forbidden if x in src]
-          if stale: raise SystemExit('stale V252 runner literals '+repr(stale))
-          compile(src,'validation/v83253-batch-a-self-contained.py','exec')
-          p=Path('validation/v83253-batch-a-self-contained.py');p.write_text(src)
-          rec={'candidate':'V8.3.253','phase':'sealed-runner-materialization','run_id':__import__('os').environ['GITHUB_RUN_ID'],'validated_development_head_sha':'89db04ec936af998c14d2f0451ef87270ea8e349','parent_development_sha':'59d1d564a2208ae4ce5899262ad094357a20402a','semantic_authority':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124','runner_sha256':hashlib.sha256(src.encode()).hexdigest(),'self_contained':True,'semantic_change':False,'expected_gold_changed':False,'pass':True,'sealed_semantics_executed':False,'step_111_authorized':False}
-          Path('validation/v83253-v1-sealed/V8_3_253_RUNNER_MATERIALIZATION_V1.json').write_text(json.dumps(rec,indent=2)+'\n')
-          print(json.dumps(rec))
-          PY
+          python validation/v83253-v1-sealed/v83253-transport-preflight.py > /tmp/v253-preflight.log 2>&1
           rc=$?
           set -e
-          cat /tmp/v253-runner-mat.log
+          cat /tmp/v253-preflight.log
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-      - name: Freeze runner materialization evidence
+      - name: Freeze preflight evidence
         if: always()
         shell: bash
         run: |
           set -euo pipefail
-          RC='${{ steps.mat.outputs.rc }}' python - <<'PY'
+          RC='${{ steps.run.outputs.rc }}' python - <<'PY'
           import json,os,pathlib
-          o=pathlib.Path('validation/v83253-v1-sealed');log=pathlib.Path('/tmp/v253-runner-mat.log').read_text(errors='replace') if pathlib.Path('/tmp/v253-runner-mat.log').exists() else ''
-          (o/'V8_3_253_RUNNER_MATERIALIZATION_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.253','phase':'runner-materialization-diagnostic','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':log[-30000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False},indent=2)+'\n')
+          o=pathlib.Path('validation/v83253-v1-sealed');text=pathlib.Path('/tmp/v253-preflight.log').read_text(errors='replace') if pathlib.Path('/tmp/v253-preflight.log').exists() else ''
+          (o/'V8_3_253_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json').write_text(json.dumps({'candidate':'V8.3.253','phase':'hardened-transport-static-preflight','run_id':os.environ['GITHUB_RUN_ID'],'rc':int(os.environ.get('RC') or 1),'log_tail':text[-30000:],'semantic_runtime_executed':False,'batch_a_executed':False,'batch_b_executed':False},indent=2)+'\n')
           PY
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add validation/v83253-v1-sealed/V8_3_253_RUNNER_MATERIALIZATION_START.json validation/v83253-v1-sealed/V8_3_253_RUNNER_MATERIALIZATION_DIAGNOSTIC.json
-          test ! -f validation/v83253-batch-a-self-contained.py || git add validation/v83253-batch-a-self-contained.py
-          test ! -f validation/v83253-v1-sealed/V8_3_253_RUNNER_MATERIALIZATION_V1.json || git add validation/v83253-v1-sealed/V8_3_253_RUNNER_MATERIALIZATION_V1.json
-          git diff --cached --quiet || git commit -m 'Freeze V8.3.253 runner materialization evidence'
+          git add validation/v83253-v1-sealed/V8_3_253_TRANSPORT_PREFLIGHT_DIAGNOSTIC.json
+          test ! -f validation/v83253-v1-sealed/V8_3_253_TRANSPORT_VERIFICATION_V1.json || git add validation/v83253-v1-sealed/V8_3_253_TRANSPORT_VERIFICATION_V1.json
+          test ! -f validation/v83253-v1-sealed/V8_3_253_STATIC_SEALED_PREFLIGHT_V1.json || git add validation/v83253-v1-sealed/V8_3_253_STATIC_SEALED_PREFLIGHT_V1.json
+          git diff --cached --quiet || git commit -m 'Freeze V8.3.253 hardened preflight evidence'
           git push origin HEAD:v83253-v1-sealed-validation
-      - name: Enforce runner materialization
-        run: test '${{ steps.mat.outputs.rc }}' = '0'
+      - name: Enforce preflight outcome
+        run: test '${{ steps.run.outputs.rc }}' = '0'
