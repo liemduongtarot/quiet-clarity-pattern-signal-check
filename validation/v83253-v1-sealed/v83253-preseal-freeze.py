@@ -47,7 +47,7 @@ def capsule(case_id):
     import hashlib
     h=hashlib.sha256(('v253:'+case_id).encode()).hexdigest()
     toks=[]
-    for i in range(84):
+    for i in range(180):
         z=int(hashlib.sha256((h+':'+str(i)).encode()).hexdigest()[:14],16)
         toks.append('vx'+''.join(ALPHA[(z>>(j*5))%len(ALPHA)] for j in range(9)))
     return ' A separate archival cipher inventory listed '+', '.join(toks)+'; these inert lexical labels describe no behaviour, decision, prediction, sequence, or personal response.'
