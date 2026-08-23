@@ -7,7 +7,7 @@ repls=[
 ("RESULT=SEALED/'V8_3_253_BATCH_A_RESULT_V1.json'","RESULT=SEALED/'V8_3_253_BATCH_B_RESULT_V1.json'"),
 ("STATUS=SEALED/'V8_3_253_BATCH_A_STATUS_V1.json'","STATUS=SEALED/'V8_3_253_BATCH_B_STATUS_V1.json'"),
 ("'phase':'sealed-batch-a-first-run'","'phase':'sealed-batch-b-first-run'"),
-("'batch_b_executed':False,'v252_sealed_rerun':False,'v253_batch_a_rerun':False","'batch_a_executed':True,'v252_sealed_rerun':False,'v253_batch_b_rerun':False"),
+("'batch_b_executed':False,'v251_sealed_rerun':False,'v252_batch_a_rerun':False","'batch_a_executed':True,'v251_sealed_rerun':False,'v253_batch_b_rerun':False"),
 ("PSC_V8_3_253_V1_BATCH_A_CHECKPOINT","PSC_V8_3_253_V1_BATCH_B_CHECKPOINT"),
 ("V8_3_253_BATCH_A_RESULT_V1.json","V8_3_253_BATCH_B_RESULT_V1.json"),
 ("V8_3_253_BATCH_A_STATUS_V1.json","V8_3_253_BATCH_B_STATUS_V1.json"),
@@ -17,7 +17,7 @@ repls=[
 ("new Set(S.batch_a)","new Set(S.batch_b)"),
 ("A cardinality ","B cardinality "),
 ("V8.3.253 V1 SEALED BATCH A FIRST RUN","V8.3.253 V1 SEALED BATCH B FIRST RUN"),
-("console.log('V253 A'","console.log('V253 B'"),
+("console.log('V252 A'","console.log('V253 B'"),
 ("batch_a_attempt_consumed=True,batch_a_executed=True,batch_a_passed=a['passed'],batch_a_failed=a['failed']","batch_b_attempt_consumed=True,batch_b_executed=True,batch_b_passed=a['passed'],batch_b_failed=a['failed']"),
 ("batch_a_attempt_consumed=True,batch_a_executed=False","batch_b_attempt_consumed=True,batch_b_executed=False")]
 for a,b in repls:
