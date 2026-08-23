@@ -8,5 +8,6 @@
     "Evidence schema authority remains V8.3.254-EVIDENCE-PROVENANCE-V1; V255 repairs runner evidence contract validation only.",
     "Step 111 is owner-authorized for this continuation cycle; production remains unauthorized unless Step 111 passes and authority-defined post-Step-111 actions allow it."
   ],
-  "production_authorized": false
+  "production_authorized": false,
+  "post_b_note": "A and B are one-shot consumed first-run evidence and must never be rerun."
 }

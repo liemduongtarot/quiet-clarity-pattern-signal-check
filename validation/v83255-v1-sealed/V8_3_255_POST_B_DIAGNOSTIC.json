@@ -1,0 +1,11 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "post-b-integrity-diagnostic",
+  "run_id": "32669164879",
+  "rc": 0,
+  "log_tail": "/usr/lib/python3.12/zipfile/__init__.py:1620: UserWarning: Duplicate name: 'validation/v83255-v1-sealed/V8_3_255_KNOWN_LIMITATIONS_V1.json'\n  return self._open_to_write(zinfo, force_zip64=force_zip64)\n{\"candidate\": \"V8.3.255\", \"post_b_pass\": true, \"archive_sha256\": \"e7cb01eb46e032adb4aa8f2f76bab8d45ec935a30f870e1aebc9f9d2c3976936\", \"archive_entries\": 39, \"step_111_authorized\": true}\n",
+  "batch_a_rerun": false,
+  "batch_b_rerun": false,
+  "semantic_change": false,
+  "expected_gold_changed": false
+}
