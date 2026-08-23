@@ -1,0 +1,14 @@
+{
+  "candidate": "V8.3.253",
+  "phase": "step-111-readiness",
+  "status": "READY_PENDING_EXPLICIT_OWNER_AUTHORIZATION",
+  "all_pre_step_111_gates_pass": true,
+  "validated_development_head_sha": "89db04ec936af998c14d2f0451ef87270ea8e349",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "batch_a": "30/30",
+  "batch_b": "30/30",
+  "step_111_authorized": false,
+  "step_111_executed": false,
+  "production_authorized": false,
+  "instruction": "STOP BEFORE STEP 111 UNTIL EXPLICIT OWNER AUTHORIZATION"
+}
