@@ -1,0 +1,9 @@
+{
+  "candidate": "V8.3.253",
+  "phase": "batch-b-hardened-preflight-diagnostic",
+  "run_id": "32615204739",
+  "rc": 0,
+  "log_tail": "{\"candidate\": \"V8.3.253\", \"phase\": \"batch-b-hardened-preflight\", \"batch_a_30_of_30_verified\": true, \"batch_b_runner_hash_verified\": true, \"batch_b_selection_count\": 30, \"semantic_authority\": \"QCEvidenceExtractorV5AY -> QCSemanticCoreV124\", \"semantic_change\": false, \"expected_gold_changed\": false, \"batch_b_attempt_absent\": true, \"batch_b_result_absent\": true, \"batch_b_status_absent\": true, \"batch_b_executed\": false, \"step_111_authorized\": false, \"pass\": true}\n",
+  "batch_b_executed": false,
+  "step_111_authorized": false
+}
