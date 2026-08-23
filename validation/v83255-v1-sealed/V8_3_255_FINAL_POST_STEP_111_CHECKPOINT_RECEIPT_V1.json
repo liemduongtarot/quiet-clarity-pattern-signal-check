@@ -1,0 +1,15 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "final-post-step-111-checkpoint-validation",
+  "archive_sha256": "d9c03af735946812c79cf7a5b183a2fa16722d8c40b3466e03d43a72c53e8491",
+  "archive_entries": 44,
+  "unique_entries": true,
+  "step_111_pass": true,
+  "production_lock_eligible": true,
+  "production_authorized": false,
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "batch_a_rerun": false,
+  "batch_b_rerun": false,
+  "pass": true
+}
