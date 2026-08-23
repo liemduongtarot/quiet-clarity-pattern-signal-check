@@ -1,0 +1,32 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "PRODUCTION_DEPLOYED",
+  "created_at_utc": "2026-08-23T23:07:45.378798Z",
+  "production_lock_commit": "f96cecd6bac63d5cfc868a42bfad80fc236bb7ef",
+  "production_locked_branch": "v83255-v1-production-locked",
+  "deployment_evidence_branch": "v83255-v1-deployment",
+  "validated_development_head_sha": "8100c9d590a95b612829e92f4a9fc859b6eddb23",
+  "semantic_authority": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "deployment_id": "dpl_GefHDcpjva2iYpGm7ougXjwcBDAd",
+  "deployment_url": "https://quiet-clarity-pattern-signal-check-g5oo4rm04.vercel.app",
+  "canonical_url": "https://quiet-clarity-pattern-signal-check.vercel.app",
+  "target": "production",
+  "ready_state": "READY",
+  "aliases": [
+    "quiet-clarity-pattern-signal-check.vercel.app",
+    "quiet-clarity-pattern-signal-check-liamduong92-2767s-projects.vercel.app"
+  ],
+  "v124_sha256": "50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96",
+  "v5ay_sha256": "26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a",
+  "batch_a": "30/30 PASS",
+  "batch_b": "30/30 PASS",
+  "step_111": "PASS",
+  "production_lock": "PASS",
+  "live_verification": "PASS",
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "batch_a_rerun": false,
+  "batch_b_rerun": false,
+  "production_deployed": true,
+  "pass": true
+}

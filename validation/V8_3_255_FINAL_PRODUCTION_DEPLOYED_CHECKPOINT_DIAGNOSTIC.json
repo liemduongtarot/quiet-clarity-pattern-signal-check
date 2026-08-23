@@ -1,0 +1,11 @@
+{
+  "candidate": "V8.3.255",
+  "phase": "final-production-deployed-checkpoint-diagnostic",
+  "run_id": "32672688490",
+  "rc": 0,
+  "log_tail": "{\"candidate\": \"V8.3.255\", \"phase\": \"final-production-deployed-checkpoint-validation\", \"archive_sha256\": \"7ecb8dd32710856c0f9deff3e40b2bfecfdc0cb0fc2126bf0cb0d8de6a45ac61\", \"archive_entries\": 81, \"unique_entries\": true, \"production_deployed\": true, \"canonical_url\": \"https://quiet-clarity-pattern-signal-check.vercel.app\", \"semantic_authority\": \"QCEvidenceExtractorV5AY -> QCSemanticCoreV124\", \"v124_byte_identical\": true, \"v5ay_byte_identical\": true, \"semantic_change\": false, \"expected_gold_changed\": false, \"batch_a_rerun\": false, \"batch_b_rerun\": false, \"pass\": true}\n",
+  "semantic_change": false,
+  "expected_gold_changed": false,
+  "batch_a_rerun": false,
+  "batch_b_rerun": false
+}
