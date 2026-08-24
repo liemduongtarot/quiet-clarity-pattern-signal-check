@@ -1,0 +1,170 @@
+name: V8.3.256 Report Evidence Review
+
+on:
+  push:
+    branches: [v83256-report-evidence-review]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  review:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Materialize exact frozen V8.3.255 deployable authority
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p source
+          gh run download 32671592504 -n PSC_V8_3_255_EXACT_DEPLOYABLE_DIST -D source
+          unzip -q source/PSC_V8_3_255_EXACT_DEPLOYABLE_DIST.zip -d outer
+          unzip -q outer/PSC_V8_3_255_EXACT_DEPLOYABLE_DIST.zip -d base-dist
+          test -f base-dist/client/candidate.html
+
+      - name: Build bounded V8.3.256 review candidate
+        run: |
+          python validation/v83256-report-evidence/v83256-build-candidate.py base-dist candidate PSC_V8_3_256_REPORT_EVIDENCE_REVIEW_CANDIDATE_V1.zip
+
+      - name: Static authority and scope audit
+        run: |
+          mkdir -p evidence
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,re
+          B=Path('base-dist'); C=Path('candidate')
+          sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          h=(C/'client/candidate.html').read_text(encoding='utf-8')
+          base=(B/'client/candidate.html').read_text(encoding='utf-8')
+          layer=re.search(r'<script id="psc-v83256-report-evidence-layer">(.*?)</script>',h,re.S)
+          assert layer
+          public=layer.group(1)
+          checks={
+            'v124_identity':sha(C/'client/psc-v83253-v252-v124-residual.js')=='50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96',
+            'v5ay_identity':sha(C/'client/qc-evidence-extractor-v5ay-v253-v252-residual.js')=='26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a',
+            'question_count_10':'CÂU ${i+1}/10' in public,
+            'has_cross_scene':'CROSS=' in public,
+            'has_exception':'EXC=' in public,
+            'has_reinforcement':'reinforceOptions' in public,
+            'has_recent':'RECENT=' in public,
+            'has_influence':'INFL=' in public,
+            'has_interrupt':'INTERRUPT=' in public,
+            'has_trend':'TREND=' in public,
+            'has_domain_impact':'impactOptions' in public,
+            'no_public_classify_term':'Không đủ để classify' not in public and 'situation/response' not in public,
+            'no_public_taxonomy_leak':not any(x in public for x in ['liên quan đến fixer','liên quan đến carer','liên quan đến peacekeeper','unknown/insufficient thay vì bị ép vào một family']),
+            'facebook_bridge':'https://www.facebook.com/quietclarity.uklondon' in public,
+            'privacy_line':'Pattern Signal Check không tự động gửi nội dung của bạn sang Quiet Clarity.' in public,
+            'donation_copy':'REPORT NÀY ĐÃ ĐỦ HỮU ÍCH CHO BẠN LÚC NÀY?' in public,
+            'donation_not_live_without_owner_destination':"const DONATION={vietnam_url:'',paypal_url:''}" in public,
+            'ui_document_height_background':'body::before{content:"";position:absolute;inset:0;z-index:-3;' in h and 'body::after{content:"";position:absolute;inset:0;z-index:-2;' in h,
+            'no_new_local_storage':h.count('localStorage')<=base.count('localStorage'),
+            'no_new_session_storage':h.count('sessionStorage')<=base.count('sessionStorage'),
+            'no_new_beacon':h.count('sendBeacon')<=base.count('sendBeacon'),
+            'sealed_a_rerun':False,
+            'sealed_b_rerun':False,
+          }
+          checks['pass']=all(v for v in checks.values() if isinstance(v,bool))
+          Path('evidence/V8_3_256_STATIC_SCOPE_AUDIT_V1.json').write_text(json.dumps(checks,ensure_ascii=False,indent=2)+'\n')
+          assert checks['pass'],checks
+          PY
+
+      - name: JavaScript syntax check
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          h=Path('candidate/client/candidate.html').read_text(encoding='utf-8')
+          m=re.search(r'<script id="psc-v83256-report-evidence-layer">(.*?)</script>',h,re.S)
+          Path('/tmp/v83256-layer.js').write_text(m.group(1),encoding='utf-8')
+          PY
+          node --check /tmp/v83256-layer.js
+
+      - name: Install Playwright Chromium
+        run: |
+          cd /tmp
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.55.0 >/dev/null 2>&1
+          npx playwright install --with-deps chromium >/dev/null 2>&1
+
+      - name: Browser full-flow and classification regression
+        run: |
+          python3 -m http.server 4173 --directory candidate/client >/tmp/v83256-http.log 2>&1 &
+          sleep 2
+          cat >/tmp/v83256-e2e.cjs <<'JS'
+          const {chromium}=require('/tmp/node_modules/playwright');
+          const fs=require('fs');
+          const URL='http://127.0.0.1:4173/candidate.html';
+          async function next(p){await p.locator('#n').click()}
+          async function choose(p,value){const loc=p.locator(`input[value="${value}"]`).first();await loc.check();await next(p)}
+          async function enterCase(p,area,situation){
+            await p.goto(URL,{waitUntil:'domcontentloaded'}); await next(p);
+            await p.locator(`input[value="${area}"]`).check(); await next(p);
+            await p.locator('#t').fill(situation); await next(p);
+            const r=p.locator('input[name=x]'); await r.first().check(); await next(p);
+          }
+          async function flow(p,{area='work',situation='Trong ba tháng gần đây, mỗi khi dự án chậm tôi thường cố chốt thật nhanh và mở thêm nhiều việc cùng lúc vì áp lực.',answers}){
+            await enterCase(p,area,situation);
+            for(const v of answers) await choose(p,v);
+            return {title:(await p.locator('h2').textContent()).trim(),text:(await p.locator('#c').innerText()).trim()};
+          }
+          (async()=>{
+            const b=await chromium.launch({headless:true}); const p=await b.newPage({viewport:{width:1440,height:900}});
+            const out={cases:[]};
+            const cases=[
+              ['strong','PATTERN ĐANG HOẠT ĐỘNG RÕ',['A3','3','3','0','E5','3','3','3','2','progress']],
+              ['weakened','PATTERN ĐÃ YẾU ĐI NHƯNG VẪN QUAY LẠI',['A3','3','3','1','E5','2','2','1','1','progress']],
+              ['situational','PHẢN ỨNG THEO TÌNH HUỐNG',['A3','0','0','0','E5','1','1','1','2','progress']],
+              ['adaptive','CHƯA THẤY PATTERN BẤT LỢI RÕ',['A9','3','3','0','E9','3','0','0','0','none']],
+              ['insufficient','CHƯA ĐỦ BẰNG CHỨNG',['A3','-1','-1','-1','E5','-1','-1','-1','-1','unknown']]
+            ];
+            for(const [name,expect,answers] of cases){const r=await flow(p,{answers});const pass=r.title===expect;out.cases.push({name,expect,actual:r.title,pass,has_material_section:r.text.includes('CÁI GIÁ ĐANG THẤY')});if(!pass)throw new Error(name+': '+r.title)}
+            const money=await flow(p,{area:'money',situation:'Trong vài tháng gần đây, mỗi khi lo về tiền tôi thường chốt một khoản chi hoặc cam kết sớm để cảm thấy mình đang xử lý được tình hình.',answers:['A3','3','2','1','E2','3','2','2','2','security']});out.money_consequence=money.text.includes('Nguồn tiền sẵn có')&&money.text.includes('biên an toàn');
+            const rel=await flow(p,{area:'romantic',situation:'Trong nhiều lần gần đây, khi mối quan hệ căng tôi thường nhận thêm phần của người kia để giữ mọi thứ ổn và sau đó thấy mình quá tải.',answers:['A3','3','3','1','E2','3','3','3','2','boundary']});out.relationship_consequence=rel.text.includes('ranh giới')&&rel.text.includes('mối quan hệ');
+            await p.goto(URL,{waitUntil:'domcontentloaded'});await next(p);await p.locator('input[value="money"]').check();await next(p);await p.locator('#t').fill('Khi nào tôi mới có tiền?');await next(p);out.timing_invalid=(await p.locator('#c').innerText()).includes('không dự đoán khi nào');
+            await p.goto(URL,{waitUntil:'domcontentloaded'});await next(p);await p.locator('input[value="work"]').check();await next(p);await p.locator('#t').fill('Tôi lo.');await next(p);out.vague_invalid=(await p.locator('#c').innerText()).includes('Hãy viết rõ chuyện gì đang xảy ra');
+            const active=await flow(p,{answers:['A3','3','3','0','E5','3','3','3','2','progress']});out.no_internal_copy=!/classify|situation\/response|unknown\/insufficient|liên quan đến fixer|liên quan đến carer|family/i.test(active.text);
+            out.facebook_cta=await p.locator('#contactFacebook').getAttribute('href')==='https://www.facebook.com/quietclarity.uklondon';
+            out.donation_hidden_without_destinations=(await p.locator('.donation-note').count())===0;
+            out.copy_visible=await p.locator('#copyResult').isVisible();out.save_visible=await p.locator('#saveResult').isVisible();
+            out.pass=out.cases.every(x=>x.pass&&x.has_material_section)&&out.money_consequence&&out.relationship_consequence&&out.timing_invalid&&out.vague_invalid&&out.no_internal_copy&&out.facebook_cta&&out.donation_hidden_without_destinations&&out.copy_visible&&out.save_visible;
+            fs.writeFileSync('evidence/V8_3_256_BROWSER_REGRESSION_V1.json',JSON.stringify(out,null,2));await b.close();if(!out.pass)process.exit(1)
+          })().catch(e=>{console.error(e);process.exit(1)})
+          JS
+          node /tmp/v83256-e2e.cjs
+
+      - name: Produce review checkpoint
+        if: success()
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          z=Path('PSC_V8_3_256_REPORT_EVIDENCE_REVIEW_CANDIDATE_V1.zip')
+          r={'candidate':'V8.3.256 REPORT EVIDENCE REVIEW V1','architecture_steps_1_5':'PASS','static_scope':'PASS','browser_regression':'PASS','semantic_baseline':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124','v124_v5ay_identity':'PASS','sealed_batch_a_rerun':False,'sealed_batch_b_rerun':False,'donation_route_status':'CONFIGURATION BLOCKED — exact owner VietQR/bank and PayPal destinations not supplied; donation remains hidden in review candidate','production_promoted':False,'owner_smoke_required':True,'candidate_sha256':hashlib.sha256(z.read_bytes()).hexdigest(),'verdict':'PASS — REVIEW CANDIDATE READY FOR OWNER SMOKE EXCEPT LIVE DONATION DESTINATION CONFIG'}
+          Path('evidence/V8_3_256_REVIEW_CHECKPOINT_V1.json').write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_256_REPORT_EVIDENCE_REVIEW_V1
+          path: |
+            evidence/
+            PSC_V8_3_256_REPORT_EVIDENCE_REVIEW_CANDIDATE_V1.zip
+            PSC_V8_3_256_REPORT_EVIDENCE_REVIEW_CANDIDATE_V1.zip.sha256.txt
+
+      - name: Record evidence on review branch
+        if: success()
+        run: |
+          mkdir -p validation/v83256-report-evidence/results
+          cp evidence/*.json validation/v83256-report-evidence/results/
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83256-report-evidence/results
+          git commit -m 'Record V8.3.256 report evidence review PASS V1'
+          git push origin HEAD:v83256-report-evidence-review
