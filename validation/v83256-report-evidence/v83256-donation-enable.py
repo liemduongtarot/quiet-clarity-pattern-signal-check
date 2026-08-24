@@ -11,7 +11,7 @@ const _wireResultActions256=wireResultActions;wireResultActions=function(){_wire
 s,n=re.subn(r"function donationMarkup\(\)\{.*?\}\nresultActions=function",new_func+'\nresultActions=function',s,count=1,flags=re.S)
 assert n==1,'donationMarkup function replacement mismatch'
 style='''.support-toggle,.support-route-btn{margin-top:12px;padding:9px 13px;border:1px solid #765a38;border-radius:7px;background:transparent;color:#eee1d0;font-weight:700}.support-panel{margin-top:14px;padding-top:4px}.support-route{margin-top:12px}.support-route-link{display:inline-block;padding:9px 13px;border:1px solid #765a38;border-radius:7px;color:#eee1d0;text-decoration:none;font-weight:700}.support-vietnam{margin-top:12px}.support-vietnam img{display:block;max-width:220px;width:100%;height:auto;background:#fff;padding:8px;border-radius:8px}.support-vietnam p{margin-top:10px}.donation-note{border-color:#4c3d2b}'''
-anchor='</style>\n<script id="psc-v83256-report-evidence-layer">'
-assert anchor in s,'style insertion anchor missing'
-s=s.replace(anchor,style+'\n</style>\n<script id="psc-v83256-report-evidence-layer">',1)
+anchor='</head>'
+assert s.count(anchor)==1,'head insertion anchor mismatch'
+s=s.replace(anchor,'<style id="psc-v83256-donation-style">'+style+'</style>\n</head>',1)
 p.write_text(s,encoding='utf-8')
