@@ -1,0 +1,95 @@
+name: V8.3.256 Owner Smoke Preview
+
+on:
+  push:
+    branches: [v83256-owner-smoke-preview]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  preview:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Materialize exact validated donation candidate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p source candidate evidence
+          gh run download 32682684261 -n PSC_V8_3_256_DONATION_REVIEW_V2 -D source
+          unzip -q source/PSC_V8_3_256_DONATION_REVIEW_CANDIDATE_V2.zip -d candidate
+          test -f candidate/client/candidate.html
+
+      - name: Verify frozen candidate identity before preview
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          C=Path('candidate');sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          h=(C/'client/candidate.html').read_text(encoding='utf-8')
+          c={'v124_identity':sha(C/'client/psc-v83253-v252-v124-residual.js')=='50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96','v5ay_identity':sha(C/'client/qc-evidence-extractor-v5ay-v253-v252-residual.js')=='26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a','donation_copy':'REPORT NÀY ĐÃ ĐỦ HỮU ÍCH CHO BẠN LÚC NÀY?' in h,'paypal_exact':'https://www.paypal.com/pool/9s2GZ5zO1g?sr=accr' in h,'bank_exact':all(x in h for x in ['ACB','DUONG THANH LIEM','129099639']),'facebook_bridge':'https://www.facebook.com/quietclarity.uklondon' in h,'sealed_batch_a_rerun':False,'sealed_batch_b_rerun':False,'production_promoted':False}
+          pos=[k for k in c if k not in ('sealed_batch_a_rerun','sealed_batch_b_rerun','production_promoted')];c['pass']=all(c[k] is True for k in pos) and not c['sealed_batch_a_rerun'] and not c['sealed_batch_b_rerun'] and not c['production_promoted'];Path('evidence/V8_3_256_OWNER_SMOKE_PREVIEW_PREFLIGHT.json').write_text(json.dumps(c,ensure_ascii=False,indent=2)+'\n');assert c['pass'],c
+          PY
+
+      - name: Deploy temporary preview only
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$VERCEL_TOKEN"
+          npm i -g vercel@latest >/dev/null 2>&1
+          mkdir -p deploy/.vercel
+          cp -a candidate/client/. deploy/
+          printf '{"projectId":"prj_plL2tv0BOESnC1dfzcwiXIV1WgSM","orgId":"team_I0n7MLuicWTSeEQ3ANBAfmz8"}\n' > deploy/.vercel/project.json
+          printf '{"rewrites":[{"source":"/","destination":"/candidate.html"}]}' > deploy/vercel.json
+          cd deploy
+          DEPLOY_URL=$(vercel deploy --yes --token "$VERCEL_TOKEN" | tail -n1)
+          echo "DEPLOY_URL=$DEPLOY_URL" >> "$GITHUB_ENV"
+          echo "$DEPLOY_URL" > ../evidence/owner_smoke_preview_url.txt
+
+      - name: Verify preview live and non-production
+        run: |
+          python - <<'PY'
+          import urllib.request,hashlib,json,os,time
+          from pathlib import Path
+          u=os.environ['DEPLOY_URL'].strip()
+          def get(x):
+            with urllib.request.urlopen(urllib.request.Request(x,headers={'User-Agent':'PSC-V83256-Smoke'}),timeout=30) as r:return r.status,r.read()
+          for _ in range(12):
+            try:
+              st,b=get(u+'/');t=b.decode('utf-8','replace')
+              if st==200 and 'ỦNG HỘ PATTERN SIGNAL CHECK' in t:break
+            except Exception:pass
+            time.sleep(5)
+          else:raise SystemExit('preview not ready')
+          _,b124=get(u+'/psc-v83253-v252-v124-residual.js');_,b5=get(u+'/qc-evidence-extractor-v5ay-v253-v252-residual.js')
+          out={'preview_url':u,'root_http':st,'donation_live':'ỦNG HỘ PATTERN SIGNAL CHECK' in t,'paypal_live':'https://www.paypal.com/pool/9s2GZ5zO1g?sr=accr' in t,'bank_live':all(x in t for x in ['ACB','DUONG THANH LIEM','129099639']),'facebook_live':'https://www.facebook.com/quietclarity.uklondon' in t,'v124_live_sha256':hashlib.sha256(b124).hexdigest(),'v5ay_live_sha256':hashlib.sha256(b5).hexdigest(),'production_deployed':False,'sealed_batch_a_rerun':False,'sealed_batch_b_rerun':False}
+          out['v124_identity']=out['v124_live_sha256']=='50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96';out['v5ay_identity']=out['v5ay_live_sha256']=='26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a';out['pass']=all([out['root_http']==200,out['donation_live'],out['paypal_live'],out['bank_live'],out['facebook_live'],out['v124_identity'],out['v5ay_identity'],out['production_deployed'] is False]);Path('evidence/V8_3_256_OWNER_SMOKE_PREVIEW_LIVE_VERIFY.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');assert out['pass'],out
+          PY
+
+      - name: Record preview receipt
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,os
+          r={'candidate':'V8.3.256 DONATION REVIEW V2','candidate_branch':'v83256-donation-v2-validated-frozen','candidate_commit':'f70d0a6069d176c58d85d139c847e1cafcd8cf28','preview_url':os.environ['DEPLOY_URL'].strip(),'preview_only':True,'production_promoted':False,'owner_smoke_required':True,'sealed_batch_a_rerun':False,'sealed_batch_b_rerun':False,'verdict':'PASS — TEMPORARY OWNER-SMOKE PREVIEW LIVE; MANUAL OWNER AUTHORIZATION REQUIRED BEFORE PRODUCTION'};Path('evidence/V8_3_256_OWNER_SMOKE_PREVIEW_RECEIPT.json').write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n')
+          PY
+          mkdir -p validation/v83256-report-evidence/owner-smoke-preview
+          cp evidence/* validation/v83256-report-evidence/owner-smoke-preview/
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83256-report-evidence/owner-smoke-preview
+          git commit -m 'Record V8.3.256 owner smoke preview PASS'
+          git push origin HEAD:v83256-owner-smoke-preview
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_256_OWNER_SMOKE_PREVIEW
+          path: evidence/
