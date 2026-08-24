@@ -1,0 +1,24 @@
+{
+  "status": "OWNER-PROVIDED / REVIEW CONFIGURATION",
+  "vietnam": {
+    "bank": "ACB",
+    "account_name": "DUONG THANH LIEM",
+    "account_number": "129099639",
+    "vietqr_payload": "00020101021138530010A0000007270123010912909963900069704160208QRIBFTTA620053037045802VN630473F9",
+    "qr_asset": "client/assets/v83256-vietqr-acb.svg"
+  },
+  "international": {
+    "provider": "PayPal Pool",
+    "url": "https://www.paypal.com/pool/9s2GZ5zO1g?sr=accr",
+    "expires_on": "2027-02-24",
+    "expiry_is_configuration_only": true
+  },
+  "rules": {
+    "optional": true,
+    "content_unlock": false,
+    "priority_or_access_benefit": false,
+    "questionnaire_result_data_transmitted": false,
+    "stripe_used": false,
+    "paid_consultation_route_separate": true
+  }
+}
