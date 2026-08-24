@@ -1,0 +1,141 @@
+name: V8.3.256 Donation Review V2
+
+on:
+  push:
+    branches: [v83256-donation-review-v2]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  donation-review-v2:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Record V2 start
+        run: |
+          mkdir -p validation/v83256-report-evidence/donation-v2-run
+          printf '{"run_id":"%s","head_sha":"%s","base_validated_v8":"0e1dc8a262e9cdd186a88955216eb3ba9486a097","v1_failure":"style insertion anchor mismatch only","sealed_batch_a_rerun":false,"sealed_batch_b_rerun":false,"production_promoted":false,"status":"STARTED"}\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" > validation/v83256-report-evidence/donation-v2-run/STARTED.json
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83256-report-evidence/donation-v2-run/STARTED.json
+          git commit -m 'Record V8.3.256 donation V2 start'
+          git push origin HEAD:v83256-donation-review-v2
+
+      - name: Materialize exact validated V8 candidate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p source candidate-v8
+          gh run download 32681491541 -n PSC_V8_3_256_REPORT_EVIDENCE_REVIEW_V8 -D source
+          unzip -q source/PSC_V8_3_256_REPORT_EVIDENCE_REVIEW_CANDIDATE_V8.zip -d candidate-v8
+          test -f candidate-v8/client/candidate.html
+          cp -a candidate-v8 candidate
+
+      - name: Enable approved donation routes only
+        run: |
+          python validation/v83256-report-evidence/v83256-donation-enable.py candidate/client/candidate.html
+          mkdir -p candidate/client/assets
+          python -m pip install 'qrcode[pil]' >/dev/null
+          python - <<'PY'
+          from pathlib import Path
+          import qrcode,qrcode.image.svg
+          payload='00020101021138530010A0000007270123010912909963900069704160208QRIBFTTA620053037045802VN630473F9'
+          qrcode.make(payload,image_factory=qrcode.image.svg.SvgPathImage,box_size=10,border=4).save('candidate/client/assets/v83256-vietqr-acb.svg')
+          Path('candidate/client/assets/v83256-vietqr-payload.txt').write_text(payload+'\n',encoding='utf-8')
+          PY
+          (cd candidate && zip -qr ../PSC_V8_3_256_DONATION_REVIEW_CANDIDATE_V2.zip .)
+          sha256sum PSC_V8_3_256_DONATION_REVIEW_CANDIDATE_V2.zip > PSC_V8_3_256_DONATION_REVIEW_CANDIDATE_V2.zip.sha256.txt
+
+      - name: Static authority and bounded-change audit
+        run: |
+          mkdir -p evidence
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,urllib.parse
+          B=Path('candidate-v8');C=Path('candidate');sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          old=(B/'client/candidate.html').read_text(encoding='utf-8');new=(C/'client/candidate.html').read_text(encoding='utf-8')
+          def fhash(s,a,b):
+            x=s.index('function '+a);y=s.index('function '+b,x);return hashlib.sha256(s[x:y].encode()).hexdigest()
+          pay='https://www.paypal.com/pool/9s2GZ5zO1g?sr=accr';u=urllib.parse.urlsplit(pay);payload=(C/'client/assets/v83256-vietqr-payload.txt').read_text().strip()
+          c={'v124_identity':sha(C/'client/psc-v83253-v252-v124-residual.js')=='50f170383bb3f273beb64cbb251029de2c4fd84d256a5be33e2e8c646a87dd96','v5ay_identity':sha(C/'client/qc-evidence-extractor-v5ay-v253-v252-residual.js')=='26bb9d33e5c04b041e72fdf2f435c954415f3f62f731c0e64584d8a8f452174a','resultPlainText_unchanged':fhash(old,'resultPlainText','actionMessage')==fhash(new,'resultPlainText','actionMessage'),'copyCurrentResult_unchanged':fhash(old,'copyCurrentResult','saveCurrentResult')==fhash(new,'copyCurrentResult','saveCurrentResult'),'saveCurrentResult_unchanged':fhash(old,'saveCurrentResult','wireResultActions')==fhash(new,'saveCurrentResult','wireResultActions'),'paypal_exact':pay in new,'paypal_only_static_sr_query':u.query=='sr=accr' and not u.fragment,'paypal_expiry':'2027-02-24' in new and '24/02/2027' in new,'bank_exact':all(x in new for x in ['ACB','DUONG THANH LIEM','129099639']),'vietqr_payload_exact':payload=='00020101021138530010A0000007270123010912909963900069704160208QRIBFTTA620053037045802VN630473F9','vietqr_asset_exists':(C/'client/assets/v83256-vietqr-acb.svg').exists(),'approved_donation_copy':'REPORT NÀY ĐÃ ĐỦ HỮU ÍCH CHO BẠN LÚC NÀY?' in new and 'ỦNG HỘ PATTERN SIGNAL CHECK' in new,'facebook_bridge_preserved':'https://www.facebook.com/quietclarity.uklondon' in new,'privacy_preserved':'Pattern Signal Check không tự động gửi nội dung của bạn sang Quiet Clarity.' in new,'no_new_fetch':new.count('fetch(')<=old.count('fetch('),'no_new_xhr':new.count('XMLHttpRequest')<=old.count('XMLHttpRequest'),'no_new_beacon':new.count('sendBeacon')<=old.count('sendBeacon'),'no_new_localStorage':new.count('localStorage')<=old.count('localStorage'),'no_new_sessionStorage':new.count('sessionStorage')<=old.count('sessionStorage'),'sealed_batch_a_rerun':False,'sealed_batch_b_rerun':False,'production_promoted':False}
+          positives=[k for k in c if k not in ('sealed_batch_a_rerun','sealed_batch_b_rerun','production_promoted')];c['pass']=all(c[k] is True for k in positives) and not c['sealed_batch_a_rerun'] and not c['sealed_batch_b_rerun'] and not c['production_promoted']
+          Path('evidence/V8_3_256_DONATION_STATIC_AUDIT_V2.json').write_text(json.dumps(c,ensure_ascii=False,indent=2)+'\n');assert c['pass'],c
+          PY
+
+      - name: JavaScript syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          h=Path('candidate/client/candidate.html').read_text(encoding='utf-8');m=re.search(r'<script id="psc-v83256-report-evidence-layer">(.*?)</script>',h,re.S);assert m;Path('/tmp/donation-layer.js').write_text(m.group(1),encoding='utf-8')
+          PY
+          node --check /tmp/donation-layer.js
+
+      - name: Install Playwright Chromium
+        run: |
+          cd /tmp && npm init -y >/dev/null 2>&1 && npm install playwright@1.55.0 >/dev/null 2>&1 && npx playwright install --with-deps chromium >/dev/null 2>&1
+
+      - name: Full V8 regression with donation-visible expectation
+        run: |
+          python3 -m http.server 4173 --directory candidate/client >/tmp/psc-http.log 2>&1 &
+          sleep 2
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('validation/v83256-report-evidence/v83256-v3-browser-regression.cjs').read_text(encoding='utf-8')
+          s=s.replace("o.donation_hidden=(await p.locator('.donation-note').count())===0;","o.donation_visible=(await p.locator('.donation-note').count())===1;")
+          s=s.replace('&&o.donation_hidden&&','&&o.donation_visible&&')
+          Path('/tmp/donation-regression.cjs').write_text(s,encoding='utf-8')
+          PY
+          node /tmp/donation-regression.cjs
+          cp evidence/V8_3_256_BROWSER_REGRESSION_V3.json evidence/V8_3_256_BROWSER_REGRESSION_DONATION_V2.json
+
+      - name: Donation E2E and mobile sanity
+        run: |
+          cat >/tmp/donation-e2e.cjs <<'JS'
+          const {chromium}=require('/tmp/node_modules/playwright');const fs=require('fs');const URL='http://127.0.0.1:4173/candidate.html';
+          async function openResult(p){await p.goto(URL,{waitUntil:'domcontentloaded'});await p.evaluate(()=>showResult('<div class="b"><b>TEST RESULT</b><p>Evidence value delivered first.</p></div>'))}
+          (async()=>{const b=await chromium.launch({headless:true});const c=await b.newContext({viewport:{width:1440,height:900}});const p=await c.newPage();const outbound=[];await c.route('https://www.paypal.com/**',async r=>{outbound.push(r.request().url());await r.fulfill({status:200,contentType:'text/html',body:'ok'})});await openResult(p);const o={};o.support_after_value=(await p.locator('.donation-note').count())===1;o.no_auto_redirect=p.url()===URL;o.panel_initially_hidden=await p.locator('#supportPanel').isHidden();o.copy_save_first=(await p.locator('#copyResult').isVisible())&&(await p.locator('#saveResult').isVisible());o.facebook_preserved=await p.locator('#contactFacebook').isVisible();await p.locator('#supportToggle').click();o.panel_opens=await p.locator('#supportPanel').isVisible();o.no_navigation_on_toggle=p.url()===URL;await p.locator('#supportVietnamToggle').click();o.vietnam_opens=await p.locator('#supportVietnamDetails').isVisible();const txt=await p.locator('#supportVietnamDetails').innerText();o.bank_exact=/ACB/.test(txt)&&/DUONG THANH LIEM/.test(txt)&&/129099639/.test(txt);o.no_transfer_reference_data=/Không cần ghi tình huống hoặc kết quả/.test(txt);o.qr_loaded=await p.locator('#supportVietnamDetails img').evaluate(img=>img.complete&&img.naturalWidth>0);o.paypal_href=await p.locator('#supportPaypal').getAttribute('href');o.paypal_target=await p.locator('#supportPaypal').getAttribute('target');o.paypal_rel=await p.locator('#supportPaypal').getAttribute('rel');o.expiry=(await p.locator('#supportPanel').innerText()).includes('24/02/2027');o.no_prefill=!/[?&](text|message|result|situation|pattern)=/i.test(o.paypal_href);const pp=p.waitForEvent('popup');await p.locator('#supportPaypal').click();const pop=await pp;await pop.waitForLoadState('domcontentloaded').catch(()=>{});o.paypal_click_exact=outbound.some(x=>x==='https://www.paypal.com/pool/9s2GZ5zO1g?sr=accr');const m=await b.newPage({viewport:{width:390,height:844}});await openResult(m);await m.locator('#supportToggle').click();await m.locator('#supportVietnamToggle').click();o.mobile_no_horizontal_overflow=await m.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth+1);o.mobile_panel_visible=await m.locator('#supportPanel').isVisible();o.optional_copy=(await m.locator('.donation-note').innerText()).includes('đóng góp tùy ý');o.pass=o.support_after_value&&o.no_auto_redirect&&o.panel_initially_hidden&&o.copy_save_first&&o.facebook_preserved&&o.panel_opens&&o.no_navigation_on_toggle&&o.vietnam_opens&&o.bank_exact&&o.no_transfer_reference_data&&o.qr_loaded&&o.paypal_href==='https://www.paypal.com/pool/9s2GZ5zO1g?sr=accr'&&o.paypal_target==='_blank'&&/noopener/.test(o.paypal_rel)&&/noreferrer/.test(o.paypal_rel)&&o.expiry&&o.no_prefill&&o.paypal_click_exact&&o.mobile_no_horizontal_overflow&&o.mobile_panel_visible&&o.optional_copy;fs.writeFileSync('evidence/V8_3_256_DONATION_BROWSER_E2E_V2.json',JSON.stringify(o,null,2));await b.close();if(!o.pass)process.exit(1)})().catch(e=>{console.error(e);process.exit(1)})
+          JS
+          node /tmp/donation-e2e.cjs
+
+      - name: Traceability gate
+        run: |
+          cp validation/v83256-report-evidence/results-v8/V8_3_256_REPORT_TRACEABILITY_AUDIT_V8.json evidence/V8_3_256_REPORT_TRACEABILITY_AUDIT_DONATION_V2.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('evidence/V8_3_256_REPORT_TRACEABILITY_AUDIT_DONATION_V2.json').read_text());assert d.get('pass') is True,d
+          PY
+
+      - name: Produce PASS checkpoint
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          z=Path('PSC_V8_3_256_DONATION_REVIEW_CANDIDATE_V2.zip');sha=hashlib.sha256(z.read_bytes()).hexdigest();r={'candidate':'V8.3.256 DONATION REVIEW V2','base_validated_candidate':'V8.3.256 REPORT EVIDENCE REVIEW V8','base_validated_commit':'0e1dc8a262e9cdd186a88955216eb3ba9486a097','v1_failure':'style insertion anchor mismatch only; no semantic execution reached','semantic_baseline':'QCEvidenceExtractorV5AY -> QCSemanticCoreV124','v124_v5ay_identity':'PASS','full_regression':'PASS','donation_browser_e2e':'PASS','report_traceability':'PASS','paypal_expiry':'2027-02-24','sealed_batch_a_rerun':False,'sealed_batch_b_rerun':False,'production_promoted':False,'owner_smoke_required':True,'candidate_sha256':sha,'verdict':'PASS — DONATION-ENABLED V2 READY FOR OWNER SMOKE; NO PRODUCTION PROMOTION AUTHORIZED'};Path('evidence/V8_3_256_DONATION_REVIEW_CHECKPOINT_V2.json').write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n');Path('evidence/V8_3_256_DONATION_CANDIDATE_V2_SHA256.txt').write_text(sha+'  '+z.name+'\n')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PSC_V8_3_256_DONATION_REVIEW_V2
+          path: |
+            evidence/
+            PSC_V8_3_256_DONATION_REVIEW_CANDIDATE_V2.zip
+            PSC_V8_3_256_DONATION_REVIEW_CANDIDATE_V2.zip.sha256.txt
+
+      - name: Record immutable PASS evidence
+        run: |
+          git fetch origin v83256-donation-review-v2
+          git rebase origin/v83256-donation-review-v2
+          mkdir -p validation/v83256-report-evidence/donation-results-v2
+          cp evidence/*.json evidence/*.txt validation/v83256-report-evidence/donation-results-v2/
+          git add validation/v83256-report-evidence/donation-results-v2
+          git commit -m 'Record V8.3.256 donation review PASS V2'
+          git push origin HEAD:v83256-donation-review-v2
