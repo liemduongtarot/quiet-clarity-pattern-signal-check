@@ -1,0 +1,24 @@
+name: V8.3.256 Actions Execution Probe
+
+on:
+  push:
+    branches: [v83256-report-evidence-review]
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record execution marker
+        run: |
+          mkdir -p validation/v83256-report-evidence/actions-probe
+          printf '{"run_id":"%s","head_sha":"%s","status":"STARTED"}\n' "${GITHUB_RUN_ID}" "${GITHUB_SHA}" > validation/v83256-report-evidence/actions-probe/STARTED.json
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add validation/v83256-report-evidence/actions-probe/STARTED.json
+          git commit -m 'Record V8.3.256 Actions execution marker'
+          git push origin HEAD:v83256-report-evidence-review
