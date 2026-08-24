@@ -1,0 +1,14 @@
+{
+  "candidate": "V8.3.256 REPORT EVIDENCE REVIEW V8",
+  "steps_1_7": "PASS",
+  "semantic_baseline": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "v124_v5ay_identity": "PASS",
+  "sealed_batch_a_rerun": false,
+  "sealed_batch_b_rerun": false,
+  "v7_failure": "vague-input gate mismatch: frozen canonical UI gate accepted terse input despite legacy vague detector; V8 adds bounded approved vague precheck without modifying V124/V5AY",
+  "donation_destination_config": "RECORDED; live donation UI still held for separate bounded enablement",
+  "production_promoted": false,
+  "owner_smoke_required": true,
+  "candidate_sha256": "a647d662480609f090174554941a0c82a7e89e252b7b7ee83483a86ce9df82cf",
+  "verdict": "PASS — READY FOR DONATION ENABLEMENT CONFIG PASS THEN OWNER SMOKE"
+}
