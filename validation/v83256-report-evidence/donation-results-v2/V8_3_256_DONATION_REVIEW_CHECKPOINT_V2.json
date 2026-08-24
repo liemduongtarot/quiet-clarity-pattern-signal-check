@@ -1,0 +1,18 @@
+{
+  "candidate": "V8.3.256 DONATION REVIEW V2",
+  "base_validated_candidate": "V8.3.256 REPORT EVIDENCE REVIEW V8",
+  "base_validated_commit": "0e1dc8a262e9cdd186a88955216eb3ba9486a097",
+  "v1_failure": "style insertion anchor mismatch only; no semantic execution reached",
+  "semantic_baseline": "QCEvidenceExtractorV5AY -> QCSemanticCoreV124",
+  "v124_v5ay_identity": "PASS",
+  "full_regression": "PASS",
+  "donation_browser_e2e": "PASS",
+  "report_traceability": "PASS",
+  "paypal_expiry": "2027-02-24",
+  "sealed_batch_a_rerun": false,
+  "sealed_batch_b_rerun": false,
+  "production_promoted": false,
+  "owner_smoke_required": true,
+  "candidate_sha256": "a98d074237cb99f53cd7537880f68ee4222c7bc3f191d163f6236d2bb7068550",
+  "verdict": "PASS — DONATION-ENABLED V2 READY FOR OWNER SMOKE; NO PRODUCTION PROMOTION AUTHORIZED"
+}

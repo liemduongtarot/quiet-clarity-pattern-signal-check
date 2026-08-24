@@ -1,0 +1,102 @@
+{
+  "cases": [
+    {
+      "name": "strong",
+      "expect": "PATTERN ĐANG HOẠT ĐỘNG RÕ",
+      "actual": "PATTERN ĐANG HOẠT ĐỘNG RÕ",
+      "pass": true
+    },
+    {
+      "name": "mild",
+      "expect": "PATTERN ĐÃ YẾU ĐI NHƯNG VẪN QUAY LẠI",
+      "actual": "PATTERN ĐÃ YẾU ĐI NHƯNG VẪN QUAY LẠI",
+      "pass": true
+    },
+    {
+      "name": "no_pattern_adaptive",
+      "expect": "CHƯA THẤY PATTERN BẤT LỢI RÕ",
+      "actual": "CHƯA THẤY PATTERN BẤT LỢI RÕ",
+      "pass": true
+    },
+    {
+      "name": "situational_only",
+      "expect": "PHẢN ỨNG THEO TÌNH HUỐNG",
+      "actual": "PHẢN ỨNG THEO TÌNH HUỐNG",
+      "pass": true
+    },
+    {
+      "name": "inconsistent",
+      "expect": "CHƯA ĐỦ BẰNG CHỨNG",
+      "actual": "CHƯA ĐỦ BẰNG CHỨNG",
+      "pass": true
+    },
+    {
+      "name": "competing_exception",
+      "expect": "PATTERN ĐÃ YẾU ĐI NHƯNG VẪN QUAY LẠI",
+      "actual": "PATTERN ĐÃ YẾU ĐI NHƯNG VẪN QUAY LẠI",
+      "pass": true
+    },
+    {
+      "name": "weakened",
+      "expect": "PATTERN ĐÃ YẾU ĐI NHƯNG VẪN QUAY LẠI",
+      "actual": "PATTERN ĐÃ YẾU ĐI NHƯNG VẪN QUAY LẠI",
+      "pass": true
+    },
+    {
+      "name": "residual_old",
+      "expect": "DẤU VẾT CŨ / KHÔNG CÒN ẢNH HƯỞNG RÕ",
+      "actual": "DẤU VẾT CŨ / KHÔNG CÒN ẢNH HƯỞNG RÕ",
+      "pass": true
+    },
+    {
+      "name": "contradictory_status",
+      "expect": "CHƯA ĐỦ BẰNG CHỨNG",
+      "actual": "CHƯA ĐỦ BẰNG CHỨNG",
+      "pass": true
+    },
+    {
+      "name": "high_functioning_subtle",
+      "expect": "PATTERN ĐÃ YẾU ĐI NHƯNG VẪN QUAY LẠI",
+      "actual": "PATTERN ĐÃ YẾU ĐI NHƯNG VẪN QUAY LẠI",
+      "pass": true
+    },
+    {
+      "name": "insufficient",
+      "expect": "CHƯA ĐỦ BẰNG CHỨNG",
+      "actual": "CHƯA ĐỦ BẰNG CHỨNG",
+      "pass": true
+    },
+    {
+      "name": "no_material_influence",
+      "expect": "CHƯA THẤY ẢNH HƯỞNG THỰC TẾ ĐÁNG KỂ",
+      "actual": "CHƯA THẤY ẢNH HƯỞNG THỰC TẾ ĐÁNG KỂ",
+      "pass": true
+    },
+    {
+      "name": "impact_conflict",
+      "expect": "CHƯA ĐỦ BẰNG CHỨNG",
+      "actual": "CHƯA ĐỦ BẰNG CHỨNG",
+      "pass": true
+    }
+  ],
+  "money_consequence": true,
+  "relationship_consequence": true,
+  "career_consequence": true,
+  "no_internal_copy": true,
+  "facebook_cta": true,
+  "copy_visible": true,
+  "save_visible": true,
+  "donation_visible": true,
+  "timing_invalid": true,
+  "vague_invalid": true,
+  "other_response_not_forced": true,
+  "topic_switch_reset": true,
+  "ui_background_contract": true,
+  "ui_dimensions": {
+    "body": 1113,
+    "view": 900,
+    "before": "absolute",
+    "after": "absolute"
+  },
+  "pass": true
+}
