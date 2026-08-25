@@ -29,6 +29,8 @@ jobs:
           cd candidate
           sha256sum --check SHA256SUMS.txt
           printf '%s  %s\n' '75138765128fa3784f45138d0d197f853810fc64552f3ba5b1f9c4623c9d43a5' 'OWNER_SMOKE_PREVIEW_V8_3_269_NON_PRODUCTION.html' | sha256sum --check
+          cp ../transport/v83269/browser-e2e-matrix-v83269.cjs tooling/browser-e2e-matrix-v83269.cjs
+          printf '%s  %s\n' '9307d900ae0e896fd79bb3a2d2637243fd87084bf73c67a41ec3b5d6795c675f' 'tooling/browser-e2e-matrix-v83269.cjs' | sha256sum --check
 
       - name: Install browser executor
         uses: actions/setup-node@v4
@@ -70,7 +72,21 @@ jobs:
             sleep 5
           done
           test -s /tmp/v83269-live.html
-          printf '%s  %s\n' '75138765128fa3784f45138d0d197f853810fc64552f3ba5b1f9c4623c9d43a5' '/tmp/v83269-live.html' | sha256sum --check
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('/tmp/v83269-live.html')
+          data=p.read_bytes()
+          marker=b'</html>'
+          end=data.rfind(marker)
+          if end < 0:
+              raise SystemExit('served HTML has no closing html marker')
+          canonical=data[:end+len(marker)]+b'\n'
+          Path('/tmp/v83269-live-canonical.html').write_bytes(canonical)
+          injected=data[end+len(marker):].strip()
+          if injected and b'vercel.live' not in injected:
+              raise SystemExit('unexpected post-html transport mutation')
+          PY
+          printf '%s  %s\n' '75138765128fa3784f45138d0d197f853810fc64552f3ba5b1f9c4623c9d43a5' '/tmp/v83269-live-canonical.html' | sha256sum --check
 
       - name: Run 14-case bilingual full browser matrix
         working-directory: candidate
