@@ -1,0 +1,122 @@
+name: V8.3.269 Browser E2E Transport Only
+
+on:
+  push:
+    branches: [v83269-browser-e2e-transport]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  browser-e2e:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rehydrate exact V8.3.269 browser bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/v83269-bundle candidate
+          cat transport/v83269/chunks/*.part > /tmp/v83269-bundle/bundle.tar.gz.b64
+          base64 --decode /tmp/v83269-bundle/bundle.tar.gz.b64 > /tmp/v83269-bundle/bundle.tar.gz
+          printf '%s  %s\n' 'df1d20f6291b2d2a56f192deb334c6ad0e57acc2f965f9ffbb696df9336d5832' '/tmp/v83269-bundle/bundle.tar.gz' | sha256sum --check
+          tar -xzf /tmp/v83269-bundle/bundle.tar.gz -C candidate
+          cd candidate
+          sha256sum --check SHA256SUMS.txt
+          printf '%s  %s\n' '75138765128fa3784f45138d0d197f853810fc64552f3ba5b1f9c4623c9d43a5' 'OWNER_SMOKE_PREVIEW_V8_3_269_NON_PRODUCTION.html' | sha256sum --check
+
+      - name: Install browser executor
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright Chromium
+        working-directory: candidate
+        run: |
+          npm install --no-save playwright@1.62.1
+          npx playwright install --with-deps chromium
+
+      - name: Deploy temporary non-production preview
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$VERCEL_TOKEN"
+          npm install --global vercel@latest
+          mkdir -p deploy/.vercel
+          cp candidate/OWNER_SMOKE_PREVIEW_V8_3_269_NON_PRODUCTION.html deploy/candidate.html
+          printf '%s\n' '{"projectId":"prj_plL2tv0BOESnC1dfzcwiXIV1WgSM","orgId":"team_I0n7MLuicWTSeEQ3ANBAfmz8"}' > deploy/.vercel/project.json
+          printf '%s\n' '{"rewrites":[{"source":"/","destination":"/candidate.html"}]}' > deploy/vercel.json
+          DEPLOY_URL=$(cd deploy && vercel deploy --yes --token "$VERCEL_TOKEN" | tail -n1)
+          test -n "$DEPLOY_URL"
+          echo "PSC_BASE_URL=$DEPLOY_URL/" >> "$GITHUB_ENV"
+          echo "$DEPLOY_URL" > candidate/evidence/V8_3_269_PREVIEW_URL.txt
+          printf '%s\n' "$DEPLOY_URL"
+
+      - name: Verify served artifact identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 18); do
+            if curl --fail --silent --show-error --location "$PSC_BASE_URL/candidate.html" --output /tmp/v83269-live.html; then
+              break
+            fi
+            sleep 5
+          done
+          test -s /tmp/v83269-live.html
+          printf '%s  %s\n' '75138765128fa3784f45138d0d197f853810fc64552f3ba5b1f9c4623c9d43a5' '/tmp/v83269-live.html' | sha256sum --check
+
+      - name: Run 14-case bilingual full browser matrix
+        working-directory: candidate
+        env:
+          PSC_BASE_URL: ${{ env.PSC_BASE_URL }}
+        run: node tooling/browser-e2e-matrix-v83269.cjs
+
+      - name: Record non-production browser receipt
+        if: always()
+        working-directory: candidate
+        env:
+          PSC_BASE_URL: ${{ env.PSC_BASE_URL }}
+          PSC_COMMIT_SHA: ${{ github.sha }}
+          PSC_RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json, os
+          matrix_path=Path('evidence/V8_3_269_BROWSER_E2E_MATRIX.json')
+          matrix=json.loads(matrix_path.read_text()) if matrix_path.exists() else None
+          receipt={
+            'candidate':'V8.3.269-INPUT-STRUCTURE-HUMAN-LANGUAGE-CORE-R1-NON-PRODUCTION',
+            'candidate_html_sha256':'75138765128fa3784f45138d0d197f853810fc64552f3ba5b1f9c4623c9d43a5',
+            'transport_branch':'v83269-browser-e2e-transport',
+            'transport_commit':os.environ.get('PSC_COMMIT_SHA'),
+            'workflow_run_id':os.environ.get('PSC_RUN_ID'),
+            'preview_url':os.environ.get('PSC_BASE_URL','').rstrip('/'),
+            'preview_only':True,
+            'production_promoted':False,
+            'sealed_or_holdout_executed':False,
+            'browser_matrix_verdict':matrix.get('verdict') if matrix else 'NOT_PRODUCED',
+            'browser_paths_completed':matrix.get('bilingual_full_paths_completed',0) if matrix else 0,
+            'question_screens_exercised':matrix.get('question_screens_exercised',0) if matrix else 0,
+            'failures':matrix.get('failures',[]) if matrix else ['Browser matrix evidence was not produced']
+          }
+          Path('evidence/V8_3_269_BROWSER_E2E_TRANSPORT_RECEIPT.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
+          PY
+
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PSC_V8_3_269_BROWSER_E2E_EVIDENCE
+          path: |
+            candidate/evidence/
+            candidate/SHA256SUMS.txt
+            candidate/V8_3_269_INPUT_TO_STRUCTURE_AND_HUMAN_LANGUAGE_CORE_CONTRACT.md
+          if-no-files-found: error
+          retention-days: 30
