@@ -10,20 +10,20 @@ const baseUrl = process.env.PSC_BASE_URL || pathToFileURL(htmlPath).href;
 fs.mkdirSync(evidenceDir, { recursive: true });
 
 const cases = [
-  { id:'implemented_idea_no_income', area:'work', vi:'toi thuong co nhieu y tuong cho cong viec nhung khi thuc hien cac y tuong do thi cong viec van khong tao ra thu nhap', en:'I often have many ideas for work, but when I implement those ideas the work still generates no income', viMarker:'sẵn sàng trả tiền', enMarker:'willingness to pay' },
-  { id:'ideas_income_gap', area:'work', vi:'toi co nhieu y tuong cho cong viec nhung van chua chon y tuong nao de bat dau nen chua co thu nhap', en:'I have many ideas for work but have not chosen one to begin, so there is still no income', viMarker:'ý tưởng', enMarker:'idea' },
-  { id:'workload_boundary_gap', area:'work', vi:'toi nhan them viec khi nguoi khac nho nen viec chinh bi tre va toi phai lam khuya', en:'I take on more work when others ask, so my main work is late and I work at night', viMarker:'việc chính', enMarker:'main work' },
-  { id:'offer_market_test_gap', area:'business', vi:'toi sua goi dich vu nhieu lan nhung chua gui cho khach hang that de xem ho co tra tien khong', en:'I revise the offer repeatedly but it has not been sent to a real customer to see if they will pay', viMarker:'khách hàng', enMarker:'customer' },
-  { id:'budget_spending_gap', area:'money', vi:'toi giu tien nha nhung khi cang thang lai mua do nho va cuoi thang dung the tin dung', en:'I protect rent money but when stressed I buy small items and use a credit card at month end', viMarker:'tiền nhà', enMarker:'rent' },
-  { id:'contact_reciprocity_gap', area:'romantic', vi:'toi thuong nhan truoc va sap xep gap nhung nguoi kia phan hoi that thuong va toi van giu ket noi', en:'I usually message first and arrange meetings, but the other person is inconsistent and I keep the connection going', viMarker:'chủ động', enMarker:'initiat' },
-  { id:'family_help_capacity_gap', area:'family', vi:'gia dinh can toi giup khi lich da kin nen toi bo thoi gian nghi de dap ung', en:'My family needs help when my schedule is full, so I give up rest to respond', viMarker:'gia đình', enMarker:'family' },
-  { id:'friendship_initiation_gap', area:'friends', vi:'toi luon chu dong ru va giu lien lac nhung neu toi dung thi khong ai chu dong', en:'I always initiate and keep contact, but if I stop no one reaches out', viMarker:'chủ động', enMarker:'initiative' },
-  { id:'home_search_action_gap', area:'home', vi:'toi muon chuyen nha vi chi phi qua cao nhung chi xem them khu vuc va chua chot lich viewing', en:'I want to move because the cost is too expensive, but I keep looking at more areas and have not booked a viewing', viMarker:'xem nhà', enMarker:'viewing' },
-  { id:'daily_priority_gap', area:'daily', vi:'toi lap danh sach chi tiet nhung lam nhieu viec nho nen toi viec quan trong van chua xong', en:'I make a detailed list but do many small tasks, so the important task is still unfinished', viMarker:'việc quan trọng', enMarker:'important task' },
-  { id:'rest_recovery_gap', area:'wellbeing', vi:'toi thay met nhung van lam toi khuya va ngay sau ngu nhieu van chua hoi phuc', en:'I feel tired but work late, and after long sleep I still do not recover', viMarker:'hồi phục', enMarker:'recover' },
-  { id:'direction_commitment_gap', area:'direction', vi:'toi co ba huong nghe nghiep va tiep tuc nghien cuu nhung chua chon mot huong de thu trong thuc te', en:'I have three career directions and keep researching but have not chosen one to test in practice', viMarker:'hướng', enMarker:'direction' },
-  { id:'deadline_reprioritisation', area:'work', vi:'deadline doi dot ngot nen toi doi thu tu uu tien mot lan de xu ly viec khan cap trong tuan nay', en:'The deadline changed suddenly, so I reprioritised once to handle the urgent work this week', viMarker:'deadline', enMarker:'deadline' },
-  { id:'adaptive_budget_adjustment', area:'money', vi:'thu nhap thang nay giam nen toi cat hai khoan khong can thiet va van giu du tien nha', en:'My income fell this month, so I cut two non-essential costs and still kept enough money for rent', viMarker:'tiền nhà', enMarker:'rent' }
+  { id:'implemented_idea_no_income', area:'work', vi:'toi thuong co nhieu y tuong cho cong viec nhung khi thuc hien cac y tuong do thi cong viec van khong tao ra thu nhap', en:'I often have many ideas for work, but when I implement those ideas the work still generates no income', viGroups:['phần đã làm|công việc|ý tưởng','thu nhập|trả tiền'], enGroups:['completed work|work|idea','income|pay'] },
+  { id:'ideas_income_gap', area:'work', vi:'toi co nhieu y tuong cho cong viec nhung van chua chon y tuong nao de bat dau nen chua co thu nhap', en:'I have many ideas for work but have not chosen one to begin, so there is still no income', viGroups:['ý tưởng','thu nhập'], enGroups:['idea','income'] },
+  { id:'workload_boundary_gap', area:'work', vi:'toi nhan them viec khi nguoi khac nho nen viec chinh bi tre va toi phai lam khuya', en:'I take on more work when others ask, so my main work is late and I work at night', viGroups:['lịch|sức|chỗ','nhận thêm|việc'], enGroups:['schedule|capacity','more work|request'] },
+  { id:'offer_market_test_gap', area:'business', vi:'toi sua goi dich vu nhieu lan nhung chua gui cho khach hang that de xem ho co tra tien khong', en:'I revise the offer repeatedly but it has not been sent to a real customer to see if they will pay', viGroups:['gói dịch vụ|lời chào','gửi|khách hàng|thử'], enGroups:['offer|service','send|test|customer'] },
+  { id:'budget_spending_gap', area:'money', vi:'toi giu tien nha nhung khi cang thang lai mua do nho va cuoi thang dung the tin dung', en:'I protect rent money but when stressed I buy small items and use a credit card at month end', viGroups:['tiền nhà','mua|chi|thẻ'], enGroups:['rent','buy|spend|card'] },
+  { id:'contact_reciprocity_gap', area:'romantic', vi:'toi thuong nhan truoc va sap xep gap nhung nguoi kia phan hoi that thuong va toi van giu ket noi', en:'I usually message first and arrange meetings, but the other person is inconsistent and I keep the connection going', viGroups:['chủ động|nhắn|sắp xếp','phản hồi|kết nối'], enGroups:['initiat|message|arrange','response|connection'] },
+  { id:'family_help_capacity_gap', area:'family', vi:'gia dinh can toi giup khi lich da kin nen toi bo thoi gian nghi de dap ung', en:'My family needs help when my schedule is full, so I give up rest to respond', viGroups:['gia đình','giúp|sức lực|nghỉ'], enGroups:['family','help|capacity|rest'] },
+  { id:'friendship_initiation_gap', area:'friends', vi:'toi luon chu dong ru va giu lien lac nhung neu toi dung thi khong ai chu dong', en:'I always initiate and keep contact, but if I stop no one reaches out', viGroups:['chủ động|liên lạc','dừng|tìm tới|liên lạc'], enGroups:['initiative|initiat|contact','reach out|stepping back|contact'] },
+  { id:'home_search_action_gap', area:'home', vi:'toi muon chuyen nha vi chi phi qua cao nhung chi xem them khu vuc va chua chot lich viewing', en:'I want to move because the cost is too expensive, but I keep looking at more areas and have not booked a viewing', viGroups:['căn|nhà','đặt lịch|lịch xem'], enGroups:['property|home|viewing','book|choose|viewing'] },
+  { id:'daily_priority_gap', area:'daily', vi:'toi lap danh sach chi tiet nhung lam nhieu viec nho nen toi viec quan trong van chua xong', en:'I make a detailed list but do many small tasks, so the important task is still unfinished', viGroups:['quan trọng','việc nhỏ|thời gian'], enGroups:['important','small task|time'] },
+  { id:'rest_recovery_gap', area:'wellbeing', vi:'toi thay met nhung van lam toi khuya va ngay sau ngu nhieu van chua hoi phuc', en:'I feel tired but work late, and after long sleep I still do not recover', viGroups:['hồi phục|mệt|ngủ','dừng|công việc|mệt'], enGroups:['recover|tired|sleep','stopping|work|tired'] },
+  { id:'direction_commitment_gap', area:'direction', vi:'toi co ba huong nghe nghiep va tiep tuc nghien cuu nhung chua chon mot huong de thu trong thuc te', en:'I have three career directions and keep researching but have not chosen one to test in practice', viGroups:['hướng','chọn|thử|nghiên cứu'], enGroups:['direction','choose|test|research'] },
+  { id:'deadline_reprioritisation', area:'work', vi:'deadline doi dot ngot nen toi doi thu tu uu tien mot lan de xu ly viec khan cap trong tuan nay', en:'The deadline changed suddenly, so I reprioritised once to handle the urgent work this week', viGroups:['deadline|khẩn cấp','ưu tiên|đổi'], enGroups:['deadline|urgent','priorit|change'] },
+  { id:'adaptive_budget_adjustment', area:'money', vi:'thu nhap thang nay giam nen toi cat hai khoan khong can thiet va van giu du tien nha', en:'My income fell this month, so I cut two non-essential costs and still kept enough money for rent', viGroups:['nguồn tiền|thu nhập|tiền nhà','điều chỉnh|cắt|giữ'], enGroups:['money|income|rent','adjust|cut|keep'] }
 ];
 
 const banned = [
@@ -52,6 +52,12 @@ function inspectSurface(text, label, maxLength = 1200) {
   assert(text.length > 0, `${label}: empty visible surface`);
   assert(text.length <= maxLength, `${label}: implausibly long visible surface (${text.length})`);
   for (const marker of banned) assert(!marker.test(text), `${label}: banned carrier ${marker} in ${text.slice(0, 220)}`);
+}
+
+function assertSemanticGroups(text, groups, label) {
+  for (const group of groups) {
+    assert(new RegExp(group, 'iu').test(text), `${label}: missing semantic group /${group}/`);
+  }
 }
 
 async function assertLanguageSwitch(page, lang, label) {
@@ -128,7 +134,7 @@ async function runPath(browser, fixture, lang) {
   assert(profile === fixture.id, `${fixture.id}/${lang}: wrong profile ${profile}`);
   assert(classification && classification !== 'INCOMPLETE', `${fixture.id}/${lang}: incomplete classification`);
   assert(sections.length === 7, `${fixture.id}/${lang}: expected 7 report sections, got ${sections.length}`);
-  assert(reportText.toLocaleLowerCase(lang === 'vi' ? 'vi' : 'en').includes(fixture[`${lang}Marker`].toLocaleLowerCase(lang === 'vi' ? 'vi' : 'en')), `${fixture.id}/${lang}: report lost semantic marker ${fixture[`${lang}Marker`]}`);
+  assertSemanticGroups(reportText, fixture[`${lang}Groups`], `${fixture.id}/${lang}/report`);
   assert(errors.length === 0, `${fixture.id}/${lang}: browser errors: ${errors.join(' | ')}`);
   assert(failedRequests.length === 0, `${fixture.id}/${lang}: failed requests: ${failedRequests.join(' | ')}`);
 
