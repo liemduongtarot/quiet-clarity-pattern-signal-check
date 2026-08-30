@@ -1,0 +1,56 @@
+name: Free Access v1 qualification
+
+on:
+  push:
+    branches: [app/psc-free-access-v1]
+    paths:
+      - app/free-access-v1/**
+      - .github/workflows/free-access-v1.yml
+  pull_request:
+    paths:
+      - app/free-access-v1/**
+      - .github/workflows/free-access-v1.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualification:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: canonical-12
+            command: node --test --test-reporter=spec tests/canonical.test.mjs
+          - name: adversarial
+            command: node --test --test-reporter=spec tests/adversarial.test.mjs
+          - name: api-ui-isolation
+            command: node --test --test-reporter=spec tests/api-and-ui.test.mjs tests/isolation.test.mjs
+          - name: full-freeze
+            command: node scripts/qualify.mjs
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Run ${{ matrix.name }}
+        working-directory: app/free-access-v1
+        run: ${{ matrix.command }}
+      - name: Upload frozen qualification package
+        if: success() && matrix.name == 'full-freeze'
+        uses: actions/upload-artifact@v4
+        with:
+          name: free-access-v1-qualification
+          if-no-files-found: error
+          path: |
+            app/free-access-v1/qualification/free-access-v1-qualification.tgz
+            app/free-access-v1/qualification/free-access-v1-qualification.tgz.sha256
+            app/free-access-v1/qualification/FREEZE_MANIFEST.sha256
+            app/free-access-v1/qualification/QUALIFICATION_REPORT.md
+            app/free-access-v1/qualification/qualification.json

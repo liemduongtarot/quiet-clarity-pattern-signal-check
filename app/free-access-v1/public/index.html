@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Pattern Signal Check · Free Access</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Pattern Signal Check home">
+        <span class="brand-mark" aria-hidden="true">◇</span>
+        <span>Pattern Signal Check</span>
+      </a>
+      <div class="account-actions">
+        <span id="account-label" class="account-label"></span>
+        <button id="sign-out" class="button button-quiet" type="button" hidden>Sign out</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Free Access · Private preview</p>
+        <h1 id="page-title">Notice the pattern.<br><em>Choose with clarity.</em></h1>
+        <p class="intro">A focused reading turns the situation you describe into signals and concrete next steps. Your saved results stay available without running the analysis again.</p>
+      </section>
+
+      <section id="auth-panel" class="panel auth-panel" aria-labelledby="auth-title">
+        <div>
+          <p class="section-label">Verified access</p>
+          <h2 id="auth-title">Continue with a verified account</h2>
+          <p>Free Access includes four successfully saved results in each 30-day cycle. Failed attempts never count.</p>
+        </div>
+        <form id="auth-form" class="auth-form">
+          <label for="email">Email address</label>
+          <div class="inline-field">
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            <button class="button button-primary" type="submit">Use development sign-in</button>
+          </div>
+          <details>
+            <summary>Use an existing bearer token</summary>
+            <label for="token">Verified identity token</label>
+            <textarea id="token" name="token" rows="3" spellcheck="false"></textarea>
+            <button id="use-token" class="button button-secondary" type="button">Continue with token</button>
+          </details>
+          <div id="auth-error" class="message message-error" hidden role="alert"></div>
+        </form>
+      </section>
+
+      <div id="app-shell" hidden>
+        <section class="quota-bar" aria-live="polite">
+          <div>
+            <span class="status-dot" aria-hidden="true"></span>
+            <strong id="quota-status">Checking access…</strong>
+          </div>
+          <p id="quota-detail"></p>
+        </section>
+
+        <div class="workspace-grid">
+          <section class="panel create-panel" aria-labelledby="reading-title">
+            <p class="section-label">New reading</p>
+            <h2 id="reading-title">What situation are you looking at?</h2>
+            <form id="reading-form">
+              <label class="sr-only" for="prompt">Describe the situation</label>
+              <textarea id="prompt" name="prompt" rows="8" maxlength="4000" placeholder="Describe the decision, tension, or repeated pattern you want to examine…" required></textarea>
+              <div class="form-footer">
+                <span id="character-count">0 / 4,000</span>
+                <button id="submit-reading" class="button button-primary" type="submit">Create reading</button>
+              </div>
+            </form>
+            <div id="working-state" class="working-state" hidden role="status">
+              <span class="spinner" aria-hidden="true"></span>
+              <div><strong>Reading the pattern…</strong><p>Your slot is reserved while the result is validated and saved.</p></div>
+            </div>
+            <div id="error-state" class="message message-error" hidden role="alert"></div>
+            <div id="exhausted-state" class="message" hidden>
+              <strong>Your four results are safely saved.</strong>
+              <p id="exhausted-copy">New readings open when your next cycle begins. You can revisit every saved result below.</p>
+            </div>
+          </section>
+
+          <aside class="principles" aria-label="Free Access commitments">
+            <p class="section-label">How access works</p>
+            <ol>
+              <li><span>01</span><div><strong>Only saved results count</strong><p>A failed or unusable result returns your reserved slot.</p></div></li>
+              <li><span>02</span><div><strong>Your cycle begins with success</strong><p>The 30-day clock starts when your first complete result is saved.</p></div></li>
+              <li><span>03</span><div><strong>History never reruns</strong><p>Opening a result reads the saved copy. It never spends another use.</p></div></li>
+            </ol>
+          </aside>
+        </div>
+
+        <section id="result-panel" class="panel result-panel" hidden aria-labelledby="result-title">
+          <div class="result-heading">
+            <div><p class="section-label">Saved result</p><h2 id="result-title">Your pattern reading</h2></div>
+            <time id="result-date"></time>
+          </div>
+          <p id="result-summary" class="result-summary"></p>
+          <div id="result-signals" class="signal-grid"></div>
+          <h3>Next steps</h3>
+          <ul id="result-next-steps" class="next-steps"></ul>
+          <p id="result-disclaimer" class="disclaimer"></p>
+        </section>
+
+        <section class="history-section" aria-labelledby="history-title">
+          <div class="history-heading"><div><p class="section-label">Saved, not rerun</p><h2 id="history-title">Your history</h2></div><button id="refresh-history" class="button button-quiet" type="button">Refresh</button></div>
+          <div id="history-empty" class="empty-state">Your successful readings will appear here.</div>
+          <div id="history-list" class="history-list"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer><span>Free Access v1</span><span>Deterministic mock executor · PSC core not connected</span></footer>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
