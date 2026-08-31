@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Pattern Signal Check · Free Access</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Pattern Signal Check home">
+        <span class="brand-mark" aria-hidden="true">◇</span>
+        <span>Pattern Signal Check</span>
+      </a>
+      <span class="account-label">No account required</span>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Free Access · Browser-bounded specimen</p>
+        <h1 id="page-title">Notice the pattern.<br><em>Choose with clarity.</em></h1>
+        <p class="intro">A focused reading turns the situation you describe into signals and concrete next steps. No account, name or email required. Avoid real names and unnecessary identifying details.</p>
+        <p id="specimen-notice" class="disclaimer">Synthetic mock only — no live PSC processing or payment. Please do not enter real personal information.</p>
+      </section>
+
+      <div id="app-shell">
+        <section class="quota-bar" aria-live="polite">
+          <div>
+            <span class="status-dot" aria-hidden="true"></span>
+            <strong id="quota-status">Checking access…</strong>
+          </div>
+          <p id="quota-detail"></p>
+        </section>
+
+        <div class="workspace-grid">
+          <section class="panel create-panel" aria-labelledby="reading-title">
+            <p class="section-label">New reading</p>
+            <h2 id="reading-title">What situation are you looking at?</h2>
+            <form id="reading-form" autocomplete="off">
+              <label class="sr-only" for="prompt">Describe the situation</label>
+              <textarea id="prompt" name="prompt" rows="8" maxlength="4000" autocomplete="off" spellcheck="false" placeholder="Describe a synthetic decision, tension, or repeated pattern…" aria-describedby="specimen-notice privacy-copy" required></textarea>
+              <div class="form-footer">
+                <span id="character-count">0 / 4,000</span>
+                <button id="submit-reading" class="button button-primary" type="submit" disabled>Create reading</button>
+              </div>
+            </form>
+            <div id="working-state" class="working-state" hidden role="status">
+              <span class="spinner" aria-hidden="true"></span>
+              <div><strong>Preparing your mock result…</strong><p id="working-copy">Only a valid, committed result issued with updated allowance counts.</p></div>
+            </div>
+            <div id="error-state" class="message message-error" hidden role="alert"></div>
+            <div id="exhausted-state" class="message" hidden>
+              <strong>You have used this browser cycle's 4 Free results.</strong>
+              <p id="exhausted-copy">Your current result remains available to copy or download.</p>
+            </div>
+            <p id="lock-notice" class="disclaimer" hidden>This browser cannot coordinate tabs. Use one tab at a time; simultaneous submissions may bypass the browser allowance.</p>
+            <details>
+              <summary>How your information is handled</summary>
+              <p id="privacy-copy">A first-party browser token keeps your Free allowance. It contains no answers or results. We count aggregate product actions. Payment is handled separately. Your text may still contain personal information while it is processed.</p>
+              <p class="disclaimer">No-direct-identity access does not mean complete anonymity. Text uses identity-minimised transient processing; only sufficiently aggregated, non-linkable statistics qualify as anonymous aggregate product metrics.</p>
+              <p class="disclaimer">The allowance belongs to this browser. Deleting or replaying the token, using private mode, another browser or device, or deliberately submitting from concurrent tabs can bypass it. The signature prevents undetected editing; it cannot enforce four results per person.</p>
+            </details>
+          </section>
+
+          <aside class="principles" aria-label="Free Access commitments">
+            <p class="section-label">How access works</p>
+            <ol>
+              <li><span>01</span><div><strong>Only successful results count</strong><p>4 Free results per browser cycle. Failed or unusable results never count.</p></div></li>
+              <li><span>02</span><div><strong>Your cycle begins with success</strong><p>Your cycle starts with your first successful result and ends exactly 720 hours later.</p></div></li>
+              <li><span>03</span><div><strong>Keep what is useful</strong><p>This result stays on this page. Copy or download it before leaving; there is no saved result history.</p></div></li>
+            </ol>
+          </aside>
+        </div>
+
+        <section id="result-panel" class="panel result-panel" hidden aria-labelledby="result-title">
+          <div class="result-heading">
+            <div><p class="section-label">Current result</p><h2 id="result-title">Your pattern reading</h2></div>
+            <time id="result-date"></time>
+          </div>
+          <p id="result-summary" class="result-summary"></p>
+          <div id="result-signals" class="signal-grid"></div>
+          <h3>Next steps</h3>
+          <ul id="result-next-steps" class="next-steps"></ul>
+          <p id="result-disclaimer" class="disclaimer"></p>
+          <p class="disclaimer">This result stays on this page. Copy or download it before leaving; there is no saved result history.</p>
+          <div class="inline-field">
+            <button id="copy-result" class="button button-secondary" type="button">Copy result</button>
+            <button id="download-result" class="button button-secondary" type="button">Download result</button>
+          </div>
+          <p id="result-action-status" class="disclaimer" role="status" aria-live="polite"></p>
+          <div id="paid-bridge" hidden>
+            <button id="paid-bridge-toggle" class="button button-quiet" type="button" aria-expanded="false" aria-controls="paid-bridge-details">About Paid access</button>
+            <p id="paid-bridge-details" class="disclaimer" hidden>Payment is separate from Free activity. No checkout or payment service is connected in this specimen.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer><span>Free Access v2 · Browser-bounded architecture v1.3</span><span>Deterministic mock executor · PSC core not connected</span></footer>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
