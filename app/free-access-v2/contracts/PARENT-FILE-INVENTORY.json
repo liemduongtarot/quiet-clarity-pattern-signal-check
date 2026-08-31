@@ -1,0 +1,285 @@
+{
+  "parentCommit": "f53035341a12834170be8afdd1b4ed6481085ed4",
+  "allTrackedFiles": 31,
+  "files": [
+    {
+      "path": ".github/workflows/free-access-v1.yml",
+      "gitBlobSha256": "146eb0ad2f3fcd6dc678b61b0caf1e3aa8366793595405c13f92f180681e726b",
+      "gitBlobBytes": 1838,
+      "frozenWorktreeSha256": "146eb0ad2f3fcd6dc678b61b0caf1e3aa8366793595405c13f92f180681e726b",
+      "frozenWorktreeBytes": 1838,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/.gitignore",
+      "gitBlobSha256": "7cab0bba01e60f247fbc654ae24bedde108ef5b9ba3ee26a25a339b78d5858d5",
+      "gitBlobBytes": 139,
+      "frozenWorktreeSha256": "7cab0bba01e60f247fbc654ae24bedde108ef5b9ba3ee26a25a339b78d5858d5",
+      "frozenWorktreeBytes": 139,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/README.md",
+      "gitBlobSha256": "6c53ec9be0f5de61128840f15b55d79c09be353f37077a9dacb40829b9470ca2",
+      "gitBlobBytes": 1436,
+      "frozenWorktreeSha256": "6c53ec9be0f5de61128840f15b55d79c09be353f37077a9dacb40829b9470ca2",
+      "frozenWorktreeBytes": 1436,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/docs/IMPLEMENTATION_PLAN.md",
+      "gitBlobSha256": "edf4d1d631eae05c8dbdd68f6688678b23f601e5e6ce613d4f572fffac94ddd0",
+      "gitBlobBytes": 971,
+      "frozenWorktreeSha256": "edf4d1d631eae05c8dbdd68f6688678b23f601e5e6ce613d4f572fffac94ddd0",
+      "frozenWorktreeBytes": 971,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/docs/REPOSITORY_INSPECTION.md",
+      "gitBlobSha256": "686c01a51f9aa7e65df433a4fcef0ecf59510ace552a08dc47d5c782d1721833",
+      "gitBlobBytes": 2173,
+      "frozenWorktreeSha256": "686c01a51f9aa7e65df433a4fcef0ecf59510ace552a08dc47d5c782d1721833",
+      "frozenWorktreeBytes": 2173,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/migrations/001_free_access.sql",
+      "gitBlobSha256": "b4872438bcad6b3fc99c0a7a9fc65d08a3371f75b14584c091d3569c5454d345",
+      "gitBlobBytes": 2279,
+      "frozenWorktreeSha256": "b4872438bcad6b3fc99c0a7a9fc65d08a3371f75b14584c091d3569c5454d345",
+      "frozenWorktreeBytes": 2279,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/package.json",
+      "gitBlobSha256": "8ce366b9371fec5c7f0edcfa800ba1482461a526ecc59e2d72f0d0d1bdea5dd2",
+      "gitBlobBytes": 509,
+      "frozenWorktreeSha256": "8ce366b9371fec5c7f0edcfa800ba1482461a526ecc59e2d72f0d0d1bdea5dd2",
+      "frozenWorktreeBytes": 509,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/public/app.js",
+      "gitBlobSha256": "b5dfdf4079523511164e7728a4892264b57c2f3d6b9adecade2b805d421d00ab",
+      "gitBlobBytes": 7437,
+      "frozenWorktreeSha256": "b5dfdf4079523511164e7728a4892264b57c2f3d6b9adecade2b805d421d00ab",
+      "frozenWorktreeBytes": 7437,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/public/index.html",
+      "gitBlobSha256": "bd2eb87ec3e16869bfd246280c88257e6bb03eb71429d1598dfb1fce7f6997c2",
+      "gitBlobBytes": 6169,
+      "frozenWorktreeSha256": "bd2eb87ec3e16869bfd246280c88257e6bb03eb71429d1598dfb1fce7f6997c2",
+      "frozenWorktreeBytes": 6169,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/public/styles.css",
+      "gitBlobSha256": "0232b68d47a1d736ecc81f4be60d2934cc872aee2476501c2100c2a8215e1e22",
+      "gitBlobBytes": 8075,
+      "frozenWorktreeSha256": "0232b68d47a1d736ecc81f4be60d2934cc872aee2476501c2100c2a8215e1e22",
+      "frozenWorktreeBytes": 8075,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/qualification/FREEZE_MANIFEST.sha256",
+      "gitBlobSha256": "5203635410a3dd90868b0afca0a3a0245a4e90c116b5a082e80975245a6bb919",
+      "gitBlobBytes": 3118,
+      "frozenWorktreeSha256": "5203635410a3dd90868b0afca0a3a0245a4e90c116b5a082e80975245a6bb919",
+      "frozenWorktreeBytes": 3118,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/qualification/QUALIFICATION_REPORT.md",
+      "gitBlobSha256": "a72d2ba5b70e8bb891175ec637f9b2f4a6d8d9a0b1535c5ba2eb3a65787b4765",
+      "gitBlobBytes": 770,
+      "frozenWorktreeSha256": "a72d2ba5b70e8bb891175ec637f9b2f4a6d8d9a0b1535c5ba2eb3a65787b4765",
+      "frozenWorktreeBytes": 770,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/qualification/qualification.json",
+      "gitBlobSha256": "d4f0cb7e9217d359b131d6f63e658253962d2c2a83ae2d9f49a8c23f310c663a",
+      "gitBlobBytes": 2462,
+      "frozenWorktreeSha256": "d4f0cb7e9217d359b131d6f63e658253962d2c2a83ae2d9f49a8c23f310c663a",
+      "frozenWorktreeBytes": 2462,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/scripts/freeze.mjs",
+      "gitBlobSha256": "74283d62c6f2a93cbcf52f6219bfd531d86dd769cb94a2afc828bcf4dfe8fc3f",
+      "gitBlobBytes": 3843,
+      "frozenWorktreeSha256": "74283d62c6f2a93cbcf52f6219bfd531d86dd769cb94a2afc828bcf4dfe8fc3f",
+      "frozenWorktreeBytes": 3843,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/scripts/qualify.mjs",
+      "gitBlobSha256": "19b627d86a63362374fd59191c57091ec9b94b54c5394dd5a671187d95ece557",
+      "gitBlobBytes": 7752,
+      "frozenWorktreeSha256": "19b627d86a63362374fd59191c57091ec9b94b54c5394dd5a671187d95ece557",
+      "frozenWorktreeBytes": 7752,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/src/api/server.mjs",
+      "gitBlobSha256": "47100c3f5c28281b557e10e83c2db41829f0cb0d04a2128457fbe2e65d551ce0",
+      "gitBlobBytes": 6100,
+      "frozenWorktreeSha256": "47100c3f5c28281b557e10e83c2db41829f0cb0d04a2128457fbe2e65d551ce0",
+      "frozenWorktreeBytes": 6100,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/src/auth/identity.mjs",
+      "gitBlobSha256": "b27ce643d594eeab69d9ddafdfc10866c7b3ac9c2013d19d297005d6b3db2c48",
+      "gitBlobBytes": 3113,
+      "frozenWorktreeSha256": "b27ce643d594eeab69d9ddafdfc10866c7b3ac9c2013d19d297005d6b3db2c48",
+      "frozenWorktreeBytes": 3113,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/src/clock.mjs",
+      "gitBlobSha256": "976fcdceaa62f3a0429f2de579d3ae1b9e736445e90656cc4c01406c4fc522cf",
+      "gitBlobBytes": 412,
+      "frozenWorktreeSha256": "976fcdceaa62f3a0429f2de579d3ae1b9e736445e90656cc4c01406c4fc522cf",
+      "frozenWorktreeBytes": 412,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/src/errors.mjs",
+      "gitBlobSha256": "46c3f448b5e2b9151a13f938c5b57663e22d4669e82f03056a4c26b699b18817",
+      "gitBlobBytes": 2082,
+      "frozenWorktreeSha256": "46c3f448b5e2b9151a13f938c5b57663e22d4669e82f03056a4c26b699b18817",
+      "frozenWorktreeBytes": 2082,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/src/executor/contract.mjs",
+      "gitBlobSha256": "af42186211082eef258563607512e2382eed5d687965c55af566bd536a9e31c8",
+      "gitBlobBytes": 2473,
+      "frozenWorktreeSha256": "af42186211082eef258563607512e2382eed5d687965c55af566bd536a9e31c8",
+      "frozenWorktreeBytes": 2473,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/src/executor/mock-psc.mjs",
+      "gitBlobSha256": "0914c3e93f5d85c2a9762bacdc76db3182f4be58304add2ec46cbb6d0ab11d47",
+      "gitBlobBytes": 1916,
+      "frozenWorktreeSha256": "0914c3e93f5d85c2a9762bacdc76db3182f4be58304add2ec46cbb6d0ab11d47",
+      "frozenWorktreeBytes": 1916,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/src/index.mjs",
+      "gitBlobSha256": "485a62d3aa511ba84e68c30e86ffdeb4c100386b89d5b646af143c617db62bf6",
+      "gitBlobBytes": 1971,
+      "frozenWorktreeSha256": "485a62d3aa511ba84e68c30e86ffdeb4c100386b89d5b646af143c617db62bf6",
+      "frozenWorktreeBytes": 1971,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/src/policy.mjs",
+      "gitBlobSha256": "eee0d0c6e4a3898910dd4af1b7cb31893b52e169b22b7e352d002c1e83d23a2e",
+      "gitBlobBytes": 1802,
+      "frozenWorktreeSha256": "eee0d0c6e4a3898910dd4af1b7cb31893b52e169b22b7e352d002c1e83d23a2e",
+      "frozenWorktreeBytes": 1802,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/src/service/free-access-service.mjs",
+      "gitBlobSha256": "e053b087c24c0ffbe2e4c7f19899402cf026a3b713293bfa2db63553c1add2d6",
+      "gitBlobBytes": 4574,
+      "frozenWorktreeSha256": "e053b087c24c0ffbe2e4c7f19899402cf026a3b713293bfa2db63553c1add2d6",
+      "frozenWorktreeBytes": 4574,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/src/storage/sqlite-store.mjs",
+      "gitBlobSha256": "5224c4e87e14d6910900deef910c0f027ac8ec4ca51cdc13bebf589230da97f1",
+      "gitBlobBytes": 12675,
+      "frozenWorktreeSha256": "5224c4e87e14d6910900deef910c0f027ac8ec4ca51cdc13bebf589230da97f1",
+      "frozenWorktreeBytes": 12675,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/tests/adversarial.test.mjs",
+      "gitBlobSha256": "ff7d5faa4e30045674af34f5404f223c3430473932f8524b7679fd1d0cb0d4e5",
+      "gitBlobBytes": 9081,
+      "frozenWorktreeSha256": "ff7d5faa4e30045674af34f5404f223c3430473932f8524b7679fd1d0cb0d4e5",
+      "frozenWorktreeBytes": 9081,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/tests/api-and-ui.test.mjs",
+      "gitBlobSha256": "3a3630a0989d70f01dbaf09443cfa38dc825bedcfddf33e407d6d549998b4eb7",
+      "gitBlobBytes": 4040,
+      "frozenWorktreeSha256": "3a3630a0989d70f01dbaf09443cfa38dc825bedcfddf33e407d6d549998b4eb7",
+      "frozenWorktreeBytes": 4040,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/tests/canonical.test.mjs",
+      "gitBlobSha256": "b90fae1d3ae6706b192677c748ed5cdac821bf722d0bdb189600d3b0546fe3f3",
+      "gitBlobBytes": 6070,
+      "frozenWorktreeSha256": "b90fae1d3ae6706b192677c748ed5cdac821bf722d0bdb189600d3b0546fe3f3",
+      "frozenWorktreeBytes": 6070,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/tests/helpers.mjs",
+      "gitBlobSha256": "7822574ba6ad20d1f089e884fb66468f39cf70f3236d614c57e72a838ceaff46",
+      "gitBlobBytes": 1518,
+      "frozenWorktreeSha256": "7822574ba6ad20d1f089e884fb66468f39cf70f3236d614c57e72a838ceaff46",
+      "frozenWorktreeBytes": 1518,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "app/free-access-v1/tests/isolation.test.mjs",
+      "gitBlobSha256": "fd9387ab0577ef40d120a19d87319d8c37b536b3a5d5cee135a622459899cce1",
+      "gitBlobBytes": 2826,
+      "frozenWorktreeSha256": "fd9387ab0577ef40d120a19d87319d8c37b536b3a5d5cee135a622459899cce1",
+      "frozenWorktreeBytes": 2826,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    },
+    {
+      "path": "package.json",
+      "gitBlobSha256": "264077bc1908a2b2fe668f2e188fbf468ba5109abaef1f3e075b2c7727eeeaf8",
+      "gitBlobBytes": 187,
+      "frozenWorktreeSha256": "e155192c7c9d02e0aba46894ef5e5686b5af02af1b525213ae499f981b65189d",
+      "frozenWorktreeBytes": 197,
+      "reviewed": true,
+      "dispositionAuthority": "01-FROZEN-V1-IMPACT-MATRIX.md"
+    }
+  ]
+}

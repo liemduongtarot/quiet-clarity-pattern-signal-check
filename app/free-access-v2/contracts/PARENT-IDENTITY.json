@@ -1,0 +1,21 @@
+{
+  "schema": "free-access-parent-identity/v1",
+  "repository": "liemduongtarot/quiet-clarity-pattern-signal-check",
+  "parentCommit": "f53035341a12834170be8afdd1b4ed6481085ed4",
+  "parentTree": "7cbc55eea7744d26b29632019487f6daabaf0e6b",
+  "parentBranch": "app/psc-free-access-v1",
+  "qualificationParent": "2493f7605d42b2ccf757e22e8ddb0b108a5e7600",
+  "qualificationSha256": "de02d1c059ba09979ec84963f7f3e03f5ded5d4cedd1e328537edf07af6dd21d",
+  "qualificationBytes": 31841,
+  "parentGithubRun": {
+    "id": 33309429497,
+    "head": "f53035341a12834170be8afdd1b4ed6481085ed4",
+    "tree": "7cbc55eea7744d26b29632019487f6daabaf0e6b",
+    "conclusion": "success",
+    "url": "https://github.com/liemduongtarot/quiet-clarity-pattern-signal-check/actions/runs/33309429497"
+  },
+  "localMain": "9282f815e130736cd867449071c190147cd99a3a",
+  "remoteMain": "d145f57cbfbc34192322f2967428026550aa59f6",
+  "remoteFrozenV1": "f53035341a12834170be8afdd1b4ed6481085ed4",
+  "note": "Remote main and local main already differed at task start; neither will be modified. Frozen parent required identities all matched."
+}

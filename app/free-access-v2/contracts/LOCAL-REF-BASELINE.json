@@ -1,0 +1,60 @@
+{
+  "refs": [
+    {
+      "commit": "f53035341a12834170be8afdd1b4ed6481085ed4",
+      "ref": "refs/heads/app/psc-free-access-v1"
+    },
+    {
+      "commit": "f53035341a12834170be8afdd1b4ed6481085ed4",
+      "ref": "refs/heads/codex/psc-free-access-browser-bounded-successor"
+    },
+    {
+      "commit": "d0d05729f41fb512b8d060f698f6f701dc674210",
+      "ref": "refs/heads/codex/v83146-preseal-audit-v2"
+    },
+    {
+      "commit": "a6735070106da1d8acb6b2538aa83a14b6612dd9",
+      "ref": "refs/heads/codex/v83146-preseal-bank-v2"
+    },
+    {
+      "commit": "7ebab803137fc470860a36acdfbeebfdc87497be",
+      "ref": "refs/heads/codex/v83146-preseal-packaging"
+    },
+    {
+      "commit": "9282f815e130736cd867449071c190147cd99a3a",
+      "ref": "refs/heads/main"
+    },
+    {
+      "commit": "b69f84e921bb8ba9d28e4b5cc83c040251da12e4",
+      "ref": "refs/heads/v83276-source-reconstruction"
+    },
+    {
+      "commit": "eaf2a2f26b3cce76b1a30349b7a8efc46a226b45",
+      "ref": "refs/heads/v83277-human-rendering-repair"
+    },
+    {
+      "commit": "c31b7b9d2296621c93a520dda328d25ac85fb8c1",
+      "ref": "refs/heads/v83278-contextual-question-report-repair"
+    },
+    {
+      "commit": "d436c36f57b0d61ee3c326ac4eca393f6011fd20",
+      "ref": "refs/heads/v83279-long-form-contextual-report-viewport-repair"
+    },
+    {
+      "commit": "265e392dfa187c34b792a68b1b254139ae809b13",
+      "ref": "refs/heads/v83280-semantic-question-evidence-report-root-repair"
+    },
+    {
+      "commit": "fa3aa33e3a805647421d570d8e297d62183c7fc6",
+      "ref": "refs/heads/v83281-other-clarification-parent-evidence-reconciliation-repair"
+    },
+    {
+      "commit": "3a254e3a58b128f77c2949bfb1ea929fc9a3b2d2",
+      "ref": "refs/heads/v83282-other-c1-semantic-commit-locale-rendering-repair"
+    },
+    {
+      "commit": "bf0710c50d2dfebfaa98cd10729268473d8ebe92",
+      "ref": "refs/heads/v83283-parent-evidence-question-contextualization-repair"
+    }
+  ]
+}

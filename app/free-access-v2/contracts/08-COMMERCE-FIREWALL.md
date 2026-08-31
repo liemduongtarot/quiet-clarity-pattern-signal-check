@@ -1,0 +1,11 @@
+# Product pathway / commerce attempt firewall
+
+Product pathway totals are valid result, bridge rendered, bridge opened. These do not create checkout identifiers, record payment identity, measure unique visitors or expose a row-level funnel.
+
+Commerce attempt totals are `checkout_attempt_created` and `payment_completed`. An isolated random `checkout_attempt_id` can correlate an attempt with completion only. The strict interface accepts optional finite bridge variant A/B on attempt creation and only that attempt ID on completion. Unknown keys and quota token, use count, classification, status, question, result, receipt, Free history, email or payment identity are rejected. Free service state is not an argument or dependency of this interface.
+
+There is no live checkout, payment processor, payment record or webhook in this task. The runtime exposes a local explanatory Paid bridge only; opening it does not create a live checkout. An explicitly TEST-ONLY synthetic commerce adapter qualifies exact request-shape rejection, duplicate completion, isolated correlation and direct counters. Its fixture state is memory-only and cleared on close, with a short test clock bound. It is not an admitted production checkout implementation. Production checkout expiry and payment record retention are **OPEN — SHORTEST OPERATIONALLY SUFFICIENT PERIOD TO BE QUALIFIED** and require separate processor/identity governance.
+
+No payment record is stored in the anonymous app. A future processor/controller may hold separately governed payment records but must not receive Free activity fields or join backward into Free behavior. Completion increments a commercial counter without propagating attempt ID or payment identity to product analytics. Commerce counters use a distinct finite namespace, with no row or key capable of joining a visitor journey. No provider call, purchase, webhook registration or deployment is authorized.
+
+Experiments are disabled. If later admitted, assignment is session-scoped random state, never persistent browser identity or quota content. Only an optional bridge variant may accompany an isolated checkout attempt, never classification/use count. Aggregate evidence may suggest hypotheses; no automatic PSC semantic changes.
